@@ -1,6 +1,6 @@
-# api.data.gov
+# developer.nrel.gov
 
-The website content for api.data.gov built with [nanoc](http://nanoc.ws).
+The website content for developer.nrel.gov built with [nanoc](http://nanoc.ws).
 
 All contributions are welcome. To submit a change, fork this repo, commit your changes, and send us a [pull request](https://help.github.com/articles/using-pull-requests).
 

@@ -1,0 +1,63 @@
+h1 {
+  margin-bottom: 0px;
+}
+
+.feature {
+  background-color: #f7f7f7;
+
+  border: 1px solid #ddd;
+  @include border-radius(6px);
+
+  padding: 6px 8px;
+
+  height: 210px;
+}
+
+h2 {
+  margin-bottom: 0px;
+}
+
+.feature h2 {
+  margin: 0px;
+}
+
+.intro-text p {
+  margin: 32px 0px 40px 0px;
+}
+
+.doc-parameters thead th {
+  border-style: none;
+  color: #777;
+  @include gradient-vertical(#edeeef, #e5e5e5);
+  text-shadow: #fff 1px 1px 0;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.doc-parameters tbody th,
+.doc-parameters tbody td {
+  border: 1px solid #ddd;
+  border-width: 1px 0px;
+  vertical-align: top;
+}
+
+.doc-parameter-options tbody th,
+.doc-parameter-options tbody td {
+  border-style: none;
+}
+
+.doc-parameter-options thead th {
+  background: transparent;
+  text-shadow: none;
+  color: #555;
+  border-style: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.toc {
+  padding-right: 2em;
+}
+
+.toc li {
+  line-height: pxtoem(16px);
+}
