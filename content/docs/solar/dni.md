@@ -11,7 +11,7 @@ deprecated: true
 # {{title}} <span class="url">({{url}})</span>
 {{summary}}
 
-Provides monthly average and annual average daily total direct normal solar resource values (watt-hours/m^2^/day) at a given location.
+Provides monthly average and annual average daily total direct normal solar resource values (watt-hours/m<sup>2</sup>/day) at a given location.
 
 The insolation values represent the resource available to concentrating systems that track the sun throughout the day and are created using the SUNY Satellite Solar Radiation model. The values are averaged over surface cells of 0.1 degrees in both latitude and longitude, or about 10 km in size.
 
@@ -63,7 +63,7 @@ The insolation values represent the resource available to concentrating systems 
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>Your developer API key. See <a href="/doc/api-key">API keys</a> for more information.</p>
+        <p>Your developer API key. See <a href="/docs/api-key/">API keys</a> for more information.</p>
       </td>
     </tr>
     <tr>

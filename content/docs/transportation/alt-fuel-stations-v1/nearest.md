@@ -60,7 +60,7 @@ The following query parameters may be passed in the request to control the outpu
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>Your developer API key. See <a href="/doc/api-key">API key usage</a> for more information.</p>
+        <p>Your developer API key. See <a href="/docs/api-key/">API key usage</a> for more information.</p>
       </td>
     </tr>
     <tr>

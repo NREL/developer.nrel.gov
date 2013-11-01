@@ -42,7 +42,7 @@ For login credentials, contact [Ryan Smith](mailto:ryan.smith@nrel.gov). Example
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>Your developer API key. See <a href="/doc/api-key">API keys</a> for more information. (URL Param)</p>
+        <p>Your developer API key. See <a href="/docs/api-key/">API keys</a> for more information. (URL Param)</p>
       </td>
     </tr>
     <tr>

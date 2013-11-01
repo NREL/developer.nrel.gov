@@ -271,9 +271,11 @@ Find.find(mirror_path) do |path|
 
       result = template.result(binding)
 
+      result.gsub!(/\^(\d+)\^/, '<sup>\1</sup>')
       result.gsub!('\$', '$')
       result.gsub!(/ \\$/, '')
       result.gsub!(/\n\n+/, "\n\n")
+      result.gsub!("/doc/api-key", "/docs/api-key/")
 
       test_result = result.gsub(/^---.*?---/m, "")
       test_result.gsub!("{{title}}", url)
