@@ -6,6 +6,7 @@ GEM
     bootstrap-sass (2.3.2.0)
       sass (~> 3.2)
     chunky_png (1.2.8)
+    coderay (1.1.0)
     colored (1.2)
     compass (0.12.2)
       chunky_png (~> 1.2)
@@ -17,6 +18,7 @@ GEM
       multi_json (~> 1.0)
     fssm (0.2.10)
     hike (1.2.3)
+    kramdown (1.2.0)
     mini_portile (0.5.1)
     multi_json (1.7.7)
     mustache (0.99.4)
@@ -29,13 +31,8 @@ GEM
       sprockets (>= 2.8.0)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
-    posix-spawn (0.3.6)
-    pygments.rb (0.5.2)
-      posix-spawn (~> 0.3.6)
-      yajl-ruby (~> 1.1.0)
     rack (1.5.2)
     rake (10.1.0)
-    redcarpet (3.0.0)
     sass (3.2.9)
     sprockets (2.10.0)
       hike (~> 1.2)
@@ -51,7 +48,6 @@ GEM
     uglifier (2.1.2)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    yajl-ruby (1.1.0)
 
 PLATFORMS
   ruby
@@ -59,15 +55,15 @@ PLATFORMS
 DEPENDENCIES
   adsf
   bootstrap-sass
+  coderay
   compass
+  kramdown (>= 1.2.0)
   mustache
   nanoc
   nanoc-cachebuster
   nanoc-sprockets-filter
   nokogiri
-  pygments.rb
   rake
-  redcarpet
   sass
   sprockets-helpers
   sprockets-sass

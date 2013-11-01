@@ -1,22 +1,21 @@
 ---
 title: Last Updated Date
 summary: Retrieve the date when the alternative fuel stations data were last updated.
+url: GET /api/alt-fuel-stations/v1/last-updated
 disqus: true
 
 ---
 
-# {{title}}
+# {{title}} <span class="url">({{url}})</span>
 {{summary}}
 
 <ul id="toc"></ul>
 
 ## Request URL
 
-<pre>GET http://api.data.gov/nrel/alt-fuel-stations/v1/last-updated<em>.format?parameters</em></pre>
+<pre>GET http://developer.nrel.gov/api/alt-fuel-stations/v1/last-updated<em>.format?parameters</em></pre>
 
 ## Request Parameters
-
-
 
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
   <thead>
@@ -66,8 +65,6 @@ disqus: true
 
 ## Response Fields
 
-
-
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
   <thead>
     <tr>
@@ -96,7 +93,7 @@ disqus: true
 
 ### JSON Output Format
 
-<pre>GET <a href="/nrel/alt-fuel-stations/v1/last-updated.json?api_key=DEMO_KEY">/nrel/alt-fuel-stations/v1/last-updated.json?api_key=DEMO_KEY</a></pre>
+<pre>GET <a href="/api/alt-fuel-stations/v1/last-updated.json?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/last-updated.json?api_key=DEMO_KEY</a></pre>
 
 ```json
 {
@@ -106,7 +103,7 @@ disqus: true
 
 ### XML Output Format
 
-<pre>GET <a href="/nrel/alt-fuel-stations/v1/last-updated.xml?api_key=DEMO_KEY">/nrel/alt-fuel-stations/v1/last-updated.xml?api_key=DEMO_KEY</a></pre>
+<pre>GET <a href="/api/alt-fuel-stations/v1/last-updated.xml?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/last-updated.xml?api_key=DEMO_KEY</a></pre>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

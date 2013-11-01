@@ -23,10 +23,10 @@ gem "compass"
 gem "bootstrap-sass"
 
 # Markdown
-gem "redcarpet"
+gem "kramdown", ">= 1.2.0"
 
 # Syntax highlighting
-gem "pygments.rb"
+gem "coderay"
 
 # HTML parsing
 gem "nokogiri"

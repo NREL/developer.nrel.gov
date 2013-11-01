@@ -1,0 +1,100 @@
+<%= front_matter.to_yaml -%>
+
+---
+
+# {{title}} <span class="url">({{url}})</span>
+{{summary}}
+<% if(extended_description) %>
+
+<%= extended_description %>
+<% end %>
+
+<ul id="toc"></ul>
+
+## Request URL
+
+<pre><%= doc.css(".doc-service-url").first.inner_html.strip %></pre>
+
+<% if(doc.at("h2#http-basic-authentication")) %>
+## HTTP Basic Authentication
+
+For PVDAQ services, in addition to your developer API key, you must also provide a username and password for your PVDAQ account via [HTTP Basic Authentication](http://en.wikipedia.org/wiki/Basic_access_authentication). For login credentials, contact [Ryan Smith](ryan.smith@nrel.gov).
+
+<% end %>
+## Request Parameters
+
+<% if(request_extra && !request_extra.empty?) %>
+<%= request_extra %>
+
+<% end %>
+<%= tidy(request_table) %>
+
+## Response Fields
+
+<% if(response_extra) %>
+<%= response_extra %>
+
+<% end %>
+<%= tidy(response_table) %>
+
+## Examples
+
+<% if(json_body) %>
+### JSON Output Format
+
+<% if(json_extra) %>
+<%= json_extra -%>
+<% end %>
+
+<pre><%= json_url %></pre>
+
+```json
+<%= json_body.strip %>
+```
+
+<% end %>
+<% if(xml_body) %>
+### XML Output Format
+
+<% if(xml_extra) %>
+<%= xml_extra -%>
+<% end %>
+
+<pre><%= xml_url %></pre>
+
+```xml
+<%= xml_body.strip %>
+```
+
+<% end %>
+<% if(csv_body) %>
+### CSV Output Format
+
+<% if(csv_extra) %>
+<%= csv_extra -%>
+<% end %>
+
+<pre><%= csv_url %></pre>
+
+```
+<%= csv_body.strip.strip %>
+```
+
+<% end %>
+## Rate Limits
+
+[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour. No more than 10,000 requests may be made in any day.
+
+<% if(doc.at("h2#data-limits")) %>
+## Data Limits
+
+If the service estimates that the amount of data that will be returned for a requested system and date range cannot be generated and returned in a reasonable amount of time it will return an error message with a suggested date range to try again. The infos section will also include URLs where you can download the full annual CSV of raw data for the system and year(s) for the requested date range.
+
+<% end %>
+## Errors
+
+[Standard errors](/docs/errors) may be returned.<%= errors_extra %>
+<% if(errors_table) %>
+
+<%= tidy(errors_table) %>
+<% end %>

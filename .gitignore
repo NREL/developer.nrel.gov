@@ -3,3 +3,4 @@ _site
 crash.log
 output
 tmp
+/converter/mirror

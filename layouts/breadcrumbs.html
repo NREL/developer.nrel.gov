@@ -1,7 +1,8 @@
-<% unless @item.identifier == "/" %>
+<% crumbs = breadcrumbs_trail %>
+<% if(crumbs.length > 2) %>
   <ul class="breadcrumb">
-    <% crumbs = breadcrumbs_trail %>
     <% crumbs.each_with_index do |item, index| %>
+      <% next if(index == 0) %>
       <% if(item) %>
         <% if(@item.identifier == item.identifier) %>
           <li class="active"><%= item[:title] %></li>

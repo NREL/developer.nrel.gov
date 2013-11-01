@@ -21,6 +21,25 @@ h2 {
   margin: 0px;
 }
 
+h3.doc {
+  margin-bottom: 0px;
+}
+
+h1 span.url,
+h3.doc span.url {
+  color: #777;
+  font-weight: normal;
+  padding-left: 12px;
+}
+
+h1 span.url {
+  font-size: 14px;
+}
+
+h3.doc span.url {
+  font-size: 12px;
+}
+
 .intro-text p {
   margin: 32px 0px 40px 0px;
 }

@@ -6,12 +6,12 @@ kind: info
 
 # Web Service Rate Limits
 
-Limits are placed on the number of Data.gov Web service requests you may make using your API key.
+Limits are placed on the number of NREL Web service requests you may make using your API key.
 
 - **Hourly Limit:** 1,000 requests per hour
 - **Daily Limit:** 10,000 requests per calendar day
 
-For each API key, these limits are applied across all Data.gov Web services requests. Exceeding these limits will lead to your API key being temporarily blocked from making further requests. Depending on the limit exceeded, the block will be lifted automatically by waiting until the next hour or calendar day.
+For each API key, these limits are applied across all NREL Web services requests. Exceeding these limits will lead to your API key being temporarily blocked from making further requests. Depending on the limit exceeded, the block will be lifted automatically by waiting until the next hour or calendar day.
 
 ## Understanding Rate Limit Time Periods
 

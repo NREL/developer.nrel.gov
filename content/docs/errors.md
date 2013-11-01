@@ -6,7 +6,7 @@ kind: info
 
 # General Web Service Errors
 
-Certain, general errors will be returned in a standardized way from all Data.gov Web services. Additional, service-specific error messages may also be returned (see individual service documentation for those details). The following list describes the general errors any application may return:
+Certain, general errors will be returned in a standardized way from all NREL Web services. Additional, service-specific error messages may also be returned (see individual service documentation for those details). The following list describes the general errors any application may return:
 
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
   <thead>
