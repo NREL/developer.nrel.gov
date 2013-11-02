@@ -1,5 +1,6 @@
-PATH
-  remote: ../capistrano_nrel_ext
+GIT
+  remote: https://github.com/NREL/capistrano_nrel_ext.git
+  revision: 0b8b3fbf1bcd8bbb84b06592bfb10e4985875af6
   specs:
     capistrano_nrel_ext (0.3.0)
       artii
