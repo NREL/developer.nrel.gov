@@ -14,6 +14,7 @@ gem "nanoc-cachebuster"
 
 # Javascript compression
 gem "uglifier"
+gem "therubyracer"
 
 # Sass stylesheets and compression
 gem "sass"
