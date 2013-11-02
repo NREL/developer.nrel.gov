@@ -1,6 +1,6 @@
 ---
 title: Incentives (Deprecated)
-summary: 'Deprecated: We encourage you to migrate to [the new energy incentives API](/doc/api/energy-incentives/v1).'
+summary: 'Deprecated: We encourage you to migrate to [the new energy incentives API](/docs/electricity/energy-incentives-v1/).'
 url: GET /api/georeserv/service/incentives
 disqus: true
 deprecated: true
@@ -62,7 +62,7 @@ These data are updated often, but as the DSIRE data is continuously updated ther
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>Your developer API key. See <a href="/docs/faq#api_keys">API keys</a> for more information.</p>
+        <p>Your developer API key. See <a href="/docs/api-key/">API keys</a> for more information.</p>
       </td>
     </tr>
     <tr>
@@ -164,8 +164,6 @@ These data are updated often, but as the DSIRE data is continuously updated ther
     </tr>
   </tbody>
 </table>
-
-## Response Fields
 
 ## Examples
 

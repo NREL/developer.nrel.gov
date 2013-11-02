@@ -1,7 +1,6 @@
 ---
 title: PVWatts (Version 2 - Deprecated)
-summary: 'PVWatts Version 2 (Deprecated): Returns the results for a PVWatts simulation,
-  including financial and utility data. We encourage you to migrate to [version 4](/doc/api/pvwatts/v4)
+summary: 'Deprecated: We encourage you to migrate to [version 4](/docs/solar/pvwatts-v4/)
   of the PVWatts API.'
 url: GET /api/georeserv/app/sam/pvwatts
 disqus: true
@@ -11,6 +10,8 @@ deprecated: true
 
 # {{title}} <span class="url">({{url}})</span>
 {{summary}}
+
+Returns the results for a PVWatts simulation, including financial and utility data.
 
 <ul id="toc"></ul>
 
@@ -744,8 +745,6 @@ deprecated: true
     </tr>
   </tbody>
 </table>
-
-## Response Fields
 
 ## Examples
 
@@ -1517,6 +1516,10 @@ deprecated: true
   </param>
 </params>
 ```
+
+## Demo Application
+
+You can download a [demo application](/doc/solar/georeserv_demo.zip) to see how you might implement your own service on top of the PVWatts service. There is also a [live version](http://maps.nrel.gov/pvwatts_demo/) running so that you can see it in action.
 
 ## Rate Limits
 

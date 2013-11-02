@@ -1,7 +1,6 @@
 ---
 title: Direct Normal Irradiance (Deprecated)
-summary: DEPRECATED and will no longer be available as of 7/1/2013. Please migrate
-  to the new [Solar Resource web service](http://developer.nrel.gov/doc/api/solar/solar_resource/v1)
+summary: 'Deprecated: We encourage you to migrate the new [Solar Resource web service](/docs/solar/solar-resource-v1/).'
 url: GET /api/georeserv/service/solar/dni
 disqus: true
 deprecated: true
@@ -107,8 +106,6 @@ The insolation values represent the resource available to concentrating systems 
     </tr>
   </tbody>
 </table>
-
-## Response Fields
 
 ## Examples
 

@@ -1,6 +1,7 @@
 ---
 title: Login (Deprecated)
-summary: Login to utilize access-controlled Georeserv services.
+summary: 'Deprecated: We encourage you to migrate to [version 3](/docs/solar/pvdaq-v3/)
+  of the PVDAQ API.'
 url: POST /api/georeserv/login_handler
 disqus: true
 deprecated: true
@@ -9,6 +10,8 @@ deprecated: true
 
 # {{title}} <span class="url">({{url}})</span>
 {{summary}}
+
+Login to utilize access-controlled Georeserv services.
 
 For login credentials, contact [Ryan Smith](mailto:ryan.smith@nrel.gov). Examples on how to use this service can be found in the [demo](/doc/solar/georeserv_demo.zip) project.
 
@@ -78,9 +81,9 @@ For login credentials, contact [Ryan Smith](mailto:ryan.smith@nrel.gov). Example
   </tbody>
 </table>
 
-## Response Fields
+## Response
 
-## Examples
+If the login is successful, a HTTP 302 redirect will be issued. Within the heders will be an authentication token which can be used in subsequent requests. (Also known as a cookie).
 
 ## Rate Limits
 

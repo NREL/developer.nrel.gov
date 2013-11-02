@@ -1,6 +1,8 @@
 ---
 title: PVWatts (Version 4)
-summary: 'PVWatts Version 4: Returns the results from a PVWatts simulation.'
+summary: NREL's PVWatts calculates the energy production of grid-connected photovoltaic
+  (PV) energy systems. This service estimates the performance of hypothetical residential
+  and small commercial PV installations.
 url: GET /api/pvwatts/v4
 disqus: true
 

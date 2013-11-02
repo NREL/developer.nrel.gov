@@ -1,8 +1,7 @@
 ---
 title: Utility Rates (Version 2 - Deprecated)
-summary: (Deprecated) Find utility rates and the utility companies for a specific
-  location. We encourage you to migrate to [version 3](/doc/api/utility_rates/v3)
-  of the utility rates API.
+summary: 'Deprecated: We encourage you to migrate to [version 3](/docs/electricity/utility-rates-v3/)
+  of the utility rates API.'
 url: GET /api/georeserv/service/utility_rates
 disqus: true
 deprecated: true
@@ -11,6 +10,8 @@ deprecated: true
 
 # {{title}} <span class="url">({{url}})</span>
 {{summary}}
+
+Find utility rates and the utility companies for a specific location.
 
 <ul id="toc"></ul>
 

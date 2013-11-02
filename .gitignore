@@ -1,6 +1,7 @@
 .bundle
 _site
 crash.log
-output
 tmp
+/output
 /converter/mirror
+/log/*

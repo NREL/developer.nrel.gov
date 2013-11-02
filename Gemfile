@@ -20,7 +20,7 @@ gem "sass"
 gem "compass"
 
 # Twitter bootstrap
-gem "bootstrap-sass"
+gem "bootstrap-sass", "~> 2.3.2.2"
 
 # Markdown
 gem "kramdown", ">= 1.2.0"
@@ -37,4 +37,10 @@ gem "mustache"
 group :development do
   # Static file server for nanoc development
   gem "adsf"
+
+  # Deployment
+  gem "capistrano", "~> 2.15.5"
+  gem "capistrano-ext"
+  #gem "capistrano_nrel_ext", :git => "https://github.com/NREL/capistrano_nrel_ext.git"
+  gem "capistrano_nrel_ext", :path => "../capistrano_nrel_ext"
 end

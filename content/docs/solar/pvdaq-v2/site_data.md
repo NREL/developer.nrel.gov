@@ -1,6 +1,7 @@
 ---
 title: Aggregated Site Data (Deprecated)
-summary: This service provides IEC61724 data for PVDAQ sites.
+summary: 'Deprecated: We encourage you to migrate to [version 3](/docs/solar/pvdaq-v3/)
+  of the PVDAQ API.'
 url: GET /api/georeserv/app/pvdaq/site_data
 disqus: true
 deprecated: true
@@ -9,6 +10,8 @@ deprecated: true
 
 # {{title}} <span class="url">({{url}})</span>
 {{summary}}
+
+This service provides IEC61724 data for PVDAQ sites.
 
 <ul id="toc"></ul>
 
@@ -249,10 +252,6 @@ deprecated: true
 
 Note that if you have not logged in and obtained an authentication cookie for your session, this service will return a 404 error. Additionally, you will need to have access to the given system, in this case, the system with the system\_id of 12.
 
-  -- --
-     
-  -- --
-
 <pre>GET <a href="/api/georeserv/app/pvdaq/site_data.json?system_id=12&amp;start_date=1/1/2011&amp;end_date=1/1/2011&amp;api_key=DEMO_KEY&amp;limit_fields=system_id&amp;limit_fields=measdatetime&amp;limit_fields=array_performance_ratio&amp;aggregate=weekly">http://developer.nrel.gov/api/georeserv/app/pvdaq/site_data.json?system_id=12&amp;start_date=1/1/2011&amp;end_date=1/1/2011&amp;api_key=DEMO_KEY&amp;limit_fields=system_id&amp;limit_fields=measdatetime&amp;limit_fields=array_performance_ratio&amp;aggregate=weekly</a></pre>
 
 ```json
@@ -302,10 +301,6 @@ Note that if you have not logged in and obtained an authentication cookie for yo
 ### XML Output Format
 
 Note that if you have not logged in and obtained an authentication cookie for your session, this service will return a 404 error. Additionally, you will need to have access to the given system, in this case, the system with the system\_id of 12.
-
-  -- --
-     
-  -- --
 
 <pre>GET <a href="/api/georeserv/app/pvdaq/site_data.xml?system_id=12&amp;start_date=1/1/2011&amp;end_date=1/1/2011&amp;api_key=DEMO_KEY&amp;limit_fields=system_id&amp;limit_fields=measdatetime&amp;limit_fields=array_performance_ratio&amp;aggregate=weekly">http://developer.nrel.gov/api/georeserv/app/pvdaq/site_data.xml?system_id=12&amp;start_date=1/1/2011&amp;end_date=1/1/2011&amp;api_key=DEMO_KEY&amp;limit_fields=system_id&amp;limit_fields=measdatetime&amp;limit_fields=array_performance_ratio&amp;aggregate=weekly</a></pre>
 
@@ -555,15 +550,22 @@ Note that if you have not logged in and obtained an authentication cookie for yo
 
 Note that if you have not logged in and obtained an authentication cookie for your session, this service will return a 404 error. Additionally, you will need to have access to the given system, in this case, the system with the system\_id of 12.
 
-  -- --
-     
-  -- --
-
 <pre>GET <a href="/api/georeserv/app/pvdaq/site_data.xml?system_id=12&amp;start_date=1/1/2011&amp;end_date=1/1/2011&amp;api_key=DEMO_KEY&amp;limit_fields=system_id&amp;limit_fields=measdatetime&amp;limit_fields=array_performance_ratio&amp;aggregate=weekly">http://developer.nrel.gov/api/georeserv/app/pvdaq/site_data.csv?system_id=12&amp;start_date=1/1/2011&amp;end_date=1/1/2011&amp;api_key=DEMO_KEY&amp;limit_fields=system_id&amp;limit_fields=measdatetime&amp;limit_fields=array_performance_ratio&amp;aggregate=weekly</a></pre>
 
 ```
 measdatetime,array_performance_ratio,array_yield,energy_from_grid,reference_yield,system_id
 2010-12-27 00:00:00,0.4041,19.139,0.3,10.998,12
+```
+
+### TSV Output Format
+
+Note that if you have not logged in and obtained an authentication cookie for your session, this service will return a 404 error. Additionally, you will need to have access to the given system, in this case, the system with the system\_id of 12.
+
+<pre>GET <a href="/api/georeserv/app/pvdaq/site_data.tsv?system_id=12&amp;start_date=1/1/2011&amp;end_date=1/1/2011&amp;api_key=DEMO_KEY&amp;limit_fields=system_id&amp;limit_fields=measdatetime&amp;limit_fields=array_performance_ratio&amp;aggregate=weekly">http://developer.nrel.gov/api/georeserv/app/pvdaq/site_data.tsv?system_id=12&amp;start_date=1/1/2011&amp;end_date=1/1/2011&amp;api_key=DEMO_KEY&amp;limit_fields=system_id&amp;limit_fields=measdatetime&amp;limit_fields=array_performance_ratio&amp;aggregate=weekly</a></pre>
+
+```
+measdatetime	array_performance_ratio	array_yield	energy_from_grid	reference_yield	system_id
+2010-12-27 00:00:00	0.4041	19.139	0.3	10.998	12
 ```
 
 ## Rate Limits

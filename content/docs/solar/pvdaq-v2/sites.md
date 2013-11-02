@@ -1,7 +1,7 @@
 ---
 title: Sites Metadata (Deprecated)
-summary: Sites service. Gives metadata for all or one available site. Only gives "all"
-  information to an administrative user.
+summary: 'Deprecated: We encourage you to migrate to [version 3](/docs/solar/pvdaq-v3/)
+  of the PVDAQ API.'
 url: GET /api/georeserv/app/pvdaq/sites
 disqus: true
 deprecated: true
@@ -11,7 +11,9 @@ deprecated: true
 # {{title}} <span class="url">({{url}})</span>
 {{summary}}
 
-Otherwise, a check is made to determine of the user can view the metadata for a given system. This service can only be accessed by a PVDAQ administrator. Utilize [login](/doc/api/georeserv/login_handler/post) to access this service.
+Sites service. Gives metadata for all or one available site. Only gives "all" information to an administrative user.
+
+Otherwise, a check is made to determine of the user can view the metadata for a given system. This service can only be accessed by a PVDAQ administrator. Utilize [login](/docs/solar/pvdaq-v2/login_handler/) to access this service.
 
 <ul id="toc"></ul>
 
@@ -181,65 +183,62 @@ Otherwise, a check is made to determine of the user can view the metadata for a 
 
 Note that if you have not logged in and obtained an authentication cookie for your session, this service will return a 404 error. Additionally, you will need to have access to the given system, in this case, the system with the system\_id of 12.
 
-  -- --
-     
-  -- --
-
 <pre>GET <a href="/api/georeserv/app/pvdaq/sites.json?system_id=12&amp;api_key=DEMO_KEY">http://developer.nrel.gov/api/georeserv/app/pvdaq/sites.json?system_id=12&amp;api_key=DEMO_KEY</a></pre>
 
 ```json
 {
-             errors: [
-                 { }
-             ]
-             infos: [ ]
-             inputs: {
-                 system_id: "12",
-             }
-             outputs: [
-                 {
-                     available_years: [
-                         2010,
-                         2007,
-                         2011,
-                         2008
-                     ]
-                     comments: "Some Comments",
-                     confidential: true,
-                     inverter_mfg: "SomeManufacturer",
-                     inverter_mfg_hide: null,
-                     inverter_model: null,
-                     inverter_model_hide: null,
-                     module_mfg: "SomeManufacturer",
-                     module_mfg_hide: null,
-                     module_model: "Some-model-number",
-                     module_model_hide: null,
-                     module_tech: 1,
-                     name_private: "Private Name",
-                     name_public: "Public Name",
-                     site_area: 8.6,
-                     site_azimuth: 181,
-                     site_elevation: 1125.3,
-                     site_latitude: 22.7406,
-                     site_longitude: 115.1775,
-                     site_power: 200,
-                     site_power_hide: null,
-                     site_tilt: 40,
-                     system_id: 12
-                 }
-             ],
-             version: "2.0.17",
-             warnings: [ ]
-         }
+  "errors": [
+    {
+    }
+  ],
+  "infos": [
+
+  ],
+  "inputs": {
+    "system_id": "12"
+  },
+  "outputs": [
+    {
+      "available_years": [
+        2010,
+        2007,
+        2011,
+        2008
+      ],
+      "comments": "Some Comments",
+      "confidential": true,
+      "inverter_mfg": "SomeManufacturer",
+      "inverter_mfg_hide": null,
+      "inverter_model": null,
+      "inverter_model_hide": null,
+      "module_mfg": "SomeManufacturer",
+      "module_mfg_hide": null,
+      "module_model": "Some-model-number",
+      "module_model_hide": null,
+      "module_tech": 1,
+      "name_private": "Private Name",
+      "name_public": "Public Name",
+      "site_area": 8.6,
+      "site_azimuth": 181,
+      "site_elevation": 1125.3,
+      "site_latitude": 22.7406,
+      "site_longitude": 115.1775,
+      "site_power": 200,
+      "site_power_hide": null,
+      "site_tilt": 40,
+      "system_id": 12
+    }
+  ],
+  "version": "2.0.17",
+  "warnings": [
+
+  ]
+}
 ```
 
 ### XML Output Format
 
 Note that if you have not logged in and obtained an authentication cookie for your session, this service will return a 404 error. Additionally, you will need to have access to the given system, in this case, the system with the system\_id of 12.
-
-  -- --
-     
-  -- --
 
 <pre>GET <a href="/api/georeserv/app/pvdaq/sites.xml?system_id=12&amp;api_key=DEMO_KEY">http://developer.nrel.gov/api/georeserv/app/pvdaq/sites.xml?system_id=12&amp;api_key=DEMO_KEY</a></pre>
 

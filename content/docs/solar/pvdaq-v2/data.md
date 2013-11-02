@@ -1,6 +1,7 @@
 ---
 title: Raw Data (Deprecated)
-summary: Obtain raw data from the PVDAQ system for a given date range.
+summary: 'Deprecated: We encourage you to migrate to [version 3](/docs/solar/pvdaq-v3/)
+  of the PVDAQ API.'
 url: GET /api/georeserv/app/pvdaq/data
 disqus: true
 deprecated: true
@@ -10,7 +11,9 @@ deprecated: true
 # {{title}} <span class="url">({{url}})</span>
 {{summary}}
 
-Note that you must [login](/doc/api/georeserv/login_handler/post) with your PVDAQ credentials to obtain an authorization cookie in order to utilize this service.
+Obtain raw data from the PVDAQ system for a given date range.
+
+Note that you must [login](/docs/solar/pvdaq-v2/login_handler/) with your PVDAQ credentials to obtain an authorization cookie in order to utilize this service.
 
 Also, if you are an admin or a PVDAQ admin, you can obtain data on behalf of another user by providing their user\_id as a parameter.
 
@@ -215,121 +218,142 @@ Also, if you are an admin or a PVDAQ admin, you can obtain data on behalf of ano
 
 Note that if you have not logged in and obtained an authentication cookie for your session, this service will return a 404 error. Additionally, you will need to have access to the given system, in this case, the system with the system\_id of 13.
 
-  -- --
-     
-  -- --
-
 <pre>GET <a href="/api/georeserv/app/pvdaq/data.json?api_key=DEMO_KEY&amp;start_date=1/1/2011&amp;end_date=1/1/2011&amp;system_id=13">http://developer.nrel.gov/api/georeserv/app/pvdaq/data.json?api_key=DEMO_KEY&amp;start_date=1/1/2011&amp;end_date=1/1/2011&amp;system_id=13</a></pre>
 
 ```json
-{'errors': [{}],
- 'infos': [], 'inputs': {'end_date': '1/1/2011',
-                         'start_date': '1/1/2011',
-                         'system_id': '13'},
- 'outputs': {'data': [[
-                       'SiteID',                       
-                       'Date-Time',
-                       'ac_current',
-                       'ac_power',
-                       'ac_voltage',
-                       'ambient_temp',
-                       'das_temp',
-                       'dc_pos_current',
-                       'dc_pos_voltage',
-                       'dc_power',
-                       'inverter_temp',
-                       'module_temp_1',
-                       'module_temp_2',
-                       'module_temp_3',
-                       'poa_irradiance'],
-                      [13,
-                       '2011-01-01 00:00:00',
-                       0.0011000000000000001,
-                       0.5413,
-                       122.6844,
-                       -11.849,
-                       -12.0228,
-                       -0.0332,
-                       9.1677999999999997,
-                       -0.30380000000000001,
-                       -12.9129,
-                       -12.555400000000001,
-                       -13.0547,
-                       -12.9078,
-                       -2.5508999999999999],
-                      [13,
-                       '2011-01-01 00:01:00',
-                       0.00059999999999999995,
-                       0.46229999999999999,
-                       122.7055,
-                       -11.919,
-                       -12.0059,
-                       -0.032800000000000003,
-                       9.0718999999999994,
-                       -0.2979,
-                       -12.898899999999999,
-                       -12.557499999999999,
-                       -13.0708,
-                       -12.914300000000001,
-                       -2.4321999999999999],
-                      [13,
-                       '2011-01-01 00:02:00',
-                       0.0011999999999999999,
-                       0.53000000000000003,
-                       122.7208,
-                       -11.9573,
-                       -12.0059,
-                       -0.033700000000000001,
-                       9.1480999999999995,
-                       -0.30859999999999999,
-                       -12.9055,
-                       -12.5589,
-                       -13.0517,
-                       -12.8916,
-                       -2.3134999999999999],
-                      '...',
-                      [13,
-                       '2011-01-01 23:59:00',
-                       0.0011999999999999999,
-                       0.4284,
-                       122.15949999999999,
-                       -4.4880000000000004,
-                       -6.7417999999999996,
-                       -0.029000000000000001,
-                       9.2436000000000007,
-                       -0.2681,
-                       -5.9264999999999999,
-                       -6.4847999999999999,
-                       -6.8434999999999997,
-                       -6.7487000000000004,
-                       -1.4232]],
-             'groups': [],
-             'headers': ['SiteID',
-                         'Date-Time',
-                         'ac_current',
-                         'ac_power',
-                         'ac_voltage',
-                         'ambient_temp',
-                         'das_temp',
-                         'dc_pos_current',
-                         'dc_pos_voltage',
-                         'dc_power',
-                         'inverter_temp',
-                         'module_temp_1',
-                         'module_temp_2',
-                         'module_temp_3',
-                         'poa_irradiance']},
- 'version': '2.0.25',
- 'warnings': []}
+{
+  "errors": [
+    {
+    }
+  ],
+  "infos": [
+
+  ],
+  "inputs": {
+    "end_date": "1/1/2011",
+    "start_date": "1/1/2011",
+    "system_id": "13"
+  },
+  "outputs": {
+    "data": [
+      [
+        "SiteID",
+        "Date-Time",
+        "ac_current",
+        "ac_power",
+        "ac_voltage",
+        "ambient_temp",
+        "das_temp",
+        "dc_pos_current",
+        "dc_pos_voltage",
+        "dc_power",
+        "inverter_temp",
+        "module_temp_1",
+        "module_temp_2",
+        "module_temp_3",
+        "poa_irradiance"
+      ],
+      [
+        13,
+        "2011-01-01 00:00:00",
+        0.0011,
+        0.5413,
+        122.6844,
+        -11.849,
+        -12.0228,
+        -0.0332,
+        9.1678,
+        -0.3038,
+        -12.9129,
+        -12.5554,
+        -13.0547,
+        -12.9078,
+        -2.5509
+      ],
+      [
+        13,
+        "2011-01-01 00:01:00",
+        0.0006,
+        0.4623,
+        122.7055,
+        -11.919,
+        -12.0059,
+        -0.0328,
+        9.0719,
+        -0.2979,
+        -12.8989,
+        -12.5575,
+        -13.0708,
+        -12.9143,
+        -2.4322
+      ],
+      [
+        13,
+        "2011-01-01 00:02:00",
+        0.0012,
+        0.53,
+        122.7208,
+        -11.9573,
+        -12.0059,
+        -0.0337,
+        9.1481,
+        -0.3086,
+        -12.9055,
+        -12.5589,
+        -13.0517,
+        -12.8916,
+        -2.3135
+      ],
+      "...",
+      [
+        13,
+        "2011-01-01 23:59:00",
+        0.0012,
+        0.4284,
+        122.1595,
+        -4.488,
+        -6.7418,
+        -0.029,
+        9.2436,
+        -0.2681,
+        -5.9265,
+        -6.4848,
+        -6.8435,
+        -6.7487,
+        -1.4232
+      ]
+    ],
+    "groups": [
+
+    ],
+    "headers": [
+      "SiteID",
+      "Date-Time",
+      "ac_current",
+      "ac_power",
+      "ac_voltage",
+      "ambient_temp",
+      "das_temp",
+      "dc_pos_current",
+      "dc_pos_voltage",
+      "dc_power",
+      "inverter_temp",
+      "module_temp_1",
+      "module_temp_2",
+      "module_temp_3",
+      "poa_irradiance"
+    ]
+  },
+  "version": "2.0.25",
+  "warnings": [
+
+  ]
+}
 ```
 
 ### XML Output Format
 
 Note that if you have not logged in and obtained an authentication cookie for your session, this service will return a 404 error. Additionally, you will need to have access to the given system, in this case, the system with the system\_id of 13.
-
-  -- --
-     
-  -- --
 
 <pre>GET <a href="/api/georeserv/app/pvdaq/site_data.xml?system_id=13&amp;start_date=1/1/2011&amp;end_date=1/1/2011&amp;api_key=DEMO_KEY&amp;limit_fields=system_id&amp;limit_fields=measdatetime&amp;limit_fields=array_performance_ratio&amp;aggregate=weekly">http://developer.nrel.gov/api/georeserv/app/pvdaq/site_data.xml?system_id=13&amp;start_date=1/1/2011&amp;end_date=1/1/2011&amp;api_key=DEMO_KEY&amp;limit_fields=system_id&amp;limit_fields=measdatetime&amp;limit_fields=array_performance_ratio&amp;aggregate=weekly</a></pre>
 

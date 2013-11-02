@@ -29,6 +29,11 @@ For PVDAQ services, in addition to your developer API key, you must also provide
 <% end %>
 <%= tidy(request_table) %>
 
+<% if(response_override) %>
+## Response
+
+<%= response_override %>
+<% elsif(response_extra || response_table) %>
 ## Response Fields
 
 <% if(response_extra) %>
@@ -36,7 +41,9 @@ For PVDAQ services, in addition to your developer API key, you must also provide
 
 <% end %>
 <%= tidy(response_table) %>
+<% end %>
 
+<% if(json_url || xml_url || csv_url) %>
 ## Examples
 
 <% if(json_body) %>
@@ -53,7 +60,7 @@ For PVDAQ services, in addition to your developer API key, you must also provide
 ```
 
 <% end %>
-<% if(xml_body) %>
+<% if(xml_url || xml_body) %>
 ### XML Output Format
 
 <% if(xml_extra) %>
@@ -62,9 +69,11 @@ For PVDAQ services, in addition to your developer API key, you must also provide
 
 <pre><%= xml_url %></pre>
 
+<% if(xml_body) %>
 ```xml
 <%= xml_body.strip %>
 ```
+<% end %>
 
 <% end %>
 <% if(csv_body) %>
@@ -79,6 +88,28 @@ For PVDAQ services, in addition to your developer API key, you must also provide
 ```
 <%= csv_body.strip.strip %>
 ```
+<% end %>
+
+<% if(tsv_body) %>
+### TSV Output Format
+
+<% if(tsv_extra) %>
+<%= tsv_extra -%>
+<% end %>
+
+<pre><%= tsv_url %></pre>
+
+```
+<%= tsv_body.strip.strip %>
+```
+<% end %>
+
+<% end %>
+<% if(output_path =~ /pvwatts-v2.md$/) %>
+
+## Demo Application
+
+You can download a [demo application](/doc/solar/georeserv_demo.zip) to see how you might implement your own service on top of the PVWatts service. There is also a [live version](http://maps.nrel.gov/pvwatts_demo/) running so that you can see it in action.
 
 <% end %>
 ## Rate Limits

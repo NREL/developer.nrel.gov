@@ -791,6 +791,10 @@ disqus: true
 }
 ```
 
+### XML Output Format
+
+<pre>GET http://developer.nrel.gov/api/commercial-building-resources/v1/events.xml?portal=6&api_key=DEMO_KEY</pre>
+
 ## Rate Limits
 
 [Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour. No more than 10,000 requests may be made in any day.

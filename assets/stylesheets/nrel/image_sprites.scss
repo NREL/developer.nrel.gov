@@ -1,9 +1,8 @@
-//@import "compass/utilities/sprites";
+@import "compass/utilities/sprites";
 
 /**
  * Feature Boxes Sprite
  */
-/*
 $features-sprite-dimensions: true;
 $features-spacing: 500px;
 @import "nrel/features/*.png";
@@ -19,4 +18,3 @@ $features-spacing: 500px;
 .feature-community {
   @include features-sprite(community, false, 210px, 120px);
 }
-*/

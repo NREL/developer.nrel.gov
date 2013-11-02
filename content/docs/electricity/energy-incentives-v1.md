@@ -187,73 +187,73 @@ The response is composed of service-related informational fields and the results
 
 ```json
 {
-    "version": "1.0.1",
-    "metadata": {
-        "sources": [
-            "Ventyx Research (2011)",
-            "EIA (2011)"
-        ]
-    },
-    "inputs": {
-        "api_key": "DEMO_KEY",
-        "lat": "40",
-        "lon": "-105",
-        "incentive_types": [
-            "ad_incentives",
-            "csp_incentives"
-        ]
-    },
-    "infos": [
+  "version": "1.0.1",
+  "metadata": {
+    "sources": [
+      "Ventyx Research (2011)",
+      "EIA (2011)"
+    ]
+  },
+  "inputs": {
+    "api_key": "DEMO_KEY",
+    "lat": "40",
+    "lon": "-105",
+    "incentive_types": [
+      "ad_incentives",
+      "csp_incentives"
+    ]
+  },
+  "infos": [
 
-    ],
-    "errors": [
+  ],
+  "errors": [
 
-    ],
-    "warnings": [
+  ],
+  "warnings": [
 
+  ],
+  "outputs": {
+    "ad_incentives": [
+      {
+        "dsire_id": "US13F",
+        "gid": 123,
+        "incentive_code": "US13F",
+        "memo": "03/07/11 revised history section to show 3 PTC expirations (1999 one was missing). JB 12/3/10 Added to note info about grant expiration on 12/31/10. AH 07/19/10 fixed incentive amount field, 2.1 cents to 2.2 cents, missed this hen I did the update. 06/09/10 removed ADG from eligible list, pending conv. with IRS abou...",
+        "notes": "The electricity must be sold by the taxpayer to an unrelated person during the taxable year. The American Recovery and Reinvestment Act of 2009 allows taxpayers eligible for the federal renewable electricity production tax credit (PTC) to take the federal business energy investment tax credit (ITC) instead of taking the PTC for new installations. Credit level listed here is for 2013.",
+        "program_name": "Renewable Electricity Production Tax Credit (PTC)",
+        "sector": "F",
+        "state": "Federal",
+        "anaerobic_digestion_com_ptc_dlrs_kwh": 0.011,
+        "anaerobic_digestion_ptc_duration_years": 10.0
+      }
     ],
-    "outputs": {
-        "ad_incentives": [
-            {
-                "dsire_id": "US13F",
-                "gid": 123,
-                "incentive_code": "US13F",
-                "memo": "03/07/11 revised history section to show 3 PTC expirations (1999 one was missing). JB 12/3/10 Added to note info about grant expiration on 12/31/10. AH 07/19/10 fixed incentive amount field, 2.1 cents to 2.2 cents, missed this hen I did the update. 06/09/10 removed ADG from eligible list, pending conv. with IRS abou...",
-                "notes": "The electricity must be sold by the taxpayer to an unrelated person during the taxable year. The American Recovery and Reinvestment Act of 2009 allows taxpayers eligible for the federal renewable electricity production tax credit (PTC) to take the federal business energy investment tax credit (ITC) instead of taking the PTC for new installations. Credit level listed here is for 2013.",
-                "program_name": "Renewable Electricity Production Tax Credit (PTC)",
-                "sector": "F",
-                "state": "Federal",
-                "anaerobic_digestion_com_ptc_dlrs_kwh": 0.011,
-                "anaerobic_digestion_ptc_duration_years": 10.0
-            }
-        ],
-        "csp_incentives": [
-            {
-                "dsire_id": "US02F",
-                "gid": 122,
-                "incentive_code": "US02F",
-                "memo": "12/20/10 Changed reference to grant expiration to 12/31/11 BL 12/3/10 Added to note info about grant expiration date of 12/31/10. AH 6/9/10 Reviewed statute -- no substantive changes. Removed history section: The federal Energy Policy Act of 2005 (EPAct 2005) expanded the existing federal business energy tax c...",
-                "notes": "The American Recovery and Reinvestment Act of 2009 allows taxpayers eligible for the federal renewable electricity production tax credit (PTC) to take the federal business energy investment tax credit (ITC) instead of taking the PTC for new installations.",
-                "program_name": "Business Energy Investment Tax Credit (ITC)",
-                "sector": "F",
-                "state": "Federal",
-                "csp_com_tax_credit_pcnt_cost": 0.3
-            }
-        ],
-        "utility_name": "United Power Inc",
-        "utility_id": "63360",
-        "utility_info": [
-            {
-                "company_id": "63360",
-                "utility_name": "United Power Inc"
-            }
-        ],
-        "lat": 40.0,
-        "lon": -105.0,
-        "city": "Broomfield",
-        "state": "CO",
-        "zip": "80023"
-    }
+    "csp_incentives": [
+      {
+        "dsire_id": "US02F",
+        "gid": 122,
+        "incentive_code": "US02F",
+        "memo": "12/20/10 Changed reference to grant expiration to 12/31/11 BL 12/3/10 Added to note info about grant expiration date of 12/31/10. AH 6/9/10 Reviewed statute -- no substantive changes. Removed history section: The federal Energy Policy Act of 2005 (EPAct 2005) expanded the existing federal business energy tax c...",
+        "notes": "The American Recovery and Reinvestment Act of 2009 allows taxpayers eligible for the federal renewable electricity production tax credit (PTC) to take the federal business energy investment tax credit (ITC) instead of taking the PTC for new installations.",
+        "program_name": "Business Energy Investment Tax Credit (ITC)",
+        "sector": "F",
+        "state": "Federal",
+        "csp_com_tax_credit_pcnt_cost": 0.3
+      }
+    ],
+    "utility_name": "United Power Inc",
+    "utility_id": "63360",
+    "utility_info": [
+      {
+        "company_id": "63360",
+        "utility_name": "United Power Inc"
+      }
+    ],
+    "lat": 40.0,
+    "lon": -105.0,
+    "city": "Broomfield",
+    "state": "CO",
+    "zip": "80023"
+  }
 }
 ```
 
