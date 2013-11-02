@@ -7,3 +7,5 @@ tmp
 /log
 /vendor
 /REVISION
+/config/deployed.yml
+/config/nginx/site.conf

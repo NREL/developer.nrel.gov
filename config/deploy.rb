@@ -17,3 +17,5 @@ set :git_enable_submodules, true
 
 # Use the deploying user's local SSH keys for git access.
 ssh_options[:forward_agent] = true
+
+set :gem_bundler_apps, ["."]
