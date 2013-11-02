@@ -13,7 +13,7 @@ disqus: true
 
 ## Request URL
 
-<pre>GET http://developer.nrel.gov/api/standard-work-specs/spec/v1<em>.format?parameters</em></pre>
+<pre>GET /api/standard-work-specs/spec/v1<em>.format?parameters</em></pre>
 
 ## Request Parameters
 
@@ -272,7 +272,7 @@ disqus: true
 
 ### JSON Output Format
 
-<pre>GET <a href="/api/standard-work-specs/spec/v1.json?api_key=DEMO_KEY">/api/standard-work-specs/spec/v1.json?api_key=DEMO_KEY</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/standard-work-specs/spec/v1.json?api_key=DEMO_KEY">/api/standard-work-specs/spec/v1.json?api_key=DEMO_KEY</a></pre>
 
 ```json
 [
@@ -303,7 +303,7 @@ disqus: true
 
 ### XML Output Format
 
-<pre>GET <a href="/api/standard-work-specs/spec/v1.xml?api_key=DEMO_KEY">/api/standard-work-specs/spec/v1.xml?api_key=DEMO_KEY</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/standard-work-specs/spec/v1.xml?api_key=DEMO_KEY">/api/standard-work-specs/spec/v1.xml?api_key=DEMO_KEY</a></pre>
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

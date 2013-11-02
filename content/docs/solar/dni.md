@@ -18,7 +18,7 @@ The insolation values represent the resource available to concentrating systems 
 
 ## Request URL
 
-<pre>GET http://developer.nrel.gov/api/georeserv/service/solar/dni.<em>format</em><em>?parameters</em></pre>
+<pre>GET /api/georeserv/service/solar/dni.<em>format</em><em>?parameters</em></pre>
 
 ## Request Parameters
 
@@ -111,7 +111,7 @@ The insolation values represent the resource available to concentrating systems 
 
 ### JSON Output Format
 
-<pre>GET <a href="/api/georeserv/service/solar/dni.json?api_key=DEMO_KEY&amp;address=Golden,%20CO">/api/georeserv/service/solar/dni.json?api_key=DEMO_KEY&amp;address=Golden,%20CO</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/georeserv/service/solar/dni.json?api_key=DEMO_KEY&amp;address=Golden,%20CO">/api/georeserv/service/solar/dni.json?api_key=DEMO_KEY&amp;address=Golden,%20CO</a></pre>
 
 ```json
 {
@@ -149,7 +149,7 @@ The insolation values represent the resource available to concentrating systems 
 
 ### XML Output Format
 
-<pre>GET <a href="/api/georeserv/service/solar/dni.xml?api_key=DEMO_KEY&amp;address=Golden,%20CO">/api/georeserv/service/solar/dni.xml?api_key=DEMO_KEY&amp;address=Golden,%20CO</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/georeserv/service/solar/dni.xml?api_key=DEMO_KEY&amp;address=Golden,%20CO">/api/georeserv/service/solar/dni.xml?api_key=DEMO_KEY&amp;address=Golden,%20CO</a></pre>
 
 ```xml
 <?xml version="1.0"?>

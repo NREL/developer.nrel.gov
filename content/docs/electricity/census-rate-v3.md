@@ -14,7 +14,7 @@ disqus: true
 
 ## Request URL
 
-<pre>GET http://developer.nrel.gov/api/census_rate/v3<em>.format?parameters</em></pre>
+<pre>GET /api/census_rate/v3<em>.format?parameters</em></pre>
 
 ## Request Parameters
 
@@ -254,7 +254,7 @@ The response is composed of service-related informational fields and the results
 
 ### JSON Output Format
 
-<pre>GET <a href="http://developer.nrel.gov/api/census_rate/v3.json?api_key=DEMO_KEY&amp;region=tract&amp;id=101&amp;lat=37&amp;lon=-92">http://developer.nrel.gov/api/census_rate/v3.json?api_key=DEMO_KEY&amp;region=tract&amp;id=101&amp;lat=37&amp;lon=-92</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/census_rate/v3.json?api_key=DEMO_KEY&amp;region=tract&amp;id=101&amp;lat=37&amp;lon=-92">/api/census_rate/v3.json?api_key=DEMO_KEY&amp;region=tract&amp;id=101&amp;lat=37&amp;lon=-92</a></pre>
 
 ```json
 {
@@ -299,7 +299,7 @@ The response is composed of service-related informational fields and the results
 
 ### XML Output Format
 
-<pre>GET <a href="http://developer.nrel.gov/api/census_rate/v3.xml?api_key=DEMO_KEY&amp;region=tract&amp;id=101&amp;lat=37&amp;lon=-92">http://developer.nrel.gov/api/census_rate/v3.xml?api_key=DEMO_KEY&amp;region=tract&amp;id=101&amp;lat=37&amp;lon=-92</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/census_rate/v3.xml?api_key=DEMO_KEY&amp;region=tract&amp;id=101&amp;lat=37&amp;lon=-92">/api/census_rate/v3.xml?api_key=DEMO_KEY&amp;region=tract&amp;id=101&amp;lat=37&amp;lon=-92</a></pre>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

@@ -13,7 +13,7 @@ disqus: true
 
 ## Request URL
 
-<pre>GET http://developer.nrel.gov/api/commercial-building-resources/resources<em>.format?parameters</em></pre>
+<pre>GET /api/commercial-building-resources/resources<em>.format?parameters</em></pre>
 
 ## Request Parameters
 
@@ -677,7 +677,7 @@ disqus: true
 
 ### JSON Output Format
 
-<pre>GET <a href="http://developer.nrel.gov/api/commercial-building-resources/v1/resources.json?portal=Energy%20Performance-Based%20Acquisition&amp;api_key=DEMO_KEY">http://developer.nrel.gov/api/commercial-building-resources/v1/resources.json?portal=Energy%20Performance-Based%20Acquisition&amp;api_key=DEMO_KEY</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/commercial-building-resources/v1/resources.json?portal=Energy%20Performance-Based%20Acquisition&amp;api_key=DEMO_KEY">/api/commercial-building-resources/v1/resources.json?portal=Energy%20Performance-Based%20Acquisition&amp;api_key=DEMO_KEY</a></pre>
 
 ```json
 {
@@ -727,7 +727,7 @@ disqus: true
 
 ### XML Output Format
 
-<pre>GET <a href="http://developer.nrel.gov/api/commercial-building-resources/v1/resources.xml?portal=Energy%20Performance-Based%20Acquisition&amp;api_key=DEMO_KEY">http://developer.nrel.gov/api/commercial-building-resources/v1/resources.xml?portal=Energy%20Performance-Based%20Acquisition&amp;api_key=DEMO_KEY</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/commercial-building-resources/v1/resources.xml?portal=Energy%20Performance-Based%20Acquisition&amp;api_key=DEMO_KEY">/api/commercial-building-resources/v1/resources.xml?portal=Energy%20Performance-Based%20Acquisition&amp;api_key=DEMO_KEY</a></pre>
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

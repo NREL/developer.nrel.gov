@@ -14,7 +14,7 @@ disqus: true
 
 ## Request URL
 
-<pre>GET http://developer.nrel.gov/api/alt-fuel-stations/v1/:id<em>.format?parameters</em></pre>
+<pre>GET /api/alt-fuel-stations/v1/:id<em>.format?parameters</em></pre>
 
 ## Request Parameters
 
@@ -784,7 +784,7 @@ The response is composed of the fuel station matching the requested query. The s
 
 ### JSON Output Format
 
-<pre>GET <a href="/api/alt-fuel-stations/v1/39534.json?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/39534.json?api_key=DEMO_KEY</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/alt-fuel-stations/v1/39534.json?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/39534.json?api_key=DEMO_KEY</a></pre>
 
 ```json
 {
@@ -834,7 +834,7 @@ The response is composed of the fuel station matching the requested query. The s
 
 ### XML Output Format
 
-<pre>GET <a href="/api/alt-fuel-stations/v1/39534.xml?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/39534.xml?api_key=DEMO_KEY</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/alt-fuel-stations/v1/39534.xml?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/39534.xml?api_key=DEMO_KEY</a></pre>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -883,7 +883,7 @@ The response is composed of the fuel station matching the requested query. The s
 
 ### CSV Output Format
 
-<pre>GET <a href="/api/alt-fuel-stations/v1/39534.csv?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/39534.csv?api_key=DEMO_KEY</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/alt-fuel-stations/v1/39534.csv?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/39534.csv?api_key=DEMO_KEY</a></pre>
 
 ```
 Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump

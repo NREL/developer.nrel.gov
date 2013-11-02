@@ -19,7 +19,7 @@ For login credentials, contact [Ryan Smith](mailto:ryan.smith@nrel.gov). Example
 
 ## Request URL
 
-<pre>POST http://developer.nrel.gov/api/georesrv/login_handler?api_key=DEMO_KEY</pre>
+<pre>GET /api/georesrv/login_handler?api_key=DEMO_KEY</pre>
 
 ## Request Parameters
 

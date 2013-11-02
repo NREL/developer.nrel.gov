@@ -18,7 +18,7 @@ These data are updated often, but as the DSIRE data is continuously updated ther
 
 ## Request URL
 
-<pre>GET http://developer.nrel.gov/api/georeserv/service/incentives/<em>tech_type.format</em><em>?parameters</em></pre>
+<pre>GET /api/georeserv/service/incentives/<em>tech_type.format</em><em>?parameters</em></pre>
 
 ## Request Parameters
 
@@ -169,7 +169,7 @@ These data are updated often, but as the DSIRE data is continuously updated ther
 
 ### JSON Output Format
 
-<pre>GET <a href="/api/georeserv/service/incentives/pv.json?api_key=DEMO_KEY&amp;address=Boulder,+CO&amp;system_size=4.0">/api/georeserv/service/incentives/pv.json?api_key=DEMO_KEY&amp;address=Boulder,+CO&amp;system_size=4.0</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/georeserv/service/incentives/pv.json?api_key=DEMO_KEY&amp;address=Boulder,+CO&amp;system_size=4.0">/api/georeserv/service/incentives/pv.json?api_key=DEMO_KEY&amp;address=Boulder,+CO&amp;system_size=4.0</a></pre>
 
 ```json
 {
@@ -392,7 +392,7 @@ These data are updated often, but as the DSIRE data is continuously updated ther
 
 ### XML Output Format
 
-<pre>GET <a href="/api/georeserv/service/incentives/pv.xml?api_key=DEMO_KEY&amp;address=Boulder,+CO&amp;system_size=4.0">/api/georeserv/service/incentives/pv.xml?api_key=DEMO_KEY&amp;address=Boulder,+CO&amp;system_size=4.0</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/georeserv/service/incentives/pv.xml?api_key=DEMO_KEY&amp;address=Boulder,+CO&amp;system_size=4.0">/api/georeserv/service/incentives/pv.xml?api_key=DEMO_KEY&amp;address=Boulder,+CO&amp;system_size=4.0</a></pre>
 
 ```xml
 <?xml version="1.0"?>

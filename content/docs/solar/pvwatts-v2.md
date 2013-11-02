@@ -17,7 +17,7 @@ Returns the results for a PVWatts simulation, including financial and utility da
 
 ## Request URL
 
-<pre>GET http://developer.nrel.gov/api/georeserv/app/sam/pvwatts.<em>format</em><em>?parameters</em></pre>
+<pre>GET /api/georeserv/app/sam/pvwatts.<em>format</em><em>?parameters</em></pre>
 
 ## Request Parameters
 
@@ -750,7 +750,7 @@ Returns the results for a PVWatts simulation, including financial and utility da
 
 ### JSON Output Format
 
-<pre>GET <a href="/api/georeserv/app/sam/pvwatts.json?api_key=DEMO_KEY&amp;address=Boulder,+CO&amp;system_size=4.0&amp;derate=0.770&amp;tilt=39.5&amp;azimuth=170&amp;timeframe=monthly">/api/georeserv/app/sam/pvwatts.json?api_key=DEMO_KEY&amp;address=Boulder,+CO&amp;system_size=4.0&amp;derate=0.770&amp;tilt=39.5&amp;azimuth=170&amp;timeframe=monthly</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/georeserv/app/sam/pvwatts.json?api_key=DEMO_KEY&amp;address=Boulder,+CO&amp;system_size=4.0&amp;derate=0.770&amp;tilt=39.5&amp;azimuth=170&amp;timeframe=monthly">/api/georeserv/app/sam/pvwatts.json?api_key=DEMO_KEY&amp;address=Boulder,+CO&amp;system_size=4.0&amp;derate=0.770&amp;tilt=39.5&amp;azimuth=170&amp;timeframe=monthly</a></pre>
 
 ```json
 {
@@ -913,7 +913,7 @@ Returns the results for a PVWatts simulation, including financial and utility da
 
 ### XML Output Format
 
-<pre>GET <a href="/api/georeserv/app/sam/pvwatts.xml?api_key=DEMO_KEY&amp;address=Boulder,+CO&amp;system_size=4.0&amp;derate=0.770&amp;tilt=39.5&amp;azimuth=170&amp;timeframe=monthly">/api/georeserv/app/sam/pvwatts.xml?api_key=DEMO_KEY&amp;address=Boulder,+CO&amp;system_size=4.0&amp;derate=0.770&amp;tilt=39.5&amp;azimuth=170&amp;timeframe=monthly</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/georeserv/app/sam/pvwatts.xml?api_key=DEMO_KEY&amp;address=Boulder,+CO&amp;system_size=4.0&amp;derate=0.770&amp;tilt=39.5&amp;azimuth=170&amp;timeframe=monthly">/api/georeserv/app/sam/pvwatts.xml?api_key=DEMO_KEY&amp;address=Boulder,+CO&amp;system_size=4.0&amp;derate=0.770&amp;tilt=39.5&amp;azimuth=170&amp;timeframe=monthly</a></pre>
 
 ```xml
 <?xml version="1.0"?>

@@ -13,7 +13,7 @@ disqus: true
 
 ## Request URL
 
-<pre>GET http://developer.nrel.gov/api/commercial-building-resources/events<em>.format?parameters</em></pre>
+<pre>GET /api/commercial-building-resources/events<em>.format?parameters</em></pre>
 
 ## Request Parameters
 
@@ -567,7 +567,7 @@ disqus: true
 
 ### JSON Output Format
 
-<pre>GET <a href="http://developer.nrel.gov/api/commercial-building-resources/v1/events.json?portal=6&amp;api_key=DEMO_KEY">http://developer.nrel.gov/api/commercial-building-resources/v1/events.json?portal=6&amp;api_key=DEMO_KEY</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/commercial-building-resources/v1/events.json?portal=6&amp;api_key=DEMO_KEY">/api/commercial-building-resources/v1/events.json?portal=6&amp;api_key=DEMO_KEY</a></pre>
 
 ```json
 {
@@ -793,7 +793,7 @@ disqus: true
 
 ### XML Output Format
 
-<pre>GET http://developer.nrel.gov/api/commercial-building-resources/v1/events.xml?portal=6&api_key=DEMO_KEY</pre>
+<pre>GET /api/commercial-building-resources/v1/events.xml?portal=6&api_key=DEMO_KEY</pre>
 
 ## Rate Limits
 

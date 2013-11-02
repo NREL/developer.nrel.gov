@@ -19,7 +19,7 @@ Otherwise, a check is made to determine of the user can view the metadata for a 
 
 ## Request URL
 
-<pre>GET http://developer.nrel.gov/api/georeserv/app/pvdaq/sites<em>.format?parameters</em></pre>
+<pre>GET /api/georeserv/app/pvdaq/sites<em>.format?parameters</em></pre>
 
 ## Request Parameters
 
@@ -183,7 +183,7 @@ Otherwise, a check is made to determine of the user can view the metadata for a 
 
 Note that if you have not logged in and obtained an authentication cookie for your session, this service will return a 404 error. Additionally, you will need to have access to the given system, in this case, the system with the system\_id of 12.
 
-<pre>GET <a href="/api/georeserv/app/pvdaq/sites.json?system_id=12&amp;api_key=DEMO_KEY">http://developer.nrel.gov/api/georeserv/app/pvdaq/sites.json?system_id=12&amp;api_key=DEMO_KEY</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/georeserv/app/pvdaq/sites.json?system_id=12&amp;api_key=DEMO_KEY">/api/georeserv/app/pvdaq/sites.json?system_id=12&amp;api_key=DEMO_KEY</a></pre>
 
 ```json
 {
@@ -240,7 +240,7 @@ Note that if you have not logged in and obtained an authentication cookie for yo
 
 Note that if you have not logged in and obtained an authentication cookie for your session, this service will return a 404 error. Additionally, you will need to have access to the given system, in this case, the system with the system\_id of 12.
 
-<pre>GET <a href="/api/georeserv/app/pvdaq/sites.xml?system_id=12&amp;api_key=DEMO_KEY">http://developer.nrel.gov/api/georeserv/app/pvdaq/sites.xml?system_id=12&amp;api_key=DEMO_KEY</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/georeserv/app/pvdaq/sites.xml?system_id=12&amp;api_key=DEMO_KEY">/api/georeserv/app/pvdaq/sites.xml?system_id=12&amp;api_key=DEMO_KEY</a></pre>
 
 ```xml
 <?xml version="1.0"?>

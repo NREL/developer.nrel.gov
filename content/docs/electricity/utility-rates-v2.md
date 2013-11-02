@@ -17,7 +17,7 @@ Find utility rates and the utility companies for a specific location.
 
 ## Request URL
 
-<pre>GET http://developer.nrel.gov/api/georeserv/service/utility_rates<em>.format?parameters</em></pre>
+<pre>GET /api/georeserv/service/utility_rates<em>.format?parameters</em></pre>
 
 ## Request Parameters
 
@@ -190,7 +190,7 @@ Find utility rates and the utility companies for a specific location.
 
 ### JSON Output Format
 
-<pre>GET <a href="/api/georeserv/service/utility_rates.json?address=Boulder,%20CO&amp;api_key=DEMO_KEY">/api/georeserv/service/utility_rates.json?address=Boulder,%20CO&amp;api_key=DEMO_KEY</a>
+<pre>GET <a href="http://developer.nrel.gov/api/georeserv/service/utility_rates.json?address=Boulder,%20CO&amp;api_key=DEMO_KEY">/api/georeserv/service/utility_rates.json?address=Boulder,%20CO&amp;api_key=DEMO_KEY</a>
 
 <div class="highlight-code"><table class="highlighttable"><tr>
 <td class="linenos"></td>
@@ -225,7 +225,7 @@ Find utility rates and the utility companies for a specific location.
 
 ### XML Output Format
 
-<pre>GET <a href="/api/georeserv/service/utility_rates.xml?address=Boulder,%20CO&amp;api_key=DEMO_KEY">/api/georeserv/service/utility_rates.xml?address=Boulder,%20CO&amp;api_key=DEMO_KEY</a>
+<pre>GET <a href="http://developer.nrel.gov/api/georeserv/service/utility_rates.xml?address=Boulder,%20CO&amp;api_key=DEMO_KEY">/api/georeserv/service/utility_rates.xml?address=Boulder,%20CO&amp;api_key=DEMO_KEY</a>
 
 <div class="highlight-code"><table class="highlighttable"><tr>
 <td class="linenos"></td>

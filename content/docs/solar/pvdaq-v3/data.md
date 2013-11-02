@@ -13,7 +13,7 @@ disqus: true
 
 ## Request URL
 
-<pre>GET https://developer.nrel.gov/api/pvdaq/v3/data<em>.format?parameters</em></pre>
+<pre>GET /api/pvdaq/v3/data<em>.format?parameters</em></pre>
 
 ## HTTP Basic Authentication
 
@@ -241,7 +241,7 @@ For PVDAQ services, in addition to your developer API key, you must also provide
 
 ### JSON Output Format
 
-<pre>GET <a href="https://developer.nrel.gov/api/pvdaq/v3/data.json?api_key=DEMO_KEY&amp;system_id=2&amp;start_date=3/24/2011&amp;end_date=3/25/2011">https://developer.nrel.gov/api/pvdaq/v3/data.json?api_key=DEMO_KEY&amp;system_id=2&amp;start_date=3/24/2011&amp;end_date=3/25/2011</a></pre>
+<pre>GET <a href="https://developer.nrel.gov/api/pvdaq/v3/data.json?api_key=DEMO_KEY&amp;system_id=2&amp;start_date=3/24/2011&amp;end_date=3/25/2011">/api/pvdaq/v3/data.json?api_key=DEMO_KEY&amp;system_id=2&amp;start_date=3/24/2011&amp;end_date=3/25/2011</a></pre>
 
 ```json
 {
@@ -314,7 +314,7 @@ For PVDAQ services, in addition to your developer API key, you must also provide
 
 ### XML Output Format
 
-<pre>GET <a href="https://developer.nrel.gov/api/pvdaq/v3/data.xml?api_key=DEMO_KEY&amp;system_id=2&amp;start_date=3/24/2011&amp;end_date=3/25/2011">https://developer.nrel.gov/api/pvdaq/v3/data.xml?api_key=DEMO_KEY&amp;system_id=2&amp;start_date=3/24/2011&amp;end_date=3/25/2011</a></pre>
+<pre>GET <a href="https://developer.nrel.gov/api/pvdaq/v3/data.xml?api_key=DEMO_KEY&amp;system_id=2&amp;start_date=3/24/2011&amp;end_date=3/25/2011">/api/pvdaq/v3/data.xml?api_key=DEMO_KEY&amp;system_id=2&amp;start_date=3/24/2011&amp;end_date=3/25/2011</a></pre>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -382,7 +382,7 @@ For PVDAQ services, in addition to your developer API key, you must also provide
 
 ### CSV Output Format
 
-<pre>GET <a href="https://developer.nrel.gov/api/pvdaq/v3/data.csv?api_key=DEMO_KEY&amp;system_id=2&amp;start_date=3/24/2011&amp;end_date=3/25/2011">https://developer.nrel.gov/api/pvdaq/v3/data.csv?api_key=DEMO_KEY&amp;system_id=2&amp;start_date=3/24/2011&amp;end_date=3/25/2011</a></pre>
+<pre>GET <a href="https://developer.nrel.gov/api/pvdaq/v3/data.csv?api_key=DEMO_KEY&amp;system_id=2&amp;start_date=3/24/2011&amp;end_date=3/25/2011">/api/pvdaq/v3/data.csv?api_key=DEMO_KEY&amp;system_id=2&amp;start_date=3/24/2011&amp;end_date=3/25/2011</a></pre>
 
 ```
 SiteID,Date-Time,poa_irradiance,dc_power,dc_pos_voltage,dc_pos_current,module_temp_1,das_temp,das_battery_voltage

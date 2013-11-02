@@ -13,7 +13,7 @@ disqus: true
 
 ## Request URL
 
-<pre>GET https://developer.nrel.gov/api/pvdaq/v3/sites<em>.format?parameters</em></pre>
+<pre>GET /api/pvdaq/v3/sites<em>.format?parameters</em></pre>
 
 ## HTTP Basic Authentication
 
@@ -180,7 +180,7 @@ For PVDAQ services, in addition to your developer API key, you must also provide
 
 ### JSON Output Format
 
-<pre>GET <a href="https://developer.nrel.gov/api/pvdaq/v3/sites.json?api_key=DEMO_KEY&amp;system_id=2">https://developer.nrel.gov/api/pvdaq/v3/sites.json?api_key=DEMO_KEY&amp;system_id=2</a></pre>
+<pre>GET <a href="https://developer.nrel.gov/api/pvdaq/v3/sites.json?api_key=DEMO_KEY&amp;system_id=2">/api/pvdaq/v3/sites.json?api_key=DEMO_KEY&amp;system_id=2</a></pre>
 
 ```json
 {
@@ -235,7 +235,7 @@ For PVDAQ services, in addition to your developer API key, you must also provide
 
 ### XML Output Format
 
-<pre>GET <a href="https://developer.nrel.gov/api/pvdaq/v3/sites.xml?system_id=2&amp;api_key=DEMO_KEY">https://developer.nrel.gov/api/pvdaq/v3/sites.xml?system_id=2&amp;api_key=DEMO_KEY</a></pre>
+<pre>GET <a href="https://developer.nrel.gov/api/pvdaq/v3/sites.xml?system_id=2&amp;api_key=DEMO_KEY">/api/pvdaq/v3/sites.xml?system_id=2&amp;api_key=DEMO_KEY</a></pre>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

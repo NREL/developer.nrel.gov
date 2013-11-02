@@ -13,7 +13,7 @@ disqus: true
 
 ## Request URL
 
-<pre>GET http://developer.nrel.gov/api/solar/data_query/v1<em>.format?parameters</em></pre>
+<pre>GET /api/solar/data_query/v1<em>.format?parameters</em></pre>
 
 ## Request Parameters
 
@@ -246,7 +246,7 @@ The output fields contain the following information regarding climate data files
 
 ### JSON Output Format
 
-<pre>GET <a href="http://developer.nrel.gov/api/solar/data_query/v1.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105">http://developer.nrel.gov/api/solar/data_query/v1.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/solar/data_query/v1.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105">/api/solar/data_query/v1.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105</a></pre>
 
 ```json
 {
@@ -301,7 +301,7 @@ The output fields contain the following information regarding climate data files
 
 ### XML Output Format
 
-<pre>GET <a href="http://developer.nrel.gov/api/solar/data_query/v1.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105">http://developer.nrel.gov/api/solar/data_query/v1.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/solar/data_query/v1.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105">/api/solar/data_query/v1.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105</a></pre>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

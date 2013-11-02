@@ -21,7 +21,7 @@ Also, if you are an admin or a PVDAQ admin, you can obtain data on behalf of ano
 
 ## Request URL
 
-<pre>GET http://developer.nrel.gov/api/georeserv/app/pvdaq/data<em>.format?parameters</em></pre>
+<pre>GET /api/georeserv/app/pvdaq/data<em>.format?parameters</em></pre>
 
 ## Request Parameters
 
@@ -218,7 +218,7 @@ Also, if you are an admin or a PVDAQ admin, you can obtain data on behalf of ano
 
 Note that if you have not logged in and obtained an authentication cookie for your session, this service will return a 404 error. Additionally, you will need to have access to the given system, in this case, the system with the system\_id of 13.
 
-<pre>GET <a href="/api/georeserv/app/pvdaq/data.json?api_key=DEMO_KEY&amp;start_date=1/1/2011&amp;end_date=1/1/2011&amp;system_id=13">http://developer.nrel.gov/api/georeserv/app/pvdaq/data.json?api_key=DEMO_KEY&amp;start_date=1/1/2011&amp;end_date=1/1/2011&amp;system_id=13</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/georeserv/app/pvdaq/data.json?api_key=DEMO_KEY&amp;start_date=1/1/2011&amp;end_date=1/1/2011&amp;system_id=13">/api/georeserv/app/pvdaq/data.json?api_key=DEMO_KEY&amp;start_date=1/1/2011&amp;end_date=1/1/2011&amp;system_id=13</a></pre>
 
 ```json
 {
@@ -355,7 +355,7 @@ Note that if you have not logged in and obtained an authentication cookie for yo
 
 Note that if you have not logged in and obtained an authentication cookie for your session, this service will return a 404 error. Additionally, you will need to have access to the given system, in this case, the system with the system\_id of 13.
 
-<pre>GET <a href="/api/georeserv/app/pvdaq/site_data.xml?system_id=13&amp;start_date=1/1/2011&amp;end_date=1/1/2011&amp;api_key=DEMO_KEY&amp;limit_fields=system_id&amp;limit_fields=measdatetime&amp;limit_fields=array_performance_ratio&amp;aggregate=weekly">http://developer.nrel.gov/api/georeserv/app/pvdaq/site_data.xml?system_id=13&amp;start_date=1/1/2011&amp;end_date=1/1/2011&amp;api_key=DEMO_KEY&amp;limit_fields=system_id&amp;limit_fields=measdatetime&amp;limit_fields=array_performance_ratio&amp;aggregate=weekly</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/georeserv/app/pvdaq/site_data.xml?system_id=13&amp;start_date=1/1/2011&amp;end_date=1/1/2011&amp;api_key=DEMO_KEY&amp;limit_fields=system_id&amp;limit_fields=measdatetime&amp;limit_fields=array_performance_ratio&amp;aggregate=weekly">/api/georeserv/app/pvdaq/site_data.xml?system_id=13&amp;start_date=1/1/2011&amp;end_date=1/1/2011&amp;api_key=DEMO_KEY&amp;limit_fields=system_id&amp;limit_fields=measdatetime&amp;limit_fields=array_performance_ratio&amp;aggregate=weekly</a></pre>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

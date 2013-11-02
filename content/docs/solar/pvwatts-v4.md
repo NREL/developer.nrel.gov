@@ -17,7 +17,7 @@ Version 4 is the current version of the PVWatts API. Previous versions have been
 
 ## Request URL
 
-<pre>GET http://developer.nrel.gov/api/pvwatts/v4<em>.format?parameters</em></pre>
+<pre>GET /api/pvwatts/v4<em>.format?parameters</em></pre>
 
 ## Request Parameters
 
@@ -145,7 +145,7 @@ Version 4 is the current version of the PVWatts API. Previous versions have been
         </div>
       </td>
       <td class="doc-parameter-description">
-        An identifier provided by the <a href="http://developer.nrel.gov/doc/api/solar/data_query/v1">solar data query</a> web service to specify the climate data file to use. Required if lat/lon or address not specified.
+        An identifier provided by the <a href="/doc/api/solar/data_query/v1">solar data query</a> web service to specify the climate data file to use. Required if lat/lon or address not specified.
       </td>
     </tr>
     <tr>
@@ -533,7 +533,7 @@ The response is composed of service-related informational fields and the results
 
 ### JSON Output Format
 
-<pre>GET <a href="http://developer.nrel.gov/api/pvwatts/v4.json?api_key=DEMO_KEY&amp;system_size=4&amp;dataset=tmy2&amp;derate=0.77&amp;lat=40&amp;lon=-105">http://developer.nrel.gov/api/pvwatts/v4.json?api_key=DEMO_KEY&amp;system_size=4&amp;dataset=tmy2&amp;derate=0.77&amp;lat=40&amp;lon=-105</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/pvwatts/v4.json?api_key=DEMO_KEY&amp;system_size=4&amp;dataset=tmy2&amp;derate=0.77&amp;lat=40&amp;lon=-105">/api/pvwatts/v4.json?api_key=DEMO_KEY&amp;system_size=4&amp;dataset=tmy2&amp;derate=0.77&amp;lat=40&amp;lon=-105</a></pre>
 
 ```json
 {
@@ -631,7 +631,7 @@ The response is composed of service-related informational fields and the results
 
 ### XML Output Format
 
-<pre>GET <a href="http://developer.nrel.gov/api/pvwatts/v4.xml?api_key=DEMO_KEY&amp;system_size=4&amp;dataset=tmy2&amp;derate=0.77&amp;lat=40&amp;lon=-105">http://developer.nrel.gov/api/pvwatts/v4.xml?api_key=DEMO_KEY&amp;system_size=4&amp;dataset=tmy2&amp;derate=0.77&amp;lat=40&amp;lon=-105</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/pvwatts/v4.xml?api_key=DEMO_KEY&amp;system_size=4&amp;dataset=tmy2&amp;derate=0.77&amp;lat=40&amp;lon=-105">/api/pvwatts/v4.xml?api_key=DEMO_KEY&amp;system_size=4&amp;dataset=tmy2&amp;derate=0.77&amp;lat=40&amp;lon=-105</a></pre>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
