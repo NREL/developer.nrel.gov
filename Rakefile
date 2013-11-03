@@ -3,45 +3,33 @@ task :compile do
   `nanoc compile`
 end
 
-# prompt user for a commit message; default: HEAD commit 1-liner
-def commit_message
-  last_commit = `git log -1 --pretty=format:"%s"`.chomp.strip
-  last_commit = 'Publishing content to GitHub pages.' if last_commit == ''
+desc "Sync"
+task :sync_data_gov do
+  require "find"
 
-  print "Enter a commit message (default: '#{last_commit}'): "
-  STDOUT.flush
-  mesg = STDIN.gets.chomp.strip
+  nrel_dir = File.expand_path("../content/docs", __FILE__)
+  data_dir = File.expand_path("../../api.data.gov/content/docs/nrel", __FILE__)
 
-  mesg = last_commit if mesg == ''
-  mesg.gsub(/'/, '') # to allow this to be handed off via -m '#{message}'
-end
+  if(!File.exists?(data_dir))
+    puts "api.data.gov project not where expected: #{data_dir}"
+    exit
+  end
 
-desc "Publish to http://api.data.gov"
-task :publish do
-  mesg = commit_message
+  command = "rsync -av --delete-after #{nrel_dir}/ #{data_dir}/"
+  puts command
+  puts `#{command}`
 
-  FileUtils.rm_r('output') if File.exist?('output')
+  %w(api-key.md errors.md rate-limits.md).each do |file|
+    File.delete("#{data_dir}/#{file}")
+  end
 
-  sh "nanoc compile"
+  Find.find(data_dir) do |path|
+    next unless File.file?(path)
 
-  ENV['GIT_DIR'] = File.expand_path(`git rev-parse --git-dir`.chomp)
-  old_sha = `git rev-parse refs/remotes/origin/gh-pages`.chomp
-  Dir.chdir('output') do
-    ENV['GIT_INDEX_FILE'] = gif = '/tmp/dev.gh.i'
-    ENV['GIT_WORK_TREE'] = Dir.pwd
-    File.unlink(gif) if File.file?(gif)
-    `git add -A`
-    tsha = `git write-tree`.strip
-    puts "Created tree   #{tsha}"
-    if old_sha.size == 40
-      csha = `git commit-tree #{tsha} -p #{old_sha} -m '#{mesg}'`.strip
-    else
-      csha = `git commit-tree #{tsha} -m '#{mesg}'`.strip
-    end
-    puts "Created commit #{csha}"
-    puts `git show #{csha} --stat`
-    puts "Updating gh-pages from #{old_sha}"
-    `git update-ref refs/heads/gh-pages #{csha}`
-    `git push origin gh-pages`
+    content = File.read(path)
+    content.gsub!(%r{developer.nrel.gov/api/}, "api.data.gov/nrel/")
+
+    puts path
+    File.open(path, "w") { |f| f.write(content) }
   end
 end
