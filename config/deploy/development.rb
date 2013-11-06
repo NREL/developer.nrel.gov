@@ -14,3 +14,5 @@ set :base_domain, "devdev.nrel.gov"
 
 # Set the Rails environment.
 set :rails_env, "development"
+
+ENV["SWAGGER_HOST"] = "http://devdev.nrel.gov"

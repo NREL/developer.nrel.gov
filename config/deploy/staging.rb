@@ -16,3 +16,5 @@ set :copy_exclude, [".git"]
 
 # Set the Rails environment.
 set :rails_env, "staging"
+
+ENV["SWAGGER_HOST"] = "http://devstage.nrel.gov"
