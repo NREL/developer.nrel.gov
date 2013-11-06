@@ -5,7 +5,7 @@
   "apis": [
     {
       "path": "/project.json",
-      "description": "Endpoints related to buildings in the database."
+      "description": "API endpoints related to buildings."
     }
   ],
   "info": {
