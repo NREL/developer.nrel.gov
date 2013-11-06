@@ -1,4 +1,3 @@
-
 {
   "swaggerVersion": "1.2",
   "apiVersion": "2.0.0",
@@ -63,7 +62,7 @@
       ]
     },
     {
-      "path": "/project/{ProjectID}.{output_format}",
+      "path": "/project/{project_id}.{output_format}",
       "operations": [
         {
           "method": "GET",
@@ -89,12 +88,11 @@
               "defaultValue": "DEMO_KEY"
             },
             {
-              "name": "ProjectID",
+              "name": "project_id",
               "description": "Project ID",
               "paramType": "path",
               "required": true,
-              "type": "integer",
-              "defaultValue": "12"
+              "type": "integer"
             }
           ]
         }
