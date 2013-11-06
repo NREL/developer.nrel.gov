@@ -32,4 +32,6 @@ task :sync_data_gov do
     puts path
     File.open(path, "w") { |f| f.write(content) }
   end
+
+  FileUtils.rm_r('output') if File.exist?('output')
 end
