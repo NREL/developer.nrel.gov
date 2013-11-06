@@ -15,4 +15,4 @@ set :copy_exclude, [".git"]
 # Set the Rails environment.
 set :rails_env, "production"
 
-ENV["SWAGGER_HOST"] = "http://developer.nrel.gov"
+default_environment["SWAGGER_HOST"] = "http://developer.nrel.gov"
