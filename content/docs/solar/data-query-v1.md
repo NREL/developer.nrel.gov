@@ -203,12 +203,12 @@ The output fields contain the following information regarding climate data files
     <tr>
       <th class="doc-parameter-name" scope="row">lat</th>
       <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
-      <td class="doc-parameter-description">The latitude of the station (tmy2/tmy3).</td>
+      <td class="doc-parameter-description">The latitude of the station.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">lon</th>
       <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
-      <td class="doc-parameter-description">The longitude of the station (tmy2/tmy3).</td>
+      <td class="doc-parameter-description">The longitude of the station.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">city</th>
