@@ -31,8 +31,23 @@ After you're happy with your changes, commit and submit a pull request.
 
 ## Deploy
 
-To publish to production with GitHub Pages:
+To publish your changes to staging at http://devstage.nrel.gov:
 
 ```sh
-$ rake publish
+$ cap staging deploy
+```
+
+To publish your changes to production at http://developer.nrel.gov:
+
+```sh
+$ cap production deploy
+```
+
+To updated the shared development sandbox at http://devdev.nrel.gov:
+
+```sh
+$ ssh devdev.nrel.gov
+$ cd /srv/developer/developer.nrel.gov/main
+$ git pull
+$ cap development deploy
 ```
