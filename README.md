@@ -12,6 +12,11 @@ Ruby 1.9+ is required to build the site.
 $ bundle install
 ```
 
+Initialize submodules
+```sh
+$ git submodule init && git submodule update
+```
+
 ## Development
 
 The content files to edit are in `./content`. Nanoc will compile the site into static HTML files inside `./output`:
