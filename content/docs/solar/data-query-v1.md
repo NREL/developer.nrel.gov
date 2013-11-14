@@ -217,7 +217,7 @@ The output fields contain the following information regarding climate data files
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">state</th>
-      <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
+      <td class="doc-parameter-value"><strong>Type:</strong> string</td>
       <td class="doc-parameter-description">The state where the station is located.</td>
     </tr>
     <tr>
