@@ -6,6 +6,9 @@ end
 desc "Sync"
 task :sync_data_gov do
   require "find"
+  require "nanoc"
+
+  site = Nanoc::Site.new('.')
 
   nrel_dir = File.expand_path("../content/docs", __FILE__)
   data_dir = File.expand_path("../../api.data.gov/content/docs/nrel", __FILE__)
@@ -24,12 +27,16 @@ task :sync_data_gov do
   end
 
   Find.find(data_dir) do |path|
-    next unless File.file?(path)
+    next unless(File.file?(path))
+
+    extension = File.extname(path).gsub(/^\./, "")
+    next unless(site.config[:text_extensions].include?(extension))
+
+    puts path
 
     content = File.read(path)
     content.gsub!(%r{developer.nrel.gov/api/}, "api.data.gov/nrel/")
 
-    puts path
     File.open(path, "w") { |f| f.write(content) }
   end
 
