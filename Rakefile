@@ -26,6 +26,8 @@ task :sync_data_gov do
     File.delete("#{data_dir}/#{file}")
   end
 
+  nrel_doc_children = Dir.entries(data_dir) - [".", ".."]
+
   Find.find(data_dir) do |path|
     next unless(File.file?(path))
 
@@ -36,6 +38,7 @@ task :sync_data_gov do
 
     content = File.read(path)
     content.gsub!(%r{developer.nrel.gov/api/}, "api.data.gov/nrel/")
+    content.gsub!(%r{/docs/(#{nrel_doc_children.join("|")})/}, '/docs/nrel/\1/')
 
     File.open(path, "w") { |f| f.write(content) }
   end
