@@ -22,6 +22,10 @@ compile %r{/assets/(stylesheets|javascripts)/.+/} do
   filter :cache_buster
 end
 
+compile '/api-case-study/' do
+  layout 'blank'
+end
+
 compile '*' do
   if item.binary?
     # don’t filter binary items

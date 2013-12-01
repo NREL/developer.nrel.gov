@@ -5,7 +5,7 @@ tmp
 /output
 /converter/mirror
 /log
-/vendor
+/vendor/bundle
 /REVISION
 /config/deployed.yml
 /config/nginx/site.conf
