@@ -195,6 +195,21 @@ Version 4 is the current version of the PVWatts API. Previous versions have been
       </td>
     </tr>
     <tr>
+      <th class="doc-parameter-name" scope="row">radius</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> 100
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The search radius to use when searching for the closest climate data station (miles).</p>
+      </td>
+    </tr>
+    <tr>
       <th class="doc-parameter-name" scope="row">timeframe</th>
       <td class="doc-parameter-required">No</td>
       <td class="doc-parameter-value">
