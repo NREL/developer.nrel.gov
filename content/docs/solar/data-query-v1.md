@@ -105,6 +105,21 @@ disqus: true
       </td>
       <td class="doc-parameter-description">The longitude for the location to use. Required if address not specified.</td>
     </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">radius</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> 100
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The search radius to use when searching for climate data stations (miles).</p>
+      </td>
+    </tr>
   </tbody>
 </table>
 
