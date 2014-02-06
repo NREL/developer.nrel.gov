@@ -1,18 +1,18 @@
 ---
 title: Wind Toolkit Data
 summary: Collect and download, as CSV, a configurable set of data fields from a national collection of wind stations.
-url: GET /api/wind/wind_toolkit_extract
-
+url: /api/wind/wind_toolkit_extract
+method: GET
 ---
 
-# {{title}} <span class="url">({{url}})</span>
+# {{title}} <span class="url">({{method}} {{url}})</span>
 {{summary}}
 
 <ul id="toc"></ul>
 
 ## Request URL
 
-<pre>{{url}}<em>?parameters</em></pre>
+<pre>{{method}} {{url}}<em>?parameters</em></pre>
 
 ## Request Parameters
 
@@ -151,7 +151,7 @@ url: GET /api/wind/wind_toolkit_extract
 
 <h3>CSV Output Format</h3>
 
-<div class="doc-example-url">GET <a href="http://developer.nrel.gov/api/wind/wind_toolkit_extract?api_key=DEMO_KEY&site_ids=12&attributes=wind_speed,wind_direction,power,temperature,pressure,density&time_start=200803010000&time_end=200804051155&aggregate=true">http://developer.nrel.gov/api/wind/wind_toolkit_extract?api_key=DEMO_KEY&site_ids=12&attributes=wind_speed,wind_direction,power,temperature,pressure,density&time_start=200803010000&time_end=200804051155&aggregate=true</a></div>
+<div class="doc-example-url">GET <a href="{{url}}?api_key=DEMO_KEY&site_ids=12&attributes=wind_speed,wind_direction,power,temperature,pressure&time_start=200803010000&time_end=200804051155&aggregate=true">{{url}}?api_key=DEMO_KEY&site_ids=12&attributes=wind_speed,wind_direction,power,temperature,pressure&time_start=200803010000&time_end=200804051155&aggregate=true</a></div>
 
 <table border="1" cellpadding="1" cellspacing="0" style="border-collapse:
  collapse;width:455pt" width="455">
