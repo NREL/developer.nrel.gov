@@ -206,7 +206,7 @@ Version 4 is the current version of the PVWatts API. Previous versions have been
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>The search radius to use when searching for the closest climate data station (miles).</p>
+        <p>The search radius to use when searching for the closest climate data station (miles). Pass in radius=0 to use the closest station regardless of the distance.</p>
       </td>
     </tr>
     <tr>
@@ -556,7 +556,8 @@ The response is composed of service-related informational fields and the results
     "city": "BOULDER",
     "state": "CO",
     "lat": 40.01666641235352,
-    "elev": 1634
+    "elev": 1634,
+    "distance": 21235
   },
   "errors": [
 
@@ -671,6 +672,7 @@ The response is composed of service-related informational fields and the results
     <city>BOULDER</city>
     <state>CO</state>
     <file-name>94018.tm2</file-name>
+    <distance type="integer">21235</distance>
   </station-info>
   <outputs>
     <ac-monthly type="array">

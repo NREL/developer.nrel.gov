@@ -117,7 +117,25 @@ disqus: true
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>The search radius to use when searching for climate data stations (miles).</p>
+        <p>The search radius to use when searching for climate data stations (miles). Pass in radius=0 to find the closest stations regardless of the distance. A value greater than 0 is required when using in combination with all=1.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">all</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> 0
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Options:</strong> <i>0, 1</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Return all stations within the radius. The closest stations will still be returned individually.</p>
       </td>
     </tr>
   </tbody>
@@ -165,7 +183,7 @@ The response is composed of service-related informational fields and information
       <th class="doc-parameter-name" scope="row">outputs</th>
       <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
       <td class="doc-parameter-description">
-        <p>Information about the closest climate data files for each supported dataset. (see <a href="#output-fields">output fields</a> for more detail)</p>
+        <p>Information about the climate data files for each supported dataset. (see <a href="#output-fields">output fields</a> for more detail)</p>
         <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
           <thead>
             <tr>
@@ -189,6 +207,10 @@ The response is composed of service-related informational fields and information
             <tr>
               <th scope="row">intl</th>
               <td>International station data</td>
+            </tr>
+            <tr>
+              <th scope="row">all_stations</th>
+              <td>Information for all stations within the radius (only if all=1 is specified)</td>
             </tr>
           </tbody>
         </table>
