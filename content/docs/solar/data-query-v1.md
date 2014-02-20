@@ -84,7 +84,10 @@ disqus: true
           <strong>Default:</strong> None
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Range:</strong> <i>-90 to 90</i>
+          <strong>Min:</strong> <i>-90</i>
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Max:</strong> <i>90</i>
         </div>
       </td>
       <td class="doc-parameter-description">The latitude for the location to use. Required if address not specified.</td>
@@ -100,7 +103,10 @@ disqus: true
           <strong>Default:</strong> None
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Range:</strong> <i>-180 to 180</i>
+          <strong>Min:</strong> <i>-180</i>
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Max:</strong> <i>180</i>
         </div>
       </td>
       <td class="doc-parameter-description">The longitude for the location to use. Required if address not specified.</td>
@@ -114,6 +120,12 @@ disqus: true
         </div>
         <div class="doc-parameter-value-field">
           <strong>Default:</strong> 100
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Min:</strong> 0
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Max:</strong> 2000
         </div>
       </td>
       <td class="doc-parameter-description">
