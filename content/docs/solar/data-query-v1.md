@@ -291,86 +291,247 @@ The output fields contain the following information regarding climate data files
 
 ### JSON Output Format
 
-<pre>GET <a href="http://developer.nrel.gov/api/solar/data_query/v1.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105">/api/solar/data_query/v1.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/solar/data_query/v1.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;radius=50&amp;all=1">/api/solar/data_query/v1.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;radius=50&amp;all=1</a></pre>
 
 ```json
 {
-  "metadata": {
-  },
-  "errors": [
-
-  ],
-  "version": "0.0.9",
-  "inputs": {
-    "lon": "-105",
-    "lat": "40",
-    "api_key": "DEMO_KEY"
-  },
+  "version": "1.1.0",
   "warnings": [
-
+    "No intl data found for lat=40.0 lon=-105.0"
   ],
+  "errors": [ ],
+  "metadata": { },
+  "inputs": {
+    "lat": "40",
+    "lon": "-105",
+    "radius": "50",
+    "all": "1"
+  },
   "outputs": {
-    "tmy2": {
-      "lon": -105.15,
-      "elevation": 1634,
-      "city": "BOULDER",
-      "state": "CO",
-      "id": "1-94018",
+  "tmy2": {
+    "id": "0-94018",
+    "city": "BROOMFIELD/JEFFCO [BOULDER - SURFRAD]",
+    "state": "COLORADO",
+    "timezone": -7,
+    "lat": 40.13,
+    "lon": -105.24,
+    "elevation": 1689,
+    "distance": 24977
+  },
+  "tmy3": {
+    "id": "1-724699",
+    "city": "BROOMFIELD/JEFFCO [BOULDER - SURFRAD]",
+    "state": "COLORADO",
+    "timezone": -7,
+    "lat": 40.13,
+    "lon": -105.24,
+    "elevation": 1689,
+    "distance": 24977
+  },
+  "intl": null,
+  "all_stations": [
+    {
+      "id": "0-94018",
+      "city": "BROOMFIELD/JEFFCO [BOULDER - SURFRAD]",
+      "state": "COLORADO",
       "timezone": -7,
-      "distance": 16924,
-      "lat": 40.1
-    },
-    "tmy3": {
+      "lat": 40.13,
       "lon": -105.24,
       "elevation": 1689,
-      "city": "BROOMFIELD/JEFFCO [BOULDER - SURFRAD]",
-      "state": "CO",
-      "id": "2-724699",
-      "timezone": -7,
       "distance": 24977,
-      "lat": 40.13
+      "dataset": "tmy2"
+    },
+    {
+      "id": "1-724699",
+      "city": "BROOMFIELD/JEFFCO [BOULDER - SURFRAD]",
+      "state": "COLORADO",
+      "timezone": -7,
+      "lat": 40.13,
+      "lon": -105.24,
+      "elevation": 1689,
+      "distance": 24977,
+      "dataset": "tmy3"
+    },
+    {
+      "id": "1-724666",
+      "city": "DENVER/CENTENNIAL [GOLDEN - NREL]",
+      "state": "COLORADO",
+      "timezone": -7,
+      "lat": 39.742,
+      "lon": -105.179,
+      "elevation": 1829,
+      "distance": 32650,
+      "dataset": "tmy3"
+    },
+    {
+      "id": "1-725650",
+      "city": "DENVER INTL AP",
+      "state": "COLORADO",
+      "timezone": -7,
+      "lat": 39.833,
+      "lon": -104.65,
+      "elevation": 1650,
+      "distance": 35063,
+      "dataset": "tmy3"
+    },
+    {
+      "id": "1-724695",
+      "city": "AURORA BUCKLEY FIELD ANGB",
+      "state": "COLORADO",
+      "timezone": -7,
+      "lat": 39.717,
+      "lon": -104.75,
+      "elevation": 1726,
+      "distance": 38143,
+      "dataset": "tmy3"
+    },
+    {
+      "id": "1-724769",
+      "city": "FORT COLLINS (AWOS)",
+      "state": "COLORADO",
+      "timezone": -7,
+      "lat": 40.45,
+      "lon": -105.017,
+      "elevation": 1529,
+      "distance": 50435,
+      "dataset": "tmy3"
+    },
+    {
+      "id": "1-724768",
+      "city": "GREELEY/WELD (AWOS)",
+      "state": "COLORADO",
+      "timezone": -7,
+      "lat": 40.433,
+      "lon": -104.633,
+      "elevation": 1420,
+      "distance": 57549,
+      "dataset": "tmy3"
     }
-  }
+  ]
 }
 ```
 
 ### XML Output Format
 
-<pre>GET <a href="http://developer.nrel.gov/api/solar/data_query/v1.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105">/api/solar/data_query/v1.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/solar/data_query/v1.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;radius=50&amp;all=1">/api/solar/data_query/v1.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;radius=50&amp;all=1</a></pre>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <response>
-  <version>0.0.9</version>
-  <warnings type="array"/>
+  <version>1.1.0</version>
+  <warnings type="array">
+    <warning>No intl data found for lat=40.0 lon=-105.0</warning>
+  </warnings>
   <errors type="array"/>
-  <metadata/>
+  <metadata>
+  </metadata>
   <inputs>
-    <api-key>DEMO_KEY</api-key>
     <lat>40</lat>
     <lon>-105</lon>
+    <radius>50</radius>
+    <all>1</all>
   </inputs>
   <outputs>
     <tmy2>
-      <id>1-94018</id>
-      <city>BOULDER</city>
-      <state>CO</state>
+      <id>0-94018</id>
+      <city>BROOMFIELD/JEFFCO [BOULDER - SURFRAD]</city>
+      <state>COLORADO</state>
       <timezone type="integer">-7</timezone>
-      <lat type="float">40.1</lat>
-      <lon type="float">-105.15</lon>
-      <elevation type="integer">1634</elevation>
-      <distance type="integer">16924</distance>
+      <lat type="float">40.13</lat>
+      <lon type="float">-105.24</lon>
+      <elevation type="integer">1689</elevation>
+      <distance type="integer">24977</distance>
     </tmy2>
     <tmy3>
-      <id>2-724699</id>
+      <id>1-724699</id>
       <city>BROOMFIELD/JEFFCO [BOULDER - SURFRAD]</city>
-      <state>CO</state>
+      <state>COLORADO</state>
       <timezone type="integer">-7</timezone>
       <lat type="float">40.13</lat>
       <lon type="float">-105.24</lon>
       <elevation type="integer">1689</elevation>
       <distance type="integer">24977</distance>
     </tmy3>
+    <intl nil="true"/>
+    <all-stations type="array">
+      <all-station>
+        <id>0-94018</id>
+        <city>BROOMFIELD/JEFFCO [BOULDER - SURFRAD]</city>
+        <state>COLORADO</state>
+        <timezone type="integer">-7</timezone>
+        <lat type="float">40.13</lat>
+        <lon type="float">-105.24</lon>
+        <elevation type="integer">1689</elevation>
+        <distance type="integer">24977</distance>
+        <dataset>tmy2</dataset>
+      </all-station>
+      <all-station>
+        <id>1-724699</id>
+        <city>BROOMFIELD/JEFFCO [BOULDER - SURFRAD]</city>
+        <state>COLORADO</state>
+        <timezone type="integer">-7</timezone>
+        <lat type="float">40.13</lat>
+        <lon type="float">-105.24</lon>
+        <elevation type="integer">1689</elevation>
+        <distance type="integer">24977</distance>
+        <dataset>tmy3</dataset>
+      </all-station>
+      <all-station>
+        <id>1-724666</id>
+        <city>DENVER/CENTENNIAL [GOLDEN - NREL]</city>
+        <state>COLORADO</state>
+        <timezone type="integer">-7</timezone>
+        <lat type="float">39.742</lat>
+        <lon type="float">-105.179</lon>
+        <elevation type="integer">1829</elevation>
+        <distance type="integer">32650</distance>
+        <dataset>tmy3</dataset>
+      </all-station>
+      <all-station>
+        <id>1-725650</id>
+        <city>DENVER INTL AP</city>
+        <state>COLORADO</state>
+        <timezone type="integer">-7</timezone>
+        <lat type="float">39.833</lat>
+        <lon type="float">-104.65</lon>
+        <elevation type="integer">1650</elevation>
+        <distance type="integer">35063</distance>
+        <dataset>tmy3</dataset>
+      </all-station>
+      <all-station>
+        <id>1-724695</id>
+        <city>AURORA BUCKLEY FIELD ANGB</city>
+        <state>COLORADO</state>
+        <timezone type="integer">-7</timezone>
+        <lat type="float">39.717</lat>
+        <lon type="float">-104.75</lon>
+        <elevation type="integer">1726</elevation>
+        <distance type="integer">38143</distance>
+        <dataset>tmy3</dataset>
+      </all-station>
+      <all-station>
+        <id>1-724769</id>
+        <city>FORT COLLINS (AWOS)</city>
+        <state>COLORADO</state>
+        <timezone type="integer">-7</timezone>
+        <lat type="float">40.45</lat>
+        <lon type="float">-105.017</lon>
+        <elevation type="integer">1529</elevation>
+        <distance type="integer">50435</distance>
+        <dataset>tmy3</dataset>
+      </all-station>
+      <all-station>
+        <id>1-724768</id>
+        <city>GREELEY/WELD (AWOS)</city>
+        <state>COLORADO</state>
+        <timezone type="integer">-7</timezone>
+        <lat type="float">40.433</lat>
+        <lon type="float">-104.633</lon>
+        <elevation type="integer">1420</elevation>
+        <distance type="integer">57549</distance>
+        <dataset>tmy3</dataset>
+      </all-station>
+    </all-stations>
   </outputs>
 </response>
 ```
