@@ -1,0 +1,204 @@
+{
+  "swaggerVersion": "1.2",
+  "apiVersion": "0.1.0",
+  "basePath": "<%= ENV["API_HOST"] || "http://localhost:3001" %>/transportation-incentives-laws",
+  "apis": [
+    {
+      "path":"/v1.{output_format}",
+      "description": "Get the list of laws and incentives",
+      "operations": [
+        {
+          "method": "GET",
+          "nickname": "transportation-incentives-laws",
+          "summary": "search the laws and incentives database",
+          "parameters": [
+            {
+              "name": "output_format",
+              "description": "Response format",
+              "paramType": "path",
+              "required": true,
+              "dataType": "string",
+              "enum": ["json", "xml"],
+              "defaultValue": "json"
+            },
+            {
+              "name": "api_key",
+              "description": "API Key",
+              "paramType": "query",
+              "required": true,
+              "dataType": "string",
+              "defaultValue": "DEMO_KEY"
+            },
+            {
+              "name": "jurisdiction",
+              "description": "Return laws for the given Jurisdiction. Jurisdiction must be given as a two character state code (eg, 'CO' for Colorado). A single jurisdiction, or a comma-separate list of multiple jurisdiction, may be given.  Use the code 'US' for federal laws and the code 'DC' for Washington D.C.",
+              "dataType": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "technology",
+              "description": "Search by the technology type.",
+              "enum": ["BIOD", "ETH", "NG", "LPG", "HY", "EFFEC", "IR", "ELEC", "HEV", "OTHER", "AFTMKTCONV", "NEVS"],
+              "dataType": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "incentive_type",
+              "description": "Search by the incentive type.",
+              "enum": ["GNT", "TAX", "LOANS", "RBATE", "EXEM", "OTHER"],
+              "dataType": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "regulation_type",
+              "description": "Search by the regulation type.",
+              "enum": ["REGIS", "STD", "DREST", "REQ", "FUEL", "RFS", "OTHER", "AIRQEMISSIONS", "CCEINIT"],
+              "dataType": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "user_type",
+              "description": "Search by the user type.",
+              "enum": ["IND", "FLEET", "STATION", "AFP", "AFS", "PURCH", "MAN", "OTHER"],
+              "dataType": "string",
+              "paramType": "query"
+            },
+            {
+              "name": "poc",
+              "description": "Include points of contacts in the return value.",
+              "dataType": "boolean",
+              "defaultValue": false,
+              "paramType": "query"
+            },
+            {
+              "name": "recent",
+              "description": "Return only recently added or updated laws and incentives",
+              "dataType": "boolean",
+              "defaultValue": false,
+              "paramType": "query"
+            },
+            {
+              "name": "type",
+              "description": "Search by the law type.",
+              "enum": ["State Incentives", "Utility/Private Incentives", "Laws and Regulations", "Incentives", "Programs", "Last Updated", "Overview"],
+              "dataType": "string",
+              "paramType": "query"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path":"/v1/{id}.{output_format}",
+      "description": "Get a specific law by id",
+      "operations": [
+        {
+          "method": "GET",
+          "nickname": "transportation-incentives-laws",
+          "summary": "Get a specific law by id",
+          "parameters": [
+            {
+              "name": "output_format",
+              "description": "Response format",
+              "paramType": "path",
+              "required": true,
+              "dataType": "string",
+              "enum": ["json", "xml"],
+              "defaultValue": "json"
+            },
+            {
+              "name": "api_key",
+              "description": "API Key",
+              "paramType": "query",
+              "required": true,
+              "dataType": "string",
+              "defaultValue": "DEMO_KEY"
+            },
+            {
+              "name": "id",
+              "description": "The id of the law that you are searching",
+              "paramType": "path",
+              "required": true,
+              "dataType": "integer"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path":"/v1/poc.{output_format}",
+      "description": "Get the points of contact for a given jurisdiction",
+      "operations": [
+        {
+          "method": "GET",
+          "nickname": "transportation-incentives-laws",
+          "summary": "Get the points of contact for a given jurisdiction",
+          "parameters": [
+            {
+              "name": "output_format",
+              "description": "Response format",
+              "paramType": "path",
+              "required": true,
+              "dataType": "string",
+              "enum": ["json", "xml"],
+              "defaultValue": "json"
+            },
+            {
+              "name": "api_key",
+              "description": "API Key",
+              "paramType": "query",
+              "required": true,
+              "dataType": "string",
+              "defaultValue": "DEMO_KEY"
+            },
+            {
+              "name": "jurisdiction",
+              "description": "Return laws for the given Jurisdiction. Jurisdiction must be given as a two character state code (eg, 'CO' for Colorado). A single jurisdiction, or a comma-separate list of multiple jurisdiction, may be given.  Use the code 'US' for federal laws and the code 'DC' for Washington D.C.",
+              "dataType": "string",
+              "required": true,
+              "paramType": "query"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path":"/v1/category-list.{output_format}",
+      "description": "Get the law categories of a given type",
+      "operations": [
+        {
+          "method": "GET",
+          "nickname": "transportation-incentives-laws",
+          "summary": "Get the law categories of a given type",
+          "parameters": [
+            {
+              "name": "output_format",
+              "description": "Response format",
+              "paramType": "path",
+              "required": true,
+              "dataType": "string",
+              "enum": ["json", "xml"],
+              "defaultValue": "json"
+            },
+            {
+              "name": "api_key",
+              "description": "API Key",
+              "paramType": "query",
+              "required": true,
+              "dataType": "string",
+              "defaultValue": "DEMO_KEY"
+            },
+            {
+              "name": "type",
+              "description": "Search by the category type.",
+              "enum": ["tech", "user", "regulation", "incentive"],
+              "dataType": "string",
+              "paramType": "query"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+ }
+    
