@@ -126,7 +126,7 @@
       ]
     },
     {
-      "path":"/v1/poc.{output_format}",
+      "path":"/v1/pocs.{output_format}",
       "description": "Get the points of contact for a given jurisdiction",
       "operations": [
         {
