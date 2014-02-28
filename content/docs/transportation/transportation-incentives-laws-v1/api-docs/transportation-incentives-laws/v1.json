@@ -37,29 +37,25 @@
             },
             {
               "name": "technology",
-              "description": "Search by the technology type.",
-              "enum": ["BIOD", "ETH", "NG", "LPG", "HY", "EFFEC", "IR", "ELEC", "HEV", "OTHER", "AFTMKTCONV", "NEVS"],
+              "description": "Search by the technology type. A single type, or a comma-separate list of multiple types, may be given. Values and what they stand for are as follows: 'BIOD' for Biodiesel, 'ETH' for Ethanol, 'NG' for Natural Gas, 'LPG' for Propane (LPG), 'HY' for Hydrogen Fuel Cells, 'EFFEC' for Fuel Economy / Efficiency, 'IR' for Idle Reduction, 'ELEC' for EVs, 'HEV' for HEVs / PHEVs, 'OTHER' for Other, 'AFTMKTCONV' for Aftermarket Conversions, and 'NEVS' for NEVs",
               "dataType": "string",
               "paramType": "query"
             },
             {
               "name": "incentive_type",
-              "description": "Search by the incentive type.",
-              "enum": ["GNT", "TAX", "LOANS", "RBATE", "EXEM", "OTHER"],
+              "description": "Search by the incentive type. A single type, or a comma-separate list of multiple types, may be given. Values and what they stand for are as follows: 'GNT' for Grants, 'TAX' for Tax Incentives, 'LOANS' for Loans and Leases, 'RBATE' for Rebates, 'EXEM' for Exemptions, and 'OTHER' for Other.",
               "dataType": "string",
               "paramType": "query"
             },
             {
               "name": "regulation_type",
-              "description": "Search by the regulation type.",
-              "enum": ["REGIS", "STD", "DREST", "REQ", "FUEL", "RFS", "OTHER", "AIRQEMISSIONS", "CCEINIT"],
+              "description": "Search by the regulation type. A single type, or a comma-separate list of multiple types, may be given. Values and what they stand for are as follows: 'REGIS' for Registration / Licensing, 'STD' for Fuel Production / Quality, 'DREST' for Driving / Idling, 'REQ' for Acquisition / Fuel Use, 'FUEL' for Fuel Taxes, 'RFS' for Renewable Fuel Standard / Mandate, 'OTHER' for Other, 'AIRQEMISSIONS' for Air Quality / Emissions, and 'CCEINIT' for Climate Change / Energy Initiatives",
               "dataType": "string",
               "paramType": "query"
             },
             {
               "name": "user_type",
-              "description": "Search by the user type.",
-              "enum": ["IND", "FLEET", "STATION", "AFP", "AFS", "PURCH", "MAN", "OTHER"],
+              "description": "Search by the user type. A single type, or a comma-separate list of multiple types, may be given. Values and what they stand for are as follows: 'IND' for Vehicle Owner/Driver, 'FLEET' for Fleet Purchaser/Manager, 'STATION' for Fueling / TSE Infrastructure Owner, 'AFP' for Alternative Fuel Producer, 'AFS' for Alternative Fuel Dealer, 'PURCH' for Alternative Fuel Purchaser, 'MAN' for AFV Manufacturer/Retrofitter, and 'OTHER' for Other",
               "dataType": "string",
               "paramType": "query"
             },
@@ -78,9 +74,8 @@
               "paramType": "query"
             },
             {
-              "name": "type",
-              "description": "Search by the law type.",
-              "enum": ["State Incentives", "Utility/Private Incentives", "Laws and Regulations", "Incentives", "Programs", "Last Updated", "Overview"],
+              "name": "law_type",
+              "description": "Search by the law type. A single type, or a comma-separate list of multiple types, may be given. Values are as follows: 'State Incentives', 'Utility/Private Incentives', 'Laws and Regulations', 'Incentives', 'Programs', 'Last Updated', 'Overview'",
               "dataType": "string",
               "paramType": "query"
             }
