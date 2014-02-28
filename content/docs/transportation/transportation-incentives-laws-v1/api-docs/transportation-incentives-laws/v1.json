@@ -1,7 +1,7 @@
 {
   "swaggerVersion": "1.2",
   "apiVersion": "0.1.0",
-  "basePath": "<%= ENV["API_HOST"] || "http://localhost:3001" %>/transportation-incentives-laws",
+  "basePath": "<%= ENV["API_HOST"] || "http://10.10.40.2/api" %>/transportation-incentives-laws",
   "apis": [
     {
       "path":"/v1.{output_format}",
@@ -153,7 +153,7 @@
             },
             {
               "name": "jurisdiction",
-              "description": "Return laws for the given Jurisdiction. Jurisdiction must be given as a two character state code (eg, 'CO' for Colorado). A single jurisdiction, or a comma-separate list of multiple jurisdiction, may be given.  Use the code 'US' for federal laws and the code 'DC' for Washington D.C.",
+              "description": "Return the points of contact for the given Jurisdiction. Jurisdiction must be given as a two character state code (eg, 'CO' for Colorado). A single jurisdiction, or a comma-separate list of multiple jurisdiction, may be given.  Use the code 'US' for federal laws and the code 'DC' for Washington D.C.",
               "dataType": "string",
               "required": true,
               "paramType": "query"
