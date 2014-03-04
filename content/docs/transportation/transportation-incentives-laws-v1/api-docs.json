@@ -1,5 +1,5 @@
 {
-  "apiVersion": "1.1",
+  "apiVersion": "0.1.0",
   "swaggerVersion": "1.2",
   "basePath": "<%= ENV["SWAGGER_HOST"] || "http://localhost:3000" %>/docs/transportation/transportation-incentives-laws-v1/api-docs",
   "apis": [

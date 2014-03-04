@@ -115,6 +115,13 @@
               "paramType": "path",
               "required": true,
               "dataType": "integer"
+            },
+            {
+              "name": "poc",
+              "description": "Include points of contacts in the return value.",
+              "dataType": "boolean",
+              "defaultValue": false,
+              "paramType": "query"
             }
           ]
         }
