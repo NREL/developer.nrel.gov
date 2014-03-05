@@ -75,7 +75,7 @@
             },
             {
               "name": "law_type",
-              "description": "Search by the law type. A single type, or a comma-separate list of multiple types, may be given. Values are as follows: 'State Incentives', 'Utility/Private Incentives', 'Laws and Regulations', 'Incentives', 'Programs', 'Last Updated', 'Overview'",
+              "description": "Search by the law type. A single type, or a comma-separate list of multiple types, may be given. Values are as follows: 'STATEINC' for State Incentives, 'UPINC ' for Utility/Private Incentives, 'LAWREG' for Laws and Regulations, 'INC' for Incentives, 'PROG' for Programs, 'LUP' for Last Updated, 'OVIEW' for Overview, and 'HILITE' for Highlights",
               "dataType": "string",
               "paramType": "query"
             }
