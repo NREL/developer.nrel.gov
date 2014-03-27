@@ -254,7 +254,7 @@ method: GET
 
 <h2 id="rate-limits">Rate Limits</h2>
 
-<p><a href="/doc/rate-limits">Standard rate limits</a> apply. No more than 1,000 requests may be made in any hour. No more than 10,000 requests may be made in any day.</p>
+<p><a href="/doc/rate-limits">Standard rate limits</a> apply. No more than 1,000 requests may be made in any hour</p>
 
 <h2 id="errors">Errors</h2>
 
