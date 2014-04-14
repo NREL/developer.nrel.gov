@@ -11,6 +11,8 @@ disqus: true
 # {{title}} <span class="url">({{url}})</span>
 {{summary}}
 
+The data source is Ventyx Research Inc. and the Energy Information Agency (EIA), and was updated with 2011 numbers.
+
 Version 3 is the current version of the utility rates API. Previous versions have been deprecated and its users are encouraged to migrate to this newly enhanced version.
 
 <ul id="toc"></ul>
