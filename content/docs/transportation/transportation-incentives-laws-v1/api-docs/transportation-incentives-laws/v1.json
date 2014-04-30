@@ -288,7 +288,7 @@
     },
     "FullCategory": {
       "id": "FullCategory",
-      "required": ["code", "title", "category_type", "sort_order", "help_text"],
+      "required": ["code", "title", "category_type", "sort_order"],
       "properties": {
         "code": {
           "type": "string",
@@ -351,7 +351,7 @@
               "paramType": "path",
               "required": true,
               "dataType": "string",
-              "enum": ["json", "xml"],
+              "enum": ["json", "xml", "csv"],
               "defaultValue": "json"
             },
             {
