@@ -217,37 +217,32 @@ The response is composed of service-related informational fields and the results
 
 ```json
 {
-  inputs: {
-    lat: "35.45",
-    lon: "-82.98"
+  "inputs" : {
+    "lat" : "35.45",
+    "lon" : "-82.98"
   },
-  errors: [ ],
-  warnings: [ ],
-  version: "3.0.3",
-  metadata: {
-    sources: [
-      "Ventyx Research (2011)",
-      "EIA (2011)"
-    ]
+  "errors" : [ ],
+  "warnings" : [ ],
+  "version" : "3.0.3",
+  "metadata" : {
+    "sources" : [ "Ventyx Research (2011)", "EIA (2011)" ]
   },
-  outputs: {
-    company_id: "8333|18642",
-    utility_name: "Haywood Electric Member Corp|Tennessee Valley Authority",
-    utility_info: [
-      {
-        company_id: "8333",
-        utility_name: "Haywood Electric Member Corp"
-      },
-      {
-        company_id: "18642",
-        utility_name: "Tennessee Valley Authority"
-      }
-    ],
-    commercial: 0.1172,
-    industrial: 0.0944,
-    residential: 0.1439
+  "outputs" : {
+    "company_id" : "8333|18642",
+    "utility_name" : "Haywood Electric Member Corp|Tennessee Valley Authority",
+    "utility_info" : [ {
+      "company_id" : "8333",
+      "utility_name" : "Haywood Electric Member Corp"
+    }, {
+      "company_id" : "18642",
+      "utility_name" : "Tennessee Valley Authority"
+    } ],
+    "commercial" : 0.1172,
+    "industrial" : 0.0944,
+    "residential" : 0.1439
   }
-}```
+}
+```
 
 ### XML Output Format
 
