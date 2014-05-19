@@ -165,7 +165,7 @@ The response is composed of service-related informational fields and the results
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">infos</th>
-      <td class="doc-parameter-value">Type: array of strings</td>
+      <td class="doc-parameter-value"><strong>Type:</strong> array of strings</td>
       <td class="doc-parameter-description">Any info messages resulting from the request</td>
     </tr>
     <tr>
@@ -177,7 +177,7 @@ The response is composed of service-related informational fields and the results
       <th class="doc-parameter-name" scope="row">outputs</th>
       <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
       <td class="doc-parameter-description">
-        The data outputs from the request. (see <a href="#output-fields">output fields</a> for more detail)
+        The data outputs from the request. (see the <a href="http://www.dsireusa.org/incentivesdata/" target="_blank">DSIRE</a> website for more detail)
       </td>
     </tr>
   </tbody>
