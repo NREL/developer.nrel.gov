@@ -45,10 +45,6 @@
         <%= render("breadcrumbs") %>
 
         <div id="content">
-          <div class="alert">
-            <strong>Upcoming Downtime</strong> NREL's websites will be inaccessible Saturday, May 17th from 8AM - 12PM ET, with possible additional intermittent downtime from 12PM-4PM ET. We apologize for the inconvenience. <a href="mailto:developer@nrel.gov">Contact us</a> with any questions.
-          </div>
-
           <%= yield %>
 
           <% if(@item[:disqus]) %>
