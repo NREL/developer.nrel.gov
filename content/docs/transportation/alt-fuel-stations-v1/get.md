@@ -349,7 +349,7 @@ The response is composed of the fuel station matching the requested query. The s
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>A space-separated list of payment methods accepted. Payment methods are given as code values as described below:</p>
+        <p>The type of organization that owns the fueling infrastructure. Owner types are given as code values as described below:</p>
         <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
           <thead>
             <tr>
