@@ -342,7 +342,7 @@
         {
           "method": "GET",
           "nickname": "transportation-incentives-laws",
-          "summary": "search the laws and incentives database",
+          "summary": "Return a full list of laws and incentives that match your query.",
           "type": "LawsResponse",
           "parameters": [
             {
