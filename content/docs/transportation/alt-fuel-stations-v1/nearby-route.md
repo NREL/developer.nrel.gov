@@ -1002,7 +1002,7 @@ The individual fuel station records are returned in order of ascending distance 
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>A space-separated list of payment methods accepted. Payment methods are given as code values as described below:</p>
+        <p>The type of organization that owns the fueling infrastructure. Owner types are given as code values as described below:</p>
         <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
           <thead>
             <tr>
@@ -1603,7 +1603,7 @@ CNG,Clean Energy - Valero #4086,1001 Broadway St,"I-25, exit onto Speer Boulevar
 
 ## Rate Limits
 
-[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour. No more than 10,000 requests may be made in any day.
+[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour
 
 ## Errors
 

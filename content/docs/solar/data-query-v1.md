@@ -246,41 +246,37 @@ The output fields contain the following information regarding climate data files
 
 ```json
 {
-  "metadata": {
+  "version" : "1.0.3",
+  "warnings" : [ "No intl data found for lat=40.0 lon=-105.0" ],
+  "errors" : [ ],
+  "metadata" : {
   },
-  "errors": [
-
-  ],
-  "version": "0.0.9",
-  "inputs": {
-    "lon": "-105",
-    "lat": "40",
-    "api_key": "DEMO_KEY"
+  "inputs" : {
+    "lat" : "40",
+    "lon" : "-105"
   },
-  "warnings": [
-
-  ],
-  "outputs": {
-    "tmy2": {
-      "lon": -105.15,
-      "elevation": 1634,
-      "city": "BOULDER",
-      "state": "CO",
-      "id": "1-94018",
-      "timezone": -7,
-      "distance": 16924,
-      "lat": 40.1
+  "outputs" : {
+    "tmy2" : {
+      "id" : "0-94018",
+      "city" : "BOULDER",
+      "state" : "CO",
+      "timezone" : -7,
+      "lat" : 40.017,
+      "lon" : -105.25,
+      "elevation" : 1634,
+      "distance" : 21238
     },
-    "tmy3": {
-      "lon": -105.24,
-      "elevation": 1689,
-      "city": "BROOMFIELD/JEFFCO [BOULDER - SURFRAD]",
-      "state": "CO",
-      "id": "2-724699",
-      "timezone": -7,
-      "distance": 24977,
-      "lat": 40.13
-    }
+    "tmy3" : {
+      "id" : "1-724699",
+      "city" : "BROOMFIELD/JEFFCO [BOULDER - SURFRAD]",
+      "state" : "CO",
+      "timezone" : -7,
+      "lat" : 40.13,
+      "lon" : -105.24,
+      "elevation" : 1689,
+      "distance" : 24977
+    },
+    "intl" : null
   }
 }
 ```
@@ -292,28 +288,30 @@ The output fields contain the following information regarding climate data files
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <response>
-  <version>0.0.9</version>
-  <warnings type="array"/>
+  <version>1.0.3</version>
+  <warnings type="array">
+    <warning>No intl data found for lat=40.0 lon=-105.0</warning>
+  </warnings>
   <errors type="array"/>
-  <metadata/>
+  <metadata>
+  </metadata>
   <inputs>
-    <api-key>DEMO_KEY</api-key>
     <lat>40</lat>
     <lon>-105</lon>
   </inputs>
   <outputs>
     <tmy2>
-      <id>1-94018</id>
+      <id>0-94018</id>
       <city>BOULDER</city>
       <state>CO</state>
       <timezone type="integer">-7</timezone>
-      <lat type="float">40.1</lat>
-      <lon type="float">-105.15</lon>
+      <lat type="float">40.017</lat>
+      <lon type="float">-105.25</lon>
       <elevation type="integer">1634</elevation>
-      <distance type="integer">16924</distance>
+      <distance type="integer">21238</distance>
     </tmy2>
     <tmy3>
-      <id>2-724699</id>
+      <id>1-724699</id>
       <city>BROOMFIELD/JEFFCO [BOULDER - SURFRAD]</city>
       <state>CO</state>
       <timezone type="integer">-7</timezone>
@@ -322,13 +320,14 @@ The output fields contain the following information regarding climate data files
       <elevation type="integer">1689</elevation>
       <distance type="integer">24977</distance>
     </tmy3>
+    <intl nil="true"/>
   </outputs>
 </response>
 ```
 
 ## Rate Limits
 
-[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour. No more than 10,000 requests may be made in any day.
+[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour
 
 ## Errors
 

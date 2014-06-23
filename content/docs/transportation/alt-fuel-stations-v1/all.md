@@ -887,7 +887,7 @@ The individual fuel station records are returned in no specific order. Each stat
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>A space-separated list of payment methods accepted. Payment methods are given as code values as described below:</p>
+        <p>The type of organization that owns the fueling infrastructure. Owner types are given as code values as described below:</p>
         <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
           <thead>
             <tr>
@@ -1507,7 +1507,7 @@ E85,Pacific Pride - Boyett Petroleum,401 9th St,,Modesto,CA,95350,,209-577-6000,
 
 ## Rate Limits
 
-[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour. No more than 10,000 requests may be made in any day.
+[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour
 
 ## Errors
 
