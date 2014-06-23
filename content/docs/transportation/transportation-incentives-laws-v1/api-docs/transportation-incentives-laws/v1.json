@@ -337,7 +337,7 @@
   "apis": [
     {
       "path":"/v1.{output_format}",
-      "description": "Get the list of laws and incentives",
+      "description": "Return a full list of laws and incentives that match your query.",
       "operations": [
         {
           "method": "GET",
@@ -445,12 +445,12 @@
     },
     {
       "path":"/v1/{id}.{output_format}",
-      "description": "Get a specific law by id",
+      "description": "Fetch the details of a specific law given the law's ID.",
       "operations": [
         {
           "method": "GET",
           "nickname": "transportation-incentives-laws",
-          "summary": "Get a specific law by id",
+          "summary": "Fetch the details of a specific law given the law's ID.",
           "type": "LawResult",
           "parameters": [
             {
@@ -490,12 +490,12 @@
     },
     {
       "path":"/v1/pocs.{output_format}",
-      "description": "Get the points of contact for a given jurisdiction",
+      "description": "Get the points of contact for a given jurisdiction.",
       "operations": [
         {
           "method": "GET",
           "nickname": "transportation-incentives-laws",
-          "summary": "Get the points of contact for a given jurisdiction",
+          "summary": "Get the points of contact for a given jurisdiction.",
           "type": "PocResults",
           "parameters": [
             {
@@ -528,12 +528,12 @@
     },
     {
       "path":"/v1/category-list.{output_format}",
-      "description": "Get the law categories of a given type",
+      "description": "Return the law categories for a given category type.",
       "operations": [
         {
           "method": "GET",
           "nickname": "transportation-incentives-laws",
-          "summary": "Get the law categories of a given type",
+          "summary": "Return the law categories for a given category type.",
           "type": "CategoryResults",
           "parameters": [
             {
