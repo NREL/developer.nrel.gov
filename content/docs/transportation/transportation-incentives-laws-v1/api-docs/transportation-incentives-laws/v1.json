@@ -29,51 +29,63 @@
       "properties": {
         "id": {
           "type": "integer",
-          "description": "The numeric id of the law"
+          "description": "A unique identifier for this specific incentive/law/regulation."
         },
         "state": {
           "type": "string",
-          "description": "The two letter code fo the state where the law is enacted ('US' for Federal laws and 'DC' for the District of Columbia)"
+          "description": "The state in which the incentive/law/regulation was enacted and is active."
         },
         "title": {
           "type": "string",
-          "description": "The title of the law"
+          "description": "The brief title assigned to the incentive/law/regulation description."
         },
         "text": {
           "type": "string",
-          "description": "The body of the law, html formatted"
+          "description": "Description of the incentive/law/regulation, including applicable legislative references, html formated."
         },
         "enacted_date": {
           "type": "datetime",
-          "description": "The date that the law was enacted"
+          "description": "The date the enacting legislation (if applicable) was signed into law."
         },
         "amended_date": {
           "type": "datetime",
-          "description": "The date that the law was amended"
+          "description": "The date the incentive/law/regulation was updated through new legislation or rulemaking."
+        },
+        "expired_date": {
+          "type": "datetime",
+          "description": "The date the incentive/law/regulation is set to end."
+        },
+        "archived_date": {
+          "type": "datetime",
+          "description": "The date that an incentive/law/regulation is no longer relevant to the database. This may include longstanding Executive Orders or laws requiring legislative studies that have been completed."
+        },
+        "repealed_date": {
+          "type": "datetime",
+          "description": "The date legislation is enacted or a rulemaking is finalized to repeal the incentive/law/regulation."
         },
         "plaintext": {
           "type": "string",
-          "description": "The text of the law without html formatting"
+          "description": "Description of the incentive/law/regulation, including applicable legislative references, without html formatting"
         },
         "is_recent": {
           "type": "boolean",
-          "description": "Whether or not the law has been added or changed recently"
+          "description": "The true or false value used to distinguish between recent federal executive actions (TRUE) and active incentives/laws/regulations (FALSE)."
         },
         "seq_num": {
           "type": "integer",
-          "description": "sequence number"
+          "description": "The numerical value assigned to a description to show the order in which it is displayed online within a jurisdiction (state)."
         },
         "type": {
           "type": "string",
-          "description": "The title of the first type from the types attribute"
+          "description": "The category that the incentive/law/regulation falls under, described below: -State Incentives, -Laws and Regulations, -Utility/Private Incentives"
         },
         "agency": {
           "type": "string",
-          "description": "The agency associated with the law or incentive."
+          "description": "The agency with primary responsibility for federal incentives/regulations."
         },
         "significant_update_date": {
           "type": "datetime",
-          "description": "When the last significant update ot the law was made"
+          "description": "When the last significant update ot the law was made."
         },
         "recent_update_or_new": {
           "type": "string",
@@ -102,14 +114,14 @@
         },
         "references": {
           "type": "array",
-          "description": "Any external references cited in the body of the law",
+          "description": "The URL associated with any bill or legislative reference included in the description.",
           "items": {
             "$ref": "LawReference"
           }
         },
         "topics": {
           "type": "array",
-          "description": "The topics that the law coveres",
+          "description": "For local incentive/regulation descriptions, the category that the incentive/regulation falls under, described below: Infrastructure Requirements, Vehicle Purchase and Infrastructure Development Incentives, Fuel Use Incentives, Parking Incentives, Technical Assistance, Vehicle Acquisition Requirements, Promotion Initiatives, Idle Reduction Requirements, Renewable Fuels Mandates and Standards",
           "items": {
             "$ref": "LawTopics"
           }
@@ -130,7 +142,7 @@
         },
         "state": {
           "type": "string",
-          "description": "The two letter code fo the state where the contact is based ('US' for Federal laws and 'DC' for the District of Columbia)"
+          "description": "The state in which the contact is based ('US' for Federal laws and 'DC' for the District of Columbia)"
         },
         "agency": {
           "type": "string",
@@ -175,7 +187,7 @@
     },
     "LawType": {
       "id": "LawType",
-      "description": "This is a high level law type",
+      "description": "The category that the incentive/law/regulation falls under, described below: -State Incentives, -Laws and Regulations, -Utility/Private Incentives",
       "required": ["id", "title", "code"],
       "properties": {
         "id": {
@@ -194,7 +206,7 @@
     },
     "LawReference": {
       "id": "LawReference",
-      "description": "External references cited in the text of the law",
+      "description": "The URL associated with any bill or legislative reference included in the description.",
       "required": ["description", "url"],
       "properties": {
         "description": {
@@ -209,7 +221,7 @@
     },
     "LawTopics": {
       "id": "LawTopics",
-      "description": "The general topic of the law",
+      "description": "For local incentive/regulation descriptions, the category that the incentive/regulation falls under, described below: Infrastructure Requirements, Vehicle Purchase and Infrastructure Development Incentives, Fuel Use Incentives, Parking Incentives, Technical Assistance, Vehicle Acquisition Requirements, Promotion Initiatives, Idle Reduction Requirements, Renewable Fuels Mandates and Standards",
       "required": ["id", "title", "sort_order"],
       "properties": {
         "id": {
