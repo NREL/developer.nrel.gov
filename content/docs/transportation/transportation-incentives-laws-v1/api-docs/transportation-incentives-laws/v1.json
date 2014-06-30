@@ -85,7 +85,7 @@
         },
         "significant_update_date": {
           "type": "datetime",
-          "description": "When the last significant update ot the law was made."
+          "description": "When the last significant update to the law was made."
         },
         "recent_update_or_new": {
           "type": "string",
