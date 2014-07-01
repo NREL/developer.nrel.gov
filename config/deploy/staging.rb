@@ -17,4 +17,5 @@ set :copy_exclude, [".git"]
 # Set the Rails environment.
 set :rails_env, "staging"
 
-default_environment["SWAGGER_HOST"] = "http://devstage.nrel.gov"
+default_environment["SWAGGER_HOST"] = "http://lawsandincentives.devstage.nrel.gov"
+default_environment['API_HOST'] = 'http://transinclaw.devstage.nrel.gov/api'
