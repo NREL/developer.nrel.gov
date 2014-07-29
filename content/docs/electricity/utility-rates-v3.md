@@ -223,9 +223,9 @@ The response is composed of service-related informational fields and the results
   },
   "errors" : [ ],
   "warnings" : [ ],
-  "version" : "3.0.3",
+  "version" : "3.1.0",
   "metadata" : {
-    "sources" : [ "Ventyx Research (2011)", "EIA (2011)" ]
+    "sources" : [ "Ventyx Research (2012)" ]
   },
   "outputs" : {
     "company_id" : "8333|18642",
@@ -237,9 +237,9 @@ The response is composed of service-related informational fields and the results
       "company_id" : "18642",
       "utility_name" : "Tennessee Valley Authority"
     } ],
-    "commercial" : 0.1172,
-    "industrial" : 0.0944,
-    "residential" : 0.1439
+    "commercial" : 0.0977,
+    "industrial" : 0.0862,
+    "residential" : 0.123
   }
 }
 ```
@@ -257,11 +257,10 @@ The response is composed of service-related informational fields and the results
   </inputs>
   <errors type="array"/>
   <warnings type="array"/>
-  <version>3.0.3</version>
+  <version>3.1.0</version>
   <metadata>
     <sources type="array">
-      <source>Ventyx Research (2011)</source>
-      <source>EIA (2011)</source>
+      <source>Ventyx Research (2012)</source>
     </sources>
   </metadata>
   <outputs>
@@ -277,9 +276,9 @@ The response is composed of service-related informational fields and the results
         <utility-name>Tennessee Valley Authority</utility-name>
       </utility-info>
     </utility-info>
-    <commercial type="float">0.1172</commercial>
-    <industrial type="float">0.0944</industrial>
-    <residential type="float">0.1439</residential>
+    <commercial type="float">0.0977</commercial>
+    <industrial type="float">0.0862</industrial>
+    <residential type="float">0.123</residential>
   </outputs>
 </response>
 ```

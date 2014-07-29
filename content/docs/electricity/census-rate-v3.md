@@ -258,41 +258,34 @@ The response is composed of service-related informational fields and the results
 
 ```json
 {
-  "inputs": {
-    "api_key": "DEMO_KEY",
-    "lat": "37",
-    "lon": "-92"
+  "inputs" : {
+    "region" : "tract",
+    "id" : "101",
+    "lat" : "35.45",
+    "lon" : "-82.98"
   },
-  "errors": [
-
-  ],
-  "warnings": [
-
-  ],
-  "outputs": {
-    "census_region": "290910901002052",
-    "company_id": "62965|61860",
-    "utility_name": "Sho ME Power Electric Coop|Howell Oregon Electric Coop Inc",
-    "utility_info": [
-      {
-        "company_id": "62965",
-        "utility_name": "Sho ME Power Electric Coop"
-      },
-      {
-        "company_id": "61860",
-        "utility_name": "Howell Oregon Electric Coop Inc"
-      }
-    ],
-    "commercial": 8.549,
-    "industrial": 7.549,
-    "residential": 9.52
+  "errors" : [ ],
+  "warnings" : [ ],
+  "outputs" : {
+    "id" : 101,
+    "uid" : "179f89b3-5fc2-4fc9-9993-926d71486b70",
+    "census_region" : "921200",
+    "company_id" : "8333|18642",
+    "utility_name" : "Haywood Electric Member Corp|Tennessee Valley Authority",
+    "utility_info" : [ {
+      "company_id" : "8333",
+      "utility_name" : "Haywood Electric Member Corp"
+    }, {
+      "company_id" : "18642",
+      "utility_name" : "Tennessee Valley Authority"
+    } ],
+    "commercial" : 9.77,
+    "industrial" : 8.62,
+    "residential" : 12.3
   },
-  "version": "3.0.2",
-  "metadata": {
-    "sources": [
-      "Ventyx Research (2011)",
-      "EIA (2011)"
-    ]
+  "version" : "3.1.0",
+  "metadata" : {
+    "sources" : [ "Ventyx Research (2012)" ]
   }
 }
 ```
@@ -305,35 +298,37 @@ The response is composed of service-related informational fields and the results
 <?xml version="1.0" encoding="UTF-8"?>
 <response>
   <inputs>
-    <api-key>DEMO_KEY</api-key>
-    <lat>37</lat>
-    <lon>-92</lon>
+    <region>tract</region>
+    <id>101</id>
+    <lat>35.45</lat>
+    <lon>-82.98</lon>
   </inputs>
   <errors type="array"/>
   <warnings type="array"/>
   <outputs>
-    <census-region>290910901002052</census-region>
-    <company-id>62965|61860</company-id>
-    <utility-name>Sho ME Power Electric Coop|Howell Oregon Electric Coop Inc</utility-name>
+    <id type="integer">101</id>
+    <uid>c310bc56-ebbf-496c-8925-74bdf55d57a8</uid>
+    <census-region>921200</census-region>
+    <company-id>8333|18642</company-id>
+    <utility-name>Haywood Electric Member Corp|Tennessee Valley Authority</utility-name>
     <utility-info type="array">
       <utility-info>
-        <company-id>62965</company-id>
-        <utility-name>Sho ME Power Electric Coop</utility-name>
+        <company-id>8333</company-id>
+        <utility-name>Haywood Electric Member Corp</utility-name>
       </utility-info>
       <utility-info>
-        <company-id>61860</company-id>
-        <utility-name>Howell Oregon Electric Coop Inc</utility-name>
+        <company-id>18642</company-id>
+        <utility-name>Tennessee Valley Authority</utility-name>
       </utility-info>
     </utility-info>
-    <commercial type="float">8.549</commercial>
-    <industrial type="float">7.549</industrial>
-    <residential type="float">9.52</residential>
+    <commercial type="float">9.77</commercial>
+    <industrial type="float">8.62</industrial>
+    <residential type="float">12.3</residential>
   </outputs>
-  <version>3.0.2</version>
+  <version>3.1.0</version>
   <metadata>
     <sources type="array">
-      <source>Ventyx Research (2011)</source>
-      <source>EIA (2011)</source>
+      <source>Ventyx Research (2012)</source>
     </sources>
   </metadata>
 </response>
