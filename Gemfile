@@ -4,6 +4,9 @@ source "https://rails-assets.org"
 gem "middleman", "~> 3.3.5"
 gem "rake", "~> 10.3.2"
 
+# Environment specific config with environment variables
+gem "dotenv", "~> 0.11.1"
+
 # Live-reloading plugin
 gem "middleman-livereload", "~> 3.3.4"
 

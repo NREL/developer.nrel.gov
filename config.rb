@@ -1,3 +1,8 @@
+# Load environment variables from ".env" file. Also allow overrides from
+# ".env.build" or ".env.development" depending on the environment.
+require "dotenv"
+Dotenv.load(File.expand_path("../.env.#{config.environment}", __FILE__), File.expand_path("../.env", __FILE__))
+
 ###
 # Compass
 ###
@@ -105,10 +110,3 @@ after_build do |builder|
     MultiJson.dump(json, :pretty => false)
   end
 end
-
-if(build?)
-  ENV["WEB_SITE_ROOT"] ||= "https://api.data.gov"
-end
-
-ENV["API_UMBRELLA_API_KEY"] ||= "A8Mndjk7k8ygsU4rM1lwBltMzet1FEAIuZeaqzEqV"
-ENV["GITHUB_REPO_URL"] ||= "https://github.com/NREL/api-umbrella-static-site"
