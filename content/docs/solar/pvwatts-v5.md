@@ -213,7 +213,7 @@ PVWatts Version 5 is a major update to the PVWatts Version 1 algorithms that wer
           <strong>Default:</strong> None
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Range:</strong> <i>0 to 360</i>
+          <strong>Range:</strong> <i>greater than or equal to 0 and less than 360</i>
         </div>
       </td>
       <td class="doc-parameter-description">Azimuth angle (degrees).</td>
