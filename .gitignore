@@ -7,6 +7,9 @@
 # Ignore bundler config
 /.bundle
 
+# Ignore local bundle
+/vendor/bundle
+
 # Ignore the build directory
 /build
 
@@ -20,3 +23,7 @@
 # Ignore environment specific configuration
 /.env
 /.env.*
+
+# Ignore Capistrano files
+/REVISION
+/config/deployed.yml
