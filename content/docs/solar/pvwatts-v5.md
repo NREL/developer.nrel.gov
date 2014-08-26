@@ -579,7 +579,6 @@ The response is composed of service-related informational fields and the results
 ```json
 {
   "inputs" : {
-    "api_key" : "lsadjflasdjf",
     "lat" : "40",
     "lon" : "-105",
     "system_capacity" : "4",
@@ -594,26 +593,26 @@ The response is composed of service-related informational fields and the results
   "version" : "1.0.0",
   "ssc_info" : {
     "version" : 34,
-    "build" : "Mac OS X 64 bit GNU/C++ Apr  9 2014 11:55:48"
+    "build" : "Unix 64 bit GNU/C++ Feb 19 2014 11:40:21"
   },
   "station_info" : {
-    "lat" : 40.130001068115234,
-    "lon" : -105.23999786376953,
-    "elev" : 1689.0,
+    "lat" : 40.016666412353516,
+    "lon" : -105.25,
+    "elev" : 1634.0,
     "tz" : -7.0,
-    "location" : "724699",
-    "city" : "\"BROOMFIELD/JEFFCO [BOULDER - SURFRAD]\"",
+    "location" : "94018",
+    "city" : "BOULDER",
     "state" : "CO",
-    "solar_resource_file" : "724699.csv",
-    "distance" : 24977
+    "solar_resource_file" : "94018.tm2",
+    "distance" : 21235
   },
   "outputs" : {
-    "ac_monthly" : [ 470.2303161621094, 465.5809020996094, 580.62158203125, 603.9180908203125, 611.4985961914062, 570.1835327148438, 566.8073120117188, 577.284912109375, 573.3583374023438, 547.8502197265625, 460.4353942871094, 458.83514404296875 ],
-    "poa_monthly" : [ 135.77903747558594, 136.01702880859375, 172.07330322265625, 181.0430450439453, 185.826904296875, 177.51197814941406, 179.44775390625, 182.2056121826172, 179.2454376220703, 167.3966064453125, 135.13946533203125, 131.20938110351562 ],
-    "solrad_monthly" : [ 4.379969120025635, 4.85775089263916, 5.550751686096191, 6.034768104553223, 5.994416236877441, 5.9170660972595215, 5.788637161254883, 5.877600193023682, 5.974847793579102, 5.399890422821045, 4.504648685455322, 4.232560634613037 ],
-    "dc_monthly" : [ 491.10845947265625, 487.4883728027344, 608.0339965820312, 631.3754272460938, 639.8583984375, 596.713623046875, 593.491943359375, 603.8831176757812, 599.4382934570312, 572.0927734375, 480.9988098144531, 478.9504089355469 ],
-    "ac_annual" : 6486.60498046875,
-    "solrad_annual" : 5.376075744628906
+    "ac_monthly" : [ 474.2408142089844, 465.6669921875, 628.282470703125, 602.544677734375, 610.743896484375, 591.1350708007812, 595.8433227539062, 610.0640869140625, 597.9025268554688, 574.707275390625, 471.6990661621094, 458.9857177734375 ],
+    "poa_monthly" : [ 136.04103088378906, 136.04443359375, 185.7895965576172, 181.16891479492188, 185.77963256835938, 182.52105712890625, 187.89971923828125, 193.35572814941406, 187.40081787109375, 175.5979461669922, 137.59872436523438, 131.25526428222656 ],
+    "solrad_monthly" : [ 4.388420581817627, 4.858729839324951, 5.993212699890137, 6.038963794708252, 5.992891311645508, 6.084035396575928, 6.061281204223633, 6.237281322479248, 6.246694087982178, 5.664449691772461, 4.5866241455078125, 4.2340407371521 ],
+    "dc_monthly" : [ 495.09564208984375, 487.5823669433594, 657.702880859375, 629.8565063476562, 638.9706420898438, 618.6126708984375, 623.68994140625, 637.5205688476562, 624.635009765625, 599.9056396484375, 492.5662841796875, 479.1076354980469 ],
+    "ac_annual" : 6681.81640625,
+    "solrad_annual" : 5.5322184562683105
   }
 }
 ```
@@ -625,95 +624,94 @@ The response is composed of service-related informational fields and the results
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <response>
-  <inputs>
-    <api-key>lsadjflasdjf</api-key>
-    <lat>40</lat>
-    <lon>-105</lon>
-    <system-capacity>4</system-capacity>
-    <azimuth>180</azimuth>
-    <tilt>40</tilt>
-    <array-type>1</array-type>
-    <module-type>1</module-type>
-    <losses>10</losses>
-  </inputs>
-  <errors type="array"/>
-  <warnings type="array"/>
-  <version>0.0.1</version>
-  <ssc-info>
-    <version type="integer">34</version>
-    <build>Mac OS X 64 bit GNU/C++ Apr  9 2014 11:55:48</build>
-  </ssc-info>
-  <station-info>
-    <lat type="float">40.130001068115234</lat>
-    <lon type="float">-105.23999786376953</lon>
-    <elev type="float">1689.0</elev>
-    <tz type="float">-7.0</tz>
-    <location>724699</location>
-    <city>"BROOMFIELD/JEFFCO [BOULDER - SURFRAD]"</city>
-    <state>CO</state>
-    <solar-resource-file>724699.csv</solar-resource-file>
-    <distance type="integer">24977</distance>
-  </station-info>
-  <outputs>
-    <ac-monthly type="array">
-      <ac-monthly type="float">470.2303161621094</ac-monthly>
-      <ac-monthly type="float">465.5809020996094</ac-monthly>
-      <ac-monthly type="float">580.62158203125</ac-monthly>
-      <ac-monthly type="float">603.9180908203125</ac-monthly>
-      <ac-monthly type="float">611.4985961914062</ac-monthly>
-      <ac-monthly type="float">570.1835327148438</ac-monthly>
-      <ac-monthly type="float">566.8073120117188</ac-monthly>
-      <ac-monthly type="float">577.284912109375</ac-monthly>
-      <ac-monthly type="float">573.3583374023438</ac-monthly>
-      <ac-monthly type="float">547.8502197265625</ac-monthly>
-      <ac-monthly type="float">460.4353942871094</ac-monthly>
-      <ac-monthly type="float">458.83514404296875</ac-monthly>
-    </ac-monthly>
-    <poa-monthly type="array">
-      <poa-monthly type="float">135.77903747558594</poa-monthly>
-      <poa-monthly type="float">136.01702880859375</poa-monthly>
-      <poa-monthly type="float">172.07330322265625</poa-monthly>
-      <poa-monthly type="float">181.0430450439453</poa-monthly>
-      <poa-monthly type="float">185.826904296875</poa-monthly>
-      <poa-monthly type="float">177.51197814941406</poa-monthly>
-      <poa-monthly type="float">179.44775390625</poa-monthly>
-      <poa-monthly type="float">182.2056121826172</poa-monthly>
-      <poa-monthly type="float">179.2454376220703</poa-monthly>
-      <poa-monthly type="float">167.3966064453125</poa-monthly>
-      <poa-monthly type="float">135.13946533203125</poa-monthly>
-      <poa-monthly type="float">131.20938110351562</poa-monthly>
-    </poa-monthly>
-    <solrad-monthly type="array">
-      <solrad-monthly type="float">4.379969120025635</solrad-monthly>
-      <solrad-monthly type="float">4.85775089263916</solrad-monthly>
-      <solrad-monthly type="float">5.550751686096191</solrad-monthly>
-      <solrad-monthly type="float">6.034768104553223</solrad-monthly>
-      <solrad-monthly type="float">5.994416236877441</solrad-monthly>
-      <solrad-monthly type="float">5.9170660972595215</solrad-monthly>
-      <solrad-monthly type="float">5.788637161254883</solrad-monthly>
-      <solrad-monthly type="float">5.877600193023682</solrad-monthly>
-      <solrad-monthly type="float">5.974847793579102</solrad-monthly>
-      <solrad-monthly type="float">5.399890422821045</solrad-monthly>
-      <solrad-monthly type="float">4.504648685455322</solrad-monthly>
-      <solrad-monthly type="float">4.232560634613037</solrad-monthly>
-    </solrad-monthly>
-    <dc-monthly type="array">
-      <dc-monthly type="float">491.10845947265625</dc-monthly>
-      <dc-monthly type="float">487.4883728027344</dc-monthly>
-      <dc-monthly type="float">608.0339965820312</dc-monthly>
-      <dc-monthly type="float">631.3754272460938</dc-monthly>
-      <dc-monthly type="float">639.8583984375</dc-monthly>
-      <dc-monthly type="float">596.713623046875</dc-monthly>
-      <dc-monthly type="float">593.491943359375</dc-monthly>
-      <dc-monthly type="float">603.8831176757812</dc-monthly>
-      <dc-monthly type="float">599.4382934570312</dc-monthly>
-      <dc-monthly type="float">572.0927734375</dc-monthly>
-      <dc-monthly type="float">480.9988098144531</dc-monthly>
-      <dc-monthly type="float">478.9504089355469</dc-monthly>
-    </dc-monthly>
-    <ac-annual type="float">6486.60498046875</ac-annual>
-    <solrad-annual type="float">5.376075744628906</solrad-annual>
-  </outputs>
+    <inputs>
+        <lat>40</lat>
+        <lon>-105</lon>
+        <system-capacity>4</system-capacity>
+        <azimuth>180</azimuth>
+        <tilt>40</tilt>
+        <array-type>1</array-type>
+        <module-type>1</module-type>
+        <losses>10</losses>
+    </inputs>
+    <errors type="array"/>
+    <warnings type="array"/>
+    <version>1.0.0</version>
+    <ssc-info>
+        <version type="integer">34</version>
+        <build>Unix 64 bit GNU/C++ Feb 19 2014 11:40:21</build>
+    </ssc-info>
+    <station-info>
+        <lat type="float">40.016666412353516</lat>
+        <lon type="float">-105.25</lon>
+        <elev type="float">1634.0</elev>
+        <tz type="float">-7.0</tz>
+        <location>94018</location>
+        <city>BOULDER</city>
+        <state>CO</state>
+        <solar-resource-file>94018.tm2</solar-resource-file>
+        <distance type="integer">21235</distance>
+    </station-info>
+    <outputs>
+        <ac-monthly type="array">
+            <ac-monthly type="float">474.2408142089844</ac-monthly>
+            <ac-monthly type="float">465.6669921875</ac-monthly>
+            <ac-monthly type="float">628.282470703125</ac-monthly>
+            <ac-monthly type="float">602.544677734375</ac-monthly>
+            <ac-monthly type="float">610.743896484375</ac-monthly>
+            <ac-monthly type="float">591.1350708007812</ac-monthly>
+            <ac-monthly type="float">595.8433227539062</ac-monthly>
+            <ac-monthly type="float">610.0640869140625</ac-monthly>
+            <ac-monthly type="float">597.9025268554688</ac-monthly>
+            <ac-monthly type="float">574.707275390625</ac-monthly>
+            <ac-monthly type="float">471.6990661621094</ac-monthly>
+            <ac-monthly type="float">458.9857177734375</ac-monthly>
+        </ac-monthly>
+        <poa-monthly type="array">
+            <poa-monthly type="float">136.04103088378906</poa-monthly>
+            <poa-monthly type="float">136.04443359375</poa-monthly>
+            <poa-monthly type="float">185.7895965576172</poa-monthly>
+            <poa-monthly type="float">181.16891479492188</poa-monthly>
+            <poa-monthly type="float">185.77963256835938</poa-monthly>
+            <poa-monthly type="float">182.52105712890625</poa-monthly>
+            <poa-monthly type="float">187.89971923828125</poa-monthly>
+            <poa-monthly type="float">193.35572814941406</poa-monthly>
+            <poa-monthly type="float">187.40081787109375</poa-monthly>
+            <poa-monthly type="float">175.5979461669922</poa-monthly>
+            <poa-monthly type="float">137.59872436523438</poa-monthly>
+            <poa-monthly type="float">131.25526428222656</poa-monthly>
+        </poa-monthly>
+        <solrad-monthly type="array">
+            <solrad-monthly type="float">4.388420581817627</solrad-monthly>
+            <solrad-monthly type="float">4.858729839324951</solrad-monthly>
+            <solrad-monthly type="float">5.993212699890137</solrad-monthly>
+            <solrad-monthly type="float">6.038963794708252</solrad-monthly>
+            <solrad-monthly type="float">5.992891311645508</solrad-monthly>
+            <solrad-monthly type="float">6.084035396575928</solrad-monthly>
+            <solrad-monthly type="float">6.061281204223633</solrad-monthly>
+            <solrad-monthly type="float">6.237281322479248</solrad-monthly>
+            <solrad-monthly type="float">6.246694087982178</solrad-monthly>
+            <solrad-monthly type="float">5.664449691772461</solrad-monthly>
+            <solrad-monthly type="float">4.5866241455078125</solrad-monthly>
+            <solrad-monthly type="float">4.2340407371521</solrad-monthly>
+        </solrad-monthly>
+        <dc-monthly type="array">
+            <dc-monthly type="float">495.09564208984375</dc-monthly>
+            <dc-monthly type="float">487.5823669433594</dc-monthly>
+            <dc-monthly type="float">657.702880859375</dc-monthly>
+            <dc-monthly type="float">629.8565063476562</dc-monthly>
+            <dc-monthly type="float">638.9706420898438</dc-monthly>
+            <dc-monthly type="float">618.6126708984375</dc-monthly>
+            <dc-monthly type="float">623.68994140625</dc-monthly>
+            <dc-monthly type="float">637.5205688476562</dc-monthly>
+            <dc-monthly type="float">624.635009765625</dc-monthly>
+            <dc-monthly type="float">599.9056396484375</dc-monthly>
+            <dc-monthly type="float">492.5662841796875</dc-monthly>
+            <dc-monthly type="float">479.1076354980469</dc-monthly>
+        </dc-monthly>
+        <ac-annual type="float">6681.81640625</ac-annual>
+        <solrad-annual type="float">5.5322184562683105</solrad-annual>
+    </outputs>
 </response>
 ```
 
