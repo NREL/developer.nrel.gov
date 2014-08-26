@@ -292,7 +292,7 @@ PVWatts Version 5 is a major update to the PVWatts Version 1 algorithms that wer
           <strong>Type:</strong> string
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Default:</strong> tmy3
+          <strong>Default:</strong> tmy2
         </div>
         <div class="doc-parameter-value-field">
           <strong>Options:</strong> <i>tmy2, tmy3, intl</i>
