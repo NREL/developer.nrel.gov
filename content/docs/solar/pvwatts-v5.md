@@ -11,7 +11,7 @@ disqus: true
 # {{title}} <span class="url">({{url}})</span>
 {{summary}}
 
-Version 5 is an alternate version of the PVWatts API which uses the pvwattsv5 model from SAM.
+PVWatts Version 5 is a major update to the PVWatts Version 1 algorithms that were used in previous versions of the PVWatts web services V1-V4. Full technical details can be found in: Dobos, A. P. PVWatts Version 5 Manual. NREL/TP-6A20-62641, 2014, forthcoming.
 
 <ul id="toc"></ul>
 
@@ -164,11 +164,11 @@ Version 5 is an alternate version of the PVWatts API which uses the pvwattsv5 mo
           <tbody>
             <tr>
               <th scope="row">0</th>
-              <td>Fixed OR</td>
+              <td>Fixed - Open Rack</td>
             </tr>
             <tr>
               <th scope="row">1</th>
-              <td>Fixed Roof</td>
+              <td>Fixed - Roof Mounted</td>
             </tr>
             <tr>
               <th scope="row">2</th>
@@ -176,7 +176,7 @@ Version 5 is an alternate version of the PVWatts API which uses the pvwattsv5 mo
             </tr>
             <tr>
               <th scope="row">3</th>
-              <td>Backtracked</td>
+              <td>1-Axis Backtracking</td>
             </tr>
             <tr>
               <th scope="row">4</th>
@@ -500,72 +500,72 @@ The response is composed of service-related informational fields and the results
     <tr>
       <th class="doc-parameter-name" scope="row">poa_monthly</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Monthly plane of array irradiance values.</td>
+      <td class="doc-parameter-description">Monthly plane of array irradiance values. (kWh/m2)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">dc_monthly</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Monthly DC array output.</td>
+      <td class="doc-parameter-description">Monthly DC array output. (kWhdc)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">ac_monthly</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Monthly AC system output.</td>
+      <td class="doc-parameter-description">Monthly AC system output. (kWhac)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">ac_annual</th>
       <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
-      <td class="doc-parameter-description">Annual AC system output.</td>
+      <td class="doc-parameter-description">Annual AC system output. (kWhac)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">solrad_monthly</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Monthly solar radiation values.</td>
+      <td class="doc-parameter-description">Monthly solar radiation values. (kWh/m2/day)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">solrad_annual</th>
       <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
-      <td class="doc-parameter-description">Annual solar radiation values.</td>
+      <td class="doc-parameter-description">Annual solar radiation values. (kWh/m2/day)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">ac</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Hourly AC system output (only when timeframe=hourly)</td>
+      <td class="doc-parameter-description">Hourly AC system output (only when timeframe=hourly). (Wac)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">poa</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Hourly plane of array irradiance (only when timeframe=hourly)</td>
+      <td class="doc-parameter-description">Hourly plane of array irradiance (only when timeframe=hourly). (W/m2)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">dn</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Hourly beam normal irradiance (only when timeframe=hourly)</td>
+      <td class="doc-parameter-description">Hourly beam normal irradiance (only when timeframe=hourly). (W/m2)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">dc</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Hourly DC array output (only when timeframe=hourly)</td>
+      <td class="doc-parameter-description">Hourly DC array output (only when timeframe=hourly). (Wdc)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">df</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Hourly diffuse irradiance (only when timeframe=hourly)</td>
+      <td class="doc-parameter-description">Hourly diffuse irradiance (only when timeframe=hourly). (W/m2)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">tamb</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Hourly ambient temperature (only when timeframe=hourly)</td>
+      <td class="doc-parameter-description">Hourly ambient temperature (only when timeframe=hourly). (C)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">tcell</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Hourly module temperature (only when timeframe=hourly)</td>
+      <td class="doc-parameter-description">Hourly module temperature (only when timeframe=hourly) (C)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">wspd</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Hourly windspeed (only when timeframe=hourly)</td>
+      <td class="doc-parameter-description">Hourly windspeed (only when timeframe=hourly). (m/s)</td>
     </tr>
   </tbody>
 </table>
