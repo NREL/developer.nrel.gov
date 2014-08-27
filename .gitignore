@@ -10,3 +10,4 @@ tmp
 /config/deployed.yml
 /config/nginx/site.conf
 /.idea/
+/.ruby-*
