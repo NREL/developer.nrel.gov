@@ -236,7 +236,10 @@ Version 4 is the current version of the PVWatts API. Previous versions have been
           <strong>Default:</strong> None
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Range:</strong> <i>greater than or equal to 0 and less than 360</i>
+          <strong>Min:</strong> <i>0</i>
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Max:</strong> <i>< 360</i>
         </div>
       </td>
       <td class="doc-parameter-description">Azimuth angle (degrees).</td>
