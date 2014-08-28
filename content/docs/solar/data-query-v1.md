@@ -295,119 +295,110 @@ The output fields contain the following information regarding climate data files
 
 ```json
 {
-  "version": "1.1.0",
-  "warnings": [
-    "No intl data found for lat=40.0 lon=-105.0"
-  ],
-  "errors": [ ],
-  "metadata": { },
-  "inputs": {
-    "lat": "40",
-    "lon": "-105",
-    "radius": "50",
-    "all": "1"
+  "version" : "1.1.0",
+  "warnings" : [ "No intl data found for lat=40.0 lon=-105.0" ],
+  "errors" : [ ],
+  "metadata" : { },
+  "inputs" : {
+    "lat" : "40",
+    "lon" : "-105",
+    "radius" : "50",
+    "all" : "1"
   },
-  "outputs": {
-  "tmy2": {
-    "id": "0-94018",
-    "city": "BROOMFIELD/JEFFCO [BOULDER - SURFRAD]",
-    "state": "COLORADO",
-    "timezone": -7,
-    "lat": 40.13,
-    "lon": -105.24,
-    "elevation": 1689,
-    "distance": 24977
-  },
-  "tmy3": {
-    "id": "1-724699",
-    "city": "BROOMFIELD/JEFFCO [BOULDER - SURFRAD]",
-    "state": "COLORADO",
-    "timezone": -7,
-    "lat": 40.13,
-    "lon": -105.24,
-    "elevation": 1689,
-    "distance": 24977
-  },
-  "intl": null,
-  "all_stations": [
-    {
-      "id": "0-94018",
-      "city": "BROOMFIELD/JEFFCO [BOULDER - SURFRAD]",
-      "state": "COLORADO",
-      "timezone": -7,
-      "lat": 40.13,
-      "lon": -105.24,
-      "elevation": 1689,
-      "distance": 24977,
-      "dataset": "tmy2"
+  "outputs" : {
+    "tmy2" : {
+      "id" : "0-94018",
+      "city" : "BROOMFIELD/JEFFCO [BOULDER - SURFRAD]",
+      "state" : "COLORADO",
+      "timezone" : -7,
+      "lat" : 40.13,
+      "lon" : -105.24,
+      "elevation" : 1689,
+      "distance" : 24977
     },
-    {
-      "id": "1-724699",
-      "city": "BROOMFIELD/JEFFCO [BOULDER - SURFRAD]",
-      "state": "COLORADO",
-      "timezone": -7,
-      "lat": 40.13,
-      "lon": -105.24,
-      "elevation": 1689,
-      "distance": 24977,
-      "dataset": "tmy3"
+    "tmy3" : {
+      "id" : "1-724699",
+      "city" : "BROOMFIELD/JEFFCO [BOULDER - SURFRAD]",
+      "state" : "COLORADO",
+      "timezone" : -7,
+      "lat" : 40.13,
+      "lon" : -105.24,
+      "elevation" : 1689,
+      "distance" : 24977
     },
-    {
-      "id": "1-724666",
-      "city": "DENVER/CENTENNIAL [GOLDEN - NREL]",
-      "state": "COLORADO",
-      "timezone": -7,
-      "lat": 39.742,
-      "lon": -105.179,
-      "elevation": 1829,
-      "distance": 32650,
-      "dataset": "tmy3"
-    },
-    {
-      "id": "1-725650",
-      "city": "DENVER INTL AP",
-      "state": "COLORADO",
-      "timezone": -7,
-      "lat": 39.833,
-      "lon": -104.65,
-      "elevation": 1650,
-      "distance": 35063,
-      "dataset": "tmy3"
-    },
-    {
-      "id": "1-724695",
-      "city": "AURORA BUCKLEY FIELD ANGB",
-      "state": "COLORADO",
-      "timezone": -7,
-      "lat": 39.717,
-      "lon": -104.75,
-      "elevation": 1726,
-      "distance": 38143,
-      "dataset": "tmy3"
-    },
-    {
-      "id": "1-724769",
-      "city": "FORT COLLINS (AWOS)",
-      "state": "COLORADO",
-      "timezone": -7,
-      "lat": 40.45,
-      "lon": -105.017,
-      "elevation": 1529,
-      "distance": 50435,
-      "dataset": "tmy3"
-    },
-    {
-      "id": "1-724768",
-      "city": "GREELEY/WELD (AWOS)",
-      "state": "COLORADO",
-      "timezone": -7,
-      "lat": 40.433,
-      "lon": -104.633,
-      "elevation": 1420,
-      "distance": 57549,
-      "dataset": "tmy3"
-    }
-  ]
+    "intl" : null,
+    "all_stations" : [ {
+      "id" : "0-94018",
+      "city" : "BROOMFIELD/JEFFCO [BOULDER - SURFRAD]",
+      "state" : "COLORADO",
+      "timezone" : -7,
+      "lat" : 40.13,
+      "lon" : -105.24,
+      "elevation" : 1689,
+      "distance" : 24977,
+      "dataset" : "tmy2"
+    }, {
+      "id" : "1-724699",
+      "city" : "BROOMFIELD/JEFFCO [BOULDER - SURFRAD]",
+      "state" : "COLORADO",
+      "timezone" : -7,
+      "lat" : 40.13,
+      "lon" : -105.24,
+      "elevation" : 1689,
+      "distance" : 24977,
+      "dataset" : "tmy3"
+    }, {
+      "id" : "1-724666",
+      "city" : "DENVER/CENTENNIAL [GOLDEN - NREL]",
+      "state" : "COLORADO",
+      "timezone" : -7,
+      "lat" : 39.742,
+      "lon" : -105.179,
+      "elevation" : 1829,
+      "distance" : 32650,
+      "dataset" : "tmy3"
+    }, {
+      "id" : "1-725650",
+      "city" : "DENVER INTL AP",
+      "state" : "COLORADO",
+      "timezone" : -7,
+      "lat" : 39.833,
+      "lon" : -104.65,
+      "elevation" : 1650,
+      "distance" : 35063,
+      "dataset" : "tmy3"
+    }, {
+      "id" : "1-724695",
+      "city" : "AURORA BUCKLEY FIELD ANGB",
+      "state" : "COLORADO",
+      "timezone" : -7,
+      "lat" : 39.717,
+      "lon" : -104.75,
+      "elevation" : 1726,
+      "distance" : 38143,
+      "dataset" : "tmy3"
+    }, {
+      "id" : "1-724769",
+      "city" : "FORT COLLINS (AWOS)",
+      "state" : "COLORADO",
+      "timezone" : -7,
+      "lat" : 40.45,
+      "lon" : -105.017,
+      "elevation" : 1529,
+      "distance" : 50435,
+      "dataset" : "tmy3"
+    }, {
+      "id" : "1-724768",
+      "city" : "GREELEY/WELD (AWOS)",
+      "state" : "COLORADO",
+      "timezone" : -7,
+      "lat" : 40.433,
+      "lon" : -104.633,
+      "elevation" : 1420,
+      "distance" : 57549,
+      "dataset" : "tmy3"
+    } ]
+  }
 }
 ```
 
@@ -538,7 +529,7 @@ The output fields contain the following information regarding climate data files
 
 ## Rate Limits
 
-[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour. No more than 10,000 requests may be made in any day.
+[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour
 
 ## Errors
 

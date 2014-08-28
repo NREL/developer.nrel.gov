@@ -26,6 +26,11 @@ compile '/api-case-study/' do
   layout 'blank'
 end
 
+compile '/commre/proxy/' do
+  layout 'none'
+  filter :erb
+end
+
 compile '*' do
   if item.binary?
     # don’t filter binary items
@@ -72,6 +77,10 @@ end
 
 route '/assets/*/' do
   asset_path(item)
+end
+
+route '/commre/proxy/' do
+  '/commre/proxy.html'
 end
 
 route '*' do

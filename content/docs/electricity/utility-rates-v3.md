@@ -11,6 +11,8 @@ disqus: true
 # {{title}} <span class="url">({{url}})</span>
 {{summary}}
 
+The data source is Ventyx Research Inc. and the Energy Information Agency (EIA), and was updated with 2012 numbers.
+
 Version 3 is the current version of the utility rates API. Previous versions have been deprecated and its users are encouraged to migrate to this newly enhanced version.
 
 <ul id="toc"></ul>
@@ -211,92 +213,79 @@ The response is composed of service-related informational fields and the results
 
 ### JSON Output Format
 
-<pre>GET <a href="http://developer.nrel.gov/api/utility_rates/v3.json?api_key=DEMO_KEY&amp;lat=37&amp;lon=-92">/api/utility_rates/v3.json?api_key=DEMO_KEY&amp;lat=37&amp;lon=-92</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/utility_rates/v3.json?api_key=DEMO_KEY&lat=35.45&lon=-82.98">/api/utility_rates/v3.json?api_key=DEMO_KEY&lat=35.45&lon=-82.98</a></pre>
 
 ```json
 {
-  "inputs": {
-    "api_key": "DEMO_KEY",
-    "lat": "37",
-    "lon": "-92"
+  "inputs" : {
+    "lat" : "35.45",
+    "lon" : "-82.98"
   },
-  "errors": [
-
-  ],
-  "warnings": [
-
-  ],
-  "version": "3.0.2",
-  "metadata": {
-    "sources": [
-      "Ventyx Research (2011)",
-      "EIA (2011)"
-    ]
+  "errors" : [ ],
+  "warnings" : [ ],
+  "version" : "3.1.0",
+  "metadata" : {
+    "sources" : [ "Ventyx Research (2012)" ]
   },
-  "outputs": {
-    "company_id": "62965|61860",
-    "utility_name": "Sho ME Power Electric Coop|Howell Oregon Electric Coop Inc",
-    "utility_info": [
-      {
-        "company_id": "62965",
-        "utility_name": "Sho ME Power Electric Coop"
-      },
-      {
-        "company_id": "61860",
-        "utility_name": "Howell Oregon Electric Coop Inc"
-      }
-    ],
-    "commercial": 0.0855,
-    "industrial": 0.0755,
-    "residential": 0.0952
+  "outputs" : {
+    "company_id" : "8333|18642",
+    "utility_name" : "Haywood Electric Member Corp|Tennessee Valley Authority",
+    "utility_info" : [ {
+      "company_id" : "8333",
+      "utility_name" : "Haywood Electric Member Corp"
+    }, {
+      "company_id" : "18642",
+      "utility_name" : "Tennessee Valley Authority"
+    } ],
+    "commercial" : 0.0977,
+    "industrial" : 0.0862,
+    "residential" : 0.123
   }
 }
 ```
 
 ### XML Output Format
 
-<pre>GET <a href="http://developer.nrel.gov/api/utility_rates/v3.xml?api_key=DEMO_KEY&amp;lat=37&amp;lon=-92">/api/utility_rates/v3.xml?api_key=DEMO_KEY&amp;lat=37&amp;lon=-92</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/utility_rates/v3.xml?api_key=DEMO_KEY&lat=35.45&lon=-82.98">/api/utility_rates/v3.xml?api_key=DEMO_KEY&lat=35.45&lon=-82.98</a></pre>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <response>
   <inputs>
-    <api-key>DEMO_KEY</api-key>
-    <lat>37</lat>
-    <lon>-92</lon>
+    <lat>35.45</lat>
+    <lon>-82.98</lon>
   </inputs>
   <errors type="array"/>
   <warnings type="array"/>
-  <version>3.0.2</version>
+  <version>3.1.0</version>
   <metadata>
     <sources type="array">
-      <source>Ventyx Research (2011)</source>
-      <source>EIA (2011)</source>
+      <source>Ventyx Research (2012)</source>
     </sources>
   </metadata>
   <outputs>
-    <company-id>62965|61860</company-id>
-    <utility-name>Sho ME Power Electric Coop|Howell Oregon Electric Coop Inc</utility-name>
+    <company-id>8333|18642</company-id>
+    <utility-name>Haywood Electric Member Corp|Tennessee Valley Authority</utility-name>
     <utility-info type="array">
       <utility-info>
-        <company-id>62965</company-id>
-        <utility-name>Sho ME Power Electric Coop</utility-name>
+        <company-id>8333</company-id>
+        <utility-name>Haywood Electric Member Corp</utility-name>
       </utility-info>
       <utility-info>
-        <company-id>61860</company-id>
-        <utility-name>Howell Oregon Electric Coop Inc</utility-name>
+        <company-id>18642</company-id>
+        <utility-name>Tennessee Valley Authority</utility-name>
       </utility-info>
     </utility-info>
-    <commercial type="float">0.0855</commercial>
-    <industrial type="float">0.0755</industrial>
-    <residential type="float">0.0952</residential>
+    <commercial type="float">0.0977</commercial>
+    <industrial type="float">0.0862</industrial>
+    <residential type="float">0.123</residential>
   </outputs>
 </response>
 ```
 
 ## Rate Limits
 
-[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour. No more than 10,000 requests may be made in any day.
+[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour
 
 ## Errors
 
