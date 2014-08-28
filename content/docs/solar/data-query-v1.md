@@ -84,7 +84,10 @@ disqus: true
           <strong>Default:</strong> None
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Range:</strong> <i>-90 to 90</i>
+          <strong>Min:</strong> <i>-90</i>
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Max:</strong> <i>90</i>
         </div>
       </td>
       <td class="doc-parameter-description">The latitude for the location to use. Required if address not specified.</td>
@@ -100,10 +103,52 @@ disqus: true
           <strong>Default:</strong> None
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Range:</strong> <i>-180 to 180</i>
+          <strong>Min:</strong> <i>-180</i>
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Max:</strong> <i>180</i>
         </div>
       </td>
       <td class="doc-parameter-description">The longitude for the location to use. Required if address not specified.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">radius</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> 100
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Min:</strong> 0
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Max:</strong> 2000
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The search radius to use when searching for climate data stations (miles). Pass in radius=0 to find the closest stations regardless of the distance. A value greater than 0 is required when using in combination with all=1.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">all</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> 0
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Options:</strong> <i>0, 1</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Return all stations within the radius. The closest stations will still be returned individually.</p>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -150,7 +195,7 @@ The response is composed of service-related informational fields and information
       <th class="doc-parameter-name" scope="row">outputs</th>
       <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
       <td class="doc-parameter-description">
-        <p>Information about the closest climate data files for each supported dataset. (see <a href="#output-fields">output fields</a> for more detail)</p>
+        <p>Information about the climate data files for each supported dataset. (see <a href="#output-fields">output fields</a> for more detail)</p>
         <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
           <thead>
             <tr>
@@ -174,6 +219,10 @@ The response is composed of service-related informational fields and information
             <tr>
               <th scope="row">intl</th>
               <td>International station data</td>
+            </tr>
+            <tr>
+              <th scope="row">all_stations</th>
+              <td>Information for all stations within the radius (only if all=1 is specified)</td>
             </tr>
           </tbody>
         </table>
@@ -242,53 +291,125 @@ The output fields contain the following information regarding climate data files
 
 ### JSON Output Format
 
-<pre>GET <a href="http://developer.nrel.gov/api/solar/data_query/v1.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105">/api/solar/data_query/v1.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/solar/data_query/v1.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;radius=50&amp;all=1">/api/solar/data_query/v1.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;radius=50&amp;all=1</a></pre>
 
 ```json
 {
-  "version" : "1.0.3",
+  "version" : "1.1.0",
   "warnings" : [ "No intl data found for lat=40.0 lon=-105.0" ],
   "errors" : [ ],
-  "metadata" : {
-  },
+  "metadata" : { },
   "inputs" : {
     "lat" : "40",
-    "lon" : "-105"
+    "lon" : "-105",
+    "radius" : "50",
+    "all" : "1"
   },
   "outputs" : {
     "tmy2" : {
       "id" : "0-94018",
-      "city" : "BOULDER",
-      "state" : "CO",
-      "timezone" : -7,
-      "lat" : 40.017,
-      "lon" : -105.25,
-      "elevation" : 1634,
-      "distance" : 21238
-    },
-    "tmy3" : {
-      "id" : "1-724699",
       "city" : "BROOMFIELD/JEFFCO [BOULDER - SURFRAD]",
-      "state" : "CO",
+      "state" : "COLORADO",
       "timezone" : -7,
       "lat" : 40.13,
       "lon" : -105.24,
       "elevation" : 1689,
       "distance" : 24977
     },
-    "intl" : null
+    "tmy3" : {
+      "id" : "1-724699",
+      "city" : "BROOMFIELD/JEFFCO [BOULDER - SURFRAD]",
+      "state" : "COLORADO",
+      "timezone" : -7,
+      "lat" : 40.13,
+      "lon" : -105.24,
+      "elevation" : 1689,
+      "distance" : 24977
+    },
+    "intl" : null,
+    "all_stations" : [ {
+      "id" : "0-94018",
+      "city" : "BROOMFIELD/JEFFCO [BOULDER - SURFRAD]",
+      "state" : "COLORADO",
+      "timezone" : -7,
+      "lat" : 40.13,
+      "lon" : -105.24,
+      "elevation" : 1689,
+      "distance" : 24977,
+      "dataset" : "tmy2"
+    }, {
+      "id" : "1-724699",
+      "city" : "BROOMFIELD/JEFFCO [BOULDER - SURFRAD]",
+      "state" : "COLORADO",
+      "timezone" : -7,
+      "lat" : 40.13,
+      "lon" : -105.24,
+      "elevation" : 1689,
+      "distance" : 24977,
+      "dataset" : "tmy3"
+    }, {
+      "id" : "1-724666",
+      "city" : "DENVER/CENTENNIAL [GOLDEN - NREL]",
+      "state" : "COLORADO",
+      "timezone" : -7,
+      "lat" : 39.742,
+      "lon" : -105.179,
+      "elevation" : 1829,
+      "distance" : 32650,
+      "dataset" : "tmy3"
+    }, {
+      "id" : "1-725650",
+      "city" : "DENVER INTL AP",
+      "state" : "COLORADO",
+      "timezone" : -7,
+      "lat" : 39.833,
+      "lon" : -104.65,
+      "elevation" : 1650,
+      "distance" : 35063,
+      "dataset" : "tmy3"
+    }, {
+      "id" : "1-724695",
+      "city" : "AURORA BUCKLEY FIELD ANGB",
+      "state" : "COLORADO",
+      "timezone" : -7,
+      "lat" : 39.717,
+      "lon" : -104.75,
+      "elevation" : 1726,
+      "distance" : 38143,
+      "dataset" : "tmy3"
+    }, {
+      "id" : "1-724769",
+      "city" : "FORT COLLINS (AWOS)",
+      "state" : "COLORADO",
+      "timezone" : -7,
+      "lat" : 40.45,
+      "lon" : -105.017,
+      "elevation" : 1529,
+      "distance" : 50435,
+      "dataset" : "tmy3"
+    }, {
+      "id" : "1-724768",
+      "city" : "GREELEY/WELD (AWOS)",
+      "state" : "COLORADO",
+      "timezone" : -7,
+      "lat" : 40.433,
+      "lon" : -104.633,
+      "elevation" : 1420,
+      "distance" : 57549,
+      "dataset" : "tmy3"
+    } ]
   }
 }
 ```
 
 ### XML Output Format
 
-<pre>GET <a href="http://developer.nrel.gov/api/solar/data_query/v1.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105">/api/solar/data_query/v1.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105</a></pre>
+<pre>GET <a href="http://developer.nrel.gov/api/solar/data_query/v1.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;radius=50&amp;all=1">/api/solar/data_query/v1.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;radius=50&amp;all=1</a></pre>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <response>
-  <version>1.0.3</version>
+  <version>1.1.0</version>
   <warnings type="array">
     <warning>No intl data found for lat=40.0 lon=-105.0</warning>
   </warnings>
@@ -298,22 +419,24 @@ The output fields contain the following information regarding climate data files
   <inputs>
     <lat>40</lat>
     <lon>-105</lon>
+    <radius>50</radius>
+    <all>1</all>
   </inputs>
   <outputs>
     <tmy2>
       <id>0-94018</id>
-      <city>BOULDER</city>
-      <state>CO</state>
+      <city>BROOMFIELD/JEFFCO [BOULDER - SURFRAD]</city>
+      <state>COLORADO</state>
       <timezone type="integer">-7</timezone>
-      <lat type="float">40.017</lat>
-      <lon type="float">-105.25</lon>
-      <elevation type="integer">1634</elevation>
-      <distance type="integer">21238</distance>
+      <lat type="float">40.13</lat>
+      <lon type="float">-105.24</lon>
+      <elevation type="integer">1689</elevation>
+      <distance type="integer">24977</distance>
     </tmy2>
     <tmy3>
       <id>1-724699</id>
       <city>BROOMFIELD/JEFFCO [BOULDER - SURFRAD]</city>
-      <state>CO</state>
+      <state>COLORADO</state>
       <timezone type="integer">-7</timezone>
       <lat type="float">40.13</lat>
       <lon type="float">-105.24</lon>
@@ -321,6 +444,85 @@ The output fields contain the following information regarding climate data files
       <distance type="integer">24977</distance>
     </tmy3>
     <intl nil="true"/>
+    <all-stations type="array">
+      <all-station>
+        <id>0-94018</id>
+        <city>BROOMFIELD/JEFFCO [BOULDER - SURFRAD]</city>
+        <state>COLORADO</state>
+        <timezone type="integer">-7</timezone>
+        <lat type="float">40.13</lat>
+        <lon type="float">-105.24</lon>
+        <elevation type="integer">1689</elevation>
+        <distance type="integer">24977</distance>
+        <dataset>tmy2</dataset>
+      </all-station>
+      <all-station>
+        <id>1-724699</id>
+        <city>BROOMFIELD/JEFFCO [BOULDER - SURFRAD]</city>
+        <state>COLORADO</state>
+        <timezone type="integer">-7</timezone>
+        <lat type="float">40.13</lat>
+        <lon type="float">-105.24</lon>
+        <elevation type="integer">1689</elevation>
+        <distance type="integer">24977</distance>
+        <dataset>tmy3</dataset>
+      </all-station>
+      <all-station>
+        <id>1-724666</id>
+        <city>DENVER/CENTENNIAL [GOLDEN - NREL]</city>
+        <state>COLORADO</state>
+        <timezone type="integer">-7</timezone>
+        <lat type="float">39.742</lat>
+        <lon type="float">-105.179</lon>
+        <elevation type="integer">1829</elevation>
+        <distance type="integer">32650</distance>
+        <dataset>tmy3</dataset>
+      </all-station>
+      <all-station>
+        <id>1-725650</id>
+        <city>DENVER INTL AP</city>
+        <state>COLORADO</state>
+        <timezone type="integer">-7</timezone>
+        <lat type="float">39.833</lat>
+        <lon type="float">-104.65</lon>
+        <elevation type="integer">1650</elevation>
+        <distance type="integer">35063</distance>
+        <dataset>tmy3</dataset>
+      </all-station>
+      <all-station>
+        <id>1-724695</id>
+        <city>AURORA BUCKLEY FIELD ANGB</city>
+        <state>COLORADO</state>
+        <timezone type="integer">-7</timezone>
+        <lat type="float">39.717</lat>
+        <lon type="float">-104.75</lon>
+        <elevation type="integer">1726</elevation>
+        <distance type="integer">38143</distance>
+        <dataset>tmy3</dataset>
+      </all-station>
+      <all-station>
+        <id>1-724769</id>
+        <city>FORT COLLINS (AWOS)</city>
+        <state>COLORADO</state>
+        <timezone type="integer">-7</timezone>
+        <lat type="float">40.45</lat>
+        <lon type="float">-105.017</lon>
+        <elevation type="integer">1529</elevation>
+        <distance type="integer">50435</distance>
+        <dataset>tmy3</dataset>
+      </all-station>
+      <all-station>
+        <id>1-724768</id>
+        <city>GREELEY/WELD (AWOS)</city>
+        <state>COLORADO</state>
+        <timezone type="integer">-7</timezone>
+        <lat type="float">40.433</lat>
+        <lon type="float">-104.633</lon>
+        <elevation type="integer">1420</elevation>
+        <distance type="integer">57549</distance>
+        <dataset>tmy3</dataset>
+      </all-station>
+    </all-stations>
   </outputs>
 </response>
 ```
