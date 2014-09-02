@@ -477,7 +477,7 @@ The response is composed of service-related informational fields and the results
     <tr>
       <th class="doc-parameter-name" scope="row">station_info</th>
       <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
-      <td class="doc-parameter-description">Information about the climate data used in the simulation.</td>
+      <td class="doc-parameter-description">Information about the climate data used in the simulation. (see <a href="#station-info-fields">station info fields</a> for more detail)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">outputs</th>
@@ -488,6 +488,67 @@ The response is composed of service-related informational fields and the results
     </tr>
   </tbody>
 </table>
+<br>
+
+### Station Info Fields
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">lat</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
+      <td class="doc-parameter-description">Latitude of the climate station.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">lon</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
+      <td class="doc-parameter-description">Longitude of the climate station.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">elev</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
+      <td class="doc-parameter-description">Elevation of the climate station. (meters)</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">tz</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
+      <td class="doc-parameter-description">Timezone offset from GMT.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">location</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> string</td>
+      <td class="doc-parameter-description">ID of the climate station.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">city</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> string</td>
+      <td class="doc-parameter-description">City where climate station is located.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">state</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> string</td>
+      <td class="doc-parameter-description">State where climate station is located.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">solar_resource_file</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> string</td>
+      <td class="doc-parameter-description">Solar resource filename.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">distance</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> integer</td>
+      <td class="doc-parameter-description">Distance to the climate station. (meters)</td>
+    </tr>
+  </tbody>
+</table>
+<br>
 
 ### Output Fields
 
