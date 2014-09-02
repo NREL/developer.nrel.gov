@@ -544,7 +544,7 @@ The response is composed of service-related informational fields and the results
     <tr>
       <th class="doc-parameter-name" scope="row">distance</th>
       <td class="doc-parameter-value"><strong>Type:</strong> integer</td>
-      <td class="doc-parameter-description">Distance to the climate station. (meters)</td>
+      <td class="doc-parameter-description">Distance between the input location and the climate station. (meters)</td>
     </tr>
   </tbody>
 </table>
