@@ -133,7 +133,7 @@ PVWatts Version 5 is a major update to the PVWatts Version 1 algorithms that wer
           <strong>Default:</strong> None
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Range:</strong> <i>0 to 50</i>
+          <strong>Range:</strong> <i>-5 to 99</i>
         </div>
       </td>
       <td class="doc-parameter-description">System losses.</td>
