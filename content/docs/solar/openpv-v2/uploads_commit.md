@@ -1,5 +1,5 @@
 ---
-title: Uploads Precommit API
+title: Uploads Commit API
 summary: Takes array of JSON data representing install data, verifies the validity of the data, creates an uploads record and one install record for each install and returns JSON array of the install data by row.
 url: POST /api/open_pv/v2/uploads/commit
 method: GET
