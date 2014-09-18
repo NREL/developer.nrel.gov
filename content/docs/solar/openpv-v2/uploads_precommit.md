@@ -164,38 +164,6 @@ method: GET
   </tbody>
 </table>
 
-### Output Record Fields
-
-<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
-  <thead>
-    <tr>
-      <th class="doc-parameters-name" scope="col">Field</th>
-      <th class="doc-parameters-value" scope="col">Value</th>
-      <th class="doc-parameters-description" scope="col">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th class="doc-parameter-name" scope="row">data</th>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> array
-        </div>
-      </td>
-      <td class="doc-parameter-description">An array of records containing the data for the site. The first row lists the field names.</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">headers</th>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> record
-        </div>
-      </td>
-      <td class="doc-parameter-description">List of header names used in the associated output data.</td>
-    </tr>
-  </tbody>
-</table>
-
 ## Examples
 
 ### JSON Output Format
