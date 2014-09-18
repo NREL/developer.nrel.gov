@@ -1,7 +1,7 @@
 ---
 title: Uploads Precommit API
-summary: Takes array of JSON data representing install data, verifies the validity of the data and returns JSON array of the install data by row.
-url: POST /api/open_pv/v2/uploads/precommit
+summary: Takes array of JSON data representing install data, verifies the validity of the data, creates an uploads record and one install record for each install and returns JSON array of the install data by row.
+url: POST /api/open_pv/v2/uploads/commit
 method: GET
 ---
 
@@ -37,6 +37,28 @@ method: GET
 			  <p>Your developer API key. See <a href="/doc/api-key">API keys</a> for more information.</p>
 			</td>
 		</tr>
+		<tr>
+      <th class="doc-parameter-name" scope="row">userId</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> integer</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Valid OpenPV web application user ID</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">orgId</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> integer</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Valid OpenPV web application organization ID</p>
+      </td>
+    </tr>
 		<tr>
 			<th class="doc-parameter-name" scope="row">data</th>
 			<td class="doc-parameter-required">Yes</td>
@@ -168,12 +190,14 @@ method: GET
 
 ### JSON Output Format
 
-<pre>POST <a href="https://developer.nrel.gov/api/open_pv/v2/uploads/precommit?api_key=DEMO_KEY"</a></pre>
+<pre>POST <a href="https://developer.nrel.gov/api/open_pv/v2/uploads/commit?api_key=DEMO_KEY"</a></pre>
 
 ```json
 {
   "inputs":{
     "api_key":"DEMO_KEY",
+    "userId" : 1,
+    "orgId" : 1,
     "data" : "[{\"rowId\" : 0,\"cost\" : 39632, \"city\" : \"Rancho Santa Fe\", \"zipcode\" : \"92067\", \"state\" : \"CA\", \"date_installed\" : \"2011-06-22\", \"address1\" : \"\", \"size_kw\" : 7.848, \"installer\" : \"Home Energy Systems\", \"incentive_amount\" : \"1366\", \"install_type\" : \"Residential\"}, {\"rowId\" : 1, \"cost\" : 56058.18, \"city\" : \"Rancho Santa Fe\", \"zipcode\" : \"92067\", \"state\" : \"CA\", \"date_installed\" : \"2011-06-27\", \"address1\" : \"\", \"size_kw\" : 8.279999999999999, \"installer\" : \"HelioPower, Inc.\", \"incentive_amount\" : \"13334\", \"install_type\" : \"Residential\"}]"
   },
   "metadata":{
@@ -184,7 +208,7 @@ method: GET
   },
   "warnings":[],
   "errors":[],
-  "status": 200,
+  "status": 201,
   "result":[
     {
       "rowId" : 0,
