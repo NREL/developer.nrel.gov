@@ -1,7 +1,7 @@
 ---
-title: Contributors Contributors Summary API
-summary: For every distinct organization in the system, a contributors record matching that organization is returned with id, name, city, state and website address.
-url: /api/open_pv/v2/contributors/contributors_summary
+title: Contributors Contributors By State API
+summary: When no state parameter is passed, return the number of contributors that exist for every state that has installs. When a state parameter is passed, return a list of all organizations for that state by organization ID with each organizations install count and organization details.
+url: /api/open_pv/v2/contributors/contributors_by_state
 method: GET
 ---
 
@@ -37,6 +37,17 @@ method: GET
 			  <p>Your developer API key. See <a href="/doc/api-key">API keys</a> for more information.</p>
 			</td>
 		</tr>
+		<tr>
+      <th class="doc-parameter-name" scope="row">state</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Valid uppercase two character state code</p>
+      </td>
+    </tr>
 	</tbody>
 </table>
 
@@ -80,7 +91,7 @@ method: GET
       <th class="doc-parameter-name" scope="row">result</th>
       <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
       <td class="doc-parameter-description">
-        List of organizations by id, name, city, state and website address.
+        Either a list of states and the number of contributors in those states (only states with contributors are returned) or a list of organization IDs for the state passed with install counts and organization information.
       </td>
     </tr>
   </tbody>
@@ -90,7 +101,7 @@ method: GET
 
 ### JSON Output Format
 
-<pre>GET https://developer.nrel.gov/api/open_pv/v2/contributors/contributors_summary?api_key=DEMO_KEY</pre>
+<pre>GET https://developer.nrel.gov/api/open_pv/v2/contributors/contributors_by_state?api_key=DEMO_KEY</pre>
 
 ```json
 {
@@ -100,31 +111,52 @@ method: GET
   "metadata":{
     "version":"2.0.0",
     "resultset":{
-      "count":200
+      "count":1
     }
   },
   "warnings":[],
   "errors":[],
   "status": 200,
-  "result":[
+  "result":
     {
-      "orgId" : 1,
-      "orgName" : "Colorado Solar Systems",
-      "city" : "Denver",
-      "state" : "CO",
-      "website" : "www.coloradosolarsystems.com"
-    },
-    {
-      "orgId" : 2, 
-      "orgName" : "Texas Solar Systems",
-      "city" : "Waxahachee",
-      "state" : "TX",
-      "website" : "www.texassolarsys.com"
+      "CA" : 121,
+      "CO" : 421,
+      .
+      .
+      .
     }
-    .
-    .
-    .
-  ]
+}
+```
+<br />
+<pre>GET https://developer.nrel.gov/api/open_pv/v2/contributors/contributors_by_state?api_key=DEMO_KEY&state=CO</pre>
+
+```json
+{
+  "inputs":{
+    "api_key":"DEMO_KEY",
+    "state":"CO"
+  },
+  "metadata":{
+    "version":"2.0.0",
+    "resultset":{
+      "count":1
+    }
+  },
+  "warnings":[],
+  "errors":[],
+  "status": 200,
+  "result":
+    {
+      "CO" : {
+        "8" : {
+          "installs" : 1,
+          "name" : "Colorado Solar Energy Industries Association",
+          "city" : "Louisville",
+          "state" : "CO",
+          "website_address" : "http://www.coseia.org/"
+        }
+      }
+    }
 }
 ```
 
