@@ -1,6 +1,6 @@
 ---
-title: Contributors Contributors By ID API
-summary: For every distinct organization in the system, a contributors record matching that organization is returned with id and name.
+title: Contributors Contributors Summary API
+summary: For every distinct organization in the system, a contributors record matching that organization is returned with id, name, city, state and website address.
 url: /api/open_pv/v2/contributors/contributors_by_id
 method: GET
 ---
@@ -80,7 +80,7 @@ method: GET
       <th class="doc-parameter-name" scope="row">result</th>
       <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
       <td class="doc-parameter-description">
-        List of organizations by id and name.
+        List of organizations by id, name, city, state and website address.
       </td>
     </tr>
   </tbody>
@@ -90,7 +90,7 @@ method: GET
 
 ### JSON Output Format
 
-<pre>GET https://developer.nrel.gov/api/open_pv/v2/contributors/contributors_by_id?api_key=DEMO_KEY</pre>
+<pre>GET https://developer.nrel.gov/api/open_pv/v2/contributors/contributors_summary?api_key=DEMO_KEY</pre>
 
 ```json
 {
@@ -100,7 +100,7 @@ method: GET
   "metadata":{
     "version":"2.0.0",
     "resultset":{
-      "count":2
+      "count":200
     }
   },
   "warnings":[],
@@ -109,12 +109,21 @@ method: GET
   "result":[
     {
       "orgId" : 1,
-      "orgName" : "Colorado Solar Systems"
+      "orgName" : "Colorado Solar Systems",
+      "city" : "Denver",
+      "state" : "CO",
+      "website" : "www.coloradosolarsystems.com"
     },
     {
       "orgId" : 2, 
-      "orgName" : "Texas Solar Systems"
+      "orgName" : "Texas Solar Systems",
+      "city" : "Waxahachee",
+      "state" : "TX",
+      "website" : "www.texassolarsys.com"
     }
+    .
+    .
+    .
   ]
 }
 ```
