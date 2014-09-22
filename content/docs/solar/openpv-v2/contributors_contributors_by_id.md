@@ -90,7 +90,7 @@ method: GET
 
 ### JSON Output Format
 
-<pre>GET <a href="https://developer.nrel.gov/api/open_pv/v2/contributors/contributors_by_id?api_key=DEMO_KEY"</a></pre>
+<pre>GET https://developer.nrel.gov/api/open_pv/v2/contributors/contributors_by_id?api_key=DEMO_KEY</pre>
 
 ```json
 {
@@ -121,11 +121,11 @@ method: GET
 
 <h2 id="rate-limits">Rate Limits</h2>
 
-[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour</p>
+[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour.
 
 <h2 id="errors">Errors</h2>
 
-[Standard errors](/docs/errors) may be returned. In addition, the following service-specific errors may be returned:</p>
+[Standard errors](/docs/errors) may be returned. In addition, the following service-specific errors may be returned:
 
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
   <thead>

@@ -63,12 +63,12 @@ method: POST
 			<th class="doc-parameter-name" scope="row">data</th>
 			<td class="doc-parameter-required">Yes</td>
 			<td class="doc-parameter-value">
-			  <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited hashed array</div>
+			  <div class="doc-parameter-value-field"><strong>Type:</strong> collection</div>
 			  <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
 			  <div class="doc-parameter-value-field"><strong>Options:</strong> None</div>
 			</td>
 			<td class="doc-parameter-description">
-			  <p>A JSON array of hashes, each hash represents a single install data record. These are the minimum required fields. You can include additional fields of your own</p>
+			  <p>A JSON array of hashes, each hash represents a single install data record. The following are the minimum required key/values in each hash. You can include additional optional key/values of your own.</p>
 			  <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
 			    <thead>
             <tr>
@@ -190,7 +190,7 @@ method: POST
 
 ### JSON Output Format
 
-<pre>POST <a href="https://developer.nrel.gov/api/open_pv/v2/uploads/commit?api_key=DEMO_KEY"</a></pre>
+<pre>POST https://developer.nrel.gov/api/open_pv/v2/uploads/commit?api_key=DEMO_KEY&data=[{"rowId":0,"cost":39632,"city":"Rancho Santa Fe","zipcode":"92067","state":"CA","date_installed":"2011-06-22","address1":"","size_kw":7.848,"installer":"Home Energy Systems","incentive_amount":1366,"install_type":"Residential"}...]</pre>
 
 ```json
 {
@@ -198,7 +198,7 @@ method: POST
     "api_key":"DEMO_KEY",
     "userId" : 1,
     "orgId" : 1,
-    "data" : "[{\"rowId\" : 0,\"cost\" : 39632, \"city\" : \"Rancho Santa Fe\", \"zipcode\" : \"92067\", \"state\" : \"CA\", \"date_installed\" : \"2011-06-22\", \"address1\" : \"\", \"size_kw\" : 7.848, \"installer\" : \"Home Energy Systems\", \"incentive_amount\" : \"1366\", \"install_type\" : \"Residential\"}, {\"rowId\" : 1, \"cost\" : 56058.18, \"city\" : \"Rancho Santa Fe\", \"zipcode\" : \"92067\", \"state\" : \"CA\", \"date_installed\" : \"2011-06-27\", \"address1\" : \"\", \"size_kw\" : 8.279999999999999, \"installer\" : \"HelioPower, Inc.\", \"incentive_amount\" : \"13334\", \"install_type\" : \"Residential\"}]"
+    "data" : "[{\"rowId\" : 0,\"cost\" : 39632, \"city\" : \"Rancho Santa Fe\", \"zipcode\" : \"92067\", \"state\" : \"CA\", \"date_installed\" : \"2011-06-22\", \"address1\" : \"\", \"size_kw\" : 7.848, \"installer\" : \"Home Energy Systems\", \"incentive_amount\" : 1366, \"install_type\" : \"Residential\"}, {\"rowId\" : 1, \"cost\" : 56058.18, \"city\" : \"Rancho Santa Fe\", \"zipcode\" : \"92067\", \"state\" : \"CA\", \"date_installed\" : \"2011-06-27\", \"address1\" : \"\", \"size_kw\" : 8.279999999999999, \"installer\" : \"HelioPower, Inc.\", \"incentive_amount\" : 13334, \"install_type\" : \"Residential\"}]"
   },
   "metadata":{
     "version":"2.0.0",
@@ -220,7 +220,7 @@ method: POST
       "date_installed" : "2011-06-22", 
       "size_kw" : 7.848, 
       "installer" : "Home Energy Systems", 
-      "incentive_amount" : "1366", 
+      "incentive_amount" : 1366, 
       "install_type" : "Residential"
     },
     {
@@ -233,7 +233,7 @@ method: POST
       "date_installed" : "2011-06-27", 
       "size_kw" : 8.279999999999999, 
       "installer" : "HelioPower, Inc.", 
-      "incentive_amount" : "13334", 
+      "incentive_amount" : 13334, 
       "install_type" : "Residential"
     }
   ]
@@ -242,11 +242,11 @@ method: POST
 
 <h2 id="rate-limits">Rate Limits</h2>
 
-[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour</p>
+[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour.
 
 <h2 id="errors">Errors</h2>
 
-[Standard errors](/docs/errors) may be returned. In addition, the following service-specific errors may be returned:</p>
+[Standard errors](/docs/errors) may be returned. In addition, the following service-specific errors may be returned:
 
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
   <thead>

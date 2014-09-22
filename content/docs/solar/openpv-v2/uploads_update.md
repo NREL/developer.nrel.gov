@@ -52,12 +52,12 @@ method: POST
 			<th class="doc-parameter-name" scope="row">changes</th>
 			<td class="doc-parameter-required">Yes</td>
 			<td class="doc-parameter-value">
-			  <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited hashed</div>
+			  <div class="doc-parameter-value-field"><strong>Type:</strong> collection</div>
 			  <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
 			  <div class="doc-parameter-value-field"><strong>Options:</strong> None</div>
 			</td>
 			<td class="doc-parameter-description">
-			  <p>A JSON hashes of changes. id with valid value must be in the changes hash.</p>
+			  <p>A JSON hash of changes. An install id with a valid value must be included in the changes hash.</p>
 			</td>
 		</tr>
 	</tbody>
@@ -113,7 +113,7 @@ method: POST
 
 ### JSON Output Format
 
-<pre>POST <a href="https://developer.nrel.gov/api/open_pv/v2/uploads/update?api_key=DEMO_KEY"</a></pre>
+<pre>POST https://developer.nrel.gov/api/open_pv/v2/uploads/update?api_key=DEMO_KEY&userId=1&changes={"id":1002,"cost":40000,"city":"Denver","zipcode":"80128","state":"CO"}</pre>
 
 ```json
 {
@@ -137,11 +137,11 @@ method: POST
 
 <h2 id="rate-limits">Rate Limits</h2>
 
-[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour</p>
+[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour.
 
 <h2 id="errors">Errors</h2>
 
-[Standard errors](/docs/errors) may be returned. In addition, the following service-specific errors may be returned:</p>
+[Standard errors](/docs/errors) may be returned. In addition, the following service-specific errors may be returned:
 
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
   <thead>
