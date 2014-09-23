@@ -1,7 +1,7 @@
 ---
-title: Contributors Contributors Summary API
-summary: For every distinct organization in the system, a contributors record matching that organization is returned with id, name, city, state and website address.
-url: GET /api/open_pv/v2/contributors/contributors_summary
+title: Installs Delete API
+summary: Removes the install specified by id.
+url: POST /api/open_pv/v2/installs/delete
 disqus: true
 
 ---
@@ -38,6 +38,28 @@ disqus: true
 			  <p>Your developer API key. See <a href="/doc/api-key">API keys</a> for more information.</p>
 			</td>
 		</tr>
+		<tr>
+      <th class="doc-parameter-name" scope="row">userId</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> integer</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Valid OpenPV web application user ID. This user ID must be associated to the install or the delete will fail.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">id</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Id of the install stored in the system.</p>
+      </td>
+    </tr>
 	</tbody>
 </table>
 
@@ -77,13 +99,6 @@ disqus: true
       <td class="doc-parameter-value"><strong>Type:</strong> array of strings</td>
       <td class="doc-parameter-description">Present only when any error messages resulting from the request.</td>
     </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">result</th>
-      <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
-      <td class="doc-parameter-description">
-        List of organizations by id, name, city, state and website address.
-      </td>
-    </tr>
   </tbody>
 </table>
 
@@ -91,41 +106,24 @@ disqus: true
 
 ### JSON Output Format
 
-<pre>GET https://developer.nrel.gov/api/open_pv/v2/contributors/contributors_summary?api_key=DEMO_KEY</pre>
+<pre>POST https://developer.nrel.gov/api/open_pv/v2/installs/delete?api_key=DEMO_KEY&userId=1&id="4c2a3ab619cd1b5d3d0000bb"</pre>
 
 ```json
 {
   "inputs":{
-    "api_key":"DEMO_KEY"
+    "api_key":"DEMO_KEY",
+    "userId":1,
+    "id":"4c2a3ab619cd1b5d3d0000bb"
   },
   "metadata":{
     "version":"2.0.0",
     "resultset":{
-      "count":200
+      "count": 1
     }
   },
   "warnings":[],
   "errors":[],
-  "status": 200,
-  "result":[
-    {
-      "orgId" : 1,
-      "orgName" : "Colorado Solar Systems",
-      "city" : "Denver",
-      "state" : "CO",
-      "website" : "www.coloradosolarsystems.com"
-    },
-    {
-      "orgId" : 2, 
-      "orgName" : "Texas Solar Systems",
-      "city" : "Waxahachee",
-      "state" : "TX",
-      "website" : "www.texassolarsys.com"
-    }
-    .
-    .
-    .
-  ]
+  "status": 200
 }
 ```
 
@@ -136,7 +134,7 @@ disqus: true
 <h2 id="errors">Errors</h2>
 
 [Standard errors](/docs/errors) may be returned. In addition, the following service-specific errors may be returned:
-
+                                                
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
   <thead>
     <tr>
@@ -147,7 +145,11 @@ disqus: true
   <tbody>
     <tr>
       <th class="doc-parameter-name" scope="row">400</th>
-      <td class="doc-parameter-description">Bad Request: When required parameters are missing.</td>
+      <td class="doc-parameter-description">Bad Request: When required parameters are missing or if the user ID specified is not associated to the install.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">404</th>
+      <td class="doc-parameter-description">Not Found: When the id specified does not match any install id's in the system.</td>
     </tr>
   </tbody>
 </table>

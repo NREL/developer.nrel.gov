@@ -1,8 +1,9 @@
 ---
 title: Uploads Precommit API
 summary: Takes array of JSON data representing install data, verifies the validity of the data and returns JSON array of the install data by row.
-url: /api/open_pv/v2/uploads/precommit
-method: POST
+url: POST /api/open_pv/v2/uploads/precommit
+disqus: true
+
 ---
 
 # {{title}} <span class="url">({{url}})</span>
@@ -12,7 +13,7 @@ method: POST
 
 ## Request URL
 
-<pre>{{method}} {{url}}<em>?parameters</em></pre>
+<pre>{{url}}<em>?parameters</em></pre>
 
 ## Request Parameters
 

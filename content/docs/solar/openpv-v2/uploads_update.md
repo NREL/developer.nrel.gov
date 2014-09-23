@@ -1,8 +1,9 @@
 ---
 title: Uploads Update API
 summary: Takes hash of JSON data representing just the changed install data, verifies the validity of the data, changes the install record and returns the id of the install updated.
-url: /api/open_pv/v2/uploads/update
-method: POST
+url: POST /api/open_pv/v2/uploads/update
+disqus: true
+
 ---
 
 # {{title}} <span class="url">({{url}})</span>
@@ -12,7 +13,7 @@ method: POST
 
 ## Request URL
 
-<pre>{{method}} {{url}}<em>?parameters</em></pre>
+<pre>{{url}}<em>?parameters</em></pre>
 
 ## Request Parameters
 

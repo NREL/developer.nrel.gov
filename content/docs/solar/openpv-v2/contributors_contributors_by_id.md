@@ -1,8 +1,9 @@
 ---
 title: Contributors Contributors By ID API
 summary: For every distinct organization in the system, a contributors record matching that organization is returned with id and name.
-url: /api/open_pv/v2/contributors/contributors_by_id
-method: GET
+url: GET /api/open_pv/v2/contributors/contributors_by_id
+disqus: true
+
 ---
 
 # {{title}} <span class="url">({{url}})</span>
@@ -12,7 +13,7 @@ method: GET
 
 ## Request URL
 
-<pre>{{method}} {{url}}<em>?parameters</em></pre>
+<pre>{{url}}<em>?parameters</em></pre>
 
 ## Request Parameters
 

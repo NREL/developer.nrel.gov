@@ -1,8 +1,9 @@
 ---
 title: Contributors Contributors By State API
 summary: When no state parameter is passed, return the number of contributors that exist for every state that has installs. When a state parameter is passed, return a list of all organizations for that state by organization ID with each organizations install count and organization details.
-url: /api/open_pv/v2/contributors/contributors_by_state
-method: GET
+url: GET /api/open_pv/v2/contributors/contributors_by_state
+disqus: true
+
 ---
 
 # {{title}} <span class="url">({{url}})</span>
@@ -12,7 +13,7 @@ method: GET
 
 ## Request URL
 
-<pre>{{method}} {{url}}<em>?parameters</em></pre>
+<pre>{{url}}<em>?parameters</em></pre>
 
 ## Request Parameters
 

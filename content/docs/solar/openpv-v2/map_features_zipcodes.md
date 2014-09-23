@@ -1,8 +1,9 @@
 ---
 title: Map Features Zip Codes API
 summary: Returns a collection for map features scaled at the zip code level.
-url: /api/open_pv/v2/map_features/zipcodes
-method: GET
+url: GET /api/open_pv/v2/map_features/zipcodes
+disqus: true
+
 ---
 
 # {{title}} <span class="url">({{url}})</span>
@@ -12,7 +13,7 @@ method: GET
 
 ## Request URL
 
-<pre>{{method}} {{url}}<em>?parameters</em></pre>
+<pre>{{url}}<em>?parameters</em></pre>
 
 ## Request Parameters
 

@@ -1,7 +1,7 @@
 ---
-title: Contributors Contributors Summary API
-summary: For every distinct organization in the system, a contributors record matching that organization is returned with id, name, city, state and website address.
-url: GET /api/open_pv/v2/contributors/contributors_summary
+title: Installs Clear Cache API
+summary: Clears all summary and rankings caches.
+url: GET /api/open_pv/v2/installs/clear_cache
 disqus: true
 
 ---
@@ -77,13 +77,6 @@ disqus: true
       <td class="doc-parameter-value"><strong>Type:</strong> array of strings</td>
       <td class="doc-parameter-description">Present only when any error messages resulting from the request.</td>
     </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">result</th>
-      <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
-      <td class="doc-parameter-description">
-        List of organizations by id, name, city, state and website address.
-      </td>
-    </tr>
   </tbody>
 </table>
 
@@ -91,7 +84,7 @@ disqus: true
 
 ### JSON Output Format
 
-<pre>GET https://developer.nrel.gov/api/open_pv/v2/contributors/contributors_summary?api_key=DEMO_KEY</pre>
+<pre>GET https://developer.nrel.gov/api/open_pv/v2/installs/clear_cache?api_key=DEMO_KEY</pre>
 
 ```json
 {
@@ -100,32 +93,9 @@ disqus: true
   },
   "metadata":{
     "version":"2.0.0",
-    "resultset":{
-      "count":200
-    }
+    "resultset":{}
   },
-  "warnings":[],
-  "errors":[],
-  "status": 200,
-  "result":[
-    {
-      "orgId" : 1,
-      "orgName" : "Colorado Solar Systems",
-      "city" : "Denver",
-      "state" : "CO",
-      "website" : "www.coloradosolarsystems.com"
-    },
-    {
-      "orgId" : 2, 
-      "orgName" : "Texas Solar Systems",
-      "city" : "Waxahachee",
-      "state" : "TX",
-      "website" : "www.texassolarsys.com"
-    }
-    .
-    .
-    .
-  ]
+  "status":200,
 }
 ```
 
@@ -135,19 +105,4 @@ disqus: true
 
 <h2 id="errors">Errors</h2>
 
-[Standard errors](/docs/errors) may be returned. In addition, the following service-specific errors may be returned:
-
-<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
-  <thead>
-    <tr>
-      <th class="doc-parameters-name" scope="col" style="width: 100px;">HTTP Status Code</th>
-      <th class="doc-parameters-required" scope="col">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th class="doc-parameter-name" scope="row">400</th>
-      <td class="doc-parameter-description">Bad Request: When required parameters are missing.</td>
-    </tr>
-  </tbody>
-</table>
+[Standard errors](/docs/errors) may be returned.
