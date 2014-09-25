@@ -11,8 +11,6 @@ disqus: true
 # {{title}} <span class="url">({{url}})</span>
 {{summary}}
 
-Version 4 is the current version of the PVWatts API. Previous versions have been deprecated and its users are encouraged to migrate to this newly enhanced version.
-
 <ul id="toc"></ul>
 
 ## Request URL
