@@ -11,7 +11,11 @@ disqus: true
 # {{title}} <span class="url">({{url}})</span>
 {{summary}}
 
-PVWatts Version 5 is a major update to the algorithms that were used in previous versions of the PVWatts web services. Compared with PVWatts Version 4, our new update will predict roughly 7-9% greater energy output for a fixed tilt system given similar assumptions. The new results much more closely match measured system performance data, and address concerns that PVWatts Version 4 tended to under-predict PV system performance given the default input assumptions. Full technical details can be found in: Dobos, A. P. PVWatts Version 5 Manual. NREL/TP-6A20-62641, 2014, forthcoming.
+PVWatts Version 5 is a major update to the algorithms that were used in previous versions of the PVWatts web services. Compared with PVWatts Version 4, our new update will predict roughly 7-9% greater energy output for a fixed tilt system given similar assumptions. The new results much more closely match measured system performance data, and address concerns that PVWatts Version 4 tended to under-predict PV system performance given the default input assumptions. 
+
+PVWatts uses the NREL NSRDB 1961-1990 TMY2 dataset as the default option. However, you can select to use NREL NSRDB 1991-2005 TMY3 data. 
+
+Full technical details can be found in: Dobos, A. P. PVWatts Version 5 Manual. NREL/TP-6A20-62641, 2014, forthcoming.
 
 <ul id="toc"></ul>
 
