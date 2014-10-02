@@ -11,6 +11,8 @@ disqus: true
 # {{title}} <span class="url">({{url}})</span>
 {{summary}}
 
+PVWatts Version 4 has been replaced by [version 5](/docs/solar/pvwatts-v5/). While we will continue to make the V4 API available, it is recommended that people switch to version 5 to use the most up-to-date models available.
+  
 <ul id="toc"></ul>
 
 ## Request URL
