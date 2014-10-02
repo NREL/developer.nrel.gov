@@ -15,7 +15,7 @@ PVWatts Version 5 is a major update to the algorithms that were used in previous
 
 PVWatts uses the NREL NSRDB 1961-1990 TMY2 dataset as the default option. However, you can select to use NREL NSRDB 1991-2005 TMY3 data. 
 
-Full technical details can be found in: Dobos, A. P. PVWatts Version 5 Manual. NREL/TP-6A20-62641, 2014, forthcoming.
+Full technical details can be found in: Dobos, A. P. <a href="http://www.nrel.gov/docs/fy14osti/62641.pdf" target="_blank">PVWatts Version 5 Manual</a>. NREL/TP-6A20-62641, 2014.
 
 <ul id="toc"></ul>
 
