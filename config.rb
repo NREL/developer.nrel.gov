@@ -1,7 +1,14 @@
 # Load environment variables from ".env" file. Also allow overrides from
 # ".env.build" or ".env.development" depending on the environment.
 require "dotenv"
-Dotenv.load(File.expand_path("../.env.#{config.environment}", __FILE__), File.expand_path("../.env", __FILE__))
+dotenv_paths = [
+  File.expand_path("../.env.#{config.environment}", __FILE__),
+  File.expand_path("../.env", __FILE__),
+]
+unless(ENV["DOTENV_PATH"].to_s.empty?)
+  dotenv_paths.unshift(ENV["DOTENV_PATH"])
+end
+Dotenv.load(*dotenv_paths)
 
 ###
 # Compass
@@ -61,6 +68,10 @@ helpers do
 
     trail.reverse
   end
+end
+
+unless(ENV["BUILD_DIR"].to_s.empty?)
+  set :build_dir, ENV["BUILD_DIR"]
 end
 
 set :css_dir, 'assets/stylesheets'
