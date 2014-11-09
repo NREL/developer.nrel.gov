@@ -140,7 +140,7 @@ Full technical details can be found in: Dobos, A. P. <a href="http://www.nrel.go
           <strong>Range:</strong> <i>-5 to 99</i>
         </div>
       </td>
-      <td class="doc-parameter-description">System losses. (percent)</td>
+      <td class="doc-parameter-description">System losses (percent).</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">array_type</th>
