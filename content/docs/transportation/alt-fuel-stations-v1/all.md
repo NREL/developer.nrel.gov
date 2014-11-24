@@ -489,7 +489,7 @@ The following query parameters may be passed in the request to control the outpu
           <strong>Default:</strong> <em>all</em>
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Options:</strong> <em>all, 1, 2, dc_fast</em>
+          <strong>Options:</strong> <em>all, 1, 2, dc_fast, legacy</em>
         </div>
       </td>
       <td class="doc-parameter-description">
@@ -517,6 +517,10 @@ The following query parameters may be passed in the request to control the outpu
             <tr>
               <th scope="row">dc_fast</th>
               <td>DC Fast Charging</td>
+            </tr>
+            <tr>
+              <th scope="row">legacy</th>
+              <td>Legacy charging systems (such as inductive paddles)</td>
             </tr>
           </tbody>
         </table>
