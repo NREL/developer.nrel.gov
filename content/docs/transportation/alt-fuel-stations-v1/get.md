@@ -592,6 +592,59 @@ The response is composed of the fuel station matching the requested query. The s
       </td>
     </tr>
     <tr>
+      <th class="doc-parameter-name" scope="row">ev_connector_types</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For electric stations, an array of strings identifying the connector types available at this station. Valid connector types are:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">all</th>
+              <td>Include all electric connector types</td>
+            </tr>
+            <tr>
+              <th scope="row">NEMA515</th>
+              <td>NEMA 5-15 (Level 1)</td>
+            </tr>
+            <tr>
+              <th scope="row">NEMA520</th>
+              <td>NEMA 5-20 (Level 1)</td>
+            </tr>
+            <tr>
+              <th scope="row">NEMA1450</th>
+              <td>NEMA 14-50 (Level 1)</td>
+            </tr>
+            <tr>
+              <th scope="row">J1772</th>
+              <td>J1772 (Level 2)</td>
+            </tr>
+            <tr>
+              <th scope="row">CHADEMO</th>
+              <td>CHAdeMO (DC fast charging)</td>
+            </tr>
+            <tr>
+              <th scope="row">J1772COMBO</th>
+              <td>SAE J1772 Combo (DC fast charging)</td>
+            </tr>
+            <tr>
+              <th scope="row">TESLA</th>
+              <td>Tesla (DC fast charging)</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
       <th class="doc-parameter-name" scope="row">ev_network</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
