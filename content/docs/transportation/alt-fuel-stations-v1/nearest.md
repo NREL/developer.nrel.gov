@@ -558,7 +558,7 @@ The following query parameters may be passed in the request to control the outpu
           <strong>Default:</strong> <em>all</em>
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Options:</strong> <em>all, 1, 2, dc_fast</em>
+          <strong>Options:</strong> <em>all, 1, 2, dc_fast, legacy</em>
         </div>
       </td>
       <td class="doc-parameter-description">
@@ -586,6 +586,70 @@ The following query parameters may be passed in the request to control the outpu
             <tr>
               <th scope="row">dc_fast</th>
               <td>DC Fast Charging</td>
+            </tr>
+            <tr>
+              <th scope="row">legacy</th>
+              <td>Legacy charging systems (such as inductive paddles)</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">ev_connector_type</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> <em>all</em>
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Options:</strong> <em>all, NEMA515, NEMA520, NEMA1450, J1772, CHADEMO, J1772COMBO, TESLA</em>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Return only electric charging stations that provide the given connector types.</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+          <thead>
+            <tr>
+              <th scope="col">Option</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">all</th>
+              <td>Include all electric connector types</td>
+            </tr>
+            <tr>
+              <th scope="row">NEMA515</th>
+              <td>NEMA 5-15 (Level 1)</td>
+            </tr>
+            <tr>
+              <th scope="row">NEMA520</th>
+              <td>NEMA 5-20 (Level 1)</td>
+            </tr>
+            <tr>
+              <th scope="row">NEMA1450</th>
+              <td>NEMA 14-50 (Level 1)</td>
+            </tr>
+            <tr>
+              <th scope="row">J1772</th>
+              <td>J1772 (Level 2)</td>
+            </tr>
+            <tr>
+              <th scope="row">CHADEMO</th>
+              <td>CHAdeMO (DC fast charging)</td>
+            </tr>
+            <tr>
+              <th scope="row">J1772COMBO</th>
+              <td>SAE J1772 Combo (DC fast charging)</td>
+            </tr>
+            <tr>
+              <th scope="row">TESLA</th>
+              <td>Tesla (DC fast charging)</td>
             </tr>
           </tbody>
         </table>
@@ -1243,6 +1307,59 @@ The individual fuel station records are returned in order of ascending distance 
       </td>
     </tr>
     <tr>
+      <th class="doc-parameter-name" scope="row">ev_connector_types</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For electric stations, an array of strings identifying the connector types available at this station. Valid connector types are:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">all</th>
+              <td>Include all electric connector types</td>
+            </tr>
+            <tr>
+              <th scope="row">NEMA515</th>
+              <td>NEMA 5-15 (Level 1)</td>
+            </tr>
+            <tr>
+              <th scope="row">NEMA520</th>
+              <td>NEMA 5-20 (Level 1)</td>
+            </tr>
+            <tr>
+              <th scope="row">NEMA1450</th>
+              <td>NEMA 14-50 (Level 1)</td>
+            </tr>
+            <tr>
+              <th scope="row">J1772</th>
+              <td>J1772 (Level 2)</td>
+            </tr>
+            <tr>
+              <th scope="row">CHADEMO</th>
+              <td>CHAdeMO (DC fast charging)</td>
+            </tr>
+            <tr>
+              <th scope="row">J1772COMBO</th>
+              <td>SAE J1772 Combo (DC fast charging)</td>
+            </tr>
+            <tr>
+              <th scope="row">TESLA</th>
+              <td>Tesla (DC fast charging)</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
       <th class="doc-parameter-name" scope="row">ev_network</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -1489,7 +1606,7 @@ The individual fuel station records are returned in order of ascending distance 
 
 ### JSON Output Format
 
-<pre>GET <a href="http://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.json?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1</a></pre>
+<pre>GET <a href="/api/alt-fuel-stations/v1/nearest.json?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.json?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1</a></pre>
 
 ```json
 {
@@ -1554,7 +1671,7 @@ The individual fuel station records are returned in order of ascending distance 
 
 ### XML Output Format
 
-<pre>GET <a href="http://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.xml?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.xml?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1</a></pre>
+<pre>GET <a href="/api/alt-fuel-stations/v1/nearest.xml?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.xml?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1</a></pre>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1620,7 +1737,7 @@ The individual fuel station records are returned in order of ascending distance 
 
 ### CSV Output Format
 
-<pre>GET <a href="http://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.csv?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.csv?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1</a></pre>
+<pre>GET <a href="/api/alt-fuel-stations/v1/nearest.csv?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.csv?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1</a></pre>
 
 ```
 Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Distance,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump

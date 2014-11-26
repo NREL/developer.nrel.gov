@@ -592,6 +592,59 @@ The response is composed of the fuel station matching the requested query. The s
       </td>
     </tr>
     <tr>
+      <th class="doc-parameter-name" scope="row">ev_connector_types</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For electric stations, an array of strings identifying the connector types available at this station. Valid connector types are:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">all</th>
+              <td>Include all electric connector types</td>
+            </tr>
+            <tr>
+              <th scope="row">NEMA515</th>
+              <td>NEMA 5-15 (Level 1)</td>
+            </tr>
+            <tr>
+              <th scope="row">NEMA520</th>
+              <td>NEMA 5-20 (Level 1)</td>
+            </tr>
+            <tr>
+              <th scope="row">NEMA1450</th>
+              <td>NEMA 14-50 (Level 1)</td>
+            </tr>
+            <tr>
+              <th scope="row">J1772</th>
+              <td>J1772 (Level 2)</td>
+            </tr>
+            <tr>
+              <th scope="row">CHADEMO</th>
+              <td>CHAdeMO (DC fast charging)</td>
+            </tr>
+            <tr>
+              <th scope="row">J1772COMBO</th>
+              <td>SAE J1772 Combo (DC fast charging)</td>
+            </tr>
+            <tr>
+              <th scope="row">TESLA</th>
+              <td>Tesla (DC fast charging)</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
       <th class="doc-parameter-name" scope="row">ev_network</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -784,7 +837,7 @@ The response is composed of the fuel station matching the requested query. The s
 
 ### JSON Output Format
 
-<pre>GET <a href="http://developer.nrel.gov/api/alt-fuel-stations/v1/39534.json?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/39534.json?api_key=DEMO_KEY</a></pre>
+<pre>GET <a href="/api/alt-fuel-stations/v1/39534.json?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/39534.json?api_key=DEMO_KEY</a></pre>
 
 ```json
 {
@@ -834,7 +887,7 @@ The response is composed of the fuel station matching the requested query. The s
 
 ### XML Output Format
 
-<pre>GET <a href="http://developer.nrel.gov/api/alt-fuel-stations/v1/39534.xml?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/39534.xml?api_key=DEMO_KEY</a></pre>
+<pre>GET <a href="/api/alt-fuel-stations/v1/39534.xml?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/39534.xml?api_key=DEMO_KEY</a></pre>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -883,7 +936,7 @@ The response is composed of the fuel station matching the requested query. The s
 
 ### CSV Output Format
 
-<pre>GET <a href="http://developer.nrel.gov/api/alt-fuel-stations/v1/39534.csv?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/39534.csv?api_key=DEMO_KEY</a></pre>
+<pre>GET <a href="/api/alt-fuel-stations/v1/39534.csv?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/39534.csv?api_key=DEMO_KEY</a></pre>
 
 ```
 Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump
