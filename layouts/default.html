@@ -45,6 +45,10 @@
         <%= render("breadcrumbs") %>
 
         <div id="content">
+          <div class="alert alert-error" style="margin: 1.5em 0em;">
+            <strong>Upcoming Downtime</strong> NREL's websites will be inaccessible Saturday, January 10th from 10AM - 3PM ET, with possible additional intermittent downtime from 3PM - 9PM ET. We apologize for the inconvenience. <a href="mailto:developer@nrel.gov">Contact us</a> with any questions.
+          </div>
+
           <%= yield %>
 
           <% if(@item[:disqus]) %>
