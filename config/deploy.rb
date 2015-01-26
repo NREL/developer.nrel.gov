@@ -1,5 +1,5 @@
-# config valid only for Capistrano 3.1
-lock "3.2.1"
+# config valid only for current version of Capistrano
+lock "3.3.5"
 
 set :application, "static-site"
 set :repo_url, "https://github.com/NREL/api-umbrella-static-site.git"

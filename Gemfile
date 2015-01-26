@@ -48,6 +48,6 @@ gem "rails-assets-fontawesome", "~> 4.1.0"
 
 group :development do
   # Deployment
-  gem "capistrano", "~> 3.2.1"
-  gem "capistrano-bundler", "~> 1.1.3"
+  gem "capistrano", "~> 3.3.5"
+  gem "capistrano-bundler", "~> 1.1.4"
 end
