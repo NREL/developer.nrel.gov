@@ -29,6 +29,7 @@ set :log_level, :info
 # Default value for default_env is {}
 fetch(:default_env).merge!({
   "PATH" => "/opt/api-umbrella/bin:/opt/api-umbrella/embedded/bin:$PATH",
+  "GEM_PATH" => "/opt/api-umbrella/embedded/lib/ruby/gems/*",
 })
 
 set :ssh_options, {
@@ -68,5 +69,4 @@ namespace :deploy do
       # end
     end
   end
-
 end
