@@ -1,0 +1,53 @@
+---
+title: WindExchange Projects
+summary: Query our database of WindExchange projects
+url: /api/windexchange/
+method: GET
+---
+
+<%= render("swagger_ie_warning") %>
+
+<script type="text/javascript">
+$(function () {
+  var url = window.location.search.match(/url=([^&]+)/);
+  if (url && url.length > 1) {
+    url = decodeURIComponent(url[1]);
+  } else {
+    url = "/docs/wind/windexchange/api-docs.json";
+  }
+  window.swaggerUi = new SwaggerUi({
+    url: url,
+    dom_id: "swagger-ui-container",
+    supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
+    onComplete: function(swaggerApi, swaggerUi){
+      $('pre code').each(function(i, e) {
+        hljs.highlightBlock(e)
+      });
+    },
+    onFailure: function(data) {
+      log("Unable to Load SwaggerUI");
+    },
+    docExpansion: "list",
+    sorter : "alpha"
+  });
+
+  // function addApiKeyAuthorization() {
+  //   var key = $('#input_apiKey')[0].value;
+  //   log("key: " + key);
+  //   if(key && key.trim() != "") {
+  //       log("added key " + key);
+  //       window.authorizations.add("api_key", new ApiKeyAuthorization("api_key", key, "query"));
+  //   }
+  // }
+
+  // $('#input_apiKey').change(function() {
+  //   addApiKeyAuthorization();
+  // });
+
+
+  window.swaggerUi.load();
+});
+</script>
+
+<div id="swagger-ui-container" class="swagger-ui-wrap"></div>
+
