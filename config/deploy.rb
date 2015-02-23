@@ -37,6 +37,7 @@ fetch(:default_env).merge!({
   "GEM_HOME" => "",
   "GEM_PATH" => "",
   "GEM_ROOT" => "",
+  "RUBYLIB" => "",
   "RUBYOPT" => "",
   "RUBY_ENGINE" => "",
   "RUBY_ROOT" => "",
