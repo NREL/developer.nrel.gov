@@ -29,7 +29,18 @@ set :log_level, :info
 # Default value for default_env is {}
 fetch(:default_env).merge!({
   "PATH" => "/opt/api-umbrella/bin:/opt/api-umbrella/embedded/bin:$PATH",
-  "GEM_PATH" => "/opt/api-umbrella/embedded/lib/ruby/gems/*",
+
+  # Reset Ruby related environment variables. This is in case the system being
+  # deployed to has something like rvm/rbenv/chruby in place. This ensures that
+  # we're using our API Umbrella bundled version of Ruby on PATH rather than
+  # another version.
+  "GEM_HOME" => "",
+  "GEM_PATH" => "",
+  "GEM_ROOT" => "",
+  "RUBYOPT" => "",
+  "RUBY_ENGINE" => "",
+  "RUBY_ROOT" => "",
+  "RUBY_VERSION" => "",
 })
 
 set :ssh_options, {
