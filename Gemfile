@@ -32,7 +32,7 @@ gem "kramdown", "~> 1.4.1"
 gem "multi_json", "~> 1.10.1"
 
 # jQuery
-gem "rails-assets-jquery", "~> 1.11.1"
+gem "rails-assets-jquery", "~> 1.11.2"
 
 # Bootstrap
 gem "bootstrap-sass", "~> 3.2.0.1"

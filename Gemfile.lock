@@ -122,7 +122,7 @@ GEM
     rails-assets-bootstrap (3.2.0)
       rails-assets-jquery (>= 1.9.0)
     rails-assets-fontawesome (4.1.0)
-    rails-assets-jquery (1.11.1)
+    rails-assets-jquery (1.11.2)
     rails-assets-parsleyjs (2.0.3)
     rake (10.3.2)
     rb-fsevent (0.9.4)
@@ -172,7 +172,7 @@ DEPENDENCIES
   multi_json (~> 1.10.1)
   rails-assets-bootbox (~> 4.3.0)
   rails-assets-fontawesome (~> 4.1.0)
-  rails-assets-jquery (~> 1.11.1)
+  rails-assets-jquery (~> 1.11.2)
   rails-assets-parsleyjs (~> 2.0.3)
   rake (~> 10.3.2)
   tzinfo-data
