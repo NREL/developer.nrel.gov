@@ -34,14 +34,9 @@ fetch(:default_env).merge!({
   # deployed to has something like rvm/rbenv/chruby in place. This ensures that
   # we're using our API Umbrella bundled version of Ruby on PATH rather than
   # another version.
-  "GEM_HOME" => "",
-  "GEM_PATH" => "",
-  "GEM_ROOT" => "",
-  "RUBYLIB" => "",
-  "RUBYOPT" => "",
-  "RUBY_ENGINE" => "",
+  "GEM_PATH" => "/opt/api-umbrella/embedded/lib/ruby/gems/*",
   "RUBY_ROOT" => "",
-  "RUBY_VERSION" => "",
+  "RUBYLIB" => "",
 })
 
 set :ssh_options, {
