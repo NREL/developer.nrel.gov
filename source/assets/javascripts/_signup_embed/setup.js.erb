@@ -7,7 +7,8 @@ var defaults = {
   apiUrlRoot: '<%= ENV["WEB_SITE_ROOT"] %>/api-umbrella',
   contactUrl: '<%= ENV["WEB_SITE_ROOT"] %>/contact/',
   exampleApiUrl: '<%= ENV["WEB_SITE_ROOT"] %>/example.json?api_key={{api_key}}',
-  signupConfirmationMessage: ''
+  signupConfirmationMessage: '',
+  sendWelcomeEmail: true
 };
 
 var options = $.extend({}, defaults, apiUmbrellaSignupOptions || {});
