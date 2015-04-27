@@ -1,7 +1,7 @@
 ---
 title: Installs Rankings API
-summary: Returns a list of install costs and counts by state. Results are cached for one day.
-url: GET /api/open_pv/v2/installs/rankings
+summary: Returns a list of install costs and counts by state.
+url: GET /api/solar/open_pv/installs/rankings
 disqus: true
 
 ---
@@ -124,44 +124,38 @@ disqus: true
 
 ### JSON Output Format
 
-<pre>GET https://developer.nrel.gov/api/open_pv/v2/installs/rankings?api_key=DEMO_KEY</pre>
+<pre>GET https://developer.nrel.gov/api/solar/open_pv/installs/rankings?api_key=DEMO_KEY&state=TN&county=Hamilton</pre>
 
 ```json
 {
-  "inputs":{
-    "api_key":"DEMO_KEY"
+  "inputs": {
+    "state": "TN",
+    "county": "Hamilton"
   },
-  "metadata":{
-    "version":"2.0.0",
-    "resultset":{}
-  },
-  "status":200,
-  "result":{
-    "count_by_state":{
-      "CA":2,
-      "CO":10
-    },
-    "cap_by_state":{
-      "CA":0.016118,
-      "CO":0.01111
-    },
-    "cost_by_state":{
-      "CA":5.915,
-      "CO":5.012
-    },
-    "cost_last_year_by_state":{
-      "CA":5.915,
-      "CO":5.512
-    },
-    "cost_cap_weight_by_state":{
-      "CA":5.937647350787939,
-      "CO":5.523456789012345
-    },
-    "cost_cap_weight_last_year_by_state":{
-      "CA":5.937647350787939,
-      "CO":5.523456789012345
+  "metadata": {
+    "version": "2.0.0",
+    "resultset": {
+      "count": 8
     }
-  }
+  },
+  "status": 200,
+  "result": [
+    {
+      "count": 2,
+      "name": "37343",
+      "cap": 7.799999714,
+      "cost": 0.0
+    },
+    {
+      "count": 3,
+      "name": "37363",
+      "cap": 14.260000114,
+      "cost": 0.0
+    },
+    .
+    .
+    .
+  ]
 }
 ```
 

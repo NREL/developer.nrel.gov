@@ -1,7 +1,7 @@
 ---
 title: Installs Summaries API
-summary: Returns a list of install summary data filtered by optional parameters and the result bucketed by install size (kw) 0 - 2, 2 - 4, 4 - 10, 10 - 25 and 25+. Results are caches for one day.
-url: GET /api/open_pv/v2/installs/summaries
+summary: Returns a list of install summary data filtered by optional parameters.
+url: GET /api/solar/open_pv/installs/summaries
 disqus: true
 
 ---
@@ -180,7 +180,7 @@ disqus: true
       <th class="doc-parameter-name" scope="row">result</th>
       <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
       <td class="doc-parameter-description">
-        List of install summary data filtered by optional parameters and the result bucketed by install size (kw) 0 - 2, 2 - 4, 4 - 10, 10 - 25 and 25+.
+        List of install summary data filtered by optional parameters.
       </td>
     </tr>
   </tbody>
@@ -190,95 +190,27 @@ disqus: true
 
 ### JSON Output Format
 
-<pre>GET https://developer.nrel.gov/api/open_pv/v2/installs/summaries?api_key=DEMO_KEY</pre>
+<pre>GET https://developer.nrel.gov/api/solar/open_pv/installs/summaries?api_key=DEMO_KEY&state=CA&minsize=10&maxsize=100</pre>
 
 ```json
 {
-  "inputs":{
-    "api_key":"DEMO_KEY"
+  "inputs": {
+    "state": "CA",
+    "minsize": "10",
+    "maxsize": "100"
   },
-  "metadata":{
-    "version":"2.0.0",
-    "resultset":{}
+  "metadata": {
+    "version": "2.0.0",
+    "resultset": {}
   },
-  "status":200,
-  "result":{
-    "capacity_classes":{
-      "0-2":{
-        "cost":0,
-        "cost_cap_weight":0,
-        "cost_last_year":0,
-        "cost_cap_weight_last_year":0,
-        "total":0,"total_with_cost":0,
-        "total_last_year":0,
-        "total_with_cost_last_year":0,
-        "capacity":0
-      },
-      "2-4":{
-        "cost":0,
-        "cost_cap_weight":0,
-        "cost_last_year":0,
-        "cost_cap_weight_last_year":0,
-        "total":0,
-        "total_with_cost":0,
-        "total_last_year":0,
-        "total_with_cost_last_year":0,
-        "capacity":0
-      },
-      "4-10":{
-        "cost":5.915,
-        "cost_cap_weight":5.937647350787939,
-        "cost_last_year":5.915,
-        "cost_cap_weight_last_year":5.937647350787939,
-        "total":4,"total_with_cost":2,
-        "total_last_year":2,
-        "total_with_cost_last_year":2,
-        "capacity":16.118
-      },
-      "10-25":{
-        "cost":0,
-        "cost_cap_weight":0,
-        "cost_last_year":0,
-        "cost_cap_weight_last_year":0,
-        "total":0,
-        "total_with_cost":0,
-        "total_last_year":0,
-        "total_with_cost_last_year":0,
-        "capacity":0
-      },
-      "25+":{
-        "cost":0,
-        "cost_cap_weight":0,
-        "cost_last_year":0,
-        "cost_cap_weight_last_year":0,
-        "total":0,
-        "total_with_cost":0,
-        "total_last_year":0,
-        "total_with_cost_last_year":0,
-        "capacity":0
-      }
-    },
-    "capacity_by_year":{
-      "2014":0.016118}
-    ,
-    "cost_by_year":{
-      "2014":5.915
-    },
-    "cost_by_year_cap_weight":{
-      "2014":5.937647350787939
-    },
-    "installs_by_year":{
-      "2014":2
-    },
-    "total_capacity":0.016117999999999997,
-    "total_installs":2,
-    "total_installs_with_cost":2,
-    "total_installs_last_year":2,
-    "total_installs_with_cost_last_year":2,
-    "avg_cost_pw":5.915,
-    "avg_cost_pw_last_year":5.915,
-    "avg_cost_cap_weight_last_year":5.937647350787939,
-    "avg_cost_cap_weight":5.937647350787939
+  "status": 200,
+  "result": {
+    "avg_cost_cap_weight": 6.329,
+    "avg_cost_pw": 6.322,
+    "best_avg_cost_pw": 4.065,
+    "total_capacity": 443.6257,
+    "total_installs": 23471,
+    "total_installs_with_cost": 22235
   }
 }
 ```

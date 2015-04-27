@@ -1,7 +1,7 @@
 ---
 title: Installs Index API
 summary: Returns a list of all installs matching optional criteria passed or all installs if no optional criteria is passed. The response can be paged or exported.
-url: GET /api/open_pv/v2/installs/index
+url: GET /api/solar/open_pv/installs/index
 disqus: true
 
 ---
@@ -138,17 +138,6 @@ disqus: true
       </td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">timestamp</th>
-      <td class="doc-parameter-required">No</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> boolean</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-      </td>
-      <td class="doc-parameter-description">
-        <p>Indicator if state, zipcode, cost, city, user_id and is_private should be included in the response</p>
-      </td>
-    </tr>
-    <tr>
       <th class="doc-parameter-name" scope="row">sort</th>
       <td class="doc-parameter-required">No</td>
       <td class="doc-parameter-value">
@@ -245,41 +234,45 @@ disqus: true
 
 ### JSON Output Format
 
-<pre>GET https://developer.nrel.gov/api/open_pv/v2/installs/index?api_key=DEMO_KEY&pagenum=2&nppage=5</pre>
+<pre>GET https://developer.nrel.gov/api/solar/open_pv/installs/index?api_key=DEMO_KEY&state=CA&minsize=10&maxsize=100&pagenum=1&nppage=25&sort=size_kw&order=DESC</pre>
 
 ```json
 {
-  "inputs":{
-    "api_key":"DEMO_KEY",
-    "pagenum":2,
-    "nppage":5
+  "inputs": {
+    "state": "CA",
+    "minsize": "10",
+    "maxsize": "100",
+    "pagenum": "1",
+    "nppage": "25",
+    "sort": "size_kw",
+    "order": "DESC"
   },
-  "metadata":{
-    "version":"2.0.0",
-    "resultset":{
-      "offset":1,
-      "count": 1110,
-      "limit":5,
-      "total_pages":222
+  "metadata": {
+    "version": "2.0.0",
+    "resultset": {
+      "total_pages": 939,
+      "count": 23471,
+      "limit": 25,
+      "offset": 0
     }
   },
-  "warnings":[],
-  "errors":[],
   "status": 200,
-  "result":[
+  "result": [
     {
-      "_id" : "54170aa1a17baa71ff000002",
-      "size_kw" : 10,
-      "lon" : -117.226457,
-      "lat" : 33.0176773,
-      "date_installed" : 1308700800
+      "_id": "5049033e27a49b219200a142",
+      "cost": 391488.0,
+      "date_installed": 1281506400,
+      "size_kw": 100.0,
+      "state": "CA",
+      "zipcode": "91355"
     },
     {
-      "_id" : "54170aa1a17baa71ff000003",
-      "size_kw" : 8.28,
-      "lon" : -117.226457,
-      "lat" : 33.0176773,
-      "date_installed" : 1309132800
+      "_id": "53fcc75427a49b2255377b7b",
+      "cost": 576041.0,
+      "date_installed": 1370498400,
+      "size_kw": 99.96,
+      "state": "CA",
+      "zipcode": "93725"
     },
     .
     .
