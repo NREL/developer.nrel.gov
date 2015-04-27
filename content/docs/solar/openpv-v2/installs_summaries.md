@@ -145,7 +145,7 @@ disqus: true
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
       </td>
       <td class="doc-parameter-description">
-        <p>A comma delimited list of optional fields to include in the result. As summary calculations can slow response time, the default response excludes certain fields. The following can be included in the fields parameter:
+        <p>A comma delimited list of fields to include in the result. By default all fields are included. This paramter allows callers to limit the number of fields returned with the resultant benefit of faster response times. The following fields can be included:
           <ul>
             <li><strong>avg_cost_cap_weight</strong> - Average cost ($ per watt) for all matched systems calculated as the total cost of all systems divided by the total capacity of all systems.</li>
             <li><strong>avg_cost_pw</strong> - The average cost ($ per watt) for all matched systems calculated as the mean of each system's cost per watt.</li>
