@@ -147,12 +147,12 @@ disqus: true
       <td class="doc-parameter-description">
         <p>A comma delimited list of optional fields to include in the result. As summary calculations can slow response time, the default response excludes certain fields. The following can be included in the fields parameter:
           <ul>
-            <li><span class="doc-parameter-name">avg_cost_cap_weight</span> Average cost ($ per watt) for all matched systems calculated as the total cost of all systems divided by the total capacity of all systems.</li>
-            <li><span class="doc-parameter-name">avg_cost_pw</span> The average cost ($ per watt) for all matched systems calculated as the mean of each system's cost per watt.</li>
-            <li><span class="doc-parameter-name">best_avg_cost_pw</span> Average cost ($ per watt) for the most recent year with at least 1 install.</li>
-            <li><span class="doc-parameter-name">total_capacity</span> Total capacity (Mw).</li>
-            <li><span class="doc-parameter-name">total_installs</span> Total number of installs.</li>
-            <li><span class="doc-parameter-name">total_installs_with_cost</span> Total number of installs with cost attributes populated.</li>
+            <li><strong>avg_cost_cap_weight</strong> - Average cost ($ per watt) for all matched systems calculated as the total cost of all systems divided by the total capacity of all systems.</li>
+            <li><strong>avg_cost_pw</strong> - The average cost ($ per watt) for all matched systems calculated as the mean of each system's cost per watt.</li>
+            <li><strong>best_avg_cost_pw</strong> - Average cost ($ per watt) for the most recent year with at least 1 install.</li>
+            <li><strong>total_capacity</strong> - Total capacity (Mw).</li>
+            <li><strong>total_installs</strong> - Total number of installs.</li>
+            <li><strong>total_installs_with_cost</strong> - Total number of installs with cost attributes populated.</li>
           </ul>
         </p>
       </td>
