@@ -1,49 +1,53 @@
 source "https://rubygems.org"
+source "https://rails-assets.org"
 
-gem "nanoc"
+gem "middleman", "~> 3.3.5"
+gem "rake", "~> 10.3.2"
 
-gem "rake"
+# Environment specific config with environment variables
+gem "dotenv", "~> 0.11.1"
 
-# Sprockets for combining/minifying javascripts and stylesheets
-gem "nanoc-sprockets-filter"
-gem "sprockets-helpers"
-gem "sprockets-sass"
+# Live-reloading plugin
+gem "middleman-livereload", "~> 3.3.4"
 
-# Cache busting for image tags
-gem "nanoc-cachebuster"
+# For faster file watcher updates on Windows:
+gem "wdm", "~> 0.1.0", :platforms => [:mswin, :mingw]
 
-# Javascript compression
-gem "uglifier"
-gem "therubyracer"
+# Windows does not come with time zone data
+gem "tzinfo-data", platforms: [:mswin, :mingw]
 
-# Sass stylesheets and compression
-gem "sass"
-gem "compass"
-
-# Twitter bootstrap
-gem "bootstrap-sass", "~> 2.3.2.2"
-
-# Markdown
-gem "kramdown", ">= 1.2.0"
+# Redirects
+gem "middleman-alias", "~> 0.0.9"
 
 # Syntax highlighting
-gem "coderay"
+gem "middleman-syntax", "~> 2.0.0"
 
-# HTML parsing
-gem "nokogiri"
+# Deploy to GitHub Pages
+gem "middleman-gh-pages", "~> 0.0.3"
 
-# For simple variables in templates
-gem "mustache"
+# Markdown
+gem "kramdown", "~> 1.4.1"
 
 # JSON validation
-gem "multi_json"
+gem "multi_json", "~> 1.10.1"
+
+# jQuery
+gem "rails-assets-jquery", "~> 1.11.2"
+
+# Bootstrap
+gem "bootstrap-sass", "~> 3.2.0.1"
+
+# Programmatic bootstrap modals
+gem "rails-assets-bootbox", "~> 4.3.0"
+
+# Form validation
+gem "rails-assets-parsleyjs", "~> 2.0.3"
+
+# Icons
+gem "rails-assets-fontawesome", "~> 4.1.0"
 
 group :development do
-  # Static file server for nanoc development
-  gem "adsf"
-
   # Deployment
-  gem "capistrano", "~> 2.15.5"
-  gem "capistrano-ext"
-  gem "capistrano_nrel_ext", :git => "https://github.com/NREL/capistrano_nrel_ext.git"
+  gem "capistrano", "~> 3.3.5"
+  gem "capistrano-bundler", "~> 1.1.4"
 end

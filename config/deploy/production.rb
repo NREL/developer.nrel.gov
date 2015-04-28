@@ -1,19 +1,43 @@
-# Set the servers for this stage.
-role :app, "devprod-int.nrel.gov", "devprod-int2.nrel.gov"
-role :web, "devprod-int.nrel.gov", "devprod-int2.nrel.gov"
+# Simple Role Syntax
+# ==================
+# Supports bulk-adding hosts to roles, the primary server in each group
+# is considered to be the first unless any hosts have the primary
+# property set.  Don't declare `role :all`, it's a meta role.
 
-# Set the base path for deployment.
-set :deploy_to_base, "/srv/data"
+role :app, %w(deploy@example.com)
+role :web, %w(deploy@example.com)
+role :db,  %w(deploy@example.com)
 
-# Set the accessible web domain for this site.
-set :base_domain, "developer.nrel.gov"
-set :base_domain_aliases, ["devprod-int.nrel.gov", "devprod-int2.nrel.gov"]
+# Extended Server Syntax
+# ======================
+# This can be used to drop a more detailed server definition into the
+# server list. The second argument is a, or duck-types, Hash and is
+# used to set extended properties on the server.
 
-# Production-ready deployments should exclude git data.
-set :copy_exclude, [".git"]
+server 'example.com', :user => 'deploy', :roles => %w(web app), :my_property => :my_value
 
-# Set the Rails environment.
-set :rails_env, "production"
-
-default_environment["SWAGGER_HOST"] = "http://developer.nrel.gov"
-default_environment['API_HOST'] = 'http://developer.nrel.gov/api'
+# Custom SSH Options
+# ==================
+# You may pass any option but keep in mind that net/ssh understands a
+# limited set of options, consult[net/ssh documentation](http://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start).
+#
+# Global options
+# --------------
+#  set :ssh_options, {
+#    keys: %w(/home/rlisowski/.ssh/id_rsa),
+#    forward_agent: false,
+#    auth_methods: %w(password)
+#  }
+#
+# And/or per server (overrides global)
+# ------------------------------------
+# server 'example.com',
+#   user: 'user_name',
+#   roles: %w{web app},
+#   ssh_options: {
+#     user: 'user_name', # overrides user setting above
+#     keys: %w(/home/user_name/.ssh/id_rsa),
+#     forward_agent: false,
+#     auth_methods: %w(publickey password)
+#     # password: 'please use keys'
+#   }

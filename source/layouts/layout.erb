@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      <% unless(current_page.url == "/") %>
+        <%= current_page.data.title %> | 
+      <% end %>
+      Your API Site Name
+    </title>
+
+    <%= stylesheet_link_tag("all") %>
+
+    <!--[if lt IE 9]>
+      <%= javascript_include_tag("ie_lt_9") %>
+    <![endif]-->
+    <%= javascript_include_tag("all") %>
+    <%= partial("layouts/analytics") %>
+  </head>
+  <body>
+  <body class="<%= page_classes %>">
+    <%= partial("layouts/header") %>
+    <%= yield %>
+    <%= partial("layouts/disqus") %>
+    <%= partial("layouts/edit_me") %>
+    <%= partial("layouts/footer") %>
+  </body>
+</html>
