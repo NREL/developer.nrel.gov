@@ -2,8 +2,8 @@
 title: Contact Us
 ---
 
-<h1>Your API Site Name Contact</h1>
-<p>Feel free to contact us with questions, comments, or to report any problems with Your API Site Name.</p>
+<h1>Contact Us</h1>
+<p>Feel free to contact us with questions, comments, or to report any problems.</p>
 
 <div class="row">
   <div class="col-md-5">
@@ -22,7 +22,7 @@ title: Contact Us
 
 <h3 id="contact" style="margin-top: 3em;"><i class="fa fa-comments-o"></i> Contact us directly</h3>
 <p class="required-fields"><abbr title="Required" class="required"><span class="abbr-required">*</span></abbr> Required fields</p>
-<form id="api_umbrella_contact_form" class="form-horizontal" role="form">
+<form id="developer_contact_form" class="form-horizontal" role="form">
   <div class="form-group">
     <label class="col-sm-4 control-label" for="contact_name"><abbr title="Required" class="required"><span class="abbr-required">*</span></abbr> Name</label>
     <div class="col-sm-5">
@@ -33,6 +33,23 @@ title: Contact Us
     <label class="col-sm-4 control-label" for="contact_email"><abbr title="Required" class="required"><span class="abbr-required">*</span></abbr> Email</label>
     <div class="col-sm-5">
       <input class="form-control" id="contact_email" name="contact[email]" size="50" type="email" required />
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-4 control-label" for="contact_subject"><abbr title="Required" class="required"><span class="abbr-required">*</span></abbr> Subject</label>
+    <div class="col-sm-5">
+      <select class="form-control" id="contact_subject" name="contact[subject">
+        <option>Alt Fuel Stations API</option>
+        <option>Buildings APIs</option>
+        <option>Incentives APIs</option>
+        <option>PVDAQ APIs</option>
+        <option>PVWatts APIs</option>
+        <option>Solar Data Query API</option>
+        <option>Solar Resource Data API</option>
+        <option>Transportation Laws and Incentives API</option>
+        <option>Utility Rates APIs</option>
+        <option>Other</option>
+      </select>
     </div>
   </div>
   <div class="form-group">

@@ -121,3 +121,5 @@ after_build do |builder|
     MultiJson.dump(json, :pretty => false)
   end
 end
+
+config[:file_watcher_ignore] += [ /.idea\// ]

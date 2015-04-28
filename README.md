@@ -1,6 +1,10 @@
 # developer.nrel.gov
 
-The website content for developer.nrel.gov built with [nanoc](http://nanoc.ws).
+## Notes 
+
+To edit this site, edit the `Master` branch.  Changes should take effect within minutes.  
+
+The website content for api.data.gov built with [Middleman](http://middlemanapp.com).
 
 All contributions are welcome. To submit a change, fork this repo, commit your changes, and send us a [pull request](https://help.github.com/articles/using-pull-requests).
 
@@ -9,50 +13,27 @@ All contributions are welcome. To submit a change, fork this repo, commit your c
 Ruby 1.9+ is required to build the site.
 
 ```sh
-$ bundle install
-```
-
-Initialize submodules
-```sh
-$ git submodule init && git submodule update
+$ git submodule update --init --recursive # Make sure to pull in git submodules
+$ gem install bundler
+$ bundle install --binstubs
 ```
 
 ## Development
 
-The content files to edit are in `./content`. Nanoc will compile the site into static HTML files inside `./output`:
+The content files to edit are in `./source`. You can view your changes as you make them by running the Middleman preview server:
 
 ```sh
-$ nanoc compile
+$ ./bin/middleman server
 ```
 
-You can view the output on a local web server built-in to nanoc:
-
-```sh
-$ nanoc view
-$ open http://localhost:3000
-```
+This will start a local web server running at [http://localhost:4567/](http://localhost:4567/)
 
 After you're happy with your changes, commit and submit a pull request.
 
 ## Deploy
 
-To publish your changes to staging at http://devstage.nrel.gov:
+To publish to production with GitHub Pages:
 
 ```sh
-$ cap staging deploy
-```
-
-To publish your changes to production at http://developer.nrel.gov:
-
-```sh
-$ cap production deploy
-```
-
-To updated the shared development sandbox at http://devdev.nrel.gov:
-
-```sh
-$ ssh devdev.nrel.gov
-$ cd /srv/developer/developer.nrel.gov/main
-$ git pull
-$ cap development deploy
+$ ./bin/rake publish
 ```
