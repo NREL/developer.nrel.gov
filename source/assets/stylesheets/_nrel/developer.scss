@@ -6,7 +6,7 @@ h1 {
   background-color: #f7f7f7;
 
   border: 1px solid #ddd;
-  @include border-radius(6px);
+  border-radius: 6px;
 
   padding: 6px 8px;
 
