@@ -1,16 +1,32 @@
 ---
 title: Web Service Rate Limits
-kind: info
+hidden_child: true
 
 ---
 
 # Web Service Rate Limits
 
-Limits are placed on the number of NREL Web service requests you may make using your API key.
+Limits are placed on the number of API requests you may make using your API key. Rate limits may vary by service, but the defaults are:
 
 - **Hourly Limit:** 1,000 requests per hour
 
-For each API key, these limits are applied across all NREL Web services requests. Exceeding these limits will lead to your API key being temporarily blocked from making further requests. Depending on the limit exceeded, the block will be lifted automatically by waiting until the next hour or calendar day.
+For each API key, these limits are applied across all api.data.gov API requests. Exceeding these limits will lead to your API key being temporarily blocked from making further requests. The block will automatically be lifted by waiting an hour. If you need higher rate limits, [contact us](/contact).
+
+## DEMO_KEY Rate Limits
+
+In documentation examples, the special `DEMO_KEY` api key is used. This API key can be used for initially exploring APIs prior to signing up, but it has much lower rate limits, so you're encouraged to [signup](/signup/) for your own API key if you plan to use the API (signup is quick and easy). The rate limits for the DEMO_KEY are:
+
+- **Hourly Limit:** 30 requests per IP address per hour
+- **Daily Limit:** 50 requests per IP address per day
+
+## How Do I See My Current Usage?
+
+Your can check your current rate limit and usage details by inspecting the `X-RateLimit-Limit` and `X-RateLimit-Remaining` HTTP headers that are returned on every API response. For example, if an API has the default hourly limit of 1,000 request, after making 2 requests, you will receive these HTTP headers in the response of the second request:
+
+```
+X-RateLimit-Limit: 1000
+X-RateLimit-Remaining: 998
+```
 
 ## Understanding Rate Limit Time Periods
 
@@ -22,17 +38,7 @@ The hourly counters for your API key reset on a rolling basis.
 
 ## Rate Limit Error Response
 
-If your API key exceeds the rate limits, you will receive a response with an HTTP status code of 503, Service Unavailable. The response body will contain an error message reading "503 Service Unavailable (Rate Limit Exceeded)." For example, a JSON request that has exceed the rate limits would respond with:
-
-```json
-{
-  "errors":[
-    "503 Service Unavailable (Rate Limit Exceeded)"
-  ]
-}
-```
-
-For more details on how errors are returned, see the [general Web service errors](/docs/errors).
+If your API key exceeds the rate limits, you will receive a response with an HTTP status code of 429 (Too Many Requests).
 
 ## Need Higher Limits?
 
