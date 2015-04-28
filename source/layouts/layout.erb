@@ -6,9 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
       <% unless(current_page.url == "/") %>
-        <%= current_page.data.title %> | 
+        <%= current_page.data.title %> 
+        <% if(current_page.url =~ %r{/docs/\w+/?$}) %>
+          APIs
+        <% elsif(current_page.url =~ %r{/docs/\w+/.+}) %>
+          API
+        <% end %>
+        |
       <% end %>
-      Your API Site Name
+      NREL: Developer Network
     </title>
 
     <%= stylesheet_link_tag("all") %>

@@ -1,12 +1,12 @@
 ---
 title: General Web Service Errors
-hidden_child: true
+kind: info
 
 ---
 
 # General Web Service Errors
 
-Certain, general errors will be returned in a standardized way from all Data.gov Web services. Additional, service-specific error messages may also be returned (see individual service documentation for those details). The following list describes the general errors any application may return:
+Certain, general errors will be returned in a standardized way from all NREL Web services. Additional, service-specific error messages may also be returned (see individual service documentation for those details). The following list describes the general errors any application may return:
 
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
   <thead>
@@ -23,9 +23,9 @@ Certain, general errors will be returned in a standardized way from all Data.gov
       </td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">429</th>
+      <th class="doc-parameter-name" scope="row">503</th>
       <td class="doc-parameter-description">
-        Too Many Requests - Your API key has exceeded the rate limits. See <a href="/docs/rate-limits">rate limits</a> for more detail.
+        Service Unavailable - Your API key has exceeded the rate limits. See <a href="/docs/rate-limits">rate limits</a> for more detail.
       </td>
     </tr>
   </tbody>
@@ -43,7 +43,7 @@ Depending on the requested format, the error message response may be returned in
 ```json
 {
   "errors":[
-    "An invalid api_key was supplied. Get one at http://api.data.gov/"
+    "An invalid api_key was supplied. Get one at http://developer.nrel.gov/"
   ]
 }
 ```
@@ -53,7 +53,7 @@ Depending on the requested format, the error message response may be returned in
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <errors>
-  <error>An invalid api_key was supplied. Get one at http://api.data.gov/</error>
+  <error>An invalid api_key was supplied. Get one at http://developer.nrel.gov/</error>
 </errors>
 ```
 
@@ -61,11 +61,11 @@ Depending on the requested format, the error message response may be returned in
 
 ```
 Error
-An invalid api_key was supplied. Get one at http://api.data.gov/
+An invalid api_key was supplied. Get one at http://developer.nrel.gov/
 ````
 
 #### Plain Text Example
 
 ```
-Error: An invalid api_key was supplied. Get one at http://api.data.gov/
+Error: An invalid api_key was supplied. Get one at http://developer.nrel.gov/
 ````
