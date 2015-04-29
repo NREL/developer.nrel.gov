@@ -6,7 +6,7 @@ h1 {
   background-color: #f7f7f7;
 
   border: 1px solid #ddd;
-  @include border-radius(6px);
+  border-radius: 6px;
 
   padding: 6px 8px;
 
@@ -78,5 +78,5 @@ h3.doc span.url {
 }
 
 .toc li {
-  line-height: pxtoem(16px);
+  line-height: 16px;
 }

@@ -1,6 +1,6 @@
 ---
 title: General Web Service Errors
-kind: info
+hidden_child: true
 
 ---
 
@@ -23,9 +23,9 @@ Certain, general errors will be returned in a standardized way from all NREL Web
       </td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">503</th>
+      <th class="doc-parameter-name" scope="row">429</th>
       <td class="doc-parameter-description">
-        Service Unavailable - Your API key has exceeded the rate limits. See <a href="/docs/rate-limits">rate limits</a> for more detail.
+        Too Many Requests - Your API key has exceeded the rate limits. See <a href="/docs/rate-limits">rate limits</a> for more detail.
       </td>
     </tr>
   </tbody>

@@ -1,14 +1,10 @@
 .breadcrumb {
   background-color: transparent;
   color: #3c4349;
-  font-size: pxtoem(11px);
+  font-size: 11px;
   font-weight: bold;
   padding: 0px;
   margin-bottom: 12px;
-}
-
-.breadcrumb li {
-  line-height: 1;
 }
 
 .breadcrumb,
@@ -18,6 +14,8 @@
   color: #3c4349;
 }
 
-.breadcrumb li .divider {
-  padding: 0px;
+.breadcrumb > li + li::before {
+  content: '\00BB\00a0';
+  color: #3c4349;
+  padding: 0px 2px;
 }
