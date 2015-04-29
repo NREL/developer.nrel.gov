@@ -21,7 +21,7 @@ form.submit(function(event) {
   console.log("here!");
 
   $.ajax({
-    url: 'http://localhost:3000/contactor/v1.json?api_key=' + options.apiKey,
+    url: 'http://developer.nrel.gov/api/contactor/v1.json?api_key=' + options.apiKey,
     type: 'POST',
     data: $(this).serialize(),
     dataType: 'json',
