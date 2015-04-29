@@ -5,13 +5,13 @@
 //= require _vendor/jquery.iecors.js
 
 var defaults = {};
-var options = $.extend({}, defaults, apiUmbrellaContactOptions || {});
+var options = $.extend({}, defaults, nrelContactOptions || {});
 
 if(!options.apiKey) {
-  alert('apiUmbrellaSignupOptions.apiKey must be set');
+  alert('nrelContactOptions.apiKey must be set');
 }
 
-var form = $("#developer_contact_form");
+var form = $("#nrel_contact_form");
 form.parsley();
 form.submit(function(event) {
   var submit = $(this).find('button');

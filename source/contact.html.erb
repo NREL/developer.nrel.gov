@@ -7,7 +7,7 @@ title: Contact Us
 
 <div class="row">
   <div class="col-md-5">
-    <a href="<%= ENV["GITHUB_REPO_URL"] %>/issues" class="center-block btn btn-default btn-lg">
+    <a href="https://github.com/NREL/developer.nrel.gov/issues" class="center-block btn btn-default btn-lg">
       <i class="fa fa-github"></i>
       <span>File an issue on GitHub</span>
     </a>
@@ -22,7 +22,7 @@ title: Contact Us
 
 <h3 id="contact" style="margin-top: 3em;"><i class="fa fa-comments-o"></i> Contact us directly</h3>
 <p class="required-fields"><abbr title="Required" class="required"><span class="abbr-required">*</span></abbr> Required fields</p>
-<form id="developer_contact_form" class="form-horizontal" role="form">
+<form id="nrel_contact_form" class="form-horizontal" role="form">
   <div class="form-group">
     <label class="col-sm-4 control-label" for="contact_name"><abbr title="Required" class="required"><span class="abbr-required">*</span></abbr> Name</label>
     <div class="col-sm-5">
@@ -67,9 +67,9 @@ title: Contact Us
   </div>
 </form>
 <script type="text/javascript">
-  var apiUmbrellaContactOptions = {
-    apiKey: '<%= ENV["API_UMBRELLA_API_KEY"] %>',
-    issuesUrl: '<%= ENV["GITHUB_REPO_URL"] %>/issues'
+  var nrelContactOptions = {
+    apiKey: '<%= ENV["NREL_API_KEY"] %>',
+    issuesUrl: "https://github.com/NREL/developer.nrel.gov/issues"
   };
 </script>
 <%= javascript_include_tag("contact") %>
