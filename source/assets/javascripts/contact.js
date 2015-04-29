@@ -2,6 +2,7 @@
 //= require bootstrap/modal.js
 //= require parsleyjs.js
 //= require bootbox.js
+//= require _vendor/jquery.iecors.js
 
 var defaults = {};
 var options = $.extend({}, defaults, apiUmbrellaContactOptions || {});
@@ -10,16 +11,17 @@ if(!options.apiKey) {
   alert('apiUmbrellaSignupOptions.apiKey must be set');
 }
 
-var form = $("#api_umbrella_contact_form");
+var form = $("#developer_contact_form");
 form.parsley();
 form.submit(function(event) {
   var submit = $(this).find('button');
   submit.button('loading');
 
   event.preventDefault();
+  console.log("here!");
 
   $.ajax({
-    url: '/api-umbrella/v1/contact.json?api_key=' + options.apiKey,
+    url: 'http://localhost:3000/contactor/v1.json?api_key=' + options.apiKey,
     type: 'POST',
     data: $(this).serialize(),
     dataType: 'json',
