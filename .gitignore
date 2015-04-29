@@ -27,3 +27,6 @@
 # Ignore Capistrano files
 /REVISION
 /config/deployed.yml
+
+# ignore bin directory
+/bin
