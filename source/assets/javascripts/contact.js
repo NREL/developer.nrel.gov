@@ -18,7 +18,6 @@ form.submit(function(event) {
   submit.button('loading');
 
   event.preventDefault();
-  console.log("here!");
 
   $.ajax({
     url: 'http://developer.nrel.gov/api/contactor/v1.json?api_key=' + options.apiKey,
