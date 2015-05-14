@@ -28,11 +28,20 @@ gem "middleman-gh-pages", "~> 0.0.3"
 # Markdown
 gem "kramdown", "~> 1.4.1"
 
+# Swagger UI - Patched version with IE console fixes.
+gem "rails-assets-GUI--swagger-ui", "2.0.3.patch1"
+
 # JSON validation
 gem "multi_json", "~> 1.10.1"
 
 # jQuery
 gem "rails-assets-jquery", "~> 1.11.2"
+
+# Add back in $.browser for our older Swagger version with the newer jQuery
+# version (we can't easily downgrade jQuery since Bootstrap 3 depends on this
+# newer version).
+# We should revisit this whenever we upgrade the Swagger UI library again.
+gem "rails-assets-jquery.browser", "~> 0.0.7"
 
 # Bootstrap
 gem "bootstrap-sass", "~> 3.2.0.1"
