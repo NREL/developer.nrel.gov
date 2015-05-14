@@ -43,7 +43,7 @@ Depending on the requested format, the error message response may be returned in
 ```json
 {
   "errors":[
-    "An invalid api_key was supplied. Get one at http://developer.nrel.gov/"
+    "An invalid api_key was supplied. Get one at https://developer.nrel.gov/"
   ]
 }
 ```
@@ -53,7 +53,7 @@ Depending on the requested format, the error message response may be returned in
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <errors>
-  <error>An invalid api_key was supplied. Get one at http://developer.nrel.gov/</error>
+  <error>An invalid api_key was supplied. Get one at https://developer.nrel.gov/</error>
 </errors>
 ```
 
@@ -61,11 +61,11 @@ Depending on the requested format, the error message response may be returned in
 
 ```
 Error
-An invalid api_key was supplied. Get one at http://developer.nrel.gov/
+An invalid api_key was supplied. Get one at https://developer.nrel.gov/
 ````
 
 #### Plain Text Example
 
 ```
-Error: An invalid api_key was supplied. Get one at http://developer.nrel.gov/
+Error: An invalid api_key was supplied. Get one at https://developer.nrel.gov/
 ````
