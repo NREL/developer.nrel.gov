@@ -1,7 +1,7 @@
 {
   "apiVersion": "0.1.0",
   "swaggerVersion": "1.2",
-  "basePath": "//developer.nrel.gov/docs/transportation/transportation-incentives-laws-v1/api-docs",
+  "basePath": "//devstage-cloud.nrel.gov/docs/transportation/transportation-incentives-laws-v1/api-docs",
   "apis": [
     {
       "path": "/transportation-incentives-laws/v1.json",
