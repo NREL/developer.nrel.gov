@@ -30,3 +30,6 @@
 
 # ignore bin directory
 /bin
+
+# Ignore generated sprite files during development
+/source/assets/images/nrel/features-*.png
