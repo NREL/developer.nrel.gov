@@ -2,4 +2,4 @@ deployment:
   production:
     branch: master
     commands:
-      - rake publish
+      - bundle exec rake publish
