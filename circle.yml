@@ -1,0 +1,7 @@
+deployment:
+  production:
+    branch: master
+    commands:
+      - git config --global user.email "noreply-circleci@nrel.gov"
+      - git config --global user.name "CircleCI Build Bot"
+      - bundle exec rake publish

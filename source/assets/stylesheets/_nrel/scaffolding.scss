@@ -1,0 +1,20 @@
+a {
+  text-decoration: underline;
+}
+
+h2 {
+  a, a:visited {
+    text-decoration: none;
+    color: $headings-color;
+  }
+
+  a:after {
+    content: ' \25B8';
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: $link-color;
+  }
+}
+

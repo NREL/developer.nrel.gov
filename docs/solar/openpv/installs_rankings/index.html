@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        Installs Rankings API 
+          API
+        |
+      NREL: Developer Network
+    </title>
+
+    <link href="../../../../assets/stylesheets/all-891351bb.css" rel="stylesheet" type="text/css" />
+
+    <!--[if lt IE 9]>
+      <script src="../../../../assets/javascripts/ie_lt_9-abc24081.js" type="text/javascript"></script>
+    <![endif]-->
+    <script src="../../../../assets/javascripts/all-0814964e.js" type="text/javascript"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+  <body class="docs docs_solar docs_solar_openpv docs_solar_openpv_installs_rankings docs_solar_openpv_installs_rankings_index">
+    <div class="container">
+  <header>
+    <map name="header_map">
+        <area shape="rect" coords="0,0,840,58" href="/" alt="Developer Network" />
+      <area shape="rect" coords="840,0,1000,58" href="http://www.nrel.gov/" alt="NREL" />
+    </map>
+    <img alt="NREL Developer Network" usemap="#header_map" width="1000" height="58" src="../../../../assets/images/nrel/header-1bfbcb1a.png" />
+  </header>
+  <nav class="navbar navbar-default">
+    <ul class="nav navbar-nav">
+      <li class="nav-home "><a href="/">Home</a></li>
+      <li class="nav-documentation active"><a href="/docs">Documentation</a></li>
+      <li class="nav-community "><a href="/community">Community</a></li>
+    </ul>
+  </nav>
+
+      <ol class="breadcrumb container">
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/docs/solar/">Solar</a></li>
+            <li><a href="/docs/solar/openpv/">OpenPV (The Open PV Project)</a></li>
+            <li class="active">Installs Rankings API</li>
+    </ol>
+
+
+    <h1 id="installs-rankings-api-span-classurlget-apisolaropenpvinstallsrankingsspan">Installs Rankings API <span class="url">(GET /api/solar/open_pv/installs/rankings)</span></h1>
+<p>Returns a list of install costs and counts by state.</p>
+
+<ul id="toc"></ul>
+
+<h2 id="request-url">Request URL</h2>
+
+<pre>GET /api/solar/open_pv/installs/rankings<em>?parameters</em></pre>
+
+<h2 id="request-parameters">Request Parameters</h2>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+		<tr>
+			<th class="doc-parameters-name" scope="col">Parameter</th>
+			<th class="doc-parameters-required" scope="col">Required</th>
+			<th class="doc-parameters-value" scope="col">Value</th>
+			<th class="doc-parameters-description" scope="col">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th class="doc-parameter-name" scope="row">api_key</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			  <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+			  <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+			</td>
+			<td class="doc-parameter-description">
+			  <p>Your developer API key. See <a href="/doc/api-key">API keys</a> for more information.</p>
+			</td>
+		</tr>
+		<tr>
+      <th class="doc-parameter-name" scope="row">county</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Name of county to filter by</p>
+      </td>
+    </tr>
+		<tr>
+      <th class="doc-parameter-name" scope="row">state</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Two uppercase character state code to filter by</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">zipcode</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Postal code to filter by</p>
+      </td>
+    </tr>
+	</tbody>
+</table>
+
+<h2 id="response-fields">Response Fields</h2>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">inputs</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
+      <td class="doc-parameter-description">The input parameters received in the request.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">metadata</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
+      <td class="doc-parameter-description">The meta data about the response such as version of the API and resultset which is a collection of it's own that has the result size count</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">status</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> string</td>
+      <td class="doc-parameter-description">The HTTP status code of the response</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">warnings</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> array of strings</td>
+      <td class="doc-parameter-description">Present only when any warning messages resulting from the request.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">errors</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> array of strings</td>
+      <td class="doc-parameter-description">Present only when any error messages resulting from the request.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">result</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
+      <td class="doc-parameter-description">
+        List of install costs and counts by state.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="examples">Examples</h2>
+
+<h3 id="json-output-format">JSON Output Format</h3>
+
+<pre>GET https://developer.nrel.gov/api/solar/open_pv/installs/rankings?api_key=DEMO_KEY&amp;state=TN&amp;county=Hamilton</pre>
+
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TN"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hamilton"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resultset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37343"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cap"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.799999714</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37363"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cap"</span><span class="p">:</span><span class="w"> </span><span class="mf">14.260000114</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cost"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">.</span><span class="w">
+    </span><span class="err">.</span><span class="w">
+    </span><span class="err">.</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="rate-limits">Rate Limits</h2>
+
+<p><a href="/docs/rate-limits">Standard rate limits</a> apply. No more than 1,000 requests may be made in any hour.</p>
+
+<h2 id="errors">Errors</h2>
+
+<p><a href="/docs/errors">Standard errors</a> may be returned.</p>
+
+      <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'devdev-nrel'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/solar/openpv/installs_rankings.md.erb">Help Improve this Content</a>
+</div>
+
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,75 @@
+---
+title: Contact Us
+---
+
+<h1>Contact Us</h1>
+<p>Feel free to contact us with questions, comments, or to report any problems.</p>
+
+<div class="row">
+  <div class="col-md-5">
+    <a href="https://github.com/NREL/developer.nrel.gov/issues" class="center-block btn btn-default btn-lg">
+      <i class="fa fa-github"></i>
+      <span>File an issue on GitHub</span>
+    </a>
+  </div>
+  <div class="col-md-5 col-md-offset-2">
+    <a href="#contact" class="center-block btn btn-default btn-lg">
+      <i class="fa fa-comments-o"></i>
+      <span>Contact us directly</span>
+    </a>
+  </div>
+</div>
+
+<h3 id="contact" style="margin-top: 3em;"><i class="fa fa-comments-o"></i> Contact us directly</h3>
+<p class="required-fields"><abbr title="Required" class="required"><span class="abbr-required">*</span></abbr> Required fields</p>
+<form id="nrel_contact_form" class="form-horizontal" role="form">
+  <div class="form-group">
+    <label class="col-sm-4 control-label" for="contact_name"><abbr title="Required" class="required"><span class="abbr-required">*</span></abbr> Name</label>
+    <div class="col-sm-5">
+      <input class="form-control" id="contact_name" name="contact[name]" size="50" type="text" required />
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-4 control-label" for="contact_email"><abbr title="Required" class="required"><span class="abbr-required">*</span></abbr> Email</label>
+    <div class="col-sm-5">
+      <input class="form-control" id="contact_email" name="contact[email]" size="50" type="email" required />
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-4 control-label" for="contact_subject"><abbr title="Required" class="required"><span class="abbr-required">*</span></abbr> Subject</label>
+    <div class="col-sm-5">
+      <select class="form-control" id="contact_subject" name="contact[subject]" required>
+        <option value="">Please choose one...</option>
+        <option value="altfuel">Alt Fuel Stations API</option>
+        <option value="buildings">Buildings APIs</option>
+        <option value="incentives">Incentives APIs</option>
+        <option value="pvdaq">PVDAQ APIs</option>
+        <option value="pvwatts">PVWatts APIs</option>
+        <option value="solarquery">Solar Data Query API</option>
+        <option value="solarresource">Solar Resource Data API</option>
+        <option value="laws">Transportation Laws and Incentives API</option>
+        <option value="utilities">Utility Rates APIs</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-4 control-label" for="contact_message"><abbr title="Required" class="required"><span class="abbr-required">*</span></abbr> What can we help you with?</label>
+    <div class="col-sm-5">
+      <textarea class="form-control" cols="40" id="contact_message" name="contact[message]" rows="6" required></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-8">
+      <noscript><div class="alert alert-danger" role="alert">Please enable JavaScript to contact us.</div></noscript>
+      <button type="submit" class="btn btn-lg btn-primary" data-loading-text="Loading...">Send</button>
+    </div>
+  </div>
+</form>
+<script type="text/javascript">
+  var nrelContactOptions = {
+    apiKey: "wwBFDa7NMp0mt8xpl0E4rMaVgsoxVGZSVzzivzoU",
+    issuesUrl: "https://github.com/NREL/developer.nrel.gov/issues"
+  };
+</script>
+<%= javascript_include_tag("contact") %>
