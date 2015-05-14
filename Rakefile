@@ -7,7 +7,7 @@ task :test do
 end
 
 task :set_publish_swagger_host do
-  ENV["SWAGGER_HOST"] = "//developer.nrel.gov"
+  ENV["SWAGGER_HOST"] = "//devstage-cloud.nrel.gov"
 end
 task :publish => :set_publish_swagger_host
 
