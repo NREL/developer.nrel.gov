@@ -1,10 +1,7 @@
-machine:
-  environment:
-    GIT_AUTHOR_NAME: CircleCI Build Bot
-    GIT_AUTHOR_EMAIL: noreply@circleci.com
-
 deployment:
   production:
     branch: master
     commands:
+      - git config user.email "noreply-circleci@nrel.gov"
+      - git config user.name "CircleCI Build Bot"
       - bundle exec rake publish
