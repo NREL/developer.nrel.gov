@@ -123,3 +123,6 @@ after_build do |builder|
 end
 
 config[:file_watcher_ignore] += [ /.idea\// ]
+
+ENV["SWAGGER_HOST"] ||= "http://localhost:4567"
+ENV["API_HOST"] ||= "https://devstage-cloud.nrel.gov/api"
