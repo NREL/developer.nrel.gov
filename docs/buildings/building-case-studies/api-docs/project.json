@@ -1,7 +1,7 @@
 {
   "swaggerVersion": "1.2",
   "apiVersion": "2.0.0",
-  "basePath": "https://devstage.nrel.gov/api/building-case-studies",
+  "basePath": "https://developer.nrel.gov/api/building-case-studies",
   "apis": [
     {
       "path": "/project.{output_format}",
