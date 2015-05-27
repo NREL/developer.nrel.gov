@@ -7,8 +7,8 @@ task :test do
 end
 
 task :set_publish_swagger_host do
-  ENV["SWAGGER_HOST"] = "https://devstage-cloud.nrel.gov"
-  ENV["API_HOST"] = "https://devstage-cloud.nrel.gov/api"
+  ENV["SWAGGER_HOST"] = "https://developer.nrel.gov"
+  ENV["API_HOST"] = "https://developer.nrel.gov/api"
 end
 task :publish => :set_publish_swagger_host
 
