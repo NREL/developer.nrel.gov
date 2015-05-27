@@ -90,7 +90,7 @@ configure :build do
   # Enable cache buster
   activate :asset_hash, :ignore => [
     # Don't cache-bust the Swagger throbber.gif, since it's a hardcoded path.
-    %r{throbber.js},
+    %r{throbber.gif},
   ]
 
   # Use relative URLs
