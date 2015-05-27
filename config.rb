@@ -89,10 +89,6 @@ configure :build do
 
   # Enable cache buster
   activate :asset_hash, :ignore => [
-    # Don't cache-bust the embed javascript file, since its references need to
-    # be hardcoded.
-    %r{signup_embed.js},
-
     # Don't cache-bust the Swagger throbber.gif, since it's a hardcoded path.
     %r{throbber.js},
   ]
