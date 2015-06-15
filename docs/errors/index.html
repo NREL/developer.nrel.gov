@@ -53,68 +53,121 @@
 
     <h1 id="general-web-service-errors">General Web Service Errors</h1>
 
-<p>Certain, general errors will be returned in a standardized way from all NREL Web services. Additional, service-specific error messages may also be returned (see individual service documentation for those details). The following list describes the general errors any application may return:</p>
+<p>Certain, general errors will be returned in a standardized way from all API Umbrella web services. Additional, service-specific error messages may also be returned (see individual service documentation for those details). The following list describes the general errors any application may return:</p>
 
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
   <thead>
     <tr>
+      <th class="doc-parameters-name" scope="col" style="width: 100px;">Error Code</th>
       <th class="doc-parameters-name" scope="col" style="width: 100px;">HTTP Status Code</th>
       <th class="doc-parameters-required" scope="col">Description</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th class="doc-parameter-name" scope="row">403</th>
+      <th class="doc-parameter-name" scope="row">API_KEY_MISSING</th>
+      <td class="doc-parameter-name">403</td>
       <td class="doc-parameter-description">
-        Forbidden - Either no api_key parameter was supplied in the URL, or an invalid api_key was given. You can <a href="/signup">get your own API key</a>.
+        An API key was not supplied. See <a href="/docs/api-key/">API key usage</a> for details on how to pass your API key to the API.
       </td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">429</th>
+      <th class="doc-parameter-name" scope="row">API_KEY_INVALID</th>
+      <td class="doc-parameter-name">403</td>
       <td class="doc-parameter-description">
-        Too Many Requests - Your API key has exceeded the rate limits. See <a href="/docs/rate-limits">rate limits</a> for more detail.
+        An invalid API key was supplied. Double check that the API key being passed in is valid, or <a href="/signup/">signup</a> for an API key.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">API_KEY_DISABLED</th>
+      <td class="doc-parameter-name">403</td>
+      <td class="doc-parameter-description">
+        The API key supplied has been disabled by an administrator. Please <a href="/contact/">contact us</a> for assistance.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">API_KEY_UNAUTHORIZED</th>
+      <td class="doc-parameter-name">403</td>
+      <td class="doc-parameter-description">
+        The API key supplied is not authorized to access the given service. Please <a href="/contact/">contact us</a> for assistance.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">API_KEY_UNVERIFIED</th>
+      <td class="doc-parameter-name">403</td>
+      <td class="doc-parameter-description">
+        The API key supplied has not been verified yet. Please check your e-mail to verify the API key. Please <a href="/contact/">contact us</a> for assistance.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">HTTPS_REQUIRED</th>
+      <td class="doc-parameter-name">400</td>
+      <td class="doc-parameter-description">
+        Requests to this API must be made over HTTPS. Ensure that the URL being used is over HTTPS.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">OVER_RATE_LIMIT</th>
+      <td class="doc-parameter-name">429</td>
+      <td class="doc-parameter-description">
+        The API key has exceeded the rate limits. See <a href="/docs/rate-limits/">rate limits</a> for more details or <a href="/contact/">contact us</a> for assistance.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">NOT_FOUND</th>
+      <td class="doc-parameter-name">404</td>
+      <td class="doc-parameter-description">
+        An API could not be found at the given URL. Check your URL.
       </td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="error-messages">Error Messages</h2>
+<h2 id="error-response-body">Error Response Body</h2>
 
-<p>A brief description of the error will be returned in the response body. These error message are subject to change, so it's suggested any error handling use the HTTP status code and not the contents of this message.</p>
+<p>The error response body will contain an error code value from the table above and a brief description of the error. The descriptions are subject to change, so it's suggested any error handling use the HTTP status code or the error code value for error handling (and not the content of the message description).</p>
 
 <h3 id="error-message-response-formats">Error Message Response Formats</h3>
-<p>Depending on the requested format, the error message response may be returned in JSON, XML, CSV, or plain text. Unknown request formats will return errors in plain text format.</p>
+<p>Depending on the detected format of the request, the error message response may be returned in JSON, XML, CSV, or HTML. Requests of an unknown format will return errors in JSON format.</p>
 
 <h4 id="json-example">JSON Example</h4>
 
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
-  </span><span class="s2">"errors"</span><span class="p">:[</span><span class="w">
-    </span><span class="s2">"An invalid api_key was supplied. Get one at https://developer.nrel.gov/"</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API_KEY_MISSING"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No api_key was supplied. Get one at https://developer.nrel.gov"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <h4 id="xml-example">XML Example</h4>
 
-<pre><code class="highlight xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;errors&gt;</span>
-  <span class="nt">&lt;error&gt;</span>An invalid api_key was supplied. Get one at https://developer.nrel.gov/<span class="nt">&lt;/error&gt;</span>
-<span class="nt">&lt;/errors&gt;</span>
+<pre><code class="highlight xml"><span class="nt">&lt;response&gt;</span>
+  <span class="nt">&lt;error&gt;</span>
+    <span class="nt">&lt;code&gt;</span>API_KEY_MISSING<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;message&gt;</span>No api_key was supplied. Get one at https://developer.nrel.gov<span class="nt">&lt;/message&gt;</span>
+  <span class="nt">&lt;/error&gt;</span>
+<span class="nt">&lt;/response&gt;</span>
 </code></pre>
 
 <h4 id="csv-example">CSV Example</h4>
 
-<pre><code class="highlight plaintext">Error
-An invalid api_key was supplied. Get one at https://developer.nrel.gov/
+<pre><code class="highlight plaintext">Error Code,Error Message
+API_KEY_MISSING,No api_key was supplied. Get one at https://developer.nrel.gov
 </code></pre>
 
-<h4 id="plain-text-example">Plain Text Example</h4>
+<h4 id="html-example">HTML Example</h4>
 
-<pre><code class="highlight plaintext">Error: An invalid api_key was supplied. Get one at https://developer.nrel.gov/
+<pre><code class="highlight html"><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>API_KEY_MISSING<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;p&gt;</span>No api_key was supplied. Get one at https://developer.nrel.gov<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
 </code></pre>
 
     <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
-  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/errors.md">Help Improve this Content</a>
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/errors.md.erb">Help Improve this Content</a>
 </div>
 
       <footer class="container-fluid">
