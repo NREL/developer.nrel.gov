@@ -17,6 +17,13 @@
       NREL: Developer Network
     </title>
 
+    <link rel="canonical" href="https://developer.nrel.gov<%= current_page.url %>" />
+    <script>
+      if(window.location.href.indexOf('nrel.github.io') !== -1) {
+        window.location.href = 'https://developer.nrel.gov<%= current_page.url %>';
+      }
+    </script>
+
     <%= stylesheet_link_tag("all") %>
 
     <!--[if lt IE 9]>
