@@ -2,7 +2,7 @@
 title: Energy Incentives
 summary: This service lists the incentives found in the [DSIRE](http://www.dsireusa.org/)
   quantitative spreadsheet by location.
-url: GET /api/energy-incentives/v1
+url: /api/energy-incentives/v2/dsire
 
 ---
 
@@ -21,7 +21,7 @@ This is the current version of the energy incentives API. Previous versions have
 
 ## Request URL
 
-<pre>GET /api/energy-incentives/v1<em>.format?parameters</em></pre>
+<pre> GET <%= current_page.data.url %><em>.format?parameters</em></pre>
 
 ## Request Parameters
 
@@ -99,7 +99,7 @@ This is the current version of the energy incentives API. Previous versions have
       <td class="doc-parameter-description">The longitude for the location to use. Required if address not given.</td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">incentive_types</th>
+      <th class="doc-parameter-name" scope="row">category</th>
       <td class="doc-parameter-required">No</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -109,19 +109,113 @@ This is the current version of the energy incentives API. Previous versions have
           <strong>Default:</strong> None
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Options</strong>: ad_incentives,<br>
-          biomass_incentives,<br>
-          csp_incentives,<br>
-          lfg_incentives,<br>
-          pool_incentives,<br>
-          solar_incentives,<br>
-          ssh_incentives,<br>
-          swh_incentives,<br>
-          wind_incentives,<br>
-          wte_incentives,
+          <strong>Options</strong>:  <br/>
+          appliances,<br>
+          biomass,<br>
+          building_envelope,<br>
+          fuel_cells,<br>
+          geothermal_technologies,<br>
+          hvac,<br>
+          hydroelectric,<br>
+          industrial_equipment,<br>
+          lighting,<br>
+          ocean_technologies, <br/>
+          other, <br/>
+          solar_technologies, <br/>
+          wind
         </div>
       </td>
-      <td class="doc-parameter-description">The type of incentive to return. Will return all incentive types if no parameter is provided.</td>
+      <td class="doc-parameter-description">The category of incentive to return. Will return all incentive types if no parameter is provided.</td>
+      <td class="doc-parameter-required"></td>
+      <td class="doc-parameter-value"></td>
+      <td class="doc-parameter-description"></td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">technology</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> comma delimited string
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Options</strong>: <br/>
+          agricultural_equipment, <br/>
+          air_conditioners, <br/>
+          anaerobic_digestion, <br/>
+          biomass, <br/>
+          boilers, <br/>
+          building_insulation, <br/>
+          caulking_weather_stripping, <br/>
+          ceiling_fan, <br/>
+          chillers, <br/>
+          clothes_washers, <br/>
+          combined_heat_power, <br/>
+          commercial_cooking_equipment, <br/>
+          commercial_refrigeration_equipment, <br/>
+          comprehensive_measures_whole_building, <br/>
+          compressed_air, custom_others_pending_approval, <br/>
+          data_center_equipment, <br/>
+          daylighting, <br/>
+          dehumidifiers, <br/>
+          dishwasher, <br/>
+          doors, <br/>
+          duct_air_sealing, <br/>
+          energy_mgmt_systems_building_controls, <br/>
+          equipment_insulation, <br/>
+          food_service_equipment, <br/>
+          fuel_cells_using_non_renewable_fuels, <br/>
+          fuel_cells_using_renewable_fuels, <br/>
+          furnaces, <br/>
+          geothermal_direct_use, <br/>
+          geothermal_electric, <br/>
+          geothermal_heat_pumps, <br/>
+          heat_pumps, <br/>
+          heat_recovery, <br/>
+          hydroelectric, <br/>
+          hydroelectric_small, <br/>
+          hydrogen, <br/>
+          insulation, <br/>
+          landfill_gas, <br/>
+          led_lighting, <br/>
+          lighting, <br/>
+          lighting_controls_sensors, <br/>
+          microturbines, <br/>
+          motors, <br/>
+          motor_vfds, <br/>
+          municipal_solid_waste, <br/>
+          ocean_thermal, <br/>
+          other_distributed_generation_technologies, <br/>
+          other_ee, <br/>
+          personal_computing_equipment, <br/>
+          pool_pumps, <br/>
+          processing_and_manufacturing_equipment, <br/>
+          programmable_thermostats, <br/>
+          reflective_roofs, <br/>
+          refrigerators_freezers, <br/>
+          roofs, <br/>
+          siding, <br/>
+          solar_passive, <br/>
+          solar_photovoltaics, <br/>
+          solar_pool_heating, <br/>
+          solar_space_heat, <br/>
+          solar_thermal_electric, <br/>
+          solar_thermal_process_heat, <br/>
+          solar_water_heat, <br/>
+          steam_system_upgrades, <br/>
+          tankless_water_heater, <br/>
+          tidal, <br/>
+          vending_machine_controls, <br/>
+          water_heaters, <br/>
+          wave, <br/>
+          wind_all, <br/>
+          windows, <br/>
+          wind_small
+        </div>
+      </td>
+      <td class="doc-parameter-description">The technology that the incentive applies to. Will return all technology types if no parameter is provided.</td>
       <td class="doc-parameter-required"></td>
       <td class="doc-parameter-value"></td>
       <td class="doc-parameter-description"></td>
@@ -148,11 +242,6 @@ The response is composed of service-related informational fields and the results
       <td class="doc-parameter-description">The input parameters received in the request.</td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">version</th>
-      <td class="doc-parameter-value"><strong>Type:</strong> string</td>
-      <td class="doc-parameter-description">The current version of the web service.</td>
-    </tr>
-    <tr>
       <th class="doc-parameter-name" scope="row">errors</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of strings</td>
       <td class="doc-parameter-description">Any error messages resulting from the request.</td>
@@ -173,10 +262,10 @@ The response is composed of service-related informational fields and the results
       <td class="doc-parameter-description">Any metadata associated with the request (sources, etc)</td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">outputs</th>
+      <th class="doc-parameter-name" scope="row">result</th>
       <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
       <td class="doc-parameter-description">
-        The data outputs from the request. (see the <a href="http://www.dsireusa.org/incentivesdata/" target="_blank">DSIRE</a> website for more detail)
+        The data outputs from the request.
       </td>
     </tr>
   </tbody>
@@ -184,79 +273,111 @@ The response is composed of service-related informational fields and the results
 
 ## Examples
 
-### JSON Output Format
+### JSON Output Format (results truncated)
 
-<pre>GET <a href="/api/energy-incentives/v1.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;incentive_types=ad_incentives,csp_incentives">/api/energy-incentives/v1.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;incentive_types=ad_incentives,csp_incentives</a></pre>
+<pre>GET <a href="<%= current_page.data.url %>.json?api_key=DEMO_KEY&amp;lat=42&amp;lon=-102&amp;category=solar_technologies,biomass&amp;technology=solar_space_heat"><%= current_page.data.url %>.json?api_key=DEMO_KEY&amp;lat=42&amp;lon=-102&amp;category=biomass&amp;technology=biomass</a></pre>
 
 ```json
 {
-  "version": "1.0.1",
-  "metadata": {
-    "sources": [
-      "Ventyx Research (2011)",
-      "EIA (2011)"
-    ]
-  },
   "inputs": {
-    "api_key": "DEMO_KEY",
-    "lat": "40",
-    "lon": "-105",
-    "incentive_types": [
-      "ad_incentives",
-      "csp_incentives"
+    "category": [
+      "biomass"
+    ],
+    "lat": "42",
+    "lon": "-102",
+    "technology": [
+      "biomass"
     ]
   },
-  "infos": [
-
-  ],
-  "errors": [
-
-  ],
-  "warnings": [
-
-  ],
-  "outputs": {
-    "ad_incentives": [
-      {
-        "dsire_id": "US13F",
-        "gid": 123,
-        "incentive_code": "US13F",
-        "memo": "03/07/11 revised history section to show 3 PTC expirations (1999 one was missing). JB 12/3/10 Added to note info about grant expiration on 12/31/10. AH 07/19/10 fixed incentive amount field, 2.1 cents to 2.2 cents, missed this hen I did the update. 06/09/10 removed ADG from eligible list, pending conv. with IRS abou...",
-        "notes": "The electricity must be sold by the taxpayer to an unrelated person during the taxable year. The American Recovery and Reinvestment Act of 2009 allows taxpayers eligible for the federal renewable electricity production tax credit (PTC) to take the federal business energy investment tax credit (ITC) instead of taking the PTC for new installations. Credit level listed here is for 2013.",
-        "program_name": "Renewable Electricity Production Tax Credit (PTC)",
-        "sector": "F",
-        "state": "Federal",
-        "anaerobic_digestion_com_ptc_dlrs_kwh": 0.011,
-        "anaerobic_digestion_ptc_duration_years": 10.0
-      }
-    ],
-    "csp_incentives": [
-      {
-        "dsire_id": "US02F",
-        "gid": 122,
-        "incentive_code": "US02F",
-        "memo": "12/20/10 Changed reference to grant expiration to 12/31/11 BL 12/3/10 Added to note info about grant expiration date of 12/31/10. AH 6/9/10 Reviewed statute -- no substantive changes. Removed history section: The federal Energy Policy Act of 2005 (EPAct 2005) expanded the existing federal business energy tax c...",
-        "notes": "The American Recovery and Reinvestment Act of 2009 allows taxpayers eligible for the federal renewable electricity production tax credit (PTC) to take the federal business energy investment tax credit (ITC) instead of taking the PTC for new installations.",
-        "program_name": "Business Energy Investment Tax Credit (ITC)",
-        "sector": "F",
-        "state": "Federal",
-        "csp_com_tax_credit_pcnt_cost": 0.3
-      }
-    ],
-    "utility_name": "United Power Inc",
-    "utility_id": "63360",
-    "utility_info": [
-      {
-        "company_id": "63360",
-        "utility_name": "United Power Inc"
-      }
-    ],
-    "lat": 40.0,
-    "lon": -105.0,
-    "city": "Broomfield",
-    "state": "CO",
-    "zip": "80023"
-  }
+  "metadata": {
+    "version": "2.0.0",
+    "resultset": {
+      "count": 20
+    }
+  },
+  "status": 200,
+  "result": [
+    {
+      "category_name": "Financial Incentive",
+      "incentive_code": "US45F",
+      "program_id": 2510,
+      "program_name": "Clean Renewable Energy Bonds (CREBs)",
+      "summary": "<p><strong><i>Note: <a href=\"http://www.irs.gov/pub/irs-drop/n-15-12.pdf\">IRS Notice 2015-12</a> announced the availability of close to $1.4 billion in remaining volume cap for New CREBs. On March 5, 2015, the IRS opened the rolling volume-cap application window for governmental bodies and cooperative utilities, as well as a closed-end application period for public power providers.    <br/>&#10;<br/>&#10;Readers should also note that the terms &#34;New&#34; and &#34;Old&#34;  CREBs are used in the following summary to distinguish between prior CREB allocations and the New CREB authorizations made by the U.S. Congress in 2008 and 2009.  The use of the term &#34;New CREBs&#34; has legal significance in that New CREBs authorized under 26 USC § 54A and 54C have substantially different rules than prior CREB allocations authorized under 26 USC § 54. </i></strong> <br/>&#10;<br/>&#10;Clean renewable energy bonds (CREBs) may be used by certain entities -- primarily in the public sector -- to finance renewable energy projects.  The list of qualifying technologies is generally the same as that used for the federal renewable energy production tax credit (PTC). CREBs may be issued by electric cooperatives, government entities (states, cities, counties, territories, Indian tribal governments or any political subdivision thereof), and by certain lenders.  The bondholder receives federal tax credits in lieu of a portion of the traditional bond interest, resulting in a lower effective interest rate for the borrower.* The issuer remains responsible for repaying the principal on the bond.<br/>&#10;<br/>&#10;The <a title=\"See legislation\" href=\"http://thomas.loc.gov/cgi-bin/query/z?c110:H.R.1424.enr:\" target=\"_blank\" class=\"summarylink\">Energy Improvement and Extension Act of 2008 (Div. A, Sec. 107)</a> allocated $800 million for new Clean Renewable Energy Bonds (CREBs). In February 2009, the <a title=\"Go to legislation\" href=\"http://thomas.loc.gov/home/h1/Recovery_Bill_Div_B.pdf\" target=\"_blank\" class=\"See legislation\">American Recovery and Reinvestment Act of 2009 (Div. B, Sec. 1111)</a> allocated an additional $1.6 billion for New CREBs, for a total New CREB allocation of $2.4 billion. The Energy Improvement and Extension Act of 2008 also extended the deadline for previously reserved allocations (&#34;Old CREBs&#34;) until December 31, 2009, and addressed several provisions in the existing law that previously limited the usefulness of the program for some projects. A separate section of the law extended CREBs eligibility to marine energy and hydrokinetic power projects.<br/>&#10;<br/>&#10;Participation in the program is limited by the volume of bonds allocated by Congress for the program.  Participants must first apply to the Internal Revenue Service (IRS) for a CREBs allocation, and then issue the bonds within a specified time period. The New CREBs allocation totaling $2.4 billion does not have a defined expiration date under the law; however, recent IRS solicitations for new applications require the bonds to be issued within 3 years after the applicant receives notification of an approved allocation (see History section below for information on previous allocations). Public power providers, governmental bodies, and electric cooperatives are each reserved an equal share (33.3%) of the New CREBs allocation. IRS Notice 2015-12, however, divided the remaining volume cap differently: $516,565,691.35 for public power providers, $597,134,963.60 for governmental bodies, and $280,778,469.00 for cooperative utilities.</p><p>The tax credit rate is set daily by the U.S. Treasury Department.  Under past allocations, the credit could be taken quarterly on a dollar-for-dollar basis to offset the tax liability of the bondholder. However, under the new CREBs allocation, the credit has been reduced to 70% of what it would have been otherwise.  Other important changes are described in IRS Notice 2009-33.<br/>&#10;<br/>&#10;CREBs differ from traditional tax-exempt bonds in that the tax credits issued through CREBs are treated as taxable income for the bondholder. The tax credit may be taken each year the bondholder has a tax liability as long as the credit amount does not exceed the limits established by the federal <i>Energy Policy Act of 2005</i>. Treasury rates for prior CREB allocations, or &#34;Old&#34; CREBs are available <a href=\"https://www.treasurydirect.gov/GA-SL/SLGS/selectCREBDate.htm\" title=\"Old CREB rates\" target=\"_blank\" class=\"summarylink\">here</a>, while rates for New CREBs and other qualified tax credit bonds are available <a href=\"https://www.treasurydirect.gov/GA-SL/SLGS/selectQTCDate.htm\" target=\"_blank\" title=\"New CREB rates\" class=\"summarylink\">here</a>. <br/>&#10;<br/>&#10;In April 2009, the IRS issued Notice 2009-33, which solicited applications for the New CREB allocation and provided interim guidance on certain program rules and changes from prior CREB allocations. The expiration date for New CREB applications under this solicitation was August 4, 2009.  Further guidance on CREBs is available in IRS Notices 2006-7 and 2007-26 to the extent that the program rules were not modified by 2008 and 2009 legislation. In October 2009, the Department of Treasury <a title=\"CREB allocation list\" href=\"http://www.irs.gov/pub/irs-tege/ncrebs_2009_allocations_v1.1.pdf\" target=\"_blank\" class=\"summarylink\">announced</a> the allocation of $2.2 billion in new CREBs for 805 projects across the country. A new solicitation (IRS Announcement 2010-54) was issued in September 2010 for roughly $191 million in unallocated New CREB bond volume available only to electric cooperatives. The award announcement for this allocation was made in March 2011. It remains to be seen if or when the IRS will issue new funding announcements for Old CREB allocations which were not issued by the December 31, 2009 deadline, or New CREB allocations which miss the three-year issuance period. <br/>&#10;<br/>&#10;<b>History</b> <br/>&#10;The federal <i>Energy Policy Act of 2005</i> (EPAct 2005) established Clean Energy Renewable Bonds (CREBs) as a financing mechanism for public sector renewable energy projects. This legislation originally allocated $800 million of tax credit bonds to be issued between January 1, 2006, and December 31, 2007. Following the enactment of the federal <i>Tax Relief and Health Care Act of 2006</i>, the IRS made an additional $400 million in CREBs financing available for 2008 through Notice 2007-26. <br/>&#10;<br/>&#10;In November 2006, the IRS announced that the original $800 million allocation had been reserved for a total of 610 projects.  The additional $400 million (plus surrendered volume from the previous allocation) was allocated to 312 projects in February 2008.  Of the $1.2 billion total of tax-credit bond volume cap allocated to fund renewable-energy projects, state and local government borrowers were limited to $750 million of the volume cap, with the rest reserved for qualified municipal or cooperative electric companies.<br/>&#10;<br/>&#10;For further information on CREBs, contact Zoran Stojanovic or Timothy Jones of the IRS Office of Associate Chief Counsel at (202) 622-3980.  Questions on recent IRS Notice 2009-33 can be directed to Janae Lemley at (636) 255-1202.<br/>&#10;<i><br/>&#10;<br/>&#10;*In March 2010 Congress enacted <a title=\"See legislation\" href=\"http://thomas.loc.gov/cgi-bin/query/z?c111:H.R.2847.ENR:\" target=\"_blank\" class=\"summarylink\">H.R. 2847 (Sec. 301)</a> permitting New CREB issuers to make an irrevocable election to receive a direct payment -- a refundable tax credit -- from the Department of Treasury equivalent to and in lieu of the amount of the non-refundable tax credit which would otherwise be provided to the bondholder. This option only applies to New CREBs issued after the March 18, 2010 enactment of the law. In April 2010 the IRS issued <a title=\"Notice 2010-35\" href=\"http://www.irs.gov/pub/irs-drop/n-10-35.pdf\" target=\"_blank\" class=\"summarylink\">Notice 2010-35</a> providing guidance on the direct payment option.</i></p>",
+      "public_url": "http://programs.dsireusa.org/system/program/detail/2510",
+      "regions": [
+        {
+          "name": "Federal",
+          "type": "US"
+        }
+      ],
+      "technologies": [
+        {
+          "category": "Biomass",
+          "name": "Biomass"
+        }
+      ]
+    },
+    {
+      "category_name": "Financial Incentive",
+      "incentive_code": "US46F",
+      "program_id": 2511,
+      "program_name": "USDA - Rural Energy for America Program (REAP) Loan Guarantees",
+      "summary": "<p>&#10;&#9;<strong><em>Note: The U.S. Department of Agriculture's Rural Development issues periodic Notices of Solicitation of Applications for the Rural Energy for America Program (REAP) in the Federal Registry. The most recent solicitation for the REAP program was on May 5<sup>th</sup>, 2014 and can be viewed in the Federal Registry <a href=\"https://www.federalregister.gov/articles/2014/05/05/2014-10054/notice-of-funding-availability-for-the-rural-energy-for-america-program\">here.</a></em> <em>The next Notice of Funding Availability will be published in the Federal Registry and on the USDA website <a href=\"http://www.rurdev.usda.gov/RD_NOFAs.html\">here.</a></em></strong></p>&#10;<p>&#10;&#9;<strong><em>Notably, the 2014 Farm Bill removed authority for the USDA to fund REAP feasibility studies with REAP grants.</em></strong></p>&#10;<p>&#10;&#9;The Rural Energy for America Program (REAP) provides financial assistance to agricultural producers and rural small businesses in rural America to purchase, install, and construct renewable energy systems, make energy efficiency improvements to non-residential buildings and facilities, use renewable technologies that reduce energy consumption, and participate in energy audits and renewable energy development assistance.</p>&#10;<p>&#10;&#9;Renewable energy projects for the Renewable Energy Systems and Energy Efficiency Improvement Guaranteed Loan and Grant Program include wind, solar, biomass and geothermal, and hydrogen derived from biomass or water using wind, solar, or geothermal energy sources. These grants are limited to 25% of a proposed project's cost, and a loan guarantee may not exceed $25 million. The combined amount of a grant and loan guarantee must be at least $5,000 (with the grant portion at least $1,500) and may not exceed 75% of the project’s cost. In general, a minimum of 20% of the funds available for these incentives will be dedicated to grants of $20,000 or less. For more information on grant, loan guarantees, loan financing, and opportunities for combinations thereof, <a href=\"http://www.rurdev.usda.gov/BCP_ReapResEei_Financing.html\">visit the USDA website.</a></p>&#10;<p>&#10;&#9;In 2014, $12.3 million in grants and $56.4 million in loans was awarded. For a complete list of 2014 projects, click <a href=\"http://www.rurdev.usda.gov/supportdocuments/rdREAPProjectsSept2014.pdf\">here.</a></p>&#10;<p>&#10;&#9;<strong>Eligibility</strong></p>&#10;<p>&#10;&#9;Grants and loans are generally available to state government entities, local governments, tribal governments, land-grant colleges and universities**, rural electric cooperatives and public power entities, and other entities, as determined by the USDA. To be eligible for REAP grants and loans, an applicant must have a satisfactory revenue stream and be in control the budget, operations, and maintenance of a project for the entire duration of the loan or grant. Rural small businesses must be located in rural areas, but agricultural producers may be located in non-rural areas.</p>&#10;<p>&#10;&#9;Eligible project costs include purchasing energy efficiency improvements or a renewable energy system, energy audits or assessments, permitting and licensing fees, and business plans and retrofitting. For new construction the replacement of older equipment with more efficient equipment may be eligible as a project cost only when a new facility is planned to be more efficient and similarly sized than the older facility. Working capital and land acquisition are only eligible for loan guarantees.</p>&#10;<p>&#10;&#9;For more information regarding applicant and project eligibility for loans and grants, visit the <a href=\"http://www.rurdev.usda.gov/BCP_ReapResEei_Eligibility.html\">USDA REAP eligibility webpage</a>, read the <a href=\"https://www.federalregister.gov/articles/2014/05/05/2014-10054/notice-of-funding-availability-for-the-rural-energy-for-america-program#h-13\">eligibility requirements</a> in the most recent Solicitation of Applications for REAP funding in the Federal Registry, and/or <a href=\"http://www.rurdev.usda.gov/BCP_Energy_CoordinatorList.html\">contact your regional rural energy coordinator.</a></p>&#10;<p>&#10;&#9;Regional rural energy coordinators provide loan and grant applications upon request.</p>&#10;<p>&#10;&#9;<strong>History</strong></p>&#10;<p>&#10;&#9;<em>The Food, Conservation, and Energy Act of 2008</em> (<a href=\"http://frwebgate.access.gpo.gov/cgi-bin/getdoc.cgi?dbname=110_cong_bills&amp;docid=f:h2419enr.txt.pdf\" target=\"blank\">H.R. 2419</a>), enacted by Congress in May 2008, converted the federal Renewable Energy Systems and Energy Efficiency Improvements Program,* into the Rural Energy for America Program (REAP). Similar to its predecessor, the REAP promotes energy efficiency and renewable energy for agricultural producers and rural small businesses through the use of (1) grants and loan guarantees for energy efficiency improvements and renewable energy systems, and (2) grants for energy audits and renewable energy development assistance. Congress has allocated funding for the new program in the following amounts: $55 million for FY 2009, $60 million for FY 2010, $70 million for FY 2011, and $70 million for FY 2012. REAP is administered by the U.S. Department of Agriculture (USDA). In addition to these mandatory funding levels, up to $25 million in discretionary funding may be issued each year. The American Taxpayer Relief Act of 2012 (H.R. 8) extended discretionary funding for FY 2013. The 2014 Farm Bill reauthorized the USDA to offer these programs and removed the mandate to offer grants for feasibility studies.<br/>&#10;&#9;<br/>&#10;&#9;<em>* The Renewable Energy Systems and Energy Efficiency Improvements Program was created by the USDA pursuant to Section 9006 of the 2002 federal</em> <em>Farm Security and Rural Investment Act of 2002</em>. <em>Funding in the amount of $23 million per year was appropriated for each fiscal year from FY 2003-2007. In March 2008, the USDA announced that it would accept $220.9 million in applications for grants, loan guarantees, and loan/grant combination packages under the Renewable Energy Systems and Energy Efficiency Improvements Program. The application deadline was June 16, 2008.<br/>&#10;&#9;<br/>&#10;&#9;**Land grant colleges and universities are referred to above as &#34;schools&#34; and &#34;institutions&#34;. It is important to note that K-12 schools are not eligible for this grant.</em></p>",
+      "public_url": "http://programs.dsireusa.org/system/program/detail/2511",
+      "regions": [
+        {
+          "name": "Federal",
+          "type": "US"
+        }
+      ],
+      "technologies": [
+        {
+          "category": "Biomass",
+          "name": "Biomass"
+        }
+      ]
+    },
+    {
+      "category_name": "Financial Incentive",
+      "incentive_code": "NE10F",
+      "program_id": 2576,
+      "program_name": "Sales and Use Tax Exemption for Community Renewable Energy Projects",
+      "summary": "<p><b><i><span>Note: Enacted March 2015, L.B. 412 created the following requirement: &#34;To the extent feasible, a C-BED project developer shall provide, </span><span>in writing, notice of incentives pursuant to the Rural Community-Based Energy </span><span>Development Act for local ownership and local participation in a C-BED project to each property owner on whose property a turbine will be located and to the </span><span>elected governing body of each municipality or political subdivision in which a </span><span>turbine will be located.&#34;</span></i></b></p><p><span>In May 2007 Nebraska established an exemption from the sales and use tax imposed on the gross receipts from the sale, lease, or rental of personal property for use in a community-based energy development (C-BED) project. Nebraska also enacted the Rural Community-Based Energy Development Act (</span><a href=\"http://nebraskalegislature.gov/FloorDocs/100/PDF/Slip/LB629.pdf\" target=\"_blank\" title=\"LB 629\">L.B. 629)</a><span> to authorize and encourage electric utilities to enter into power purchase agreements with C-BED project developers.</span><br/></p>&#10;<p>&#10;&#9;<span>To claim the exemption, filing requirements imposed by the Tax Commissioner must be met.</span></p>&#10;<p>&#10;&#9;<strong>Eligible Projects</strong><br/>&#10;&#9;<br/>&#10;&#9;A C-BED project is defined as a new energy generation project using wind, solar, biomass, or landfill gas as the fuel source that has at least 25% of the gross power purchase agreement payments flowing to the qualified owner or owners or as payments to the local community and has a resolution of support adopted by the county board of each county in which the C-BED project is located or by the tribal council for a C-BED project located within the boundaries of an Indian reservation.</p>&#10;<p>&#10;&#9;“Payments to the local community” include, but are not limited to, lease and easement payments part of a C-BED project; contract payments to Nebraska companies that meet specific statutory requirements for services, materials, equipment, and components necessary to permit or construct the C-BED project; other parts, materials, or components that are manufactured, assembled, or fabricated in Nebraska not included above.<br/>&#10;&#9;<br/>&#10;&#9;<strong>Qualified Project Owners</strong></p>&#10;<p>&#10;&#9;A qualified C-BED project owner means:</p>&#10;<ul>&#10;&#9;<li>&#10;&#9;&#9;a Nebraska resident;</li>&#10;&#9;<li>&#10;&#9;&#9;a limited liability company that is organized under the Limited Liability Company Act and that is entirely made up of members who are Nebraska residents;</li>&#10;&#9;<li>&#10;&#9;&#9;a Nebraska nonprofit corporation;</li>&#10;&#9;<li>&#10;&#9;&#9;an electric supplier(s), subject to certain limitations for a single C-BED project;</li>&#10;&#9;<li>&#10;&#9;&#9;a tribal council;</li>&#10;&#9;<li>&#10;&#9;&#9;a domestic corporation domiciled in Nebraska; or</li>&#10;&#9;<li>&#10;&#9;&#9;a cooperative corporation domiciled in Nebraska</li>&#10;</ul>",
+      "public_url": "http://programs.dsireusa.org/system/program/detail/2576",
+      "regions": [
+        {
+          "name": "Nebraska",
+          "type": "state"
+        }
+      ],
+      "technologies": [
+        {
+          "category": "Biomass",
+          "name": "Biomass"
+        }
+      ]
+    },
+    {
+      "category_name": "Regulatory Policy",
+      "incentive_code": "US06R",
+      "program_id": 2774,
+      "program_name": "Interconnection Standards for Small Generators",
+      "summary": "<p><b>Origin</b><br/></p>&#10;<p>&#10;&#9;</p>&#10;&#10;&#10;&#10;&#10;&#10;<p>Through its Orders 792 and 792-A, the Federal Energy Regulatory Commission (FERC) adopted new <a href=\"http://www.ferc.gov/industries/electric/indus-act/gi/small-gen.asp\">&#34;small generator&#34; interconnection standards</a> for distributed energy resources up to 20 megawatts (MW) in capacity in November 2013 and September 2014, respectively. These standards made revisions to those promulgated by FERC in May 2005 through its Order 2006. <span>The FERC's standards apply only to facilities subject to the jurisdiction of the commission; these facilities mostly include those that interconnect at the transmission level. Given that purely intra-state distribution grids are generally considered to not be in &#34;interstate commerce&#34;, the FERC's standards generally do not apply to distribution-level interconnection, which is regulated by state public utilities commissions. However, FERC's standard tends to serve as a guidepost for a number of state-level standards.</span></p><p></p><p></p><p><b>Small Generator Interconnection Procedures and Agreement (SGIP &amp; SGIA)</b></p><p></p><p></p><p>The FERC's standards include Small Generator Interconnection Procedures (SGIP) and a Small Generator Interconnection Agreement (SGIA). The SGIP contains the technical procedures that the small generator and utility must follow in the course of connecting the generator with the utility's lines. The SGIA contains the contractual provisions for the interconnection and spells out who pays for improvements to the utility's electric system (if needed to complete the interconnection).</p><p><b>Applicable SGIP/SGIA Interconnection Review Processes</b></p><p>The standards include provisions for three levels of interconnection:</p>&#10;<ul>&#10;    <li>The &#34;10-kilowatt (kW) Inverter Process&#34;; <br/></li>&#10;    <li>The &#34;Fast Track Process&#34;; and <br/></li>&#10;    <li>The default &#34;Study Process,&#34; for all other systems.</li></ul><p>The tables below describes the different &#34;breakpoints,&#34; or the various system sizes at which the different processes would apply. The first table is an overall table comparing the breakpoints between the two FERC orders, .&#10;&#10;</p><table border=\"1\" width=\"570\">&#10;&#9;&#9;<tbody>&#10;&#9;&#9;&#9;<tr>&#10;&#9;&#9;&#9;&#9;<th style=\"text-align: center;\">Standard of Review</th>&#10;&#9;&#9;&#9;&#9;<th style=\"text-align: center;\">Previous Rule <br/>(FERC Order 2006)</th>&#10;&#9;&#9;&#9;&#9;<th style=\"text-align: center;\">New Rule <br/>(FERC Order 792)</th>&#10;&#9;&#9;&#9;</tr>&#10;&#9;&#9;&#9;<tr>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\">10 kW Inverter Process</td>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\">Up to 10 kW</td>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\">Up to 10 kW</td>&#10;&#9;&#9;&#9;</tr>&#10;&#9;&#9;&#9;<tr>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\">Fast-Track Process</td>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\">10 kW through 2,000 kW (2 MW)</td>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\">Voltage-Differentiated<br/>(See Table Below)</td>&#10;&#9;&#9;&#9;</tr>&#10;&#9;&#9;&#9;<tr>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\">Study Process</td>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\">2 MW through 20 MW</td>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\"><br/>through 20 MW</td>&#10;&#9;&#9;&#9;</tr>&#10;&#9;&#9;&#9;<tr>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\">≥ 30 kV and ≤ 69 kV </td>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\">2 MW</td>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\">4 MW</td>&#10;&#9;&#9;&#9;</tr></tbody></table><br/><div><span>The table below is a detailed breakdown of the voltage-differentiated breakpoints for the newly-adopted &#34;fast track&#34; process newly adopted in Order 792.</span><br/></div><div> &#10;&#10;<table border=\"1\" width=\"570\">&#10;&#9;&#9;<tbody>&#10;&#9;&#9;&#9;<tr>&#10;&#9;&#9;&#9;&#9;<th style=\"text-align: center;\">Applicable Delivery System Voltage Levels <br/>for Fast Track Process (FERC Order 792)</th><th style=\"text-align: center;\">Applicable System Size (Regardless of Location)</th>&#10;&#9;&#9;&#9;&#9;<th style=\"text-align: center;\">Applicable System Size (Location-Specific*)</th>&#10;&#9;&#9;&#9;</tr>&#10;&#9;&#9;&#9;<tr>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\">&lt; 5 kilovolt (kV) <br/></td>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\">500 kW </td>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\">500 kW</td>&#10;&#9;&#9;&#9;</tr>&#10;&#9;&#9;&#9;<tr>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\">≥ 5 kV and &lt; 15 kV<br/></td>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\">2 MW</td>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\">3 MW</td>&#10;&#9;&#9;&#9;</tr>&#10;&#9;&#9;&#9;<tr>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\">≥ 15 kV and &lt; 30 kV</td><td style=\"text-align: center;\">3 MW</td>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\">4 MW</td>&#10;&#9;&#9;&#9;</tr>&#10;&#9;&#9;&#9;<tr>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\">≥ 30 kV and ≤ 69 kV </td><td style=\"text-align: center;\">4 MW</td>&#10;&#9;&#9;&#9;&#9;<td style=\"text-align: center;\">5 MW</td>&#10;&#9;&#9;&#9;</tr></tbody></table><br/><div>&#10;&#10;&#10;&#10;&#10;</div></div><div><span>The standards include technical screens for each level of interconnection. Notably, the FERC standards do not require systems to include an external disconnect switch. Utilities and customers must follow specific timelines, and guidelines for interconnection and study fees are established. </span><span>Customers must obtain liability insurance &#34;sufficient to insure against all reasonably foreseeable direct liabilities given the size and nature of the generating equipment being interconnected, the interconnection itself, and the characteristics of the system to which the interconnection is made.&#34; Additional liability insurance must be obtained &#34;only if necessary as a function of owning and operating a generating facility.&#34;</span></div><div><p><b>Other New Provisions in Order 792 &amp; 792-A (2013 &amp; 2014)</b><br/></p><p></p><p>The new rules include other additional provisions intended to promote the efficiency of small generator interconnection, including, but not limited to:</p><ul><li>Allowing developers/customers to request a pre-application report that would allow for identification of issues that may delay or halt the interconnection process that must be issued within 20 days;</li><li>Revising the Fast Track process to ensure that the developer/customer does not wait more than 5 days for an initial determination, more than 30 days for a &#34;supplemental study&#34; if the initial determination is negative, or more than 10 days after a post-&#34;supplemental study&#34; determination; </li><li>The creation of three new standard technical screens for the &#34;supplemental study&#34;; and </li><li>Allowing energy storage systems to qualify for interconnection under the SGIP process (assuming the SGIP process applies.</li></ul><p>For a detailed look at each and every change to the SGIP/SGIA resulting from Orders 792 &amp; 792-A, please visit FERC's <a href=\"http://www.ferc.gov/industries/electric/indus-act/gi/small-gen.asp\">SGIP/SGIA website</a> to view red-lined copies of each.</p><p></p></div><div><i>* FERC Order 792 allows larger systems to interconnect under the Fast Track process if the system is on a &#34;mainline&#34; and less than 2.5 electrical circuit miles (CM) from a substation. In the order, FERC defines a &#34;mainline&#34; to be &#34;the three-phase backbone of a circuit&#34; that will &#34;t<span>ypically constitute lines with wire sizes of 4/0 American wire gauge, 336.4 kcmil, </span><span>397.5 kcmil, 477 kcmil and 795 kcmil.&#34; The new requirement that utilities provide developers of interconnecting systems with a pre-application report also requires that the distance to the substation be provided in that report.</span></i></div><div><p></p></div><p></p>",
+      "public_url": "http://programs.dsireusa.org/system/program/detail/2774",
+      "regions": [
+        {
+          "name": "Federal",
+          "type": "US"
+        }
+      ],
+      "technologies": [
+        {
+          "category": "Biomass",
+          "name": "Biomass"
+        }
+      ]
+    }
+  ]
 }
 ```
 
