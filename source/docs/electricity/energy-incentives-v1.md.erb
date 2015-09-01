@@ -11,12 +11,6 @@ url: /api/energy-incentives/v2/dsire
 
 This is the current version of the energy incentives API. Previous versions have been deprecated and its users are encouraged to migrate to this newly enhanced version.
 
-<div class="alert alert-error">
-  <p>The DSIRE database, which is managed by the the North Carolina Solar Center and provides the quantitative data that support this web service, is undergoing substantial changes with their new contract with DOE. This transition will involve a significant gap in the provision of the quantitative data that support this web service. As a result of this, the data available in this web service will not be updated between Sept 1st and June 30th. The service will remain active to ensure that the best available data remains accessible.</p>
-
-  <p>Announcement from DSIRE: The U.S. Department of Energy and the North Carolina Solar Center are excited to announce that a new, modernized DSIRE is under construction. The new version of DSIRE will offer significant improvements over the current version, including expanded data accessibility and an array of new tools for site users. The new DSIRE site will be available in the summer of 2014. Staff are currently working hard on the new DSIRE and are unfortunately only able to make minimal updates to the DSIRE website at this time. We apologize for any inconvenience and thank you for using DSIRE.</p>
-</div>
-
 <ul id="toc"></ul>
 
 ## Request URL
@@ -381,77 +375,84 @@ The response is composed of service-related informational fields and the results
 }
 ```
 
-### XML Output Format
+### XML Output Format (results truncated)
 
-<pre>GET <a href="/api/energy-incentives/v1.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;incentive_types=ad_incentives,csp_incentives">/api/energy-incentives/v1.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;incentive_types=ad_incentives,csp_incentives</a></pre>
+<pre>GET <a href="/api/energy-incentives/v1.xml?api_key=DEMO_KEY&amp;lat=42&amp;lon=-102&amp;category=solar_technologies,biomass&amp;technology=solar_space_heat"><%= current_page.data.url %>.xml?api_key=DEMO_KEY&amp;lat=42&amp;lon=-102&amp;category=biomass&amp;technology=biomass</a></pre>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<incentives>
-  <version>1.0.1</version>
-  <metadata>
-    <sources type="array">
-      <source>Ventyx Research (2011)</source>
-      <source>EIA (2011)</source>
-    </sources>
-  </metadata>
+<hash>
   <inputs>
-    <api-key>DEMO_KEY</api-key>
-    <lat>40</lat>
-    <lon>-105</lon>
-    <incentive-types type="array">
-      <incentive-type>ad_incentives</incentive-type>
-      <incentive-type>csp_incentives</incentive-type>
-    </incentive-types>
+    <lat>42</lat>
+    <lon>-102</lon>
+    <category type="array">
+      <category>solar_technologies</category>
+      <category>biomass</category>
+    </category>
+    <technology type="array">
+      <technology>solar_space_heat</technology>
+    </technology>
   </inputs>
-  <infos type="array"/>
-  <errors type="array"/>
-  <warnings type="array"/>
-  <outputs>
-    <ad-incentives type="array">
-      <ad-incentive>
-        <dsire-id>US13F</dsire-id>
-        <gid type="integer">123</gid>
-        <incentive-code>US13F</incentive-code>
-        <memo>03/07/11 revised history section to show 3 PTC expirations (1999 one was missing). JB 12/3/10 Added to note info about grant expiration on 12/31/10. AH 07/19/10 fixed incentive amount field, 2.1 cents to 2.2 cents, missed this hen I did the update. 06/09/10 removed ADG from eligible list, pending conv. with IRS abou...</memo>
-        <notes>The electricity must be sold by the taxpayer to an unrelated person during the taxable year. The American Recovery and Reinvestment Act of 2009 allows taxpayers eligible for the federal renewable electricity production tax credit (PTC) to take the federal business energy investment tax credit (ITC) instead of taking the PTC for new installations. Credit level listed here is for 2013.</notes>
-        <program-name>Renewable Electricity Production Tax Credit (PTC)</program-name>
-        <sector>F</sector>
-        <state>Federal</state>
-        <dsire-id>US13F</dsire-id>
-        <anaerobic-digestion-com-ptc-dlrs-kwh type="float">0.011</anaerobic-digestion-com-ptc-dlrs-kwh>
-        <anaerobic-digestion-ptc-duration-years type="float">10.0</anaerobic-digestion-ptc-duration-years>
-      </ad-incentive>
-    </ad-incentives>
-    <csp-incentives type="array">
-      <csp-incentive>
-        <dsire-id>US02F</dsire-id>
-        <gid type="integer">122</gid>
-        <incentive-code>US02F</incentive-code>
-        <memo>12/20/10 Changed reference to grant expiration to 12/31/11 BL 12/3/10 Added to note info about grant expiration date of 12/31/10. AH 6/9/10 Reviewed statute -- no substantive changes. Removed history section: The federal Energy Policy Act of 2005 (EPAct 2005) expanded the existing federal business energy tax c...</memo>
-        <notes>The American Recovery and Reinvestment Act of 2009 allows taxpayers eligible for the federal renewable electricity production tax credit (PTC) to take the federal business energy investment tax credit (ITC) instead of taking the PTC for new installations.</notes>
-        <program-name>Business Energy Investment Tax Credit (ITC)</program-name>
-        <sector>F</sector>
-        <state>Federal</state>
-        <dsire-id>US02F</dsire-id>
-        <csp-com-tax-credit-pcnt-cost type="float">0.3</csp-com-tax-credit-pcnt-cost>
-      </csp-incentive>
-    </csp-incentives>
-    <utility-name>United Power Inc</utility-name>
-    <utility-id>63360</utility-id>
-    <utility-info type="array">
-      <utility-info>
-        <company-id>63360</company-id>
-        <utility-name>United Power Inc</utility-name>
-      </utility-info>
-    </utility-info>
-    <lat type="float">40.0</lat>
-    <lon type="float">-105.0</lon>
-    <city>Broomfield</city>
-    <state>CO</state>
-    <zip>80023</zip>
-  </outputs>
-</incentives>
+  <metadata>
+    <version>2.0.0</version>
+    <resultset>
+      <count type="integer">13</count>
+    </resultset>
+  </metadata>
+  <status type="integer">200</status>
+  <result type="array">
+    <result>
+      <category-name>Financial Incentive</category-name>
+      <incentive-code>US02F</incentive-code>
+      <program-id type="integer">658</program-id>
+      <program-name>Business Energy Investment Tax Credit (ITC)</program-name>
+      <summary>&lt;p&gt;&lt;b&gt;&lt;i&gt;Note: &lt;a href="http://www.irs.gov/pub/irs-drop/n-15-04.pdf"&gt;IRS Notice 2015-4&lt;/a&gt; included new certification requirements for small wind turbines placed in service after January 26, 2015. Small wind turbines must now meet the performance and quality standards set forth by either the American Wind Energy Association Small Wind Turbine Performance and &lt;/i&gt;&lt;/b&gt;&lt;b&gt;&lt;i&gt;Safety Standard 9.1-2009 (AWEA), or  the International Electrotechnical Commission 61400-1, 61400-12, and 61400-11 &lt;/i&gt;&lt;/b&gt;&lt;b&gt;&lt;i&gt;(IEC)&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&amp;#10;&amp;#9;&lt;span&gt;The federal business energy investment tax credit available under 26 USC § 48 was expanded significantly by the Energy Improvement and Extension Act of 2008 (H.R. 1424), enacted in October 2008. This law extended the duration -- by eight years -- of the existing credits for solar energy, fuel cells and microturbines; increased the credit amount for fuel cells; established new credits for small wind-energy systems, geothermal heat pumps, and combined heat and power (CHP) systems; allowed utilities to use the credits; and allowed taxpayers to take the credit against the alternative minimum tax (AMT), subject to certain limitations. The credit was further expanded by the American Recovery and Reinvestment Act of 2009, enacted in February 2009.&lt;/span&gt;&lt;/p&gt;&amp;#10;&lt;p&gt;&amp;#10;&amp;#9;&lt;br/&gt;&amp;#10;&amp;#9;In general, the following credits are available for eligible systems placed in service on or before December 31, 2016*:&lt;/p&gt;&amp;#10;&lt;ul&gt;&amp;#10;&amp;#9;&lt;li&gt;&amp;#10;&amp;#9;&amp;#9;&lt;b&gt;Solar.&lt;/b&gt; The credit is equal to 30% of expenditures, with no maximum credit. Eligible solar energy property includes equipment that uses solar energy to generate electricity, to heat or cool (or provide hot water for use in) a structure, or to provide solar process heat. Hybrid solar lighting systems, which use solar energy to illuminate the inside of a structure using fiber-optic distributed sunlight, are eligible. Passive solar systems and solar pool-heating systems are &lt;i&gt;not&lt;/i&gt; eligible.&lt;/li&gt;&amp;#10;&amp;#9;&lt;li&gt;&amp;#10;&amp;#9;&amp;#9;&lt;b&gt;Fuel Cells.&lt;/b&gt; The credit is equal to 30% of expenditures, with no maximum credit. However, the credit for fuel cells is capped at $1,500 per 0.5 kilowatt (kW) of capacity. Eligible property includes fuel cells with a minimum capacity of 0.5 kW that have an electricity-only generation efficiency of 30% or higher. (Note that the credit for property placed in service before October 4, 2008, is capped at $500 per 0.5 kW.)&lt;/li&gt;&amp;#10;&amp;#9;&lt;li&gt;&amp;#10;&amp;#9;&amp;#9;&lt;b&gt;Small Wind Turbines.&lt;/b&gt; The credit is equal to 30% of expenditures, with no maximum credit for small wind turbines placed in service after December 31, 2008. Eligible small wind property includes wind turbines up to 100 kW in capacity. (In general, the maximum credit is $4,000 for eligible property placed in service after October 3, 2008, and before January 1, 2009. &lt;i&gt;The American Recovery and Reinvestment Act of 2009&lt;/i&gt; removed the $4,000 maximum credit limit for small wind turbines.) Small wind turbines must meet the performance and quality standards set forth by either the American Wind Energy Association Small Wind Turbine Performance and Safety Standard 9.1-2009 (AWEA), or  the International Electrotechnical Commission 61400-1, 61400-12, and 61400-11 (IEC)&lt;/li&gt;&amp;#10;&amp;#9;&lt;li&gt;&amp;#10;&amp;#9;&amp;#9;&lt;b&gt;Geothermal Systems.&lt;/b&gt; The credit is equal to 10% of expenditures, with no maximum credit limit stated. Eligible geothermal energy property includes geothermal heat pumps and equipment used to produce, distribute or use energy derived from a geothermal deposit. For electricity produced by geothermal power, equipment qualifies only up to, but not including, the electric transmission stage. For geothermal heat pumps, this credit applies to eligible property placed in service after October 3, 2008. Note that the credit for geothermal property, with the exception of geothermal heat pumps, has no stated expiration date.&lt;/li&gt;&amp;#10;&amp;#9;&lt;li&gt;&amp;#10;&amp;#9;&amp;#9;&lt;b&gt;Microturbines.&lt;/b&gt; The credit is equal to 10% of expenditures, with no maximum credit limit stated (explicitly). The credit for microturbines is capped at $200 per kW of capacity. Eligible property includes microturbines up to two megawatts (MW) in capacity that have an electricity-only generation efficiency of 26% or higher.&lt;/li&gt;&amp;#10;&amp;#9;&lt;li&gt;&amp;#10;&amp;#9;&amp;#9;&lt;b&gt;Combined Heat and Power (CHP).&lt;/b&gt; The credit is equal to 10% of expenditures, with no maximum limit stated. Eligible CHP property generally includes systems up to 50 MW in capacity that exceed 60% energy efficiency, subject to certain limitations and reductions for large systems. The efficiency requirement does not apply to CHP systems that use biomass for at least 90% of the system's energy source, but the credit may be reduced for less-efficient systems. This credit applies to eligible property placed in service after October 3, 2008.&lt;/li&gt;&amp;#10;&lt;/ul&gt;&amp;#10;&lt;p&gt;&amp;#10;&amp;#9;In general, the original use of the equipment must begin with the taxpayer, or the system must be constructed by the taxpayer. The equipment must also meet any performance and quality standards in effect at the time the equipment is acquired. The energy property must be operational in the year in which the credit is first taken.&lt;br/&gt;&amp;#10;&amp;#9;&lt;br/&gt;&amp;#10;&amp;#9;Significantly, the American Recovery and Reinvestment Act of 2009 repealed a previous restriction on the use of the credit for eligible projects also supported by &amp;#34;subsidized energy financing.&amp;#34; For projects placed in service after December 31, 2008, this limitation no longer applies. Businesses that receive other incentives are advised to consult with a tax professional regarding how to calculate this federal tax credit.&lt;br/&gt;&amp;#10;&amp;#9;&lt;br/&gt;&amp;#10;&amp;#9;&lt;br/&gt;&amp;#10;&amp;#9;&lt;span&gt;* &lt;/span&gt;&lt;em&gt;A number of changes to this credit are scheduled to take effect for systems placed in service after December 31, 2016. The credit for equipment that uses solar energy to generate electricity, to heat or cool (or provide hot water for use in) a structure, or to provide solar process heat will decrease from 30% to 10%. The credit for geothermal heat pumps, hybrid solar lighting, small wind, fuel cells, microturbines, and combined heat and power systems will expire. The credit amount for equipment which uses geothermal energy to produce electricity will remain at 10%. &lt;/em&gt;&lt;/p&gt;&amp;#10;&lt;p&gt;&amp;#10;&amp;#9; &lt;/p&gt;</summary>
+      <public-url>http://programs.dsireusa.org/system/program/detail/658</public-url>
+      <regions type="array">
+        <region>
+          <name>Federal</name>
+          <type>US</type>
+        </region>
+      </regions>
+      <technologies type="array">
+        <technology>
+          <category>Solar Technologies</category>
+          <name>Solar Space Heat</name>
+        </technology>
+      </technologies>
+    </result>
+    <result>
+      <category-name>Financial Incentive</category-name>
+      <incentive-code>US03F</incentive-code>
+      <program-id type="integer">666</program-id>
+      <program-name>Residential Energy Conservation Subsidy Exclusion (Personal)</program-name>
+        <summary>&lt;p&gt;
+          According to Section 136 of the U.S. Code, energy conservation subsidies provided (directly or indirectly) to customers by public utilities* are non-taxable. This exclusion does &lt;em&gt;not&lt;/em&gt; apply to electricity-generating systems registered as &amp;quot;qualifying facilities&amp;quot; under the Public Utility Regulatory Policies Act of 1978 (PURPA). If a taxpayer claims federal tax credits or deductions for the energy conservation property, the investment basis for the purpose of claiming the deduction or tax credit must be reduced by the value of the energy conservation subsidy (i.e., a taxpayer may not claim a tax credit for an expense that the taxpayer ultimately did not pay).&lt;/p&gt;
+        &lt;p&gt;
+          The term &amp;quot;energy conservation measure&amp;quot; includes installations or modifications primarily designed to reduce consumption of electricity or natural gas, or to improve the management of energy demand. Eligible dwelling units include houses, apartments, condominiums, mobile homes, boats and similar properties. If a building or structure contains both dwelling units and other units, any subsidy must be properly allocated.&lt;/p&gt;
+        &lt;p&gt;
+          The definition of &amp;quot;energy conservation measure&amp;quot; implies that utility rebates for residential solar-thermal projects and photovoltaic (PV) systems may be non-taxable. However, the IRS has not ruled definitively on this issue. Taxpayers considering using this provision for a renewable energy system should discuss the details of the project with a tax professional. Other types of utility subsidies that may come in the form of credits or reduced rates might also be non-taxable, according to IRS Publication 525.&lt;br /&gt;
+          &lt;br /&gt;
+          &lt;br /&gt;
+          * &lt;i&gt;The term &amp;quot;public utility&amp;quot; is defined as an entity &amp;quot;engaged in the sale of electricity or natural gas to residential, commercial, or industrial customers for use by such customers.&amp;quot; The term includes federal, state and local government entities.&lt;/i&gt;&lt;/p&gt;
+        </summary>
+      <public-url>http://programs.dsireusa.org/system/program/detail/666</public-url>
+      <regions type="array">
+        <region>
+          <name>Federal</name>
+          <type>US</type>
+        </region>
+      </regions>
+      <technologies type="array">
+        <technology>
+          <category>Solar Technologies</category>
+          <name>Solar Space Heat</name>
+        </technology>
+      </technologies>
+    </result>
+  </result>
+</hash>
+
 ```
 
 ## Rate Limits
