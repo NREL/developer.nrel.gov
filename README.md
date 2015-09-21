@@ -34,8 +34,4 @@ After you're happy with your changes, commit and submit a pull request.
 
 ## Deploy
 
-To publish to production with GitHub Pages:
-
-```sh
-$ ./bin/rake publish
-```
+Your changes will automatically be published to GitHub Pages when they get pushed to master. Wait a few minutes after pushing them for the changes to appear, or check the [build status](https://circleci.com/gh/NREL/developer.nrel.gov) for progress or errors.
