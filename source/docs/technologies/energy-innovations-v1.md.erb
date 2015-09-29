@@ -7,11 +7,7 @@ url: GET /api/energy-innovations/v1
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
 
-This API makes available information about energy technologies developed with Department of Energy (DOE) funding and
-available for licensing. This information is also available at the
-<a href="https://techportal.eere.energy.gov/">Energy Innovation Portal</a> website. Included are business-friendly
-descriptions of the technologies (also referred to as "marketing summaries") and, in many cases, their associated
-patents.
+This API makes available information about energy technologies developed with Department of Energy (DOE) funding and available for licensing. This information is also available at the <a href="https://techportal.eere.energy.gov/">Energy Innovation Portal</a> website. Included are business-friendly descriptions of the technologies (also referred to as "marketing summaries") and, in many cases, their associated patents.
 
 <ul id="toc"></ul>
 
@@ -21,61 +17,60 @@ Use of this API requires a key be passed in with requests ([explanation](/docs/a
 
 This API only supports HTTP GET requests.
 
-Auto-discovery begins at the root URI: <a href="/api/energy-innovations/v1">/api/energy-innovations/v1</a><br/>
+Auto-discovery begins at the root URI: <a href="/api/energy-innovations/v1">/api/energy-innovations/v1</a>
 
-The <a href="http://haltalk.herokuapp.com/explorer/browser.html#https://tpsdev.nrel.gov/api/energy-innovations/v1/">HAL Browser</a>
-is the recommended way to learn how this API works.
+The <a href="http://haltalk.herokuapp.com/explorer/browser.html#https://tpsdev.nrel.gov/api/energy-innovations/v1/">HAL Browser</a> is the recommended way to learn how this API works.
 
 ## Contact us
-<a href="mailto: techportal@nrel.gov">techportal@nrel.gov</a><br/>
+<a href="mailto: techportal@nrel.gov">techportal@nrel.gov</a>
 
 ## Sample requests
 
 Help Page:
-<a href="/api/energy-innovations/v1/help.html">/api/energy-innovations/v1/help.html</a><br/>
+<a href="/api/energy-innovations/v1/help.html">/api/energy-innovations/v1/help.html</a>
 
 ### Patents
 To retrieve all:
-<a href="/api/energy-innovations/v1/patents">/api/energy-innovations/v1/patents</a><br/>
+<a href="/api/energy-innovations/v1/patents">/api/energy-innovations/v1/patents</a>
 Find by patent number:
-<a href="/api/energy-innovations/v1/patents/search/patentNumber?patentNumber=8,330,319">/api/energy-innovations/v1/patents/search/patentNumber?patentNumber=8,330,319</a><br/>
+<a href="/api/energy-innovations/v1/patents/search/patentNumber?patentNumber=8,330,319">/api/energy-innovations/v1/patents/search/patentNumber?patentNumber=8,330,319</a>
 Find by a date range:
-<a href="/api/energy-innovations/v1/patents/search/issueDate?after=2013-01-01&before=2013-01-05">/api/energy-innovations/v1/patents/search/issueDate?after=2013-01-01&before=2013-01-05</a><br/>
+<a href="/api/energy-innovations/v1/patents/search/issueDate?after=2013-01-01&before=2013-01-05">/api/energy-innovations/v1/patents/search/issueDate?after=2013-01-01&before=2013-01-05</a>
 Find by a technolgy category:
-<a href="/api/energy-innovations/v1/patents/search/technologyCategory?categoryName=Geothermal">/api/energy-innovations/v1/patents/search/technologyCategory?categoryName=Geothermal</a><br/>
+<a href="/api/energy-innovations/v1/patents/search/technologyCategory?categoryName=Geothermal">/api/energy-innovations/v1/patents/search/technologyCategory?categoryName=Geothermal</a>
 Find by a laboratory:
-<a href="/api/energy-innovations/v1/patents/search/lab?labName=Los%20Alamos%20National%20Laboratory">/api/energy-innovations/v1/patents/search/lab?labName=Los%20Alamos%20National%20Laboratory</a><br/>
+<a href="/api/energy-innovations/v1/patents/search/lab?labName=Los%20Alamos%20National%20Laboratory">/api/energy-innovations/v1/patents/search/lab?labName=Los%20Alamos%20National%20Laboratory</a>
 
 ### Marketing Summaries
 To retrieve all:
-<a href="/api/energy-innovations/v1/marketingSummaries">/api/energy-innovations/v1/marketingSummaries</a><br/>
+<a href="/api/energy-innovations/v1/marketingSummaries">/api/energy-innovations/v1/marketingSummaries</a>
 Find by a date range:
-<a href="/api/energy-innovations/v1/marketingSummaries/search/issueDate?after=2011-02-01&before=2015-02-15">/api/energy-innovations/v1/marketingSummaries/search/issueDate?after=2011-02-01&before=2015-02-15</a><br/>
+<a href="/api/energy-innovations/v1/marketingSummaries/search/issueDate?after=2011-02-01&before=2015-02-15">/api/energy-innovations/v1/marketingSummaries/search/issueDate?after=2011-02-01&before=2015-02-15</a>
 Find by a technolgy category:
-<a href="/api/energy-innovations/v1/marketingSummaries/search/technologyCategory?categoryName=Wind%20Energy">/api/energy-innovations/v1/marketingSummaries/search/technologyCategory?categoryName=Wind%20Energy</a><br/>
+<a href="/api/energy-innovations/v1/marketingSummaries/search/technologyCategory?categoryName=Wind%20Energy">/api/energy-innovations/v1/marketingSummaries/search/technologyCategory?categoryName=Wind%20Energy</a>
 Find by a laboratory:
-<a href="/api/energy-innovations/v1/marketingSummaries/search/lab?labName=Oak%20Ridge%20National%20Laboratory">/api/energy-innovations/v1/marketingSummaries/search/lab?labName=Oak%20Ridge%20National%20Laboratory</a><br/>
+<a href="/api/energy-innovations/v1/marketingSummaries/search/lab?labName=Oak%20Ridge%20National%20Laboratory">/api/energy-innovations/v1/marketingSummaries/search/lab?labName=Oak%20Ridge%20National%20Laboratory</a>
 
 ### Inventors
 To retrieve all:
-<a href="/api/energy-innovations/v1/inventors">/api/energy-innovations/v1/inventors</a><br/>
+<a href="/api/energy-innovations/v1/inventors">/api/energy-innovations/v1/inventors</a>
 Find by name:
-<a href="/api/energy-innovations/v1/inventors/search/name?name=Bliss,%20Mary">/api/energy-innovations/v1/inventors/search/name?name=Bliss,%20Mary</a><br/>
+<a href="/api/energy-innovations/v1/inventors/search/name?name=Bliss,%20Mary">/api/energy-innovations/v1/inventors/search/name?name=Bliss,%20Mary</a>
 Find by patent number:
-<a href="/api/energy-innovations/v1/inventors/search/patentNumber?patentNumber=8,330,319">/api/energy-innovations/v1/inventors/search/patentNumber?patentNumber=8,330,319</a><br/>
+<a href="/api/energy-innovations/v1/inventors/search/patentNumber?patentNumber=8,330,319">/api/energy-innovations/v1/inventors/search/patentNumber?patentNumber=8,330,319</a>
 
 ### Assignees
 To retrieve all:
-<a href="/api/energy-innovations/v1/assignees">/api/energy-innovations/v1/assignees</a><br/>
+<a href="/api/energy-innovations/v1/assignees">/api/energy-innovations/v1/assignees</a>
 Find by name:
-<a href="/api/energy-innovations/v1/assignees/search/name?name=General%20Electric%20Company">/api/energy-innovations/v1/assignees/search/name?name=General%20Electric%20Company</a><br/>
+<a href="/api/energy-innovations/v1/assignees/search/name?name=General%20Electric%20Company">/api/energy-innovations/v1/assignees/search/name?name=General%20Electric%20Company</a>
 Find by patent number:
-<a href="/api/energy-innovations/v1/assignees/search/patentNumber?patentNumber=8,330,319">/api/energy-innovations/v1/assignees/search/patentNumber?patentNumber=8,330,319</a><br/>
+<a href="/api/energy-innovations/v1/assignees/search/patentNumber?patentNumber=8,330,319">/api/energy-innovations/v1/assignees/search/patentNumber?patentNumber=8,330,319</a>
 
 ## Sample error responses
-400 (Bad Request) <a href="/api/energy-innovations/v1/marketingSummaries/search/issueDate?after=badValue">/api/energy-innovations/v1/marketingSummaries/search/issueDate?after=badValue</a><br/>
-404 (Not Found) <a href="/api/energy-innovations/v1/doesNotExist">/api/energy-innovations/v1/doesNotExist</a><br/>
-500 (Internal Server Error) <a href="/api/energy-innovations/v1/sample500Error">/api/api/energy-innovations/v1/sample500Error</a><br/>
+400 (Bad Request) <a href="/api/energy-innovations/v1/marketingSummaries/search/issueDate?after=badValue">/api/energy-innovations/v1/marketingSummaries/search/issueDate?after=badValue</a>
+404 (Not Found) <a href="/api/energy-innovations/v1/doesNotExist">/api/energy-innovations/v1/doesNotExist</a>
+500 (Internal Server Error) <a href="/api/energy-innovations/v1/sample500Error">/api/api/energy-innovations/v1/sample500Error</a>
 
 ## Rate Limits
 [Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour.
