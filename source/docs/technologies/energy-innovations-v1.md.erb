@@ -7,26 +7,23 @@ url: GET /api/energy-innovations/v1
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
 
-This API makes available information about energy technologies developed with Department of Energy (DOE) funding and available for licensing. This information is also available at the <a href="https://techportal.eere.energy.gov/">Energy Innovation Portal</a> website. Included are business-friendly descriptions of the technologies (also referred to as "marketing summaries") and, in many cases, their associated patents.
+This API provides information about energy technologies developed with Department of Energy (DOE) funding and available for licensing. The same information is also available at the <a href="https://techportal.eere.energy.gov/">Energy Innovation Portal</a> website. Included are business-friendly descriptions of the technologies (also referred to as "marketing summaries") and, in many cases, their associated patents.
 
 <ul id="toc"></ul>
 
 ## Documentation
 
-Use of this API requires a key be passed in with requests ([explanation](/docs/api-key)). Get a key [here](/signup).
+Use of this API requires a special key be included with requests ([explanation](/docs/api-key)). You can get such a key [here](/signup).
 
 This API only supports HTTP GET requests.
 
 Auto-discovery begins at the root URI: <a href="/api/energy-innovations/v1">/api/energy-innovations/v1</a>
 
-The <a href="http://haltalk.herokuapp.com/explorer/browser.html#https://tpsdev.nrel.gov/api/energy-innovations/v1/">HAL Browser</a> is the recommended way to learn how this API works.
+The <a href="http://haltalk.herokuapp.com/explorer/browser.html#https://developer.nrel.gov/api/energy-innovations/v1/">HAL Browser</a> is the recommended way to learn how this API works.
 
-Help Page: <a href="/api/energy-innovations/v1/help.html">/api/energy-innovations/v1/help.html</a>
+## Request and response examples
 
-## Contact us
-<a href="mailto: techportal@nrel.gov">techportal@nrel.gov</a>
-
-## Sample requests
+This API provides information centric to Patents, Marketing Summaries, Inventors and Assignees.
 
 ### Patents
 To retrieve all:<br/>
@@ -66,13 +63,18 @@ Find by name:<br/>
 Find by patent number:<br/>
 <a href="/api/energy-innovations/v1/assignees/search/patentNumber?patentNumber=8,330,319">/api/energy-innovations/v1/assignees/search/patentNumber?patentNumber=8,330,319</a>
 
-## Errors
-[Standard errors](/docs/errors) may be returned.
-
 ## Sample error responses
-400 (Bad Request) <a href="/api/energy-innovations/v1/marketingSummaries/search/issueDate?after=badValue">/api/energy-innovations/v1/marketingSummaries/search/issueDate?after=badValue</a>
-404 (Not Found) <a href="/api/energy-innovations/v1/doesNotExist">/api/energy-innovations/v1/doesNotExist</a>
-500 (Internal Server Error) <a href="/api/energy-innovations/v1/sample500Error">/api/api/energy-innovations/v1/sample500Error</a>
+400 (Bad Request) example: <a href="/api/energy-innovations/v1/marketingSummaries/search/issueDate?after=badValue">/api/energy-innovations/v1/marketingSummaries/search/issueDate?after=badValue</a>
+404 (Not Found) example:  <a href="/api/energy-innovations/v1/doesNotExist">/api/energy-innovations/v1/doesNotExist</a>
+500 (Internal Server Error) example:  <a href="/api/energy-innovations/v1/sample500Error">/api/api/energy-innovations/v1/sample500Error</a>
+Additionally, [standard errors](/docs/errors) may be returned.
 
-## Rate Limits
+## Rate limits
 [Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour.
+
+## Help pages
+[/api/energy-innovations/v1/help.html](/api/energy-innovations/v1/help.html)
+[/docs/technologies/energy-innovations-v1](/docs/technologies/energy-innovations-v1)
+
+## Need additional help?
+Email us: <a href="mailto: techportal@nrel.gov">techportal@nrel.gov</a>
