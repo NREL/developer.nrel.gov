@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        Energy Innovations (NOT YET LIVE) 
+        Energy Innovations 
           API
         |
       NREL: Developer Network
@@ -55,11 +55,11 @@
       <ol class="breadcrumb container">
             <li><a href="/docs/">Documentation</a></li>
             <li><a href="/docs/technologies/">Technologies</a></li>
-            <li class="active">Energy Innovations (NOT YET LIVE)</li>
+            <li class="active">Energy Innovations</li>
     </ol>
 
 
-    <h1 id="energy-innovations-not-yet-live-span-classurlget-apienergy-innovationsv1span">Energy Innovations (NOT YET LIVE) <span class="url">(GET /api/energy-innovations/v1)</span></h1>
+    <h1 id="energy-innovations-span-classurlget-apienergy-innovationsv1span">Energy Innovations <span class="url">(GET /api/energy-innovations/v1)</span></h1>
 
 <p>This API provides information about energy technologies developed with Department of Energy (DOE) funding and available for licensing. The same information is available at the <a href="https://techportal.eere.energy.gov/">Energy Innovation Portal</a> website. Included are business-friendly descriptions of the technologies (also referred to as "marketing summaries") and, in many cases, their associated patents.</p>
 
@@ -77,8 +77,9 @@
 
 <p>This API provides information centric to Patents, Marketing Summaries, Inventors and Assignees.</p>
 
-<h3 id="patents-patents-for-energy-related-technologies">Patents (patents for energy related technologies)</h3>
-<p>To retrieve all:<br />
+<h3 id="patents">Patents</h3>
+<p>(patents for energy related technologies)<br />
+To retrieve all:<br />
 <a href="https://developer.nrel.gov/api/energy-innovations/v1/patents?api_key=DEMO_KEY">https://developer.nrel.gov/api/energy-innovations/v1/patents?api_key=DEMO_KEY</a><br />
 Find by patent number:<br />
 <a href="https://developer.nrel.gov/api/energy-innovations/v1/patents/search/patentNumber?patentNumber=8,330,319&amp;api_key=DEMO_KEY">https://developer.nrel.gov/api/energy-innovations/v1/patents/search/patentNumber?patentNumber=8,330,319&amp;api_key=DEMO_KEY</a><br />
@@ -89,8 +90,9 @@ Find by a technolgy category:<br />
 Find by a laboratory:<br />
 <a href="https://developer.nrel.gov/api/energy-innovations/v1/patents/search/lab?labName=Los%20Alamos%20National%20Laboratory&amp;api_key=DEMO_KEY">https://developer.nrel.gov/api/energy-innovations/v1/patents/search/lab?labName=Los%20Alamos%20National%20Laboratory&amp;api_key=DEMO_KEY</a></p>
 
-<h3 id="marketing-summaries-business-friendly-descriptions-of-energy-related-technologies">Marketing Summaries (business-friendly descriptions of energy related technologies)</h3>
-<p>To retrieve all:<br />
+<h3 id="marketing-summaries">Marketing Summaries</h3>
+<p>(business-friendly descriptions of energy related technologies)<br />
+To retrieve all:<br />
 <a href="https://developer.nrel.gov/api/energy-innovations/v1/marketingSummaries?api_key=DEMO_KEY">https://developer.nrel.gov/api/energy-innovations/v1/marketingSummaries?api_key=DEMO_KEY</a><br />
 Find by a date range:<br />
 <a href="https://developer.nrel.gov/api/energy-innovations/v1/marketingSummaries/search/issueDate?after=2011-02-01&amp;before=2015-02-15&amp;api_key=DEMO_KEY">https://developer.nrel.gov/api/energy-innovations/v1/marketingSummaries/search/issueDate?after=2011-02-01&amp;before=2015-02-15&amp;api_key=DEMO_KEY</a><br />
@@ -99,16 +101,18 @@ Find by a technolgy category:<br />
 Find by a laboratory:<br />
 <a href="https://developer.nrel.gov/api/energy-innovations/v1/marketingSummaries/search/lab?labName=Oak%20Ridge%20National%20Laboratory&amp;api_key=DEMO_KEY">https://developer.nrel.gov/api/energy-innovations/v1/marketingSummaries/search/lab?labName=Oak%20Ridge%20National%20Laboratory&amp;api_key=DEMO_KEY</a></p>
 
-<h3 id="inventors-those-that-conceived-the-inventions">Inventors (those that conceived the inventions)</h3>
-<p>To retrieve all:<br />
+<h3 id="inventors">Inventors</h3>
+<p>(those that conceived the inventions)<br />
+To retrieve all:<br />
 <a href="https://developer.nrel.gov/api/energy-innovations/v1/inventors?api_key=DEMO_KEY">https://developer.nrel.gov/api/energy-innovations/v1/inventors?api_key=DEMO_KEY</a><br />
 Find by name:<br />
 <a href="https://developer.nrel.gov/api/energy-innovations/v1/inventors/search/name?name=Bliss,%20Mary&amp;api_key=DEMO_KEY">https://developer.nrel.gov/api/energy-innovations/v1/inventors/search/name?name=Bliss,%20Mary&amp;api_key=DEMO_KEY</a><br />
 Find by patent number:<br />
 <a href="https://developer.nrel.gov/api/energy-innovations/v1/inventors/search/patentNumber?patentNumber=8,330,319&amp;api_key=DEMO_KEY">https://developer.nrel.gov/api/energy-innovations/v1/inventors/search/patentNumber?patentNumber=8,330,319&amp;api_key=DEMO_KEY</a></p>
 
-<h3 id="assignees-those-that-have-property-rights-to-the-patents">Assignees (those that have property rights to the patents)</h3>
-<p>To retrieve all:<br />
+<h3 id="assignees">Assignees</h3>
+<p>(those that have property rights to the patents)<br />
+To retrieve all:<br />
 <a href="https://developer.nrel.gov/api/energy-innovations/v1/assignees?api_key=DEMO_KEY">https://developer.nrel.gov/api/energy-innovations/v1/assignees?api_key=DEMO_KEY</a><br />
 Find by name:<br />
 <a href="https://developer.nrel.gov/api/energy-innovations/v1/assignees/search/name?name=General%20Electric%20Company&amp;api_key=DEMO_KEY">https://developer.nrel.gov/api/energy-innovations/v1/assignees/search/name?name=General%20Electric%20Company&amp;api_key=DEMO_KEY</a><br />
@@ -123,10 +127,6 @@ Additionally, <a href="/docs/errors">standard errors</a> may be returned.</p>
 
 <h2 id="rate-limits">Rate limits</h2>
 <p><a href="/docs/rate-limits">Standard rate limits</a> apply. No more than 1,000 requests may be made in any hour.</p>
-
-<h2 id="help-pages">Help pages</h2>
-<p><a href="/api/energy-innovations/v1/help.html">/api/energy-innovations/v1/help.html</a><br />
-<a href="/docs/technologies/energy-innovations-v1">/docs/technologies/energy-innovations-v1</a></p>
 
 <h2 id="need-additional-help">Need additional help?</h2>
 <p>Email us: <a href="mailto: techportal@nrel.gov">techportal@nrel.gov</a></p>
