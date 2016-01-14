@@ -315,7 +315,7 @@
         </div>
       </td>
       <td class="doc-parameter-description">
-      	<p>A description of who is allowed to access the station and other station access information. </p>
+        <p>A description of who is allowed to access the station and other station access information. </p>
         <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
           <thead>
             <tr>
@@ -414,59 +414,69 @@
               <th scope="row">V</th>
               <td>VISA</td>
             </tr>
-            <tr>Commercial Fueling Network
+            <tr>
+              <th scope="row">Cash</th>
+              <td>Cash</td>
+            </tr>
+            <tr>
+              <th scope="row">Checks</th>
+              <td>Check</td>
+            </tr>
+            <tr>
+              <th scope="row">CFN</th>
+              <td>Commercial Fueling Network</td>
             </tr>
             <tr>
               <th scope="row">CleanEnergy</th>
-              <td></td>
+              <td>Clean Energy</td>
             </tr>
             <tr>
               <th scope="row">Comdata</th>
-              <td></td>
+              <td>Comdata</td>
             </tr>
             <tr>
               <th scope="row">EFS</th>
-              <td></td>
+              <td>EFS</td>
             </tr>
             <tr>
-              <th scope="row">Fleet One</th>
-              <td></td>
+              <th scope="row">FleetOne</th>
+              <td>Fleet One</td>
             </tr>
             <tr>
               <th scope="row">FuelMan</th>
-              <td></td>
+              <td>Fuelman</td>
             </tr>
             <tr>
               <th scope="row">GasCard</th>
-              <td></td>
+              <td>GASCARD</td>
             </tr>
             <tr>
               <th scope="row">PHH</th>
-              <td>PHH Services</td>
+              <td>PHH</td>
             </tr>
             <tr>
-              <th scope="row">Pacific Pride</th>
-              <td></td>
+              <th scope="row">PacificPride</th>
+              <td>Pacific Pride</td>
             </tr>
             <tr>
               <th scope="row">Speedway</th>
-              <td></td>
+              <td>Speedway</td>
             </tr>
             <tr>
-              <th scope="row">T-Chek T-Card</th>
-              <td></td>
+              <th scope="row">Tchek</th>
+              <td>T-Chek T-Card</td>
             </tr>
             <tr>
               <th scope="row">TCH</th>
-              <td></td>
+              <td>TCH</td>
             </tr>
             <tr>
               <th scope="row">Trillium</th>
-              <td></td>
+              <td>Trillium</td>
             </tr>
             <tr>
               <th scope="row">Voyager</th>
-              <td></td>
+              <td>Voyager</td>
             </tr>
             <tr>
               <th scope="row">Wright_Exp</th>
@@ -728,25 +738,52 @@
       </td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">ev_connector_type</th>
+      <th class="doc-parameter-name" scope="row">ev_connector_types</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
-          <strong>Type:</strong> string
+          <strong>Type:</strong> array
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>For electric stations, the type of connector associated with each port level, including:</p>
-				<p>
-					<ul>
-						<li>NEMA 14-50</li>
-						<li>NEMA 5-15</li>
-						<li>NEMA 5-20</li>
-						<li>J1772</li>
-						<li>CHAdeMO</li>
-						<li>Tesla</li>
-						<li>SAE Combo</li>
-					</ul>
-				</p>         
+        <p>For electric stations, an array of strings identifying the connector types available at this station. Valid connector types are:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">NEMA515</th>
+              <td>NEMA 5-15 (Level 1)</td>
+            </tr>
+            <tr>
+              <th scope="row">NEMA520</th>
+              <td>NEMA 5-20 (Level 1)</td>
+            </tr>
+            <tr>
+              <th scope="row">NEMA1450</th>
+              <td>NEMA 14-50 (Level 1)</td>
+            </tr>
+            <tr>
+              <th scope="row">J1772</th>
+              <td>J1772 (Level 2)</td>
+            </tr>
+            <tr>
+              <th scope="row">CHADEMO</th>
+              <td>CHAdeMO (DC fast charging)</td>
+            </tr>
+            <tr>
+              <th scope="row">J1772COMBO</th>
+              <td>SAE J1772 Combo (DC fast charging)</td>
+            </tr>
+            <tr>
+              <th scope="row">TESLA</th>
+              <td>Tesla (DC fast charging)</td>
+            </tr>
+          </tbody>
+        </table>
       </td>
     </tr>
     <tr>
