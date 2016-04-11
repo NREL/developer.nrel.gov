@@ -60,7 +60,7 @@
     </ol>
 
 
-    <h1 id="stations-nearby-route-span-classurlget-apialt-fuel-stationsv1nearby-routespan">Stations Nearby Route <span class="url">(GET /api/alt-fuel-stations/v1/nearby-route)</span></h1>
+    <h1 id="stations-nearby-route-span-classurlgetpost-apialt-fuel-stationsv1nearby-routespan">Stations Nearby Route <span class="url">(GET|POST /api/alt-fuel-stations/v1/nearby-route)</span></h1>
 <p>Find alternative fuel stations within a distance of a driving route.</p>
 
 <p>Driving directions and route generation are not provided by this service. You must first determine your route and then pass this service a representation of that route as a line (a series of latitude and longitude points).</p>
@@ -69,7 +69,9 @@
 
 <h2 id="request-url">Request URL</h2>
 
-<pre>GET /api/alt-fuel-stations/v1/nearby-route<em>.format?parameters</em></pre>
+<pre>GET|POST /api/alt-fuel-stations/v1/nearby-route<em>.format?parameters</em></pre>
+
+<p><em>Note:</em> This API endpoint can be accessed via either <code>GET</code> or <code>POST</code>. <code>POST</code> may be necessary if sending a long <code>route</code> parameter that exceeds the allowed URL length limit. When using <code>POST</code>, the parameters should be sent to the API in the body using <code>application/x-www-form-urlencoded</code> encoding.</p>
 
 <h2 id="request-parameters">Request Parameters</h2>
 
@@ -136,7 +138,7 @@
         <pre>
 LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
 </pre>
-        <p>Note: Real route linestrings will likely be much more detailed to properly represent the driving route of roads.</p>
+        <p><em>Note:</em> Real route linestrings will likely be much more detailed to properly represent the driving route of roads. Long route strings may exceed normal URL length limits and require sending the request via <code>POST</code> and <code>application/x-www-form-urlencoded</code> encoding the parameters.</p>
       </td>
     </tr>
     <tr>
