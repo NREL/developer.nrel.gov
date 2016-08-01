@@ -30,6 +30,22 @@ The following query parameters may be passed in the request to control the outpu
   <tbody>
     <%= partial("docs/transportation/alt-fuel-stations-v1/request_params_common1") %>
     <%= partial("docs/transportation/alt-fuel-stations-v1/request_params_common2") %>
+    <tr>
+      <th class="doc-parameter-name" scope="row">limit</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> all
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Minimum:</strong> <i>1</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">The maximum number of results to return. If not specified, all results will be returned. Note: Since results are returned in no specific order, this has limited use, other than for testing purposes.</td>
+    </tr>
   </tbody>
 </table>
 

@@ -1,7 +1,7 @@
 ---
 title: Stations Nearby Route
 summary: Find alternative fuel stations within a distance of a driving route.
-url: GET /api/alt-fuel-stations/v1/nearby-route
+url: GET|POST /api/alt-fuel-stations/v1/nearby-route
 
 ---
 
@@ -14,7 +14,9 @@ Driving directions and route generation are not provided by this service. You mu
 
 ## Request URL
 
-<pre>GET /api/alt-fuel-stations/v1/nearby-route<em>.format?parameters</em></pre>
+<pre>GET|POST /api/alt-fuel-stations/v1/nearby-route<em>.format?parameters</em></pre>
+
+*Note:* This API endpoint can be accessed via either `GET` or `POST`. `POST` may be necessary if sending a long `route` parameter that exceeds the allowed URL length limit. When using `POST`, the parameters should be sent to the API in the body using `application/x-www-form-urlencoded` encoding.
 
 ## Request Parameters
 
@@ -48,7 +50,7 @@ The following query parameters may be passed in the request to control the outpu
         <pre>
 LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
 </pre>
-        <p>Note: Real route linestrings will likely be much more detailed to properly represent the driving route of roads.</p>
+        <p><em>Note:</em> Real route linestrings will likely be much more detailed to properly represent the driving route of roads. Long route strings may exceed normal URL length limits and require sending the request via <code>POST</code> and <code>application/x-www-form-urlencoded</code> encoding the parameters.</p>
       </td>
     </tr>
     <tr>
@@ -60,6 +62,9 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </div>
         <div class="doc-parameter-value-field">
           <strong>Default:</strong> <i>5.0</i>
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Range:</strong> <em>0.0</em> to <em>100.0</em>
         </div>
       </td>
       <td class="doc-parameter-description">The distance (in miles) from the route to search for stations within.</td>
@@ -101,6 +106,22 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       </td>
     </tr>
     <%= partial("docs/transportation/alt-fuel-stations-v1/request_params_common2") %>
+    <tr>
+      <th class="doc-parameter-name" scope="row">limit</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> all
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Minimum:</strong> <i>1</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">The maximum number of results to return. If not specified, all results will be returned.</td>
+    </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">offset</th>
       <td class="doc-parameter-required">No</td>

@@ -61,7 +61,7 @@ The following query parameters may be passed in the request to control the outpu
           <strong>Type:</strong> decimal
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Default:</strong> <em>-90</em> to <em>90</em>
+          <strong>Range:</strong> <em>-90</em> to <em>90</em>
         </div>
       </td>
       <td class="doc-parameter-description">
@@ -77,7 +77,7 @@ The following query parameters may be passed in the request to control the outpu
           <strong>Type:</strong> decimal
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Default:</strong> <em>-180</em> to <em>180</em>
+          <strong>Range:</strong> <em>-180</em> to <em>180</em>
         </div>
       </td>
       <td class="doc-parameter-description">
@@ -90,15 +90,37 @@ The following query parameters may be passed in the request to control the outpu
       <td class="doc-parameter-required">No</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
-          <strong>Type:</strong> decimal
+          <strong>Type:</strong> decimal or string
         </div>
         <div class="doc-parameter-value-field">
           <strong>Default:</strong> <i>5.0</i>
         </div>
+        <div class="doc-parameter-value-field">
+          <strong>Range:</strong> <em>0.0</em> to <em>500.0</em>, or <em>infinite</em>
+        </div>
       </td>
-      <td class="doc-parameter-description">The radius (in miles) around the search location to search for stations within.</td>
+      <td class="doc-parameter-description">
+        <p>The radius (in miles) around the search location to search for stations within.</p>
+        <p>An explicit radius of up to 500.0 miles may be passed in, or the special <code>infinite</code> string may be passed in to find the nearest stations regardless of distance.</p>
+      </td>
     </tr>
     <%= partial("docs/transportation/alt-fuel-stations-v1/request_params_common2") %>
+    <tr>
+      <th class="doc-parameter-name" scope="row">limit</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> 20
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Minimum:</strong> <i>1</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">The maximum number of results to return.</td>
+    </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">offset</th>
       <td class="doc-parameter-required">No</td>
