@@ -65,7 +65,7 @@
         },
         "plaintext": {
           "type": "string",
-          "description": "Description of the incentive/law/regulation, including applicable legislative references, without html formatting"
+          "description": "Description of the incentive/law/regulation, including applicable legislative references, in <a href=\"https://guides.github.com/features/mastering-markdown/\">markdown formatting</a>"
         },
         "is_recent": {
           "type": "boolean",
