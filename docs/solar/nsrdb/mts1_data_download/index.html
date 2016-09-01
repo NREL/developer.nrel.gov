@@ -53,7 +53,6 @@
   </nav>
 
       <ol class="breadcrumb container">
-            <li><a href="/docs/">Documentation</a></li>
             <li><a href="/docs/solar/">Solar</a></li>
             <li><a href="/docs/solar/nsrdb/">NSRDB Data Downloads</a></li>
             <li class="active">Meteorological Statistical Model 1 (MTS1)</li>
@@ -96,11 +95,11 @@
       <th class="doc-parameter-name" scope="row">wkt</th>
       <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> well-known text point string</div>
+        <div class="doc-parameter-value-field"><strong>Type:</strong> well-known text string</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
       </td>
       <td class="doc-parameter-description">
-        A well-known text (WKT) representation of the geometry for which to extract data. May be a point or polygon geometry.
+        A well-known text (WKT) representation of the geometry for which to extract data. May be a point, multipoint, or polygon geometry. When a point is passed the site nearest to that point is used. When a multipoint is passed the site nearest each point is used. This can be useful for downloading multiple sites in a single request when those sites are geographically distant from each other. When a polygon is passed all sites that intersect with the given polygon are used.
       </td>
     </tr>
     <tr>
@@ -370,13 +369,11 @@ Year,Month,Day,Hour,Minute,DHI,DNI,GHI,ETR,ETRN,Total Sky Cover,Opaque Sky Cover
 
 <h2 id="rate-limits">Rate Limits</h2>
 
-<p>Rate limits for this application are significantly less than the <a target="_blank" href="/docs/rate-limits">standard rate limits</a> for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide.</p>
+<p>Rate limits for this application are significantly less than the <a target="_blank" href="/docs/rate-limits">standard rate limits</a> for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.</p>
 
-<p>There are two levels of rate limiting for this service.</p>
+<p>There are two levels of rate limiting for this service. The first is a general rate limit, which is set at 200 requests per day at a frequency of no more than 1 every 2 seconds. </p>
 
-<p>The first is a general rate limit, which is set at 100 requests per hour.</p>
-
-<p>In addition to this limit, the service has a secondary mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.</p>
+<p>In addition to this limit, the service has a secondary fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.</p>
 
 <p>Requests for larger segments of this dataset should be sent through the feedback form available here: <a target="_blank" href="https://developer.nrel.gov/contact/">https://developer.nrel.gov/contact/</a>.</p>
 
