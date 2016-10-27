@@ -606,7 +606,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>all, AeroVironment Network, Blink Network, ChargePoint Network, EV Connect, eVgo Network, EVSE LLC WebNet, Greenlots, OpConnect, RechargeAccess, SemaCharge Network, Shorepower, Tesla</em>
+      <strong>Options:</strong> <em>all, AeroVironment Network, Blink Network, ChargePoint Network, EV Connect, eVgo Network, GE WattStation, Greenlots, OpConnect, SemaCharge Network, Tesla</em>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -622,22 +622,22 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
           <th scope="row">all</th>
         </tr>
         <tr>
-          <th scope="row">AeroVironment Network</th>
+          <th scope="row">AeroVironment</th>
         </tr>
         <tr>
-          <th scope="row">Blink Network</th>
+          <th scope="row">Blink</th>
         </tr>
         <tr>
-          <th scope="row">ChargePoint Network</th>
+          <th scope="row">ChargePoint</th>
         </tr>
         <tr>
           <th scope="row">EV Connect</th>
         </tr>
         <tr>
-          <th scope="row">eVgo Network</th>
+          <th scope="row">EVgo Network</th>
         </tr>
         <tr>
-          <th scope="row">EVSE LLC WebNet</th>
+          <th scope="row">GE WattStation</th>
         </tr>
         <tr>
           <th scope="row">Greenlots</th>
@@ -646,13 +646,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
           <th scope="row">OpConnect</th>
         </tr>
         <tr>
-          <th scope="row">RechargeAccess</th>
-        </tr>
-        <tr>
-          <th scope="row">SemaCharge Network</th>
-        </tr>
-        <tr>
-          <th scope="row">Shorepower</th>
+          <th scope="row">SemaConnect</th>
         </tr>
         <tr>
           <th scope="row">Tesla</th>
@@ -763,7 +757,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </tr>
         <tr>
           <th scope="row">TESLA</th>
-          <td>Tesla (DC fast charging)</td>
+          <td>Tesla (DC fast charging and Level 2)</td>
         </tr>
       </tbody>
     </table>
@@ -1380,9 +1374,9 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
                 Primary: A propane station is considered primary because it meets the following criteria, developed based on feedback from the propane industry:
 
                 <ol>
-                  <li>The price of a gallon of propane autogas, including all taxes, at the station is less expensive than other propane sold (e.g., gas grill bottles);</li>
-                  <li>The station is able to fuel vehicles during normal business hours (e.g., 8am-5pm M-F); and</li>
-                  <li>The station accepts credit cards.</li>
+                  <li>The station is staffed and able to fuel vehicles during normal business hours (e.g., 8am-5pm M-F), and does not require drivers to call ahead;</li>
+                  <li>The station is equipped with a dedicated or purpose-built fuel dispenser for vehicle fueling; and</li>
+                  <li>The station accepts credit cards or fleet cards.</li>
                 </ol>
               </td>
             </tr>
@@ -1557,7 +1551,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
             </tr>
             <tr>
               <th scope="row">TESLA</th>
-              <td>Tesla (DC fast charging)</td>
+              <td>Tesla (DC fast charging and Level 2)</td>
             </tr>
           </tbody>
         </table>
@@ -1686,7 +1680,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
           <strong>Type:</strong> date
         </div>
       </td>
-      <td class="doc-parameter-description">The date that the station began offering the fuel. Please note that LPG (propane) stations do not have open dates. Some open dates are approximate.</td>
+      <td class="doc-parameter-description">The date that the station began offering the fuel. Please note that most LPG (propane) stations do not have open dates. Some open dates are approximate. Also note that electric station records that are imported to the Station Locator on a daily basis through a network API do not have open dates. See the About the Alternative Fueling Station Data page for more information.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">date_last_confirmed</th>
