@@ -66,6 +66,14 @@
 
 <h3 class="doc">
 
+<a href="/docs/solar/nsrdb/guide/">Data Download Guide</a>
+
+</h3>
+
+<p>Tips and tricks for getting the most out of the API</p>
+
+<h3 class="doc">
+
 <a href="/docs/solar/nsrdb/mts1_data_download/">Meteorological Statistical Model 1 (MTS1)</a>
 
 <span class="url">(/api/solar/nsrdb_6190_download)</span>
@@ -107,6 +115,17 @@
 </h3>
 
 <p>Collect and download, as CSV, a configurable set of solar and meteoroligical data fields from The NSRDB. This API is capabale of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.<br />Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
+
+<h3 class="doc">
+
+<a href="/docs/solar/nsrdb/site_count/">Site Count</a>
+
+<span class="url">(/api/solar/nsrdb/site_count)</span>
+
+
+</h3>
+
+<p>Determine the number of sites containing data for a given point, polygon, or multipoint as specified by a WKT. This is useful for calculating download request size. Details at <a href="/docs/solar/nsrdb/guide">the download guide</a>.</p>
 
 <h3 class="doc">
 
