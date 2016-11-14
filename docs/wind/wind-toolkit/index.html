@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        Wind Toolkit Data Downloads 
+          API
+        |
+      NREL: Developer Network
+    </title>
+
+    <link rel="canonical" href="https://developer.nrel.gov/docs/wind/wind-toolkit/" />
+    <script>
+      if(window.location.href.indexOf('nrel.github.io') !== -1) {
+        window.location.href = 'https://developer.nrel.gov/docs/wind/wind-toolkit/';
+      }
+    </script>
+
+    <link href="../../../assets/stylesheets/all-246bf420.css" rel="stylesheet" type="text/css" />
+
+    <!--[if lt IE 9]>
+      <script src="../../../assets/javascripts/ie_lt_9-abc24081.js" type="text/javascript"></script>
+    <![endif]-->
+    <script src="../../../assets/javascripts/all-494330ff.js" type="text/javascript"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body class="docs docs_wind docs_wind_wind-toolkit docs_wind_wind-toolkit_index">
+    <div class="container">
+  <header>
+    <map name="header_map">
+        <area shape="rect" coords="0,0,840,58" href="/" alt="Developer Network" />
+      <area shape="rect" coords="840,0,1000,58" href="http://www.nrel.gov/" alt="NREL" />
+    </map>
+    <img alt="NREL Developer Network" usemap="#header_map" width="1000" height="58" src="../../../assets/images/nrel/header-1bfbcb1a.png" />
+  </header>
+  <nav class="navbar navbar-default">
+    <ul class="nav navbar-nav">
+      <li class="nav-home "><a href="/">Home</a></li>
+      <li class="nav-documentation active"><a href="/docs">Documentation</a></li>
+      <li class="nav-community "><a href="/community">Community</a></li>
+    </ul>
+  </nav>
+
+      <ol class="breadcrumb container">
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/docs/wind/">Wind</a></li>
+            <li class="active">Wind Toolkit Data Downloads</li>
+    </ol>
+
+
+    <h1 id="wind-toolkit-data-downloads">Wind Toolkit Data Downloads</h1>
+<p>Freely available downloads of Wind Integration National Dataset Toolkit.</p>
+
+<p>The Wind Integration National Dataset (WIND) Toolkit is an update and expansion of the Eastern Integration Data Set and Western Wind Integration Data Set. It supports the next generation of wind integration studies. The WIND Toolkit includes meteorological conditions and turbine power for more than 126,000 sites in the continental United States for the years 2007—2013. Read more at <a href="http://www.nrel.gov/grid/wind-toolkit.html">http://www.nrel.gov/grid/wind-toolkit.html</a></p>
+
+<h3 class="doc">
+
+<a href="/docs/wind/wind-toolkit/guide/">Data Download Guide</a>
+
+</h3>
+
+<p>Tips and tricks for getting the most out of the API</p>
+
+<h3 class="doc">
+
+<a href="/docs/wind/wind-toolkit/site_count/">Site Count</a>
+
+<span class="url">(/api/wind-toolkit/wind/site_count)</span>
+
+
+</h3>
+
+<p>Determine the number of sites containing data for a given point, polygon, or multipoint as specified by a WKT. This is useful for calculating download request size. Details at <a href="/docs/wind/wind-toolkit/guide">the download guide</a>.</p>
+
+<h3 class="doc">
+
+<a href="/docs/wind/wind-toolkit/wind-toolkit-extract/">Wind Toolkit Data</a>
+
+<span class="url">(/api/wind-toolkit/wind/wtk_download)</span>
+
+
+</h3>
+
+<p>Collect and download, as CSV, a configurable set of data fields from a national collection of wind stations. This API is capabale of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.</p>
+
+
+    <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/wind/wind-toolkit/index.md.erb">Help Improve this Content</a>
+</div>
+
+      <footer class="container-fluid">
+    <div align="center"><img alt="NREL is a national laboratory of the U.S. Department of Energy, Office of Energy Efficiency and Renewable Energy, operated by the Alliance for Sustainable Energy, LLC." usemap="#footer_map" src="../../../assets/images/nrel/foot_nrelis-8e56f120.gif" /></div>
+
+    <map name="footer_map" id="footer_map">
+      <area shape="rect" coords="27,7,61,20" href="http://www.nrel.gov/" alt="NREL" />
+      <area shape="rect" coords="238,7,399,19" href="http://www.energy.gov/" alt="U.S. Department of Energy" />
+      <area shape="rect" coords="405,7,697,21" href="http://www.eere.energy.gov/" alt="Office of Energy Efficiency and Renewable Energy" />
+      <area shape="rect" coords="307,21,524,35" href="http://www.allianceforsustainableenergy.org/" alt="Alliance for Sustainable Energy, LLC" />
+    </map>
+
+    <p><a href="/contact">Need Help?</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.nrel.gov/security.html">Security &amp; Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.nrel.gov/disclaimer.html">Disclaimer</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.nrel.gov/">NREL Home</a></p>
+  </footer>
+</div>
+
+  </body>
+</html>
