@@ -99,7 +99,7 @@
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">The two character U.S. state or Canadian province code of the station's location.</td>
+      <td class="doc-parameter-description">The two character U.S. state code of the station's location.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">zip</th>
@@ -153,6 +153,10 @@
               <th scope="row">P</th>
               <td>Planned: The station is not yet open, but plans to carry alternative fuel in the future, or the station is temporarily out of service. See the "Expected Date" field for an anticipated open date.</td>
             </tr>
+            <tr>
+              <th scope="row">T</th>
+              <td>Temporarily unavailable: The station is temporarily unavailable. See the “Expected Date” field for an anticipated open date.</td>
+            </tr>
           </tbody>
         </table>
       </td>
@@ -164,7 +168,7 @@
           <strong>Type:</strong> date
         </div>
       </td>
-      <td class="doc-parameter-description">For planned stations, the date the station is expected to open or start carrying alternative fuel.</td>
+      <td class="doc-parameter-description">For planned stations, the date the station is expected to open or start carrying alternative fuel. For temporarily unavailable stations, the expected date is the date the station is expected to reopen. This date is estimated but not guaranteed.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">groups_with_access_code</th>
@@ -173,7 +177,63 @@
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">A description of who is allowed to access the station and other station access information. Stations with the groups_with_access_code "Private - fleet customers only" may allow other entities to fuel through a business-to-business arrangement. For more information, fleet customers should refer to the access_days_time field for contact information or contact the station directly.</td>
+      <td class="doc-parameter-description">
+        <p>A description of who is allowed to access the station and other station access information. </p>
+        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Private</th>
+              <td>Private station.</td>
+            </tr>
+            <tr>
+              <th scope="row">Private - fleet customers only</th>
+              <td>Private station that may allow other entities to fuel through a business-to-business arrangement. For more information, fleet customers should refer to the “Access Days Time” field for contact information or contact the station directly.</td>
+            </tr>
+            <tr>
+              <th scope="row">Private – government only</th>
+              <td>Private station available only to government vehicles, or some subset of government vehicles.</td>
+            </tr>
+            <tr>
+              <th scope="row">Public</th>
+              <td>Publicly available to all customers.</td>
+            </tr>
+            <tr>
+              <th scope="row">Public – call ahead </th>
+              <td>Publicly available, but customers should call before visiting the station. See “Station Phone” for more details.</td>
+            </tr>
+            <tr>
+              <th scope="row">Public – credit card at all times</th>
+              <td>Publicly available, but only accepts credit cards as payment. The station may also accept fleet cards or station-specific fueling cards. See “Cards Accepted” field for more details.</td>
+            </tr>
+            <tr>
+              <th scope="row">Public – card key at all times</th>
+              <td>Publicly available, but only accepts fleet cards or station-specific fueling cards as payment. See “Cards Accepted” field for more details.</td>
+            </tr>
+            <tr>
+              <th scope="row">Public – credit card after hours</th>
+              <td>Publicly available, and accepts credit cards 24 hours a day. See “Access Days Time” and “Cards Accepted” fields for more details.</td>
+            </tr>
+            <tr>
+              <th scope="row">Public – card key after hours</th>
+              <td>Publicly available, and accepts fleet cards or station-specific fueling cards 24 hours a day. See “Access Days Time” and “Cards Accepted” fields for more details.</td>
+            </tr>
+            <tr>
+              <th scope="row">PLANNED – not yet available</th>
+              <td>Not yet open, but plans to carry alternative fuel in the future. See the "Expected Date" field for an anticipated open date.</td>
+            </tr>
+            <tr>
+              <th scope="row">TEMPORARILY UNAVAILBLE</th>
+              <td>Temporarily unavailable. See the “Expected Date” field for an anticipated open date.</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">access_days_time</th>
@@ -219,35 +279,67 @@
             </tr>
             <tr>
               <th scope="row">Cash</th>
-              <td></td>
+              <td>Cash</td>
             </tr>
             <tr>
               <th scope="row">Checks</th>
-              <td></td>
+              <td>Check</td>
             </tr>
             <tr>
               <th scope="row">CFN</th>
-              <td></td>
+              <td>Commercial Fueling Network</td>
             </tr>
             <tr>
               <th scope="row">CleanEnergy</th>
-              <td></td>
+              <td>Clean Energy</td>
+            </tr>
+            <tr>
+              <th scope="row">Comdata</th>
+              <td>Comdata</td>
+            </tr>
+            <tr>
+              <th scope="row">EFS</th>
+              <td>EFS</td>
+            </tr>
+            <tr>
+              <th scope="row">FleetOne</th>
+              <td>Fleet One</td>
             </tr>
             <tr>
               <th scope="row">FuelMan</th>
-              <td></td>
+              <td>Fuelman</td>
             </tr>
             <tr>
               <th scope="row">GasCard</th>
-              <td></td>
+              <td>GASCARD</td>
             </tr>
             <tr>
               <th scope="row">PHH</th>
-              <td>PHH Services</td>
+              <td>PHH</td>
+            </tr>
+            <tr>
+              <th scope="row">PacificPride</th>
+              <td>Pacific Pride</td>
+            </tr>
+            <tr>
+              <th scope="row">Speedway</th>
+              <td>Speedway</td>
+            </tr>
+            <tr>
+              <th scope="row">Tchek</th>
+              <td>T-Chek T-Card</td>
+            </tr>
+            <tr>
+              <th scope="row">TCH</th>
+              <td>TCH</td>
+            </tr>
+            <tr>
+              <th scope="row">Trillium</th>
+              <td>Trillium</td>
             </tr>
             <tr>
               <th scope="row">Voyager</th>
-              <td></td>
+              <td>Voyager</td>
             </tr>
             <tr>
               <th scope="row">Wright_Exp</th>
@@ -374,9 +466,9 @@
                 Primary: A propane station is considered primary because it meets the following criteria, developed based on feedback from the propane industry:
 
                 <ol>
-                  <li>The price of a gallon of propane autogas, including all taxes, at the station is less expensive than other propane sold (e.g., gas grill bottles);</li>
-                  <li>The station is able to fuel vehicles during normal business hours (e.g., 8am-5pm M-F); and</li>
-                  <li>The station accepts credit cards.</li>
+                  <li>The station is staffed and able to fuel vehicles during normal business hours (e.g., 8am-5pm M-F), and does not require drivers to call ahead;</li>
+                  <li>The station is equipped with a dedicated or purpose-built fuel dispenser for vehicle fueling; and</li>
+                  <li>The station accepts credit cards or fleet cards.</li>
                 </ol>
               </td>
             </tr>
@@ -526,10 +618,6 @@
           </thead>
           <tbody>
             <tr>
-              <th scope="row">all</th>
-              <td>Include all electric connector types</td>
-            </tr>
-            <tr>
               <th scope="row">NEMA515</th>
               <td>NEMA 5-15 (Level 1)</td>
             </tr>
@@ -555,7 +643,7 @@
             </tr>
             <tr>
               <th scope="row">TESLA</th>
-              <td>Tesla (DC fast charging)</td>
+              <td>Tesla (DC fast charging and Level 2)</td>
             </tr>
           </tbody>
         </table>
@@ -684,7 +772,7 @@
           <strong>Type:</strong> date
         </div>
       </td>
-      <td class="doc-parameter-description">The date that the station began offering the fuel. Please note that LPG (propane) stations do not have open dates.</td>
+      <td class="doc-parameter-description">The date that the station began offering the fuel. Please note that most LPG (propane) stations do not have open dates. Some open dates are approximate. Also note that electric station records that are imported to the Station Locator on a daily basis through a network API do not have open dates. See the <a href="http://www.afdc.energy.gov/fuels/data_methods_stations.html">About the Alternative Fueling Station Data</a> page for more information.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">date_last_confirmed</th>

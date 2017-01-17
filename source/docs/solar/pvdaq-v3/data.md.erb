@@ -16,7 +16,7 @@ url: GET /api/pvdaq/v3/data
 
 ## HTTP Basic Authentication
 
-For PVDAQ services, in addition to your developer API key, you must also provide a username and password for your PVDAQ account via [HTTP Basic Authentication](http://en.wikipedia.org/wiki/Basic_access_authentication). For login credentials, contact [Ryan Smith](mailto:ryan.smith@nrel.gov).
+You can access public PVDAQ data with just your developer API key. For access to non-public data you must also provide a PVDAQ username and password via [HTTP Basic Authentication](http://en.wikipedia.org/wiki/Basic_access_authentication). For access to non-public data, contact [Chris Deline](mailto:chris.deline@nrel.gov).
 
 ## Request Parameters
 
@@ -412,7 +412,7 @@ If the service estimates that the amount of data that will be returned for a req
     <tr>
       <th class="doc-parameter-name" scope="row">401</th>
       <td class="doc-parameter-description">
-        Unauthorized - For PVDAQ services, you must also provide a username and password for your PVDAQ account via <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">HTTP Basic Authentication</a>. For login credentials, contact <a href="mailto:ryan.smith@nrel.gov">Ryan Smith</a>.
+        Unauthorized - For access to non-public PVDAQ data, you must also provide a username and password for your PVDAQ account via <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">HTTP Basic Authentication</a>. For login credentials, contact <a href="mailto:chris.deline@nrel.gov">Chris Deline</a>.
       </td>
     </tr>
   </tbody>

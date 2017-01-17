@@ -34,6 +34,9 @@
   </head>
   <body class="<%= page_classes %>">
     <%= partial("layouts/header") %>
+    <div class="alert alert-danger">
+      There will be a <strong>partial outage</strong> for some of our APIs from Saturday, January 14, 2017 - Monday, January 16, 2017. <a href="/2017-01-outage/">Read more...</a>
+    </div>
     <%= yield %>
     <%= partial("layouts/edit_me") %>
     <%= partial("layouts/footer") %>

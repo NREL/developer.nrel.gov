@@ -287,7 +287,7 @@ Full technical details can be found in: Dobos, A. P. <a href="http://www.nrel.go
         </div>
       </td>
       <td class="doc-parameter-description">
-        An identifier provided by the <a href="/doc/api/solar/data_query/v1">solar data query</a> web service to specify the climate data file to use. Required if lat/lon or address not specified.
+        Reference to a specific climate data file to use. Must be a valid <code>id</code> returned by the <a href="/docs/solar/data-query-v1/">Solar Dataset Query API</a>. Required if lat/lon or address not specified.
       </td>
     </tr>
     <tr>
@@ -601,6 +601,11 @@ The response is composed of service-related informational fields and the results
       <td class="doc-parameter-description">Annual solar radiation values. (kWh/m2/day)</td>
     </tr>
     <tr>
+      <th class="doc-parameter-name" scope="row">capacity_factor</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
+      <td class="doc-parameter-description">The ratio of the system's predicted electrical output in the first year of operation to the nameplate output, which is equivalent to the quantity of energy the system would generate if it operated at its nameplate capacity for every hour of the year. (AC-to-DC)</td>
+    </tr>
+    <tr>
       <th class="doc-parameter-name" scope="row">ac</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
       <td class="doc-parameter-description">Hourly AC system output (only when timeframe=hourly). (Wac)</td>
@@ -790,7 +795,7 @@ The response is composed of service-related informational fields and the results
 
 ## Rate Limits
 
-[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour. No more than 10,000 requests may be made in any day.
+[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour.
 
 ## Errors
 
