@@ -95,6 +95,28 @@
 
 <p>Imagine a use case where one wanted to download all PSM data for the state of Texas. The first step would be to refine the request down to the least number of attributes, years, and intervals possible. From that one could determine the number of sites that could be requested in a single request. By experimenting with the site_count endpoint a polygon size could be identified that intersects close to that many sites. Using that polygon size create a grid that covers all of Texas. The final step would be to write a script that invokes the API once for every required grid cell at a rate of no more than 1 every 2 seconds. If more than 300 requests are required the script will have to be continued across multiple days.</p>
 
+<p>In cases where a very large WKT value is required, e.g. downloading the maximum number of broadly spaced points at a time using a MULTIPOINT wkt, it is possible to POST a request to the API providing the WKT params in the payload. Here is an example of a Python script that uses this variation:</p>
+
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/solar/nsrdb_0512_download.json?api_key=yourapikeygoeshere"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"names=2012&amp;leap_day=false&amp;interval=60&amp;utc=false&amp;full_name=Honored</span><span class="si">%2</span><span class="s">BUser&amp;email=honored.user</span><span class="si">%40</span><span class="s">gmail.com&amp;affiliation=NREL&amp;mailing_list=true&amp;reason=Academic&amp;attributes=dhi</span><span class="si">%2</span><span class="s">Cdni</span><span class="si">%2</span><span class="s">Cwind_speed_10m_nwp</span><span class="si">%2</span><span class="s">Csurface_air_temperature_nwp&amp;wkt=MULTIPOINT(-106.22</span><span class="si">%2032.9741%2</span><span class="s">C-106.18</span><span class="si">%2032.9741%2</span><span class="s">C-106.1</span><span class="si">%2032.9741</span><span class="s">)"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'content-type'</span><span class="p">:</span> <span class="s">"application/x-www-form-urlencoded"</span><span class="p">,</span>
+    <span class="s">'cache-control'</span><span class="p">:</span> <span class="s">"no-cache"</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre>
+
+<p>And a CURL example of the same</p>
+
+<pre><code class="highlight shell">curl -X POST -H <span class="s2">"Content-Type: application/x-www-form-urlencoded"</span> -H <span class="s2">"Cache-Control: no-cache"</span> -d <span class="s1">'names=2009&amp;leap_day=false&amp;interval=60&amp;utc=false&amp;full_name=Honored%2BUser&amp;email=honored.user@gmail.com&amp;affiliation=NREL&amp;mailing_list=true&amp;reason=Academic&amp;attributes=dhi%2Cdni%2Cwind_speed_10m_nwp%2Csurface_air_temperature_nwp&amp;wkt=MULTIPOINT(-106.22 32.9741%2C-106.18 32.9741%2C-106.1 32.9741%2C-106.06 32.9741)'</span> <span class="s2">"http://developer.nrel.gov/api/solar/nsrdb_0512_download.json?api_key=yourapikeygoeshere"</span>
+</code></pre>
 
     <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
   <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/solar/nsrdb/guide.md.erb">Help Improve this Content</a>

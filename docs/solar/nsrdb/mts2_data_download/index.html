@@ -67,9 +67,10 @@
 
 <h2 id="request-url">Request URL</h2>
 
-<pre>GET /api/solar/nsrdb_9105_download<em>.format?parameters</em></pre>
+<pre>GET|POST /api/solar/nsrdb_9105_download<em>.format?parameters</em></pre>
 
 <h2 id="request-parameters">Request Parameters</h2>
+<p><em>NOTE: when using POST to submit a request the api_key must still be inlcuded as a query parameter in the url. All other parameters may be included in a POST request as part of the payload.</em></p>
 
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
   <thead>
@@ -319,6 +320,24 @@ Year,Month,Day,Hour,Minute,DHI,DNI,GHI,ETR,ETRN,Total Sky Cover,Opaque Sky Cover
 1990,1,1,4,0,0,0,0,0,0,1,0,-0.8,-2.2,826,61,0,0.0,24,77777,6,0.02,A,A,A,A,A,A,E,A,A,A,A,B,0,0,0,0,0,7,7,7,0,0,7,7,7,7,0
 1990,1,1,5,0,0,0,0,0,0,3,1,-0.9,-3.5,827,67,60,1.0,-9900,22000,6,0.02,A,A,B,A,A,A,B,B,?,B,A,B,0,0,0,0,0,0,7,7,0,7,0,0,0,7,0
 1990,1,1,6,0,0,0,0,0,0,5,2,-0.9,-4.800000000000001,827,72,110,2.1,-9900,22000,6,0.02,A,A,B,A,A,A,B,B,?,B,A,B,0,0,0,0,0,0,7,7,0,7,0,0,0,7,0                                     
+</code></pre>
+
+<h3 id="post-request-example-in-python">POST request example in Python</h3>
+
+<pre><code class="highlight python"><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/solar/nsrdb_9105_download.json?api_key=yourapikeygoeshere"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"names=2012&amp;leap_day=false&amp;interval=60&amp;utc=false&amp;full_name=Honored</span><span class="si">%2</span><span class="s">BUser&amp;email=honored.user</span><span class="si">%40</span><span class="s">gmail.com&amp;affiliation=NREL&amp;mailing_list=true&amp;reason=Academic&amp;attributes=dhi</span><span class="si">%2</span><span class="s">Cdni</span><span class="si">%2</span><span class="s">Cwind_speed_10m_nwp</span><span class="si">%2</span><span class="s">Csurface_air_temperature_nwp&amp;wkt=MULTIPOINT(-106.22</span><span class="si">%2032.9741%2</span><span class="s">C-106.18</span><span class="si">%2032.9741%2</span><span class="s">C-106.1</span><span class="si">%2032.9741</span><span class="s">)"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'content-type'</span><span class="p">:</span> <span class="s">"application/x-www-form-urlencoded"</span><span class="p">,</span>
+    <span class="s">'cache-control'</span><span class="p">:</span> <span class="s">"no-cache"</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </code></pre>
 
 <h2 id="rate-limits">Rate Limits</h2>
