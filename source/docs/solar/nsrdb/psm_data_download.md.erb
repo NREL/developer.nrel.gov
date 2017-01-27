@@ -11,9 +11,10 @@ url: /api/solar/nsrdb_0512_download
 
 ## Request URL
 
-<pre>GET <%= current_page.data.url %><em>.format?parameters</em></pre>
+<pre>GET|POST <%= current_page.data.url %><em>.format?parameters</em></pre>
 
 ## Request Parameters
+_NOTE: when using POST to submit a request the api_key must still be inlcuded as a query parameter in the url. All other parameters may be included in a POST request as part of the payload._
 
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
   <thead>
@@ -273,6 +274,25 @@ Year,Month,Day,Hour,Minute,DHI,DNI,GHI,Clearsky DHI,Clearsky DNI,Clearsky GHI,Cl
 2014,1,1,2,30,0,0,0,0,0,0,4,-6.044805908203102,-2.3538574218749773,797.1622314453125,75.79216766357422,147.14884282433127,6.616491794586182,294.47625732421875,3.744844436645508,0
 2014,1,1,3,0,0,0,0,0,0,0,4,-6.416296386718727,-2.5502075195312273,797.3344116210938,74.75006866455078,141.7413977757821,6.156126976013184,307.29669189453125,3.9375598430633545,0
 2014,1,1,3,30,0,0,0,0,0,0,4,-6.676153564453102,-3.0090087890624773,797.4351196289062,75.81484985351562,136.16001651446615,5.669936180114746,307.29669189453125,4.078017234802246,0                                             
+```
+
+### POST request example in Python
+
+```python
+import requests
+
+url = "http://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
+
+payload = "names=2012&leap_day=false&interval=60&utc=false&full_name=Honored%2BUser&email=honored.user%40gmail.com&affiliation=NREL&mailing_list=true&reason=Academic&attributes=dhi%2Cdni%2Cwind_speed_10m_nwp%2Csurface_air_temperature_nwp&wkt=MULTIPOINT(-106.22%2032.9741%2C-106.18%2032.9741%2C-106.1%2032.9741)"
+
+headers = {
+    'content-type': "application/x-www-form-urlencoded",
+    'cache-control': "no-cache"
+}
+
+response = requests.request("POST", url, data=payload, headers=headers)
+
+print(response.text)
 ```
 
 <h2 id="rate-limits">Rate Limits</h2>
