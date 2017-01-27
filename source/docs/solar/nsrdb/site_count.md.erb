@@ -11,9 +11,10 @@ url: /api/solar/nsrdb/site_count
 
 ## Request URL
 
-<pre>GET <%= current_page.data.url %><em>.format?parameters</em></pre>
+<pre>GET|POST <%= current_page.data.url %><em>.format?parameters</em></pre>
 
 ## Request Parameters
+_NOTE: when using POST to submit a request the api_key must still be inlcuded as a query parameter in the url. All other parameters may be included in a POST request as part of the payload._
 
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
   <thead>

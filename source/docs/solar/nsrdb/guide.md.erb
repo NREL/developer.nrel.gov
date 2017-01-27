@@ -31,3 +31,28 @@ To maximize a single request simply minimize the variables wherever possible. Fo
 
 Imagine a use case where one wanted to download all PSM data for the state of Texas. The first step would be to refine the request down to the least number of attributes, years, and intervals possible. From that one could determine the number of sites that could be requested in a single request. By experimenting with the site_count endpoint a polygon size could be identified that intersects close to that many sites. Using that polygon size create a grid that covers all of Texas. The final step would be to write a script that invokes the API once for every required grid cell at a rate of no more than 1 every 2 seconds. If more than 300 requests are required the script will have to be continued across multiple days.
 
+
+In cases where a very large WKT value is required, e.g. downloading the maximum number of broadly spaced points at a time using a MULTIPOINT wkt, it is possible to POST a request to the API providing the WKT params in the payload. Here is an example of a Python script that uses this variation:
+
+```python
+import requests
+
+url = "http://developer.nrel.gov/api/solar/nsrdb_0512_download.json?api_key=yourapikeygoeshere"
+
+payload = "names=2012&leap_day=false&interval=60&utc=false&full_name=Honored%2BUser&email=honored.user%40gmail.com&affiliation=NREL&mailing_list=true&reason=Academic&attributes=dhi%2Cdni%2Cwind_speed_10m_nwp%2Csurface_air_temperature_nwp&wkt=MULTIPOINT(-106.22%2032.9741%2C-106.18%2032.9741%2C-106.1%2032.9741)"
+
+headers = {
+    'content-type': "application/x-www-form-urlencoded",
+    'cache-control': "no-cache"
+}
+
+response = requests.request("POST", url, data=payload, headers=headers)
+
+print(response.text)
+```
+
+And a CURL example of the same
+
+```shell
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -H "Cache-Control: no-cache" -d 'names=2009&leap_day=false&interval=60&utc=false&full_name=Honored%2BUser&email=honored.user@gmail.com&affiliation=NREL&mailing_list=true&reason=Academic&attributes=dhi%2Cdni%2Cwind_speed_10m_nwp%2Csurface_air_temperature_nwp&wkt=MULTIPOINT(-106.22 32.9741%2C-106.18 32.9741%2C-106.1 32.9741%2C-106.06 32.9741)' "http://developer.nrel.gov/api/solar/nsrdb_0512_download.json?api_key=yourapikeygoeshere"
+```

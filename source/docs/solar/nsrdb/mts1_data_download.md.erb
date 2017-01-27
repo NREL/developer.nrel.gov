@@ -11,9 +11,10 @@ url: /api/solar/nsrdb_6190_download
 
 ## Request URL
 
-<pre>GET <%= current_page.data.url %><em>.format?parameters</em></pre>
+<pre>GET|POST <%= current_page.data.url %><em>.format?parameters</em></pre>
 
 ## Request Parameters
+_NOTE: when using POST to submit a request the api_key must still be inlcuded as a query parameter in the url. All other parameters may be included in a POST request as part of the payload._
 
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
   <thead>
@@ -313,6 +314,25 @@ Year,Month,Day,Hour,Minute,DHI,DNI,GHI,ETR,ETRN,Total Sky Cover,Opaque Sky Cover
 1990,1,1,4,0,0,0,0,0,0,1,0,-0.8,-2.2,826,61,0,0.0,24,77777,6,0.02,A,A,A,A,A,A,E,A,A,A,A,B,0,0,0,0,0,7,7,7,0,0,7,7,7,7,0
 1990,1,1,5,0,0,0,0,0,0,3,1,-0.9,-3.5,827,67,60,1.0,-9900,22000,6,0.02,A,A,B,A,A,A,B,B,?,B,A,B,0,0,0,0,0,0,7,7,0,7,0,0,0,7,0
 1990,1,1,6,0,0,0,0,0,0,5,2,-0.9,-4.800000000000001,827,72,110,2.1,-9900,22000,6,0.02,A,A,B,A,A,A,B,B,?,B,A,B,0,0,0,0,0,0,7,7,0,7,0,0,0,7,0                                     
+```
+
+### POST request example in Python
+
+```python
+import requests
+
+url = "http://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
+
+payload = "names=2012&leap_day=false&interval=60&utc=false&full_name=Honored%2BUser&email=honored.user%40gmail.com&affiliation=NREL&mailing_list=true&reason=Academic&attributes=dhi%2Cdni%2Cwind_speed_10m_nwp%2Csurface_air_temperature_nwp&wkt=MULTIPOINT(-106.22%2032.9741%2C-106.18%2032.9741%2C-106.1%2032.9741)"
+
+headers = {
+    'content-type': "application/x-www-form-urlencoded",
+    'cache-control': "no-cache"
+}
+
+response = requests.request("POST", url, data=payload, headers=headers)
+
+print(response.text)
 ```
 
 <h2 id="rate-limits">Rate Limits</h2>
