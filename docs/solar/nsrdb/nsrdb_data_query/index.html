@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        NSRDB Data Query 
+          API
+        |
+      NREL: Developer Network
+    </title>
+
+    <link rel="canonical" href="https://developer.nrel.gov/docs/solar/nsrdb/nsrdb_data_query/" />
+    <script>
+      if(window.location.href.indexOf('nrel.github.io') !== -1) {
+        window.location.href = 'https://developer.nrel.gov/docs/solar/nsrdb/nsrdb_data_query/';
+      }
+    </script>
+
+    <link href="../../../../assets/stylesheets/all-246bf420.css" rel="stylesheet" type="text/css" />
+
+    <!--[if lt IE 9]>
+      <script src="../../../../assets/javascripts/ie_lt_9-abc24081.js" type="text/javascript"></script>
+    <![endif]-->
+    <script src="../../../../assets/javascripts/all-494330ff.js" type="text/javascript"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body class="docs docs_solar docs_solar_nsrdb docs_solar_nsrdb_nsrdb_data_query docs_solar_nsrdb_nsrdb_data_query_index">
+    <div class="container">
+  <header>
+    <map name="header_map">
+        <area shape="rect" coords="0,0,840,58" href="/" alt="Developer Network" />
+      <area shape="rect" coords="840,0,1000,58" href="http://www.nrel.gov/" alt="NREL" />
+    </map>
+    <img alt="NREL Developer Network" usemap="#header_map" width="1000" height="58" src="../../../../assets/images/nrel/header-1bfbcb1a.png" />
+  </header>
+  <nav class="navbar navbar-default">
+    <ul class="nav navbar-nav">
+      <li class="nav-home "><a href="/">Home</a></li>
+      <li class="nav-documentation active"><a href="/docs">Documentation</a></li>
+      <li class="nav-community "><a href="/community">Community</a></li>
+    </ul>
+  </nav>
+
+      <ol class="breadcrumb container">
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/docs/solar/">Solar</a></li>
+            <li><a href="/docs/solar/nsrdb/">NSRDB Data Downloads</a></li>
+            <li class="active">NSRDB Data Query</li>
+    </ol>
+
+
+    <h1 id="nsrdb-data-query-span-classurlapisolarnsrdbdataqueryspan">NSRDB Data Query <span class="url">(/api/solar/nsrdb_data_query)</span></h1>
+<p>Returns information on the closest NSRDB datasets for a location including a set of links that can be used to download the data. For information about the NSRDB and the datasets represented by this service please visit <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a>.</p>
+
+<ul id="toc"></ul>
+
+<h2 id="request-url">Request URL</h2>
+
+<pre>GET|POST /api/solar/nsrdb_data_query<em>.format?parameters</em></pre>
+
+<h2 id="request-parameters">Request Parameters</h2>
+<p><em>NOTE: when using POST to submit a request the api_key must still be inlcuded as a query parameter in the url. All other parameters may be included in a POST request as part of the payload.</em></p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Parameter</th>
+      <th class="doc-parameters-required" scope="col">Required</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">api_key</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Your developer API key. See <a href="/docs/api-key/">API keys</a> for more information.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">wkt</th>
+      <td class="doc-parameter-required">Depends</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> well-known text string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        A well-known text (WKT) representation of the geometry for which to extract data. May be a point, multipoint, or polygon geometry. When a point is passed the site nearest to that point is used. When a multipoint is passed the site nearest each point is used. This can be useful for downloading multiple sites in a single request when those sites are geographically distant from each other. When a polygon is passed all sites that intersect with the given polygon are used. Required if neither address nor lat/lon are specified.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">address</th>
+      <td class="doc-parameter-required">Depends</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+      </td>
+      <td class="doc-parameter-description">The address to use (lat/lon returned by Google's geocoding service). Required if neither wkt nor lat/lon are specified.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">lat</th>
+      <td class="doc-parameter-required">Depends</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> decimal
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Min:</strong> <i>-90</i>
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Max:</strong> <i>90</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">The latitude for the location to use. Required if neither address nor wkt are specified.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">lon</th>
+      <td class="doc-parameter-required">Depends</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> decimal
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Min:</strong> <i>-180</i>
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Max:</strong> <i>180</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">The longitude for the location to use. Required if neither address nor wkt are specified.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">type</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>satellite, station</em></div>
+      </td>
+      <td class="doc-parameter-description">The type of datasets to include in the response.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">show_empty</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> boolean
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> false
+        </div>
+      </td>
+      <td class="doc-parameter-description">If true, returns metadata for <em>all</em> datasets including those with no data at the given location.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="response-fields">Response Fields</h2>
+
+<p>The response is composed of service-related informational fields and the results of the data query.</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">errors</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> string array</div>
+      </td>
+      <td class="doc-parameter-description">
+      <p>A list of error messages</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">warnings</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> string array</div>
+      </td>
+      <td class="doc-parameter-description">
+      <p>A list of warning messages</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">inputs</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> Object hash</div>
+      </td>
+      <td class="doc-parameter-description">Key: Value pairs representing all input parameters</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">outputs</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> Object array</div>
+      </td>
+      <td class="doc-parameter-description">An array of objects describing the datasets returned by the query. Dataset objects will include descriptive details, links to dataset information, links to documentation for more dataset-specific API endpoints, and where appropriate a list of direct download links for easily accessing the data for any year at any resolution available. Please note that the returned links will require the addition of a valid <code>api_key</code> and <code>email</code> parameter.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Examples</h2>
+
+<h3 id="json-output-format">JSON Output Format</h3>
+
+<div class="doc-example-url"><code>GET /api/solar/nsrdb_data_query.json?api_key=DEMO_KEY&amp;wkt=POINT(91.287+23.832)</code></div>
+
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"wkt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POINT(91.287 23.832)"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"apiDocs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.nrel.gov/docs/solar/nsrdb/suny_data_download/"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"availableYears"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"tmy"</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2001</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2002</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2003</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2004</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2005</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2006</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2007</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2008</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2009</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2010</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2011</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2012</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2013</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2014</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"availableIntervals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">60</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUNY International"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"metadataLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://nsrdb.nrel.gov/international-datasets"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suny-international"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"satellite"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tmy"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.nrel.gov/api/solar/suny_india_download.csv?names=tmy&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2000&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2001</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2001&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2002</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2002&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2003</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2003&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2004</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2004&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2005</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2005&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2006</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2006&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2007</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2007&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2008</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2008&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2009</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2009&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2010&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2011</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2011&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2012</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2012&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2013</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2013&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2014&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="xml-output-format">XML Output Format</h3>
+
+<div class="doc-example-url"><code>GET /api/solar/nsrdb_data_query.xml?api_key=DEMO_KEY&amp;wkt=POINT(91.287+23.832)</code></div>
+
+<pre><code class="highlight xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;hash&gt;</span>
+  <span class="nt">&lt;errors</span> <span class="na">type=</span><span class="s">"array"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;inputs&gt;</span>
+    <span class="nt">&lt;wkt&gt;</span>POINT(91.287 23.832)<span class="nt">&lt;/wkt&gt;</span>
+  <span class="nt">&lt;/inputs&gt;</span>
+  <span class="nt">&lt;outputs</span> <span class="na">type=</span><span class="s">"array"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;output&gt;</span>
+      <span class="nt">&lt;apiDocs&gt;</span>http://developer.nrel.gov/docs/solar/nsrdb/suny_data_download/<span class="nt">&lt;/apiDocs&gt;</span>
+      <span class="nt">&lt;availableYears</span> <span class="na">type=</span><span class="s">"array"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;availableYear&gt;</span>tmy<span class="nt">&lt;/availableYear&gt;</span>
+        <span class="nt">&lt;availableYear</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2000<span class="nt">&lt;/availableYear&gt;</span>
+        <span class="nt">&lt;availableYear</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2001<span class="nt">&lt;/availableYear&gt;</span>
+        <span class="nt">&lt;availableYear</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2002<span class="nt">&lt;/availableYear&gt;</span>
+        <span class="nt">&lt;availableYear</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2003<span class="nt">&lt;/availableYear&gt;</span>
+        <span class="nt">&lt;availableYear</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2004<span class="nt">&lt;/availableYear&gt;</span>
+        <span class="nt">&lt;availableYear</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2005<span class="nt">&lt;/availableYear&gt;</span>
+        <span class="nt">&lt;availableYear</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2006<span class="nt">&lt;/availableYear&gt;</span>
+        <span class="nt">&lt;availableYear</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2007<span class="nt">&lt;/availableYear&gt;</span>
+        <span class="nt">&lt;availableYear</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2008<span class="nt">&lt;/availableYear&gt;</span>
+        <span class="nt">&lt;availableYear</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2009<span class="nt">&lt;/availableYear&gt;</span>
+        <span class="nt">&lt;availableYear</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2010<span class="nt">&lt;/availableYear&gt;</span>
+        <span class="nt">&lt;availableYear</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2011<span class="nt">&lt;/availableYear&gt;</span>
+        <span class="nt">&lt;availableYear</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2012<span class="nt">&lt;/availableYear&gt;</span>
+        <span class="nt">&lt;availableYear</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2013<span class="nt">&lt;/availableYear&gt;</span>
+        <span class="nt">&lt;availableYear</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2014<span class="nt">&lt;/availableYear&gt;</span>
+      <span class="nt">&lt;/availableYears&gt;</span>
+      <span class="nt">&lt;availableIntervals</span> <span class="na">type=</span><span class="s">"array"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;availableInterval</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>60<span class="nt">&lt;/availableInterval&gt;</span>
+      <span class="nt">&lt;/availableIntervals&gt;</span>
+      <span class="nt">&lt;displayName&gt;</span>SUNY International<span class="nt">&lt;/displayName&gt;</span>
+      <span class="nt">&lt;metadataLink&gt;</span>https://nsrdb.nrel.gov/international-datasets<span class="nt">&lt;/metadataLink&gt;</span>
+      <span class="nt">&lt;name&gt;</span>suny-international<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;type&gt;</span>satellite<span class="nt">&lt;/type&gt;</span>
+      <span class="nt">&lt;links</span> <span class="na">type=</span><span class="s">"array"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link&gt;</span>
+          <span class="nt">&lt;year&gt;</span>tmy<span class="nt">&lt;/year&gt;</span>
+          <span class="nt">&lt;interval</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>60<span class="nt">&lt;/interval&gt;</span>
+          <span class="nt">&lt;link&gt;</span>http://developer.nrel.gov/api/solar/suny_india_download.csv?names=tmy<span class="ni">&amp;amp;</span>wkt=POINT%2891.287+23.832%29<span class="ni">&amp;amp;</span>interval=60<span class="ni">&amp;amp;</span>api_key=yourapikey<span class="ni">&amp;amp;</span>email=youremail<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;link&gt;</span>
+          <span class="nt">&lt;year</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2000<span class="nt">&lt;/year&gt;</span>
+          <span class="nt">&lt;interval</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>60<span class="nt">&lt;/interval&gt;</span>
+          <span class="nt">&lt;link&gt;</span>http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2000<span class="ni">&amp;amp;</span>wkt=POINT%2891.287+23.832%29<span class="ni">&amp;amp;</span>interval=60<span class="ni">&amp;amp;</span>api_key=yourapikey<span class="ni">&amp;amp;</span>email=youremail<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;link&gt;</span>
+          <span class="nt">&lt;year</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2001<span class="nt">&lt;/year&gt;</span>
+          <span class="nt">&lt;interval</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>60<span class="nt">&lt;/interval&gt;</span>
+          <span class="nt">&lt;link&gt;</span>http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2001<span class="ni">&amp;amp;</span>wkt=POINT%2891.287+23.832%29<span class="ni">&amp;amp;</span>interval=60<span class="ni">&amp;amp;</span>api_key=yourapikey<span class="ni">&amp;amp;</span>email=youremail<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;link&gt;</span>
+          <span class="nt">&lt;year</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2002<span class="nt">&lt;/year&gt;</span>
+          <span class="nt">&lt;interval</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>60<span class="nt">&lt;/interval&gt;</span>
+          <span class="nt">&lt;link&gt;</span>http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2002<span class="ni">&amp;amp;</span>wkt=POINT%2891.287+23.832%29<span class="ni">&amp;amp;</span>interval=60<span class="ni">&amp;amp;</span>api_key=yourapikey<span class="ni">&amp;amp;</span>email=youremail<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;link&gt;</span>
+          <span class="nt">&lt;year</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2003<span class="nt">&lt;/year&gt;</span>
+          <span class="nt">&lt;interval</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>60<span class="nt">&lt;/interval&gt;</span>
+          <span class="nt">&lt;link&gt;</span>http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2003<span class="ni">&amp;amp;</span>wkt=POINT%2891.287+23.832%29<span class="ni">&amp;amp;</span>interval=60<span class="ni">&amp;amp;</span>api_key=yourapikey<span class="ni">&amp;amp;</span>email=youremail<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;link&gt;</span>
+          <span class="nt">&lt;year</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2004<span class="nt">&lt;/year&gt;</span>
+          <span class="nt">&lt;interval</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>60<span class="nt">&lt;/interval&gt;</span>
+          <span class="nt">&lt;link&gt;</span>http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2004<span class="ni">&amp;amp;</span>wkt=POINT%2891.287+23.832%29<span class="ni">&amp;amp;</span>interval=60<span class="ni">&amp;amp;</span>api_key=yourapikey<span class="ni">&amp;amp;</span>email=youremail<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;link&gt;</span>
+          <span class="nt">&lt;year</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2005<span class="nt">&lt;/year&gt;</span>
+          <span class="nt">&lt;interval</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>60<span class="nt">&lt;/interval&gt;</span>
+          <span class="nt">&lt;link&gt;</span>http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2005<span class="ni">&amp;amp;</span>wkt=POINT%2891.287+23.832%29<span class="ni">&amp;amp;</span>interval=60<span class="ni">&amp;amp;</span>api_key=yourapikey<span class="ni">&amp;amp;</span>email=youremail<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;link&gt;</span>
+          <span class="nt">&lt;year</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2006<span class="nt">&lt;/year&gt;</span>
+          <span class="nt">&lt;interval</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>60<span class="nt">&lt;/interval&gt;</span>
+          <span class="nt">&lt;link&gt;</span>http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2006<span class="ni">&amp;amp;</span>wkt=POINT%2891.287+23.832%29<span class="ni">&amp;amp;</span>interval=60<span class="ni">&amp;amp;</span>api_key=yourapikey<span class="ni">&amp;amp;</span>email=youremail<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;link&gt;</span>
+          <span class="nt">&lt;year</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2007<span class="nt">&lt;/year&gt;</span>
+          <span class="nt">&lt;interval</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>60<span class="nt">&lt;/interval&gt;</span>
+          <span class="nt">&lt;link&gt;</span>http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2007<span class="ni">&amp;amp;</span>wkt=POINT%2891.287+23.832%29<span class="ni">&amp;amp;</span>interval=60<span class="ni">&amp;amp;</span>api_key=yourapikey<span class="ni">&amp;amp;</span>email=youremail<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;link&gt;</span>
+          <span class="nt">&lt;year</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2008<span class="nt">&lt;/year&gt;</span>
+          <span class="nt">&lt;interval</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>60<span class="nt">&lt;/interval&gt;</span>
+          <span class="nt">&lt;link&gt;</span>http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2008<span class="ni">&amp;amp;</span>wkt=POINT%2891.287+23.832%29<span class="ni">&amp;amp;</span>interval=60<span class="ni">&amp;amp;</span>api_key=yourapikey<span class="ni">&amp;amp;</span>email=youremail<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;link&gt;</span>
+          <span class="nt">&lt;year</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2009<span class="nt">&lt;/year&gt;</span>
+          <span class="nt">&lt;interval</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>60<span class="nt">&lt;/interval&gt;</span>
+          <span class="nt">&lt;link&gt;</span>http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2009<span class="ni">&amp;amp;</span>wkt=POINT%2891.287+23.832%29<span class="ni">&amp;amp;</span>interval=60<span class="ni">&amp;amp;</span>api_key=yourapikey<span class="ni">&amp;amp;</span>email=youremail<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;link&gt;</span>
+          <span class="nt">&lt;year</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2010<span class="nt">&lt;/year&gt;</span>
+          <span class="nt">&lt;interval</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>60<span class="nt">&lt;/interval&gt;</span>
+          <span class="nt">&lt;link&gt;</span>http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2010<span class="ni">&amp;amp;</span>wkt=POINT%2891.287+23.832%29<span class="ni">&amp;amp;</span>interval=60<span class="ni">&amp;amp;</span>api_key=yourapikey<span class="ni">&amp;amp;</span>email=youremail<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;link&gt;</span>
+          <span class="nt">&lt;year</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2011<span class="nt">&lt;/year&gt;</span>
+          <span class="nt">&lt;interval</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>60<span class="nt">&lt;/interval&gt;</span>
+          <span class="nt">&lt;link&gt;</span>http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2011<span class="ni">&amp;amp;</span>wkt=POINT%2891.287+23.832%29<span class="ni">&amp;amp;</span>interval=60<span class="ni">&amp;amp;</span>api_key=yourapikey<span class="ni">&amp;amp;</span>email=youremail<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;link&gt;</span>
+          <span class="nt">&lt;year</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2012<span class="nt">&lt;/year&gt;</span>
+          <span class="nt">&lt;interval</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>60<span class="nt">&lt;/interval&gt;</span>
+          <span class="nt">&lt;link&gt;</span>http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2012<span class="ni">&amp;amp;</span>wkt=POINT%2891.287+23.832%29<span class="ni">&amp;amp;</span>interval=60<span class="ni">&amp;amp;</span>api_key=yourapikey<span class="ni">&amp;amp;</span>email=youremail<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;link&gt;</span>
+          <span class="nt">&lt;year</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2013<span class="nt">&lt;/year&gt;</span>
+          <span class="nt">&lt;interval</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>60<span class="nt">&lt;/interval&gt;</span>
+          <span class="nt">&lt;link&gt;</span>http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2013<span class="ni">&amp;amp;</span>wkt=POINT%2891.287+23.832%29<span class="ni">&amp;amp;</span>interval=60<span class="ni">&amp;amp;</span>api_key=yourapikey<span class="ni">&amp;amp;</span>email=youremail<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;link&gt;</span>
+          <span class="nt">&lt;year</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>2014<span class="nt">&lt;/year&gt;</span>
+          <span class="nt">&lt;interval</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>60<span class="nt">&lt;/interval&gt;</span>
+          <span class="nt">&lt;link&gt;</span>http://developer.nrel.gov/api/solar/suny_india_download.csv?names=2014<span class="ni">&amp;amp;</span>wkt=POINT%2891.287+23.832%29<span class="ni">&amp;amp;</span>interval=60<span class="ni">&amp;amp;</span>api_key=yourapikey<span class="ni">&amp;amp;</span>email=youremail<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;/link&gt;</span>
+      <span class="nt">&lt;/links&gt;</span>
+    <span class="nt">&lt;/output&gt;</span>
+  <span class="nt">&lt;/outputs&gt;</span>
+<span class="nt">&lt;/hash&gt;</span>
+</code></pre>
+
+<h2 id="rate-limits">Rate Limits</h2>
+
+<p><a href="/docs/rate-limits">Standard rate limits</a> apply. No more than 1,000 requests may be made in any hour</p>
+
+<h2 id="errors">Errors</h2>
+
+<p><a href="/docs/errors/">Standard errors</a> may be returned. In addition, the following service-specific errors may be returned:</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col" style="width: 100px;">HTTP Status Code</th>
+      <th class="doc-parameters-required" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">400</th>
+      <td class="doc-parameter-description">Bad Request: When required parameters are missing or invalid.</td>
+    </tr>
+  </tbody>
+</table>
+
+    <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/solar/nsrdb/nsrdb_data_query.md.erb">Help Improve this Content</a>
+</div>
+
+      <footer class="container-fluid">
+    <div align="center"><img alt="NREL is a national laboratory of the U.S. Department of Energy, Office of Energy Efficiency and Renewable Energy, operated by the Alliance for Sustainable Energy, LLC." usemap="#footer_map" src="../../../../assets/images/nrel/foot_nrelis-8e56f120.gif" /></div>
+
+    <map name="footer_map" id="footer_map">
+      <area shape="rect" coords="27,7,61,20" href="http://www.nrel.gov/" alt="NREL" />
+      <area shape="rect" coords="238,7,399,19" href="http://www.energy.gov/" alt="U.S. Department of Energy" />
+      <area shape="rect" coords="405,7,697,21" href="http://www.eere.energy.gov/" alt="Office of Energy Efficiency and Renewable Energy" />
+      <area shape="rect" coords="307,21,524,35" href="http://www.allianceforsustainableenergy.org/" alt="Alliance for Sustainable Energy, LLC" />
+    </map>
+
+    <p><a href="/contact">Need Help?</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.nrel.gov/security.html">Security &amp; Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.nrel.gov/disclaimer.html">Disclaimer</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.nrel.gov/">NREL Home</a></p>
+  </footer>
+</div>
+
+  </body>
+</html>
