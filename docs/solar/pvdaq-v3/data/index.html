@@ -164,17 +164,22 @@
       </td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">user_id</th>
+      <th class="doc-parameter-name" scope="row">hour</th>
       <td class="doc-parameter-required">No</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
-          <strong>Type:</strong> string
+          <strong>Type:</strong> integer
         </div>
         <div class="doc-parameter-value-field">
           <strong>Default:</strong> None
         </div>
+        <div class="doc-parameter-value-field">
+          <strong>Range:</strong> <i>0</i> to <em>23</em>
+        </div>
       </td>
-      <td class="doc-parameter-description">For PVDAQ admin user accounts only. Return only systems belonging to the given username.</td>
+      <td class="doc-parameter-description">
+        <p>Return data for a single hour of a specific day. You must pass in the same date for <em>start_date</em> and <em>end_date</em> along with <em>hour</em>.</p>
+      </td>
     </tr>
   </tbody>
 </table>
