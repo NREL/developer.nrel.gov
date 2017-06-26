@@ -1,5 +1,4 @@
 source "https://rubygems.org"
-source "https://rails-assets.org"
 
 gem "middleman", "~> 3.3.5"
 gem "rake", "~> 10.3.2"
@@ -28,32 +27,34 @@ gem "middleman-gh-pages", "~> 0.0.3"
 # Markdown
 gem "kramdown", "~> 1.4.1"
 
-# Swagger UI - Patched version with IE console fixes.
-gem "rails-assets-GUI--swagger-ui", "2.0.3.patch1"
-
 # JSON validation
 gem "multi_json", "~> 1.10.1"
-
-# jQuery
-gem "rails-assets-jquery", "~> 1.11.2"
-
-# Add back in $.browser for our older Swagger version with the newer jQuery
-# version (we can't easily downgrade jQuery since Bootstrap 3 depends on this
-# newer version).
-# We should revisit this whenever we upgrade the Swagger UI library again.
-gem "rails-assets-jquery.browser", "~> 0.0.7"
 
 # Bootstrap
 gem "bootstrap-sass", "~> 3.2.0.1"
 
-# Programmatic bootstrap modals
-gem "rails-assets-bootbox", "~> 4.3.0"
+source "https://rails-assets.org" do
+  # Swagger UI - Patched version with IE console fixes.
+  gem "rails-assets-GUI--swagger-ui", "2.0.3.patch1"
 
-# Form validation
-gem "rails-assets-parsleyjs", "~> 2.0.3"
+  # jQuery
+  gem "rails-assets-jquery", "~> 1.11.2"
 
-# Icons
-gem "rails-assets-fontawesome", "~> 4.1.0"
+  # Add back in $.browser for our older Swagger version with the newer jQuery
+  # version (we can't easily downgrade jQuery since Bootstrap 3 depends on this
+  # newer version).
+  # We should revisit this whenever we upgrade the Swagger UI library again.
+  gem "rails-assets-jquery.browser", "~> 0.0.7"
+
+  # Programmatic bootstrap modals
+  gem "rails-assets-bootbox", "~> 4.3.0"
+
+  # Form validation
+  gem "rails-assets-parsleyjs", "~> 2.0.3"
+
+  # Icons
+  gem "rails-assets-fontawesome", "~> 4.1.0"
+end
 
 group :development do
   # Deployment

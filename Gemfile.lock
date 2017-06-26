@@ -57,7 +57,7 @@ GEM
       uber (~> 0.0.4)
     http_parser.rb (0.6.0)
     i18n (0.6.11)
-    json (1.8.2)
+    json (1.8.6)
     kramdown (1.4.1)
     listen (2.10.0)
       celluloid (~> 0.16.0)
@@ -175,12 +175,15 @@ DEPENDENCIES
   middleman-livereload (~> 3.4)
   middleman-syntax (~> 2.0.0)
   multi_json (~> 1.10.1)
-  rails-assets-GUI--swagger-ui (= 2.0.3.patch1)
-  rails-assets-bootbox (~> 4.3.0)
-  rails-assets-fontawesome (~> 4.1.0)
-  rails-assets-jquery (~> 1.11.2)
-  rails-assets-jquery.browser (~> 0.0.7)
-  rails-assets-parsleyjs (~> 2.0.3)
+  rails-assets-GUI--swagger-ui (= 2.0.3.patch1)!
+  rails-assets-bootbox (~> 4.3.0)!
+  rails-assets-fontawesome (~> 4.1.0)!
+  rails-assets-jquery (~> 1.11.2)!
+  rails-assets-jquery.browser (~> 0.0.7)!
+  rails-assets-parsleyjs (~> 2.0.3)!
   rake (~> 10.3.2)
   tzinfo-data
   wdm (~> 0.1.0)
+
+BUNDLED WITH
+   1.15.1
