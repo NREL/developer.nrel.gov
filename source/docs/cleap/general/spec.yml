@@ -1,5 +1,6 @@
 swagger: "2.0"
 info:
+  version: "1.0.0"
   title: C-LEAP General APIs
   description: |-
     A collection of APIs providing data related to cities and energy cohorts, including city lookup.
@@ -17,6 +18,8 @@ securityDefinitions:
     type: apiKey
     name: api_key
     in: query
+security:
+  - api_key: []
 paths:
   /cities:
     get:
@@ -40,6 +43,7 @@ paths:
           description: Required, unless `city` and `state_abbr` are specified.
       responses:
         "200":
+          description: Successful request
           schema:
             $ref: "#/definitions/cities"
   /energy_cohort_data:
@@ -64,6 +68,7 @@ paths:
           description: Required, unless `city` and `state_abbr` are specified.
       responses:
         "200":
+          description: Successful request
           schema:
             $ref: "#/definitions/energy_cohort_data"
   /energy_cohort_data/{gisjoin}:
@@ -76,10 +81,12 @@ paths:
           description: Required. Get an API key from https://developer.nrel.gov/signup/.
         - name: gisjoin
           in: path
+          required: true
           type: string
           description: Required. Query the `/cities` API for this value.
       responses:
         "200":
+          description: Successful request
           schema:
             $ref: "#/definitions/energy_cohort_data"
 definitions:

@@ -1,5 +1,6 @@
 swagger: "2.0"
 info:
+  version: "1.0.0"
   title: C-LEAP Electricity and Natural Gas APIs
   description: |-
     A collection of APIs providing data related to electricty and natural gas markets, including energy usage and expenditures, and GHG emissions.
@@ -17,6 +18,8 @@ securityDefinitions:
     type: apiKey
     name: api_key
     in: query
+security:
+  - api_key: []
 paths:
   /energy_expenditures_and_ghg_by_sector:
     get:
@@ -40,6 +43,7 @@ paths:
           description: Required, unless `city` and `state_abbr` are specified.
       responses:
         "200":
+          description: Successful request
           schema:
             $ref: "#/definitions/energy_expenditures_and_ghg_by_sector"
 
@@ -53,10 +57,12 @@ paths:
           description: Required. Get an API key from https://developer.nrel.gov/signup/.
         - name: gisjoin
           in: path
+          required: true
           type: string
           description: Required. Query the [`/api/cleap/v1/cities`](/docs/cleap/general/) API for this value.
       responses:
         "200":
+          description: Successful request
           schema:
             $ref: "#/definitions/energy_expenditures_and_ghg_by_sector"
 
@@ -70,6 +76,7 @@ paths:
           description: Required. Get an API key from https://developer.nrel.gov/signup/.
       responses:
         "200":
+          description: Successful request
           schema:
             $ref: "#/definitions/electricity_and_gas_stats"
 definitions:
@@ -154,7 +161,9 @@ definitions:
             type: number
             example: 3124075000
             description: residential gas min lb ghg
-          gas_max_lb_ghg: 3364388500
+          gas_max_lb_ghg:
+            type: number
+            example: 3364388500
       commercial:
         type: object
         properties:
@@ -234,7 +243,9 @@ definitions:
             type: number
             example: 3124075000
             description: commercial gas min lb ghg
-          gas_max_lb_ghg: 3364388500
+          gas_max_lb_ghg:
+            type: number
+            example: 3364388500
       industrial:
         type: object
         properties:
@@ -314,7 +325,9 @@ definitions:
             type: number
             example: 3124075000
             description: industrial gas min lb ghg
-          gas_max_lb_ghg: 3364388500
+          gas_max_lb_ghg:
+            type: number
+            example: 3364388500
   electricity_and_gas_stats:
     properties:
       commercial:

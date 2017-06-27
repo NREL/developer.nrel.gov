@@ -1,5 +1,6 @@
 swagger: "2.0"
 info:
+  version: "1.0.0"
   title: C-LEAP Transportation APIs
   description: |-
     A collection of APIs providing data related to on-road transportation markets including fuel use, vehicle miles traveled, and vehicle fuel breakdown.
@@ -17,6 +18,8 @@ securityDefinitions:
     type: apiKey
     name: api_key
     in: query
+security:
+  - api_key: []
 paths:
   /city_vmt_estimates:
     get:
@@ -40,6 +43,7 @@ paths:
           description: Required, unless `city` and `state_abbr` are specified.
       responses:
         "200":
+          description: Successful request
           schema:
             $ref: "#/definitions/city_vmt_estimates"
   /city_vmt_estimates/{gisjoin}:
@@ -52,10 +56,12 @@ paths:
           description: Required. Get an API key from https://developer.nrel.gov/signup/.
         - name: gisjoin
           in: path
+          required: true
           type: string
           description: Required. Query the [`/api/cleap/v1/cities`](/docs/cleap/general/) API for this value.
       responses:
         "200":
+          description: Successful request
           schema:
             $ref: "#/definitions/city_vmt_estimates"
   /gasoline_and_diesel_use:
@@ -80,6 +86,7 @@ paths:
           description: Required, unless `city` and `state_abbr` are specified.
       responses:
         "200":
+          description: Successful request
           schema:
             $ref: "#/definitions/gasoline_and_diesel_use"
 
@@ -93,17 +100,19 @@ paths:
           description: Required. Get an API key from https://developer.nrel.gov/signup/.
         - name: gisjoin
           in: path
+          required: true
           type: string
           description: Required. Query the [`/api/cleap/v1/cities`](/docs/cleap/general/) API for this value.
       responses:
         "200":
+          description: Successful request
           schema:
             $ref: "#/definitions/gasoline_and_diesel_use"
 
   /vehicle_fuel_types_and_mpg:
-   get:
-     summary: Get the vehicle, fuel types and mpg data for a zip or city/state.
-     parameters:
+    get:
+      summary: Get the vehicle, fuel types and mpg data for a zip or city/state.
+      parameters:
         - name: api_key
           in: query
           type: string
@@ -120,27 +129,30 @@ paths:
           in: query
           type: string
           description: Required, unless `city` and `state_abbr` are specified.
-     responses:
-       "200":
-        schema:
-          $ref: "#/definitions/vehicle_fuel_types_and_mpg"
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/vehicle_fuel_types_and_mpg"
 
   /vehicle_fuel_types_and_mpg/{gisjoin}:
-   get:
-     summary: Get the vehicle, fuel types and mpg data for the specific gisjoin.
-     parameters:
-       - name: api_key
-         in: query
-         type: string
-         description: Required. Get an API key from https://developer.nrel.gov/signup/.
-       - name: gisjoin
-         in: path
-         type: string
-         description: Required. Query the [`/api/cleap/v1/cities`](/docs/cleap/general/) API for this value.
-     responses:
-       "200":
-        schema:
-          $ref: "#/definitions/vehicle_fuel_types_and_mpg"
+    get:
+      summary: Get the vehicle, fuel types and mpg data for the specific gisjoin.
+      parameters:
+        - name: api_key
+          in: query
+          type: string
+          description: Required. Get an API key from https://developer.nrel.gov/signup/.
+        - name: gisjoin
+          in: path
+          required: true
+          type: string
+          description: Required. Query the [`/api/cleap/v1/cities`](/docs/cleap/general/) API for this value.
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/vehicle_fuel_types_and_mpg"
 
   /vmt_by_road_class:
     get:
@@ -164,6 +176,7 @@ paths:
           description: Required, unless `city` and `state_abbr` are specified.
       responses:
         "200":
+          description: Successful request
           schema:
             $ref: "#/definitions/vmt_by_road_class"
 
@@ -177,44 +190,16 @@ paths:
           description: Required. Get an API key from https://developer.nrel.gov/signup/.
         - name: gisjoin
           in: path
+          required: true
           type: string
           description: Required. Query the [`/api/cleap/v1/cities`](/docs/cleap/general/) API for this value.
       responses:
         "200":
+          description: Successful request
           schema:
             $ref: "#/definitions/vmt_by_road_class"
           
 definitions:
-  cities:
-    properties:
-      statefp:
-        type: string
-        example: 08
-        description: statefp
-      countyfp:
-        type: string
-        example: 03
-        description: countyfp
-      name:
-        type: string
-        example: Denver
-        description: name of city
-      gisjoin:
-        type: string
-        example: G08020000
-        description: ID used to reference this place for other queries
-      place_fp:
-        type: string
-        example: 20000
-        description: placefp
-      cty_subd_fp:
-        type: string
-        example: 20
-        description: cty_subd_fp
-      geojson:
-        type: string
-        example: "{\"type\":\"MultiPolygon\",\"coordinates\":[[[[-104.680250998795,39.9140209995851]]]]}"
-        description: geojson coordinates for the city polygon.
   city_vmt_estimates:
     properties:
       city_vmt_estimate:
@@ -229,218 +214,6 @@ definitions:
         type: number
         example: 7863
         description: national per capita vmt estimate
-  energy_cohort_data:
-    properties:
-      commercial_electric_use:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum commercial electric use
-          avg:
-            type: number
-            example: 1677200
-            description: minimum commercial electric use
-          max:
-            type: number
-            example: 1677200
-            description: minimum commercial electric use
-      commercial_electric_expenditure:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum commercial electric expenditure
-          avg:
-            type: number
-            example: 1677200
-            description: minimum commercial electric expenditure
-          max:
-            type: number
-            example: 1677200
-            description: minimum commercial electric expenditure
-      commercial_gas_use:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum commercial gas use
-          avg:
-            type: number
-            example: 1677200
-            description: minimum commercial gas use
-          max:
-            type: number
-            example: 1677200
-            description: minimum commercial gas use
-      commercial_gas_expenditure:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum commercial gas expenditure
-          avg:
-            type: number
-            example: 1677200
-            description: minimum commercial gas expenditure
-          max:
-            type: number
-            example: 1677200
-            description: minimum commercial gas expenditure
-      industrial_electric_use:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum industrial electric use
-          avg:
-            type: number
-            example: 1677200
-            description: minimum industrial electric use
-          max:
-            type: number
-            example: 1677200
-            description: minimum industrial electric use
-      industrial_electric_expenditure:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum industrial electric expenditure
-          avg:
-            type: number
-            example: 1677200
-            description: minimum industrial electric expenditure
-          max:
-            type: number
-            example: 1677200
-            description: minimum industrial electric expenditure
-      industrial_gas_use:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum industrial gas use
-          avg:
-            type: number
-            example: 1677200
-            description: minimum industrial gas use
-          max:
-            type: number
-            example: 1677200
-            description: minimum industrial gas use
-      industrial_gas_expenditure:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum industrial gas expenditure
-          avg:
-            type: number
-            example: 1677200
-            description: minimum industrial gas expenditure
-          max:
-            type: number
-            example: 1677200
-            description: minimum industrial gas expenditure
-      residential_electric_use:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum residential electric use
-          avg:
-            type: number
-            example: 1677200
-            description: minimum residential electric use
-          max:
-            type: number
-            example: 1677200
-            description: minimum residential electric use
-      residential_electric_expenditure:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum residential electric expenditure
-          avg:
-            type: number
-            example: 1677200
-            description: minimum residential electric expenditure
-          max:
-            type: number
-            example: 1677200
-            description: minimum residential electric expenditure
-      residential_gas_use:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum residential gas use
-          avg:
-            type: number
-            example: 1677200
-            description: minimum residential gas use
-          max:
-            type: number
-            example: 1677200
-            description: minimum residential gas use
-      residential_gas_expenditure:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum residential gas expenditure
-          avg:
-            type: number
-            example: 1677200
-            description: minimum residential gas expenditure
-          max:
-            type: number
-            example: 1677200
-            description: minimum residential gas expenditure
-      city_fuel_use_diesel:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum diesel city fuel use
-          avg:
-            type: number
-            example: 1677200
-            description: minimum diesel city fuel use
-          max:
-            type: number
-            example: 1677200
-            description: minimum diesel city fuel use
-      city_fuel_use_gas:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum gas city fuel use
-          avg:
-            type: number
-            example: 1677200
-            description: minimum gas city fuel use
-          max:
-            type: number
-            example: 1677200
-            description: minimum gas city fuel use
   gasoline_and_diesel_use:
     properties:
       city_fuel_use:

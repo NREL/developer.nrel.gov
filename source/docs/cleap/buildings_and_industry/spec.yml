@@ -1,5 +1,6 @@
 swagger: "2.0"
 info:
+  version: "1.0.0"
   title: C-LEAP Buildings and Industry APIs
   description: |-
     A collection of APIs providing data related to buildings and industry including rooftop photovoltaic potential; building stock; and commercial and industrial activities.
@@ -17,6 +18,8 @@ securityDefinitions:
     type: apiKey
     name: api_key
     in: query
+security:
+  - api_key: []
 paths:
   /activities:
     get:
@@ -44,6 +47,7 @@ paths:
           type: string
       responses:
         "200":
+          description: Successful request
           schema:
             $ref: "#/definitions/activities"
   /activities/{gisjoin}:
@@ -56,6 +60,7 @@ paths:
           description: Required. Get an API key from https://developer.nrel.gov/signup/.
         - name: gisjoin
           in: path
+          required: true
           type: string
           description: Required. Query the [`/api/cleap/v1/cities`](/docs/cleap/general/) API for this value.
         - name: type
@@ -64,6 +69,7 @@ paths:
           type: string
       responses:
         "200":
+          description: Successful request
           schema:
             $ref: "#/definitions/activities"
   /building_stock_summaries:
@@ -88,6 +94,7 @@ paths:
           description: Required, unless `city` and `state_abbr` are specified.
       responses:
         "200":
+          description: Successful request
           schema:
             $ref: "#/definitions/building_stock_summaries"
   /building_stock_summaries/{gisjoin}:
@@ -100,10 +107,12 @@ paths:
           description: Required. Get an API key from https://developer.nrel.gov/signup/.
         - name: gisjoin
           in: path
+          required: true
           type: string
           description: Required. Query the [`/api/cleap/v1/cities`](/docs/cleap/general/) API for this value.
       responses:
         "200":
+          description: Successful request
           schema:
             $ref: "#/definitions/building_stock_summaries"
   /small_building_pv:
@@ -128,6 +137,7 @@ paths:
           description: Required, unless `city` and `state_abbr` are specified.
       responses:
         "200":
+          description: Successful request
           schema:
             $ref: "#/definitions/small_building_pv"
   /small_building_pv/{gisjoin}:
@@ -140,10 +150,12 @@ paths:
           description: Required. Get an API key from https://developer.nrel.gov/signup/.
         - name: gisjoin
           in: path
+          required: true
           type: string
           description: Required. Query the [`/api/cleap/v1/cities`](/docs/cleap/general/) API for this value.
       responses:
         "200":
+          description: Successful request
           schema:
             $ref: "#/definitions/small_building_pv"
 definitions:
