@@ -1,5 +1,9 @@
 ---
 swagger: '2.0'
+host: developer.nrel.gov
+basePath: "/api/transportation-incentives-laws"
+schemes:
+- https
 info:
   version: 0.1.0
   title: Transportation Laws and Incentives
@@ -10,12 +14,9 @@ paths:
     get:
       responses:
         '200':
-          description: No response was specified
           schema:
             "$ref": "#/definitions/LawsResponse"
       description: ''
-      tags:
-      - transportation-incentives-laws/v1.json
       summary: Return a full list of laws and incentives that match your query.
       operationId: transportation_incentives_laws
       parameters:
@@ -25,6 +26,10 @@ paths:
         required: true
         type: string
         default: json
+        enum:
+          - json
+          - xml
+          - csv
       - in: query
         description: API Key
         name: api_key
@@ -129,12 +134,9 @@ paths:
     get:
       responses:
         '200':
-          description: No response was specified
           schema:
             "$ref": "#/definitions/LawResult"
       description: ''
-      tags:
-      - transportation-incentives-laws/v1.json
       summary: Fetch the details of a specific law given the law's ID.
       operationId: transportation_incentives_laws
       parameters:
@@ -144,6 +146,9 @@ paths:
         required: true
         type: string
         default: json
+        enum:
+          - json
+          - xml
       - in: query
         description: API Key
         name: api_key
@@ -165,12 +170,9 @@ paths:
     get:
       responses:
         '200':
-          description: No response was specified
           schema:
             "$ref": "#/definitions/PocResults"
       description: ''
-      tags:
-      - transportation-incentives-laws/v1.json
       summary: Get the points of contact for a given jurisdiction.
       operationId: transportation_incentives_laws
       parameters:
@@ -180,6 +182,9 @@ paths:
         required: true
         type: string
         default: json
+        enum:
+          - json
+          - xml
       - in: query
         description: API Key
         name: api_key
@@ -199,12 +204,9 @@ paths:
     get:
       responses:
         '200':
-          description: No response was specified
           schema:
             "$ref": "#/definitions/CategoryResults"
       description: ''
-      tags:
-      - transportation-incentives-laws/v1.json
       summary: Return the law categories for a given category type.
       operationId: transportation_incentives_laws
       parameters:
@@ -214,6 +216,9 @@ paths:
         required: true
         type: string
         default: json
+        enum:
+          - json
+          - xml
       - in: query
         description: API Key
         name: api_key
@@ -225,13 +230,11 @@ paths:
         name: type
         required: false
         type: string
-host: developer.nrel.gov
-basePath: "/api"
-tags:
-- name: transportation-incentives-laws/v1.json
-  description: Information about laws and incentives
-schemes:
-- https
+        enum:
+          - tech
+          - user
+          - regulation
+          - incentive
 definitions:
   Metadata:
     description: The identifying metadata.

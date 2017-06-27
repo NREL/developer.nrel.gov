@@ -13,7 +13,6 @@ paths:
     get:
       responses:
         '200':
-          description: No response was specified
       description: ''
       tags:
       - project.json
@@ -28,6 +27,9 @@ paths:
         required: true
         type: string
         default: xml
+        enum:
+          - json
+          - xml
       - in: query
         description: API Key
         name: api_key
@@ -74,7 +76,6 @@ paths:
     get:
       responses:
         '200':
-          description: No response was specified
       description: ''
       tags:
       - project.json
@@ -89,6 +90,9 @@ paths:
         required: true
         type: string
         default: json
+        enum:
+          - json
+          - xml
       - in: query
         description: API Key
         name: api_key
