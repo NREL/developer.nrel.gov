@@ -16,9 +16,6 @@ gem "dotenv", "~> 2.2.1"
 # Syntax highlighting
 gem "middleman-syntax", "~> 3.0.0"
 
-# Deploy to GitHub Pages
-gem "middleman-gh-pages", "~> 0.3.1"
-
 # Assets
 gem "middleman-sprockets", "~> 4.1.0"
 
