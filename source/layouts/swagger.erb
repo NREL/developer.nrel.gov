@@ -29,7 +29,7 @@
   <script type="text/javascript">
     $(document).ready(function() {
       var ui = SwaggerUIBundle({
-        url: '<%= current_page.data.swagger_url %>',
+        url: (location.origin || '') + '<%= current_page.data.swagger_url %>',
         dom_id: '#swagger-ui',
         presets: [
           SwaggerUIBundle.presets.apis,
