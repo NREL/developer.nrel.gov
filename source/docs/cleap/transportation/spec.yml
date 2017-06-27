@@ -1,0 +1,654 @@
+swagger: "2.0"
+info:
+  title: C-LEAP Transportation APIs
+  description: |-
+    A collection of APIs providing data related to on-road transportation markets including fuel use, vehicle miles traveled, and vehicle fuel breakdown.
+
+    These endpoints return derived data for places, which are queried via ZIP codes, city/state or gisjoin parameters.
+
+    - Data is rounded to give approximations due to derived status.
+    - There is no index dump of all data, a city/state or zip must be included if not querying a gisjoin.
+    - Obtain gisjoin IDs via the `/cities` API.
+schemes:
+  - https
+host: devstage.nrel.gov
+basePath: /api/cleap/v1
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: query
+paths:
+  /city_vmt_estimates:
+    get:
+      summary: Get the city vmt estimates data for a zip or city/state.
+      parameters:
+        - name: api_key
+          in: query
+          type: string
+          description: Required. Get an API key from https://developer.nrel.gov/signup/.
+        - name: city
+          in: query
+          type: string
+          description: Required, along with `state_abbr`, unless `zip` is specified.
+        - name: state_abbr
+          in: query
+          type: string
+          description: Required, along with `city`, unless `zip` is specified.
+        - name: zip
+          in: query
+          type: string
+          description: Required, unless `city` and `state_abbr` are specified.
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/city_vmt_estimates"
+  /city_vmt_estimates/{gisjoin}:
+    get:
+      summary: Get the city vmt estimates data for the specific gisjoin.
+      parameters:
+        - name: api_key
+          in: query
+          type: string
+          description: Required. Get an API key from https://developer.nrel.gov/signup/.
+        - name: gisjoin
+          in: path
+          type: string
+          description: Required. Query the `/cities` API for this value.
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/city_vmt_estimates"
+  /gasoline_and_diesel_use:
+    get:
+      summary: Get the gasoline and diesel use data for a zip or city/state.
+      parameters:
+        - name: api_key
+          in: query
+          type: string
+          description: Required. Get an API key from https://developer.nrel.gov/signup/.
+        - name: city
+          in: query
+          type: string
+          description: Required, along with `state_abbr`, unless `zip` is specified.
+        - name: state_abbr
+          in: query
+          type: string
+          description: Required, along with `city`, unless `zip` is specified.
+        - name: zip
+          in: query
+          type: string
+          description: Required, unless `city` and `state_abbr` are specified.
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/gasoline_and_diesel_use"
+
+  /gasoline_and_diesel_use/{gisjoin}:
+    get:
+      summary: Get the gasoline and diesel use data for the specific gisjoin.
+      parameters:
+        - name: api_key
+          in: query
+          type: string
+          description: Required. Get an API key from https://developer.nrel.gov/signup/.
+        - name: gisjoin
+          in: path
+          type: string
+          description: Required. Query the `/cities` API for this value.
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/gasoline_and_diesel_use"
+
+  /vehicle_fuel_types_and_mpg:
+   get:
+     summary: Get the vehicle, fuel types and mpg data for a zip or city/state.
+     parameters:
+        - name: api_key
+          in: query
+          type: string
+          description: Required. Get an API key from https://developer.nrel.gov/signup/.
+        - name: city
+          in: query
+          type: string
+          description: Required, along with `state_abbr`, unless `zip` is specified.
+        - name: state_abbr
+          in: query
+          type: string
+          description: Required, along with `city`, unless `zip` is specified.
+        - name: zip
+          in: query
+          type: string
+          description: Required, unless `city` and `state_abbr` are specified.
+     responses:
+       "200":
+        schema:
+          $ref: "#/definitions/vehicle_fuel_types_and_mpg"
+
+  /vehicle_fuel_types_and_mpg/{gisjoin}:
+   get:
+     summary: Get the vehicle, fuel types and mpg data for the specific gisjoin.
+     parameters:
+       - name: api_key
+         in: query
+         type: string
+         description: Required. Get an API key from https://developer.nrel.gov/signup/.
+       - name: gisjoin
+         in: path
+         type: string
+         description: Required. Query the `/cities` API for this value.
+     responses:
+       "200":
+        schema:
+          $ref: "#/definitions/vehicle_fuel_types_and_mpg"
+
+  /vmt_by_road_class:
+    get:
+      summary: Get the vmt by road class data for a zip or city/state.
+      parameters:
+        - name: api_key
+          in: query
+          type: string
+          description: Required. Get an API key from https://developer.nrel.gov/signup/.
+        - name: city
+          in: query
+          type: string
+          description: Required, along with `state_abbr`, unless `zip` is specified.
+        - name: state_abbr
+          in: query
+          type: string
+          description: Required, along with `city`, unless `zip` is specified.
+        - name: zip
+          in: query
+          type: string
+          description: Required, unless `city` and `state_abbr` are specified.
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/vmt_by_road_class"
+
+  /vmt_by_road_class/{gisjoin}:
+    get:
+      summary: Get the vmt by road class data for the specific gisjoin.
+      parameters:
+        - name: api_key
+          in: query
+          type: string
+          description: Required. Get an API key from https://developer.nrel.gov/signup/.
+        - name: gisjoin
+          in: path
+          type: string
+          description: Required. Query the `/cities` API for this value.
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/vmt_by_road_class"
+          
+definitions:
+  cities:
+    properties:
+      statefp:
+        type: string
+        example: 08
+        description: statefp
+      countyfp:
+        type: string
+        example: 03
+        description: countyfp
+      name:
+        type: string
+        example: Denver
+        description: name of city
+      gisjoin:
+        type: string
+        example: G08020000
+        description: ID used to reference this place for other queries
+      place_fp:
+        type: string
+        example: 20000
+        description: placefp
+      cty_subd_fp:
+        type: string
+        example: 20
+        description: cty_subd_fp
+      geojson:
+        type: string
+        example: "{\"type\":\"MultiPolygon\",\"coordinates\":[[[[-104.680250998795,39.9140209995851]]]]}"
+        description: geojson coordinates for the city polygon.
+  city_vmt_estimates:
+    properties:
+      city_vmt_estimate:
+        type: number
+        example: 5275238199
+        description: city vmt estimate
+      natl_avg_vmt_estimate:
+        type: number
+        example: 75422411
+        description: national average vmt estimate
+      natl_per_capita_vmt_estimate:
+        type: number
+        example: 7863
+        description: national per capita vmt estimate
+  energy_cohort_data:
+    properties:
+      commercial_electric_use:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum commercial electric use
+          avg:
+            type: number
+            example: 1677200
+            description: minimum commercial electric use
+          max:
+            type: number
+            example: 1677200
+            description: minimum commercial electric use
+      commercial_electric_expenditure:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum commercial electric expenditure
+          avg:
+            type: number
+            example: 1677200
+            description: minimum commercial electric expenditure
+          max:
+            type: number
+            example: 1677200
+            description: minimum commercial electric expenditure
+      commercial_gas_use:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum commercial gas use
+          avg:
+            type: number
+            example: 1677200
+            description: minimum commercial gas use
+          max:
+            type: number
+            example: 1677200
+            description: minimum commercial gas use
+      commercial_gas_expenditure:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum commercial gas expenditure
+          avg:
+            type: number
+            example: 1677200
+            description: minimum commercial gas expenditure
+          max:
+            type: number
+            example: 1677200
+            description: minimum commercial gas expenditure
+      industrial_electric_use:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum industrial electric use
+          avg:
+            type: number
+            example: 1677200
+            description: minimum industrial electric use
+          max:
+            type: number
+            example: 1677200
+            description: minimum industrial electric use
+      industrial_electric_expenditure:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum industrial electric expenditure
+          avg:
+            type: number
+            example: 1677200
+            description: minimum industrial electric expenditure
+          max:
+            type: number
+            example: 1677200
+            description: minimum industrial electric expenditure
+      industrial_gas_use:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum industrial gas use
+          avg:
+            type: number
+            example: 1677200
+            description: minimum industrial gas use
+          max:
+            type: number
+            example: 1677200
+            description: minimum industrial gas use
+      industrial_gas_expenditure:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum industrial gas expenditure
+          avg:
+            type: number
+            example: 1677200
+            description: minimum industrial gas expenditure
+          max:
+            type: number
+            example: 1677200
+            description: minimum industrial gas expenditure
+      residential_electric_use:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum residential electric use
+          avg:
+            type: number
+            example: 1677200
+            description: minimum residential electric use
+          max:
+            type: number
+            example: 1677200
+            description: minimum residential electric use
+      residential_electric_expenditure:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum residential electric expenditure
+          avg:
+            type: number
+            example: 1677200
+            description: minimum residential electric expenditure
+          max:
+            type: number
+            example: 1677200
+            description: minimum residential electric expenditure
+      residential_gas_use:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum residential gas use
+          avg:
+            type: number
+            example: 1677200
+            description: minimum residential gas use
+          max:
+            type: number
+            example: 1677200
+            description: minimum residential gas use
+      residential_gas_expenditure:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum residential gas expenditure
+          avg:
+            type: number
+            example: 1677200
+            description: minimum residential gas expenditure
+          max:
+            type: number
+            example: 1677200
+            description: minimum residential gas expenditure
+      city_fuel_use_diesel:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum diesel city fuel use
+          avg:
+            type: number
+            example: 1677200
+            description: minimum diesel city fuel use
+          max:
+            type: number
+            example: 1677200
+            description: minimum diesel city fuel use
+      city_fuel_use_gas:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum gas city fuel use
+          avg:
+            type: number
+            example: 1677200
+            description: minimum gas city fuel use
+          max:
+            type: number
+            example: 1677200
+            description: minimum gas city fuel use
+  gasoline_and_diesel_use:
+    properties:
+      city_fuel_use:
+        type: object
+        properties:
+          diesel_gal:
+            type: number
+            example: 42766300
+            description: diesel gallons
+          gas_gal:
+            type: number
+            example: 242556600
+            description: gas gallons
+          diesel_gal_bin_min:
+            type: number
+            example: 100
+            description: diesel gallons bin min
+          diesel_gal_bin_max:
+            type: number
+            example: 43222900
+            description: diesel gallons bin max
+          gas_gal_bin_min:
+            type: number
+            example: 223759500
+            description: gas gallonons bin min
+          gas_gal_bin_max:
+            type: number
+            example: 261052800
+            description: gas gallons bin max
+          diesel_ghg_lb:
+            type: number
+            example: 1240632000
+            description: diesel ghg lb
+          gas_ghg_lb:
+            type: number
+            example: 5846666000
+            description: gas ghg lb
+          diesel_min_ghg_lb:
+            type: number
+            example: 2900
+            description: diesel min ghg lb
+          diesel_max_ghg_lb:
+            type: number
+            example:  1253877700
+            description: diesel max ghg lb
+          gas_min_ghg_lb:
+            type: number
+            example: 5393574400
+            description: gas min ghg lb
+          gas_max_ghg_lb:
+            type: number
+            example: 6292504700
+            description: gas max ghg lb
+      natl_avg_diesel_gal:
+        type: number
+        example: 810518
+        description: national avg diesel gal
+      natl_avg_gas_gal:
+        type: number
+        example: 3492002
+        description: national average gas gallons
+      natl_per_capita_diesel_gal:
+        type: number
+        example: 84
+        description: national per capita diesel gallons
+      natl_per_capita_gas_gal:
+        type: number
+        example: 363
+        description: national per capita gas gallons
+  vehicle_fuel_types_and_mpg:
+    properties:
+      light_duty:
+        type: object
+        properties:
+          gisjoin:
+            type: string
+            example: G12070600
+            description: gisjoin ID
+          cng_veh_weighted:
+            example: 6.15506571531296
+            description: CNG vehicle weighted
+          diesel_veh_weighted:
+            example: 3181.40329037944
+            description: Diesel vehicle weighted
+          elec_veh_weighted:
+            example: 84.9500494045205
+            description: Electric vehicle weighted
+          eth_veh_weighted:
+            example: 0
+            description: Ethanol vehicle weighted
+          flex_veh_weighted:
+            example: 9842.0036230745
+            description: Flex vehicle weighted
+          gas_veh_weighted:
+            example: 108524.342755733
+            description: Gas vehicle weighted
+          hev_veh_weighted:
+            example: 1725.97101317684
+            description: HEV vehicle weighted
+          hyd_veh_weighted:
+            example: 0
+            description: Hydrogen vehicle weighted
+          meth_veh_weighted:
+            example: 0
+            description: Meth vehicle weighted
+          prop_veh_weighted:
+            example: 0
+            description: Propane vehicle weighted
+          unk_veh_weighted:
+            example: 710.376541966107
+            description: Unknown vehicle weighted
+          total_veh_weighted:
+            example: 124298.477928424
+            description: Total vehicle weighted
+      medium_heavy_duty:
+        type: object
+        properties:
+          gisjoin:
+            type: string
+            example: G12070600
+            description: gisjoin ID
+          bi_veh_weighted:
+            example: 2.61238920688629
+            description: Bifuel vehicle weighted
+          cng_veh_weighted:
+            example: 40.9338185191154
+            description: CNG vehicle weighted
+          diesel_veh_weighted:
+            example: 3725.17739430896
+            description: Diesel vehicle weighted
+          elec_veh_weighted:
+            example: 0
+            description: Electric vehicle weighted
+          eth_veh_weighted:
+            example: 0
+            description: Ethanol vehicle weighted
+          flex_veh_weighted:
+            example: 4.61074354161974
+            description: Flex vehicle weighted
+          gas_veh_weighted:
+            example: 462.244323346065
+            description: Gas vehicle weighted
+          hev_d_veh_weighted:
+            example: 0
+            description: HEV D vehicle weighted
+          hev_g_veh_weighted:
+            example: 0
+            description: HEV G vehicle weighted
+          hyd_veh_weighted:
+            example: 0
+            description: Hydrogen vehicle weighted
+          meth_veh_weighted:
+            example: 0
+            description: Meth vehicle weighted
+          prop_veh_weighted:
+            example: 2.74948579072952
+            description: Prop vehicle weighted
+          unk_veh_weighted:
+            example: 17.8387856887421
+            description: Unknown vehicle weighted
+          total_veh_weighted:
+            example: 4256.16694040212
+            description: Total vehicle weighted
+      light_fuel_economy:
+        type: object
+        properties:
+          gisjoin:
+            type: string
+            example: G12070600
+            description: gisjoin ID
+          fuel_economy_cmbd_avg:
+            example: 22.4517853819353974
+            description: Fuel economy combined average
+  vmt_by_road_class:
+    properties:
+      vmt_by_road_class_estimate:
+        type: object
+        properties:
+          gisjoin:
+            type: string
+            example: G08020000
+            description: gisjoin ID
+          vmt_interstate:
+            type: number
+            example: 1955130180.39869
+            description: vmt interstate
+          vmt_other_free_and_expressways:
+            type: number
+            example: 605575732.681072
+            description: vmt other free and expressways
+          vmt_other_principal_arterial:
+            type: number
+            example: 1185949525.58136
+            description: vmt other principal arterial
+          vmt_minor_arterial:
+            type: number
+            example: 700179246.143859
+            description: vmt minor arterial
+          vmt_major_collector:
+            type: number
+            example: 386894412.690908
+            description: vmt majior collector
+          vmt_minor_collector:
+            type: number
+            example: 0
+            description: vmt minor collector
+          vmt_local:
+            type: number
+            example: 441509101.007461
+            description: vmt local
