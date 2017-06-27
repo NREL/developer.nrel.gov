@@ -8,6 +8,10 @@
   display: none;
 }
 
+.swagger-ui .info .base-url {
+  font-size: 14px !important;
+}
+
 // Restore default "pre" tag styles, so Bootstrap's defaults don't interfere
 // with Swagger's styles.
 .swagger-ui pre {
@@ -48,4 +52,7 @@
 }
 .swagger-ui .info hgroup.main {
   margin-bottom: 12px;
+}
+.swagger-ui .tab li {
+  min-width: 96px !important;
 }
