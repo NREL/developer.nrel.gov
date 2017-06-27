@@ -8,7 +8,7 @@ info:
 
     - Data is rounded to give approximations due to derived status.
     - There is no index dump of all data, a city/state or zip must be included if not querying a gisjoin.
-    - Obtain gisjoin IDs via the `/cities` API.
+    - Obtain gisjoin IDs via the [`/api/cleap/v1/cities`](/docs/cleap/general/) API.
 schemes:
   - https
 basePath: /api/cleap/v1
@@ -54,7 +54,7 @@ paths:
         - name: gisjoin
           in: path
           type: string
-          description: Required. Query the `/cities` API for this value.
+          description: Required. Query the [`/api/cleap/v1/cities`](/docs/cleap/general/) API for this value.
       responses:
         "200":
           schema:
