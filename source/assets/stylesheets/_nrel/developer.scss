@@ -4,6 +4,8 @@ h1 {
 
 .feature {
   background-color: #f7f7f7;
+  background-repeat: no-repeat;
+  background-position: 210px 120px;
 
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -11,6 +13,18 @@ h1 {
   padding: 6px 8px;
 
   height: 210px;
+}
+
+.feature-doc {
+  background-image: url('/assets/images/nrel/features/doc.png');
+}
+
+.feature-key {
+  background-image: url('/assets/images/nrel/features/key.png');
+}
+
+.feature-community {
+  background-image: url('/assets/images/nrel/features/community.png');
 }
 
 h2 {
