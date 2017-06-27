@@ -33,14 +33,10 @@ gem "multi_json", "~> 1.12.1"
 
 source "https://rails-assets.org" do
   # Swagger UI
-  gem "rails-assets-swagger-ui", "~> 2.2.10"
+  gem "rails-assets-swagger-ui", "~> 3.0.17"
 
   # jQuery
   gem "rails-assets-jquery", "~> 3.2.1"
-
-	# Add back in $.browser for our older Swagger version with the newer jQuery
-	# version. Should no longer be necessary if we upgrade to Swagger UI v3.
-	gem "rails-assets-jquery.browser", "~> 0.1.0"
 
   # Programmatic bootstrap modals
   gem "rails-assets-bootbox", "~> 4.4.0"

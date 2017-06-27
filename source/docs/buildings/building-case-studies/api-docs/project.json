@@ -1,7 +1,8 @@
 {
   "swaggerVersion": "1.2",
   "apiVersion": "2.0.0",
-  "basePath": "/api/building-case-studies",
+  "basePath": "https://developer.nrel.gov/api/building-case-studies",
+  "resourcePath": "/project.json",
   "apis": [
     {
       "path": "/project.{output_format}",
@@ -11,6 +12,7 @@
           "nickname": "project",
           "summary": "A filterable list of projects.",
           "notes": "",
+          "type": "void",
           "parameters": [
             {
               "name": "output_format",
@@ -83,6 +85,7 @@
           "nickname": "document",
           "summary": "Project Details",
           "notes": "This API allows users to request metadata associated with the specific Document.",
+          "type": "void",
           "parameters": [
             {
               "name": "output_format",

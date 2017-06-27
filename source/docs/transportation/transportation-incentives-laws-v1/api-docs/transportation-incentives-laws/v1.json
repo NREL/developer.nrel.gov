@@ -1,7 +1,8 @@
 {
   "swaggerVersion": "1.2",
   "apiVersion": "0.3.0",
-  "basePath": "/api/transportation-incentives-laws",
+  "basePath": "https://developer.nrel.gov/api",
+  "resourcePath": "/transportation-incentives-laws/v1.json",
   "models": {
     "Metadata": {
       "id": "Metadata",
@@ -20,7 +21,8 @@
     },
     "Inputs": {
       "id": "Inputs",
-      "description": "The parameters that were passed to the API"
+      "description": "The parameters that were passed to the API",
+      "properties": {}
     },
     "Law": {
       "id": "Law",
@@ -44,23 +46,28 @@
           "description": "Description of the incentive/law/regulation, including applicable legislative references, html formated."
         },
         "enacted_date": {
-          "type": "datetime",
+          "type": "string",
+          "format": "date-time",
           "description": "The date the enacting legislation (if applicable) was signed into law."
         },
         "amended_date": {
-          "type": "datetime",
+          "type": "string",
+          "format": "date-time",
           "description": "The date the incentive/law/regulation was updated through new legislation or rulemaking."
         },
         "expired_date": {
-          "type": "datetime",
+          "type": "string",
+          "format": "date-time",
           "description": "The date the incentive/law/regulation is set to end."
         },
         "archived_date": {
-          "type": "datetime",
+          "type": "string",
+          "format": "date-time",
           "description": "The date that an incentive/law/regulation is no longer relevant to the database. This may include longstanding Executive Orders or laws requiring legislative studies that have been completed."
         },
         "repealed_date": {
-          "type": "datetime",
+          "type": "string",
+          "format": "date-time",
           "description": "The date legislation is enacted or a rulemaking is finalized to repeal the incentive/law/regulation."
         },
         "plaintext": {
@@ -84,7 +91,8 @@
           "description": "The agency with primary responsibility for federal incentives/regulations."
         },
         "significant_update_date": {
-          "type": "datetime",
+          "type": "string",
+          "format": "date-time",
           "description": "When the last significant update to the law was made."
         },
         "recent_update_or_new": {
@@ -353,7 +361,7 @@
       "operations": [
         {
           "method": "GET",
-          "nickname": "transportation-incentives-laws",
+          "nickname": "transportation_incentives_laws",
           "summary": "Return a full list of laws and incentives that match your query.",
           "type": "LawsResponse",
           "parameters": [
@@ -362,7 +370,7 @@
               "description": "Response format",
               "paramType": "path",
               "required": true,
-              "dataType": "string",
+              "type": "string",
               "enum": ["json", "xml", "csv"],
               "defaultValue": "json"
             },
@@ -371,83 +379,83 @@
               "description": "API Key",
               "paramType": "query",
               "required": true,
-              "dataType": "string",
+              "type": "string",
               "defaultValue": "DEMO_KEY"
             },
             {
               "name": "limit",
               "description": "Limit the number of laws returned",
               "paramType": "query",
-              "dataType": "integer",
+              "type": "integer",
               "defaultValue": "10"
             },
             {
               "name": "jurisdiction",
               "description": "Return laws for the given Jurisdiction. Jurisdiction must be given as a two character state code (eg, 'CO' for Colorado). A single jurisdiction, or a comma-separate list of multiple jurisdiction, may be given.  Use the code 'US' for federal laws and the code 'DC' for Washington D.C.",
-              "dataType": "string",
+              "type": "string",
               "paramType": "query"
             },
             {
               "name": "technology",
               "description": "Search by the technology type. A single type, or a comma-separate list of multiple types, may be given. Values and what they stand for are as follows: 'BIOD' for Biodiesel, 'ETH' for Ethanol, 'NG' for Natural Gas, 'LPG' for Propane (LPG), 'HY' for Hydrogen Fuel Cells, 'EFFEC' for Fuel Economy / Efficiency, 'IR' for Idle Reduction, 'ELEC' for EVs, 'HEV' for HEVs, 'PHEV' for PHEVs, 'OTHER' for Other, 'AFTMKTCONV' for Aftermarket Conversions, and 'NEVS' for NEVs",
-              "dataType": "string",
+              "type": "string",
               "paramType": "query"
             },
             {
               "name": "incentive_type",
               "description": "Search by the incentive type. A single type, or a comma-separate list of multiple types, may be given. Values and what they stand for are as follows: 'GNT' for Grants, 'TAX' for Tax Incentives, 'LOANS' for Loans and Leases, 'RBATE' for Rebates, 'EXEM' for Exemptions, and 'OTHER' for Other.",
-              "dataType": "string",
+              "type": "string",
               "paramType": "query"
             },
             {
               "name": "regulation_type",
               "description": "Search by the regulation type. A single type, or a comma-separate list of multiple types, may be given. Values and what they stand for are as follows: 'REGIS' for Registration / Licensing, 'STD' for Fuel Production / Quality, 'DREST' for Driving / Idling, 'REQ' for Acquisition / Fuel Use, 'FUEL' for Fuel Taxes, 'RFS' for Renewable Fuel Standard / Mandate, 'OTHER' for Other, 'AIRQEMISSIONS' for Air Quality / Emissions, and 'CCEINIT' for Climate Change / Energy Initiatives",
-              "dataType": "string",
+              "type": "string",
               "paramType": "query"
             },
             {
               "name": "user_type",
               "description": "Search by the user type. A single type, or a comma-separate list of multiple types, may be given. Values and what they stand for are as follows: 'IND' for Vehicle Owner/Driver, 'FLEET' for Fleet Purchaser/Manager, 'STATION' for Fueling / TSE Infrastructure Owner, 'AFP' for Alternative Fuel Producer, 'AFS' for Alternative Fuel Dealer, 'PURCH' for Alternative Fuel Purchaser, 'MAN' for AFV Manufacturer/Retrofitter, and 'OTHER' for Other",
-              "dataType": "string",
+              "type": "string",
               "paramType": "query"
             },
             {
               "name": "poc",
               "description": "Include points of contacts in the return value.",
-              "dataType": "boolean",
+              "type": "boolean",
               "defaultValue": false,
               "paramType": "query"
             },
             {
               "name": "recent",
               "description": "Return only recently added or updated laws and incentives",
-              "dataType": "boolean",
+              "type": "boolean",
               "defaultValue": false,
               "paramType": "query"
             },
             {
               "name": "expired",
               "description": "Show only expired, repealed or archived laws and incentives.",
-              "dataType": "boolean",
+              "type": "boolean",
               "defaultValue": false,
               "paramType": "query"
             },
             {
               "name": "law_type",
               "description": "Search by the law type. A single type, or a comma-separate list of multiple types, may be given. Values are as follows: 'STATEINC' for State Incentives, 'UPINC ' for Utility/Private Incentives, 'LAWREG' for Laws and Regulations, 'INC' for Incentives, 'PROG' for Programs, 'LUP' for Last Updated, 'OVIEW' for Overview, and 'HILITE' for Highlights",
-              "dataType": "string",
+              "type": "string",
               "paramType": "query"
             },
             {
               "name": "keyword",
               "description": "Search laws by keyword in title or text.",
-              "dataType": "string",
+              "type": "string",
               "paramType": "query"
             },
             {
               "name": "local",
               "description": "Show only local examples of laws and incentives.",
-              "dataType": "boolean",
+              "type": "boolean",
               "defaultValue": false,
               "paramType": "query"
             }
@@ -461,7 +469,7 @@
       "operations": [
         {
           "method": "GET",
-          "nickname": "transportation-incentives-laws",
+          "nickname": "transportation_incentives_laws",
           "summary": "Fetch the details of a specific law given the law's ID.",
           "type": "LawResult",
           "parameters": [
@@ -470,7 +478,7 @@
               "description": "Response format",
               "paramType": "path",
               "required": true,
-              "dataType": "string",
+              "type": "string",
               "enum": ["json", "xml"],
               "defaultValue": "json"
             },
@@ -479,7 +487,7 @@
               "description": "API Key",
               "paramType": "query",
               "required": true,
-              "dataType": "string",
+              "type": "string",
               "defaultValue": "DEMO_KEY"
             },
             {
@@ -487,12 +495,12 @@
               "description": "The id of the law that you are searching",
               "paramType": "path",
               "required": true,
-              "dataType": "integer"
+              "type": "integer"
             },
             {
               "name": "poc",
               "description": "Include points of contacts in the return value.",
-              "dataType": "boolean",
+              "type": "boolean",
               "defaultValue": false,
               "paramType": "query"
             }
@@ -506,7 +514,7 @@
       "operations": [
         {
           "method": "GET",
-          "nickname": "transportation-incentives-laws",
+          "nickname": "transportation_incentives_laws",
           "summary": "Get the points of contact for a given jurisdiction.",
           "type": "PocResults",
           "parameters": [
@@ -515,7 +523,7 @@
               "description": "Response format",
               "paramType": "path",
               "required": true,
-              "dataType": "string",
+              "type": "string",
               "enum": ["json", "xml"],
               "defaultValue": "json"
             },
@@ -524,13 +532,13 @@
               "description": "API Key",
               "paramType": "query",
               "required": true,
-              "dataType": "string",
+              "type": "string",
               "defaultValue": "DEMO_KEY"
             },
             {
               "name": "jurisdiction",
               "description": "Return the points of contact for the given Jurisdiction. Jurisdiction must be given as a two character state code (eg, 'CO' for Colorado). A single jurisdiction, or a comma-separate list of multiple jurisdiction, may be given.  Use the code 'US' for federal laws and the code 'DC' for Washington D.C.",
-              "dataType": "string",
+              "type": "string",
               "required": true,
               "paramType": "query"
             }
@@ -544,7 +552,7 @@
       "operations": [
         {
           "method": "GET",
-          "nickname": "transportation-incentives-laws",
+          "nickname": "transportation_incentives_laws",
           "summary": "Return the law categories for a given category type.",
           "type": "CategoryResults",
           "parameters": [
@@ -553,7 +561,7 @@
               "description": "Response format",
               "paramType": "path",
               "required": true,
-              "dataType": "string",
+              "type": "string",
               "enum": ["json", "xml"],
               "defaultValue": "json"
             },
@@ -562,14 +570,14 @@
               "description": "API Key",
               "paramType": "query",
               "required": true,
-              "dataType": "string",
+              "type": "string",
               "defaultValue": "DEMO_KEY"
             },
             {
               "name": "type",
               "description": "Search by the category type.",
               "enum": ["tech", "user", "regulation", "incentive"],
-              "dataType": "string",
+              "type": "string",
               "paramType": "query"
             }
           ]

@@ -1,0 +1,284 @@
+---
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: School Wind Project Locations
+  description: Access locations of installed and planned school wind energy projects
+    in the United States for K-12, community colleges, universities, and other education
+    centers.
+paths:
+  "/schoolprojects/{id}":
+    get:
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            "$ref": "#/definitions/schoolproject"
+      description: ''
+      tags:
+      - schoolprojects.json
+      summary: Find a model instance by id from the data source
+      operationId: findById
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - in: path
+        description: Model id
+        name: id
+        required: true
+        type: string
+      - in: query
+        description: API Key
+        name: api_key
+        required: true
+        type: string
+        default: DEMO_KEY
+  "/schoolprojects":
+    get:
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              type: schoolproject
+      description: ''
+      tags:
+      - schoolprojects.json
+      summary: Find all instances of the model matched by filter from the data source
+      operationId: find
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - in: query
+        description: Filter defining fields, where, orderBy, offset, and limit
+        name: filter
+        required: false
+        type: string
+      - in: query
+        description: API Key
+        name: api_key
+        required: true
+        type: string
+        default: DEMO_KEY
+  "/schoolprojects/findOne":
+    get:
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            "$ref": "#/definitions/schoolproject"
+      description: ''
+      tags:
+      - schoolprojects.json
+      summary: Find first instance of the model matched by filter from the data source
+      operationId: findOne
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - in: query
+        description: Filter defining fields, where, orderBy, offset, and limit
+        name: filter
+        required: false
+        type: string
+      - in: query
+        description: API Key
+        name: api_key
+        required: true
+        type: string
+        default: DEMO_KEY
+  "/schoolprojects/count":
+    get:
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: number
+      description: ''
+      tags:
+      - schoolprojects.json
+      summary: Count instances of the model matched by where from the data source
+      operationId: count
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - in: query
+        description: Criteria to match model instances
+        name: where
+        required: false
+        type: string
+      - in: query
+        description: API Key
+        name: api_key
+        required: true
+        type: string
+        default: DEMO_KEY
+host: developer.nrel.gov
+basePath: "/api/windexchange"
+tags:
+- name: schoolprojects.json
+schemes:
+- https
+definitions:
+  schoolproject:
+    properties:
+      additionalresources:
+        length: 1000
+        type: string
+      address:
+        length: 100
+        type: string
+      city:
+        length: 50
+        type: string
+      commissiondate:
+        type: string
+        format: date
+      contactemailaddress:
+        length: 100
+        type: string
+      contactfax:
+        length: 50
+        type: string
+      contactname:
+        length: 255
+        type: string
+      contactphone:
+        length: 50
+        type: string
+      countryid:
+        length: 2
+        type: string
+      countryname:
+        length: 100
+        type: string
+      developer:
+        length: 100
+        type: string
+      discussion:
+        type: string
+      educationalprograms:
+        type: boolean
+      host:
+        length: 100
+        type: string
+      id:
+        type: number
+        format: double
+      lastupdated:
+        type: string
+        format: date
+      latitude:
+        type: number
+        format: double
+      longitude:
+        type: number
+        format: double
+      mapidentificationnew:
+        type: number
+        format: double
+      mapidentificationold:
+        type: number
+        format: double
+      markertype:
+        length: 15
+        type: string
+      newf:
+        type: boolean
+      owneroperator:
+        length: 100
+        type: string
+      photo1:
+        length: 100
+        type: string
+      photo1alt:
+        length: 300
+        type: string
+      photo1caption:
+        length: 300
+        type: string
+      photo1height:
+        length: 4
+        type: string
+      photo1link:
+        length: 100
+        type: string
+      photo1width:
+        length: 4
+        type: string
+      photo2:
+        length: 100
+        type: string
+      photo2alt:
+        length: 300
+        type: string
+      photo2caption:
+        length: 300
+        type: string
+      photo2height:
+        length: 4
+        type: string
+      photo2link:
+        length: 100
+        type: string
+      photo2width:
+        length: 4
+        type: string
+      postalcode:
+        length: 10
+        type: string
+      projectname:
+        length: 100
+        type: string
+      projectnameurl:
+        length: 255
+        type: string
+      projecttype:
+        length: 50
+        type: string
+      province:
+        length: 50
+        type: string
+      schools:
+        type: boolean
+      stateid:
+        length: 2
+        type: string
+      status:
+        length: 50
+        type: string
+      statusdisplay:
+        length: 50
+        type: string
+      technologydescription:
+        length: 255
+        type: string
+      totalsize:
+        type: number
+        format: double
+      totalsizeold:
+        length: 50
+        type: string
+      wacid:
+        type: number
+        format: double
+      wfstype:
+        length: 50
+        type: string
+      windappcenter:
+        length: 100
+        type: string
+      windappcenterurl:
+        length: 255
+        type: string
+    required:
+    - id
+    - statusdisplay
