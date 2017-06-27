@@ -1,7 +1,7 @@
 {
   "swaggerVersion": "1.2",
   "apiVersion": "0.3.0",
-  "basePath": "<%= ENV["API_HOST"] %>/transportation-incentives-laws",
+  "basePath": "/api/transportation-incentives-laws",
   "models": {
     "Metadata": {
       "id": "Metadata",

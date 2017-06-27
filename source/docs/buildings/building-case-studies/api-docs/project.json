@@ -1,7 +1,7 @@
 {
   "swaggerVersion": "1.2",
   "apiVersion": "2.0.0",
-  "basePath": "<%= ENV["API_HOST"] %>/building-case-studies",
+  "basePath": "/api/building-case-studies",
   "apis": [
     {
       "path": "/project.{output_format}",

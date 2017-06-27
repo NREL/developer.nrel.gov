@@ -8,8 +8,9 @@
 @import "_shared/popup";
 @import "_shared/syntax";
 @import "_shared/docs";
-@import "_shared/swagger";
-@import "_shared/swagger_overrides";
+
+@import "swagger-ui/dist/css/screen";
+@import "_swagger_overrides";
 
 @import "_api_umbrella";
 @import "_nrel";

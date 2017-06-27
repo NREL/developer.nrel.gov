@@ -1,0 +1,50 @@
+<% wrap_layout :layout do %>
+  <div class="swagger-section">
+    <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      window.swaggerUi = new SwaggerUi({
+        url: '<%= current_page.data.swagger_url %>',
+        dom_id: 'swagger-ui-container',
+        supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
+        onComplete: function(swaggerApi, swaggerUi){
+          if($('#' + swaggerUi.dom_id).find('#resources > li').length === 1) {
+            swaggerUi.listAll();
+            $('#' + swaggerUi.dom_id).find('#resources > li > .heading').hide();
+          }
+
+          var contact = swaggerUi.api.swaggerObject.contact;
+          var contact_info = '';
+          if(contact && contact.name) {
+            if(contact.email) {
+              contact_info += '<p>Contact: <a href="mailto:' + contact.email + '">' + contact.name + '</a></p>';
+            } else {
+              contact_info += '<p>Contact: ' + contact.name + '</p>';
+            }
+          }
+
+          var demoApiKey = 'DEMO_KEY'
+          swaggerUi.api.clientAuthorizations.add('key', new SwaggerClient.ApiKeyAuthorization('api_key', demoApiKey, 'query'));
+
+          $('#' + swaggerUi.dom_id).find('#resources_container').before(contact_info + '<div class="form-inline"><div class="form-group"><label for="api_key_input">API Key</label><input type="text" class="form-control" id="api_key_input" value="' + demoApiKey + '"></div></div>');
+          $('#api_key_input').change(function() {
+            var key = $('#api_key_input').val();
+            if(key) {
+              swaggerUi.api.clientAuthorizations.add('key', new SwaggerClient.ApiKeyAuthorization('api_key', key, 'query'));
+            }
+          });
+        },
+        onFailure: function(data) {
+          log('Unable to Load SwaggerUI');
+        },
+        docExpansion: 'none',
+        jsonEditor: false,
+        defaultModelRendering: 'schema',
+        showRequestHeaders: false
+      });
+
+      window.swaggerUi.load();
+    });
+  </script>
+<% end %>

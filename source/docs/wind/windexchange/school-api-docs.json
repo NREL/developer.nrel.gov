@@ -1,7 +1,7 @@
 {
   "swaggerVersion": "1.2",
   "apiVersion": "1.0.0",
-  "basePath": "<%= ENV["SWAGGER_HOST"] %>/docs/wind/windexchange/api-docs",
+  "basePath": "/docs/wind/windexchange/api-docs",
   "apis": [
     {
       "path": "/schoolprojects.json"
