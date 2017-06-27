@@ -106,16 +106,16 @@ GEM
     rack (2.0.3)
     rack-livereload (0.3.16)
       rack
-    rails-assets-GUI--swagger-ui (2.0.3.patch1)
     rails-assets-bootbox (4.4.0)
       rails-assets-bootstrap (>= 3.0.0)
     rails-assets-bootstrap (3.3.7)
       rails-assets-jquery (>= 1.9.1, < 4)
-    rails-assets-jquery (1.11.3)
-    rails-assets-jquery.browser (0.0.8)
+    rails-assets-jquery (3.2.1)
+    rails-assets-jquery.browser (0.1.0)
       rails-assets-jquery (>= 1.5)
     rails-assets-parsleyjs (2.7.2)
       rails-assets-jquery (> 1.8)
+    rails-assets-swagger-ui (2.2.10)
     rb-fsevent (0.9.8)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
@@ -147,11 +147,11 @@ DEPENDENCIES
   middleman-sprockets (~> 4.1.0)
   middleman-syntax (~> 3.0.0)
   multi_json (~> 1.12.1)
-  rails-assets-GUI--swagger-ui (= 2.0.3.patch1)!
   rails-assets-bootbox (~> 4.4.0)!
-  rails-assets-jquery (~> 1.11.2)!
-  rails-assets-jquery.browser (~> 0.0.7)!
+  rails-assets-jquery (~> 3.2.1)!
+  rails-assets-jquery.browser (~> 0.1.0)!
   rails-assets-parsleyjs (~> 2.7.2)!
+  rails-assets-swagger-ui (~> 2.2.10)!
   tzinfo-data
   wdm (~> 0.1.0)
 

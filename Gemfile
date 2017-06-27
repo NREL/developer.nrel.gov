@@ -32,17 +32,15 @@ gem "middleman-alias", "~> 0.0.9"
 gem "multi_json", "~> 1.12.1"
 
 source "https://rails-assets.org" do
-  # Swagger UI - Patched version with IE console fixes.
-  gem "rails-assets-GUI--swagger-ui", "2.0.3.patch1"
+  # Swagger UI
+  gem "rails-assets-swagger-ui", "~> 2.2.10"
 
   # jQuery
-  gem "rails-assets-jquery", "~> 1.11.2"
+  gem "rails-assets-jquery", "~> 3.2.1"
 
-  # Add back in $.browser for our older Swagger version with the newer jQuery
-  # version (we can't easily downgrade jQuery since Bootstrap 3 depends on this
-  # newer version).
-  # We should revisit this whenever we upgrade the Swagger UI library again.
-  gem "rails-assets-jquery.browser", "~> 0.0.7"
+	# Add back in $.browser for our older Swagger version with the newer jQuery
+	# version. Should no longer be necessary if we upgrade to Swagger UI v3.
+	gem "rails-assets-jquery.browser", "~> 0.1.0"
 
   # Programmatic bootstrap modals
   gem "rails-assets-bootbox", "~> 4.4.0"
