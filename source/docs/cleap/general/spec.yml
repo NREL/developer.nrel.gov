@@ -1,0 +1,328 @@
+swagger: "2.0"
+info:
+  title: C-LEAP General APIs
+  description: |-
+    A collection of APIs providing data related to cities and energy cohorts, including city lookup.
+
+    These endpoints return derived data for places, which are discovered through zip codes, city/state or gisjoin parameters.
+
+    - Data is rounded to give approximations due to derived status.
+    - There is no index dump of all data, a city/state or zip must be included if not querying a gisjoin.
+    - Obtain gisjoin IDs via the `/cities` API.
+schemes:
+  - https
+host: devstage.nrel.gov
+basePath: /api/cleap/v1
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: query
+paths:
+  /cities:
+    get:
+      summary: Get the cities for the specified zip or city/state.
+      parameters:
+        - name: api_key
+          in: query
+          type: string
+          description: Required. Get an API key from https://developer.nrel.gov/signup/.
+        - name: city
+          in: query
+          type: string
+          description: Required, along with `state_abbr`, unless `zip` is specified.
+        - name: state_abbr
+          in: query
+          type: string
+          description: Required, along with `city`, unless `zip` is specified.
+        - name: zip
+          in: query
+          type: string
+          description: Required, unless `city` and `state_abbr` are specified.
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/cities"
+  /energy_cohort_data:
+    get:
+      summary: Get the energy cohort data for a zip or city/state.
+      parameters:
+        - name: api_key
+          in: query
+          type: string
+          description: Required. Get an API key from https://developer.nrel.gov/signup/.
+        - name: city
+          in: query
+          type: string
+          description: Required, along with `state_abbr`, unless `zip` is specified.
+        - name: state_abbr
+          in: query
+          type: string
+          description: Required, along with `city`, unless `zip` is specified.
+        - name: zip
+          in: query
+          type: string
+          description: Required, unless `city` and `state_abbr` are specified.
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/energy_cohort_data"
+  /energy_cohort_data/{gisjoin}:
+    get:
+      summary: Get the energy cohort data for the specific gisjoin.
+      parameters:
+        - name: api_key
+          in: query
+          type: string
+          description: Required. Get an API key from https://developer.nrel.gov/signup/.
+        - name: gisjoin
+          in: path
+          type: string
+          description: Required. Query the `/cities` API for this value.
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/energy_cohort_data"
+definitions:
+  cities:
+    properties:
+      statefp:
+        type: string
+        example: 08
+        description: statefp
+      countyfp:
+        type: string
+        example: 03
+        description: countyfp
+      name:
+        type: string
+        example: Denver
+        description: name of city
+      gisjoin:
+        type: string
+        example: G08020000
+        description: ID used to reference this place for other queries
+      place_fp:
+        type: string
+        example: 20000
+        description: placefp
+      cty_subd_fp:
+        type: string
+        example: 20
+        description: cty_subd_fp
+      geojson:
+        type: string
+        example: "{\"type\":\"MultiPolygon\",\"coordinates\":[[[[-104.680250998795,39.9140209995851]]]]}"
+        description: geojson coordinates for the city polygon.
+  energy_cohort_data:
+    properties:
+      commercial_electric_use:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum commercial electric use
+          avg:
+            type: number
+            example: 1677200
+            description: minimum commercial electric use
+          max:
+            type: number
+            example: 1677200
+            description: minimum commercial electric use
+      commercial_electric_expenditure:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum commercial electric expenditure
+          avg:
+            type: number
+            example: 1677200
+            description: minimum commercial electric expenditure
+          max:
+            type: number
+            example: 1677200
+            description: minimum commercial electric expenditure
+      commercial_gas_use:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum commercial gas use
+          avg:
+            type: number
+            example: 1677200
+            description: minimum commercial gas use
+          max:
+            type: number
+            example: 1677200
+            description: minimum commercial gas use
+      commercial_gas_expenditure:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum commercial gas expenditure
+          avg:
+            type: number
+            example: 1677200
+            description: minimum commercial gas expenditure
+          max:
+            type: number
+            example: 1677200
+            description: minimum commercial gas expenditure
+      industrial_electric_use:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum industrial electric use
+          avg:
+            type: number
+            example: 1677200
+            description: minimum industrial electric use
+          max:
+            type: number
+            example: 1677200
+            description: minimum industrial electric use
+      industrial_electric_expenditure:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum industrial electric expenditure
+          avg:
+            type: number
+            example: 1677200
+            description: minimum industrial electric expenditure
+          max:
+            type: number
+            example: 1677200
+            description: minimum industrial electric expenditure
+      industrial_gas_use:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum industrial gas use
+          avg:
+            type: number
+            example: 1677200
+            description: minimum industrial gas use
+          max:
+            type: number
+            example: 1677200
+            description: minimum industrial gas use
+      industrial_gas_expenditure:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum industrial gas expenditure
+          avg:
+            type: number
+            example: 1677200
+            description: minimum industrial gas expenditure
+          max:
+            type: number
+            example: 1677200
+            description: minimum industrial gas expenditure
+      residential_electric_use:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum residential electric use
+          avg:
+            type: number
+            example: 1677200
+            description: minimum residential electric use
+          max:
+            type: number
+            example: 1677200
+            description: minimum residential electric use
+      residential_electric_expenditure:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum residential electric expenditure
+          avg:
+            type: number
+            example: 1677200
+            description: minimum residential electric expenditure
+          max:
+            type: number
+            example: 1677200
+            description: minimum residential electric expenditure
+      residential_gas_use:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum residential gas use
+          avg:
+            type: number
+            example: 1677200
+            description: minimum residential gas use
+          max:
+            type: number
+            example: 1677200
+            description: minimum residential gas use
+      residential_gas_expenditure:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum residential gas expenditure
+          avg:
+            type: number
+            example: 1677200
+            description: minimum residential gas expenditure
+          max:
+            type: number
+            example: 1677200
+            description: minimum residential gas expenditure
+      city_fuel_use_diesel:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum diesel city fuel use
+          avg:
+            type: number
+            example: 1677200
+            description: minimum diesel city fuel use
+          max:
+            type: number
+            example: 1677200
+            description: minimum diesel city fuel use
+      city_fuel_use_gas:
+        type: object
+        properties:
+          min:
+            type: number
+            example: 1677200
+            description: minimum gas city fuel use
+          avg:
+            type: number
+            example: 1677200
+            description: minimum gas city fuel use
+          max:
+            type: number
+            example: 1677200
+            description: minimum gas city fuel use
