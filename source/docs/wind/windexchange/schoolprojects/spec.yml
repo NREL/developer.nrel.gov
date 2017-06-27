@@ -121,7 +121,6 @@ paths:
         required: true
         type: string
         default: DEMO_KEY
-host: developer.nrel.gov
 basePath: "/api/windexchange"
 tags:
 - name: schoolprojects.json

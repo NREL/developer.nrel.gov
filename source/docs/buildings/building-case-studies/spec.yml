@@ -104,7 +104,6 @@ paths:
         name: project_id
         required: true
         type: integer
-host: developer.nrel.gov
 basePath: "/api/building-case-studies"
 tags:
 - name: project.json
