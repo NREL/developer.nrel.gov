@@ -83,7 +83,7 @@ paths:
           in: path
           required: true
           type: string
-          description: Required. Query the `/cities` API for this value.
+          description: Required. Query the [`/api/cleap/v1/cities`](/docs/cleap/general/) API for this value.
       responses:
         "200":
           description: Successful request
