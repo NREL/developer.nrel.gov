@@ -43,7 +43,7 @@ paths:
           schema:
             type: array
             items:
-              type: schoolproject
+              "$ref": "#/definitions/schoolproject"
       description: ''
       tags:
       - schoolprojects.json
