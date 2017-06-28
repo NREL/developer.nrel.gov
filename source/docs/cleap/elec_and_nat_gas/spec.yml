@@ -477,15 +477,15 @@ definitions:
             type: number
             example: 138667400
             description: commercial gas mcf bin min
-          elec_ghg_lb:
+          elec_lb_ghg:
             type: number
             example: 24469356933
             description: commercial elec lb ghg
-          elec_min_ghg_lb:
+          elec_min_lb_ghg:
             type: number
             example: 12238100838
             description: commercial elec min lb ghg
-          elec_max_ghg_lb:
+          elec_max_lb_ghg:
             type: number
             example: 24469359209
             description: commercial elec max lb ghg
