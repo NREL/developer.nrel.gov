@@ -33,3 +33,6 @@
 
 # Ignore .ruby-version file CircleCI uses.
 /.ruby-version
+
+# NPM
+/node_modules

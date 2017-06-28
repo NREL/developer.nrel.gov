@@ -31,6 +31,9 @@ gem "middleman-alias", "~> 0.0.9"
 # JSON validation
 gem "multi_json", "~> 1.12.1"
 
+# Test tasks
+gem "rake", "~> 12.0"
+
 source "https://rails-assets.org" do
   # Swagger UI
   gem "rails-assets-swagger-ui", "~> 3.0.17"

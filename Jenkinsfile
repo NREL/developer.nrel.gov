@@ -8,6 +8,9 @@ pipeline {
   options {
     disableConcurrentBuilds()
   }
+  tools {
+    nodejs "6.10"
+  }
 
   environment {
     PATH = "${JENKINS_HOME}/.rbenv/bin:${JENKINS_HOME}/.rbenv/shims:/usr/local/bin:/sbin:/usr/sbin:/bin:/usr/bin"
@@ -33,6 +36,13 @@ pipeline {
             sh "bundle exec middleman build --clean --environment=staging"
           }
         }
+      }
+    }
+
+    stage("test") {
+      steps {
+        sh "yarn install"
+        sh "bundle exec rake lint"
       }
     }
 
