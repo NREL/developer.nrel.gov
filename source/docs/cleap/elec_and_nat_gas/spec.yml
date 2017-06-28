@@ -10,6 +10,7 @@ info:
     - Data is rounded to give approximations due to derived status.
     - There is no index dump of all data, a city/state or zip must be included if not querying a gisjoin.
     - Obtain gisjoin IDs via the [`/api/cleap/v1/cities`](/docs/cleap/general/) API.
+    - All APIs require the `api_key` parameter. Get an API key from https://developer.nrel.gov/signup/.
 schemes:
   - https
 basePath: /api/cleap/v1
@@ -25,10 +26,6 @@ paths:
     get:
       summary: Get the energy expenditures and ghg by sector data for a zip or city/state.
       parameters:
-        - name: api_key
-          in: query
-          type: string
-          description: Required. Get an API key from https://developer.nrel.gov/signup/.
         - name: city
           in: query
           type: string
@@ -51,10 +48,6 @@ paths:
     get:
       summary: Get the energy expenditures and ghg by sector data for the specific gisjoin.
       parameters:
-        - name: api_key
-          in: query
-          type: string
-          description: Required. Get an API key from https://developer.nrel.gov/signup/.
         - name: gisjoin
           in: path
           required: true
@@ -69,11 +62,6 @@ paths:
   /electricity_and_gas_stats:
     get:
       summary: Get the electricity and gas statistics by sector.
-      parameters:
-        - name: api_key
-          in: query
-          type: string
-          description: Required. Get an API key from https://developer.nrel.gov/signup/.
       responses:
         "200":
           description: Successful request

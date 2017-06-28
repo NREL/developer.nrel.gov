@@ -10,6 +10,7 @@ info:
     - Data is rounded to give approximations due to derived status.
     - There is no index dump of all data, a city/state or zip must be included if not querying a gisjoin.
     - Obtain gisjoin IDs via the [`/api/cleap/v1/cities`](/docs/cleap/general/) API.
+    - All APIs require the `api_key` parameter. Get an API key from https://developer.nrel.gov/signup/.
 schemes:
   - https
 basePath: /api/cleap/v1
@@ -25,10 +26,6 @@ paths:
     get:
       summary: Get the cities for the specified zip or city/state.
       parameters:
-        - name: api_key
-          in: query
-          type: string
-          description: Required. Get an API key from https://developer.nrel.gov/signup/.
         - name: city
           in: query
           type: string
@@ -50,10 +47,6 @@ paths:
     get:
       summary: Get the energy cohort data for a zip or city/state.
       parameters:
-        - name: api_key
-          in: query
-          type: string
-          description: Required. Get an API key from https://developer.nrel.gov/signup/.
         - name: city
           in: query
           type: string
@@ -75,10 +68,6 @@ paths:
     get:
       summary: Get the energy cohort data for the specific gisjoin.
       parameters:
-        - name: api_key
-          in: query
-          type: string
-          description: Required. Get an API key from https://developer.nrel.gov/signup/.
         - name: gisjoin
           in: path
           required: true
