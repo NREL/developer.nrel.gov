@@ -31,6 +31,11 @@
   display: none !important;
 }
 
+// Hide the authorization lock icon, since we provide DEMO_KEY.
+.swagger-ui .authorization__btn {
+  display: none;
+}
+
 // Make the header text styles match the NREL theme.
 .swagger-ui .info .title {
   color: #cc6600 !important;
@@ -55,4 +60,21 @@
 }
 .swagger-ui .tab li {
   min-width: 96px !important;
+}
+
+// Styling for the custom API key form we inject on the page.
+.swagger-ui .api-key-form {
+  text-align: right;
+}
+.swagger-ui .api-key-form label {
+  font-size: 14px;
+  margin-right: 6px;
+}
+.swagger-ui .api-key-form input {
+  margin: 0px !important;
+}
+.swagger-ui .api-key-form p {
+  font-size: 12px;
+  font-style: italic;
+  color: #555;
 }

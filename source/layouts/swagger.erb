@@ -28,7 +28,7 @@
   <div id="swagger-ui"></div>
   <script type="text/javascript">
     $(document).ready(function() {
-      var ui = SwaggerUIBundle({
+      window.ui = SwaggerUIBundle({
         url: (location.origin || '') + '<%= current_page.data.swagger_url %>',
         dom_id: '#swagger-ui',
         presets: [
@@ -37,6 +37,7 @@
         ],
         plugins: [
           SwaggerUIBundle.plugins.DownloadUrl,
+          ApiKeyFormPlugin,
         ],
         layout: 'StandaloneLayout',
       });
