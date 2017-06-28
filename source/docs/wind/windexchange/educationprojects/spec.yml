@@ -42,7 +42,7 @@ paths:
           schema:
             type: array
             items:
-              type: educationproject
+              "$ref": "#/definitions/educationproject"
       description: ''
       tags:
       - educationprojects.json
@@ -129,44 +129,44 @@ definitions:
   educationproject:
     properties:
       additionalresources:
-        length: 1000
+        maxLength: 1000
         type: string
       address:
-        length: 100
+        maxLength: 100
         type: string
       city:
-        length: 50
+        maxLength: 50
         type: string
       commissiondate:
         type: string
         format: date
       contactemailaddress:
-        length: 100
+        maxLength: 100
         type: string
       contactfax:
-        length: 50
+        maxLength: 50
         type: string
       contactname:
-        length: 255
+        maxLength: 255
         type: string
       contactphone:
-        length: 50
+        maxLength: 50
         type: string
       countryid:
-        length: 2
+        maxLength: 2
         type: string
       countryname:
-        length: 100
+        maxLength: 100
         type: string
       developer:
-        length: 100
+        maxLength: 100
         type: string
       discussion:
         type: string
       educationalprograms:
         type: boolean
       host:
-        length: 100
+        maxLength: 100
         type: string
       id:
         type: number
@@ -187,92 +187,92 @@ definitions:
         type: number
         format: double
       markertype:
-        length: 15
+        maxLength: 15
         type: string
       newf:
         type: boolean
       owneroperator:
-        length: 100
+        maxLength: 100
         type: string
       photo1:
-        length: 100
+        maxLength: 100
         type: string
       photo1alt:
-        length: 300
+        maxLength: 300
         type: string
       photo1caption:
-        length: 300
+        maxLength: 300
         type: string
       photo1height:
-        length: 4
+        maxLength: 4
         type: string
       photo1link:
-        length: 100
+        maxLength: 100
         type: string
       photo1width:
-        length: 4
+        maxLength: 4
         type: string
       photo2:
-        length: 100
+        maxLength: 100
         type: string
       photo2alt:
-        length: 300
+        maxLength: 300
         type: string
       photo2caption:
-        length: 300
+        maxLength: 300
         type: string
       photo2height:
-        length: 4
+        maxLength: 4
         type: string
       photo2link:
-        length: 100
+        maxLength: 100
         type: string
       photo2width:
-        length: 4
+        maxLength: 4
         type: string
       postalcode:
-        length: 10
+        maxLength: 10
         type: string
       projectname:
-        length: 100
+        maxLength: 100
         type: string
       projectnameurl:
-        length: 255
+        maxLength: 255
         type: string
       projecttype:
-        length: 50
+        maxLength: 50
         type: string
       province:
-        length: 50
+        maxLength: 50
         type: string
       schools:
         type: boolean
       stateid:
-        length: 2
+        maxLength: 2
         type: string
       status:
-        length: 50
+        maxLength: 50
         type: string
       statusdisplay:
-        length: 50
+        maxLength: 50
         type: string
       technologydescription:
-        length: 255
+        maxLength: 255
         type: string
       totalsize:
         type: number
         format: double
       totalsizeold:
-        length: 50
+        maxLength: 50
         type: string
       wacid:
         type: number
         format: double
       wfstype:
-        length: 50
+        maxLength: 50
         type: string
       windappcenter:
-        length: 100
+        maxLength: 100
         type: string
     required:
     - id

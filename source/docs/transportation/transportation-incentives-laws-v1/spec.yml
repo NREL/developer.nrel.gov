@@ -13,6 +13,7 @@ paths:
     get:
       responses:
         '200':
+          description: Successful request
           schema:
             "$ref": "#/definitions/LawsResponse"
       description: ''
@@ -133,6 +134,7 @@ paths:
     get:
       responses:
         '200':
+          description: Successful request
           schema:
             "$ref": "#/definitions/LawResult"
       description: ''
@@ -169,6 +171,7 @@ paths:
     get:
       responses:
         '200':
+          description: Successful request
           schema:
             "$ref": "#/definitions/PocResults"
       description: ''
@@ -203,6 +206,7 @@ paths:
     get:
       responses:
         '200':
+          description: Successful request
           schema:
             "$ref": "#/definitions/CategoryResults"
       description: ''

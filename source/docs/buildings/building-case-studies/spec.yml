@@ -13,6 +13,7 @@ paths:
     get:
       responses:
         '200':
+          description: Successful request
       description: ''
       tags:
       - project.json
@@ -76,6 +77,7 @@ paths:
     get:
       responses:
         '200':
+          description: Successful request
       description: ''
       tags:
       - project.json
