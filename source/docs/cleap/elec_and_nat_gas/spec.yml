@@ -593,7 +593,7 @@ definitions:
             example: 1.0.0
       errors:
         type: object
-        example: null
+        example: []
       inputs:
         type: object
         example: {}
