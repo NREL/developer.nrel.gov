@@ -77,247 +77,519 @@ paths:
         "200":
           description: Successful request
           schema:
-            $ref: "#/definitions/energy_cohort_data"
+            $ref: "#/definitions/energy_cohort_data_gisjoin"
 definitions:
   cities:
     properties:
-      statefp:
-        type: string
-        example: 08
-        description: statefp
-      countyfp:
-        type: string
-        example: 03
-        description: countyfp
-      name:
-        type: string
-        example: Denver
-        description: name of city
-      gisjoin:
-        type: string
-        example: G08020000
-        description: ID used to reference this place for other queries
-      place_fp:
-        type: string
-        example: 20000
-        description: placefp
-      cty_subd_fp:
-        type: string
-        example: 20
-        description: cty_subd_fp
-      geojson:
-        type: string
-        example: "{\"type\":\"MultiPolygon\",\"coordinates\":[[[[-104.680250998795,39.9140209995851]]]]}"
-        description: geojson coordinates for the city polygon.
+      errors:
+        type: object
+        example: []
+      inputs:
+        type: object
+        properties:
+          city:
+            type: string
+            example: new york
+          state_abbr:
+            type: string
+            example: ny
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      result:
+        type: object
+        properties:
+          statefp:
+            type: string
+            example: 08
+            description: statefp
+          countyfp:
+            type: string
+            example: 03
+            description: countyfp
+          name:
+            type: string
+            example: Denver
+            description: name of city
+          gisjoin:
+            type: string
+            example: G08020000
+            description: ID used to reference this place for other queries
+          place_fp:
+            type: string
+            example: 20000
+            description: placefp
+          cty_subd_fp:
+            type: string
+            example: 20
+            description: cty_subd_fp
+          geojson:
+            type: string
+            example: "{\"type\":\"MultiPolygon\",\"coordinates\":[[[[-104.680250998795,39.9140209995851]]]]}"
+            description: geojson coordinates for the city polygon.
   energy_cohort_data:
     properties:
-      commercial_electric_use:
+      errors:
+        type: object
+        example: []
+      inputs:
         type: object
         properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum commercial electric use
-          avg:
-            type: number
-            example: 1677200
-            description: minimum commercial electric use
-          max:
-            type: number
-            example: 1677200
-            description: minimum commercial electric use
-      commercial_electric_expenditure:
+          city:
+            type: string
+            example: denver
+          state_abbr:
+            type: string
+            example: co
+      metadata:
         type: object
         properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum commercial electric expenditure
-          avg:
-            type: number
-            example: 1677200
-            description: minimum commercial electric expenditure
-          max:
-            type: number
-            example: 1677200
-            description: minimum commercial electric expenditure
-      commercial_gas_use:
+          version:
+            type: string
+            example: 1.0.0
+      result:
         type: object
         properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum commercial gas use
-          avg:
-            type: number
-            example: 1677200
-            description: minimum commercial gas use
-          max:
-            type: number
-            example: 1677200
-            description: minimum commercial gas use
-      commercial_gas_expenditure:
+          commercial_electric_use:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 1677200
+                description: minimum commercial electric use
+              avg:
+                type: number
+                example: 1677200
+                description: average commercial electric use
+              max:
+                type: number
+                example: 1677200
+                description: maximum commercial electric use
+          commercial_electric_expenditure:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 163600
+                description: minimum commercial electric expenditure
+              avg:
+                type: number
+                example: 272400
+                description: average commercial electric expenditure
+              max:
+                type: number
+                example: 432300
+                description: maximum commercial electric expenditure
+          commercial_gas_use:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 7461100
+                description: minimum commercial gas use
+              avg:
+                type: number
+                example: 19082100
+                description: average commercial gas use
+              max:
+                type: number
+                example: 53160800
+                description: maximum commercial gas use
+          commercial_gas_expenditure:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 27600
+                description: minimum commercial gas expenditure
+              avg:
+                type: number
+                example: 103600
+                description: average commercial gas expenditure
+              max:
+                type: number
+                example: 270200
+                description: maximum commercial gas expenditure
+          industrial_electric_use:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 838600
+                description: minimum industrial electric use
+              avg:
+                type: number
+                example: 2076800
+                description: average industrial electric use
+              max:
+                type: number
+                example: 4291400
+                description: maximum industrial electric use
+          industrial_electric_expenditure:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 59000
+                description: minimum industrial electric expenditure
+              avg:
+                type: number
+                example: 102900
+                description: average industrial electric expenditure
+              max:
+                type: number
+                example: 249900
+                description: maximum industrial electric expenditure
+          industrial_gas_use:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 3176700
+                description: minimum industrial gas use
+              avg:
+                type: number
+                example: 23030800
+                description: average industrial gas use
+              max:
+                type: number
+                example: 65023900
+                description: maximum industrial gas use
+          industrial_gas_expenditure:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 8400
+                description: minimum industrial gas expenditure
+              avg:
+                type: number
+                example: 63600
+                description: average industrial gas expenditure
+              max:
+                type: number
+                example: 194100
+                description: maximum industrial gas expenditure
+          residential_electric_use:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 2139800
+                description: minimum residential electric use
+              avg:
+                type: number
+                example: 4415800
+                description: average residential electric use
+              max:
+                type: number
+                example: 10207300
+                description: maximum residential electric use
+          residential_electric_expenditure:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 307600
+                description: minimum residential electric expenditure
+              avg:
+                type: number
+                example: 445700
+                description: average residential electric expenditure
+              max:
+                type: number
+                example: 781000
+                description: maximum residential electric expenditure
+          residential_gas_use:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 13590900
+                description: minimum residential gas use
+              avg:
+                type: number
+                example: 33588600
+                description: average residential gas use
+              max:
+                type: number
+                example: 90085300
+                description: maximum residential gas use
+          residential_gas_expenditure:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 88600
+                description: minimum residential gas expenditure
+              avg:
+                type: number
+                example: 297500
+                description: average residential gas expenditure
+              max:
+                type: number
+                example: 838700
+                description: maximum residential gas expenditure
+          city_fuel_use_diesel:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 23872400
+                description: minimum diesel city fuel use
+              avg:
+                type: number
+                example: 67297400
+                description: average diesel city fuel use
+              max:
+                type: number
+                example: 127913200
+                description: maximum diesel city fuel use
+          city_fuel_use_gas:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 124277600
+                description: minimum gas city fuel use
+              avg:
+                type: number
+                example: 327129800
+                description: average gas city fuel use
+              max:
+                type: number
+                example: 560676600
+                description: maximum gas city fuel use
+  energy_cohort_data_gisjoin:
+    properties:
+      errors:
+        type: object
+        example: []
+      inputs:
         type: object
         properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum commercial gas expenditure
-          avg:
-            type: number
-            example: 1677200
-            description: minimum commercial gas expenditure
-          max:
-            type: number
-            example: 1677200
-            description: minimum commercial gas expenditure
-      industrial_electric_use:
+          gisjoin:
+            type: string
+            example: G08020000
+      metadata:
         type: object
         properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum industrial electric use
-          avg:
-            type: number
-            example: 1677200
-            description: minimum industrial electric use
-          max:
-            type: number
-            example: 1677200
-            description: minimum industrial electric use
-      industrial_electric_expenditure:
+          version:
+            type: string
+            example: 1.0.0
+      result:
         type: object
         properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum industrial electric expenditure
-          avg:
-            type: number
-            example: 1677200
-            description: minimum industrial electric expenditure
-          max:
-            type: number
-            example: 1677200
-            description: minimum industrial electric expenditure
-      industrial_gas_use:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum industrial gas use
-          avg:
-            type: number
-            example: 1677200
-            description: minimum industrial gas use
-          max:
-            type: number
-            example: 1677200
-            description: minimum industrial gas use
-      industrial_gas_expenditure:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum industrial gas expenditure
-          avg:
-            type: number
-            example: 1677200
-            description: minimum industrial gas expenditure
-          max:
-            type: number
-            example: 1677200
-            description: minimum industrial gas expenditure
-      residential_electric_use:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum residential electric use
-          avg:
-            type: number
-            example: 1677200
-            description: minimum residential electric use
-          max:
-            type: number
-            example: 1677200
-            description: minimum residential electric use
-      residential_electric_expenditure:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum residential electric expenditure
-          avg:
-            type: number
-            example: 1677200
-            description: minimum residential electric expenditure
-          max:
-            type: number
-            example: 1677200
-            description: minimum residential electric expenditure
-      residential_gas_use:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum residential gas use
-          avg:
-            type: number
-            example: 1677200
-            description: minimum residential gas use
-          max:
-            type: number
-            example: 1677200
-            description: minimum residential gas use
-      residential_gas_expenditure:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum residential gas expenditure
-          avg:
-            type: number
-            example: 1677200
-            description: minimum residential gas expenditure
-          max:
-            type: number
-            example: 1677200
-            description: minimum residential gas expenditure
-      city_fuel_use_diesel:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum diesel city fuel use
-          avg:
-            type: number
-            example: 1677200
-            description: minimum diesel city fuel use
-          max:
-            type: number
-            example: 1677200
-            description: minimum diesel city fuel use
-      city_fuel_use_gas:
-        type: object
-        properties:
-          min:
-            type: number
-            example: 1677200
-            description: minimum gas city fuel use
-          avg:
-            type: number
-            example: 1677200
-            description: minimum gas city fuel use
-          max:
-            type: number
-            example: 1677200
-            description: minimum gas city fuel use
+          commercial_electric_use:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 1677200
+                description: minimum commercial electric use
+              avg:
+                type: number
+                example: 1677200
+                description: average commercial electric use
+              max:
+                type: number
+                example: 1677200
+                description: maximum commercial electric use
+          commercial_electric_expenditure:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 163600
+                description: minimum commercial electric expenditure
+              avg:
+                type: number
+                example: 272400
+                description: average commercial electric expenditure
+              max:
+                type: number
+                example: 432300
+                description: maximum commercial electric expenditure
+          commercial_gas_use:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 7461100
+                description: minimum commercial gas use
+              avg:
+                type: number
+                example: 19082100
+                description: average commercial gas use
+              max:
+                type: number
+                example: 53160800
+                description: maximum commercial gas use
+          commercial_gas_expenditure:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 27600
+                description: minimum commercial gas expenditure
+              avg:
+                type: number
+                example: 103600
+                description: average commercial gas expenditure
+              max:
+                type: number
+                example: 270200
+                description: maximum commercial gas expenditure
+          industrial_electric_use:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 838600
+                description: minimum industrial electric use
+              avg:
+                type: number
+                example: 2076800
+                description: average industrial electric use
+              max:
+                type: number
+                example: 4291400
+                description: maximum industrial electric use
+          industrial_electric_expenditure:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 59000
+                description: minimum industrial electric expenditure
+              avg:
+                type: number
+                example: 102900
+                description: average industrial electric expenditure
+              max:
+                type: number
+                example: 249900
+                description: maximum industrial electric expenditure
+          industrial_gas_use:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 3176700
+                description: minimum industrial gas use
+              avg:
+                type: number
+                example: 23030800
+                description: average industrial gas use
+              max:
+                type: number
+                example: 65023900
+                description: maximum industrial gas use
+          industrial_gas_expenditure:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 8400
+                description: minimum industrial gas expenditure
+              avg:
+                type: number
+                example: 63600
+                description: average industrial gas expenditure
+              max:
+                type: number
+                example: 194100
+                description: maximum industrial gas expenditure
+          residential_electric_use:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 2139800
+                description: minimum residential electric use
+              avg:
+                type: number
+                example: 4415800
+                description: average residential electric use
+              max:
+                type: number
+                example: 10207300
+                description: maximum residential electric use
+          residential_electric_expenditure:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 307600
+                description: minimum residential electric expenditure
+              avg:
+                type: number
+                example: 445700
+                description: average residential electric expenditure
+              max:
+                type: number
+                example: 781000
+                description: maximum residential electric expenditure
+          residential_gas_use:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 13590900
+                description: minimum residential gas use
+              avg:
+                type: number
+                example: 33588600
+                description: average residential gas use
+              max:
+                type: number
+                example: 90085300
+                description: maximum residential gas use
+          residential_gas_expenditure:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 88600
+                description: minimum residential gas expenditure
+              avg:
+                type: number
+                example: 297500
+                description: average residential gas expenditure
+              max:
+                type: number
+                example: 838700
+                description: maximum residential gas expenditure
+          city_fuel_use_diesel:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 23872400
+                description: minimum diesel city fuel use
+              avg:
+                type: number
+                example: 67297400
+                description: average diesel city fuel use
+              max:
+                type: number
+                example: 127913200
+                description: maximum diesel city fuel use
+          city_fuel_use_gas:
+            type: object
+            properties:
+              min:
+                type: number
+                example: 124277600
+                description: minimum gas city fuel use
+              avg:
+                type: number
+                example: 327129800
+                description: average gas city fuel use
+              max:
+                type: number
+                example: 560676600
+                description: maximum gas city fuel use
