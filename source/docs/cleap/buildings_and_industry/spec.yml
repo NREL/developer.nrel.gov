@@ -44,7 +44,11 @@ paths:
         - name: type
           description: Required. Choices are `commercial` or `industrial`.
           in: query
+          required: true
           type: string
+          enum:
+            - commercial
+            - industrial
       responses:
         "200":
           description: Successful request
@@ -66,7 +70,11 @@ paths:
         - name: type
           description: Required. Choices are `commercial` or `industrial`.
           in: query
+          required: true
           type: string
+          enum:
+            - commercial
+            - industrial
       responses:
         "200":
           description: Successful request
