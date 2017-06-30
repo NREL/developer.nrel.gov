@@ -695,7 +695,7 @@ definitions:
           "Denver":
             type: object
             properties:
-              vmt_by_road_class_estimate:
+              vmt_road_class_estimate:
                 type: object
                 properties:
                   gisjoin:
@@ -750,7 +750,7 @@ definitions:
       result:
         type: object
         properties:
-          vmt_by_road_class_estimate:
+          vmt_road_class_estimate:
             type: object
             properties:
               gisjoin:

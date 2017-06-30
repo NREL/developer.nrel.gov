@@ -362,6 +362,36 @@ definitions:
                       type: string
                       example: ind
                       description: sector
+              calculated_values:
+                type: object
+                properties:
+                  area_avg_res:
+                    type: number
+                    example: 3656.545758442879
+                  area_sum_res:
+                    type: number
+                    example: 3463820201.1526303
+                  count_sum_res:
+                    type: number
+                    example: 947293
+                  area_avg_com:
+                    type: number
+                    example: 9370.192893557474
+                  area_sum_com:
+                    type: number
+                    example: 1201474243.39062
+                  count_sum_com:
+                    type: number
+                    example: 128223
+                  area_avg_ind:
+                    type: number
+                    example: 7146.002896627219
+                  area_sum_ind:
+                    type: number
+                    example: 172697452.00279
+                  count_sum_ind:
+                    type: number
+                    example: 24167
   building_stock_summaries_gisjoin:
     properties:
       errors:
@@ -411,6 +441,36 @@ definitions:
                   type: string
                   example: ind
                   description: sector
+          calculated_values:
+            type: object
+            properties:
+              area_avg_res:
+                type: number
+                example: 3656.545758442879
+              area_sum_res:
+                type: number
+                example: 3463820201.1526303
+              count_sum_res:
+                type: number
+                example: 947293
+              area_avg_com:
+                type: number
+                example: 9370.192893557474
+              area_sum_com:
+                type: number
+                example: 1201474243.39062
+              count_sum_com:
+                type: number
+                example: 128223
+              area_avg_ind:
+                type: number
+                example: 7146.002896627219
+              area_sum_ind:
+                type: number
+                example: 172697452.00279
+              count_sum_ind:
+                type: number
+                example: 24167
   small_building_pv:
     properties:
       errors:

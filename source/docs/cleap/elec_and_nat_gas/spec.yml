@@ -91,242 +91,245 @@ definitions:
       result:
         type: object
         properties:
-          residential:
+          "New York":
             type: object
             properties:
-              housing_units:
-                type: number
-                example: 3356900
-                description: residential housing units
-              total_pop:
-                type: number
-                example: 8115600
-                description: total residential population
-              elec_1kdollars:
-                type: number
-                example: 4209600
-                description: residential electric 1k dollars
-              elec_mwh:
-                type: number
-                example: 18200300
-                description: residential electric megawatt hours
-              gas_1kdollars:
-                type: number
-                example: 1969200
-                description: residential gas 1k dollars
-              gas_mcf:
-                type: number
-                example: 180069600
-                description: residential gas mcf
-              elec_1kdollars_bin_min:
-                type: number
-                example: 1868100
-                description: residential elec 1k dollars bin min
-              elec_1kdollars_bin_max:
-                type: number
-                example: 4209700
-                description: residential elec 1k dollars bin max
-              elec_mwh_bin_min:
-                type: number
-                example: 13130500
-                description: residential elec mwh bin min
-              elec_mwh_bin_max:
-                type: number
-                example: 17671200
-                description: residential elec mwh bin max
-              gas_1kdollars_bin_min:
-                type: number
-                example: 838700
-                description: residential gas 1k dollars bin min
-              gas_1kdollars_bin_max:
-                type: number
-                example: 1969200
-                description: residential gas 1k dollars bin max
-              gas_mcf_bin_min:
-                type: number
-                example: 90085400
-                description: residential gas mcf bin min
-              gas_mcf_bin_max:
-                type: number
-                example: 180069700
-                description: residential gas mcf bin min
-              elec_lb_ghg:
-                type: number
-                example: 12338215200
-                description: residential elec lb ghg
-              elec_min_lb_ghg:
-                type: number
-                example: 9167858100
-                description: residential elec min lb ghg
-              elec_max_lb_ghg:
-                type: number
-                example: 12338224300
-                description: residential elec max lb ghg
-              gas_lb_ghg:
-                type: number
-                example: 21616050300
-                description: residential gas lb ghg
-              gas_min_lb_ghg:
-                type: number
-                example: 10814093900
-                description: residential gas min lb ghg
-              gas_max_lb_ghg:
-                type: number
-                example: 21616051500
-          commercial:
-            type: object
-            properties:
-              num_establishments:
-                type: number
-                example: 225400
-              elec_1kdollars:
-                type: number
-                example: 3882200
-                description: commercial electric 1k dollars
-              elec_mwh:
-                type: number
-                example: 35045800
-                description: commercial electric megawatt hours
-              gas_1kdollars:
-                type: number
-                example: 646200
-                description: commercial gas 1k dollars
-              gas_mcf:
-                type: number
-                example: 138667300
-                description: commercial gas mcf
-              elec_1kdollars_bin_min:
-                type: number
-                example: 2247300
-                description: commercial elec 1k dollars bin min
-              elec_1kdollars_bin_max:
-                type: number
-                example: 3882300
-                description: commercial elec 1k dollars bin max
-              elec_mwh_bin_min:
-                type: number
-                example: 17527800
-                description: commercial elec mwh bin min
-              elec_mwh_bin_max:
-                type: number
-                example: 35045800
-                description: commercial elec mwh bin max
-              gas_1kdollars_bin_min:
-                type: number
-                example: 251100
-                description: commercial gas 1k dollars bin min
-              gas_1kdollars_bin_max:
-                type: number
-                example: 684200
-                description: commercial gas 1k dollars bin max
-              gas_mcf_bin_min:
-                type: number
-                example: 61413400
-                description: commercial gas mcf bin min
-              gas_mcf_bin_max:
-                type: number
-                example: 138667400
-                description: commercial gas mcf bin min
-              elec_lb_ghg:
-                type: number
-                example: 24469356933
-                description: commercial elec lb ghg
-              elec_min_lb_ghg:
-                type: number
-                example: 12238100838
-                description: commercial elec min lb ghg
-              elec_max_lb_ghg:
-                type: number
-                example: 24469359209
-                description: commercial elec max lb ghg
-              gas_lb_ghg:
-                type: number
-                example: 16646000800
-                description: commercial gas lb ghg
-              gas_min_lb_ghg:
-                type: number
-                example: 7372229800
-                description: commercial gas min lb ghg
-              gas_max_lb_ghg:
-                type: number
-                example: 16646007900
-          industrial:
-            type: object
-            properties:
-              num_establishments:
-                type: number
-                example: 5600
-              elec_1kdollars:
-                type: number
-                example: 170900
-                description: industrial electric 1k dollars
-              elec_mwh:
-                type: number
-                example: 1832700
-                description: industrial electric megawatt hours
-              gas_1kdollars:
-                type: number
-                example: 41300
-                description: industrial gas 1k dollars
-              gas_mcf:
-                type: number
-                example: 7491700
-                description: industrial gas mcf
-              elec_1kdollars_bin_min:
-                type: number
-                example: 166400
-                description: industrial elec 1k dollars bin min
-              elec_1kdollars_bin_max:
-                type: number
-                example: 332800
-                description: industrial elec 1k dollars bin max
-              elec_mwh_bin_min:
-                type: number
-                example: 1175600
-                description: industrial elec mwh bin min
-              elec_mwh_bin_max:
-                type: number
-                example: 2351300
-                description: industrial elec mwh bin max
-              gas_1kdollars_bin_min:
-                type: number
-                example: 0
-                description: industrial gas 1k dollars bin min
-              gas_1kdollars_bin_max:
-                type: number
-                example: 90300
-                description: industrial gas 1k dollars bin max
-              gas_mcf_bin_min:
-                type: number
-                example: 0
-                description: industrial gas mcf bin min
-              gas_mcf_bin_max:
-                type: number
-                example: 12004200
-                description: industrial gas mcf bin min
-              elec_lb_ghg:
-                type: number
-                example: 1279653000
-                description: industrial elec lb ghg
-              elec_min_lb_ghg:
-                type: number
-                example: 820816700
-                description: industrial elec min lb ghg
-              elec_max_lb_ghg:
-                type: number
-                example: 1641703300
-                description: industrial elec max lb ghg
-              gas_lb_ghg:
-                type: number
-                example: 899329000
-                description: industrial gas lb ghg
-              gas_min_lb_ghg:
-                type: number
-                example: 7700
-                description: industrial gas min lb ghg
-              gas_max_lb_ghg:
-                type: number
-                example: 1441016500
+              residential:
+                type: object
+                properties:
+                  housing_units:
+                    type: number
+                    example: 3356900
+                    description: residential housing units
+                  total_pop:
+                    type: number
+                    example: 8115600
+                    description: total residential population
+                  elec_1kdollars:
+                    type: number
+                    example: 4209600
+                    description: residential electric 1k dollars
+                  elec_mwh:
+                    type: number
+                    example: 18200300
+                    description: residential electric megawatt hours
+                  gas_1kdollars:
+                    type: number
+                    example: 1969200
+                    description: residential gas 1k dollars
+                  gas_mcf:
+                    type: number
+                    example: 180069600
+                    description: residential gas mcf
+                  elec_1kdollars_bin_min:
+                    type: number
+                    example: 1868100
+                    description: residential elec 1k dollars bin min
+                  elec_1kdollars_bin_max:
+                    type: number
+                    example: 4209700
+                    description: residential elec 1k dollars bin max
+                  elec_mwh_bin_min:
+                    type: number
+                    example: 13130500
+                    description: residential elec mwh bin min
+                  elec_mwh_bin_max:
+                    type: number
+                    example: 17671200
+                    description: residential elec mwh bin max
+                  gas_1kdollars_bin_min:
+                    type: number
+                    example: 838700
+                    description: residential gas 1k dollars bin min
+                  gas_1kdollars_bin_max:
+                    type: number
+                    example: 1969200
+                    description: residential gas 1k dollars bin max
+                  gas_mcf_bin_min:
+                    type: number
+                    example: 90085400
+                    description: residential gas mcf bin min
+                  gas_mcf_bin_max:
+                    type: number
+                    example: 180069700
+                    description: residential gas mcf bin min
+                  elec_lb_ghg:
+                    type: number
+                    example: 12338215200
+                    description: residential elec lb ghg
+                  elec_min_lb_ghg:
+                    type: number
+                    example: 9167858100
+                    description: residential elec min lb ghg
+                  elec_max_lb_ghg:
+                    type: number
+                    example: 12338224300
+                    description: residential elec max lb ghg
+                  gas_lb_ghg:
+                    type: number
+                    example: 21616050300
+                    description: residential gas lb ghg
+                  gas_min_lb_ghg:
+                    type: number
+                    example: 10814093900
+                    description: residential gas min lb ghg
+                  gas_max_lb_ghg:
+                    type: number
+                    example: 21616051500
+              commercial:
+                type: object
+                properties:
+                  num_establishments:
+                    type: number
+                    example: 225400
+                  elec_1kdollars:
+                    type: number
+                    example: 3882200
+                    description: commercial electric 1k dollars
+                  elec_mwh:
+                    type: number
+                    example: 35045800
+                    description: commercial electric megawatt hours
+                  gas_1kdollars:
+                    type: number
+                    example: 646200
+                    description: commercial gas 1k dollars
+                  gas_mcf:
+                    type: number
+                    example: 138667300
+                    description: commercial gas mcf
+                  elec_1kdollars_bin_min:
+                    type: number
+                    example: 2247300
+                    description: commercial elec 1k dollars bin min
+                  elec_1kdollars_bin_max:
+                    type: number
+                    example: 3882300
+                    description: commercial elec 1k dollars bin max
+                  elec_mwh_bin_min:
+                    type: number
+                    example: 17527800
+                    description: commercial elec mwh bin min
+                  elec_mwh_bin_max:
+                    type: number
+                    example: 35045800
+                    description: commercial elec mwh bin max
+                  gas_1kdollars_bin_min:
+                    type: number
+                    example: 251100
+                    description: commercial gas 1k dollars bin min
+                  gas_1kdollars_bin_max:
+                    type: number
+                    example: 684200
+                    description: commercial gas 1k dollars bin max
+                  gas_mcf_bin_min:
+                    type: number
+                    example: 61413400
+                    description: commercial gas mcf bin min
+                  gas_mcf_bin_max:
+                    type: number
+                    example: 138667400
+                    description: commercial gas mcf bin min
+                  elec_lb_ghg:
+                    type: number
+                    example: 24469356933
+                    description: commercial elec lb ghg
+                  elec_min_lb_ghg:
+                    type: number
+                    example: 12238100838
+                    description: commercial elec min lb ghg
+                  elec_max_lb_ghg:
+                    type: number
+                    example: 24469359209
+                    description: commercial elec max lb ghg
+                  gas_lb_ghg:
+                    type: number
+                    example: 16646000800
+                    description: commercial gas lb ghg
+                  gas_min_lb_ghg:
+                    type: number
+                    example: 7372229800
+                    description: commercial gas min lb ghg
+                  gas_max_lb_ghg:
+                    type: number
+                    example: 16646007900
+              industrial:
+                type: object
+                properties:
+                  num_establishments:
+                    type: number
+                    example: 5600
+                  elec_1kdollars:
+                    type: number
+                    example: 170900
+                    description: industrial electric 1k dollars
+                  elec_mwh:
+                    type: number
+                    example: 1832700
+                    description: industrial electric megawatt hours
+                  gas_1kdollars:
+                    type: number
+                    example: 41300
+                    description: industrial gas 1k dollars
+                  gas_mcf:
+                    type: number
+                    example: 7491700
+                    description: industrial gas mcf
+                  elec_1kdollars_bin_min:
+                    type: number
+                    example: 166400
+                    description: industrial elec 1k dollars bin min
+                  elec_1kdollars_bin_max:
+                    type: number
+                    example: 332800
+                    description: industrial elec 1k dollars bin max
+                  elec_mwh_bin_min:
+                    type: number
+                    example: 1175600
+                    description: industrial elec mwh bin min
+                  elec_mwh_bin_max:
+                    type: number
+                    example: 2351300
+                    description: industrial elec mwh bin max
+                  gas_1kdollars_bin_min:
+                    type: number
+                    example: 0
+                    description: industrial gas 1k dollars bin min
+                  gas_1kdollars_bin_max:
+                    type: number
+                    example: 90300
+                    description: industrial gas 1k dollars bin max
+                  gas_mcf_bin_min:
+                    type: number
+                    example: 0
+                    description: industrial gas mcf bin min
+                  gas_mcf_bin_max:
+                    type: number
+                    example: 12004200
+                    description: industrial gas mcf bin min
+                  elec_lb_ghg:
+                    type: number
+                    example: 1279653000
+                    description: industrial elec lb ghg
+                  elec_min_lb_ghg:
+                    type: number
+                    example: 820816700
+                    description: industrial elec min lb ghg
+                  elec_max_lb_ghg:
+                    type: number
+                    example: 1641703300
+                    description: industrial elec max lb ghg
+                  gas_lb_ghg:
+                    type: number
+                    example: 899329000
+                    description: industrial gas lb ghg
+                  gas_min_lb_ghg:
+                    type: number
+                    example: 7700
+                    description: industrial gas min lb ghg
+                  gas_max_lb_ghg:
+                    type: number
+                    example: 1441016500
   energy_expenditures_and_ghg_by_sector_gisjoin:
     properties:
       errors:
