@@ -131,7 +131,7 @@ definitions:
             geojson:
               type: string
               example: "{\"type\":\"MultiPolygon\",\"coordinates\":[[[[-104.680250998795,39.9140209995851]]]]}"
-            description: geojson coordinates for the city polygon.
+              description: geojson coordinates for the city polygon.
   energy_cohort_data:
     properties:
       errors:
