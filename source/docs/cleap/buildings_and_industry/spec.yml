@@ -1,0 +1,606 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: C-LEAP Buildings and Industry APIs
+  description: |-
+    A collection of APIs providing data related to buildings and industry including rooftop photovoltaic potential; building stock; and commercial and industrial activities.
+
+    These APIs return derived data for places, which are queried via ZIP codes, city/state or gisjoin parameters.
+
+    - Data is rounded to give approximations due to derived status.
+    - There is no index dump of all data, a city/state or zip must be included if not querying a gisjoin.
+    - Obtain gisjoin IDs via the [`/api/cleap/v1/cities`](/docs/cleap/general/) API.
+    - All APIs require the `api_key` parameter. Get an API key from https://developer.nrel.gov/signup/.
+schemes:
+  - https
+basePath: /api/cleap/v1
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: query
+security:
+  - api_key: []
+paths:
+  /activities:
+    get:
+      summary: Get the activities data for a zip or city/state.
+      parameters:
+        - name: city
+          in: query
+          type: string
+          description: Required, along with `state_abbr`, unless `zip` is specified.
+        - name: state_abbr
+          in: query
+          type: string
+          description: Required, along with `city`, unless `zip` is specified.
+        - name: zip
+          in: query
+          type: string
+          description: Required, unless `city` and `state_abbr` are specified.
+        - name: type
+          description: Required. Choices are `commercial` or `industrial`.
+          in: query
+          required: true
+          type: string
+          enum:
+            - commercial
+            - industrial
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/activities"
+  /activities/{gisjoin}:
+    get:
+      summary: Get the activities data for a gisjoin.
+      parameters:
+        - name: gisjoin
+          in: path
+          required: true
+          type: string
+          description: Required. Query the [`/api/cleap/v1/cities`](/docs/cleap/general/) API for this value.
+        - name: type
+          description: Required. Choices are `commercial` or `industrial`.
+          in: query
+          required: true
+          type: string
+          enum:
+            - commercial
+            - industrial
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/activities_gisjoin"
+  /building_stock_summaries:
+    get:
+      summary: Get the building stock summaries data for a zip or city/state.
+      parameters:
+        - name: city
+          in: query
+          type: string
+          description: Required, along with `state_abbr`, unless `zip` is specified.
+        - name: state_abbr
+          in: query
+          type: string
+          description: Required, along with `city`, unless `zip` is specified.
+        - name: zip
+          in: query
+          type: string
+          description: Required, unless `city` and `state_abbr` are specified.
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/building_stock_summaries"
+  /building_stock_summaries/{gisjoin}:
+    get:
+      summary: Get the building stock summaries data for the specific gisjoin.
+      parameters:
+        - name: gisjoin
+          in: path
+          required: true
+          type: string
+          description: Required. Query the [`/api/cleap/v1/cities`](/docs/cleap/general/) API for this value.
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/building_stock_summaries_gisjoin"
+  /small_building_pv:
+    get:
+      summary: Get the small building pv data for a zip or city/state.
+      parameters:
+        - name: city
+          in: query
+          type: string
+          description: Required, along with `state_abbr`, unless `zip` is specified.
+        - name: state_abbr
+          in: query
+          type: string
+          description: Required, along with `city`, unless `zip` is specified.
+        - name: zip
+          in: query
+          type: string
+          description: Required, unless `city` and `state_abbr` are specified.
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/small_building_pv"
+  /small_building_pv/{gisjoin}:
+    get:
+      summary: Get the small building pv data for the specific gisjoin.
+      parameters:
+        - name: gisjoin
+          in: path
+          required: true
+          type: string
+          description: Required. Query the [`/api/cleap/v1/cities`](/docs/cleap/general/) API for this value.
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/small_building_pv_gisjoin"
+definitions:
+  activities:
+    properties:
+      errors:
+        type: object
+        example: []
+      inputs:
+        type: object
+        properties:
+          city:
+            type: string
+            example: new york
+          state_abbr:
+            type: string
+            example: ny
+          type:
+            type: string
+            example: commercial
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      result:
+        type: object
+        properties:
+          "New York":
+            type: object
+            properties:
+              activities:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    naics_3:
+                      type: string
+                      example: 662
+                      description: a naics code
+                    electricity_users:
+                      type: string
+                      example: Hospitals
+                      description: users of electricity
+                    number_of_electricity_establishments:
+                      type: number
+                      example: 11
+                      description: number of electricity establishments
+                    electricity_use:
+                      type: number
+                      example: 27458
+                      description: amount of electricity use
+                    rank_of_electricity_use:
+                      type: number
+                      example: 4
+                      description: rank of electricity use
+                    electricity_use_per_establishment:
+                      type: number
+                      example: 1
+                      description: electricity use per establishment
+                    rank_of_electricity_use_per_establishment:
+                      type: number
+                      example: 2496
+                      description: rank of electricity use per establishment
+                    natural_gas_users:
+                      type: string
+                      example: Hospitals
+                      description: natural gas users
+                    number_of_natural_gas_establishments:
+                      type: number
+                      example: 11
+                      description: number of natural gas establishments
+                    natural_gas_use:
+                      type: number
+                      example: 27458
+                      description: amount of natural gas use
+                    rank_of_natural_gas_use:
+                      type: number
+                      example: 4
+                      description: rank of natural gas use
+                    natural_gas_use_per_establishment:
+                      type: number
+                      example: 1
+                      description: natural gas use per establishment
+                    rank_of_natural_gas_use_per_establishment:
+                      type: number
+                      example: 2496
+                      description: rank of natural gas use per establishment
+  activities_gisjoin:
+    properties:
+      errors:
+        type: object
+        example: []
+      inputs:
+        type: object
+        properties:
+          gisjoin:
+            type: string
+            example: G36051000
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      result:
+        type: object
+        properties:
+            activities:
+              type: array
+              items:
+                type: object
+                properties:
+                  naics_3:
+                    type: string
+                    example: 662
+                    description: a naics code
+                  electricity_users:
+                    type: string
+                    example: Hospitals
+                    description: users of electricity
+                  number_of_electricity_establishments:
+                    type: number
+                    example: 11
+                    description: number of electricity establishments
+                  electricity_use:
+                    type: number
+                    example: 27458
+                    description: amount of electricity use
+                  rank_of_electricity_use:
+                    type: number
+                    example: 4
+                    description: rank of electricity use
+                  electricity_use_per_establishment:
+                    type: number
+                    example: 1
+                    description: electricity use per establishment
+                  rank_of_electricity_use_per_establishment:
+                    type: number
+                    example: 2496
+                    description: rank of electricity use per establishment
+                  natural_gas_users:
+                    type: string
+                    example: Hospitals
+                    description: natural gas users
+                  number_of_natural_gas_establishments:
+                    type: number
+                    example: 11
+                    description: number of natural gas establishments
+                  natural_gas_use:
+                    type: number
+                    example: 27458
+                    description: amount of natural gas use
+                  rank_of_natural_gas_use:
+                    type: number
+                    example: 4
+                    description: rank of natural gas use
+                  natural_gas_use_per_establishment:
+                    type: number
+                    example: 1
+                    description: natural gas use per establishment
+                  rank_of_natural_gas_use_per_establishment:
+                    type: number
+                    example: 2496
+                    description: rank of natural gas use per establishment
+  building_stock_summaries:
+    properties:
+      errors:
+        type: object
+        example: []
+      inputs:
+        type: object
+        properties:
+          city:
+            type: string
+            example: new york
+          state_abbr:
+            type: string
+            example: ny
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      result:
+        type: object
+        properties:
+          "New York":
+            type: object
+            properties:
+              city_hazus_buildings:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    building_type:
+                      type: string
+                      example: agr1
+                      description: building type
+                    building_type_description:
+                      type: string
+                      example: Agriculture
+                      description: building type description
+                    building_count:
+                      type: number
+                      example: 421
+                      description: building count
+                    total_area_square_foot:
+                      type: number
+                      example: 1133612.99453
+                      description: total area square foot
+                    average_building_square_foot:
+                      type: number
+                      example: 2692.66744543943
+                      description: average building square foot
+                    sector:
+                      type: string
+                      example: ind
+                      description: sector
+              calculated_values:
+                type: object
+                properties:
+                  area_avg_res:
+                    type: number
+                    example: 3656.545758442879
+                  area_sum_res:
+                    type: number
+                    example: 3463820201.1526303
+                  count_sum_res:
+                    type: number
+                    example: 947293
+                  area_avg_com:
+                    type: number
+                    example: 9370.192893557474
+                  area_sum_com:
+                    type: number
+                    example: 1201474243.39062
+                  count_sum_com:
+                    type: number
+                    example: 128223
+                  area_avg_ind:
+                    type: number
+                    example: 7146.002896627219
+                  area_sum_ind:
+                    type: number
+                    example: 172697452.00279
+                  count_sum_ind:
+                    type: number
+                    example: 24167
+  building_stock_summaries_gisjoin:
+    properties:
+      errors:
+        type: object
+        example: []
+      inputs:
+        type: object
+        properties:
+          gisjoin:
+            type: string
+            example: G36051000
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      result:
+        type: object
+        properties:
+          city_hazus_buildings:
+            type: array
+            items:
+              type: object
+              properties:
+                building_type:
+                  type: string
+                  example: agr1
+                  description: building type
+                building_type_description:
+                  type: string
+                  example: Agriculture
+                  description: building type description
+                building_count:
+                  type: number
+                  example: 421
+                  description: building count
+                total_area_square_foot:
+                  type: number
+                  example: 1133612.99453
+                  description: total area square foot
+                average_building_square_foot:
+                  type: number
+                  example: 2692.66744543943
+                  description: average building square foot
+                sector:
+                  type: string
+                  example: ind
+                  description: sector
+          calculated_values:
+            type: object
+            properties:
+              area_avg_res:
+                type: number
+                example: 3656.545758442879
+              area_sum_res:
+                type: number
+                example: 3463820201.1526303
+              count_sum_res:
+                type: number
+                example: 947293
+              area_avg_com:
+                type: number
+                example: 9370.192893557474
+              area_sum_com:
+                type: number
+                example: 1201474243.39062
+              count_sum_com:
+                type: number
+                example: 128223
+              area_avg_ind:
+                type: number
+                example: 7146.002896627219
+              area_sum_ind:
+                type: number
+                example: 172697452.00279
+              count_sum_ind:
+                type: number
+                example: 24167
+  small_building_pv:
+    properties:
+      errors:
+        type: object
+        example: []
+      inputs:
+        type: object
+        properties:
+          city:
+            type: string
+            example: new york
+          state_abbr:
+            type: string
+            example: ny
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      result:
+        type: object
+        properties:
+          "New York":
+            type: object
+            properties:
+              city_rooftop_solar:
+                type: object
+                properties:
+                  count:
+                    type: number
+                    example: 172500
+                    description: count
+                  percent_suitable:
+                    type: number
+                    example: 0.6291741106516009
+                    description: percent suitable
+                  avg_generation_kwh:
+                    type: number
+                    example: 5700
+                    description: average generation kwh
+                  avg_generation_kwh_suitable:
+                    type: number
+                    example: 9100
+                    description: average generation kwh suitable
+                  area_total_m2:
+                    type: number
+                    example: 4711800
+                    description: total area m2
+                  capacity_total_kw:
+                    type: number
+                    example: 677400
+                    description: capacity total kw
+                  energy_total_kwh:
+                    type: number
+                    example: 985540900
+                    description: energy total kwh
+                  suitable_small_buildings:
+                    type: number
+                    example: 108500
+                    description: suitable small buildings
+                  unsuitable_small_buildings:
+                    type: number
+                    example: 64000
+                    description: unsuitable small buildings
+                  energy_total_mwh:
+                    type: number
+                    example: 985500
+                    description: energy total mwh
+  small_building_pv_gisjoin:
+    properties:
+      errors:
+        type: object
+        example: []
+      inputs:
+        type: object
+        properties:
+          gisjoin:
+            type: string
+            example: G36051000
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      result:
+        type: object
+        properties:
+          city_rooftop_solar:
+            type: object
+            properties:
+              count:
+                type: number
+                example: 172500
+                description: count
+              percent_suitable:
+                type: number
+                example: 0.6291741106516009
+                description: percent suitable
+              avg_generation_kwh:
+                type: number
+                example: 5700
+                description: average generation kwh
+              avg_generation_kwh_suitable:
+                type: number
+                example: 9100
+                description: average generation kwh suitable
+              area_total_m2:
+                type: number
+                example: 4711800
+                description: total area m2
+              capacity_total_kw:
+                type: number
+                example: 677400
+                description: capacity total kw
+              energy_total_kwh:
+                type: number
+                example: 985540900
+                description: energy total kwh
+              suitable_small_buildings:
+                type: number
+                example: 108500
+                description: suitable small buildings
+              unsuitable_small_buildings:
+                type: number
+                example: 64000
+                description: unsuitable small buildings
+              energy_total_mwh:
+                type: number
+                example: 985500
+                description: energy total mwh
+

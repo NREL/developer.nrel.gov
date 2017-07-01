@@ -1,13 +1,16 @@
 @import "_variables";
+@import "bootstrap-sprockets";
 @import "bootstrap";
-@import "fontawesome";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 @import "_shared/scaffolding";
 @import "_shared/popup";
 @import "_shared/syntax";
 @import "_shared/docs";
-@import "_shared/swagger";
-@import "_shared/swagger_overrides";
+
+@import "swagger-ui";
+@import "_swagger_overrides";
 
 @import "_api_umbrella";
 @import "_nrel";
