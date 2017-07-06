@@ -82,7 +82,7 @@ definitions:
   cities:
     properties:
       errors:
-        type: object
+        type: array
         example: []
       inputs:
         type: object
@@ -110,6 +110,7 @@ definitions:
               description: statefp
             countyfp:
               type: string
+              x-nullable: true
               example: 03
               description: countyfp
             name:
@@ -126,6 +127,7 @@ definitions:
               description: placefp
             cty_subd_fp:
               type: string
+              x-nullable: true
               example: 20
               description: cty_subd_fp
             geojson:
@@ -135,7 +137,7 @@ definitions:
   energy_cohort_data:
     properties:
       errors:
-        type: object
+        type: array
         example: []
       inputs:
         type: object
@@ -377,7 +379,7 @@ definitions:
   energy_cohort_data_gisjoin:
     properties:
       errors:
-        type: object
+        type: array
         example: []
       inputs:
         type: object

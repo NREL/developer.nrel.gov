@@ -172,7 +172,7 @@ definitions:
   city_vmt_estimates:
     properties:
       errors:
-        type: object
+        type: array
         example: []
       inputs:
         type: object
@@ -210,7 +210,7 @@ definitions:
   city_vmt_estimates_gisjoin:
     properties:
       errors:
-        type: object
+        type: array
         example: []
       inputs:
         type: object
@@ -242,7 +242,7 @@ definitions:
   gasoline_and_diesel_use:
     properties:
       errors:
-        type: object
+        type: array
         example: []
       inputs:
         type: object
@@ -335,7 +335,7 @@ definitions:
   gasoline_and_diesel_use_gisjoin:
     properties:
       errors:
-        type: object
+        type: array
         example: []
       inputs:
         type: object
@@ -422,7 +422,7 @@ definitions:
   vehicle_fuel_types_and_mpg:
     properties:
       errors:
-        type: object
+        type: array
         example: []
       inputs:
         type: object
@@ -550,7 +550,7 @@ definitions:
   vehicle_fuel_types_and_mpg_gisjoin:
     properties:
       errors:
-        type: object
+        type: array
         example: []
       inputs:
         type: object
@@ -672,7 +672,7 @@ definitions:
   vmt_by_road_class:
     properties:
       errors:
-        type: object
+        type: array
         example: []
       inputs:
         type: object
@@ -724,6 +724,7 @@ definitions:
                     description: vmt majior collector
                   vmt_minor_collector:
                     type: number
+                    x-nullable: true
                     example: 0
                     description: vmt minor collector
                   vmt_local:
@@ -733,7 +734,7 @@ definitions:
   vmt_by_road_class_gisjoin:
     properties:
       errors:
-        type: object
+        type: array
         example: []
       inputs:
         type: object
@@ -779,6 +780,7 @@ definitions:
                 description: vmt majior collector
               vmt_minor_collector:
                 type: number
+                x-nullable: true
                 example: 0
                 description: vmt minor collector
               vmt_local:

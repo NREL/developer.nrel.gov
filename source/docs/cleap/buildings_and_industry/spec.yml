@@ -147,7 +147,7 @@ definitions:
   activities:
     properties:
       errors:
-        type: object
+        type: array
         example: []
       inputs:
         type: object
@@ -233,7 +233,7 @@ definitions:
   activities_gisjoin:
     properties:
       errors:
-        type: object
+        type: array
         example: []
       inputs:
         type: object
@@ -310,7 +310,7 @@ definitions:
   building_stock_summaries:
     properties:
       errors:
-        type: object
+        type: array
         example: []
       inputs:
         type: object
@@ -395,7 +395,7 @@ definitions:
   building_stock_summaries_gisjoin:
     properties:
       errors:
-        type: object
+        type: array
         example: []
       inputs:
         type: object
@@ -474,7 +474,7 @@ definitions:
   small_building_pv:
     properties:
       errors:
-        type: object
+        type: array
         example: []
       inputs:
         type: object
@@ -543,7 +543,7 @@ definitions:
   small_building_pv_gisjoin:
     properties:
       errors:
-        type: object
+        type: array
         example: []
       inputs:
         type: object

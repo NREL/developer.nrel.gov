@@ -71,7 +71,7 @@ definitions:
   energy_expenditures_and_ghg_by_sector:
     properties:
       errors:
-        type: object
+        type: array
         example: []
       inputs:
         type: object
@@ -123,34 +123,42 @@ definitions:
                     description: residential gas mcf
                   elec_1kdollars_bin_min:
                     type: number
+                    x-nullable: true
                     example: 1868100
                     description: residential elec 1k dollars bin min
                   elec_1kdollars_bin_max:
                     type: number
+                    x-nullable: true
                     example: 4209700
                     description: residential elec 1k dollars bin max
                   elec_mwh_bin_min:
                     type: number
+                    x-nullable: true
                     example: 13130500
                     description: residential elec mwh bin min
                   elec_mwh_bin_max:
                     type: number
+                    x-nullable: true
                     example: 17671200
                     description: residential elec mwh bin max
                   gas_1kdollars_bin_min:
                     type: number
+                    x-nullable: true
                     example: 838700
                     description: residential gas 1k dollars bin min
                   gas_1kdollars_bin_max:
                     type: number
+                    x-nullable: true
                     example: 1969200
                     description: residential gas 1k dollars bin max
                   gas_mcf_bin_min:
                     type: number
+                    x-nullable: true
                     example: 90085400
                     description: residential gas mcf bin min
                   gas_mcf_bin_max:
                     type: number
+                    x-nullable: true
                     example: 180069700
                     description: residential gas mcf bin min
                   elec_lb_ghg:
@@ -200,34 +208,42 @@ definitions:
                     description: commercial gas mcf
                   elec_1kdollars_bin_min:
                     type: number
+                    x-nullable: true
                     example: 2247300
                     description: commercial elec 1k dollars bin min
                   elec_1kdollars_bin_max:
                     type: number
+                    x-nullable: true
                     example: 3882300
                     description: commercial elec 1k dollars bin max
                   elec_mwh_bin_min:
                     type: number
+                    x-nullable: true
                     example: 17527800
                     description: commercial elec mwh bin min
                   elec_mwh_bin_max:
                     type: number
+                    x-nullable: true
                     example: 35045800
                     description: commercial elec mwh bin max
                   gas_1kdollars_bin_min:
                     type: number
+                    x-nullable: true
                     example: 251100
                     description: commercial gas 1k dollars bin min
                   gas_1kdollars_bin_max:
                     type: number
+                    x-nullable: true
                     example: 684200
                     description: commercial gas 1k dollars bin max
                   gas_mcf_bin_min:
                     type: number
+                    x-nullable: true
                     example: 61413400
                     description: commercial gas mcf bin min
                   gas_mcf_bin_max:
                     type: number
+                    x-nullable: true
                     example: 138667400
                     description: commercial gas mcf bin min
                   elec_lb_ghg:
@@ -277,34 +293,42 @@ definitions:
                     description: industrial gas mcf
                   elec_1kdollars_bin_min:
                     type: number
+                    x-nullable: true
                     example: 166400
                     description: industrial elec 1k dollars bin min
                   elec_1kdollars_bin_max:
                     type: number
+                    x-nullable: true
                     example: 332800
                     description: industrial elec 1k dollars bin max
                   elec_mwh_bin_min:
                     type: number
+                    x-nullable: true
                     example: 1175600
                     description: industrial elec mwh bin min
                   elec_mwh_bin_max:
                     type: number
+                    x-nullable: true
                     example: 2351300
                     description: industrial elec mwh bin max
                   gas_1kdollars_bin_min:
                     type: number
+                    x-nullable: true
                     example: 0
                     description: industrial gas 1k dollars bin min
                   gas_1kdollars_bin_max:
                     type: number
+                    x-nullable: true
                     example: 90300
                     description: industrial gas 1k dollars bin max
                   gas_mcf_bin_min:
                     type: number
+                    x-nullable: true
                     example: 0
                     description: industrial gas mcf bin min
                   gas_mcf_bin_max:
                     type: number
+                    x-nullable: true
                     example: 12004200
                     description: industrial gas mcf bin min
                   elec_lb_ghg:
@@ -333,7 +357,7 @@ definitions:
   energy_expenditures_and_ghg_by_sector_gisjoin:
     properties:
       errors:
-        type: object
+        type: array
         example: []
       inputs:
         type: object
@@ -379,34 +403,42 @@ definitions:
                 description: residential gas mcf
               elec_1kdollars_bin_min:
                 type: number
+                x-nullable: true
                 example: 1868100
                 description: residential elec 1k dollars bin min
               elec_1kdollars_bin_max:
                 type: number
+                x-nullable: true
                 example: 4209700
                 description: residential elec 1k dollars bin max
               elec_mwh_bin_min:
                 type: number
+                x-nullable: true
                 example: 13130500
                 description: residential elec mwh bin min
               elec_mwh_bin_max:
                 type: number
+                x-nullable: true
                 example: 17671200
                 description: residential elec mwh bin max
               gas_1kdollars_bin_min:
                 type: number
+                x-nullable: true
                 example: 838700
                 description: residential gas 1k dollars bin min
               gas_1kdollars_bin_max:
                 type: number
+                x-nullable: true
                 example: 1969200
                 description: residential gas 1k dollars bin max
               gas_mcf_bin_min:
                 type: number
+                x-nullable: true
                 example: 90085400
                 description: residential gas mcf bin min
               gas_mcf_bin_max:
                 type: number
+                x-nullable: true
                 example: 180069700
                 description: residential gas mcf bin min
               elec_lb_ghg:
@@ -456,34 +488,42 @@ definitions:
                 description: commercial gas mcf
               elec_1kdollars_bin_min:
                 type: number
+                x-nullable: true
                 example: 2247300
                 description: commercial elec 1k dollars bin min
               elec_1kdollars_bin_max:
                 type: number
+                x-nullable: true
                 example: 3882300
                 description: commercial elec 1k dollars bin max
               elec_mwh_bin_min:
                 type: number
+                x-nullable: true
                 example: 17527800
                 description: commercial elec mwh bin min
               elec_mwh_bin_max:
                 type: number
+                x-nullable: true
                 example: 35045800
                 description: commercial elec mwh bin max
               gas_1kdollars_bin_min:
                 type: number
+                x-nullable: true
                 example: 251100
                 description: commercial gas 1k dollars bin min
               gas_1kdollars_bin_max:
                 type: number
+                x-nullable: true
                 example: 684200
                 description: commercial gas 1k dollars bin max
               gas_mcf_bin_min:
                 type: number
+                x-nullable: true
                 example: 61413400
                 description: commercial gas mcf bin min
               gas_mcf_bin_max:
                 type: number
+                x-nullable: true
                 example: 138667400
                 description: commercial gas mcf bin min
               elec_lb_ghg:
@@ -533,34 +573,42 @@ definitions:
                 description: industrial gas mcf
               elec_1kdollars_bin_min:
                 type: number
+                x-nullable: true
                 example: 166400
                 description: industrial elec 1k dollars bin min
               elec_1kdollars_bin_max:
                 type: number
+                x-nullable: true
                 example: 332800
                 description: industrial elec 1k dollars bin max
               elec_mwh_bin_min:
                 type: number
+                x-nullable: true
                 example: 1175600
                 description: industrial elec mwh bin min
               elec_mwh_bin_max:
                 type: number
+                x-nullable: true
                 example: 2351300
                 description: industrial elec mwh bin max
               gas_1kdollars_bin_min:
                 type: number
+                x-nullable: true
                 example: 0
                 description: industrial gas 1k dollars bin min
               gas_1kdollars_bin_max:
                 type: number
+                x-nullable: true
                 example: 90300
                 description: industrial gas 1k dollars bin max
               gas_mcf_bin_min:
                 type: number
+                x-nullable: true
                 example: 0
                 description: industrial gas mcf bin min
               gas_mcf_bin_max:
                 type: number
+                x-nullable: true
                 example: 12004200
                 description: industrial gas mcf bin min
               elec_lb_ghg:
@@ -595,7 +643,7 @@ definitions:
             type: string
             example: 1.0.0
       errors:
-        type: object
+        type: array
         example: []
       inputs:
         type: object
