@@ -68,10 +68,23 @@ paths:
           schema:
             $ref: "#/definitions/electricity_and_gas_stats"
 definitions:
+  error:
+    type: object
+    properties:
+      code:
+        type: string
+        description: A static code value representing the type of error.
+        example: NOT_FOUND
+      developer_message:
+        type: string
+        description: A human readable description of the error message.
+        example: No data was found for the gisjoin provided
   energy_expenditures_and_ghg_by_sector:
     properties:
       errors:
         type: array
+        items:
+          $ref: "#/definitions/error"
         example: []
       inputs:
         type: object
@@ -358,6 +371,8 @@ definitions:
     properties:
       errors:
         type: array
+        items:
+          $ref: "#/definitions/error"
         example: []
       inputs:
         type: object
@@ -644,6 +659,8 @@ definitions:
             example: 1.0.0
       errors:
         type: array
+        items:
+          $ref: "#/definitions/error"
         example: []
       inputs:
         type: object

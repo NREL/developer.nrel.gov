@@ -169,10 +169,23 @@ paths:
             $ref: "#/definitions/vmt_by_road_class_gisjoin"
           
 definitions:
+  error:
+    type: object
+    properties:
+      code:
+        type: string
+        description: A static code value representing the type of error.
+        example: NOT_FOUND
+      developer_message:
+        type: string
+        description: A human readable description of the error message.
+        example: No data was found for the gisjoin provided
   city_vmt_estimates:
     properties:
       errors:
         type: array
+        items:
+          $ref: "#/definitions/error"
         example: []
       inputs:
         type: object
@@ -211,6 +224,8 @@ definitions:
     properties:
       errors:
         type: array
+        items:
+          $ref: "#/definitions/error"
         example: []
       inputs:
         type: object
@@ -243,6 +258,8 @@ definitions:
     properties:
       errors:
         type: array
+        items:
+          $ref: "#/definitions/error"
         example: []
       inputs:
         type: object
@@ -336,6 +353,8 @@ definitions:
     properties:
       errors:
         type: array
+        items:
+          $ref: "#/definitions/error"
         example: []
       inputs:
         type: object
@@ -423,6 +442,8 @@ definitions:
     properties:
       errors:
         type: array
+        items:
+          $ref: "#/definitions/error"
         example: []
       inputs:
         type: object
@@ -551,6 +572,8 @@ definitions:
     properties:
       errors:
         type: array
+        items:
+          $ref: "#/definitions/error"
         example: []
       inputs:
         type: object
@@ -673,6 +696,8 @@ definitions:
     properties:
       errors:
         type: array
+        items:
+          $ref: "#/definitions/error"
         example: []
       inputs:
         type: object
@@ -735,6 +760,8 @@ definitions:
     properties:
       errors:
         type: array
+        items:
+          $ref: "#/definitions/error"
         example: []
       inputs:
         type: object

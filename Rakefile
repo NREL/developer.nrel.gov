@@ -6,7 +6,7 @@ end
 
 desc "Test Swagger files to ensure they pass specifications."
 task :lint do
-  swagger_specs = `grep -l -r -i --include '*.yml' --include '*.json' swagger ./build`.split("\n")
+  swagger_specs = `grep -l -r -i --include '*.yml' --include '*.json' swagger ./source ./build`.split("\n")
   if($?.exitstatus != 0)
     puts swagger_specs
     exit 1
