@@ -1,0 +1,318 @@
+---
+title: Wind Toolkit Data
+summary: Collect and download, as CSV, a configurable set of data fields from a national collection of wind stations. This API is capabale of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.
+url: /api/wind-toolkit/wind/wtk_download
+---
+
+# <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
+<%= current_page.data.summary %>
+
+<ul id="toc"></ul>
+
+## Request URL
+
+<pre>GET <%= current_page.data.url %><em>.format?parameters</em></pre>
+
+## Request Parameters
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+    <thead>
+		<tr>
+			<th class="doc-parameters-name" scope="col">Parameter</th>
+			<th class="doc-parameters-required" scope="col">Required</th>
+			<th class="doc-parameters-value" scope="col">Value</th>
+			<th class="doc-parameters-description" scope="col">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th class="doc-parameter-name" scope="row">api_key</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+			</td>
+			<td class="doc-parameter-description">
+			<p>Your developer API key. See <a href="/docs/api-key/">API keys</a> for more information.</p>
+			</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">wkt</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> well-known text point string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+			</td>
+			<td class="doc-parameter-description">A well-known text (WKT) representation of the geometry for which to extract data. May be a point or polygon geometry.</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">attributes</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>wind_speed, wind_direction, power, pressure, temperature, density</em></div>
+			</td>
+			<td class="doc-parameter-description">Each specified attribute will be returned as a column in the resultant CSV download.</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">names</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited integer array</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field">&nbsp;</div>
+			</td>
+			<td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">full_name</th>
+			<td class="doc-parameter-required">No</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field">&nbsp;</div>
+			</td>
+			<td class="doc-parameter-description">The full name of the user requesting data.</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">email</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> email string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field">&nbsp;</div>
+			</td>
+			<td class="doc-parameter-description">An active email for the user requesting data. This email will be used to deliver the extracted data.</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">affiliation</th>
+			<td class="doc-parameter-required">No</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field">&nbsp;</div>
+			</td>
+			<td class="doc-parameter-description">The organization with which the user requesting the data is affiliated.</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">reason</th>
+			<td class="doc-parameter-required">No</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field">&nbsp;</div>
+			</td>
+			<td class="doc-parameter-description">The reason that the user is requesting the data.</td>
+		</tr>
+	</tbody>
+</table>
+
+## Response Fields
+
+The response is composed of service-related informational fields and the results of the data query.
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+	<thead>
+		<tr>
+			<th class="doc-parameters-name" scope="col">Field</th>
+			<th class="doc-parameters-value" scope="col">Value</th>
+			<th class="doc-parameters-description" scope="col">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th class="doc-parameter-name" scope="row">errors</th>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> string array</div>
+			</td>
+			<td class="doc-parameter-description">
+			<p>A list of error messages</p>
+			</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">warnings</th>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> string array</div>
+			</td>
+			<td class="doc-parameter-description">
+			<p>A list of warning messages</p>
+			</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">inputs</th>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
+			</td>
+			<td class="doc-parameter-description">Key: Value pairs representing all input parameters</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">outputs</th>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
+			</td>
+			<td class="doc-parameter-description">Upon successful completion a message will be returned informing the user that file generation is in progress and an email will be sent to the address provided in the <code>email</code> input field when the download is ready</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Examples</h2>
+
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?api_key=DEMO_KEY&wkt=POINT(-104.23828125%2039.90973623453719)&attributes=wind_speed,wind_direction,power,temperature,pressure&names=2009&full_name=Sample User&email=sample@email.com&affiliation=Test Organization&reason=Example</code></div>
+
+<table border="1" cellpadding="1" cellspacing="0" style="border-collapse:
+ collapse;width:455pt" width="455">
+	<colgroup>
+		<col span="7" style="width:65pt" width="65" />
+	</colgroup>
+	<tbody>
+		<tr height="15" style="height:15.0pt">
+			<td height="15" style="height:15.0pt;width:65pt" width="65">SiteID</td>
+			<td align="right" style="width:65pt" width="65">12</td>
+			<td style="width:65pt" width="65">&nbsp;</td>
+			<td style="width:65pt" width="65">&nbsp;</td>
+			<td style="width:65pt" width="65">&nbsp;</td>
+			<td style="width:65pt" width="65">&nbsp;</td>
+			<td style="width:65pt" width="65">&nbsp;</td>
+		</tr>
+		<tr height="15" style="height:15.0pt">
+			<td height="15" style="height:15.0pt">Longitude</td>
+			<td align="right">-97.483215</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr height="15" style="height:15.0pt">
+			<td height="15" style="height:15.0pt">Latitude</td>
+			<td align="right">25.104233</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr height="15" style="height:15.0pt">
+			<td height="15" style="height:15.0pt">Year</td>
+			<td>Month</td>
+			<td>Day</td>
+			<td>Hour</td>
+			<td>Minute</td>
+			<td>density at hub height (kg/m^3)</td>
+			<td>power (MW)</td>
+			<td>surface air pressure (Pa)</td>
+			<td>air temperature at 2m (K)</td>
+			<td>wind direction at 100m (deg)</td>
+			<td>wind speed at 100m (m/s)</td>
+		</tr>
+		<tr height="15" style="height:15.0pt">
+			<td align="right" class="xl63" height="15" style="height:15.0pt">2009</td>
+			<td align="right">1</td>
+			<td align="right">1</td>
+			<td align="right">0</td>
+			<td align="right">0</td>
+			<td align="right">1.043</td>
+			<td align="right">0.589</td>
+			<td align="right">84508.176</td>
+			<td align="right">270.81</td>
+			<td align="right">201.457</td>
+			<td align="right">4.065</td>
+		</tr>
+		<tr height="15" style="height:15.0pt">
+			<td align="right" class="xl63" height="15" style="height:15.0pt">2009</td>
+			<td align="right">1</td>
+			<td align="right">1</td>
+			<td align="right">0</td>
+			<td align="right">5</td>
+			<td align="right">1.042</td>
+			<td align="right">0.657</td>
+			<td align="right">84501.776</td>
+			<td align="right">270.847</td>
+			<td align="right">201.094</td>
+			<td align="right">4.165</td>
+		</tr>
+		<tr height="15" style="height:15.0pt">
+			<td align="right" class="xl63" height="15" style="height:15.0pt">2009</td>
+			<td align="right">1</td>
+			<td align="right">1</td>
+			<td align="right">0</td>
+			<td align="right">10</td>
+			<td align="right">1.04</td>
+			<td align="right">0.722</td>
+			<td align="right">84494.456</td>
+			<td align="right">270.853</td>
+			<td align="right">201.797</td>
+			<td align="right">4.263</td>
+		</tr>
+		<tr height="15" style="height:15.0pt">
+			<td align="right" class="xl63" height="15" style="height:15.0pt">2009</td>
+			<td align="right">1</td>
+			<td align="right">1</td>
+			<td align="right">0</td>
+			<td align="right">15</td>
+			<td align="right">1.039</td>
+			<td align="right">0.719</td>
+			<td align="right">84490.792</td>
+			<td align="right">270.832</td>
+			<td align="right">202.039</td>
+			<td align="right">4.26</td>
+		</tr>
+		<tr height="15" style="height:15.0pt">
+			<td align="right" class="xl63" height="15" style="height:15.0pt">...</td>
+			<td align="right">...</td>
+			<td align="right">...</td>
+			<td align="right">...</td>
+			<td align="right">...</td>
+			<td align="right">...</td>
+			<td align="right">...</td>
+			<td align="right">...</td>
+			<td align="right">...</td>
+			<td align="right">...</td>
+			<td align="right">...</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2 id="rate-limits">Rate Limits</h2>
+
+Rate limits for this application are significantly less than the [standard rate limits](/docs/rate-limits){:target="_blank"} for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.
+
+There are two levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 2000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 300 requests per day at a frequency of no more than 1 every 2 seconds.  
+
+In addition to this limit, the service has a secondary fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.
+
+For some tips and tricks to maximize data downloads please read the guide [here](/docs/wind/wind-toolkit/guide).
+
+<h2 id="errors">Errors</h2>
+
+<p><a href="/docs/errors/">Standard errors</a> may be returned. In addition, the following service-specific errors may be returned:</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+	<thead>
+		<tr>
+			<th class="doc-parameters-name" scope="col" style="width: 100px;">HTTP Status Code</th>
+			<th class="doc-parameters-required" scope="col">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th class="doc-parameter-name" scope="row">400</th>
+			<td class="doc-parameter-description">Bad Request: When required parameters are missing.</td>
+		</tr>
+	</tbody>
+</table>
