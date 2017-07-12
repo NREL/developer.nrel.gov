@@ -683,52 +683,56 @@ definitions:
                 type: string
                 example: EMISS.CO2-TOTV-IC-TO-CO.A
           series:
-            properties:
-              series_id:
-                type: string
-                example: EMISS.CO2-TOTV-IC-TO-CO.A
-              name:
-                type: string
-                example: "Industrial carbon dioxide emissions, all fuels, Colorado"
-              units:
-                type: string
-                example: million metric tons CO2
-
-
-
-
-        # items:
-        #   type: object
-        #   properties:
-        #     statefp:
-        #       type: string
-        #       example: 08
-        #       description: statefp
-        #     countyfp:
-        #       type: string
-        #       x-nullable: true
-        #       example: 03
-        #       description: countyfp
-        #     name:
-        #       type: string
-        #       example: Denver
-        #       description: name of city
-        #     gisjoin:
-        #       type: string
-        #       example: G08020000
-        #       description: ID used to reference this place for other queries
-        #     place_fp:
-        #       type: string
-        #       example: 20000
-        #       description: placefp
-        #     cty_subd_fp:
-        #       type: string
-        #       x-nullable: true
-        #       example: 20
-        #       description: cty_subd_fp
-        #     geojson:
-        #       type: string
-        #       example: "{\"type\":\"MultiPolygon\",\"coordinates\":[[[[-104.680250998795,39.9140209995851]]]]}"
-        #       description: geojson coordinates for the city polygon.
+            type: array
+            items:
+              properties:
+                series_id:
+                  type: string
+                  example: EMISS.CO2-TOTV-IC-TO-CO.A
+                name:
+                  type: string
+                  example: "Industrial carbon dioxide emissions, all fuels, Colorado"
+                units:
+                  type: string
+                  example: million metric tons CO2
+                f:
+                  type: string
+                  example: A
+                unitsshort:
+                  type: string
+                  example: mmt CO2
+                description:
+                  type: string
+                  example: See http://www.eia.gov/environment/emissions/state/analysis/ for technical notes and documentation.
+                copyright:
+                  type: string
+                  example: None
+                source:
+                  type: string
+                  example: "EIA, U.S. Energy Information Administration"
+                iso3166:
+                  type: string
+                  example: USA-CO
+                geography:
+                  type: string
+                  example: USA-CO
+                start:
+                  type: string
+                  example: "1980"
+                end:
+                  type: string
+                  example: "2014"
+                updated:
+                  type: string
+                  example: 2017-01-26T14:27:58-0500
+                data:
+                  type: array
+                  items:
+                    type: array
+                    items:
+                      type: string
+                      example: "2014"
+                    # - "2014"
+                    # - 125.211
 
 
