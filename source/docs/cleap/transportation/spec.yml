@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
   version: "1.0.0"
-  title: C-LEAP Transportation APIs
+  title: Transportation APIs
   description: |-
     A collection of APIs providing data related to on-road transportation markets including fuel use, vehicle miles traveled, and vehicle fuel breakdown.
 
@@ -167,7 +167,7 @@ paths:
           description: Successful request
           schema:
             $ref: "#/definitions/vmt_by_road_class_gisjoin"
-          
+
 definitions:
   error:
     type: object

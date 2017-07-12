@@ -1,9 +1,9 @@
 swagger: "2.0"
 info:
   version: "1.0.0"
-  title: C-LEAP Electricity and Natural Gas APIs
+  title: Electricity and Natural Gas APIs
   description: |-
-    A collection of APIs providing data related to electricty and natural gas markets, including energy usage and expenditures, and GHG emissions.
+    A collection of APIs providing data related to electricity and natural gas markets, including energy usage and expenditures, and GHG emissions.
 
     These APIs return derived data for places, which are queried via ZIP codes, city/state or gisjoin parameters.
 

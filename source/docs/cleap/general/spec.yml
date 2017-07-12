@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
   version: "1.0.0"
-  title: C-LEAP General APIs
+  title: General APIs
   description: |-
     A collection of APIs providing data related to cities and energy cohorts, including city lookup.
 
