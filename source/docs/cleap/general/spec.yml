@@ -732,7 +732,3 @@ definitions:
                     items:
                       type: string
                       example: "2014"
-                    # - "2014"
-                    # - 125.211
-
-
