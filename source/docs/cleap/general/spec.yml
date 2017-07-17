@@ -92,6 +92,13 @@ paths:
           type: string
           required: true
           description: Required. Choices are `'commercial', 'electric', 'residential', 'industrial', 'transportation', 'total'`.
+          enum:
+            - commercial
+            - electric
+            - residential
+            - industrial
+            - transportation
+            - total
       responses:
         "200":
           description: Successful request
