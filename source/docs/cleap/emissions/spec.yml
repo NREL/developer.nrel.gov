@@ -135,4 +135,4 @@ definitions:
                     type: array
                     items:
                       type: string
-                      example: "2014"
+                      example: ["2014", 14.237501]
