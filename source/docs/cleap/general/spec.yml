@@ -86,12 +86,12 @@ paths:
           in: query
           type: string
           required: true
-          description: Required, along with `type`.
+          description: Required.
         - name: type
           in: query
           type: string
           required: true
-          description: Required, along with `state_abbr`.  Choices are `'commercial', 'electric', 'residential', 'industrial', 'transportation', 'total'`.
+          description: Required. Choices are `'commercial', 'electric', 'residential', 'industrial', 'transportation', 'total'`.
       responses:
         "200":
           description: Successful request
@@ -729,6 +729,4 @@ definitions:
                   type: array
                   items:
                     type: array
-                    items:
-                      type: string
-                      example: "2014"
+                    example: ["2014", 14.237501]
