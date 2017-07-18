@@ -109,11 +109,11 @@ definitions:
               type: string
               example: USA-CO
             start:
-              type: string
-              example: "1980"
+              type: number
+              example: 1980
             end:
-              type: string
-              example: "2014"
+              type: number
+              example: 2014
             updated:
               type: string
               example: 2017-01-26T14:27:58-0500
