@@ -123,3 +123,105 @@ definitions:
                 "1980":
                   type: number
                   example: 10.516286
+                "1981":
+                  type: number
+                  example: 8.392009
+                "1982":
+                  type: number
+                  example: 7.190044
+                "1983":
+                  type: number
+                  example: 6.452622
+                "1984":
+                  type: number
+                  example: 6.244769
+                "1985":
+                  type: number
+                  example: 5.313541
+                "1986":
+                  type: number
+                  example: 5.570528
+                "1987":
+                  type: number
+                  example: 5.095779
+                "1988":
+                  type: number
+                  example: 5.85142
+                "1989":
+                  type: number
+                  example: 6.421156
+                "1990":
+                  type: number
+                  example: 6.509537
+                "1991":
+                  type: number
+                  example: 7.509993
+                "1992":
+                  type: number
+                  example: 7.699262
+                "1993":
+                  type: number
+                  example: 8.419759
+                "1994":
+                  type: number
+                  example: 7.84506
+                "1995":
+                  type: number
+                  example: 7.758708
+                "1996":
+                  type: number
+                  example: 7.990315
+                "1997":
+                  type: number
+                  example: 8.328755
+                "1998":
+                  type: number
+                  example: 8.872571
+                "1999":
+                  type: number
+                  example: 8.518556
+                "2000":
+                  type: number
+                  example: 9.3555
+                "2001":
+                  type: number
+                  example: 12.872679
+                "2002":
+                  type: number
+                  example: 12.176083
+                "2003":
+                  type: number
+                  example: 11.939549
+                "2004":
+                  type: number
+                  example: 12.643321
+                "2005":
+                  type: number
+                  example: 13.562539
+                "2006":
+                  type: number
+                  example: 13.616127
+                "2007":
+                  type: number
+                  example: 13.597258
+                "2008":
+                  type: number
+                  example: 13.984433
+                "2009":
+                  type: number
+                  example: 13.619995
+                "2010":
+                  type: number
+                  example: 14.634091
+                "2011":
+                  type: number
+                  example: 13.193981
+                "2012":
+                  type: number
+                  example: 13.412163
+                "2013":
+                  type: number
+                  example: 13.486865
+                "2014":
+                  type: number
+                  example: 14.237501
