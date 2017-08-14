@@ -1,37 +1,21 @@
 # developer.nrel.gov
 
-Have questions, feedback, or issues with the APIs available at [developer.nrel.gov](https://developer.nrel.gov/)? Let us know in the [issue tracker](https://github.com/NREL/developer.nrel.gov/issues).
+Have questions, feedback, or issues with the APIs available at [developer.nrel.gov](https://developer.nrel.gov/)? [Contact us](https://developer.nrel.gov/contact/) or let us know in the [issue tracker](https://github.com/NREL/developer.nrel.gov/issues).
 
-## Notes 
-
-To edit this site, edit the `Master` branch.  Changes should take effect within minutes.  
-
-The website content for developer.nrel.gov built with [Middleman](http://middlemanapp.com).
-
-All contributions are welcome. To submit a change, fork this repo, commit your changes, and send us a [pull request](https://help.github.com/articles/using-pull-requests).
-
-## Setup
-
-Ruby 1.9+ is required to build the site.
-
-```sh
-$ git submodule update --init --recursive # Make sure to pull in git submodules
-$ gem install bundler
-$ bundle install --binstubs
-```
+This repository stores the website content and documentation for [developer.nrel.gov](https://developer.nrel.gov). Contributions are welcome. To submit a change, fork this repo, commit your changes, and send us a [pull request](https://help.github.com/articles/using-pull-requests).
 
 ## Development
 
-The content files to edit are in `./source`. You can view your changes as you make them by running the Middleman preview server:
+The content files to edit are in [`./source`](https://github.com/NREL/developer.nrel.gov/tree/master/source). To preview your changes you can use the [Middleman](https://middlemanapp.com) preview server. To run Middleman:
 
-```sh
-$ ./bin/middleman server
-```
-
-This will start a local web server running at [http://localhost:4567/](http://localhost:4567/)
-
-After you're happy with your changes, commit and submit a pull request.
+1. Install [Docker](https://www.docker.com/community-edition) on your computer.
+2. Checkout the `developer.nrel.gov` repository on your computer (`git clone https://github.com/NREL/developer.nrel.gov.git`).
+3. Inside the `developer.nrel.gov` directory, run `docker-compose up`.
+4. View your changes at: http://localhost:4480/
 
 ## Deploy
 
-Your changes will automatically be published to GitHub Pages when they get pushed to master. Wait a few minutes after pushing them for the changes to appear, or check the [build status](https://circleci.com/gh/NREL/developer.nrel.gov) for progress or errors.
+- Changes committed to the `staging` branch will automatically be deployed to the staging site.
+- Changes committed to the `master` branch will automatically be deployed to the production site.
+
+Deploys may take a few minutes after pushing before they show up. You can check the status on our internal Jenkins server (under the "developer.nrel.gov-deploy" job).
