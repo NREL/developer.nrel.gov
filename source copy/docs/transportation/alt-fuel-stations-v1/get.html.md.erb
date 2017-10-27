@@ -1,0 +1,217 @@
+---
+title: Get Station by ID
+summary: Fetch the details of a specific alternative fuel station given the station's
+  ID.
+url: GET /api/alt-fuel-stations/v1/:id
+
+---
+
+# <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
+<%= current_page.data.summary %>
+
+<ul id="toc"></ul>
+
+## Request URL
+
+<pre>GET /api/alt-fuel-stations/v1/:id<em>.format?parameters</em></pre>
+
+## Request Parameters
+
+The following query parameters may be passed in the request to control the output:
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Parameter</th>
+      <th class="doc-parameters-required" scope="col">Required</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">format</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Options:</strong> <em>json</em>, <em>xml</em>, <em>csv</em>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The output response format. Given in the URL as the file extension.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">api_key</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Your developer API key. See <a href="/docs/api-key/">API key usage</a> for more information.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">id</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The unique ID of the station to find.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Response Fields
+
+The response is composed of the fuel station matching the requested query. The station has the following attributes:
+
+<%= partial("docs/transportation/alt-fuel-stations-v1/record_fields") %>
+
+## Examples
+
+### JSON Output Format
+
+<pre>GET <a href="/api/alt-fuel-stations/v1/39534.json?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/39534.json?api_key=DEMO_KEY</a></pre>
+
+```json
+{
+  "alt_fuel_station": {
+    "access_days_time": null,
+    "bd_blends": null,
+    "cards_accepted": null,
+    "city": "Golden",
+    "date_last_confirmed": "2012-12-31",
+    "e85_blender_pump": null,
+    "ev_dc_fast_num": null,
+    "ev_level1_evse_num": null,
+    "ev_level2_evse_num": 38,
+    "ev_network": null,
+    "ev_network_web": null,
+    "ev_other_evse": null,
+    "expected_date": null,
+    "federal_agency": {
+      "id": 8,
+      "name": "U.S. Department of Energy"
+    },
+    "fuel_type_code": "ELEC",
+    "geocode_status": "200-8",
+    "groups_with_access_code": "Private access only",
+    "hy_status_link": null,
+    "id": 39534,
+    "intersection_directions": "Building 17",
+    "latitude": 39.7408399,
+    "longitude": -105.1685277,
+    "lpg_primary": null,
+    "ng_fill_type_code": null,
+    "ng_psi": null,
+    "ng_vehicle_class": null,
+    "open_date": "2011-05-20",
+    "owner_type_code": "FG",
+    "plus4": null,
+    "state": "CO",
+    "station_name": "National Renewable Energy Laboratory - Denver West",
+    "station_phone": null,
+    "status_code": "E",
+    "street_address": "15013 Denver West Pkwy",
+    "updated_at": "2013-01-16T16:09:02Z",
+    "zip": "80401"
+  }
+}
+```
+
+### XML Output Format
+
+<pre>GET <a href="/api/alt-fuel-stations/v1/39534.xml?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/39534.xml?api_key=DEMO_KEY</a></pre>
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<alt-fuel-station>
+  <access-days-time nil="true"/>
+  <bd-blends nil="true"/>
+  <cards-accepted nil="true"/>
+  <city>Golden</city>
+  <date-last-confirmed>2012-12-31</date-last-confirmed>
+  <expected-date nil="true"/>
+  <fuel-type-code>ELEC</fuel-type-code>
+  <geocode-status>200-8</geocode-status>
+  <groups-with-access-code>Private access only</groups-with-access-code>
+  <hy-status-link nil="true"/>
+  <intersection-directions>Building 17</intersection-directions>
+  <latitude>39.7408399</latitude>
+  <longitude>-105.1685277</longitude>
+  <open-date>2011-05-20</open-date>
+  <owner-type-code>FG</owner-type-code>
+  <plus4 nil="true"/>
+  <station-name>National Renewable Energy Laboratory - Denver West</station-name>
+  <station-phone nil="true"/>
+  <status-code>E</status-code>
+  <street-address>15013 Denver West Pkwy</street-address>
+  <zip>80401</zip>
+  <state>CO</state>
+  <ng-fill-type-code nil="true"/>
+  <ng-psi nil="true"/>
+  <ng-vehicle-class nil="true"/>
+  <e85-blender-pump nil="true"/>
+  <ev-level1-evse-num nil="true"/>
+  <ev-level2-evse-num>38</ev-level2-evse-num>
+  <ev-dc-fast-num nil="true"/>
+  <ev-other-evse nil="true"/>
+  <ev-network nil="true"/>
+  <ev-network-web nil="true"/>
+  <lpg-primary nil="true"/>
+  <id>39534</id>
+  <updated-at>2013-01-16T16:09:02Z</updated-at>
+  <federal-agency>
+    <id type="integer">8</id>
+    <name>U.S. Department of Energy</name>
+  </federal-agency>
+</alt-fuel-station>
+```
+
+### CSV Output Format
+
+<pre>GET <a href="/api/alt-fuel-stations/v1/39534.csv?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/39534.csv?api_key=DEMO_KEY</a></pre>
+
+```
+Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump
+ELEC,National Renewable Energy Laboratory - Denver West,15013 Denver West Pkwy,Building 17,Golden,CO,80401,,,E,,Private access only,,,,,,,38,,,,,200-8,39.7408399,-105.1685277,2012-12-31,39534,2013-01-16 16:09:02 UTC,FG,8,U.S. Department of Energy,2011-05-20,,,,
+```
+
+## Rate Limits
+
+[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour
+
+## Errors
+
+[Standard errors](/docs/errors) may be returned. In addition, the following service-specific errors may be returned:
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">HTTP Status Code</th>
+      <th class="doc-parameters-required" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">404</th>
+      <td class="doc-parameter-description">Not Found - A station for the given ID could not be found.</td>
+    </tr>
+  </tbody>
+</table>

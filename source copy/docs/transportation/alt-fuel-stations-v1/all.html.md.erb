@@ -1,0 +1,315 @@
+---
+title: All Stations
+summary: Return a full list of alternative fuel stations that match your query.
+url: GET /api/alt-fuel-stations/v1
+
+---
+
+# <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
+<%= current_page.data.summary %>
+
+<ul id="toc"></ul>
+
+## Request URL
+
+<pre>GET /api/alt-fuel-stations/v1<em>.format?parameters</em></pre>
+
+## Request Parameters
+
+The following query parameters may be passed in the request to control the output:
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Parameter</th>
+      <th class="doc-parameters-required" scope="col">Required</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= partial("docs/transportation/alt-fuel-stations-v1/request_params_common1") %>
+    <%= partial("docs/transportation/alt-fuel-stations-v1/request_params_common2") %>
+    <tr>
+      <th class="doc-parameter-name" scope="row">limit</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> all
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Minimum:</strong> <i>1</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">The maximum number of results to return. If not specified, all results will be returned. Note: Since results are returned in no specific order, this has limited use, other than for testing purposes.</td>
+    </tr>
+  </tbody>
+</table>
+
+## Response Fields
+
+The response is composed of the fuel stations matching the requested query. For JSON or XML formats, additional metadata is supplied in the following structure:
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">total_results</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>How many total stations match your requested query (regardless of any "limit" applied).</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">station_locator_url</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The URL of the Alternative Fueling Station Locator, the web application that supplies this data.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">fuel_stations</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        An array of matching fuel station records returned in no specific order. See <a href="#fuel-station-record-fields">fuel station record fields</a> for response details.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### Fuel Station Record Fields
+
+The individual fuel station records are returned in no specific order. Each station has the following attributes:
+
+<%= partial("docs/transportation/alt-fuel-stations-v1/record_fields") %>
+
+## Examples
+
+### JSON Output Format
+
+<pre>GET <a href="/api/alt-fuel-stations/v1.json?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2">/api/alt-fuel-stations/v1.json?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2</a></pre>
+
+```json
+{
+  "fuel_stations": [
+    {
+      "access_days_time": "24 hours daily; also accept Propel Clean Drive fleet card",
+      "bd_blends": null,
+      "cards_accepted": "A D M V FuelMan Voyager Wright_Exp",
+      "city": "Fremont",
+      "date_last_confirmed": "2013-01-31",
+      "expected_date": null,
+      "fuel_type_code": "E85",
+      "geocode_status": "200-8",
+      "groups_with_access_code": "Public - credit card at all times",
+      "hy_status_link": null,
+      "intersection_directions": "Stevenson Blvd & Paseo Padre Pkwy",
+      "latitude": 37.5486034,
+      "longitude": -121.9717542,
+      "open_date": "2010-08-02",
+      "owner_type_code": "P",
+      "plus4": null,
+      "station_name": "Propel Fuels",
+      "station_phone": "800-871-0773",
+      "status_code": "E",
+      "street_address": "39707 Paseo Padre Pkwy",
+      "zip": "94538",
+      "state": "CA",
+      "ng_fill_type_code": null,
+      "ng_psi": null,
+      "ng_vehicle_class": null,
+      "e85_blender_pump": false,
+      "ev_level1_evse_num": null,
+      "ev_level2_evse_num": null,
+      "ev_dc_fast_num": null,
+      "ev_other_evse": null,
+      "ev_network": null,
+      "ev_network_web": null,
+      "lpg_primary": null,
+      "id": 35946,
+      "updated_at": "2013-02-14T18:43:05Z"
+    },
+    {
+      "access_days_time": "24 hours daily",
+      "bd_blends": null,
+      "cards_accepted": "A D M V Voyager Wright_Exp",
+      "city": "Modesto",
+      "date_last_confirmed": "2012-09-30",
+      "expected_date": null,
+      "fuel_type_code": "E85",
+      "geocode_status": "200-8",
+      "groups_with_access_code": "Public - credit card at all times",
+      "hy_status_link": null,
+      "intersection_directions": null,
+      "latitude": 37.634028,
+      "longitude": -120.9944148,
+      "open_date": "2010-06-15",
+      "owner_type_code": "P",
+      "plus4": null,
+      "station_name": "Pacific Pride - Boyett Petroleum",
+      "station_phone": "209-577-6000",
+      "status_code": "E",
+      "street_address": "401 9th St",
+      "zip": "95350",
+      "state": "CA",
+      "ng_fill_type_code": null,
+      "ng_psi": null,
+      "ng_vehicle_class": null,
+      "e85_blender_pump": false,
+      "ev_level1_evse_num": null,
+      "ev_level2_evse_num": null,
+      "ev_dc_fast_num": null,
+      "ev_other_evse": null,
+      "ev_network": null,
+      "ev_network_web": null,
+      "lpg_primary": null,
+      "id": 35947,
+      "updated_at": "2012-10-12T18:28:47Z"
+    }
+  ],
+  "station_locator_url": "http://www.afdc.energy.gov/afdc/locator/stations/",
+  "total_results": 1574
+}
+```
+
+### XML Output Format
+
+<pre>GET <a href="/api/alt-fuel-stations/v1.xml?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2">/api/alt-fuel-stations/v1.xml?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2</a></pre>
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+  <station-locator-url>http://www.afdc.energy.gov/afdc/locator/stations/</station-locator-url>
+  <total-results>1574</total-results>
+  <fuel-stations type="array">
+    <fuel-station>
+      <access-days-time>24 hours daily; also accept Propel Clean Drive fleet card</access-days-time>
+      <bd-blends nil="true"/>
+      <cards-accepted>A D M V FuelMan Voyager Wright_Exp</cards-accepted>
+      <city>Fremont</city>
+      <date-last-confirmed>2013-01-31</date-last-confirmed>
+      <expected-date nil="true"/>
+      <fuel-type-code>E85</fuel-type-code>
+      <geocode-status>200-8</geocode-status>
+      <groups-with-access-code>Public - credit card at all times</groups-with-access-code>
+      <hy-status-link nil="true"/>
+      <intersection-directions>Stevenson Blvd &amp; Paseo Padre Pkwy</intersection-directions>
+      <latitude>37.5486034</latitude>
+      <longitude>-121.9717542</longitude>
+      <open-date>2010-08-02</open-date>
+      <owner-type-code>P</owner-type-code>
+      <plus4 nil="true"/>
+      <station-name>Propel Fuels</station-name>
+      <station-phone>800-871-0773</station-phone>
+      <status-code>E</status-code>
+      <street-address>39707 Paseo Padre Pkwy</street-address>
+      <zip>94538</zip>
+      <state>CA</state>
+      <ng-fill-type-code nil="true"/>
+      <ng-psi nil="true"/>
+      <ng-vehicle-class nil="true"/>
+      <e85-blender-pump>false</e85-blender-pump>
+      <ev-level1-evse-num nil="true"/>
+      <ev-level2-evse-num nil="true"/>
+      <ev-dc-fast-num nil="true"/>
+      <ev-other-evse nil="true"/>
+      <ev-network nil="true"/>
+      <ev-network-web nil="true"/>
+      <lpg-primary nil="true"/>
+      <id>35946</id>
+      <updated-at>2013-02-14T18:43:05Z</updated-at>
+    </fuel-station>
+    <fuel-station>
+      <access-days-time>24 hours daily</access-days-time>
+      <bd-blends nil="true"/>
+      <cards-accepted>A D M V Voyager Wright_Exp</cards-accepted>
+      <city>Modesto</city>
+      <date-last-confirmed>2012-09-30</date-last-confirmed>
+      <expected-date nil="true"/>
+      <fuel-type-code>E85</fuel-type-code>
+      <geocode-status>200-8</geocode-status>
+      <groups-with-access-code>Public - credit card at all times</groups-with-access-code>
+      <hy-status-link nil="true"/>
+      <intersection-directions nil="true"/>
+      <latitude>37.634028</latitude>
+      <longitude>-120.9944148</longitude>
+      <open-date>2010-06-15</open-date>
+      <owner-type-code>P</owner-type-code>
+      <plus4 nil="true"/>
+      <station-name>Pacific Pride - Boyett Petroleum</station-name>
+      <station-phone>209-577-6000</station-phone>
+      <status-code>E</status-code>
+      <street-address>401 9th St</street-address>
+      <zip>95350</zip>
+      <state>CA</state>
+      <ng-fill-type-code nil="true"/>
+      <ng-psi nil="true"/>
+      <ng-vehicle-class nil="true"/>
+      <e85-blender-pump>false</e85-blender-pump>
+      <ev-level1-evse-num nil="true"/>
+      <ev-level2-evse-num nil="true"/>
+      <ev-dc-fast-num nil="true"/>
+      <ev-other-evse nil="true"/>
+      <ev-network nil="true"/>
+      <ev-network-web nil="true"/>
+      <lpg-primary nil="true"/>
+      <id>35947</id>
+      <updated-at>2012-10-12T18:28:47Z</updated-at>
+    </fuel-station>
+  </fuel-stations>
+</response>
+```
+
+### CSV Output Format
+
+<pre>GET <a href="/api/alt-fuel-stations/v1.csv?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2">/api/alt-fuel-stations/v1.csv?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2</a></pre>
+
+```
+Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump
+E85,Propel Fuels,39707 Paseo Padre Pkwy,Stevenson Blvd & Paseo Padre Pkwy,Fremont,CA,94538,,800-871-0773,E,,Public - credit card at all times,24 hours daily; also accept Propel Clean Drive fleet card,A D M V FuelMan Voyager Wright_Exp,,,,,,,,,,200-8,37.5486034,-121.9717542,2013-01-31,35946,2013-02-14 18:43:05 UTC,P,,,2010-08-02,,,,false
+E85,Pacific Pride - Boyett Petroleum,401 9th St,,Modesto,CA,95350,,209-577-6000,E,,Public - credit card at all times,24 hours daily,A D M V Voyager Wright_Exp,,,,,,,,,,200-8,37.634028,-120.9944148,2012-09-30,35947,2012-10-12 18:28:47 UTC,P,,,2010-06-15,,,,false
+```
+
+## Rate Limits
+
+[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour
+
+## Errors
+
+[Standard errors](/docs/errors) may be returned. In addition, the following service-specific errors may be returned:
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">HTTP Status Code</th>
+      <th class="doc-parameters-required" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">422</th>
+      <td class="doc-parameter-description">Unprocessable Entity - An invalid value was given for a query parameter. The response body will describe the specific error.</td>
+    </tr>
+  </tbody>
+</table>

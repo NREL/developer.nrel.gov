@@ -1,0 +1,52 @@
+---
+title: NREL API Case Study
+
+---
+
+<div class="container" style="margin-top: 20px; margin-bottom: 20px;">
+  <div class="hero-unit">
+    <h1>National Renewable Energy Laboratory API Case Study</h1>
+    <p>Transitioning towards APIs to make data sharing easier</p>
+  </div>
+
+  <h2 id="summary">Summary</h2>
+  <p>The National Renewable Energy Laboratory (NREL) has been sharing its data for many years. More recently, the demand for our data has increased, while at the same time there has been a shift in demand towards more dynamic requests and machine readable data. Much of this increased demand stems from developers and partners wanting to leverage our data to build their own applications and as input into their own analyses. To address these growing demands, we've begun to shift how we share data towards web service application programming interfaces (APIs). To address some of the challenges in building and exposing new APIs, we've developed a common platform to for all NREL APIs to leverage.</p>
+
+  <h2 id="challenge">Challenge</h2>
+  <p>Historically, NREL shared data using spreadsheets or static data dumps. However, as the demand increased and shifted towards dynamic requests, we realized our existing model of sharing data was not maintainable. It was difficult to ensure all our partners had the latest data at all times. It was onerous to work through the legal agreements necessary to share the data with individual clients. There was also a demand for our data in formats like JSON and XML.</p>
+  <p>To address these shifting demands we sought to expose more of our data through public web services. There was certain functionality we wanted standardized across all of our public APIs, such as common authentication and rate limiting, and we wanted to minimize the effort involved in implementing those features for new APIs.</p>
+
+  <h2 id="approach">Approach</h2>
+  <p>We launched the <a href="https://developer.nrel.gov">NREL Developer Network</a> in October 2011. Our main goal was to build an overarching platform that made it easier for the public to use our APIs and for NREL to produce more APIs.<p>
+  <p>To make it easier for the public to use our APIs we had two driving requirements:</p>
+  <ol>
+    <li><strong>A single entry point:</strong> Our APIs belong to different projects and can be developed by different teams at NREL. This can be confusing to an outsider, so it was important to consolidate all our APIs in a single place to make it easier for developers to find and consume our APIs.</li>
+    <li><strong>A single license agreement:</strong> Previously, we would have to strike data sharing agreements with each individual interested in accessing our data. It was important to streamline this process so any user could easily access our public data by agreeing to a flexible and generic data use agreement.</li>
+  </ol>
+  <p>In addition, we also wanted to make it easier for developers inside NREL to build more APIs and expose them publicly. We identified common functionality that should be present in all our public APIs and addressed those features in a shared platform. The following functionality is standardized across all APIs by our platform:</p>
+  <ul>
+    <li><strong>Authentication:</strong> A single API key can be used to access any public NREL API.
+    <li><strong>Rate limiting:</strong> API requests from individual users are throttled to prevent abuse.
+    <li><strong>Analytics:</strong> All API requests are logged and analytics can be gathered for any API or user.
+    <li><strong>Documentation:</strong> The documentation format is standardized across all APIs to make it easier to write and understand.
+  </ul>
+  <p>All of these details are handled by our platform, so new APIs don't have to concern themselves with this functionality and repeatedly implement the same functionality.</p>
+  <p>The platform we built to serve these needs has been open sourced as <a href="https://github.com/NREL/api-umbrella">API Umbrella</a>.</p>
+
+  <h2 id="results">Results</h2>
+  <p>Between the public launch of the NREL Developer Network in October, 2011 and November, 2012 we've seen the following usage:</p>
+  <ul>
+    <li>13 public NREL web services have been launched</li>
+    <li>366 API users have signed up</li>
+    <li>825,000 public API requests have been made</li>
+    <li>29,000,000 internal API requests have been made (we heavily use our own APIs inside NREL)</li>
+    <li>A dozen iPhone, Android, and desktop applications have been released utilizing our APIs</li>
+  </ul>
+  <p>In addition, NREL is currently developing 40 new web services for future release.</p>
+
+  <h2 id="results">Resources</h2>
+  <ul>
+    <li><a href="https://developer.nrel.gov/">NREL Developer Network</a></li>
+    <li><a href="https://github.com/NREL/api-umbrella">API Umbrella</a></li>
+  </ul>
+</div>

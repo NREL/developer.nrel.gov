@@ -1,0 +1,1845 @@
+---
+title: REopt Lite API (Version 1)
+
+summary: The REopt API provides access to a web version of a techno-economic decision support model used to optimize energy systems for buildings, campuses, communities, and microgrids. 
+
+---
+
+<%= javascript_include_tag("reopt-v1") %>
+
+<body><div class="container">
+
+<div class="row">
+<h1>REopt Lite API (Version 1)</h1>
+<div class="col col-0.5"></div>
+<div class="col col-xs-11 ">
+<p>
+The REopt API recommends an optimal mix of renewable energy, conventional generation, and energy storage technologies to meet cost savings and energy performance goals. 
+</p>
+<p>
+The API uses utility rates from the <a href="https://openei.org/wiki/Utility_Rate_Database" target="blank">Utility Rate Database</a> and coordinates with <a href="http://pvwatts.nrel.gov/" target="blank">PV Watts</a> for solar resource information. It is capable of accepting custom rate profiles, but is also equipped with Department of Energy <a href="https://energy.gov/eere/buildings/commercial-reference-buildings" target="blank">Commercial Reference Buildings</a>. 
+</p>
+</div>
+</div>
+
+
+
+<div class="row">
+  
+  <div  class="col-xs-3 ">
+    <ul id ="toc">
+      <li><a data-target="#URLsection" class="scroll_button">URL</a></li>
+      <li><a type="button" data-target="#InputFormatsection" class="scroll_button">Input Format</a></li>
+      <li><a type="button" data-target="#InputDefinitionssection" class="scroll_button">Input Definitions</a></li>
+      <li><a type="button" data-target="#Examplesection" class="scroll_button">Example</a></li>
+      <li><a type="button" data-target="#Errorssection" class="scroll_button">Errors</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col col-xs-11" id="URLsection"><h2>URL</h2></div>  <br><br>
+  <div class="col col-1"></div>
+  <div class="col col-xs-11 ">
+    <pre><code>POST <em> http://reopt.nrel.gov/api/v1/reopt/</em>
+
+    -data {"Scenario":{"Site":{...}}}</code></pre>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col col-xs-11" id="InputFormatsection"><h2>Input Format</h2></div>  <br><br>
+  <div class="col col-xs-11 " id="">
+  <p>
+  The REopt API accepts a JSON post in a nested directory format. At each level in the directory, capitalized directory names are associated with sets of lower case attribute names and values (as well as possible subdirectories). Only required attributes names and values need to be initially provided as missing attribute values will be filled in with default values as described in the tables below. 
+  </p>
+
+  <p>
+  <b>Note:</b> Optimizations include PV and Storage capabilities by default. To disable either, set its 'min_kw' attribute to 0. 
+  </p>
+
+  <p>
+  Below is an example of a a simple valid post that disbales storage in the optimization: 
+  </p>
+  </div>
+  
+  <div class="col col-1"></div>
+    <div class="col col-xs-11 " id="">
+      <pre><code>{"Scenario": {
+  "Site": {
+    "latitude": 39.5,
+    "longitude": -105.0,
+    "Financial": {},
+    "LoadProfile": {
+      "annual_kwh": 20000,
+      "doe_reference_name": "RetailStore"
+      },
+    "ElectricTariff": {
+      "blended_monthly_rates_us_dollars_per_kwh": [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+      "monthly_demand_charges_us_dollars_per_kw": [8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8]
+      },
+    "PV": {},
+    "Storage": {
+      "min_kw": 0
+      }
+    }
+  }
+}</code></pre>
+    </div>
+  </div>
+
+
+
+<div class="row">
+  <div class="col col-xs-11" id="InputDefinitionssection"><h2>Input Definitions</h2></div>
+  <br><br>
+  <div class="col col-2"></div>
+  <div class="col col-xs-11" id="definition_table">
+    <div class="container">
+      <div class="row">
+        <div class="col  col-xs-11">
+          <div class="panel panel-default" id="Scenario_panel" role="tablist">
+            <div class="panel-heading" role="tab">
+              <h5 class="panel-title"><a aria-controls="Scenario_collapsecontainer" aria-expanded="true" data-parent="ScenarioRow" data-toggle="collapse" href="#Scenario_collapsecontainer">Scenario</a></h5>
+            </div>
+            <div aria-labelledby="Scenario_collapsebutton" class="panel-collapse collapse in panel-body" id="Scenario_collapsecontainer" role="tabpanel">
+              <div class="row">
+                <div class="col col-xs-2">
+                  <b><span class="text-secondary">Attributes</span></b>
+                </div>
+                <div class="col col-xs-10">
+                  <table class="table table-striped row doc-parameters">
+                    <thead>
+                      <tr>
+                        <th  width="1%">Parameter</th>
+                        <th width="1%">Required</th>
+                        <th width="4%">Value</th>
+                        <th width="8%">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span>time_steps_per_hour</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 1</span></small>
+                          </div>
+                        </td>
+                        <td><span>The number of time steps per hour in the REopt simulation</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>timeout_seconds</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 295</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 295</span></small>
+                          </div>
+                        </td>
+                        <td><span>The number of seconds allowed before the optimization times out</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>user_id</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> str</span></small>
+                          </div>
+                        </td>
+                        <td><span>Not currently used.</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-xs-2">
+                  <b><span class="text-secondary">Sub Directories</span></b>
+                </div>
+                <div class="col col-xs-10">
+                  <button class="btn btn-primary btn-sml scroll_button" data-target="#Site_panel" type="button">Site</button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-xs-offset-1 col-xs-10">
+          <div class="panel panel-default" id="Site_panel" role="tablist">
+            <div class="panel-heading" role="tab">
+              <h5 class="panel-title"><a aria-controls="Site_collapsecontainer" aria-expanded="true" data-parent="SiteRow" data-toggle="collapse" href="#Site_collapsecontainer">Site</a></h5>
+            </div>
+            <div aria-labelledby="Site_collapsebutton" class="panel-collapse collapse in panel-body" id="Site_collapsecontainer" role="tabpanel">
+              <div class="row">
+                <div class="col col-xs-2">
+                  <b><span class="text-secondary">Attributes</span></b>
+                </div>
+                <div class="col col-xs-10">
+                  <table class="table table-striped row doc-parameters">
+                    <thead>
+                      <tr>
+                        <th width="1%">Parameter</th>
+                        <th width="1%">Required</th>
+                        <th width="4%">Value</th>
+                        <th width="8%">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span>latitude</span></td>
+                        <td><em>Yes</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> -180</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 180</span></small>
+                          </div>
+                        </td>
+                        <td><span>The approximate latitide of the site in decimal degrees</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>longitude</span></td>
+                        <td><em>Yes</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> -180</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 180</span></small>
+                          </div>
+                        </td>
+                        <td><span>The approximate longitude of the site in decimal degrees</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>critical_load_pct</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0.5</span></small>
+                          </div>
+                        </td>
+                        <td><span>Critical load factor is used to scale the load during an outage. Value must be between zero and one, inclusive.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>land_acres</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1000000</span></small>
+                          </div>
+                        </td>
+                        <td><span>Land Area available for PV panel siting</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>outage_end_hour</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> int</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 8759</span></small>
+                          </div>
+                        </td>
+                        <td><span>Hour of year that grid outage ends. Must be greater than outage_start.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>outage_start_hour</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> int</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 8759</span></small>
+                          </div>
+                        </td>
+                        <td><span>Hour of year that grid outage starts. Must be less than outage_end.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>roof_squarefeet</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1000000000</span></small>
+                          </div>
+                        </td>
+                        <td><span>Area of Roof Available for PV siting</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-xs-2">
+                  <b><span class="text-secondary">Sub Directories</span></b>
+                </div>
+                <div class="col col-xs-10">
+                  <button class="btn btn-primary btn-sml scroll_button" data-target="#LoadProfile_panel" type="button">LoadProfile</button> <button class="btn btn-primary btn-sml scroll_button" data-target="#Storage_panel" type="button">Storage</button> <button class="btn btn-primary btn-sml scroll_button" data-target="#PV_panel" type="button">PV</button> <button class="btn btn-primary btn-sml scroll_button" data-target="#Wind_panel" type="button">Wind</button> <button class="btn btn-primary btn-sml scroll_button" data-target="#Financial_panel" type="button">Financial</button> <button class="btn btn-primary btn-sml scroll_button" data-target="#ElectricTariff_panel" type="button">ElectricTariff</button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-xs-offset-2 col-xs-9">
+          <div class="panel panel-default" id="ElectricTariff_panel" role="tablist">
+            <div class="panel-heading" role="tab">
+              <h5 class="panel-title"><a aria-controls="ElectricTariff_collapsecontainer" aria-expanded="true" data-parent="ElectricTariffRow" data-toggle="collapse" href="#ElectricTariff_collapsecontainer">ElectricTariff</a></h5>
+            </div>
+            <div aria-labelledby="ElectricTariff_collapsebutton" class="panel-collapse collapse in panel-body" id="ElectricTariff_collapsecontainer" role="tabpanel">
+              <div class="row">
+                <div class="col col-xs-2">
+                  <b><span class="text-secondary">Attributes</span></b>
+                </div>
+                <div class="col col-xs-10">
+                  <table class="table table-striped row doc-parameters">
+                    <thead>
+                      <tr>
+                        <th width="1%">Parameter</th>
+                        <th width="1%">Required</th>
+                        <th width="4%">Value</th>
+                        <th width="8%">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span>blended_monthly_rates_us_dollars_per_kwh</span></td>
+                        <td><em>Depends</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> list_of_float</span></small>
+                          </div>
+                        </td>
+                        <td><span>12 item array of average monthly utility rates per kWh</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>monthly_demand_charges_us_dollars_per_kw</span></td>
+                        <td><em>Depends</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> list_of_float</span></small>
+                          </div>
+                        </td>
+                        <td><span>12 item array of average monthly utility demand charges per kW</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>urdb_response</span></td>
+                        <td><em>Depends</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> dict</span></small>
+                          </div>
+                        </td>
+                        <td><span>Utility Rate Structure from <a href="https://openei.org/services/doc/rest/util_rates/?version=3" target="blank">Utility Rate Database API</a></span></td>
+                      </tr>
+                      <tr>
+                        <td><span>interconnection_limit_kw</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1000000000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 100000000</span></small>
+                          </div>
+                        </td>
+                        <td><span>Limit on power flowing from system to the Grid</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>net_metering_limit_kw</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1000000000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0</span></small>
+                          </div>
+                        </td>
+                        <td><span>System size above which net metering is not allowed</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>urdb_label</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> str</span></small>
+                          </div>
+                        </td>
+                        <td><span>Label attribute of Utility Rate Structure from <a href="https://openei.org/services/doc/rest/util_rates/?version=3" target="blank">Utility Rate Database API</a></span></td>
+                      </tr>
+                      <tr>
+                        <td><span>urdb_rate_name</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> str</span></small>
+                          </div>
+                        </td>
+                        <td><span>Name of Utility Rate from <a href="https://openei.org/wiki/Utility_Rate_Database" target="blank">Utility Rate Database</a></span></td>
+                      </tr>
+                      <tr>
+                        <td><span>urdb_utilty_name</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> str</span></small>
+                          </div>
+                        </td>
+                        <td><span>Name of Utility from <a href="https://openei.org/wiki/Utility_Rate_Database" target="blank">Utility Rate Database</a></span></td>
+                      </tr>
+                      <tr>
+                        <td><span>wholesale_rate_us_dollars_per_kwh</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0</span></small>
+                          </div>
+                        </td>
+                        <td><span>Assumed price of electricity on the wholesale market</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-xs-2">
+                  <b><span class="text-secondary">Sub Directories</span></b>
+                </div>
+                <div class="col col-xs-10">
+                  None
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-xs-offset-2 col-xs-9">
+          <div class="panel panel-default" id="Financial_panel" role="tablist">
+            <div class="panel-heading" role="tab">
+              <h5 class="panel-title"><a aria-controls="Financial_collapsecontainer" aria-expanded="true" data-parent="FinancialRow" data-toggle="collapse" href="#Financial_collapsecontainer">Financial</a></h5>
+            </div>
+            <div aria-labelledby="Financial_collapsebutton" class="panel-collapse collapse in panel-body" id="Financial_collapsecontainer" role="tabpanel">
+              <div class="row">
+                <div class="col col-xs-2">
+                  <b><span class="text-secondary">Attributes</span></b>
+                </div>
+                <div class="col col-xs-10">
+                  <table class="table table-striped row doc-parameters">
+                    <thead>
+                      <tr>
+                        <th width="1%">Parameter</th>
+                        <th width="1%">Required</th>
+                        <th width="4%">Value</th>
+                        <th width="8%">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span>analysis_years</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> int</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 75</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 20</span></small>
+                          </div>
+                        </td>
+                        <td><span>Period for Financial Analysis</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>escalation_pct</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> -1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0.026</span></small>
+                          </div>
+                        </td>
+                        <td><span>Annual Cost of Electricity Escalation Rate</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>offtaker_discount_pct</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> -1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0.081</span></small>
+                          </div>
+                        </td>
+                        <td><span>Offtaker Discount Rate</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>offtaker_tax_pct</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> -1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0.4</span></small>
+                          </div>
+                        </td>
+                        <td><span>Tax Rate for Electricity Customer</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>om_cost_growth_pct</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> -1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0.025</span></small>
+                          </div>
+                        </td>
+                        <td><span>Annual O&amp;M Cost Growth Rate</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>owner_discount_pct</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> -1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1</span></small>
+                          </div>
+                        </td>
+                        <td><span>Owner Discount Rate</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>owner_tax_pct</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> -1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1</span></small>
+                          </div>
+                        </td>
+                        <td><span>Tax Rate for System Developer</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-xs-2">
+                  <b><span class="text-secondary">Sub Directories</span></b>
+                </div>
+                <div class="col col-xs-10">
+                  None
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-xs-offset-2 col-xs-9">
+          <div class="panel panel-default" id="LoadProfile_panel" role="tablist">
+            <div class="panel-heading" role="tab">
+              <h5 class="panel-title"><a aria-controls="LoadProfile_collapsecontainer" aria-expanded="true" data-parent="LoadProfileRow" data-toggle="collapse" href="#LoadProfile_collapsecontainer">LoadProfile</a></h5>
+            </div>
+            <div aria-labelledby="LoadProfile_collapsebutton" class="panel-collapse collapse in panel-body" id="LoadProfile_collapsecontainer" role="tabpanel">
+              <div class="row">
+                <div class="col col-xs-2">
+                  <b><span class="text-secondary">Attributes</span></b>
+                </div>
+                <div class="col col-xs-10">
+                  <table class="table table-striped row doc-parameters">
+                    <thead>
+                      <tr>
+                        <th width="1%">Parameter</th>
+                        <th width="1%">Required</th>
+                        <th width="4%">Value</th>
+                        <th width="8%">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span>annual_kwh</span></td>
+                        <td><em>Depends</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1000000000000</span></small>
+                          </div>
+                        </td>
+                        <td><span>Annual Load Size</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>doe_reference_name</span></td>
+                        <td><em>Depends</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> str</span> <span><br>
+                            <strong class="doc-parameters-value-field">Options:</strong> <em>FastFoodRest, FullServiceRest, Hospital, LargeHotel, LargeOffice, MediumOffice, MidriseApartment, Outpatient, PrimarySchool, RetailStore, SecondarySchool, SmallHotel, SmallOffice, StripMall, Supermarket, Warehouse</em></span></small>
+                          </div>
+                        </td>
+                        <td><span>Generic Load Profile Type from DOE <a href="https://energy.gov/eere/buildings/commercial-reference-buildings" target="blank">Commercial Reference Buildings</a>. Must be accompanied with annual_kwh or monthly_totals_kwh.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>loads_kw</span></td>
+                        <td><em>Depends</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> list_of_float</span></small>
+                          </div>
+                        </td>
+                        <td><span>Hourly energy use over all hours in one year</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>monthly_totals_kwh</span></td>
+                        <td><em>Depends</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> list_of_float</span></small>
+                          </div>
+                        </td>
+                        <td><span>12 item array of aggregate monthly energy usage</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>year</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> int</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 2017</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 2092</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 2018</span></small>
+                          </div>
+                        </td>
+                        <td><span>Year of Custom Load Profile</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-xs-2">
+                  <b><span class="text-secondary">Sub Directories</span></b>
+                </div>
+                <div class="col col-xs-10">
+                  None
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-xs-offset-2 col-xs-9">
+          <div class="panel panel-default" id="PV_panel" role="tablist">
+            <div class="panel-heading" role="tab">
+              <h5 class="panel-title"><a aria-controls="PV_collapsecontainer" aria-expanded="true" data-parent="PVRow" data-toggle="collapse" href="#PV_collapsecontainer">PV</a></h5>
+            </div>
+            <div aria-labelledby="PV_collapsebutton" class="panel-collapse collapse in panel-body" id="PV_collapsecontainer" role="tabpanel">
+              <div class="row">
+                <div class="col col-xs-2">
+                  <b><span class="text-secondary">Attributes</span></b>
+                </div>
+                <div class="col col-xs-10">
+                  <table class="table table-striped row doc-parameters">
+                    <thead>
+                      <tr>
+                        <th width="1%">Parameter</th>
+                        <th width="1%">Required</th>
+                        <th width="4%">Value</th>
+                        <th width="8%">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span>array_type</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> int</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Options:</strong> <em>0, 1, 2, 3, 4</em></span></small>
+                          </div>
+                        </td>
+                        <td><span>PV Watts array type (0: Fixed-Open Rack; 1: Fixed-Roof Mounted; 2: 1-Axis; 3 : 1-Axis Backtracking; 4: 2-Axis)</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>azimuth</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 360</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 180</span></small>
+                          </div>
+                        </td>
+                        <td><span>PV Watts azimuth angle</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>dc_ac_ratio</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 2</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 1.1</span></small>
+                          </div>
+                        </td>
+                        <td><span>PV Watts DC-AC ratio</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>degradation_pct</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0.005</span></small>
+                          </div>
+                        </td>
+                        <td><span>Annual rate of system degradation in energy production.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>federal_itc_pct</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0.3</span></small>
+                          </div>
+                        </td>
+                        <td><span>Percent of upfront project costs to discount under Federal ITC.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>federal_rebate_us_dollars_per_kw</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1000000000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0</span></small>
+                          </div>
+                        </td>
+                        <td><span>Federal rebates based on installed capacity.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>gcr</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0.01</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 0.99</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0.4</span></small>
+                          </div>
+                        </td>
+                        <td><span>PV Watts ground cover ratio</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>installed_cost_us_dollars_per_kw</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 100000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 2000</span></small>
+                          </div>
+                        </td>
+                        <td><span>Total upfront installed costs.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>inv_eff</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0.9</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 0.995</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0.96</span></small>
+                          </div>
+                        </td>
+                        <td><span>PV Watts inverter efficiency</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>losses</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 0.99</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0.14</span></small>
+                          </div>
+                        </td>
+                        <td><span>PV Watts system losses angle</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>macrs_bonus_pct</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0.5</span></small>
+                          </div>
+                        </td>
+                        <td><span>Percent of upfront project costs to depreciate under MACRS.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>macrs_option_years</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> int</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 5</span> <span><br>
+                            <strong class="doc-parameters-value-field">Options:</strong> <em>0, 5, 7</em></span></small>
+                          </div>
+                        </td>
+                        <td><span>MACRS schedule for financial analysis. Set to zero to disable.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>max_kw</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1000000000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 1000000000</span></small>
+                          </div>
+                        </td>
+                        <td><span>Maximum PV size constraint for optimization. Set to zero to disable PV.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>min_kw</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1000000000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0</span></small>
+                          </div>
+                        </td>
+                        <td><span>Minimum PV size constraint for optimization.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>module_type</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> int</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Options:</strong> <em>0, 1, 2</em></span></small>
+                          </div>
+                        </td>
+                        <td><span>PV Watts module type (0: Standard; 1: Premium; 2: Thin Film)</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>om_cost_us_dollars_per_kw</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 35</span></small>
+                          </div>
+                        </td>
+                        <td><span>Total annual operations and maintenance costs.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>pbi_max_us_dollars</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1000000000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 1000000000</span></small>
+                          </div>
+                        </td>
+                        <td><span>Maximum rebate allowed under utility production-based incentives.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>pbi_system_max_kw</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1000000000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 1000000000</span></small>
+                          </div>
+                        </td>
+                        <td><span>Maximum system size for which production-based incentives apply.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>pbi_us_dollars_per_kwh</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1000000000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0</span></small>
+                          </div>
+                        </td>
+                        <td><span>Production-based incentive value.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>pbi_years</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1000000000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 20</span></small>
+                          </div>
+                        </td>
+                        <td><span>Duration of production-based incentives from installation date.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>radius</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0</span></small>
+                          </div>
+                        </td>
+                        <td><span>PV Watts radius to use when searching for the closest climate data station. Use zero to use the closest station regardless of the distance.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>state_ibi_max_us_dollars</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 10000000000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 10000000000</span></small>
+                          </div>
+                        </td>
+                        <td><span>Maximum rebate allowed under state investment based incentives.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>state_ibi_pct</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0</span></small>
+                          </div>
+                        </td>
+                        <td><span>Percent of upfront project costs to discount under state investment based incentives.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>state_rebate_max_us_dollars</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 10000000000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 10000000000</span></small>
+                          </div>
+                        </td>
+                        <td><span>Maximum rebate allowed under state rebates.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>state_rebate_us_dollars_per_kw</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1000000000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0</span></small>
+                          </div>
+                        </td>
+                        <td><span>State rebates based on installed capacity.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>tilt</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 90</span></small>
+                          </div>
+                        </td>
+                        <td><span>PV Watts system tilt.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>utility_ibi_max_us_dollars</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 10000000000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 10000000000</span></small>
+                          </div>
+                        </td>
+                        <td><span>Maximum rebate allowed under utility investment based incentives.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>utility_ibi_pct</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0</span></small>
+                          </div>
+                        </td>
+                        <td><span>Percent of upfront project costs to discount under utility investment based incentives.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>utility_rebate_max_us_dollars</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 10000000000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 10000000000</span></small>
+                          </div>
+                        </td>
+                        <td><span>Maximum rebate allowed under utility rebates.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>utility_rebate_us_dollars_per_kw</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1000000000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0</span></small>
+                          </div>
+                        </td>
+                        <td><span>Utility rebates based on installed capacity.</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-xs-2">
+                  <b><span class="text-secondary">Sub Directories</span></b>
+                </div>
+                <div class="col col-xs-10">
+                  None
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-xs-offset-2 col-xs-9">
+          <div class="panel panel-default" id="Storage_panel" role="tablist">
+            <div class="panel-heading" role="tab">
+              <h5 class="panel-title"><a aria-controls="Storage_collapsecontainer" aria-expanded="true" data-parent="StorageRow" data-toggle="collapse" href="#Storage_collapsecontainer">Storage</a></h5>
+            </div>
+            <div aria-labelledby="Storage_collapsebutton" class="panel-collapse collapse in panel-body" id="Storage_collapsecontainer" role="tabpanel">
+              <div class="row">
+                <div class="col col-xs-2">
+                  <b><span class="text-secondary">Attributes</span></b>
+                </div>
+                <div class="col col-xs-10">
+                  <table class="table table-striped row doc-parameters">
+                    <thead>
+                      <tr>
+                        <th width="1%">Parameter</th>
+                        <th width="1%">Required</th>
+                        <th width="4%">Value</th>
+                        <th width="8%">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span>battery_replacement_year</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 75</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 10</span></small>
+                          </div>
+                        </td>
+                        <td><span>Number of years from start of optimization to replace battery.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>canGridCharge</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> bool</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> false</span></small>
+                          </div>
+                        </td>
+                        <td><span>Flag to set whether the battery can be charged from the grid, or just onsite generation.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>installed_cost_us_dollars_per_kw</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 10000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 1000</span></small>
+                          </div>
+                        </td>
+                        <td><span>Total upfront inverter costs.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>installed_cost_us_dollars_per_kwh</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 10000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 500</span></small>
+                          </div>
+                        </td>
+                        <td><span>Total upfront battery costs.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>internal_efficiency_pct</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0.975</span></small>
+                          </div>
+                        </td>
+                        <td><span>Battery inherent efficiency independent of inverter and rectifier.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>inverter_efficiency_pct</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0.96</span></small>
+                          </div>
+                        </td>
+                        <td><span>Battery inverter efficiency.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>inverter_replacement_year</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 75</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 10</span></small>
+                          </div>
+                        </td>
+                        <td><span>Number of years from start of optimization to replace inverter.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>macrs_bonus_pct</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0.5</span></small>
+                          </div>
+                        </td>
+                        <td><span>Percent of upfront project costs to depreciate under MACRS.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>macrs_option_years</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> int</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 5</span> <span><br>
+                            <strong class="doc-parameters-value-field">Options:</strong> <em>0, 5, 7</em></span></small>
+                          </div>
+                        </td>
+                        <td><span>MACRS schedule for financial analysis. Set to zero to disable.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>max_kw</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1000000000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 1000000000</span></small>
+                          </div>
+                        </td>
+                        <td><span>Maximum Battery power size constraint for optimization. Set to zero to disable Storage.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>max_kwh</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 1000000</span></small>
+                          </div>
+                        </td>
+                        <td><span>Maximum Battery energy storage capacity constraint for optimization. Set to zero to disable Storage</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>min_kw</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1000000000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0</span></small>
+                          </div>
+                        </td>
+                        <td><span>Minimum Battery power size constraint for optimization.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>min_kwh</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0</span></small>
+                          </div>
+                        </td>
+                        <td><span>Minimum Battery energy storage capacity constraint for optimization.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>rectifier_efficiency_pct</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0.96</span></small>
+                          </div>
+                        </td>
+                        <td><span>Battery rectifier efficiency.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>replace_cost_us_dollars_per_kw</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 10000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 460</span></small>
+                          </div>
+                        </td>
+                        <td><span>Inverter replacement cost at time of replacement year.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>replace_cost_us_dollars_per_kwh</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 10000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 230</span></small>
+                          </div>
+                        </td>
+                        <td><span>Battery replacement cost at time of replacement year.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>soc_init_pct</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0.5</span></small>
+                          </div>
+                        </td>
+                        <td><span>Battery state of charge at first hour of optimization.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>soc_min_pct</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0.2</span></small>
+                          </div>
+                        </td>
+                        <td><span>Minimum allowable battery state of charge.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>total_itc_pct</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0.3</span></small>
+                          </div>
+                        </td>
+                        <td><span>Total percent of installed costs allowed to be discounted through investment based incentives.</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>total_rebate_us_dollars_per_kw</span></td>
+                        <td><em>No</em></td>
+                        <td>
+                          <div>
+                            <small><span><strong class="doc-parameters-value-field">Type:</strong> float</span> <span><br>
+                            <strong class="doc-parameters-value-field">Min Value:</strong> 0</span> <span><br>
+                            <strong class="doc-parameters-value-field">Max Value:</strong> 1000000000</span> <span><br>
+                            <strong class="doc-parameters-value-field">Default:</strong> 0</span></small>
+                          </div>
+                        </td>
+                        <td><span>Maximum allowed value from all investment incentives.</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-xs-2">
+                  <b><span class="text-secondary">Sub Directories</span></b>
+                </div>
+                <div class="col col-xs-10">
+                  None
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-xs-11" id="Examplesection"><h2>Example</h2></div>  <br><br>
+  <div class="col  col-xs-11 pre-scrollable">
+      <p>Input</p>
+      <pre>{"Scenario": {
+
+        "timeout_seconds": 300,
+
+        "Site": {
+          "latitude": 37,
+          "longitude": -100.0,
+          "land_acres": 5,
+          "roof_squarefeet": 500,
+          "outage_start_hour": 10,
+          "outage_end_hour": 500,
+          "critical_load_pct": 0.5,
+
+          "Financial":{
+              "om_cost_growth_pct":   0.03,
+              "analysis_years":       25
+          },
+
+          "LoadProfile": {
+              "doe_reference_name": "RetailStore",
+              "annual_kwh": 120000,
+              "year": 2020
+                
+          },
+
+          "ElectricTariff": {
+              "urdb_response": {
+                  "sector": "Commercial",
+                  "peakkwcapacitymax": 200,
+                  "energyweekdayschedule": [
+                      [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+                      [2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 2],
+                      [2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 2],
+                      [2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 2],
+                      [2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 2],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0]
+                  ],
+                  "demandattrs": [{
+                      "Facilties Voltage Discount (2KV-&lt;50KV)": "$-0.18/KW"
+                  }, {
+                      "Facilties Voltage Discount &gt;50 kV-&lt;220kV": "$-5.78/KW"
+                  }, {
+                      "Facilties Voltage Discount &gt;220 kV": "$-9.96/KW"
+                  }, {
+                      "Time Voltage Discount (2KV-&lt;50KV)": "$-0.70/KW"
+                  }, {
+                      "Time Voltage Discount &gt;50 kV-&lt;220kV": "$-1.93/KW"
+                  }, {
+                      "Time Voltage Discount &gt;220 kV": "$-1.95/KW"
+                  }],
+                  "energyratestructure": [
+                      [{
+                          "rate": 0.0712,
+                          "unit": "kWh"
+                      }],
+                      [{
+                          "rate": 0.09368,
+                          "unit": "kWh"
+                      }],
+                      [{
+                          "rate": 0.066,
+                          "unit": "kWh"
+                      }],
+                      [{
+                          "rate": 0.08888,
+                          "unit": "kWh"
+                      }],
+                      [{
+                          "rate": 0.1355,
+                          "unit": "kWh"
+                      }]
+                  ],
+                  "energyweekendschedule": [
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+                      [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+                      [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+                      [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                  ],
+                  "demandweekendschedule": [
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                  ],
+                  "utility": "Southern California Edison Co",
+                  "flatdemandstructure": [
+                      [{
+                          "rate": 13.2
+                      }]
+                  ],
+                  "startdate": 1433116800,
+                  "phasewiring": "Single Phase",
+                  "source": "http://www.sce.com/NR/sc3/tm2/pdf/ce30-12.pdf",
+                  "label": "55fc81d7682bea28da64f9ae",
+                  "flatdemandunit": "kW",
+                  "eiaid": 17609,
+                  "voltagecategory": "Primary",
+                  "demandweekdayschedule": [
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                  ],
+                  "voltageminimum": 2000,
+                  "energyattrs": [{
+                      "Voltage Discount (2KV-&lt;50KV)": "$-0.00106/Kwh"
+                  }, {
+                      "Voltage Discount (&gt;50 KV&lt;220 KV)": "$-0.00238/Kwh"
+                  }, {
+                      "Voltage Discount at 220 KV": "$-0.0024/Kwh"
+                  }, {
+                      "California Climate credit": "$-0.00669/kwh"
+                  }],
+                  "demandrateunit": "kW",
+                  "flatdemandmonths": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                  "approved": true,
+                  "fixedmonthlycharge": 259.2,
+                  "enddate": 1451520000,
+                  "name": "Time of Use, General Service, Demand Metered, Option B: GS-2 TOU B, Single Phase",
+                  "country": "USA",
+                  "uri": "http://en.openei.org/apps/IURDB/rate/view/55fc81d7682bea28da64f9ae",
+                  "voltagemaximum": 50000,
+                  "peakkwcapacitymin": 20,
+                  "peakkwcapacityhistory": 12,
+                  "demandratestructure": [
+                      [{
+                          "rate": 0
+                      }],
+                      [{
+                          "rate": 5.3
+                      }],
+                      [{
+                          "rate": 18.11
+                      }]
+                  ]
+              },
+              "net_metering_limit_kw": 20,
+              "wholesale_rate_us_dollars_per_kwh": 0.05,
+              "interconnection_limit_kw": 20
+          },
+
+          "PV": {
+              "min_kw": 20,
+              "max_kw": 100
+              
+          },
+
+          "Storage": {
+              "max_kw": 0
+          }
+
+    }
+}
+}
+    </pre>
+  </div>
+
+  <div class="col  col-xs-11">
+    <br>
+    <p>Response</p>
+    <pre>{"inputs":{...},"messages":{...},"outputs":{...}}</pre>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col col-xs-11" id="Errorssection"><h2>Errors</h2></div>  <br><br>
+  <div class="col col-1"></div>
+
+  
+  <div class="col  col-xs-11">
+  <h5>Missing Inputs</h5>
+    <p>Input</p>
+    <pre>{"Scenario": {"Site":{"latitude":39.0}}}</pre>
+  </div>
+
+  <div class="col col-xs-11 ">
+    <br>
+    <p>Response</p>
+    <pre>{
+  "inputs": {...},
+  "messages": {
+    "errors": {
+      "input_errors": [
+        "Missing Required for Scenario&gt;Site: longitude",
+        "Missing Required for Scenario&gt;Site&gt;LoadProfile: annual_kwh and doe_reference_name OR doe_reference_name and monthly_totals_kwh OR loads_kw",
+        "Missing Required for Scenario&gt;Site&gt;ElectricTariff: monthly_demand_charges_us_dollars_per_kw and blended_monthly_rates_us_dollars_per_kwh OR urdb_response"
+        ]},
+    "warnings": {
+      "Default values used for the following:": {
+        "Scenario": "time_steps_per_hour AND timeout_seconds",
+        "Scenario&gt;Site": "LoadProfile AND critical_load_pct AND Storage AND PV AND Wind AND Financial AND ElectricTariff",
+        "Scenario&gt;Site&gt;ElectricTariff": "wholesale_rate_us_dollars_per_kwh AND net_metering_limit_kw AND interconnection_limit_kw",
+        "Scenario&gt;Site&gt;Financial": "om_cost_growth_pct AND escalation_pct AND offtaker_discount_pct AND analysis_years AND offtaker_tax_pct",
+        "Scenario&gt;Site&gt;LoadProfile": "year", "Scenario&gt;Site&gt;PV": "pbi_years AND macrs_bonus_pct AND max_kw AND pbi_max_us_dollars AND radius AND state_ibi_pct AND utility_rebate_max_us_dollars AND installed_cost_us_dollars_per_kw AND utility_ibi_max_us_dollars AND gcr AND pbi_system_max_kw AND utility_ibi_pct AND state_ibi_max_us_dollars AND state_rebate_us_dollars_per_kw AND macrs_option_years AND state_rebate_max_us_dollars AND dc_ac_ratio AND federal_itc_pct AND degradation_pct AND module_type AND array_type AND pbi_us_dollars_per_kwh AND om_cost_us_dollars_per_kw AND utility_rebate_us_dollars_per_kw AND min_kw AND losses AND federal_rebate_us_dollars_per_kw AND inv_eff AND azimuth",
+        "Scenario&gt;Site&gt;Storage": "total_rebate_us_dollars_per_kw AND max_kwh AND rectifier_efficiency_pct AND total_itc_pct AND min_kw AND max_kw AND replace_cost_us_dollars_per_kw AND replace_cost_us_dollars_per_kwh AND min_kwh AND installed_cost_us_dollars_per_kw AND battery_replacement_year AND installed_cost_us_dollars_per_kwh AND inverter_efficiency_pct AND canGridCharge AND macrs_bonus_pct AND inverter_replacement_year AND macrs_option_years AND internal_efficiency_pct AND soc_min_pct AND soc_init_pct",
+        "Scenario&gt;Site&gt;Wind": "pbi_us_dollars_per_kwh AND installed_cost_us_dollars_per_kw AND macrs_bonus_pct AND om_cost_us_dollars_per_kw AND utility_rebate_us_dollars_per_kw AND min_kw AND pbi_years AND max_kw AND state_rebate_max_us_dollars AND state_rebate_us_dollars_per_kw AND federal_itc_pct AND pbi_max_us_dollars AND federal_rebate_us_dollars_per_kw AND pbi_system_max_kw AND macrs_option_years AND state_ibi_pct AND utility_rebate_max_us_dollars AND utility_ibi_pct AND state_ibi_max_us_dollars AND utility_ibi_max_us_dollars"}}
+        }
+      },
+  "outputs": {...}
+}</pre>
+  </div>
+  
+
+
+
+  <div class="col col-xs-11 pre-scrollable">
+    <h5>Invalid Data Type</h5>
+    <p>Input</p>
+    <pre>{"Scenario": {
+
+  "timeout_seconds": "ONE",
+
+  "Site": {
+    "latitude": 37,
+    "longitude": -100.0,
+
+    "LoadProfile": {
+      "doe_reference_name": "RetailStore",
+      "annual_kwh": 120000,
+      "year": 2020
+
+    },
+
+    "ElectricTariff": {
+      "urdb_response": {
+        "sector": "Commercial",
+        "peakkwcapacitymax": 200,
+        "energyweekdayschedule": [
+          [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+          [2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 2],
+          [2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 2],
+          [2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 2],
+          [2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 2],
+          [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0]
+        ],
+        "demandattrs": [{
+          "Facilties Voltage Discount (2KV-&lt;50KV)": "$-0.18/KW"
+        }, {
+          "Facilties Voltage Discount &gt;50 kV-&lt;220kV": "$-5.78/KW"
+        }, {
+          "Facilties Voltage Discount &gt;220 kV": "$-9.96/KW"
+        }, {
+          "Time Voltage Discount (2KV-&lt;50KV)": "$-0.70/KW"
+        }, {
+          "Time Voltage Discount &gt;50 kV-&lt;220kV": "$-1.93/KW"
+        }, {
+          "Time Voltage Discount &gt;220 kV": "$-1.95/KW"
+        }],
+        "energyratestructure": [
+          [{
+            "rate": 0.0712,
+            "unit": "kWh"
+          }],
+          [{
+            "rate": 0.09368,
+            "unit": "kWh"
+          }],
+          [{
+            "rate": 0.066,
+            "unit": "kWh"
+          }],
+          [{
+            "rate": 0.08888,
+            "unit": "kWh"
+          }],
+          [{
+            "rate": 0.1355,
+            "unit": "kWh"
+          }]
+        ],
+        "energyweekendschedule": [
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+          [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+          [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+          [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ],
+        "demandweekendschedule": [
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ],
+        "utility": "Southern California Edison Co",
+        "flatdemandstructure": [
+          [{
+            "rate": 13.2
+          }]
+        ],
+        "startdate": 1433116800,
+        "phasewiring": "Single Phase",
+        "source": "http://www.sce.com/NR/sc3/tm2/pdf/ce30-12.pdf",
+        "label": "55fc81d7682bea28da64f9ae",
+        "flatdemandunit": "kW",
+        "eiaid": 17609,
+        "voltagecategory": "Primary",
+        "demandweekdayschedule": [
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ],
+        "voltageminimum": 2000,
+        "energyattrs": [{
+          "Voltage Discount (2KV-&lt;50KV)": "$-0.00106/Kwh"
+        }, {
+          "Voltage Discount (&gt;50 KV&lt;220 KV)": "$-0.00238/Kwh"
+        }, {
+          "Voltage Discount at 220 KV": "$-0.0024/Kwh"
+        }, {
+          "California Climate credit": "$-0.00669/kwh"
+        }],
+        "demandrateunit": "kW",
+        "flatdemandmonths": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        "approved": true,
+        "fixedmonthlycharge": 259.2,
+        "enddate": 1451520000,
+        "name": "Time of Use, General Service, Demand Metered, Option B: GS-2 TOU B, Single Phase",
+        "country": "USA",
+        "uri": "http://en.openei.org/apps/IURDB/rate/view/55fc81d7682bea28da64f9ae",
+        "voltagemaximum": 50000,
+        "peakkwcapacitymin": 20,
+        "peakkwcapacityhistory": 12,
+        "demandratestructure": [
+          [{
+            "rate": 0
+          }],
+          [{
+            "rate": 5.3
+          }],
+          [{
+            "rate": 18.11
+          }]
+        ]
+      },
+      "net_metering_limit_kw": 20,
+      "wholesale_rate_us_dollars_per_kwh": 0.05,
+      "interconnection_limit_kw": 20
+    }
+  }
+  }
+}
+  </pre>
+  </div>
+  
+  <div class="col col-xs-11 ">
+    <br>
+    <p>Response</p>
+    <pre>{
+  "inputs": {...},
+  "messages": {
+    "errors": {
+      "input_errors": [
+        "Could not convert timeout_seconds (ONE) in Scenario to 'float'&gt;",
+        "Could not check min/max on timeout_seconds (ONE) in Scenario"
+        ]},
+      "warnings": {"Default values used for the following:": {
+        "Scenario": "time_steps_per_hour", "Scenario&gt;Site": "critical_load_pct AND Storage AND PV AND Wind AND Financial",
+        "Scenario&gt;Site&gt;Financial": "om_cost_growth_pct AND escalation_pct AND offtaker_discount_pct AND analysis_years AND offtaker_tax_pct",
+        "Scenario&gt;Site&gt;PV": "pbi_years AND macrs_bonus_pct AND max_kw AND pbi_max_us_dollars AND radius AND state_ibi_pct AND utility_rebate_max_us_dollars AND installed_cost_us_dollars_per_kw AND utility_ibi_max_us_dollars AND gcr AND pbi_system_max_kw AND utility_ibi_pct AND state_ibi_max_us_dollars AND state_rebate_us_dollars_per_kw AND macrs_option_years AND state_rebate_max_us_dollars AND dc_ac_ratio AND federal_itc_pct AND degradation_pct AND module_type AND array_type AND pbi_us_dollars_per_kwh AND om_cost_us_dollars_per_kw AND utility_rebate_us_dollars_per_kw AND min_kw AND losses AND federal_rebate_us_dollars_per_kw AND inv_eff AND azimuth",
+        "Scenario&gt;Site&gt;Storage": "total_rebate_us_dollars_per_kw AND max_kwh AND rectifier_efficiency_pct AND total_itc_pct AND min_kw AND max_kw AND replace_cost_us_dollars_per_kw AND replace_cost_us_dollars_per_kwh AND min_kwh AND installed_cost_us_dollars_per_kw AND battery_replacement_year AND installed_cost_us_dollars_per_kwh AND inverter_efficiency_pct AND canGridCharge AND macrs_bonus_pct AND inverter_replacement_year AND macrs_option_years AND internal_efficiency_pct AND soc_min_pct AND soc_init_pct",
+        "Scenario&gt;Site&gt;Wind": "pbi_us_dollars_per_kwh AND installed_cost_us_dollars_per_kw AND macrs_bonus_pct AND om_cost_us_dollars_per_kw AND utility_rebate_us_dollars_per_kw AND min_kw AND pbi_years AND max_kw AND state_rebate_max_us_dollars AND state_rebate_us_dollars_per_kw AND federal_itc_pct AND pbi_max_us_dollars AND federal_rebate_us_dollars_per_kw AND pbi_system_max_kw AND macrs_option_years AND state_ibi_pct AND utility_rebate_max_us_dollars AND utility_ibi_pct AND state_ibi_max_us_dollars AND utility_ibi_max_us_dollars"
+        },
+  "outputs": {...}
+}</pre>
+  </div>
+</div>
+
+</div>
+
+<script type="text/javascript">
+  // var nested_input_definitions = {{nested_input_definitions|safe}};
+
+   $('.scroll_button').on('click', function(event) {
+    var target = $(this.getAttribute('data-target'));
+    if( target.length ) {
+        event.preventDefault();
+        $('html, body').stop().animate({
+            scrollTop: target.offset().top
+        },1000);
+    }
+    });
+
+</script>

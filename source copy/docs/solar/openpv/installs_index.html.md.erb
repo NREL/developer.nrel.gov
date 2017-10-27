@@ -1,0 +1,289 @@
+---
+title: Installs Index API
+summary: Returns a list of all installs matching optional criteria passed or all installs if no optional criteria is passed. The response can be paged or exported.
+url: GET /api/solar/open_pv/installs/index
+
+---
+
+# <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
+<%= current_page.data.summary %>
+
+<ul id="toc"></ul>
+
+## Request URL
+
+<pre><%= current_page.data.url %><em>?parameters</em></pre>
+
+## Request Parameters
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+		<tr>
+			<th class="doc-parameters-name" scope="col">Parameter</th>
+			<th class="doc-parameters-required" scope="col">Required</th>
+			<th class="doc-parameters-value" scope="col">Value</th>
+			<th class="doc-parameters-description" scope="col">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th class="doc-parameter-name" scope="row">api_key</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			  <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+			  <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+			</td>
+			<td class="doc-parameter-description">
+			  <p>Your developer API key. See <a href="/docs/api-key/">API keys</a> for more information.</p>
+			</td>
+		</tr>
+		<tr>
+      <th class="doc-parameter-name" scope="row">state</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Two uppercase character state codes</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">zipcode</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Postal code</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">minsize</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> float</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Floating point number for the minimum size in kw for an install</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">maxsize</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> float</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Floating point number for the maximum size in kw for an install</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">mindate</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> integer</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p><a href="https://en.wikipedia.org/wiki/Unix_time">Unix timestamp</a> for the minimum date installed</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">maxdate</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> integer</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p><a href="https://en.wikipedia.org/wiki/Unix_time">Unix timestamp</a> for the maximum date installed</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">user_id</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> integer</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Valid OpenPV web application user ID</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">organization_id</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> integer</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Valid OpenPV web application organization ID</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">export</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> boolean</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Indicator if the data should be exported as a CSV file</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">sort</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Name indicating what to sort the response data on. Name can be any of the install fields including but not limited to _id, size_kw, lon, lat, date_installed</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">order</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Either ASCE to indicate ascending sort order or DESC to indicate descending sort order</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">pagenum</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> integer</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Number indicating the page number to return. This is based on the number of installs per page as well as indicated by the optional parameter nppage. So if nppage is 5 and pagenum is 2, you will get back installs 6 to 10.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">nppage</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> integer</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Number indicating the number of installs per page to return.</p>
+      </td>
+    </tr>
+	</tbody>
+</table>
+
+## Response Fields
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">inputs</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
+      <td class="doc-parameter-description">The input parameters received in the request.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">metadata</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
+      <td class="doc-parameter-description">The meta data about the response such as version of the API and resultset which is a collection of it's own that has the result size count</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">status</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> string</td>
+      <td class="doc-parameter-description">The HTTP status code of the response</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">warnings</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> array of strings</td>
+      <td class="doc-parameter-description">Present only when any warning messages resulting from the request.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">errors</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> array of strings</td>
+      <td class="doc-parameter-description">Present only when any error messages resulting from the request.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">result</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
+      <td class="doc-parameter-description">
+        List of all installs matching optional criteria passed or all installs if no optional criteria is passed.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Examples
+
+### JSON Output Format
+
+<pre>GET <a href="/api/solar/open_pv/installs/index?api_key=DEMO_KEY&amp;state=CA&amp;minsize=10&amp;maxsize=100&amp;pagenum=1&amp;nppage=25&amp;sort=size_kw&amp;order=DESC">/api/solar/open_pv/installs/index?api_key=DEMO_KEY&amp;state=CA&amp;minsize=10&amp;maxsize=100&amp;pagenum=1&amp;nppage=25&amp;sort=size_kw&amp;order=DESC</a></pre>
+
+```json
+{
+  "inputs": {
+    "state": "CA",
+    "minsize": "10",
+    "maxsize": "100",
+    "pagenum": "1",
+    "nppage": "25",
+    "sort": "size_kw",
+    "order": "DESC"
+  },
+  "metadata": {
+    "version": "2.0.0",
+    "resultset": {
+      "total_pages": 939,
+      "count": 23471,
+      "limit": 25,
+      "offset": 0
+    }
+  },
+  "status": 200,
+  "result": [
+    {
+      "_id": "5049033e27a49b219200a142",
+      "cost": 391488.0,
+      "date_installed": 1281506400,
+      "size_kw": 100.0,
+      "state": "CA",
+      "zipcode": "91355"
+    },
+    {
+      "_id": "53fcc75427a49b2255377b7b",
+      "cost": 576041.0,
+      "date_installed": 1370498400,
+      "size_kw": 99.96,
+      "state": "CA",
+      "zipcode": "93725"
+    },
+    .
+    .
+    .
+  ]
+}
+```
+
+<h2 id="rate-limits">Rate Limits</h2>
+
+[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour.
+
+<h2 id="errors">Errors</h2>
+
+[Standard errors](/docs/errors) may be returned.

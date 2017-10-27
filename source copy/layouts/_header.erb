@@ -1,0 +1,19 @@
+<div class="container">
+  <header>
+    <map name="header_map">
+      <% if(current_page.url != "/") %>
+        <area shape="rect" coords="0,0,840,58" href="/" alt="Developer Network" />
+      <% end %>
+      <area shape="rect" coords="840,0,1000,58" href="http://www.nrel.gov/" alt="NREL" />
+    </map>
+    <%= image_tag("nrel/header.png", :alt => "NREL Developer Network", :usemap => "#header_map", :width => "1000", :height => "58") %>
+  </header>
+  <nav class="navbar navbar-default">
+    <ul class="nav navbar-nav">
+      <li class="nav-home <%= "active" if(current_page.url == "/") %>"><a href="/">Home</a></li>
+      <li class="nav-documentation <%= "active" if(current_page.url =~ %r{/docs($|/)}) %>"><a href="/docs">Documentation</a></li>
+      <li class="nav-community <%= "active" if(current_page.url =~ %r{/community($|/)}) %>"><a href="/community">Community</a></li>
+    </ul>
+  </nav>
+
+  <%= partial("layouts/breadcrumbs") %>
