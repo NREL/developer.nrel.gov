@@ -10,58 +10,70 @@ summary: The REopt API provides access to a web version of a techno-economic dec
 <body><div class="container">
 
 <div class="row">
-<h1>REopt Lite API (Version 1)</h1>
-<div class="col col-0.5"></div>
-<div class="col col-xs-12 ">
-<p>
-The REopt Lite API recommends an optimal mix of renewable energy, conventional generation, and energy storage technologies to meet cost savings and energy performance goals. In addtion to this API, the <a target='_blank' href='http://reopt.nrel.gov/tool'>REopt Lite Tool</a> provides an interface for manually establishing input parameters. <a target='_blank' href='http://reopt.nrel.gov'>Click here</a> for more information about the REopt model.
-</p>
-<p>
-The API uses utility rates from the <a href="https://openei.org/wiki/Utility_Rate_Database" target="_blank">Utility Rate Database</a> and solar PV generation from <a href="https://developer.nrel.gov/docs/solar/pvwatts-v5/" target="_blank">PV Watts (Version 5)</a>. It is capable of accepting custom load profiles, but is also equipped with simulated profiles from the Department of Energy <a href="https://energy.gov/eere/buildings/commercial-reference-buildings" target="_blank">Commercial Reference Buildings</a>. 
-</p>
-</div>
-</div>
-
-
-
-<div class="row">
-  
-  <div  class="col-xs-3 ">
-    <ul id ="toc">
-    </ul>
-  </div>
+    <h1>REopt Lite API (Version 1)</h1>
+    <div class="col col-0.5"></div>
+    <div class="col col-xs-12 ">
+    <p>
+    The REopt Lite API recommends an optimal mix of renewable energy, conventional generation, and energy storage technologies to meet cost savings and energy performance goals, including the hourly optimal operation of the system. In addtion to this API, the <a target='_blank' href='http://reopt.nrel.gov/tool'>REopt Lite Tool</a> provides an interface for manually establishing input parameters. <a target='_blank' href='http://reopt.nrel.gov'>Click here</a> for more information about the REopt model.
+    </p>
+    <p>
+    The API uses utility rates from the <a href="https://openei.org/wiki/Utility_Rate_Database" target="_blank">Utility Rate Database</a> and solar PV generation from <a href="https://developer.nrel.gov/docs/solar/pvwatts-v5/" target="_blank">PV Watts (Version 5)</a>. It is capable of accepting custom load profiles, but is also equipped with simulated profiles from the Department of Energy <a href="https://energy.gov/eere/buildings/commercial-reference-buildings" target="_blank">Commercial Reference Buildings</a>. 
+    </p>
+    </div>
 </div>
 
 
 
-<div id="URLsection" class="row">
-  <h2>URL</h2><br>
-  <div class="col col-xs-12 ">
+<div class="row">  
+    <div  class="col-xs-3 ">
+    <ul id ="toc"></ul>
+    </div>
+</div>
+
+
+<div id = "InputFormatsection" class="row">
+  <h2>Workflow</h2><br>
+  <div class="col col-xs-12 " id="">
+  <p>
+  Scenarios, consisting of input parameters to optimize in a format described <a href="#input-definitions">below</a>, are submitted to the Submission URL at <em> http://reopt.nrel.gov/api/v1/reopt/</em>. At the time of submission, a task is created to solve the optimization and its unique identifer is returned within the initial API response. This identifier is then submitted to the Results URL at <em> http://reopt.nrel.gov/api/v1/reopt/results</em>. If the task has completed, results will be returned. Otherwise, the API will respond with a message that the optimization task is still being processed. Then, the Results URL can be polled on a continuing basis until results are returned. 
+  </p>
+
+   
+  <b>Submission URL</b><br>
+  <div class="col-xs-10 col-xs-offset-1">
     <pre><code>POST <em> http://reopt.nrel.gov/api/v1/reopt/</em>
 
     -data {"Scenario":{"Site":{...}}}</code></pre>
   </div>
+  </div>
+
+   <div class="col col-xs-12"><br>
+  <b>Results URL</b><br>
+  <div class="col-xs-10 col-xs-offset-1">
+    <pre><code>GET <em> http://reopt.nrel.gov/api/v1/reopt/results?scenario_uuid=</em>&lt;&lt;--UUID from Submission URL Response--&gt;&gt; </code></pre>
+  </div>
+  </div>
 </div>
 
 
+<div id = "SubmissionURLsection" class="row">
+<h2>Submission URL</h2><br>
+<div class="col col-xs-12 " id="">
 
-<div id = "InputFormatsection" class="row">
-   <h2>Input Format</h2><br>
-  <div class="col col-xs-12 " id="">
+
   <p>
-  The REopt API accepts a JSON post in a nested directory format. At each level in the directory, capitalized directory names are associated with sets of lower case attribute names and values (as well as possible subdirectories). Only required attributes names and values need to be initially provided, as missing attribute values will be filled in with default values as described in the tables below. 
+  The Submission URL accepts a JSON post in a nested directory format. At each level in the directory, capitalized directory names are associated with sets of lower case attribute names and values (as well as possible subdirectories). Only required attributes names and values need to be initially provided, as missing attribute values will be filled in with default values as described in the tables below. 
   </p>
 
   <p>
   <b>Note:</b> Optimizations include PV and storage technologies by default. To disable either, set 'max_kw' to 0 in its Site subdirectory. 
   </p>
-  <br>
+
   <p>
   Below is an example of a simple valid post that disables storage in the optimization: 
   </p>
-  </div>
   
-    <div class="col col-xs-12 " id="">
+  <div class="col-xs-10 col-xs-offset-1">
       <pre><code>{
  "Scenario": {
   "Site": {
@@ -85,48 +97,81 @@ The API uses utility rates from the <a href="https://openei.org/wiki/Utility_Rat
   }
 }</code></pre>
     </div>
-  </div>
 
-<div id='InputDefinitionssection' class="row">
-<h2>Input Definitions</h2><br>
+  <div class="row ">
   <div class="col col-xs-12">
-  The REopt Lite API accepts a JSON in a nested directory structure that at the top level contains a <b>Scenario</b> key that maps to a set of attributes and subdirectories as described below. Pay attention to capitalization, data formats and interdependent attributes.
-  </div><br><br><br>
+  <h3>Data Definitions</h3>
+  <p>The Submission URL accepts a JSON in a nested directory structure that at the top level contains a <b>Scenario</b> key that maps to a set of attributes and subdirectories as described below. Pay attention to capitalization, data formats and interdependent attributes.</p>
+  
   <div id = "input_definition_table" class="col col-xs-12"></div>
-</div>
-
-<div id="OutputResponsesection" class="row">
-<h2>Output Response</h2><br>
-<div class="col col-xs-12">
-  <p>The REopt Lite API returns a JSON in a nested directory structure. At the top level are <b>inputs</b>, <b>outputs </b> and <b> messages</b>. Messages may contain errors describing invalid inputs, runtime problems with the opimization or other technical issues. Messages may also contain warnings describing non-critical optimization details, such as missing values replaced by defaults. Inputs returns a copy of the input parameters, with defaults filled in and extraneous keys removed. Ouputs returns optimization results nested within a directory structure modeled after the inputs and described in detail below.</p>
-  <h4>Messages</h4>
-  <p> Message contain a JSON with keys for 'warnings' and 'errors' if they exist. Each key maps to a dictionary containing types of errors or warnings and message details.</p>
-  <div><pre>"messages": {
-  "errors":{ 
-        "input_errors": [
-          "Could not convert timeout_seconds (ONE) in Scenario to 'float'>"
-        ],
-  "warnings":{ 
-        "Default values used for the following:": {
-          "Scenario": "time_steps_per_hour AND timeout_seconds"}
-        }
-  }
-}</pre></div><br>
-  <h4>Inputs</h4>
-  <p> Inputs follow the structure described previously in <a data-target="#InputFormatsection">Input Definitions</a>.</p><br> 
-  <h4>Outputs</h4>
-  <p> Outputs resemble input structure and contain the following directories and attributes:</p>
   </div>
-  <br><br><br>
-
-  <div id = "output_definition_table" class="col col-xs-12 "></div>
+  </div>
+  <h3>Response</h3>
+  
+  <p>The Submission URL replies with a JSON consisting of the unique identifier of the task that will optimize the scenario.</p>
+    <div class="col-xs-10 col-xs-offset-1"><pre>{"run_uuid":7h73e87ejjd83jdj38dj393d3 }</pre></div>
+  </div>
 </div>
 
 
-<div id="Examplesection" class="row">
+<div id = "ResultsURLsection" class="row">
+<h2>Results URL</h2><br>
+
+    <div class="col col-xs-12">
+          <p>The Results URL replies to a GET request containing a query string specifying the run_uuid for which to retrieve results.</p>
+          <div class="col-xs-10 col-xs-offset-1"><pre>GET http://reopt.nrel.gov/api/v1/reopt/?run_uuid=7h73e87ejjd83jdj38dj393d3</pre></div>
+    </div>
+
+  
+  
+   <div class="col col-xs-12">
+    <h3>Response</h3>
+    <p>If results are not ready, the Results URL will respond with the message shown below. The URL can be polled at regular intervals, without rate-limiting, until results are ready.</p>
+    </div>
+    <div class="col-xs-10 col-xs-offset-1"><pre>{"status":"Not ready"}</pre></div>
+
+  <div class="col-xs-12">
+  <p>If results are ready, the Results URL returns a JSON containing <b>inputs</b>, <b>outputs </b> and <b> messages</b>.</p>
+  </div>
+  <div class="col-xs-10 col-xs-offset-1"><pre>{"inputs":{...},"outputs":{...},"messages":{...}}</pre></div>
+
+  
+      <div class="col-xs-12">
+      <h4>Inputs</h4>
+      <p> Inputs follow the structure described previously in <a data-target="#InputFormatsection">Input Definitions</a>.</p>
+      </div>
+
+      <div class="col-xs-12">
+      <h4>Outputs</h4>
+      <p> Outputs resemble the nested input structure and contain the following directories and attributes:</p>
+      <div id = "output_definition_table" class="col col-xs-12 "></div>
+      </div>
+      
+      <div class="col-xs-12">
+      <h4>Messages</h4>
+      <p> Message contain a JSON with keys for 'warnings' and 'errors' if they exist. Each key maps to a dictionary containing types of errors or warnings and message details.</p>
+      
+      <div class="col-xs-10 col-xs-offset-1"><pre>"messages": {
+      "errors":{ 
+            "input_errors": [
+              "Could not convert timeout_seconds (ONE) in Scenario to 'float'>"
+            ],
+      "warnings":{ 
+            "Default values used for the following:": {
+              "Scenario": "time_steps_per_hour AND timeout_seconds"}
+            }
+      }
+      }</pre></div><br>
+      </div>
+</div>
+
+
+<div id = "ResultsURLsection" class="row">
   <h2>Example</h2><br>
-  <p>Input</p>
-  <div class="col  col-xs-12 pre-scrollable">
+  The following provides an example of the ordered requests and responses workflow in a successful scenario optimization. 
+  <div class="col col-xs-12">
+  <b><p>Submission URL Input</p></b>
+  <div class="col-xs-10 col-xs-offset-1 pre-scrollable">
       
       <pre>{
   "Scenario": {
@@ -359,9 +404,27 @@ The API uses utility rates from the <a href="https://openei.org/wiki/Utility_Rat
 }
     </pre>
   </div>
-  <br>
-<p>Response</p>
-  <div class="col  col-xs-12 pre-scrollable">    
+  </div>
+  
+<div class="col col-xs-12">
+<b><p>Submission URL Response</p></b>
+  <div class="col  col-xs-10 col-xs-offset-1">
+    <pre>{"run_uuid":y49328hdbbyewdyb23b36ebybd36</pre>
+  </div>
+</div>
+
+<div class="col col-xs-12">
+<b><p>Results URL Request</p></b>
+  <div class="col  col-xs-10 col-xs-offset-1">
+    <pre>GET <em>http://reopt.nrel.gov/api/v1/reopt/results?run_uuid=y49328hdbbyewdyb23b36ebybd36</em></pre>
+  </div>
+</div>
+
+
+
+<div class="col col-xs-12">
+<b><p>Results URL Response</p></b>
+   <div class="col  col-xs-10 col-xs-offset-1 pre-scrollable">
     <pre>{
   "inputs": {
     "Scenario": {
@@ -665,18 +728,21 @@ The API uses utility rates from the <a href="https://openei.org/wiki/Utility_Rat
   </div>
 </div>
 
+<div class="row">
+<h2>Errors</h2><br>
+<div id="Errorssection" class="col col-xs-12">
 
-<div id="Errorssection" class="row">
-  <h2>Errors</h2><br>
   
   <h5>Missing Inputs</h5>
-  <p>Input</p>
+  At the time of submission, inputs checked for required values. Some inputs  (i.e. latitude), are required, while others are required only if another related input is provided as specififed in the documetation <a href="#data-definitions">above</a> (i.e. annual_kwh and doe_reference_building). Missing inputs will be flagged in the API response.<br><br>
+
+  <b><p>Submission URL Input</p></b>
   <div class="col  col-xs-12">
     <pre>{"Scenario": {"Site":{"latitude":39.0}}}</pre>
   </div>
 
   <br>
-  <p>Response</p>
+  <b><p>Response</p></b>
   <div class="col col-xs-12 ">
     
     <pre>{
@@ -706,7 +772,8 @@ The API uses utility rates from the <a href="https://openei.org/wiki/Utility_Rat
 
 
 <h5>Invalid Data Type</h5>
-<p>Input</p>
+At the time of submission, inputs checked for non-compliant values. Those found will be returned in the API response.<br><br>
+<p><b>Submission URL Input</b></p>
   <div class="col col-xs-12 pre-scrollable">
     
     <pre>{"Scenario": {
@@ -874,8 +941,8 @@ The API uses utility rates from the <a href="https://openei.org/wiki/Utility_Rat
 }
   </pre>
   </div>
-  <br>
-  <p>Response</p>
+  
+  <b><p>Response</p></b>
   <div class="col col-xs-12 ">
     <pre>{
   "inputs": {...},
@@ -897,4 +964,5 @@ The API uses utility rates from the <a href="https://openei.org/wiki/Utility_Rat
   </div>
 </div>
 
+</div>
 </div>
