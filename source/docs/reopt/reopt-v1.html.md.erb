@@ -126,14 +126,14 @@ summary: The REopt API provides access to a web version of a techno-economic dec
   
    <div class="col col-xs-12">
     <h3>Response</h3>
-    <p>If results are not ready, the Results URL will respond with the message shown below. The URL can be polled at regular intervals, without rate-limiting, until results are ready.</p>
+    <p>If results are not ready, the Results URL will respond with the message shown below with the Scenario directory  containing a 'status' designated as <em>Optimizing...</em>. The URL can be polled at regular intervals, without rate-limiting, until results are ready.</p>
     </div>
-    <div class="col-xs-10 col-xs-offset-1"><pre>{"status":"Not ready"}</pre></div>
+    <div class="col-xs-10 col-xs-offset-1"><pre>{"inputs":{...},"outputs":{"Scenario":{"status":"Optimizing...",...}},"messages":{...}}</pre></div>
 
   <div class="col-xs-12">
-  <p>If results are ready, the Results URL returns a JSON containing <b>inputs</b>, <b>outputs </b> and <b> messages</b>.</p>
+  <p>If results are ready, the Results URL returns a JSON containing <b>inputs</b>, <b>outputs </b> and <b> messages</b>. The Scenario directory will contain a 'status' designated as <em>optimal</em>.</p>
   </div>
-  <div class="col-xs-10 col-xs-offset-1"><pre>{"inputs":{...},"outputs":{...},"messages":{...}}</pre></div>
+  <div class="col-xs-10 col-xs-offset-1"><pre>{"inputs":{...},"outputs":{"Scenario":{"status":"optimal",...},"messages":{...}}</pre></div>
 
   
       <div class="col-xs-12">
@@ -409,7 +409,7 @@ summary: The REopt API provides access to a web version of a techno-economic dec
 <div class="col col-xs-12">
 <b><p>Submission URL Response</p></b>
   <div class="col  col-xs-10 col-xs-offset-1">
-    <pre>{"run_uuid":y49328hdbbyewdyb23b36ebybd36</pre>
+    <pre>{"run_uuid":"y49328hdbbyewdyb23b36ebybd36"}</pre>
   </div>
 </div>
 
@@ -765,7 +765,7 @@ summary: The REopt API provides access to a web version of a techno-economic dec
         "Scenario&gt;Site&gt;Wind": "pbi_us_dollars_per_kwh AND installed_cost_us_dollars_per_kw AND macrs_bonus_pct AND om_cost_us_dollars_per_kw AND utility_rebate_us_dollars_per_kw AND min_kw AND pbi_years AND max_kw AND state_rebate_max_us_dollars AND state_rebate_us_dollars_per_kw AND federal_itc_pct AND pbi_max_us_dollars AND federal_rebate_us_dollars_per_kw AND pbi_system_max_kw AND macrs_option_years AND state_ibi_pct AND utility_rebate_max_us_dollars AND utility_ibi_pct AND state_ibi_max_us_dollars AND utility_ibi_max_us_dollars"}}
         }
       },
-  "outputs": {...}
+  "outputs": {"Scenario":{"status": "Invalid inputs. See messages.",...}}
 }</pre>
   </div>
   
@@ -959,7 +959,7 @@ At the time of submission, inputs checked for non-compliant values. Those found 
         "Scenario&gt;Site&gt;Storage": "total_rebate_us_dollars_per_kw AND max_kwh AND rectifier_efficiency_pct AND total_itc_pct AND min_kw AND max_kw AND replace_cost_us_dollars_per_kw AND replace_cost_us_dollars_per_kwh AND min_kwh AND installed_cost_us_dollars_per_kw AND battery_replacement_year AND installed_cost_us_dollars_per_kwh AND inverter_efficiency_pct AND canGridCharge AND macrs_bonus_pct AND inverter_replacement_year AND macrs_option_years AND internal_efficiency_pct AND soc_min_pct AND soc_init_pct",
         "Scenario&gt;Site&gt;Wind": "pbi_us_dollars_per_kwh AND installed_cost_us_dollars_per_kw AND macrs_bonus_pct AND om_cost_us_dollars_per_kw AND utility_rebate_us_dollars_per_kw AND min_kw AND pbi_years AND max_kw AND state_rebate_max_us_dollars AND state_rebate_us_dollars_per_kw AND federal_itc_pct AND pbi_max_us_dollars AND federal_rebate_us_dollars_per_kw AND pbi_system_max_kw AND macrs_option_years AND state_ibi_pct AND utility_rebate_max_us_dollars AND utility_ibi_pct AND state_ibi_max_us_dollars AND utility_ibi_max_us_dollars"
         },
-  "outputs": {...}
+  "outputs": {"Scenario":{"status": "Invalid inputs. See messages.",...}}
 }</pre>
   </div>
 </div>
