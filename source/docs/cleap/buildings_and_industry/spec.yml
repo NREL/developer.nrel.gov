@@ -73,6 +73,41 @@ paths:
           description: Successful request
           schema:
             $ref: "#/definitions/activities_gisjoin"
+  /building_disclosures:
+    get:
+      summary: Get the building disclosures for a zip or city/state.
+      parameters:
+        - name: city
+          in: query
+          type: string
+          description: Required, along with `state_abbr`, unless `zip` is specified.
+        - name: state_abbr
+          in: query
+          type: string
+          description: Required, along with `city`, unless `zip` is specified.
+        - name: zip
+          in: query
+          type: string
+          description: Required, unless `city` and `state_abbr` are specified.
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/building_disclosures"
+  /building_disclosures/{gisjoin}:
+    get:
+      summary: Get the building disclosures data for a gisjoin.
+      parameters:
+        - name: gisjoin
+          in: path
+          required: true
+          type: string
+          description: Required. Query the [`/api/cleap/v1/cities`](/docs/cleap/general/) API for this value.
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/building_disclosures_gisjoin"
   /building_stock_summaries:
     get:
       summary: Get the building stock summaries data for a zip or city/state.
@@ -322,6 +357,218 @@ definitions:
                     type: number
                     example: 2496
                     description: rank of natural gas use per establishment
+  building_disclosures:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/error"
+        example: []
+      inputs:
+        type: object
+        properties:
+          zip:
+            type: string
+            example: 80026
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      result:
+        type: object
+        properties:
+          "building_disclosures":
+            type: array
+            items:
+              type: object
+              properties:
+                type: object
+                Type:
+                  type: string
+                  example: Flex
+                count_0:
+                  type: number
+                  example: 40
+                sum_0:
+                  type: number
+                  example: 1461652
+                count_5000:
+                  type: number
+                  example: 39
+                sum_5000:
+                  type: number
+                  example: 1458372
+                count_10000:
+                  type: number
+                  example: 34
+                sum_10000:
+                  type: number
+                  example: 1426170
+                count_15000:
+                  type: number
+                  example: 28
+                sum_15000:
+                  type: number
+                  example: 1352468
+                count_20000:
+                  type: number
+                  example: 23
+                sum_20000:
+                  type: number
+                  example: 1267552
+                count_25000:
+                  type: number
+                  example: 15
+                sum_25000:
+                  type: number
+                  example: 1092032
+                count_30000:
+                  type: number
+                  example: 11
+                sum_30000:
+                  type: number
+                  example: 987021
+                count_35000:
+                  type: number
+                  example: 11
+                sum_35000:
+                  type: number
+                  example: 987021
+                count_40000:
+                  type: number
+                  example: 11
+                sum_40000:
+                  type: number
+                  example: 987021
+                count_45000:
+                  type: number
+                  example: 11
+                sum_45000:
+                  type: number
+                  example: 987021
+                count_50000:
+                  type: number
+                  example: 11
+                sum_50000:
+                  type: number
+                  example: 987021
+                city_name:
+                  type: string
+                  example: Broomfield
+                state_abbr:
+                  type: string
+                  example: CO
+                gisjoin:
+                  type: string
+                  example: G08009280
+  building_disclosures_gisjoin:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/error"
+        example: []
+      inputs:
+        type: object
+        properties:
+          gisjoin:
+            type: string
+            example: G08009280
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      result:
+        type: object
+        properties:
+          "building_disclosures":
+            type: array
+            items:
+              type: object
+              properties:
+                type: object
+                Type:
+                  type: string
+                  example: Flex
+                count_0:
+                  type: number
+                  example: 40
+                sum_0:
+                  type: number
+                  example: 1461652
+                count_5000:
+                  type: number
+                  example: 39
+                sum_5000:
+                  type: number
+                  example: 1458372
+                count_10000:
+                  type: number
+                  example: 34
+                sum_10000:
+                  type: number
+                  example: 1426170
+                count_15000:
+                  type: number
+                  example: 28
+                sum_15000:
+                  type: number
+                  example: 1352468
+                count_20000:
+                  type: number
+                  example: 23
+                sum_20000:
+                  type: number
+                  example: 1267552
+                count_25000:
+                  type: number
+                  example: 15
+                sum_25000:
+                  type: number
+                  example: 1092032
+                count_30000:
+                  type: number
+                  example: 11
+                sum_30000:
+                  type: number
+                  example: 987021
+                count_35000:
+                  type: number
+                  example: 11
+                sum_35000:
+                  type: number
+                  example: 987021
+                count_40000:
+                  type: number
+                  example: 11
+                sum_40000:
+                  type: number
+                  example: 987021
+                count_45000:
+                  type: number
+                  example: 11
+                sum_45000:
+                  type: number
+                  example: 987021
+                count_50000:
+                  type: number
+                  example: 11
+                sum_50000:
+                  type: number
+                  example: 987021
+                city_name:
+                  type: string
+                  example: Broomfield
+                state_abbr:
+                  type: string
+                  example: CO
+                gisjoin:
+                  type: string
+                  example: G08009280
   building_stock_summaries:
     properties:
       errors:
