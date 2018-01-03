@@ -369,7 +369,7 @@ definitions:
         properties:
           zip:
             type: string
-            example: 80026
+            example: "80026"
       metadata:
         type: object
         properties:
@@ -379,13 +379,12 @@ definitions:
       result:
         type: object
         properties:
-          "building_disclosures":
+          building_disclosures:
             type: array
             items:
               type: object
               properties:
-                type: object
-                Type:
+                type:
                   type: string
                   example: Flex
                 count_0:
@@ -485,13 +484,12 @@ definitions:
       result:
         type: object
         properties:
-          "building_disclosures":
+          building_disclosures:
             type: array
             items:
               type: object
               properties:
-                type: object
-                Type:
+                type:
                   type: string
                   example: Flex
                 count_0:
