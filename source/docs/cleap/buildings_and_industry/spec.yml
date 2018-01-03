@@ -143,6 +143,41 @@ paths:
           description: Successful request
           schema:
             $ref: "#/definitions/building_stock_summaries_gisjoin"
+  /lmi_housing_units:
+    get:
+      summary: Get housing units by type and area median income for a zip or city/state.
+      parameters:
+        - name: city
+          in: query
+          type: string
+          description: Required, along with `state_abbr`, unless `zip` is specified.
+        - name: state_abbr
+          in: query
+          type: string
+          description: Required, along with `city`, unless `zip` is specified.
+        - name: zip
+          in: query
+          type: string
+          description: Required, unless `city` and `state_abbr` are specified.
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/lmi_housing_units"
+  /lmi_housing_units/{gisjoin}:
+    get:
+      summary: Get housing units by type and area median income for the specific gisjoin.
+      parameters:
+        - name: gisjoin
+          in: path
+          required: true
+          type: string
+          description: Required. Query the [`/api/cleap/v1/cities`](/docs/cleap/general/) API for this value.
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/lmi_housing_units_gisjoin"
   /small_building_pv:
     get:
       summary: Get the small building pv data for a zip or city/state.
@@ -735,6 +770,157 @@ definitions:
               count_sum_ind:
                 type: number
                 example: 24167
+  lmi_housing_units:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/error"
+        example: []
+      inputs:
+        type: object
+        properties:
+          city:
+            type: string
+            example: louisville
+          state_abbr:
+            type: string
+            example: co
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      result:
+        type: object
+        properties:
+          lmi_housing_units_by_ave_income:
+            type: array
+            items:
+              properties:
+                id:
+                  type: number
+                  example: 1192
+                bldg_type:
+                  type: string
+                  example: 1 unit attached
+                gisjoin:
+                  type: string
+                  example: G08046355
+                hu_owner_0_30:
+                  type: number
+                  example: 17.7
+                hu_owner_100_plus:
+                  type: number
+                  example: 187.7
+                hu_owner_30_50:
+                  type: number
+                  example: 41.6
+                hu_owner_50_80:
+                  type: number
+                  example: 47.7
+                hu_owner_80_100:
+                  type: number
+                  example: 80.4
+                hu_renter_0_30:
+                  type: number
+                  example: 45.6
+                hu_renter_100_plus:
+                  type: number
+                  example: 40.1
+                hu_renter_30_50:
+                  type: number
+                  example: 23.5
+                hu_renter_50_80:
+                  type: number
+                  example: 29.3
+                hu_renter_80_100:
+                  type: number
+                  example: 30.4
+                name:
+                  type: string
+                  example: Louisville
+                namelsad:
+                  type: string
+                  example: Louisville city
+                statefp:
+                  type: number
+                  example: 8
+  lmi_housing_units_gisjoin:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/error"
+        example: []
+      inputs:
+        type: object
+        properties:
+          gisjoin:
+            type: string
+            example: G08009280
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      result:
+        type: object
+        properties:
+          lmi_housing_units_by_ave_income:
+            type: array
+            items:
+              properties:
+                id:
+                  type: number
+                  example: 214
+                bldg_type:
+                  type: string
+                  example: other unit
+                gisjoin:
+                  type: string
+                  example: G08009280
+                hu_owner_0_30:
+                  type: number
+                  example: 77.5
+                hu_owner_100_plus:
+                  type: number
+                  example: 80.8
+                hu_owner_30_50:
+                  type: number
+                  example: 97.6
+                hu_owner_50_80:
+                  type: number
+                  example: 170.1
+                hu_owner_80_100:
+                  type: number
+                  example: 57.7
+                hu_renter_0_30:
+                  type: number
+                  example: 21.6
+                hu_renter_100_plus:
+                  type: number
+                  example: 79.6
+                hu_renter_30_50:
+                  type: number
+                  example: 15.9
+                hu_renter_50_80:
+                  type: number
+                  example: 9.4
+                hu_renter_80_100:
+                  type: number
+                  example: 11.5
+                name:
+                  type: string
+                  example: Broomfield
+                namelsad:
+                  type: string
+                  example: Broomfield city
+                statefp:
+                  type: number
+                  example: 8
   small_building_pv:
     properties:
       errors:
