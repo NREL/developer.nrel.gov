@@ -14,7 +14,7 @@ summary: The REopt API provides access to a web version of a techno-economic dec
     <div class="col col-0.5"></div>
     <div class="col col-xs-12 ">
     <p>
-    The REopt Lite API recommends an optimal mix of renewable energy, conventional generation, and energy storage technologies to meet cost savings and energy performance goals, including the hourly optimal operation of the system. In addtion to this API, the <a target='_blank' href='http://reopt.nrel.gov/tool'>REopt Lite Tool</a> provides an interface for manually establishing input parameters. <a target='_blank' href='http://reopt.nrel.gov'>Click here</a> for more information about the REopt model.
+    The REopt Lite API recommends an optimal mix of renewable energy, conventional generation, and energy storage technologies to meet cost savings and energy performance goals, including the hourly optimal operation of the system. In addition to this API, the <a target='_blank' href='http://reopt.nrel.gov/tool'>REopt Lite Tool</a> provides an interface for manually establishing input parameters. <a target='_blank' href='http://reopt.nrel.gov'>Click here</a> for more information about the REopt model.
     </p>
     <p>
     The API uses utility rates from the <a href="https://openei.org/wiki/Utility_Rate_Database" target="_blank">Utility Rate Database</a> and solar PV generation from <a href="https://developer.nrel.gov/docs/solar/pvwatts-v5/" target="_blank">PV Watts (Version 5)</a>. It is capable of accepting custom load profiles, but is also equipped with simulated profiles from the Department of Energy <a href="https://energy.gov/eere/buildings/commercial-reference-buildings" target="_blank">Commercial Reference Buildings</a>. 
@@ -66,7 +66,7 @@ summary: The REopt API provides access to a web version of a techno-economic dec
   </p>
 
   <p>
-  <b>Note:</b> Optimizations include PV and storage technologies by default. To disable either, set 'max_kw' to 0 in its Site subdirectory. 
+  <b>Note:</b> Optimizations include PV and storage technologies by default. To disable either, set its 'max_kw' to 0. 
   </p>
 
   <p>
@@ -99,7 +99,7 @@ summary: The REopt API provides access to a web version of a techno-economic dec
     </div>
 
   <div class="row ">
-  <div class="col col-xs-12">
+  <div class="col col-xs-12" id="input-definitions">
   <h3>Data Definitions</h3>
   <p>The Submission URL accepts a JSON in a nested directory structure that at the top level contains a <b>Scenario</b> key that maps to a set of attributes and subdirectories as described below. Pay attention to capitalization, data formats and interdependent attributes.</p>
   
@@ -109,7 +109,7 @@ summary: The REopt API provides access to a web version of a techno-economic dec
   <h3>Response</h3>
   
   <p>The Submission URL replies with a JSON consisting of the unique identifier of the task that will optimize the scenario.</p>
-    <div class="col-xs-10 col-xs-offset-1"><pre>{"run_uuid":7h73e87ejjd83jdj38dj393d3 }</pre></div>
+    <div class="col-xs-10 col-xs-offset-1"><pre>{"run_uuid":"7h73e87ejjd83jdj38dj393d3" }</pre></div>
   </div>
 </div>
 
@@ -126,7 +126,7 @@ summary: The REopt API provides access to a web version of a techno-economic dec
   
    <div class="col col-xs-12">
     <h3>Response</h3>
-    <p>If results are not ready, the Results URL will respond with the message shown below with the Scenario directory  containing a 'status' designated as <em>Optimizing...</em>. The URL can be polled at regular intervals, without rate-limiting, until results are ready.</p>
+    <p>If results are not ready, the Results URL will respond with the message shown below. The Scenario directory  will contain a 'status' designated as <em>Optimizing...</em>. The URL can be polled at regular intervals, without rate-limiting, until results are ready.</p>
     </div>
     <div class="col-xs-10 col-xs-offset-1"><pre>{"inputs":{...},"outputs":{"Scenario":{"status":"Optimizing...",...}},"messages":{...}}</pre></div>
 
@@ -138,7 +138,7 @@ summary: The REopt API provides access to a web version of a techno-economic dec
   
       <div class="col-xs-12">
       <h4>Inputs</h4>
-      <p> Inputs follow the structure described previously in <a data-target="#InputFormatsection">Input Definitions</a>.</p>
+      <p> Inputs follow the structure described previously in <a data-target="#input-definitions">Input Definitions</a>.</p>
       </div>
 
       <div class="col-xs-12">
