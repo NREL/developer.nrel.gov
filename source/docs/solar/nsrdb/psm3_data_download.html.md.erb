@@ -54,7 +54,7 @@ _NOTE: when using POST to submit a request the api_key must still be inlcuded as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>dhi, dni, ghi, clearsky_dhi, clearsky_dni, clearsky_ghi, cloud_type, dew_point, surface_air_temperature_nwp, surface_pressure_background, surface_relative_humidity_nwp, solar_zenith_angle, total_precipitable_water_nwp, wind_direction_10m_nwp, wind_speed_10m_nwp, fill_flag</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>air_temperature, clearsky_dhi, clearsky_dni, clearsky_ghi, cloud_type, dew_point, dhi, dni, fill_flag, ghi, relative_humidity, solar_zenith_angle, surface_albedo, surface_pressure, total_precipitable_water, wind_direction, wind_speed</em></div>
       </td>
       <td class="doc-parameter-description">
         Each specified attribute(*) will be returned as a column in the resultant CSV download.<br/><br/> <em>* Not all attributes are available for the typical meteorological year (TMY).</em>
@@ -213,7 +213,7 @@ Generated data files are formatted in accordance with the Standard Time Series D
 
 ### JSON Output Format
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&full_name=Sample+User&email=sample@email.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT(-108.5449+40.5137)&names=2010,2011,2012,2013,2014&attributes=dhi,dni,ghi,clearsky_dhi,clearsky_dni,clearsky_ghi,cloud_type,dew_point,surface_air_temperature_nwp,surface_pressure_background,surface_relative_humidity_nwp,solar_zenith_angle,total_precipitable_water_nwp,wind_direction_10m_nwp,wind_speed_10m_nwp,fill_flag&leap_day=false&utc=false&interval=30</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&full_name=Sample+User&email=sample@email.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT(-108.5449+40.5137)&names=2010,2011,2012,2013,2014&attributes=air_temperature,clearsky_dhi,clearsky_dni,clearsky_ghi,cloud_type,dew_point,dhi,dni,fill_flag,ghi,relative_humidity,solar_zenith_angle,surface_albedo,surface_pressure,total_precipitable_water,wind_direction,wind_speed&leap_day=false&utc=false&interval=30</code></div>
 
 ```json
 {
@@ -221,22 +221,23 @@ Generated data files are formatted in accordance with the Standard Time Series D
    "inputs":{
       "affiliation":"Test Organization",
       "attributes":[
-         "dhi",
-         "dni",
-         "ghi",
-         "clearsky_dhi",
-         "clearsky_dni",
-         "clearsky_ghi",
-         "cloud_type",
-         "dew_point",
-         "surface_air_temperature_nwp",
-         "surface_pressure_background",
-         "surface_relative_humidity_nwp",
-         "solar_zenith_angle",
-         "total_precipitable_water_nwp",
-         "wind_direction_10m_nwp",
-         "wind_speed_10m_nwp",
-         "fill_flag"
+        "air_temperature",
+        "clearsky_dhi",
+        "clearsky_dni",
+        "clearsky_ghi",
+        "cloud_type",
+        "dew_point",
+        "dhi",
+        "dni",
+        "fill_flag",
+        "ghi",
+        "relative_humidity",
+        "solar_zenith_angle",
+        "surface_albedo",
+        "surface_pressure",
+        "total_precipitable_water",
+        "wind_direction",
+        "wind_speed",
       ],
       "email":"sample@email.com",
       "full_name":"Sample User",
@@ -264,7 +265,7 @@ Generated data files are formatted in accordance with the Standard Time Series D
 ### CSV Output Format
 Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?api_key=DEMO_KEY&full_name=Sample+User&email=sample@email.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT(-108.5449+40.5137)&names=2014&attributes=dhi,dni,ghi,clearsky_dhi,clearsky_dni,clearsky_ghi,cloud_type,dew_point,surface_air_temperature_nwp,surface_pressure_background,surface_relative_humidity_nwp,solar_zenith_angle,total_precipitable_water_nwp,wind_direction_10m_nwp,wind_speed_10m_nwp,fill_flag&leap_day=false&utc=false&interval=30</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?api_key=DEMO_KEY&full_name=Sample+User&email=sample@email.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT(-108.5449+40.5137)&names=2014&attributes=dhi,dni,ghi,clearsky_dhi,clearsky_dni,clearsky_ghi,cloud_type,dew_point,air_temperature,surface_pressure,relative_humidity,solar_zenith_angle,total_precipitable_water,wind_direction,wind_speed,fill_flag&leap_day=false&utc=false&interval=30</code></div>
 
 ```csv
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,Local Time Zone,Clearsky DHI Units,Clearsky DNI Units,Clearsky GHI Units,Dew Point Units,DHI Units,DNI Units,GHI Units,Solar Zenith Angle Units,Temperature Units,Pressure Units,Relative Humidity Units,Precipitable Water Units,Wind Direction Units,Wind Speed,Snow Depth Units,Cloud Type -1,Cloud Type 0,Cloud Type 1,Cloud Type 2,Cloud Type 3,Cloud Type 4,Cloud Type 5,Cloud Type 6,Cloud Type 7,Cloud Type 8,Cloud Type 9,Cloud Type 10,Cloud Type 11,Cloud Type 12,Fill Flag 0,Fill Flag 1,Fill Flag 2,Fill Flag 3,Fill Flag 4,Fill Flag 5,Version
@@ -287,7 +288,7 @@ import requests
 
 url = "http://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
 
-payload = "names=2012&leap_day=false&interval=60&utc=false&full_name=Honored%2BUser&email=honored.user%40gmail.com&affiliation=NREL&mailing_list=true&reason=Academic&attributes=dhi%2Cdni%2Cwind_speed_10m_nwp%2Csurface_air_temperature_nwp&wkt=MULTIPOINT(-106.22%2032.9741%2C-106.18%2032.9741%2C-106.1%2032.9741)"
+payload = "names=2012&leap_day=false&interval=60&utc=false&full_name=Honored%2BUser&email=honored.user%40gmail.com&affiliation=NREL&mailing_list=true&reason=Academic&attributes=dhi%2Cdni%2Cwind_speed%2Cair_temperature&wkt=MULTIPOINT(-106.22%2032.9741%2C-106.18%2032.9741%2C-106.1%2032.9741)"
 
 headers = {
     'content-type': "application/x-www-form-urlencoded",
