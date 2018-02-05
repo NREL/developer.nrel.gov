@@ -349,7 +349,7 @@ var nested_input_definitions = {
           "type": "float",
           "description": "Maximum annual value of production-based incentives",
           "min": 0,
-          "units": "US Dollars"
+          "units": "$"
         },
         "radius": {
           "default": 0,
@@ -371,7 +371,7 @@ var nested_input_definitions = {
           "type": "float",
           "description": "Maximum utility rebate",
           "min": 0,
-          "units": "US Dollars"
+          "units": "$"
         },
         "installed_cost_us_dollars_per_kw": {
           "default": 2000,
@@ -387,7 +387,7 @@ var nested_input_definitions = {
           "type": "float",
           "description": "Maximum dollar value of utility percentage-based capital cost incentive",
           "min": 0,
-          "units": "US Dollars"
+          "units": "$"
         },
         "tilt": {
           "default": "Site latitude",
@@ -425,7 +425,7 @@ var nested_input_definitions = {
           "type": "float",
           "description": "Maximum dollar value of state percentage-based capital cost incentive",
           "min": 0,
-          "units": "US Dollars"
+          "units": "$"
         },
         "state_rebate_us_dollars_per_kw": {
           "default": 0,
@@ -447,7 +447,7 @@ var nested_input_definitions = {
           "type": "float",
           "description": "Maximum state rebate",
           "min": 0,
-          "units": "US Dollars"
+          "units": "$"
         },
         "dc_ac_ratio": {
           "default": 1.1,
@@ -573,7 +573,7 @@ var nested_input_definitions = {
           "min": 0,
           "units": "kW"
         },
-        "blended_monthly_rates_us_dollars_per_kwh": {
+        "blended_monthly_rates_<br>us_dollars_per_kwh": {
           "replacement_sets": [
             ["urdb_response"],
             ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
@@ -593,7 +593,7 @@ var nested_input_definitions = {
           "min": 0,
           "units": "kW"
         },
-        "blended_monthly_demand_charges_us_dollars_per_kw": {
+        "blended_monthly_demand_<br>charges_us_dollars_per_kw": {
           "replacement_sets": [
             ["urdb_response"],
             ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
@@ -742,7 +742,7 @@ var nested_input_definitions = {
           "type": "float",
           "description": "Maximum rebate allowed under utility production-based incentives",
           "min": 0,
-          "units": "US Dollars"
+          "units": "$"
         },
         "federal_rebate_us_dollars_per_kw": {
           "default": 0,
@@ -758,7 +758,7 @@ var nested_input_definitions = {
           "type": "float",
           "description": "Maximum rebate allowed under state rebates",
           "min": 0,
-          "units": "US Dollars"
+          "units": "$"
         },
         "pbi_system_max_kw": {
           "default": 1000000000.0,
@@ -788,7 +788,7 @@ var nested_input_definitions = {
           "type": "float",
           "description": "Maximum rebate allowed under utility rebates",
           "min": 0,
-          "units": "US Dollars"
+          "units": "$"
         },
         "utility_ibi_pct": {
           "default": 0,
@@ -804,7 +804,7 @@ var nested_input_definitions = {
           "type": "float",
           "description": "Maximum rebate allowed under state investment based incentives",
           "min": 0,
-          "units": "US Dollars"
+          "units": "$"
         },
         "utility_ibi_max_us_dollars": {
           "default": 10000000000.0,
@@ -812,7 +812,7 @@ var nested_input_definitions = {
           "type": "float",
           "description": "Maximum rebate allowed under utility investment based incentives",
           "min": 0,
-          "units": "US Dollars"
+          "units": "$"
         }
       },
       "longitude": {
@@ -849,57 +849,57 @@ var nested_output_definitions = {
           "total_demand_cost_bau_us_dollars": {
             "description": "Business as usual total lifecycle utility demand cost over the analysis period, after-tax",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "total_demand_cost_us_dollars": {
             "description": "Optimal total lifecycle utility demand cost over the analysis period, after-tax",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "total_energy_cost_bau_us_dollars": {
             "description": "Business as usual total utility energy cost over the lifecycle, after-tax",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "total_energy_cost_us_dollars": {
             "description": "Total utility energy cost over the lifecycle, after-tax",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "total_fixed_cost_bau_us_dollars": {
             "description": "Business as usual total utility fixed cost over the lifecycle, after-tax",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "total_fixed_cost_us_dollars": {
             "description": "Total utility fixed cost over the lifecycle, after-tax",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "total_min_charge_adder_bau_us_dollars": {
             "description": "Business as usual total utility minimum charge adder",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "total_min_charge_adder_us_dollars": {
             "description": "Total utility minimum charge adder",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "year_one_bill_bau_us_dollars": {
             "description": "Business as usual year one total utility bill",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "year_one_bill_us_dollars": {
             "description": "Optimal year one total utility bill",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "year_one_demand_cost_bau_us_dollars": {
             "description": "Business as usual year one utility demand cost",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "year_one_demand_cost_series_us_dollars_per_kw": {
             "description": "Year one hourly demand costs",
@@ -909,12 +909,12 @@ var nested_output_definitions = {
           "year_one_demand_cost_us_dollars": {
             "description": "Optimal year one utility demand cost",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "year_one_energy_cost_bau_us_dollars": {
             "description": "Business as usual year one utility energy cost",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "year_one_energy_cost_series_us_dollars_per_kwh": {
             "description": "Year one hourly energy costs",
@@ -924,7 +924,7 @@ var nested_output_definitions = {
           "year_one_energy_cost_us_dollars": {
             "description": "Optimal year one utility energy cost",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "year_one_energy_supplied_kwh": {
             "description": "Year one hourly time series of power from grid to load",
@@ -934,27 +934,27 @@ var nested_output_definitions = {
           "year_one_export_benefit_us_dollars": {
             "description": "Optimal year one value of exported energy",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "year_one_fixed_cost_bau_us_dollars": {
             "description": "Business as usual year one utility fixed cost",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "year_one_fixed_cost_us_dollars": {
             "description": "Optimal year one utility fixed cost",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "year_one_min_charge_adder_bau_us_dollars": {
             "description": "Business as usual year one utility minimum charge adder",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "year_one_min_charge_adder_us_dollars": {
             "description": "Optimal year one utility minimum charge adder",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "year_one_to_battery_series_kw": {
             "description": "Year one hourly time series of power from grid to battery",
@@ -971,22 +971,22 @@ var nested_output_definitions = {
           "lcc_bau_us_dollars": {
             "description": "Business as usual lifecycle cost",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "lcc_us_dollars": {
             "description": "Optimal lifecycle cost",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "net_capital_costs_plus_om_us_dollars": {
             "description": "Optimal capital cost plus present value of operations and maintenance over anlaysis period",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           },
           "npv_us_dollars": {
             "description": "Net Present Value (NPV) of savings realized by the project",
             "type": "float",
-            "units": "US Dollars"
+            "units": "$"
           }
         },
         "LoadProfile": {
@@ -1266,22 +1266,24 @@ var sortAttributeTableRows = function (def){
   var other_keys = []
 
   for (var i=0;i<all_keys.length;i++){
-    var req = false
-    
-    if ( def[all_keys[i]].hasOwnProperty("required") ) {
-      if (Boolean(def[all_keys[i]]['required'])){
-        req_keys.push(all_keys[i])
-        req = true
+    if (all_keys[i]===all_keys[i].toLowerCase()) {
+      var req = false
+      
+      if ( def[all_keys[i]].hasOwnProperty("required") ) {
+        if (Boolean(def[all_keys[i]]['required'])){
+          req_keys.push(all_keys[i])
+          req = true
+        }
       }
-    }
 
-    if ( def[all_keys[i]].hasOwnProperty("depends_on") || def[all_keys[i]].hasOwnProperty("replacement_sets") ) {
-        dep_keys.push(all_keys[i])
-        req = true      
-    }
-    
-    if (req===false){
-      other_keys.push(all_keys[i])
+      if ( def[all_keys[i]].hasOwnProperty("depends_on") || def[all_keys[i]].hasOwnProperty("replacement_sets") ) {
+          dep_keys.push(all_keys[i])
+          req = true      
+      }
+      
+      if (req===false){
+        other_keys.push(all_keys[i])
+      }
     }
   }
   return req_keys.sort().concat(dep_keys.sort()).concat(other_keys.sort())
@@ -1317,8 +1319,8 @@ var buildAttributeTable = function(definition_dictionary, table_name) {
     attributeTableHead = buildAttributeTableHeader(attributeTableHead,tableColumns)
     attributeTable = attributeTable.append(attributeTableHead)
 
-    for (var i=0;i<attributes.length;i++){
-      attributeTableBody.append(buildAttributeTableRow( attributes[i], definition_dictionary[attributes[i]],tableColumns)) 
+    for (var i=0;i<def_keys.length;i++){
+      attributeTableBody.append(buildAttributeTableRow( def_keys[i], definition_dictionary[def_keys[i]],tableColumns)) 
     }
 
     attributeTable = attributeTable.append(attributeTableBody)
