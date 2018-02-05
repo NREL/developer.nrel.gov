@@ -1,956 +1,1128 @@
 
 var nested_input_definitions = {
-
   "Scenario": {
-    "timeout_seconds": {
-      "type": "float",
-      "min": 1,
-      "max": 295,
-      "default": 295,
-      "description": "The number of seconds allowed before the optimization times out"
-    },
     "user_id": {
       "type": "str",
       "description": "Not currently used"
     },
     "time_steps_per_hour": {
-      "type": "int",
-      "min": 1,
-      "max": 1,
       "default": 1,
-      "description": "The number of time steps per hour in the REopt simulation"
+      "max": 1,
+      "type": "int",
+      "description": "The number of time steps per hour in the REopt simulation",
+      "min": 1
     },
-
+    "timeout_seconds": {
+      "default": 295,
+      "max": 295,
+      "type": "float",
+      "description": "The number of seconds allowed before the optimization times out",
+      "min": 1,
+      "units": "seconds"
+    },
     "Site": {
-      "latitude": {
-        "type": "float",
-        "min": -180,
-        "max": 180,
-        "required": true,
-        "description": "The approximate latitude of the site in decimal degrees"
-      },
-      "longitude": {
-        "type": "float",
-        "min": -180,
-        "max": 180,
-        "required": true,
-        "description": "The approximate longitude of the site in decimal degrees"
-      },
-      "land_acres": {
-        "type": "float",
-        "min": 0,
-        "max": 1e6,
-        "description": "Land area in acres available for PV panel siting"
-      },
-      "roof_squarefeet": {
-        "type": "float",
-        "min": 0,
-        "max": 1e9,
-        "description": "Area of roof in square feet available for PV siting"
-      },
-
-      "Financial": {
-        "om_cost_escalation_pct": {
-          "type": "float",
-          "min": -1,
-          "max": 1,
-          "default": 0.025,
-          "description": "Annual nominal O&M cost escalation rate"
-        },
-        "escalation_pct": {
-          "type": "float",
-          "min": -1,
-          "max": 1,
-          "default": 0.026,
-          "description": "Annual nominal utility electricity cost escalation rate"
-        },
-        "offtaker_tax_pct": {
-          "type": "float",
-          "min": -1,
-          "max": 1,
-          "default": 0.4,
-          "description": "Host tax rate"
-        },
-        "offtaker_discount_pct": {
-          "type": "float",
-          "min": -1,
-          "max": 1,
-          "default": 0.081,
-          "description": "Nominal host discount rate"
-        },
-        "analysis_years": {
-          "type": "int",
-          "min": 0,
-          "max": 75,
-          "default": 20,
-          "description": "Analysis period"
-        }
-      },
-
       "LoadProfile": {
+        "loads_kw": {
+          "replacement_sets": [
+            ["loads_kw"],
+            ["doe_reference_name", "monthly_totals_kwh"],
+            ["annual_kwh", "doe_reference_name"]
+          ],
+          "type": "list of floats",
+          "description": "Hourly load over all hours in one year",
+          "units": "kW"
+        },
+        "outage_end_hour": {
+          "max": 8759,
+          "type": "int",
+          "description": "Hour of year that grid outage ends. Must be greater than outage_start",
+          "min": 0
+        },
+        "monthly_totals_kwh": {
+          "replacement_sets": [
+            ["loads_kw"],
+            ["doe_reference_name", "monthly_totals_kwh"],
+            ["annual_kwh", "doe_reference_name"]
+          ],
+          "type": "list of floats",
+          "description": "Array (length of 12) of total monthly energy consumption used to scale simulated building load profile.",
+          "depends_on": ["doe_reference_name"],
+          "units": "kWh"
+        },
+        "year": {
+          "default": 2018,
+          "max": 9999,
+          "type": "int",
+          "description": "Year of Custom Load Profile. If a custom load profile is uploaded via the loads_kw parameter, it is important that this year correlates with the load profile so that weekdays/weekends are determined correctly for the utility rate tariff",
+          "min": 1
+        },
+        "annual_kwh": {
+          "type": "float",
+          "description": "Annual energy consumption used to scale simulated building load profile, if <b><small>monthly_totals_kwh</b></small> is not provided.",
+          "min": 0,
+          "max": 1000000000000.0,
+          "depends_on": ["doe_reference_name"],
+          "replacement_sets": [
+            ["loads_kw"],
+            ["doe_reference_name", "monthly_totals_kwh"],
+            ["annual_kwh", "doe_reference_name"]
+          ],
+          "units": "kWh"
+        },
         "doe_reference_name": {
-          "type": "str",
-          "restrict_to": ["FastFoodRest", "FullServiceRest", "Hospital", "LargeHotel", "LargeOffice", "MediumOffice", "MidriseApartment", "Outpatient", "PrimarySchool", "RetailStore", "SecondarySchool", "SmallHotel", "SmallOffice", "StripMall", "Supermarket", "Warehouse"],
           "replacement_sets": [
             ["loads_kw"],
             ["doe_reference_name", "annual_kwh"],
             ["doe_reference_name", "monthly_totals_kwh"]
           ],
           "depends_on": ["annual_kwh or monthly_totals_kwh"],
-          "description": "Simulated load profile from DOE <a href='https: //energy.gov/eere/buildings/commercial-reference-buildings' target='blank'>Commercial Reference Buildings</a>"
-        },
-        "annual_kwh": {
-          "type": "float",
-          "min": 0,
-          "max": 1e12,
-          "replacement_sets": [
-            ["loads_kw"],
-            ["doe_reference_name", "monthly_totals_kwh"],
-            ["annual_kwh", "doe_reference_name"]
-          ],
-          "depends_on": ["doe_reference_name"],
-          "description": "Annual energy consumption used to scale simulated building load profile, if <b><small>monthly_totals_kwh</b></small> is not provided."
-        },
-        "year": {
-          "type": "int",
-          "min": 1,
-          "max": 9999,
-          "default": 2018,
-          "description": "Year of Custom Load Profile. If a custom load profile is uploaded via the loads_kw parameter, it is important that this year correlates with the load profile so that weekdays/weekends are determined correctly for the utility rate tariff"
-        },
-        "monthly_totals_kwh": {
-          "type": "list of floats",
-          "replacement_sets": [
-            ["loads_kw"],
-            ["doe_reference_name", "monthly_totals_kwh"],
-            ["annual_kwh", "doe_reference_name"]
-          ],
-          "depends_on": ["doe_reference_name"],
-          "description": "Array (length of 12) of total monthly energy consumption used to scale simulated building load profile."
-        },
-        "loads_kw": {
-          "type": "list of floats",
-          "replacement_sets": [
-            ["loads_kw"],
-            ["doe_reference_name", "monthly_totals_kwh"],
-            ["annual_kwh", "doe_reference_name"]
-          ],
-          "description": "Hourly load over all hours in one year"
-        },
-        "outage_start_hour": {
-          "type": "int",
-          "min": 0,
-          "max": 8759,
-          "description": "Hour of year that grid outage starts. Must be less than outage_end"
-        },
-        "outage_end_hour": {
-          "type": "int",
-          "min": 0,
-          "max": 8759,
-          "description": "Hour of year that grid outage ends. Must be greater than outage_start"
+          "type": "str",
+          "description": "Simulated load profile from DOE <a href='https: //energy.gov/eere/buildings/commercial-reference-buildings' target='blank'>Commercial Reference Buildings</a>",
+          "restrict_to": ["FastFoodRest", "FullServiceRest", "Hospital", "LargeHotel", "LargeOffice", "MediumOffice", "MidriseApartment", "Outpatient", "PrimarySchool", "RetailStore", "SecondarySchool", "SmallHotel", "SmallOffice", "StripMall", "Supermarket", "Warehouse", "FlatLoad"]
         },
         "critical_load_pct": {
-          "type": "float",
-          "min": 0,
-          "max": 1,
           "default": 0.5,
-          "description": "Critical load factor is multiplied by the typical load to determine the critical load that must be met during an outage. Value must be between zero and one, inclusive"
-        }
-      },
-
-      "ElectricTariff": {
-        "urdb_utilty_name": {
-          "type": "str",
-          "replacement_sets": [
-            ["urdb_response"],
-            ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
-            ["urdb_label"],
-            ["urdb_utilty_name", "urdb_rate_name"]
-          ],
-          "depends_on": ["urdb_rate_name"],
-          "description": "Name of Utility from  <a href='https: //openei.org/wiki/Utility_Rate_Database' target='blank'>Utility Rate Database</a>"
-        },
-        "urdb_rate_name": {
-          "type": "str",
-          "replacement_sets": [
-            ["urdb_response"],
-            ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
-            ["urdb_label"],
-            ["urdb_utilty_name", "urdb_rate_name"]
-          ],
-          "depends_on": ["urdb_utilty_name"],
-          "description": "Name of utility rate from  <a href='https: //openei.org/wiki/Utility_Rate_Database' target='blank'>Utility Rate Database</a>"
-        },
-        "blended_monthly_rates_us_dollars_per_kwh": {
-          "type": "list of floats",
-          "replacement_sets": [
-            ["urdb_response"],
-            ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
-            ["urdb_label"],
-            ["urdb_utilty_name", "urdb_rate_name"]
-          ],
-          "depends_on": ["blended_monthly_demand_charges_us_dollars_per_kw"],
-          "description": "Array (length of 12) of blended energy rates (total monthly energy in kWh divided by monthly cost in $)"
-        },
-        "blended_monthly_demand_charges_us_dollars_per_kw": {
-          "type": "list of floats",
-          "replacement_sets": [
-            ["urdb_response"],
-            ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
-            ["urdb_label"],
-            ["urdb_utilty_name", "urdb_rate_name"]
-          ],
-          "depends_on": ["blended_monthly_rates_us_dollars_per_kwh"],
-          "description": "Array (length of 12) of blended demand charges (demand charge cost in $ divided by monthly peak demand in kW)"
-        },
-        "net_metering_limit_kw": {
+          "max": 1,
           "type": "float",
+          "description": "Critical load factor is multiplied by the typical load to determine the critical load that must be met during an outage. Value must be between zero and one, inclusive",
           "min": 0,
-          "max": 1e9,
-          "default": 0,
-          "description": "System size above which net metering is not allowed"
+          "units": "%"
         },
-        "interconnection_limit_kw": {
-          "type": "float",
-          "min": 0,
-          "max": 1e9,
-          "default": 100000000,
-          "description": "Limit on system capacity size that can be interconnected to the grid"
-        },
-        "wholesale_rate_us_dollars_per_kwh": {
-          "type": "float",
-          "min": 0,
-          "default": 0,
-          "description": "Price of electricity sold back to the grid in absence of net metering"
-        },
-        "urdb_response": {
-          "type": "dict",
-          "replacement_sets": [
-            ["urdb_response"],
-            ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
-            ["urdb_label"],
-            ["urdb_utilty_name", "urdb_rate_name"]
-          ],
-          "description": "Utility rate structure from <a href='https: //openei.org/services/doc/rest/util_rates/?version=3' target='blank'>Utility Rate Database API</a>"
-        },
-        "urdb_label": {
-          "type": "str",
-          "replacement_sets": [
-            ["urdb_response"],
-            ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
-            ["urdb_label"],
-            ["urdb_utilty_name", "urdb_rate_name"]
-          ],
-          "description": "Label attribute of utility rate structure from <a href='https: //openei.org/services/doc/rest/util_rates/?version=3' target='blank'>Utility Rate Database API</a>"
-        }
-      },
-
-      "Wind": {
-        "min_kw": {
-          "type": "float",
-          "min": 0,
-          "max": 1e9,
-          "default": 0,
-          "description": "Minimum wind power capacity constraint for optimization"
-        },
-        "max_kw": {
-          "type": "float",
-          "min": 0,
-          "max": 1e9,
-          "default": 0,
-          "description": "Maximum wind power capacity constraint for optimization. Set to zero to disable Wind. Disabled by default"
-        },
-        "installed_cost_us_dollars_per_kw": {
-          "type": "float",
-          "min": 0,
-          "max": 1e5,
-          "default": 2000,
-          "description": "Total upfront installed costs"
-        },
-        "om_cost_us_dollars_per_kw": {
-          "type": "float",
-          "min": 0,
-          "max": 1e3,
-          "default": 35,
-          "description": "Total annual operations and maintenance costs"
-        },
-        "macrs_option_years": {
+        "outage_start_hour": {
+          "max": 8759,
           "type": "int",
-          "restrict_to": [0, 5, 7],
-          "default": 5,
-          "description": "MACRS schedule for financial analysis. Set to zero to disable"
-        },
-        "macrs_bonus_pct": {
-          "type": "float",
-          "min": 0,
-          "max": 1,
-          "default": 0.5,
-          "description": "Percent of upfront project costs to depreciate under MACRS"
-        },
-        "macrs_itc_reduction": {
-          "type": "float",
-          "min": 0,
-          "max": 1,
-          "default": 0.5,
-          "description": "Percent of the full ITC that depreciable basis is reduced by"
-        },
-        "federal_itc_pct": {
-          "type": "float",
-          "min": 0,
-          "max": 1,
-          "default": 0.3,
-          "description": "Percent federal capital cost incentive"
-        },
-        "state_ibi_pct": {
-          "type": "float",
-          "min": 0,
-          "max": 1,
-          "default": 0,
-          "description": "Percent of upfront project costs to discount under state investment based incentives"
-        },
-        "state_ibi_max_us_dollars": {
-          "type": "float",
-          "min": 0,
-          "max": 1e10,
-          "default": 10000000000,
-          "description": "Maximum rebate allowed under state investment based incentives"
-        },
-        "utility_ibi_pct": {
-          "type": "float",
-          "min": 0,
-          "max": 1,
-          "default": 0,
-          "description": "Percent of upfront project costs to discount under utility investment based incentives"
-        },
-        "utility_ibi_max_us_dollars": {
-          "type": "float",
-          "min": 0,
-          "max": 1e10,
-          "default": 10000000000,
-          "description": "Maximum rebate allowed under utility investment based incentives"
-        },
-        "federal_rebate_us_dollars_per_kw": {
-          "type": "float",
-          "min": 0,
-          "max": 1e9,
-          "default": 0,
-          "description": "Federal rebate based on installed capacity"
-        },
-        "state_rebate_us_dollars_per_kw": {
-          "type": "float",
-          "min": 0,
-          "max": 1e9,
-          "default": 0,
-          "description": "State rebates based on installed capacity"
-        },
-        "state_rebate_max_us_dollars": {
-          "type": "float",
-          "min": 0,
-          "max": 1e10,
-          "default": 10000000000,
-          "description": "Maximum rebate allowed under state rebates"
-        },
-        "utility_rebate_us_dollars_per_kw": {
-          "type": "float",
-          "min": 0,
-          "max": 1e9,
-          "default": 0,
-          "description": "Utility rebates based on installed capacity"
-        },
-        "utility_rebate_max_us_dollars": {
-          "type": "float",
-          "min": 0,
-          "max": 1e10,
-          "default": 10000000000,
-          "description": "Maximum rebate allowed under utility rebates"
-        },
-        "pbi_us_dollars_per_kwh": {
-          "type": "float",
-          "min": 0,
-          "max": 1e9,
-          "default": 0,
-          "description": "Production-based incentive value"
-        },
-        "pbi_max_us_dollars": {
-          "type": "float",
-          "min": 0,
-          "max": 1e9,
-          "default": 1e9,
-          "description": "Maximum rebate allowed under utility production-based incentives"
-        },
-        "pbi_years": {
-          "type": "float",
-          "min": 0,
-          "max": 1e9,
-          "default": 1,
-          "description": "Duration of production-based incentives from installation date"
-        },
-        "pbi_system_max_kw": {
-          "type": "float",
-          "min": 0,
-          "max": 1e9,
-          "default": 1e9,
-          "description": "Maximum system size for which production-based incentives apply"
+          "description": "Hour of year that grid outage starts. Must be less than outage_end",
+          "min": 0
         }
       },
-
-      "PV": {
-        "min_kw": {
-          "type": "float",
-          "min": 0,
-          "max": 1e9,
-          "default": 0,
-          "description": "Minimum PV size constraint for optimization"
-        },
-        "max_kw": {
-          "type": "float",
-          "min": 0,
-          "max": 1e9,
-          "default": 1e9,
-          "description": "Maximum PV size constraint for optimization. Set to zero to disable PV"
-        },
-        "installed_cost_us_dollars_per_kw": {
-          "type": "float",
-          "min": 0,
-          "max": 1e5,
-          "default": 2000,
-          "description": "Installed PV cost in $/kW"
-        },
-        "om_cost_us_dollars_per_kw": {
-          "type": "float",
-          "min": 0,
-          "max": 1e3,
-          "default": 16,
-          "description": "Annual PV operations and maintenance costs in $/kW"
-        },
-        "macrs_option_years": {
-          "type": "int",
-          "restrict_to": [0, 5, 7],
-          "default": 5,
-          "description": "Duration over which accelerated depreciation will occur. Set to zero to disable"
-        },
-        "macrs_bonus_pct": {
-          "type": "float",
-          "min": 0,
-          "max": 1,
-          "default": 0.5,
-          "description": "Percent of upfront project costs to depreciate in year one in addition to scheduled depreciation"
-        },
-        "macrs_itc_reduction": {
-          "type": "float",
-          "min": 0,
-          "max": 1,
-          "default": 0.5,
-          "description": "Percent of the ITC value by which depreciable basis is reduced"
-        },
-        "federal_itc_pct": {
-          "type": "float",
-          "min": 0,
-          "max": 1,
-          "default": 0.3,
-          "description": "Percentage of capital costs that are credited towards federal taxes"
-        },
-        "state_ibi_pct": {
-          "type": "float",
-          "min": 0,
-          "max": 1,
-          "default": 0,
-          "description": "Percentage of capital costs offset by state incentives"
-        },
-        "state_ibi_max_us_dollars": {
-          "type": "float",
-          "min": 0,
-          "max": 1e10,
-          "default": 10000000000,
-          "description": "Maximum dollar value of state percentage-based capital cost incentive"
-        },
-        "utility_ibi_pct": {
-          "type": "float",
-          "min": 0,
-          "max": 1,
-          "default": 0,
-          "description": "Percentage of capital costs offset by utility incentives"
-        },
-        "utility_ibi_max_us_dollars": {
-          "type": "float",
-          "min": 0,
-          "max": 1e10,
-          "default": 10000000000,
-          "description": "Maximum dollar value of utility percentage-based capital cost incentive"
-        },
-        "federal_rebate_us_dollars_per_kw": {
-          "type": "float",
-          "min": 0,
-          "max": 1e9,
-          "default": 0,
-          "description": "Federal rebates based on installed capacity"
-        },
-        "state_rebate_us_dollars_per_kw": {
-          "type": "float",
-          "min": 0,
-          "max": 1e9,
-          "default": 0,
-          "description": "State rebate based on installed capacity"
-        },
-        "state_rebate_max_us_dollars": {
-          "type": "float",
-          "min": 0,
-          "max": 1e10,
-          "default": 10000000000,
-          "description": "Maximum state rebate"
-        },
-        "utility_rebate_us_dollars_per_kw": {
-          "type": "float",
-          "min": 0,
-          "max": 1e9,
-          "default": 0,
-          "description": "Utility rebate based on installed capacity"
-        },
-        "utility_rebate_max_us_dollars": {
-          "type": "float",
-          "min": 0,
-          "max": 1e10,
-          "default": 10000000000,
-          "description": "Maximum utility rebate"
-        },
-        "pbi_us_dollars_per_kwh": {
-          "type": "float",
-          "min": 0,
-          "max": 1e9,
-          "default": 0,
-          "description": "Production-based incentive value"
-        },
-        "pbi_max_us_dollars": {
-          "type": "float",
-          "min": 0,
-          "max": 1e9,
-          "default": 1e9,
-          "description": "Maximum annual value of production-based incentives"
-        },
-        "pbi_years": {
-          "type": "float",
-          "min": 0,
-          "max": 100,
-          "default": 1,
-          "description": "Duration of production-based incentives from installation date"
-        },
-        "pbi_system_max_kw": {
-          "type": "float",
-          "min": 0,
-          "max": 1e9,
-          "default": 1e9,
-          "description": "Maximum system size eligible for production-based incentive"
-        },
-        "degradation_pct": {
-          "type": "float",
-          "min": 0,
-          "max": 1,
-          "default": 0.005,
-          "description": "Annual rate of degradation in PV energy production"
-        },
-        "azimuth": {
-          "type": "float",
-          "min": 0,
-          "max": 360,
-          "default": 180,
-          "description": "PV azimuth angle"
-        },
-        "losses": {
-          "type": "float",
-          "min": 0,
-          "max": 0.99,
-          "default": 0.14,
-          "description": "PV system performance losses"
-        },
-        "array_type": {
-          "type": "int",
-          "restrict_to": [0, 1, 2, 3, 4],
-          "default": 0,
-          "description": "PV Watts array type (0: Ground Mount Fixed (Open Rack); 1: Rooftop, Fixed; 2: Ground Mount 1-Axis Tracking; 3 : 1-Axis Backtracking; 4: Ground Mount, 2-Axis Tracking)"
-        },
-        "module_type": {
-          "type": "int",
-          "restrict_to": [0, 1, 2],
-          "default": 0,
-          "description": "PV module type (0: Standard; 1: Premium; 2: Thin Film)"
-        },
-        "gcr": {
-          "type": "float",
-          "min": 0.01,
-          "max": 0.99,
-          "default": 0.4,
-          "description": "PV ground cover ratio (photovoltaic array area : total ground area)."
-        },
-        "dc_ac_ratio": {
-          "type": "float",
-          "min": 0,
-          "max": 2,
-          "default": 1.1,
-          "description": "PV DC-AC ratio"
-        },
-        "inv_eff": {
-          "type": "float",
-          "min": 0.9,
-          "max": 0.995,
-          "default": 0.96,
-          "description": "PV inverter efficiency"
-        },
-        "radius": {
-          "type": "float",
-          "min": 0,
-          "default": 0,
-          "description": "Radius to use when searching for the closest climate data station. Use zero to use the closest station regardless of the distance"
-        },
-        "tilt": {
-          "type": "float",
-          "min": 0,
-          "max": 90,
-          "default": "Site latitude",
-          "description": "PV system tilt"
-        }
-      },
-
-      "Storage":{
-          "min_kw":                               {  "type": "float", "min": 0, "max": 1e9, "default": 0,
-                                                      "description":"Minimum battery power capacity size constraint for optimization"  },
-          "max_kw":                               {"type": "float", "min": 0, "max": 1e9, "default": 1000000,
-                                                      "description":"Maximum battery power capacity size constraint for optimization. Set to zero to disable storage"  },
-          "min_kwh":                              {"type": "float", "min": 0, "default": 0,
-                                                      "description":"Minimum battery energy storage capacity constraint for optimization" },
-          "max_kwh":                              {"type": "float", "min": 0, "default": 1000000,
-                                                      "description":"Maximum battery energy storage capacity constraint for optimization. Set to zero to disable Storage" },
-          "internal_efficiency_pct":              {"type": "float", "min": 0, "max": 1, "default": 0.975,
-                                                      "description":"Battery inherent efficiency independent of inverter and rectifier" },
-          "inverter_efficiency_pct":              {"type": "float", "min": 0, "max": 1, "default": 0.96,
-                                                      "description":"Battery inverter efficiency" },
-          "rectifier_efficiency_pct":             {"type": "float", "min": 0, "max": 1, "default": 0.96,
-                                                      "description":"Battery rectifier efficiency" },
-          "soc_min_pct":                          {"type": "float", "min": 0, "max": 1, "default": 0.2,
-                                                      "description":"Minimum allowable battery state of charge" },
-          "soc_init_pct":                         {"type": "float", "min": 0, "max": 1, "default": 0.5,
-                                                      "description":"Battery state of charge at first hour of optimization" },
-          "canGridCharge":                        {"type": "bool", "default": true,
-                                                      "description":"Flag to set whether the battery can be charged from the grid, or just onsite generation" },
-          "installed_cost_us_dollars_per_kw":     {"type": "float", "min": 0, "max": 1e4, "default": 1000,
-                                                      "description":"Total upfront battery power capacity costs (e.g. inverter and balance of power systems)" },
-          "installed_cost_us_dollars_per_kwh":    {"type": "float", "min": 0, "max": 1e4, "default": 500,
-                                                      "description":"Total upfront battery costs" },
-          "replace_cost_us_dollars_per_kw":       {"type": "float", "min": 0, "max": 1e4, "default": 460,
-                                                      "description":"Battery power capacity replacement cost at time of replacement year" },
-          "replace_cost_us_dollars_per_kwh":      {"type": "float", "min": 0, "max": 1e4, "default": 230,
-                                                      "description":"Battery energy capacity replacement cost at time of replacement year" },
-          "inverter_replacement_year":            {"type": "float", "min": 0, "max": 75, "default": 10,
-                                                       "description":"Number of years from start of analysis period to replace inverter"  },
-          "battery_replacement_year":             {"type": "float", "min": 0, "max": 75, "default": 10,
-                                                      "description":"Number of years from start of analysis period to replace battery"  },
-          "macrs_option_years":                   {"type": "int", "restrict_to": [0,5,7], "default": 7,
-                                                      "description":"Duration over which accelerated depreciation will occur. Set to zero by default"},
-          "macrs_bonus_pct":                      {"type": "float", "min": 0, "max": 1, "default": 0.5,
-                                                      "description":"Percent of upfront project costs to depreciate under MACRS in year one in addtion to scheduled depreciation" },
-          "macrs_itc_reduction":                  {"type": "float", "min": 0, "max": 1, "default": 0.5,
-                                                      "description":"Percent of the ITC value by which depreciable basis is reduced" },
-          "total_itc_pct":                        {"type": "float", "min": 0, "max": 1, "default": 0.0,
-                                                      "description":"Total investment tax credit in percent applied toward capital costs" },
-          "total_rebate_us_dollars_per_kw":       {"type": "float", "min": 0, "max": 1e9, "default": 0,
-                                                      "description":"Rebate based on installed power capacity" }
-        }
-      }
-
-    }
-  }
-
-
-
-var nested_output_definitions = {
-
-  "Scenario": {
-    "uuid": {
-      "type": "str",
-      "description": "Unique id",
-      "units": "none"
-    },
-    "api_version": {
-      "type": "str"
-    },
-    "status": {
-      "type": "str",
-      "description": "Problem Status",
-      "units": "none"
-    },
-
-    "Site": {
-
-      "LoadProfile": {
-        "year_one_electric_load_series_kw": {
-          "type": "list of floats",
-          "description": "Year one hourly time series of electric load",
-          "units": "kW"
-        }
-      },
-
-      "Financial": {
-        "lcc_us_dollars": {
-          "type": "float",
-          "description": "Optimal lifecycle cost",
-          "units": "dollars"
-        },
-        "lcc_bau_us_dollars": {
-          "type": "float",
-          "description": "Business as usual lifecycle cost",
-          "units": "dollars"
-        },
-        "npv_us_dollars": {
-          "type": "float",
-          "description": "Net present value of savings realized by the project",
-          "units": "dollars"
-        },
-        "net_capital_costs_plus_om_us_dollars": {
-          "type": "float",
-          "description": "Optimal capital cost plus present value of operations and maintenance over anlaysis period",
-          "units": "$"
-        }
-      },
-
-      "PV": {
-        "size_kw": {
-          "type": "float",
-          "description": "Optimal PV system size",
-          "units": "kW"
-        },
-        "average_yearly_energy_produced_kwh": {
-          "type": "float",
-          "description": "Average annual energy produced by the PV system over one year",
-          "units": "kWh"
-        },
-        "average_yearly_energy_exported_kwh": {
-          "type": "float",
-          "description": "Average annual energy exported by the PV system",
-          "units": "kWh"
-        },
-        "year_one_energy_produced_kwh": {
-          "type": "float",
-          "description": "Year one energy produced by the PV system",
-          "units": "kWh"
-        },
-        "year_one_power_production_series_kw": {
-          "type": "list of floats",
-          "description": "Year one PV power production time series",
-          "units": "kW"
-        },
-        "year_one_to_battery_series_kw": {
-          "type": "list of floats",
-          "description": "Year one hourly time series of PV charging",
-          "units": "kW"
-        },
-        "year_one_to_load_series_kw": {
-          "type": "list of floats",
-          "description": "Year one hourly time series of PV serving load",
-          "units": "kW"
-        },
-        "year_one_to_grid_series_kw": {
-          "type": "list of floats",
-          "description": "Year one hourly time series of PV exporting to grid",
-          "units": "kW"
-        }
-      },
-
-      "Wind": {
-        "size_kw": {
-          "type": "float",
-          "description": "Recommended wind system size",
-          "units": "kW"
-        },
-        "average_yearly_energy_produced_kwh": {
-          "type": "float",
-          "description": "Average energy produced by the wind system over one year",
-          "units": "kWh"
-        },
-        "average_yearly_energy_exported_kwh": {
-          "type": "float",
-          "description": "Average annual energy exported by the wind system",
-          "units": "kWh"
-        },
-        "year_one_energy_produced_kwh": {
-          "type": "float",
-          "description": "Wind energy produced in year one",
-          "units": "kWh"
-        },
-        "year_one_power_production_series_kw": {
-          "type": "list of floats",
-          "description": "Hourly wind resource",
-          "units": "kW"
-        },
-        "year_one_to_battery_series_kw": {
-          "type": "list of floats",
-          "description": "Year one wind to battery time series",
-          "units": "kW"
-        },
-        "year_one_to_load_series_kw": {
-          "type": "list of floats",
-          "description": "Year one wind to load time series",
-          "units": "kW"
-        },
-        "year_one_to_grid_series_kw": {
-          "type": "list of floats",
-          "description": "Year one wind to grid time series",
-          "units": "kW"
-        }
-      },
-
       "Storage": {
-        "size_kw": {
+        "total_rebate_us_dollars_per_kw": {
+          "default": 0,
+          "max": 1000000000.0,
           "type": "float",
-          "description": "Optimal battery power capacity",
-          "units": "kW"
+          "description": "Rebate based on installed power capacity",
+          "min": 0,
+          "units": "$/kW"
         },
-        "size_kwh": {
+        "max_kwh": {
+          "default": 1000000,
           "type": "float",
-          "description": "Optimal battery energy capacity",
+          "description": "Maximum battery energy storage capacity constraint for optimization. Set to zero to disable Storage",
+          "min": 0,
           "units": "kWh"
         },
-        "year_one_to_load_series_kw": {
-          "type": "list of floats",
-          "description": "Year one hourly time series of battery serving load",
+        "rectifier_efficiency_pct": {
+          "default": 0.96,
+          "max": 1,
+          "type": "float",
+          "description": "Battery rectifier efficiency",
+          "min": 0,
+          "units": "%"
+        },
+        "total_itc_pct": {
+          "default": 0.0,
+          "max": 1,
+          "type": "float",
+          "description": "Total investment tax credit in percent applied toward capital costs",
+          "min": 0,
+          "units": "%"
+        },
+        "min_kw": {
+          "default": 0,
+          "max": 1000000000.0,
+          "type": "float",
+          "description": "Minimum battery power capacity size constraint for optimization",
+          "min": 0,
           "units": "kW"
         },
-        "year_one_to_grid_series_kw": {
-          "type": "list of floats",
-          "description": "Year one hourly time series of battery exporting to grid",
+        "max_kw": {
+          "default": 1000000,
+          "max": 1000000000.0,
+          "type": "float",
+          "description": "Maximum battery power capacity size constraint for optimization. Set to zero to disable storage",
+          "min": 0,
           "units": "kW"
         },
-        "year_one_soc_series_pct": {
-          "type": "list of floats",
-          "description": "Year one hourly time series of battery state of charge",
+        "replace_cost_us_dollars_per_kw": {
+          "default": 460,
+          "max": 10000.0,
+          "type": "float",
+          "description": "Battery power capacity replacement cost at time of replacement year",
+          "min": 0,
+          "units": "$/kW"
+        },
+        "replace_cost_us_dollars_per_kwh": {
+          "default": 230,
+          "max": 10000.0,
+          "type": "float",
+          "description": "Battery energy capacity replacement cost at time of replacement year",
+          "min": 0,
+          "units": "$/kWh"
+        },
+        "min_kwh": {
+          "default": 0,
+          "type": "float",
+          "description": "Minimum battery energy storage capacity constraint for optimization",
+          "min": 0,
+          "units": "kWh"
+        },
+        "installed_cost_us_dollars_per_kw": {
+          "default": 1000,
+          "max": 10000.0,
+          "type": "float",
+          "description": "Total upfront battery power capacity costs (e.g. inverter and balance of power systems)",
+          "min": 0,
+          "units": "$/kW"
+        },
+        "battery_replacement_year": {
+          "default": 10,
+          "max": 75,
+          "type": "float",
+          "description": "Number of years from start of analysis period to replace battery",
+          "min": 0
+        },
+        "installed_cost_us_dollars_per_kwh": {
+          "default": 500,
+          "max": 10000.0,
+          "type": "float",
+          "description": "Total upfront battery costs",
+          "min": 0,
+          "units": "$/kWh"
+        },
+        "inverter_efficiency_pct": {
+          "default": 0.96,
+          "max": 1,
+          "type": "float",
+          "description": "Battery inverter efficiency",
+          "min": 0,
+          "units": "%"
+        },
+        "macrs_itc_reduction": {
+          "default": 0.5,
+          "max": 1,
+          "type": "float",
+          "description": "Percent of the ITC value by which depreciable basis is reduced",
+          "min": 0,
+          "units": "%"
+        },
+        "canGridCharge": {
+          "default": true,
+          "type": "bool",
+          "description": "Flag to set whether the battery can be charged from the grid, or just onsite generation"
+        },
+        "macrs_bonus_pct": {
+          "default": 0.4,
+          "max": 1,
+          "type": "float",
+          "description": "Percent of upfront project costs to depreciate under MACRS in year one in addtion to scheduled depreciation",
+          "min": 0,
+          "units": "%"
+        },
+        "inverter_replacement_year": {
+          "default": 10,
+          "max": 75,
+          "type": "float",
+          "description": "Number of years from start of analysis period to replace inverter",
+          "min": 0
+        },
+        "macrs_option_years": {
+          "default": 7,
+          "type": "int",
+          "description": "Duration over which accelerated depreciation will occur. Set to zero by default",
+          "restrict_to": [0, 5, 7]
+        },
+        "internal_efficiency_pct": {
+          "default": 0.975,
+          "max": 1,
+          "type": "float",
+          "description": "Battery inherent efficiency independent of inverter and rectifier",
+          "min": 0,
+          "units": "%"
+        },
+        "soc_min_pct": {
+          "default": 0.2,
+          "max": 1,
+          "type": "float",
+          "description": "Minimum allowable battery state of charge",
+          "min": 0,
+          "units": "%"
+        },
+        "soc_init_pct": {
+          "default": 0.5,
+          "max": 1,
+          "type": "float",
+          "description": "Battery state of charge at first hour of optimization",
+          "min": 0,
           "units": "%"
         }
       },
-
-      "ElectricTariff": {
-        "year_one_energy_cost_us_dollars": {
+      "Financial": {
+        "escalation_pct": {
+          "default": 0.026,
+          "max": 1,
           "type": "float",
-          "description": "Optimal year one utility energy cost",
-          "units": "$"
+          "description": "Annual nominal utility electricity cost escalation rate",
+          "min": -1,
+          "units": "%"
         },
-        "year_one_demand_cost_us_dollars": {
+        "offtaker_tax_pct": {
+          "default": 0.4,
+          "max": 1,
           "type": "float",
-          "description": "Optimal year one utility demand cost",
-          "units": "$"
+          "description": "Host tax rate",
+          "min": 0,
+          "units": "%"
         },
-        "year_one_fixed_cost_us_dollars": {
+        "offtaker_discount_pct": {
+          "default": 0.081,
+          "max": 1,
           "type": "float",
-          "description": "Optimal year one utility fixed cost",
-          "units": "$"
+          "description": "Nominal host discount rate",
+          "min": 0,
+          "units": "%"
         },
-        "year_one_min_charge_adder_us_dollars": {
+        "om_cost_escalation_pct": {
+          "default": 0.025,
+          "max": 1,
           "type": "float",
-          "description": "Optimal year one utility minimum charge adder",
-          "units": "$"
+          "description": "Annual nominal O&M cost escalation rate",
+          "min": -1,
+          "units": "%"
         },
-        "year_one_energy_cost_bau_us_dollars": {
+        "analysis_years": {
+          "default": 20,
+          "max": 75,
+          "type": "int",
+          "description": "Analysis period",
+          "min": 0
+        }
+      },
+      "land_acres": {
+        "max": 1000000.0,
+        "type": "float",
+        "description": "Land area in acres available for PV panel siting",
+        "min": 0,
+        "units": "acres"
+      },
+      "roof_squarefeet": {
+        "max": 1000000000.0,
+        "type": "float",
+        "description": "Area of roof in square feet available for PV siting",
+        "min": 0,
+        "units": "square feet"
+      },
+      "latitude": {
+        "max": 90,
+        "required": true,
+        "type": "float",
+        "description": "The approximate latitude of the site in decimal degrees",
+        "min": -90,
+        "units": "degrees"
+      },
+      "PV": {
+        "pbi_years": {
+          "default": 1,
+          "max": 100,
           "type": "float",
-          "description": "Business as usual year one utility energy cost",
-          "units": "$"
+          "description": "Duration of production-based incentives from installation date",
+          "min": 0
         },
-        "year_one_demand_cost_bau_us_dollars": {
+        "macrs_bonus_pct": {
+          "default": 0.4,
+          "max": 1,
           "type": "float",
-          "description": "Business as usual year one utility demand cost",
-          "units": "$"
+          "description": "Percent of upfront project costs to depreciate in year one in addition to scheduled depreciation",
+          "min": 0,
+          "units": "%"
         },
-        "year_one_fixed_cost_bau_us_dollars": {
+        "max_kw": {
+          "default": 1000000000.0,
+          "max": 1000000000.0,
           "type": "float",
-          "description": "Business as usual year one utility fixed cost",
-          "units": "$"
+          "description": "Maximum PV size constraint for optimization. Set to zero to disable PV",
+          "min": 0,
+          "units": "kW"
         },
-        "year_one_min_charge_adder_bau_us_dollars": {
+        "pbi_max_us_dollars": {
+          "default": 1000000000.0,
+          "max": 1000000000.0,
           "type": "float",
-          "description": "Business as usual year one utility minimum charge adder",
-          "units": "$"
+          "description": "Maximum annual value of production-based incentives",
+          "min": 0,
+          "units": "US Dollars"
         },
-        "total_energy_cost_us_dollars": {
+        "radius": {
+          "default": 0,
           "type": "float",
-          "description": "Total utility energy cost over the lifecycle, after-tax",
-          "units": "$"
+          "description": "Radius to use when searching for the closest climate data station. Use zero to use the closest station regardless of the distance",
+          "min": 0
         },
-        "total_demand_cost_us_dollars": {
+        "state_ibi_pct": {
+          "default": 0,
+          "max": 1,
           "type": "float",
-          "description": "Optimal total lifecycle utility demand cost over the analysis period, after-tax",
-          "units": "$"
+          "description": "Percentage of capital costs offset by state incentives",
+          "min": 0,
+          "units": "%"
         },
-        "total_fixed_cost_us_dollars": {
+        "utility_rebate_max_us_dollars": {
+          "default": 10000000000.0,
+          "max": 10000000000.0,
           "type": "float",
-          "description": "Total utility fixed cost over the lifecycle, after-tax",
-          "units": "$"
+          "description": "Maximum utility rebate",
+          "min": 0,
+          "units": "US Dollars"
         },
-        "total_min_charge_adder_us_dollars": {
+        "installed_cost_us_dollars_per_kw": {
+          "default": 2000,
+          "max": 100000.0,
           "type": "float",
-          "description": "Total utility minimum charge adder",
-          "units": "$"
-        },
-        "total_energy_cost_bau_us_dollars": {
-          "type": "float",
-          "description": "Business as usual total utility energy cost over the lifecycle, after-tax",
-          "units": "$"
-        },
-        "total_demand_cost_bau_us_dollars": {
-          "type": "float",
-          "description": "Business as usual total lifecycle utility demand cost over the analysis period, after-tax",
-          "units": "$"
-        },
-        "total_fixed_cost_bau_us_dollars": {
-          "type": "float",
-          "description": "Business as usual total utility fixed cost over the lifecycle, after-tax",
-          "units": "$"
-        },
-        "total_min_charge_adder_bau_us_dollars": {
-          "type": "float",
-          "description": "Business as usual total utility minimum charge adder",
-          "units": "$"
-        },
-        "year_one_bill_us_dollars": {
-          "type": "float",
-          "description": "Optimal year one total utility bill",
-          "units": "$"
-        },
-        "year_one_bill_bau_us_dollars": {
-          "type": "float",
-          "description": "Business as usual year one total utility bill",
-          "units": "$"
-        },
-        "year_one_export_benefit_us_dollars": {
-          "type": "float",
-          "description": "Optimal year one value of exported energy",
-          "units": "$"
-        },
-        "year_one_energy_cost_series_us_dollars_per_kwh": {
-          "type": "list of floats",
-          "description": "Year one hourly energy costs",
-          "units": "$/kWh"
-        },
-        "year_one_demand_cost_series_us_dollars_per_kw": {
-          "type": "list of floats",
-          "description": "Year one hourly demand costs",
+          "description": "Installed PV cost in $/kW",
+          "min": 0,
           "units": "$/kW"
         },
-        "year_one_to_load_series_kw": {
-          "type": "list of floats",
-          "description": "Year one grid to load time series",
-          "units": "kW"
-        },
-        "year_one_to_battery_series_kw": {
-          "type": "list of floats",
-          "description": "Year one hourly time series of power from grid to battery",
-          "units": "kW"
-        },
-        "year_one_energy_supplied_kwh": {
+        "utility_ibi_max_us_dollars": {
+          "default": 10000000000.0,
+          "max": 10000000000.0,
           "type": "float",
-          "description": "Year one hourly time series of power from grid to load",
+          "description": "Maximum dollar value of utility percentage-based capital cost incentive",
+          "min": 0,
+          "units": "US Dollars"
+        },
+        "tilt": {
+          "default": "Site latitude",
+          "max": 90,
+          "type": "float",
+          "description": "PV system tilt",
+          "min": 0
+        },
+        "gcr": {
+          "default": 0.4,
+          "max": 0.99,
+          "type": "float",
+          "description": "PV ground cover ratio (photovoltaic array area : total ground area).",
+          "min": 0.01
+        },
+        "pbi_system_max_kw": {
+          "default": 1000000000.0,
+          "max": 1000000000.0,
+          "type": "float",
+          "description": "Maximum system size eligible for production-based incentive",
+          "min": 0,
+          "units": "kW"
+        },
+        "utility_ibi_pct": {
+          "default": 0,
+          "max": 1,
+          "type": "float",
+          "description": "Percentage of capital costs offset by utility incentives",
+          "min": 0,
+          "units": "%"
+        },
+        "state_ibi_max_us_dollars": {
+          "default": 10000000000.0,
+          "max": 10000000000.0,
+          "type": "float",
+          "description": "Maximum dollar value of state percentage-based capital cost incentive",
+          "min": 0,
+          "units": "US Dollars"
+        },
+        "state_rebate_us_dollars_per_kw": {
+          "default": 0,
+          "max": 1000000000.0,
+          "type": "float",
+          "description": "State rebate based on installed capacity",
+          "min": 0,
+          "units": "$/kW"
+        },
+        "macrs_option_years": {
+          "default": 5,
+          "type": "int",
+          "description": "Duration over which accelerated depreciation will occur. Set to zero to disable",
+          "restrict_to": [0, 5, 7]
+        },
+        "state_rebate_max_us_dollars": {
+          "default": 10000000000.0,
+          "max": 10000000000.0,
+          "type": "float",
+          "description": "Maximum state rebate",
+          "min": 0,
+          "units": "US Dollars"
+        },
+        "dc_ac_ratio": {
+          "default": 1.1,
+          "max": 2,
+          "type": "float",
+          "description": "PV DC-AC ratio",
+          "min": 0
+        },
+        "federal_itc_pct": {
+          "default": 0.3,
+          "max": 1,
+          "type": "float",
+          "description": "Percentage of capital costs that are credited towards federal taxes",
+          "min": 0,
+          "units": "%"
+        },
+        "degradation_pct": {
+          "default": 0.005,
+          "max": 1,
+          "type": "float",
+          "description": "Annual rate of degradation in PV energy production",
+          "min": 0,
+          "units": "%"
+        },
+        "module_type": {
+          "default": 0,
+          "type": "int",
+          "description": "PV module type (0: Standard; 1: Premium; 2: Thin Film)",
+          "restrict_to": [0, 1, 2]
+        },
+        "array_type": {
+          "default": 0,
+          "type": "int",
+          "description": "PV Watts array type (0: Ground Mount Fixed (Open Rack); 1: Rooftop, Fixed; 2: Ground Mount 1-Axis Tracking; 3 : 1-Axis Backtracking; 4: Ground Mount, 2-Axis Tracking)",
+          "restrict_to": [0, 1, 2, 3, 4]
+        },
+        "pbi_us_dollars_per_kwh": {
+          "default": 0,
+          "max": 1000000000.0,
+          "type": "float",
+          "description": "Production-based incentive value",
+          "min": 0,
           "units": "kWh"
+        },
+        "om_cost_us_dollars_per_kw": {
+          "default": 16,
+          "max": 1000.0,
+          "type": "float",
+          "description": "Annual PV operations and maintenance costs in $/kW",
+          "min": 0,
+          "units": "kW"
+        },
+        "utility_rebate_us_dollars_per_kw": {
+          "default": 0,
+          "max": 1000000000.0,
+          "type": "float",
+          "description": "Utility rebate based on installed capacity",
+          "min": 0,
+          "units": "kW"
+        },
+        "min_kw": {
+          "default": 0,
+          "max": 1000000000.0,
+          "type": "float",
+          "description": "Minimum PV size constraint for optimization",
+          "min": 0,
+          "units": "kW"
+        },
+        "losses": {
+          "default": 0.14,
+          "max": 0.99,
+          "type": "float",
+          "description": "PV system performance losses",
+          "min": 0,
+          "units": "%"
+        },
+        "macrs_itc_reduction": {
+          "default": 0.5,
+          "max": 1,
+          "type": "float",
+          "description": "Percent of the ITC value by which depreciable basis is reduced",
+          "min": 0,
+          "units": "%"
+        },
+        "federal_rebate_us_dollars_per_kw": {
+          "default": 0,
+          "max": 1000000000.0,
+          "type": "float",
+          "description": "Federal rebates based on installed capacity",
+          "min": 0,
+          "units": "$/kW"
+        },
+        "inv_eff": {
+          "default": 0.96,
+          "max": 0.995,
+          "type": "float",
+          "description": "PV inverter efficiency",
+          "min": 0.9,
+          "units": "%"
+        },
+        "azimuth": {
+          "default": 180,
+          "max": 360,
+          "type": "float",
+          "description": "PV azimuth angle",
+          "min": 0,
+          "units": "degrees"
         }
+      },
+      "ElectricTariff": {
+        "wholesale_rate_us_dollars_per_kwh": {
+          "default": 0,
+          "type": "float",
+          "description": "Price of electricity sold back to the grid in absence of net metering",
+          "min": 0,
+          "units": "$/kWh"
+        },
+        "net_metering_limit_kw": {
+          "default": 0,
+          "max": 1000000000.0,
+          "type": "float",
+          "description": "System size above which net metering is not allowed",
+          "min": 0,
+          "units": "kW"
+        },
+        "blended_monthly_rates_us_dollars_per_kwh": {
+          "replacement_sets": [
+            ["urdb_response"],
+            ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
+            ["urdb_label"],
+            ["urdb_utilty_name", "urdb_rate_name"]
+          ],
+          "type": "list of floats",
+          "description": "Array (length of 12) of blended energy rates (total monthly energy in kWh divided by monthly cost in $)",
+          "depends_on": ["blended_monthly_demand_charges_us_dollars_per_kw"],
+          "units": "$/kWh"
+        },
+        "interconnection_limit_kw": {
+          "default": 100000000.0,
+          "max": 1000000000.0,
+          "type": "float",
+          "description": "Limit on system capacity size that can be interconnected to the grid",
+          "min": 0,
+          "units": "kW"
+        },
+        "blended_monthly_demand_charges_us_dollars_per_kw": {
+          "replacement_sets": [
+            ["urdb_response"],
+            ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
+            ["urdb_label"],
+            ["urdb_utilty_name", "urdb_rate_name"]
+          ],
+          "type": "list of floats",
+          "description": "Array (length of 12) of blended demand charges (demand charge cost in $ divided by monthly peak demand in kW)",
+          "depends_on": ["blended_monthly_rates_us_dollars_per_kwh"],
+          "units": "$/kW"
+        },
+        "urdb_label": {
+          "replacement_sets": [
+            ["urdb_response"],
+            ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
+            ["urdb_label"],
+            ["urdb_utilty_name", "urdb_rate_name"]
+          ],
+          "type": "str",
+          "description": "Label attribute of utility rate structure from <a href='https: //openei.org/services/doc/rest/util_rates/?version=3' target='blank'>Utility Rate Database API</a>"
+        },
+        "urdb_rate_name": {
+          "replacement_sets": [
+            ["urdb_response"],
+            ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
+            ["urdb_label"],
+            ["urdb_utilty_name", "urdb_rate_name"]
+          ],
+          "type": "str",
+          "description": "Name of utility rate from  <a href='https: //openei.org/wiki/Utility_Rate_Database' target='blank'>Utility Rate Database</a>",
+          "depends_on": ["urdb_utilty_name"]
+        },
+        "urdb_response": {
+          "replacement_sets": [
+            ["urdb_response"],
+            ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
+            ["urdb_label"],
+            ["urdb_utilty_name", "urdb_rate_name"]
+          ],
+          "type": "dict",
+          "description": "Utility rate structure from <a href='https: //openei.org/services/doc/rest/util_rates/?version=3' target='blank'>Utility Rate Database API</a>"
+        },
+        "urdb_utilty_name": {
+          "replacement_sets": [
+            ["urdb_response"],
+            ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
+            ["urdb_label"],
+            ["urdb_utilty_name", "urdb_rate_name"]
+          ],
+          "type": "str",
+          "description": "Name of Utility from  <a href='https: //openei.org/wiki/Utility_Rate_Database' target='blank'>Utility Rate Database</a>",
+          "depends_on": ["urdb_rate_name"]
+        }
+      },
+      "Wind": {
+        "pbi_us_dollars_per_kwh": {
+          "default": 0,
+          "max": 1000000000.0,
+          "type": "float",
+          "description": "Production-based incentive value",
+          "min": 0,
+          "units": "$/kWh"
+        },
+        "installed_cost_us_dollars_per_kw": {
+          "default": 2000,
+          "max": 100000.0,
+          "type": "float",
+          "description": "Total upfront installed costs",
+          "min": 0,
+          "units": "$/kW"
+        },
+        "macrs_bonus_pct": {
+          "default": 0.4,
+          "max": 1,
+          "type": "float",
+          "description": "Percent of upfront project costs to depreciate under MACRS",
+          "min": 0,
+          "units": "%"
+        },
+        "om_cost_us_dollars_per_kw": {
+          "default": 35,
+          "max": 1000.0,
+          "type": "float",
+          "description": "Total annual operations and maintenance costs",
+          "min": 0,
+          "units": "$/kW"
+        },
+        "utility_rebate_us_dollars_per_kw": {
+          "default": 0,
+          "max": 1000000000.0,
+          "type": "float",
+          "description": "Utility rebates based on installed capacity",
+          "min": 0,
+          "units": "$/kW"
+        },
+        "min_kw": {
+          "default": 0,
+          "max": 1000000000.0,
+          "type": "float",
+          "description": "Minimum wind power capacity constraint for optimization",
+          "min": 0,
+          "units": "kW"
+        },
+        "pbi_years": {
+          "default": 1,
+          "max": 1000000000.0,
+          "type": "float",
+          "description": "Duration of production-based incentives from installation date",
+          "min": 0
+        },
+        "max_kw": {
+          "default": 0,
+          "max": 1000000000.0,
+          "type": "float",
+          "description": "Maximum wind power capacity constraint for optimization. Set to zero to disable Wind. Disabled by default",
+          "min": 0,
+          "units": "kW"
+        },
+        "state_rebate_us_dollars_per_kw": {
+          "default": 0,
+          "max": 1000000000.0,
+          "type": "float",
+          "description": "State rebates based on installed capacity",
+          "min": 0,
+          "units": "$/kW"
+        },
+        "macrs_itc_reduction": {
+          "default": 0.5,
+          "max": 1,
+          "type": "float",
+          "description": "Percent of the full ITC that depreciable basis is reduced by",
+          "min": 0,
+          "units": "%"
+        },
+        "federal_itc_pct": {
+          "default": 0.3,
+          "max": 1,
+          "type": "float",
+          "description": "Percent federal capital cost incentive",
+          "min": 0,
+          "units": "%"
+        },
+        "pbi_max_us_dollars": {
+          "default": 1000000000.0,
+          "max": 1000000000.0,
+          "type": "float",
+          "description": "Maximum rebate allowed under utility production-based incentives",
+          "min": 0,
+          "units": "US Dollars"
+        },
+        "federal_rebate_us_dollars_per_kw": {
+          "default": 0,
+          "max": 1000000000.0,
+          "type": "float",
+          "description": "Federal rebate based on installed capacity",
+          "min": 0,
+          "units": "$/kW"
+        },
+        "state_rebate_max_us_dollars": {
+          "default": 10000000000.0,
+          "max": 10000000000.0,
+          "type": "float",
+          "description": "Maximum rebate allowed under state rebates",
+          "min": 0,
+          "units": "US Dollars"
+        },
+        "pbi_system_max_kw": {
+          "default": 1000000000.0,
+          "max": 1000000000.0,
+          "type": "float",
+          "description": "Maximum system size for which production-based incentives apply",
+          "min": 0,
+          "units": "kW"
+        },
+        "macrs_option_years": {
+          "default": 5,
+          "type": "int",
+          "description": "MACRS schedule for financial analysis. Set to zero to disable",
+          "restrict_to": [0, 5, 7]
+        },
+        "state_ibi_pct": {
+          "default": 0,
+          "max": 1,
+          "type": "float",
+          "description": "Percent of upfront project costs to discount under state investment based incentives",
+          "min": 0,
+          "units": "%"
+        },
+        "utility_rebate_max_us_dollars": {
+          "default": 10000000000.0,
+          "max": 10000000000.0,
+          "type": "float",
+          "description": "Maximum rebate allowed under utility rebates",
+          "min": 0,
+          "units": "US Dollars"
+        },
+        "utility_ibi_pct": {
+          "default": 0,
+          "max": 1,
+          "type": "float",
+          "description": "Percent of upfront project costs to discount under utility investment based incentives",
+          "min": 0,
+          "units": "%"
+        },
+        "state_ibi_max_us_dollars": {
+          "default": 10000000000.0,
+          "max": 10000000000.0,
+          "type": "float",
+          "description": "Maximum rebate allowed under state investment based incentives",
+          "min": 0,
+          "units": "US Dollars"
+        },
+        "utility_ibi_max_us_dollars": {
+          "default": 10000000000.0,
+          "max": 10000000000.0,
+          "type": "float",
+          "description": "Maximum rebate allowed under utility investment based incentives",
+          "min": 0,
+          "units": "US Dollars"
+        }
+      },
+      "longitude": {
+        "max": 180,
+        "required": true,
+        "type": "float",
+        "description": "The approximate longitude of the site in decimal degrees",
+        "min": -180,
+        "units": "degrees"
       }
     }
   }
 }
 
+
+
+
+var nested_output_definitions = {
+  "inputs": {},
+  "messages": {
+    "error": {
+      "description": "Error generated by simulation",
+      "type": "str"
+    },
+    "warnings": {
+      "description": "Warnings generated by simulation",
+      "type": "list of string"
+    }
+  },
+  "outputs": {
+    "Scenario": {
+      "Site": {
+        "ElectricTariff": {
+          "total_demand_cost_bau_us_dollars": {
+            "description": "Business as usual total lifecycle utility demand cost over the analysis period, after-tax",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "total_demand_cost_us_dollars": {
+            "description": "Optimal total lifecycle utility demand cost over the analysis period, after-tax",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "total_energy_cost_bau_us_dollars": {
+            "description": "Business as usual total utility energy cost over the lifecycle, after-tax",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "total_energy_cost_us_dollars": {
+            "description": "Total utility energy cost over the lifecycle, after-tax",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "total_fixed_cost_bau_us_dollars": {
+            "description": "Business as usual total utility fixed cost over the lifecycle, after-tax",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "total_fixed_cost_us_dollars": {
+            "description": "Total utility fixed cost over the lifecycle, after-tax",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "total_min_charge_adder_bau_us_dollars": {
+            "description": "Business as usual total utility minimum charge adder",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "total_min_charge_adder_us_dollars": {
+            "description": "Total utility minimum charge adder",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "year_one_bill_bau_us_dollars": {
+            "description": "Business as usual year one total utility bill",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "year_one_bill_us_dollars": {
+            "description": "Optimal year one total utility bill",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "year_one_demand_cost_bau_us_dollars": {
+            "description": "Business as usual year one utility demand cost",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "year_one_demand_cost_series_us_dollars_per_kw": {
+            "description": "Year one hourly demand costs",
+            "type": "list of float",
+            "units": "$/kW"
+          },
+          "year_one_demand_cost_us_dollars": {
+            "description": "Optimal year one utility demand cost",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "year_one_energy_cost_bau_us_dollars": {
+            "description": "Business as usual year one utility energy cost",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "year_one_energy_cost_series_us_dollars_per_kwh": {
+            "description": "Year one hourly energy costs",
+            "type": "list of float",
+            "units": "$/kWh"
+          },
+          "year_one_energy_cost_us_dollars": {
+            "description": "Optimal year one utility energy cost",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "year_one_energy_supplied_kwh": {
+            "description": "Year one hourly time series of power from grid to load",
+            "type": "float",
+            "units": "kWh"
+          },
+          "year_one_export_benefit_us_dollars": {
+            "description": "Optimal year one value of exported energy",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "year_one_fixed_cost_bau_us_dollars": {
+            "description": "Business as usual year one utility fixed cost",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "year_one_fixed_cost_us_dollars": {
+            "description": "Optimal year one utility fixed cost",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "year_one_min_charge_adder_bau_us_dollars": {
+            "description": "Business as usual year one utility minimum charge adder",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "year_one_min_charge_adder_us_dollars": {
+            "description": "Optimal year one utility minimum charge adder",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "year_one_to_battery_series_kw": {
+            "description": "Year one hourly time series of power from grid to battery",
+            "type": "list of float",
+            "units": "kW"
+          },
+          "year_one_to_load_series_kw": {
+            "description": "Year one hourly time series of power from grid to load",
+            "type": "list of float",
+            "units": "kW"
+          }
+        },
+        "Financial": {
+          "lcc_bau_us_dollars": {
+            "description": "Business as usual lifecycle cost",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "lcc_us_dollars": {
+            "description": "Optimal lifecycle cost",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "net_capital_costs_plus_om_us_dollars": {
+            "description": "Optimal capital cost plus present value of operations and maintenance over anlaysis period",
+            "type": "float",
+            "units": "US Dollars"
+          },
+          "npv_us_dollars": {
+            "description": "Net Present Value (NPV) of savings realized by the project",
+            "type": "float",
+            "units": "US Dollars"
+          }
+        },
+        "LoadProfile": {
+          "year_one_electric_load_series_kw": {
+            "description": "Year one hourly time series of electric load",
+            "type": "list of float",
+            "units": "kW"
+          }
+        },
+        "PV": {
+          "average_yearly_energy_exported_kwh": {
+            "description": "Average annual energy exported by the PV system",
+            "type": "float",
+            "units": "kWh"
+          },
+          "average_yearly_energy_produced_kwh": {
+            "description": "Average annual energy produced by the PV system over one year",
+            "type": "float",
+            "units": "kWh"
+          },
+          "size_kw": {
+            "description": "Optimal PV system size",
+            "type": "float",
+            "units": "kW"
+          },
+          "year_one_energy_produced_kwh": {
+            "description": "Year one energy produced by the PV system",
+            "type": "float",
+            "units": "kWh"
+          },
+          "year_one_power_production_series_kw": {
+            "description": "Year one PV power production time series",
+            "type": "list of float",
+            "units": "kW"
+          },
+          "year_one_to_battery_series_kw": {
+            "description": "Year one hourly time series of PV charging the battery",
+            "type": "list of float",
+            "units": "kW"
+          },
+          "year_one_to_grid_series_kw": {
+            "description": "Year one hourly time series of PV exporting to grid",
+            "type": "list of float",
+            "units": "kW"
+          },
+          "year_one_to_load_series_kw": {
+            "description": "Year one hourly time series of PV serving load",
+            "type": "list of float",
+            "units": "kW"
+          }
+        },
+        "Storage": {
+          "size_kw": {
+            "description": "Optimal battery power capacity",
+            "type": "float",
+            "units": "kW"
+          },
+          "size_kwh": {
+            "description": "Optimal battery energy capacity",
+            "type": "float",
+            "units": "kWh"
+          },
+          "year_one_soc_series_pct": {
+            "description": "Year one hourly time series of battery state of charge",
+            "type": "list of float",
+            "units": "%"
+          },
+          "year_one_to_grid_series_kw": {
+            "description": "Year one hourly time series of battery exporting to grid",
+            "type": "list of float",
+            "units": "kW"
+          },
+          "year_one_to_load_series_kw": {
+            "description": "Year one hourly time series of battery serving load",
+            "type": "list of float",
+            "units": "kW"
+          }
+        },
+        "Wind": {
+          "average_yearly_energy_exported_kwh": {
+            "description": "Average annual energy exported by the wind system",
+            "type": "float",
+            "units": "kWh"
+          },
+          "average_yearly_energy_produced_kwh": {
+            "description": "Average energy produced by the wind system over one year",
+            "type": "float",
+            "units": "kWh"
+          },
+          "size_kw": {
+            "description": "Recommended wind system size",
+            "type": "float",
+            "units": "kW"
+          },
+          "year_one_energy_produced_kwh": {
+            "description": "Wind energy produced in year one",
+            "type": "float",
+            "units": "kWh"
+          },
+          "year_one_power_production_series_kw": {
+            "description": "Hourly wind resource",
+            "type": "list of float",
+            "units": "kW"
+          },
+          "year_one_to_battery_series_kw": {
+            "description": "Year one wind to battery time series",
+            "type": "list of float",
+            "units": "kW"
+          },
+          "year_one_to_grid_series_kw": {
+            "description": "Year one wind to grid time series",
+            "type": "list of float",
+            "units": "kW"
+          },
+          "year_one_to_load_series_kw": {
+            "description": "Year one wind to load time series",
+            "type": "list of float",
+            "units": "kW"
+          }
+        }
+      },
+      "api_version": {
+        "type": "str",
+        "description": "The current release number of the REopt Lite API"
+      },
+      "status": {
+        "description": "A message about the state of the optimization task and an errors that may occur",
+        "type": "str"
+      },
+      "uuid": {
+        "description": "A unique id for the optimization task",
+        "type": "str"
+      }
+    }
+  }
+}
 
 var tableParameterCell = function(name) {
   return $("<td>").append($("<small>").html($('<b>').html(name)))
@@ -996,6 +1168,11 @@ var tableValueCell = function(def) {
 
   if ( def.hasOwnProperty("restrict_to") ) {
     var options_string = $("<span>").html(" <br> <strong class='doc-parameters-value-field'>Options: </strong> <em>"+def["restrict_to"].join(', ')+"</em>")
+    output.append(options_string)
+  }
+
+  if ( def.hasOwnProperty("units") ) {
+    var options_string = $("<span>").html(" <br> <strong class='doc-parameters-value-field'>Units: </strong> "+def["units"])
     output.append(options_string)
   }
 
@@ -1252,8 +1429,8 @@ $(document).ready(function() {
   var outputDefTable = $('<div id ="ouputs" class="container">')
   
   recursiveBuildReadTable(nested_input_definitions,-1,inputDefTable)
-  recursiveBuildReadTable(nested_output_definitions,-1,outputDefTable)
-  
+  recursiveBuildReadTable(nested_output_definitions['outputs'],-1,outputDefTable)
+
   $('#input_definition_table').html(inputDefTable.prop('outerHTML'))
   $('#output_definition_table').html(outputDefTable.prop('outerHTML'))
 
