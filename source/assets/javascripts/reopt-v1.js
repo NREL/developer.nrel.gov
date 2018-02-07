@@ -1,4 +1,3 @@
-
 var nested_input_definitions = {
   "Scenario": {
     "user_id": {
@@ -26,7 +25,8 @@ var nested_input_definitions = {
           "replacement_sets": [
             ["loads_kw"],
             ["doe_reference_name", "monthly_totals_kwh"],
-            ["annual_kwh", "doe_reference_name"]
+            ["doe_reference_name"],
+            ["doe_reference_name","annual_kwh"]
           ],
           "type": "list of floats",
           "description": "Hourly load over all hours in one year",
@@ -42,7 +42,8 @@ var nested_input_definitions = {
           "replacement_sets": [
             ["loads_kw"],
             ["doe_reference_name", "monthly_totals_kwh"],
-            ["annual_kwh", "doe_reference_name"]
+            ["doe_reference_name"],
+            ["doe_reference_name","annual_kwh"]
           ],
           "type": "list of floats",
           "description": "Array (length of 12) of total monthly energy consumption used to scale simulated building load profile.",
@@ -65,19 +66,17 @@ var nested_input_definitions = {
           "replacement_sets": [
             ["loads_kw"],
             ["doe_reference_name", "monthly_totals_kwh"],
-            ["annual_kwh", "doe_reference_name"]
+            ["doe_reference_name"],
+            ["doe_reference_name","annual_kwh"]
           ],
           "units": "kWh"
         },
         "doe_reference_name": {
           "replacement_sets": [
-            ["loads_kw"],
-            ["doe_reference_name", "annual_kwh"],
-            ["doe_reference_name", "monthly_totals_kwh"]
+            ["loads_kw"]
           ],
-          "depends_on": ["annual_kwh or monthly_totals_kwh"],
           "type": "str",
-          "description": "Simulated load profile from DOE <a href='https: //energy.gov/eere/buildings/commercial-reference-buildings' target='blank'>Commercial Reference Buildings</a>",
+          "description": "Simulated load profile from DOE <a href='https: //energy.gov/eere/buildings/commercial-reference-buildings' target='blank'>Commercial Reference Buildings</a>. <br><br>Can be used alone, or with a valid entry for <small><b>annual_kwh</b></small> or <small><b>monthly_totals_kwh</b></small>",
           "restrict_to": ["FastFoodRest", "FullServiceRest", "Hospital", "LargeHotel", "LargeOffice", "MediumOffice", "MidriseApartment", "Outpatient", "PrimarySchool", "RetailStore", "SecondarySchool", "SmallHotel", "SmallOffice", "StripMall", "Supermarket", "Warehouse", "FlatLoad"]
         },
         "critical_load_pct": {
@@ -294,7 +293,7 @@ var nested_input_definitions = {
           "max": 75,
           "type": "int",
           "description": "Analysis period",
-          "min": 0
+          "min": 1
         }
       },
       "land_acres": {
@@ -648,173 +647,6 @@ var nested_input_definitions = {
           "depends_on": ["urdb_rate_name"]
         }
       },
-      "Wind": {
-        "pbi_us_dollars_per_kwh": {
-          "default": 0,
-          "max": 1000000000.0,
-          "type": "float",
-          "description": "Production-based incentive value",
-          "min": 0,
-          "units": "$/kWh"
-        },
-        "installed_cost_us_dollars_per_kw": {
-          "default": 2000,
-          "max": 100000.0,
-          "type": "float",
-          "description": "Total upfront installed costs",
-          "min": 0,
-          "units": "$/kW"
-        },
-        "macrs_bonus_pct": {
-          "default": 0.4,
-          "max": 1,
-          "type": "float",
-          "description": "Percent of upfront project costs to depreciate under MACRS",
-          "min": 0,
-          "units": "%"
-        },
-        "om_cost_us_dollars_per_kw": {
-          "default": 35,
-          "max": 1000.0,
-          "type": "float",
-          "description": "Total annual operations and maintenance costs",
-          "min": 0,
-          "units": "$/kW"
-        },
-        "utility_rebate_us_dollars_per_kw": {
-          "default": 0,
-          "max": 1000000000.0,
-          "type": "float",
-          "description": "Utility rebates based on installed capacity",
-          "min": 0,
-          "units": "$/kW"
-        },
-        "min_kw": {
-          "default": 0,
-          "max": 1000000000.0,
-          "type": "float",
-          "description": "Minimum wind power capacity constraint for optimization",
-          "min": 0,
-          "units": "kW"
-        },
-        "pbi_years": {
-          "default": 1,
-          "max": 1000000000.0,
-          "type": "float",
-          "description": "Duration of production-based incentives from installation date",
-          "min": 0
-        },
-        "max_kw": {
-          "default": 0,
-          "max": 1000000000.0,
-          "type": "float",
-          "description": "Maximum wind power capacity constraint for optimization. Set to zero to disable Wind. Disabled by default",
-          "min": 0,
-          "units": "kW"
-        },
-        "state_rebate_us_dollars_per_kw": {
-          "default": 0,
-          "max": 1000000000.0,
-          "type": "float",
-          "description": "State rebates based on installed capacity",
-          "min": 0,
-          "units": "$/kW"
-        },
-        "macrs_itc_reduction": {
-          "default": 0.5,
-          "max": 1,
-          "type": "float",
-          "description": "Percent of the full ITC that depreciable basis is reduced by",
-          "min": 0,
-          "units": "%"
-        },
-        "federal_itc_pct": {
-          "default": 0.3,
-          "max": 1,
-          "type": "float",
-          "description": "Percent federal capital cost incentive",
-          "min": 0,
-          "units": "%"
-        },
-        "pbi_max_us_dollars": {
-          "default": 1000000000.0,
-          "max": 1000000000.0,
-          "type": "float",
-          "description": "Maximum rebate allowed under utility production-based incentives",
-          "min": 0,
-          "units": "$"
-        },
-        "federal_rebate_us_dollars_per_kw": {
-          "default": 0,
-          "max": 1000000000.0,
-          "type": "float",
-          "description": "Federal rebate based on installed capacity",
-          "min": 0,
-          "units": "$/kW"
-        },
-        "state_rebate_max_us_dollars": {
-          "default": 10000000000.0,
-          "max": 10000000000.0,
-          "type": "float",
-          "description": "Maximum rebate allowed under state rebates",
-          "min": 0,
-          "units": "$"
-        },
-        "pbi_system_max_kw": {
-          "default": 1000000000.0,
-          "max": 1000000000.0,
-          "type": "float",
-          "description": "Maximum system size for which production-based incentives apply",
-          "min": 0,
-          "units": "kW"
-        },
-        "macrs_option_years": {
-          "default": 5,
-          "type": "int",
-          "description": "MACRS schedule for financial analysis. Set to zero to disable",
-          "restrict_to": [0, 5, 7]
-        },
-        "state_ibi_pct": {
-          "default": 0,
-          "max": 1,
-          "type": "float",
-          "description": "Percent of upfront project costs to discount under state investment based incentives",
-          "min": 0,
-          "units": "%"
-        },
-        "utility_rebate_max_us_dollars": {
-          "default": 10000000000.0,
-          "max": 10000000000.0,
-          "type": "float",
-          "description": "Maximum rebate allowed under utility rebates",
-          "min": 0,
-          "units": "$"
-        },
-        "utility_ibi_pct": {
-          "default": 0,
-          "max": 1,
-          "type": "float",
-          "description": "Percent of upfront project costs to discount under utility investment based incentives",
-          "min": 0,
-          "units": "%"
-        },
-        "state_ibi_max_us_dollars": {
-          "default": 10000000000.0,
-          "max": 10000000000.0,
-          "type": "float",
-          "description": "Maximum rebate allowed under state investment based incentives",
-          "min": 0,
-          "units": "$"
-        },
-        "utility_ibi_max_us_dollars": {
-          "default": 10000000000.0,
-          "max": 10000000000.0,
-          "type": "float",
-          "description": "Maximum rebate allowed under utility investment based incentives",
-          "min": 0,
-          "units": "$"
-        }
-      },
       "longitude": {
         "max": 180,
         "required": true,
@@ -1064,48 +896,6 @@ var nested_output_definitions = {
             "type": "list of float",
             "units": "kW"
           }
-        },
-        "Wind": {
-          "average_yearly_energy_exported_kwh": {
-            "description": "Average annual energy exported by the wind system",
-            "type": "float",
-            "units": "kWh"
-          },
-          "average_yearly_energy_produced_kwh": {
-            "description": "Average energy produced by the wind system over one year",
-            "type": "float",
-            "units": "kWh"
-          },
-          "size_kw": {
-            "description": "Recommended wind system size",
-            "type": "float",
-            "units": "kW"
-          },
-          "year_one_energy_produced_kwh": {
-            "description": "Wind energy produced in year one",
-            "type": "float",
-            "units": "kWh"
-          },
-          "year_one_power_production_series_kw": {
-            "description": "Hourly wind resource",
-            "type": "list of float",
-            "units": "kW"
-          },
-          "year_one_to_battery_series_kw": {
-            "description": "Year one wind to battery time series",
-            "type": "list of float",
-            "units": "kW"
-          },
-          "year_one_to_grid_series_kw": {
-            "description": "Year one wind to grid time series",
-            "type": "list of float",
-            "units": "kW"
-          },
-          "year_one_to_load_series_kw": {
-            "description": "Year one wind to load time series",
-            "type": "list of float",
-            "units": "kW"
-          }
         }
       },
       "api_version": {
@@ -1116,7 +906,7 @@ var nested_output_definitions = {
         "description": "A message about the state of the optimization task and an errors that may occur",
         "type": "str"
       },
-      "uuid": {
+      "run_uuid": {
         "description": "A unique id for the optimization task",
         "type": "str"
       }
@@ -1183,6 +973,7 @@ var tableValueCell = function(def) {
 var replacementSetList = function(list, name) {
 
   var output = $('<ul>')
+  
   for (var i=0;i<list.length;i++){
     if (list[i].indexOf(name) < 0){
       output.append($('<li class="text-wrap">').html( '<b><small>' + list[i].join('</b></small> and <b><small>') + '</small></b>' ))
