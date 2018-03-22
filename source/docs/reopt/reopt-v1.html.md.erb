@@ -14,7 +14,7 @@ summary: The REopt API provides access to a web version of a techno-economic dec
     <div class="col col-0.5"></div>
     <div class="col col-xs-12 ">
     <p>
-    The REopt Lite API recommends an optimal mix of renewable energy, conventional generation, and energy storage technologies to meet cost savings and energy performance goals, including the hourly optimal operation of the system. In addition to this API, the <a target='_blank' href='http://reopt.nrel.gov/tool'>REopt Lite Tool</a> provides an interface for manually establishing input parameters. <a target='_blank' href='http://reopt.nrel.gov'>Click here</a> for more information about the REopt model.
+    The REopt Lite API recommends an optimal mix of renewable energy, conventional generation, and energy storage technologies to meet cost savings and energy performance goals, including the hourly optimal operation of the system. In addition to this API, the <a target='_blank' href='https://reopt.nrel.gov/tool'>REopt Lite Tool</a> provides an interface for manually establishing input parameters. <a target='_blank' href='https://reopt.nrel.gov'>Click here</a> for more information about the REopt model.
     </p>
     <p>
     The API uses utility rates from the <a href="https://openei.org/wiki/Utility_Rate_Database" target="_blank">Utility Rate Database</a> and solar PV generation from <a href="https://developer.nrel.gov/docs/solar/pvwatts-v5/" target="_blank">PV Watts (Version 5)</a>. It is capable of accepting custom load profiles, but is also equipped with simulated profiles from the Department of Energy <a href="https://energy.gov/eere/buildings/commercial-reference-buildings" target="_blank">Commercial Reference Buildings</a>. 
@@ -64,15 +64,15 @@ summary: The REopt API provides access to a web version of a techno-economic dec
   <h2>Workflow</h2><br>
   <div class="col col-xs-12 " id="">
   <p>
-  A scenario consists of a set input parameters in a format described <a href="#input-definitions">below</a>. A scenario is submitted to  <em>http://developer.nrel.gov/api/reopt/v1/job/</em> as a POST.<br><br>
-  At the time of submission, a REopt task is created and its unique identifer is returned in the API response. To check on the scenario status, the scenario identifier is submitted to the Results URL at <em> http://developer.nrel.gov/api/reopt/v1/job/&lt;run_uuid&gt;/results</em> (where the &lt;run_uuid&gt; is returned from the job POST).. If the task has completed, results will be returned. Otherwise, the API will respond with a message that the optimization task is still being processed. <br><br>
+  A scenario consists of a set input parameters in a format described <a href="#input-definitions">below</a>. A scenario is submitted to  <em>https://developer.nrel.gov/api/reopt/v1/job/</em> as a POST.<br><br>
+  At the time of submission, a REopt task is created and its unique identifer is returned in the API response. To check on the scenario status, the scenario identifier is submitted to the Results URL at <em> https://developer.nrel.gov/api/reopt/v1/job/&lt;run_uuid&gt;/results</em> (where the &lt;run_uuid&gt; is returned from the job POST).. If the task has completed, results will be returned. Otherwise, the API will respond with a message that the optimization task is still being processed. <br><br>
   The Results URL can be polled on a continuing basis until results are returned. Example Python scripts are provided at <a href="https://github.com/NREL/REopt-API-Examples" target="_blank">https://github.com/NREL/REopt-API-Examples</a>
   </p>
 
    
   <b>Submission URL</b><br>
   <div class="col-xs-10 col-xs-offset-1">
-    <pre><code>POST <em> http://developer.nrel.gov/api/reopt/v1/job/</em>
+    <pre><code>POST <em> https://developer.nrel.gov/api/reopt/v1/job/</em>
 
     -data {"Scenario":{"Site":{...}}}</code></pre>
   </div>
@@ -81,7 +81,7 @@ summary: The REopt API provides access to a web version of a techno-economic dec
    <div class="col col-xs-12"><br>
   <b>Results URL</b><br>
   <div class="col-xs-10 col-xs-offset-1">
-    <pre><code>GET <em> http://developer.nrel.gov/api/reopt/v1/job/&lt;run_uuid&gt;/results</em></code></pre>
+    <pre><code>GET <em> https://developer.nrel.gov/api/reopt/v1/job/&lt;run_uuid&gt;/results</em></code></pre>
   </div>
   </div>
 </div>
@@ -148,7 +148,7 @@ summary: The REopt API provides access to a web version of a techno-economic dec
 
     <div class="col col-xs-12">
           <p>The Results URL replies to a GET request containing a query string specifying the run_uuid for which to retrieve results.</p>
-          <div class="col-xs-10 col-xs-offset-1"><pre>GET http://developer.nrel.gov/api/reopt/v1/job/7h73e87ejjd83jdj38dj393d3/results</pre></div>
+          <div class="col-xs-10 col-xs-offset-1"><pre>GET https://developer.nrel.gov/api/reopt/v1/job/7h73e87ejjd83jdj38dj393d3/results</pre></div>
     </div>
 
   
@@ -61954,7 +61954,7 @@ summary: The REopt API provides access to a web version of a techno-economic dec
 <div class="col col-xs-12">
 <b><p>Results URL Request</p></b>
   <div class="col  col-xs-10 col-xs-offset-1">
-    <pre>GET <em>http://developer.nrel.gov/api/reopt/v1/job/y49328hdbbyewdyb23b36ebybd36/results</em></pre>
+    <pre>GET <em>https://developer.nrel.gov/api/reopt/v1/job/y49328hdbbyewdyb23b36ebybd36/results</em></pre>
   </div>
 </div>
 
