@@ -73,6 +73,9 @@ definitions:
             example: advanced-materials
       errors:
         type: array
+        items:
+          type: string
+          example:
       resultset:
         type: object
         properties:
