@@ -1,4 +1,5 @@
 swagger: "2.0"
+validatorUrl: false
 info:
   version: "1.0.0"
   title: C-LEAP Buildings and Industry APIs
