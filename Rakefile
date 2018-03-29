@@ -6,22 +6,50 @@ end
 
 desc "Test Swagger files to ensure they pass specifications."
 task :lint do
+  require "open3"
+  require "yaml"
+
   swagger_specs = `grep -l -r -i --include '*.yml' --include '*.json' swagger ./source ./build`.split("\n")
   if($?.exitstatus != 0)
     puts swagger_specs
     exit 1
   end
 
-  any_failed = false
+  errors = {}
   swagger_specs.each do |file|
     puts file
-    ok = system("./node_modules/.bin/swagger-tools", "validate", "-v", file)
-    if(!ok)
-      any_failed = true
+
+    # Validate the YAML with Ruby's validator. Note that this helps catch YAML
+    # syntax errors that the swagger validator and NodeJS's YAML parser seem to
+    # be okay with, but that the online swagger validator (which is apparently
+    # Java) errors on.
+    begin
+      YAML.load_file(file)
+    rescue => e
+      output = "YAML error: #{e.message}"
+      puts "#{output}\n\n\n"
+      errors[file] = output
+    end
+
+    # Validate the swagger spec
+    unless errors[file]
+      output, status = Open3.capture2e("./node_modules/.bin/swagger-tools", "validate", "-v", file)
+      output = output.to_s.strip
+      puts "#{output}\n\n\n"
+
+      # swagger-tools doesn't exit with an unsuccessful code on warnings, so also
+      # manually check the output.
+      if(!status.success? || !output.include?("Swagger document is valid"))
+        errors[file] = output
+      end
     end
   end
 
-  if(any_failed)
+  if(errors.any?)
+    puts "===== ERROR: Swagger validation errors =====\n\n\n"
+    errors.each do |file, output|
+      puts "#{file}\n#{output}\n\n\n"
+    end
     exit 1
   end
 end
