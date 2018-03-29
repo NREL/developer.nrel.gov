@@ -121,7 +121,7 @@ definitions:
                   example:
                 applications_and_industries:
                   type: string
-                  example: &bull;Capacitive deionization electrode material for desalination of large volumes of water <br />&bull;Supercapacitor electrode material, separations material, battery electrode material, catalyst support
+                  example: "&bull;Capacitive deionization electrode material for desalination of large volumes of water <br />&bull;Supercapacitor electrode material, separations material, battery electrode material, catalyst support"
                 visibility:
                   type: string
                   example:
