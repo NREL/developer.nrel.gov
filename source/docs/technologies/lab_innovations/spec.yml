@@ -46,17 +46,6 @@ paths:
             schema:
               $ref: "#/definitions/marketing_summaries"
 definitions:
-  error:
-    type: object
-    properties:
-      code:
-        type: string
-        description: A static code value representing the type of error.
-        example: NOT_FOUND
-      developer_message:
-        type: string
-        description: A human readable description of the error message.
-        example: No data was found for the gisjoin provided
   marketing_summaries:
     properties:
       metadata:
