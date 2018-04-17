@@ -1,10 +1,13 @@
 ---
-title: Physical Solar Model (PSM)
-summary: Collect and download, as CSV, a configurable set of solar and meteoroligical data fields from The NSRDB. This API is capabale of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.<br>Read more about the datasets at [https://nsrdb.nrel.gov](https://nsrdb.nrel.gov)  
+title: Physical Solar Model (PSM) v2
+summary: Collect and download, as CSV, a configurable set of solar and meteoroligical data fields from The NSRDB. This API is capabale of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.<br>Read more about the datasets at [https://nsrdb.nrel.gov](https://nsrdb.nrel.gov)
 url: /api/solar/nsrdb_0512_download
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
+<div class="alert alert-danger" style="margin-top: 10px;">
+  <p>A newer version of the PSM data is available. Please see <a href="../psm3_data_download">the v3 documentation</a> for details.</p>
+</div>
 <%= current_page.data.summary %>
 
 <ul id="toc"></ul>
@@ -151,7 +154,7 @@ _NOTE: when using POST to submit a request the api_key must still be inlcuded as
         <div class="doc-parameter-value-field"><strong>Default:</strong> false</div>
       </td>
       <td class="doc-parameter-description">
-        Pass true to add the email address to our list of recipients for the NSRDB mailing list. 
+        Pass true to add the email address to our list of recipients for the NSRDB mailing list.
       </td>
     </tr>
   </tbody>
@@ -205,7 +208,11 @@ The response is composed of service-related informational fields and the results
   </tbody>
 </table>
 
-<h2>Examples</h2>
+## Data File Format
+
+Generated data files are formatted in accordance with the Standard Time Series Data File Format. This file format has been developed to support [SAM](https://sam.nrel.gov/) and other NREL models and is documented fully in [this PDF](https://sam.nrel.gov/sites/default/files/content/documents/pdf/wfcsv.pdf). More information on SAM file formats avaialable on [the SAM weather page](https://sam.nrel.gov/weather).
+
+## Examples
 
 ### JSON Output Format
 
@@ -257,7 +264,7 @@ The response is composed of service-related informational fields and the results
 ```
 
 
-### CSV Output Format 
+### CSV Output Format
 Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.
 
 <div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?api_key=DEMO_KEY&full_name=Sample+User&email=sample@email.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT(-108.5449+40.5137)&names=2014&attributes=dhi,dni,ghi,clearsky_dhi,clearsky_dni,clearsky_ghi,cloud_type,dew_point,surface_air_temperature_nwp,surface_pressure_background,surface_relative_humidity_nwp,solar_zenith_angle,total_precipitable_water_nwp,wind_direction_10m_nwp,wind_speed_10m_nwp,fill_flag&leap_day=false&utc=false&interval=30</code></div>
@@ -273,7 +280,7 @@ Year,Month,Day,Hour,Minute,DHI,DNI,GHI,Clearsky DHI,Clearsky DNI,Clearsky GHI,Cl
 2014,1,1,2,0,0,0,0,0,0,0,1,-5.682623291015602,-2.1574768066406023,796.989990234375,76.7892837524414,152.24111799118322,7.0768561363220215,294.47625732421875,3.552128791809082,0
 2014,1,1,2,30,0,0,0,0,0,0,4,-6.044805908203102,-2.3538574218749773,797.1622314453125,75.79216766357422,147.14884282433127,6.616491794586182,294.47625732421875,3.744844436645508,0
 2014,1,1,3,0,0,0,0,0,0,0,4,-6.416296386718727,-2.5502075195312273,797.3344116210938,74.75006866455078,141.7413977757821,6.156126976013184,307.29669189453125,3.9375598430633545,0
-2014,1,1,3,30,0,0,0,0,0,0,4,-6.676153564453102,-3.0090087890624773,797.4351196289062,75.81484985351562,136.16001651446615,5.669936180114746,307.29669189453125,4.078017234802246,0                                             
+2014,1,1,3,30,0,0,0,0,0,0,4,-6.676153564453102,-3.0090087890624773,797.4351196289062,75.81484985351562,136.16001651446615,5.669936180114746,307.29669189453125,4.078017234802246,0
 ```
 
 ### POST request example in Python
@@ -299,7 +306,7 @@ print(response.text)
 
 Rate limits for this application are significantly less than the [standard rate limits](/docs/rate-limits){:target="_blank"} for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.
 
-There are two levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 2000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 300 requests per day at a frequency of no more than 1 every 2 seconds. 
+There are two levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 2000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 300 requests per day at a frequency of no more than 1 every 2 seconds.
 
 In addition to this limit, the service has a secondary fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.
 
