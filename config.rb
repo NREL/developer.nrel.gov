@@ -81,3 +81,5 @@ configure :build do
     %r{throbber.gif},
   ]
 end
+
+activate :alias
