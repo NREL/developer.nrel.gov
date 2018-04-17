@@ -21,7 +21,6 @@ pipeline {
   stages {
     stage("rbenv-install") {
       steps {
-        sh "env"
         sh 'rbenv install --skip-existing $RBENV_VERSION'
       }
     }
@@ -56,13 +55,22 @@ pipeline {
       steps {
         script {
           withCredentials([[$class: "UsernamePasswordMultiBinding", credentialsId: "aws-jenkins", usernameVariable: "AWS_ACCESS_KEY_ID", passwordVariable: "AWS_SECRET_ACCESS_KEY"]]) {
+            def dest
             if(env.BRANCH_NAME == "staging") {
-              sh "aws s3 sync ./build/ s3://devstage.nrel.gov/"
+              dest = "s3://devstage.nrel.gov/"
             } else if(env.BRANCH_NAME == "master") {
-              sh "aws s3 sync ./build/ s3://developer.nrel.gov/"
+              dest = "s3://developer.nrel.gov/"
             } else {
               error("Unknown branch for deployment")
             }
+            sh "aws s3 sync ./build/ ${dest}"
+
+            // Sleep for a few seconds before running another sync, this time
+            // with delete, to cleanup unused files (the sleep helps ensure we
+            // don't delete files before new ones are uploaded on the initial
+            // sync).
+            sleep 5
+            sh "aws s3 sync --delete ./build/ ${dest}"
           }
         }
       }
