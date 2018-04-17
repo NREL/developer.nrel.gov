@@ -81,5 +81,3 @@ configure :build do
     %r{throbber.gif},
   ]
 end
-
-activate :relative_assets
