@@ -20,7 +20,7 @@ gem "bootstrap-sass", "~> 3.3.7"
 gem "font-awesome-sass", "~> 4.7.0"
 
 # Redirects
-gem "middleman-alias", "~> 0.0.9"
+gem "middleman-alias", "~> 0.0.17"
 
 # JSON validation
 gem "multi_json", "~> 1.12.1"

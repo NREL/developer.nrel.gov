@@ -144,7 +144,7 @@ DEPENDENCIES
   dotenv (~> 2.2.1)
   font-awesome-sass (~> 4.7.0)
   middleman (~> 4.2.1)
-  middleman-alias (~> 0.0.9)
+  middleman-alias (~> 0.0.17)
   middleman-livereload (~> 3.4.6)
   middleman-sprockets (~> 4.1.0)
   middleman-syntax (~> 3.0.0)
@@ -157,4 +157,4 @@ DEPENDENCIES
   rake (~> 12.0)
 
 BUNDLED WITH
-   1.15.1
+   1.16.0
