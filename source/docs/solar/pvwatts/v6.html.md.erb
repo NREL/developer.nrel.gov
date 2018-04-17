@@ -653,60 +653,113 @@ The response is composed of service-related informational fields and the results
 
 ### JSON Output Format
 
-<pre>GET <a href="/api/pvwatts/v6.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;system_capacity=4&amp;azimuth=180&amp;tilt=40&amp;array_type=1&amp;module_type=1&amp;losses=10">/api/pvwatts/v5.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;system_capacity=4&amp;azimuth=180&amp;tilt=40&amp;array_type=1&amp;module_type=1&amp;losses=10</a></pre>
+<pre>GET <a href="/api/pvwatts/v6.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;system_capacity=4&amp;azimuth=180&amp;tilt=40&amp;array_type=1&amp;module_type=1&amp;losses=10">/api/pvwatts/v6.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;system_capacity=4&amp;azimuth=180&amp;tilt=40&amp;array_type=1&amp;module_type=1&amp;losses=10</a></pre>
 
 ```json
 {
-  "inputs" : {
-    "lat" : "40",
-    "lon" : "-105",
-    "system_capacity" : "4",
-    "azimuth" : "180",
-    "tilt" : "40",
-    "array_type" : "1",
-    "module_type" : "1",
-    "losses" : "10"
-  },
-  "errors" : [ ],
-  "warnings" : [ ],
-  "version" : "1.0.0",
-  "ssc_info" : {
-    "version" : 34,
-    "build" : "Unix 64 bit GNU/C++ Feb 19 2014 11:40:21"
-  },
-  "station_info" : {
-    "lat" : 40.016666412353516,
-    "lon" : -105.25,
-    "elev" : 1634.0,
-    "tz" : -7.0,
-    "location" : "94018",
-    "city" : "BOULDER",
-    "state" : "CO",
-    "solar_resource_file" : "94018.tm2",
-    "distance" : 21235
-  },
-  "outputs" : {
-    "ac_monthly" : [ 474.2408142089844, 465.6669921875, 628.282470703125, 602.544677734375, 610.743896484375, 591.1350708007812, 595.8433227539062, 610.0640869140625, 597.9025268554688, 574.707275390625, 471.6990661621094, 458.9857177734375 ],
-    "poa_monthly" : [ 136.04103088378906, 136.04443359375, 185.7895965576172, 181.16891479492188, 185.77963256835938, 182.52105712890625, 187.89971923828125, 193.35572814941406, 187.40081787109375, 175.5979461669922, 137.59872436523438, 131.25526428222656 ],
-    "solrad_monthly" : [ 4.388420581817627, 4.858729839324951, 5.993212699890137, 6.038963794708252, 5.992891311645508, 6.084035396575928, 6.061281204223633, 6.237281322479248, 6.246694087982178, 5.664449691772461, 4.5866241455078125, 4.2340407371521 ],
-    "dc_monthly" : [ 495.09564208984375, 487.5823669433594, 657.702880859375, 629.8565063476562, 638.9706420898438, 618.6126708984375, 623.68994140625, 637.5205688476562, 624.635009765625, 599.9056396484375, 492.5662841796875, 479.1076354980469 ],
-    "ac_annual" : 6681.81640625,
-    "solrad_annual" : 5.5322184562683105
-  }
+    "inputs": {
+        "system_capacity": "4",
+        "lat": "40",
+        "lon": "-105",
+        "azimuth": "180",
+        "tilt": "40",
+        "array_type": "1",
+        "module_type": "1",
+        "losses": "10"
+    },
+    "errors": [],
+    "warnings": [],
+    "version": "1.4.0",
+    "ssc_info": {
+        "version": 45,
+        "build": "Linux 64 bit GNU/C++ Jul  7 2015 14:24:09"
+    },
+    "station_info": {
+        "lat": 40.0099983215332,
+        "lon": -105.0199966430664,
+        "elev": 1581.8399658203125,
+        "tz": -7,
+        "location": "None",
+        "city": "",
+        "state": "Colorado",
+        "solar_resource_file": "W10502N4001.csv",
+        "distance": 2029
+    },
+    "outputs": {
+        "ac_monthly": [
+            474.4326171875,
+            484.3903503417969,
+            595.7704467773438,
+            592.0599365234375,
+            591.2662353515625,
+            589.3538208007812,
+            583.2352905273438,
+            586.4593505859375,
+            584.8131713867188,
+            561.72314453125,
+            486.12603759765625,
+            445.68817138671875
+        ],
+        "poa_monthly": [
+            141.48094177246094,
+            145.57119750976562,
+            184.7876434326172,
+            181.55137634277344,
+            186.42808532714844,
+            190.51329040527344,
+            188.74996948242188,
+            190.53981018066406,
+            188.2213134765625,
+            175.4444122314453,
+            146.31704711914062,
+            131.15682983398438
+        ],
+        "solrad_monthly": [
+            4.563901424407959,
+            5.198971271514893,
+            5.9608917236328125,
+            6.051712512969971,
+            6.0138092041015625,
+            6.350442886352539,
+            6.088708877563477,
+            6.146445274353027,
+            6.274043560028076,
+            5.659497261047363,
+            4.877234935760498,
+            4.230865478515625
+        ],
+        "dc_monthly": [
+            497.9421081542969,
+            511.1524963378906,
+            634.3223266601562,
+            623.7313842773438,
+            617.8812866210938,
+            615.4278564453125,
+            609.3965454101562,
+            612.7506713867188,
+            610.5584106445312,
+            588.6157836914062,
+            508.07476806640625,
+            465.4272155761719
+        ],
+        "ac_annual": 6575.31884765625,
+        "solrad_annual": 5.618043899536133,
+        "capacity_factor": 18.765178680419922
+    }
 }
 ```
 
 ### XML Output Format
 
-<pre>GET <a href="/api/pvwatts/v6.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;system_capacity=4&amp;azimuth=180&amp;tilt=40&amp;array_type=1&amp;module_type=1&amp;losses=10">/api/pvwatts/v5.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;system_capacity=4&amp;azimuth=180&amp;tilt=40&amp;array_type=1&amp;module_type=1&amp;losses=10</a></pre>
+<pre>GET <a href="/api/pvwatts/v6.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;system_capacity=4&amp;azimuth=180&amp;tilt=40&amp;array_type=1&amp;module_type=1&amp;losses=10">/api/pvwatts/v6.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;system_capacity=4&amp;azimuth=180&amp;tilt=40&amp;array_type=1&amp;module_type=1&amp;losses=10</a></pre>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <response>
     <inputs>
+        <system-capacity>4</system-capacity>
         <lat>40</lat>
         <lon>-105</lon>
-        <system-capacity>4</system-capacity>
         <azimuth>180</azimuth>
         <tilt>40</tilt>
         <array-type>1</array-type>
@@ -715,81 +768,82 @@ The response is composed of service-related informational fields and the results
     </inputs>
     <errors type="array"/>
     <warnings type="array"/>
-    <version>1.0.0</version>
+    <version>1.4.0</version>
     <ssc-info>
-        <version type="integer">34</version>
-        <build>Unix 64 bit GNU/C++ Feb 19 2014 11:40:21</build>
+        <version type="integer">45</version>
+        <build>Linux 64 bit GNU/C++ Jul  7 2015 14:24:09</build>
     </ssc-info>
     <station-info>
-        <lat type="float">40.016666412353516</lat>
-        <lon type="float">-105.25</lon>
-        <elev type="float">1634.0</elev>
+        <lat type="float">40.0099983215332</lat>
+        <lon type="float">-105.0199966430664</lon>
+        <elev type="float">1581.8399658203125</elev>
         <tz type="float">-7.0</tz>
-        <location>94018</location>
-        <city>BOULDER</city>
-        <state>CO</state>
-        <solar-resource-file>94018.tm2</solar-resource-file>
-        <distance type="integer">21235</distance>
+        <location>None</location>
+        <city></city>
+        <state>Colorado</state>
+        <solar-resource-file>W10502N4001.csv</solar-resource-file>
+        <distance type="integer">2029</distance>
     </station-info>
     <outputs>
         <ac-monthly type="array">
-            <ac-monthly type="float">474.2408142089844</ac-monthly>
-            <ac-monthly type="float">465.6669921875</ac-monthly>
-            <ac-monthly type="float">628.282470703125</ac-monthly>
-            <ac-monthly type="float">602.544677734375</ac-monthly>
-            <ac-monthly type="float">610.743896484375</ac-monthly>
-            <ac-monthly type="float">591.1350708007812</ac-monthly>
-            <ac-monthly type="float">595.8433227539062</ac-monthly>
-            <ac-monthly type="float">610.0640869140625</ac-monthly>
-            <ac-monthly type="float">597.9025268554688</ac-monthly>
-            <ac-monthly type="float">574.707275390625</ac-monthly>
-            <ac-monthly type="float">471.6990661621094</ac-monthly>
-            <ac-monthly type="float">458.9857177734375</ac-monthly>
+            <ac-monthly type="float">474.4326171875</ac-monthly>
+            <ac-monthly type="float">484.3903503417969</ac-monthly>
+            <ac-monthly type="float">595.7704467773438</ac-monthly>
+            <ac-monthly type="float">592.0599365234375</ac-monthly>
+            <ac-monthly type="float">591.2662353515625</ac-monthly>
+            <ac-monthly type="float">589.3538208007812</ac-monthly>
+            <ac-monthly type="float">583.2352905273438</ac-monthly>
+            <ac-monthly type="float">586.4593505859375</ac-monthly>
+            <ac-monthly type="float">584.8131713867188</ac-monthly>
+            <ac-monthly type="float">561.72314453125</ac-monthly>
+            <ac-monthly type="float">486.12603759765625</ac-monthly>
+            <ac-monthly type="float">445.68817138671875</ac-monthly>
         </ac-monthly>
         <poa-monthly type="array">
-            <poa-monthly type="float">136.04103088378906</poa-monthly>
-            <poa-monthly type="float">136.04443359375</poa-monthly>
-            <poa-monthly type="float">185.7895965576172</poa-monthly>
-            <poa-monthly type="float">181.16891479492188</poa-monthly>
-            <poa-monthly type="float">185.77963256835938</poa-monthly>
-            <poa-monthly type="float">182.52105712890625</poa-monthly>
-            <poa-monthly type="float">187.89971923828125</poa-monthly>
-            <poa-monthly type="float">193.35572814941406</poa-monthly>
-            <poa-monthly type="float">187.40081787109375</poa-monthly>
-            <poa-monthly type="float">175.5979461669922</poa-monthly>
-            <poa-monthly type="float">137.59872436523438</poa-monthly>
-            <poa-monthly type="float">131.25526428222656</poa-monthly>
+            <poa-monthly type="float">141.48094177246094</poa-monthly>
+            <poa-monthly type="float">145.57119750976562</poa-monthly>
+            <poa-monthly type="float">184.7876434326172</poa-monthly>
+            <poa-monthly type="float">181.55137634277344</poa-monthly>
+            <poa-monthly type="float">186.42808532714844</poa-monthly>
+            <poa-monthly type="float">190.51329040527344</poa-monthly>
+            <poa-monthly type="float">188.74996948242188</poa-monthly>
+            <poa-monthly type="float">190.53981018066406</poa-monthly>
+            <poa-monthly type="float">188.2213134765625</poa-monthly>
+            <poa-monthly type="float">175.4444122314453</poa-monthly>
+            <poa-monthly type="float">146.31704711914062</poa-monthly>
+            <poa-monthly type="float">131.15682983398438</poa-monthly>
         </poa-monthly>
         <solrad-monthly type="array">
-            <solrad-monthly type="float">4.388420581817627</solrad-monthly>
-            <solrad-monthly type="float">4.858729839324951</solrad-monthly>
-            <solrad-monthly type="float">5.993212699890137</solrad-monthly>
-            <solrad-monthly type="float">6.038963794708252</solrad-monthly>
-            <solrad-monthly type="float">5.992891311645508</solrad-monthly>
-            <solrad-monthly type="float">6.084035396575928</solrad-monthly>
-            <solrad-monthly type="float">6.061281204223633</solrad-monthly>
-            <solrad-monthly type="float">6.237281322479248</solrad-monthly>
-            <solrad-monthly type="float">6.246694087982178</solrad-monthly>
-            <solrad-monthly type="float">5.664449691772461</solrad-monthly>
-            <solrad-monthly type="float">4.5866241455078125</solrad-monthly>
-            <solrad-monthly type="float">4.2340407371521</solrad-monthly>
+            <solrad-monthly type="float">4.563901424407959</solrad-monthly>
+            <solrad-monthly type="float">5.198971271514893</solrad-monthly>
+            <solrad-monthly type="float">5.9608917236328125</solrad-monthly>
+            <solrad-monthly type="float">6.051712512969971</solrad-monthly>
+            <solrad-monthly type="float">6.0138092041015625</solrad-monthly>
+            <solrad-monthly type="float">6.350442886352539</solrad-monthly>
+            <solrad-monthly type="float">6.088708877563477</solrad-monthly>
+            <solrad-monthly type="float">6.146445274353027</solrad-monthly>
+            <solrad-monthly type="float">6.274043560028076</solrad-monthly>
+            <solrad-monthly type="float">5.659497261047363</solrad-monthly>
+            <solrad-monthly type="float">4.877234935760498</solrad-monthly>
+            <solrad-monthly type="float">4.230865478515625</solrad-monthly>
         </solrad-monthly>
         <dc-monthly type="array">
-            <dc-monthly type="float">495.09564208984375</dc-monthly>
-            <dc-monthly type="float">487.5823669433594</dc-monthly>
-            <dc-monthly type="float">657.702880859375</dc-monthly>
-            <dc-monthly type="float">629.8565063476562</dc-monthly>
-            <dc-monthly type="float">638.9706420898438</dc-monthly>
-            <dc-monthly type="float">618.6126708984375</dc-monthly>
-            <dc-monthly type="float">623.68994140625</dc-monthly>
-            <dc-monthly type="float">637.5205688476562</dc-monthly>
-            <dc-monthly type="float">624.635009765625</dc-monthly>
-            <dc-monthly type="float">599.9056396484375</dc-monthly>
-            <dc-monthly type="float">492.5662841796875</dc-monthly>
-            <dc-monthly type="float">479.1076354980469</dc-monthly>
+            <dc-monthly type="float">497.9421081542969</dc-monthly>
+            <dc-monthly type="float">511.1524963378906</dc-monthly>
+            <dc-monthly type="float">634.3223266601562</dc-monthly>
+            <dc-monthly type="float">623.7313842773438</dc-monthly>
+            <dc-monthly type="float">617.8812866210938</dc-monthly>
+            <dc-monthly type="float">615.4278564453125</dc-monthly>
+            <dc-monthly type="float">609.3965454101562</dc-monthly>
+            <dc-monthly type="float">612.7506713867188</dc-monthly>
+            <dc-monthly type="float">610.5584106445312</dc-monthly>
+            <dc-monthly type="float">588.6157836914062</dc-monthly>
+            <dc-monthly type="float">508.07476806640625</dc-monthly>
+            <dc-monthly type="float">465.4272155761719</dc-monthly>
         </dc-monthly>
-        <ac-annual type="float">6681.81640625</ac-annual>
-        <solrad-annual type="float">5.5322184562683105</solrad-annual>
+        <ac-annual type="float">6575.31884765625</ac-annual>
+        <solrad-annual type="float">5.618043899536133</solrad-annual>
+        <capacity-factor type="float">18.765178680419922</capacity-factor>
     </outputs>
 </response>
 ```
