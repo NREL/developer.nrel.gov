@@ -1,14 +1,11 @@
 ---
-title: PVWatts (Version 5)
-summary: NREL's PVWatts calculates the energy production of grid-connected photovoltaic
-  (PV) energy systems. This service estimates the performance of hypothetical residential
-  and small commercial PV installations.
+title: PVWatts V5
+summary: Version 5 is a major update to the algorithms that were used in previous versions of the PVWatts web services.
 url: GET /api/pvwatts/v5
 
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
-<%= current_page.data.summary %>
 
 PVWatts Version 5 is a major update to the algorithms that were used in previous versions of the PVWatts web services. Compared with PVWatts Version 4, our new update will predict roughly 7-9% greater energy output for a fixed tilt system given similar assumptions. The new results much more closely match measured system performance data, and address concerns that PVWatts Version 4 tended to under-predict PV system performance given the default input assumptions. 
 
@@ -301,7 +298,7 @@ Full technical details can be found in: Dobos, A. P. <a href="http://www.nrel.go
           <strong>Default:</strong> tmy2
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Options:</strong> <i>tmy2, tmy3, intl, IN</i>
+          <strong>Options:</strong> <i>tmy2, tmy3, intl, IN, nsrdb</i>
         </div>
       </td>
       <td class="doc-parameter-description">
@@ -336,6 +333,12 @@ Full technical details can be found in: Dobos, A. P. <a href="http://www.nrel.go
               <th scope="row">IN</th>
               <td>
                 <p>India 10km gridded solar resource data (see <a href="http://www.nrel.gov/international/ra_india.html">India Solar Resource Maps</a>)</p>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">nsrdb</th>
+              <td>
+                <p>NREL Physical Solar Model (PSM) TMY from the NREL National Solar Radiation Database (NSRDB) (see <a href="https://nsrdb.nrel.gov/about" target="_blank">nsrdb.nrel.gov/about</a>)</p>
               </td>
             </tr>
           </tbody>
