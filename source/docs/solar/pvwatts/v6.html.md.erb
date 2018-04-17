@@ -1,22 +1,21 @@
 ---
-title: PVWatts (Version 4)
-summary: NREL's PVWatts calculates the energy production of grid-connected photovoltaic
-  (PV) energy systems. This service estimates the performance of hypothetical residential
-  and small commercial PV installations.
-url: GET /api/pvwatts/v4
+title: PVWatts V6
+summary: Version 6 is an update that changes the defaults for weather data, and DC to AC ratio.
+url: GET /api/pvwatts/v6
 
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
-<%= current_page.data.summary %>
 
-PVWatts Version 4 has been replaced by [version 5](/docs/solar/pvwatts-v5/). While we will continue to make the V4 API available, it is recommended that people switch to version 5 to use the most up-to-date models available.
-  
+PVWatts Version 6 is an update that uses different weather data by default than Version 5. Version 6 uses the NREL Physical Solar Model (PSM) TMY from the NREL National Solar Radiation Database (NSRDB) by default, however you can select to use NREL NSRDB 1991-2005 TMY3 data, international data, or a 10km gridded dataset covering all of India. PVWatts Version 6 also updates the default DC to AC ratio to 1.2 instead of 1.1, but you can still specify the DC to AC ratio that you wish to use in your simulation.
+
+The algorithms used to calculate energy output have not changed from Version 5. Full technical details for the energy calculations can be found in:  Dobos, A. P. <a href="http://www.nrel.gov/docs/fy14osti/62641.pdf" target="_blank">PVWatts Version 5 Manual</a>. NREL/TP-6A20-62641, 2014.
+
 <ul id="toc"></ul>
 
 ## Request URL
 
-<pre>GET /api/pvwatts/v4<em>.format?parameters</em></pre>
+<pre>GET /api/pvwatts/v6<em>.format?parameters</em></pre>
 
 ## Request Parameters
 
@@ -64,7 +63,7 @@ PVWatts Version 4 has been replaced by [version 5](/docs/solar/pvwatts-v5/). Whi
       </td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">system_size</th>
+      <th class="doc-parameter-name" scope="row">system_capacity</th>
       <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -80,6 +79,145 @@ PVWatts Version 4 has been replaced by [version 5](/docs/solar/pvwatts-v5/). Whi
       <td class="doc-parameter-description">
         <p>Nameplate capacity (kW).</p>
       </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">module_type</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Options:</strong> <i>0, 1, 2</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Module type.</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+          <thead>
+            <tr>
+              <th scope="col">Option</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">0</th>
+              <td>Standard</td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>Premium</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Thin film</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">losses</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> decimal
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Range:</strong> <i>-5 to 99</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">System losses (percent).</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">array_type</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Options:</strong> <i>0, 1, 2, 3, 4</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Array type.</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+          <thead>
+            <tr>
+              <th scope="col">Option</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">0</th>
+              <td>Fixed - Open Rack</td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>Fixed - Roof Mounted</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>1-Axis</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>1-Axis Backtracking</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>2-Axis</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">tilt</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> decimal
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Range:</strong> <i>0 to 90</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">Tilt angle (degrees).</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">azimuth</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> decimal
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Min:</strong> <i>0</i>
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Max:</strong> <i>< 360</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">Azimuth angle (degrees).</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">address</th>
@@ -155,10 +293,10 @@ PVWatts Version 4 has been replaced by [version 5](/docs/solar/pvwatts-v5/). Whi
           <strong>Type:</strong> string
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Default:</strong> tmy3
+          <strong>Default:</strong> nsrdb
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Options:</strong> <i>tmy2, tmy3, intl, IN</i>
+          <strong>Options:</strong> <i>nsrdb, tmy2, tmy3, intl, IN</i>
         </div>
       </td>
       <td class="doc-parameter-description">
@@ -171,6 +309,12 @@ PVWatts Version 4 has been replaced by [version 5](/docs/solar/pvwatts-v5/). Whi
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <th scope="row">nsrdb</th>
+              <td>
+                <p>NREL Physical Solar Model (PSM) TMY from the NREL National Solar Radiation Database (NSRDB) (see <a href="https://nsrdb.nrel.gov/about" target="_blank">nsrdb.nrel.gov/about</a>)</p>
+              </td>
+            </tr>
             <tr>
               <th scope="row">tmy2</th>
               <td>
@@ -231,166 +375,57 @@ PVWatts Version 4 has been replaced by [version 5](/docs/solar/pvwatts-v5/). Whi
       <td class="doc-parameter-description">Granularity of the output response.</td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">azimuth</th>
+      <th class="doc-parameter-name" scope="row">dc_ac_ratio</th>
       <td class="doc-parameter-required">No</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
           <strong>Type:</strong> decimal
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Default:</strong> None
+          <strong>Default:</strong> 1.2
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Min:</strong> <i>0</i>
-        </div>
-        <div class="doc-parameter-value-field">
-          <strong>Max:</strong> <i>< 360</i>
-        </div>
-      </td>
-      <td class="doc-parameter-description">Azimuth angle (degrees).</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">derate</th>
-      <td class="doc-parameter-required">No</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> decimal
-        </div>
-        <div class="doc-parameter-value-field">
-          <strong>Default:</strong> None
-        </div>
-        <div class="doc-parameter-value-field">
-          <strong>Range:</strong> <i>0 to 1</i>
-        </div>
-      </td>
-      <td class="doc-parameter-description">System derate value.</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">tilt</th>
-      <td class="doc-parameter-required">No</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> decimal
-        </div>
-        <div class="doc-parameter-value-field">
-          <strong>Default:</strong> None
-        </div>
-      </td>
-      <td class="doc-parameter-description">Tilt angle (degrees).</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">tilt_eq_lat</th>
-      <td class="doc-parameter-required">No</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> integer
-        </div>
-        <div class="doc-parameter-value-field">
-          <strong>Default:</strong> 0
-        </div>
-        <div class="doc-parameter-value-field">
-          <strong>Options:</strong> <i>0, 1</i>
+          <strong>Range:</strong> <span style="font-style: italic">must be positive</span>
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>Override the tilt variable to equal latitude (default 0 unless tilt provided).</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
-          <thead>
-            <tr>
-              <th scope="col">Option</th>
-              <th scope="col">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">0</th>
-              <td>False</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>True</td>
-            </tr>
-            <tr>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+        <p>DC to AC ratio.</p>
       </td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">track_mode</th>
-      <td class="doc-parameter-required">No</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> integer
-        </div>
-        <div class="doc-parameter-value-field">
-          <strong>Default:</strong> 1
-        </div>
-        <div class="doc-parameter-value-field">
-          <strong>Options:</strong> <i>0, 1, 2</i>
-        </div>
-      </td>
-      <td class="doc-parameter-description">
-        <p>Tracking mode.</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
-          <thead>
-            <tr>
-              <th scope="col">Option</th>
-              <th scope="col">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">0</th>
-              <td>Fixed</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>1-Axis</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>2-Axis</td>
-            </tr>
-          </tbody>
-        </table>
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">inoct</th>
+      <th class="doc-parameter-name" scope="row">gcr</th>
       <td class="doc-parameter-required">No</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
           <strong>Type:</strong> decimal
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Default:</strong> None
+          <strong>Default:</strong> 0.4
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Range:</strong> <span style="font-style: italic">30 to 80</span>
+          <strong>Range:</strong> <span style="font-style: italic">0 - 3</span>
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>Nominal operating cell temperature (C)</p>
+        <p>Ground coverage ratio.</p>
       </td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">gamma</th>
+      <th class="doc-parameter-name" scope="row">inv_eff</th>
       <td class="doc-parameter-required">No</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
           <strong>Type:</strong> decimal
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Default:</strong> None
+          <strong>Default:</strong> 96
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Range:</strong> <span style="font-style: italic">-2 to -0.01</span>
+          <strong>Range:</strong> <span style="font-style: italic">90 - 99.5</span>
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>Max power temperature coefficient (%/C)</p>
+        <p>Inverter efficiency at rated power.</p>
       </td>
     </tr>
     <tr>
@@ -512,7 +547,7 @@ The response is composed of service-related informational fields and the results
       <td class="doc-parameter-description">State where climate station is located.</td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">file_name</th>
+      <th class="doc-parameter-name" scope="row">solar_resource_file</th>
       <td class="doc-parameter-value"><strong>Type:</strong> string</td>
       <td class="doc-parameter-description">Solar resource filename.</td>
     </tr>
@@ -539,72 +574,77 @@ The response is composed of service-related informational fields and the results
     <tr>
       <th class="doc-parameter-name" scope="row">poa_monthly</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Monthly plane of array irradiance values.<br><br>The array of values represents the value for each month, with the first element being for January and the last element being for December.</td>
+      <td class="doc-parameter-description">Monthly plane of array irradiance values. (kWh/m2)<br><br>The array of values represents the value for each month, with the first element being for January and the last element being for December.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">dc_monthly</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Monthly DC array output.<br><br>The array of values represents the value for each month, with the first element being for January and the last element being for December.</td>
+      <td class="doc-parameter-description">Monthly DC array output. (kWhdc)<br><br>The array of values represents the value for each month, with the first element being for January and the last element being for December.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">ac_monthly</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Monthly AC system output.<br><br>The array of values represents the value for each month, with the first element being for January and the last element being for December.</td>
+      <td class="doc-parameter-description">Monthly AC system output. (kWhac)<br><br>The array of values represents the value for each month, with the first element being for January and the last element being for December.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">ac_annual</th>
       <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
-      <td class="doc-parameter-description">Annual AC system output.</td>
+      <td class="doc-parameter-description">Annual AC system output. (kWhac)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">solrad_monthly</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Monthly solar radiation values.<br><br>The array of values represents the value for each month, with the first element being for January and the last element being for December.</td>
+      <td class="doc-parameter-description">Monthly solar radiation values. (kWh/m2/day) The array of values represents the value for each month, with the first element being for January and the last element being for December.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">solrad_annual</th>
       <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
-      <td class="doc-parameter-description">Annual solar radiation values.</td>
+      <td class="doc-parameter-description">Annual solar radiation values. (kWh/m2/day)</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">capacity_factor</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
+      <td class="doc-parameter-description">The ratio of the system's predicted electrical output in the first year of operation to the nameplate output, which is equivalent to the quantity of energy the system would generate if it operated at its nameplate capacity for every hour of the year. (AC-to-DC)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">ac</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Hourly AC system output (only when timeframe=hourly)</td>
+      <td class="doc-parameter-description">Hourly AC system output (only when timeframe=hourly). (Wac)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">poa</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Hourly plane of array irradiance (only when timeframe=hourly)</td>
+      <td class="doc-parameter-description">Hourly plane of array irradiance (only when timeframe=hourly). (W/m2)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">dn</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Hourly beam normal irradiance (only when timeframe=hourly)</td>
+      <td class="doc-parameter-description">Hourly beam normal irradiance (only when timeframe=hourly). (W/m2)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">dc</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Hourly DC array output (only when timeframe=hourly)</td>
+      <td class="doc-parameter-description">Hourly DC array output (only when timeframe=hourly). (Wdc)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">df</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Hourly diffuse irradiance (only when timeframe=hourly)</td>
+      <td class="doc-parameter-description">Hourly diffuse irradiance (only when timeframe=hourly). (W/m2)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">tamb</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Hourly ambient temperature (only when timeframe=hourly)</td>
+      <td class="doc-parameter-description">Hourly ambient temperature (only when timeframe=hourly). (C)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">tcell</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Hourly module temperature (only when timeframe=hourly)</td>
+      <td class="doc-parameter-description">Hourly module temperature (only when timeframe=hourly) (C)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">wspd</th>
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
-      <td class="doc-parameter-description">Hourly windspeed (only when timeframe=hourly)</td>
+      <td class="doc-parameter-description">Hourly windspeed (only when timeframe=hourly). (m/s)</td>
     </tr>
   </tbody>
 </table>
@@ -613,202 +653,150 @@ The response is composed of service-related informational fields and the results
 
 ### JSON Output Format
 
-<pre>GET <a href="/api/pvwatts/v4.json?api_key=DEMO_KEY&amp;system_size=4&amp;dataset=tmy2&amp;derate=0.77&amp;lat=40&amp;lon=-105">/api/pvwatts/v4.json?api_key=DEMO_KEY&amp;system_size=4&amp;dataset=tmy2&amp;derate=0.77&amp;lat=40&amp;lon=-105</a></pre>
+<pre>GET <a href="/api/pvwatts/v6.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;system_capacity=4&amp;azimuth=180&amp;tilt=40&amp;array_type=1&amp;module_type=1&amp;losses=10">/api/pvwatts/v5.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;system_capacity=4&amp;azimuth=180&amp;tilt=40&amp;array_type=1&amp;module_type=1&amp;losses=10</a></pre>
 
 ```json
 {
-  "station_info": {
-    "tz": -7,
-    "location": "94018",
-    "lon": -105.25,
-    "file_name": "94018.tm2",
-    "city": "BOULDER",
-    "state": "CO",
-    "lat": 40.01666641235352,
-    "elev": 1634,
-    "distance": 21235
+  "inputs" : {
+    "lat" : "40",
+    "lon" : "-105",
+    "system_capacity" : "4",
+    "azimuth" : "180",
+    "tilt" : "40",
+    "array_type" : "1",
+    "module_type" : "1",
+    "losses" : "10"
   },
-  "errors": [
-
-  ],
-  "version": "4.0.0",
-  "inputs": {
-    "system_size": "4",
-    "lon": "-105",
-    "derate": "0.77",
-    "dataset": "tmy2",
-    "lat": "40",
-    "api_key": "DEMO_KEY"
+  "errors" : [ ],
+  "warnings" : [ ],
+  "version" : "1.0.0",
+  "ssc_info" : {
+    "version" : 34,
+    "build" : "Unix 64 bit GNU/C++ Feb 19 2014 11:40:21"
   },
-  "warnings": [
-
-  ],
-  "outputs": {
-    "poa_monthly": [
-      137.1923980712891,
-      137.0316772460938,
-      187.4732360839844,
-      182.7943878173828,
-      185.7599792480469,
-      182.4970855712891,
-      187.8779907226562,
-      193.34228515625,
-      187.3993988037109,
-      175.8596649169922,
-      137.8765869140625,
-      132.9652557373047
-    ],
-    "dc_monthly": [
-      468.0147399902344,
-      457.9238891601562,
-      616.0709228515625,
-      581.62548828125,
-      576.5953979492188,
-      551.68603515625,
-      553.3501586914062,
-      569.5568237304688,
-      564.85595703125,
-      550.3904418945312,
-      460.4128112792969,
-      454.1395263671875
-    ],
-    "ac_annual": 5834.35107421875,
-    "solrad_annual": 5.553147792816162,
-    "ac_monthly": [
-      426.7577514648438,
-      417.6890869140625,
-      563.779541015625,
-      529.3705444335938,
-      523.4755249023438,
-      500.5887451171875,
-      502.0051879882812,
-      518.2822875976562,
-      515.994140625,
-      503.0267639160156,
-      420.1042785644531,
-      413.2771606445312
-    ],
-    "solrad_monthly": [
-      4.425561428070068,
-      4.893988609313965,
-      6.047523975372314,
-      6.093146324157715,
-      5.992257595062256,
-      6.083236217498779,
-      6.060580253601074,
-      6.236847877502441,
-      6.246646404266357,
-      5.672892570495605,
-      4.59588623046875,
-      4.289201736450195
-    ]
+  "station_info" : {
+    "lat" : 40.016666412353516,
+    "lon" : -105.25,
+    "elev" : 1634.0,
+    "tz" : -7.0,
+    "location" : "94018",
+    "city" : "BOULDER",
+    "state" : "CO",
+    "solar_resource_file" : "94018.tm2",
+    "distance" : 21235
   },
-  "ssc_info": {
-    "version": 27,
-    "build": "Unix 64 bit GNU/C++ Jan 10 2013 20:00:07"
+  "outputs" : {
+    "ac_monthly" : [ 474.2408142089844, 465.6669921875, 628.282470703125, 602.544677734375, 610.743896484375, 591.1350708007812, 595.8433227539062, 610.0640869140625, 597.9025268554688, 574.707275390625, 471.6990661621094, 458.9857177734375 ],
+    "poa_monthly" : [ 136.04103088378906, 136.04443359375, 185.7895965576172, 181.16891479492188, 185.77963256835938, 182.52105712890625, 187.89971923828125, 193.35572814941406, 187.40081787109375, 175.5979461669922, 137.59872436523438, 131.25526428222656 ],
+    "solrad_monthly" : [ 4.388420581817627, 4.858729839324951, 5.993212699890137, 6.038963794708252, 5.992891311645508, 6.084035396575928, 6.061281204223633, 6.237281322479248, 6.246694087982178, 5.664449691772461, 4.5866241455078125, 4.2340407371521 ],
+    "dc_monthly" : [ 495.09564208984375, 487.5823669433594, 657.702880859375, 629.8565063476562, 638.9706420898438, 618.6126708984375, 623.68994140625, 637.5205688476562, 624.635009765625, 599.9056396484375, 492.5662841796875, 479.1076354980469 ],
+    "ac_annual" : 6681.81640625,
+    "solrad_annual" : 5.5322184562683105
   }
 }
 ```
 
 ### XML Output Format
 
-<pre>GET <a href="/api/pvwatts/v4.xml?api_key=DEMO_KEY&amp;system_size=4&amp;dataset=tmy2&amp;derate=0.77&amp;lat=40&amp;lon=-105">/api/pvwatts/v4.xml?api_key=DEMO_KEY&amp;system_size=4&amp;dataset=tmy2&amp;derate=0.77&amp;lat=40&amp;lon=-105</a></pre>
+<pre>GET <a href="/api/pvwatts/v6.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;system_capacity=4&amp;azimuth=180&amp;tilt=40&amp;array_type=1&amp;module_type=1&amp;losses=10">/api/pvwatts/v5.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;system_capacity=4&amp;azimuth=180&amp;tilt=40&amp;array_type=1&amp;module_type=1&amp;losses=10</a></pre>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <response>
-  <inputs>
-    <api-key>DEMO_KEY</api-key>
-    <system-size>4</system-size>
-    <dataset>tmy2</dataset>
-    <derate>0.77</derate>
-    <lat>40</lat>
-    <lon>-105</lon>
-  </inputs>
-  <errors type="array"/>
-  <warnings type="array"/>
-  <version>4.0.0</version>
-  <ssc-info>
-    <version type="integer">27</version>
-    <build>Unix 64 bit GNU/C++ Jan 10 2013 20:00:07</build>
-  </ssc-info>
-  <station-info>
-    <lat type="float">40.016666412353516</lat>
-    <lon type="float">-105.25</lon>
-    <elev type="float">1634.0</elev>
-    <tz type="float">-7.0</tz>
-    <location>94018</location>
-    <city>BOULDER</city>
-    <state>CO</state>
-    <file-name>94018.tm2</file-name>
-    <distance type="integer">21235</distance>
-  </station-info>
-  <outputs>
-    <ac-monthly type="array">
-      <ac-monthly type="float">426.75775146484375</ac-monthly>
-      <ac-monthly type="float">417.6890869140625</ac-monthly>
-      <ac-monthly type="float">563.779541015625</ac-monthly>
-      <ac-monthly type="float">529.3705444335938</ac-monthly>
-      <ac-monthly type="float">523.4755249023438</ac-monthly>
-      <ac-monthly type="float">500.5887451171875</ac-monthly>
-      <ac-monthly type="float">502.00518798828125</ac-monthly>
-      <ac-monthly type="float">518.2822875976562</ac-monthly>
-      <ac-monthly type="float">515.994140625</ac-monthly>
-      <ac-monthly type="float">503.0267639160156</ac-monthly>
-      <ac-monthly type="float">420.1042785644531</ac-monthly>
-      <ac-monthly type="float">413.27716064453125</ac-monthly>
-    </ac-monthly>
-    <poa-monthly type="array">
-      <poa-monthly type="float">137.19239807128906</poa-monthly>
-      <poa-monthly type="float">137.03167724609375</poa-monthly>
-      <poa-monthly type="float">187.47323608398438</poa-monthly>
-      <poa-monthly type="float">182.7943878173828</poa-monthly>
-      <poa-monthly type="float">185.75997924804688</poa-monthly>
-      <poa-monthly type="float">182.49708557128906</poa-monthly>
-      <poa-monthly type="float">187.87799072265625</poa-monthly>
-      <poa-monthly type="float">193.34228515625</poa-monthly>
-      <poa-monthly type="float">187.39939880371094</poa-monthly>
-      <poa-monthly type="float">175.8596649169922</poa-monthly>
-      <poa-monthly type="float">137.8765869140625</poa-monthly>
-      <poa-monthly type="float">132.9652557373047</poa-monthly>
-    </poa-monthly>
-    <solrad-monthly type="array">
-      <solrad-monthly type="float">4.425561428070068</solrad-monthly>
-      <solrad-monthly type="float">4.893988609313965</solrad-monthly>
-      <solrad-monthly type="float">6.0475239753723145</solrad-monthly>
-      <solrad-monthly type="float">6.093146324157715</solrad-monthly>
-      <solrad-monthly type="float">5.992257595062256</solrad-monthly>
-      <solrad-monthly type="float">6.083236217498779</solrad-monthly>
-      <solrad-monthly type="float">6.060580253601074</solrad-monthly>
-      <solrad-monthly type="float">6.236847877502441</solrad-monthly>
-      <solrad-monthly type="float">6.246646404266357</solrad-monthly>
-      <solrad-monthly type="float">5.6728925704956055</solrad-monthly>
-      <solrad-monthly type="float">4.59588623046875</solrad-monthly>
-      <solrad-monthly type="float">4.289201736450195</solrad-monthly>
-    </solrad-monthly>
-    <dc-monthly type="array">
-      <dc-monthly type="float">468.0147399902344</dc-monthly>
-      <dc-monthly type="float">457.92388916015625</dc-monthly>
-      <dc-monthly type="float">616.0709228515625</dc-monthly>
-      <dc-monthly type="float">581.62548828125</dc-monthly>
-      <dc-monthly type="float">576.5953979492188</dc-monthly>
-      <dc-monthly type="float">551.68603515625</dc-monthly>
-      <dc-monthly type="float">553.3501586914062</dc-monthly>
-      <dc-monthly type="float">569.5568237304688</dc-monthly>
-      <dc-monthly type="float">564.85595703125</dc-monthly>
-      <dc-monthly type="float">550.3904418945312</dc-monthly>
-      <dc-monthly type="float">460.4128112792969</dc-monthly>
-      <dc-monthly type="float">454.1395263671875</dc-monthly>
-    </dc-monthly>
-    <ac-annual type="float">5834.35107421875</ac-annual>
-    <solrad-annual type="float">5.553147792816162</solrad-annual>
-  </outputs>
+    <inputs>
+        <lat>40</lat>
+        <lon>-105</lon>
+        <system-capacity>4</system-capacity>
+        <azimuth>180</azimuth>
+        <tilt>40</tilt>
+        <array-type>1</array-type>
+        <module-type>1</module-type>
+        <losses>10</losses>
+    </inputs>
+    <errors type="array"/>
+    <warnings type="array"/>
+    <version>1.0.0</version>
+    <ssc-info>
+        <version type="integer">34</version>
+        <build>Unix 64 bit GNU/C++ Feb 19 2014 11:40:21</build>
+    </ssc-info>
+    <station-info>
+        <lat type="float">40.016666412353516</lat>
+        <lon type="float">-105.25</lon>
+        <elev type="float">1634.0</elev>
+        <tz type="float">-7.0</tz>
+        <location>94018</location>
+        <city>BOULDER</city>
+        <state>CO</state>
+        <solar-resource-file>94018.tm2</solar-resource-file>
+        <distance type="integer">21235</distance>
+    </station-info>
+    <outputs>
+        <ac-monthly type="array">
+            <ac-monthly type="float">474.2408142089844</ac-monthly>
+            <ac-monthly type="float">465.6669921875</ac-monthly>
+            <ac-monthly type="float">628.282470703125</ac-monthly>
+            <ac-monthly type="float">602.544677734375</ac-monthly>
+            <ac-monthly type="float">610.743896484375</ac-monthly>
+            <ac-monthly type="float">591.1350708007812</ac-monthly>
+            <ac-monthly type="float">595.8433227539062</ac-monthly>
+            <ac-monthly type="float">610.0640869140625</ac-monthly>
+            <ac-monthly type="float">597.9025268554688</ac-monthly>
+            <ac-monthly type="float">574.707275390625</ac-monthly>
+            <ac-monthly type="float">471.6990661621094</ac-monthly>
+            <ac-monthly type="float">458.9857177734375</ac-monthly>
+        </ac-monthly>
+        <poa-monthly type="array">
+            <poa-monthly type="float">136.04103088378906</poa-monthly>
+            <poa-monthly type="float">136.04443359375</poa-monthly>
+            <poa-monthly type="float">185.7895965576172</poa-monthly>
+            <poa-monthly type="float">181.16891479492188</poa-monthly>
+            <poa-monthly type="float">185.77963256835938</poa-monthly>
+            <poa-monthly type="float">182.52105712890625</poa-monthly>
+            <poa-monthly type="float">187.89971923828125</poa-monthly>
+            <poa-monthly type="float">193.35572814941406</poa-monthly>
+            <poa-monthly type="float">187.40081787109375</poa-monthly>
+            <poa-monthly type="float">175.5979461669922</poa-monthly>
+            <poa-monthly type="float">137.59872436523438</poa-monthly>
+            <poa-monthly type="float">131.25526428222656</poa-monthly>
+        </poa-monthly>
+        <solrad-monthly type="array">
+            <solrad-monthly type="float">4.388420581817627</solrad-monthly>
+            <solrad-monthly type="float">4.858729839324951</solrad-monthly>
+            <solrad-monthly type="float">5.993212699890137</solrad-monthly>
+            <solrad-monthly type="float">6.038963794708252</solrad-monthly>
+            <solrad-monthly type="float">5.992891311645508</solrad-monthly>
+            <solrad-monthly type="float">6.084035396575928</solrad-monthly>
+            <solrad-monthly type="float">6.061281204223633</solrad-monthly>
+            <solrad-monthly type="float">6.237281322479248</solrad-monthly>
+            <solrad-monthly type="float">6.246694087982178</solrad-monthly>
+            <solrad-monthly type="float">5.664449691772461</solrad-monthly>
+            <solrad-monthly type="float">4.5866241455078125</solrad-monthly>
+            <solrad-monthly type="float">4.2340407371521</solrad-monthly>
+        </solrad-monthly>
+        <dc-monthly type="array">
+            <dc-monthly type="float">495.09564208984375</dc-monthly>
+            <dc-monthly type="float">487.5823669433594</dc-monthly>
+            <dc-monthly type="float">657.702880859375</dc-monthly>
+            <dc-monthly type="float">629.8565063476562</dc-monthly>
+            <dc-monthly type="float">638.9706420898438</dc-monthly>
+            <dc-monthly type="float">618.6126708984375</dc-monthly>
+            <dc-monthly type="float">623.68994140625</dc-monthly>
+            <dc-monthly type="float">637.5205688476562</dc-monthly>
+            <dc-monthly type="float">624.635009765625</dc-monthly>
+            <dc-monthly type="float">599.9056396484375</dc-monthly>
+            <dc-monthly type="float">492.5662841796875</dc-monthly>
+            <dc-monthly type="float">479.1076354980469</dc-monthly>
+        </dc-monthly>
+        <ac-annual type="float">6681.81640625</ac-annual>
+        <solrad-annual type="float">5.5322184562683105</solrad-annual>
+    </outputs>
 </response>
 ```
 
 ## Rate Limits
 
-[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour
+[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour.
 
 ## Errors
 
