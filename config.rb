@@ -82,4 +82,4 @@ configure :build do
   ]
 end
 
-activate :relative_assets
+activate :alias
