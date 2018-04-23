@@ -1,7 +1,7 @@
 <%
 children = current_page.children.reject { |p| p.kind_of?(Middleman::Sitemap::AliasResource) }
-primary = children.reject { |p| (p.data.title.nil? || p.data.deprecated == true) }.sort_by { |p| p.data.title }
-deprecated = children.find_all { |p| (p.data.deprecated == true) }.sort_by { |p| p.data.title }
+primary = children.reject { |p| (p.data.title.nil? || p.data.deprecated == true) }.sort_by { |p| p.data.sort_value || p.data.title }
+deprecated = children.find_all { |p| (p.data.deprecated == true) }.sort_by { |p| p.data.sort_value || p.data.title }
 %>
 
 <%= partial("layouts/children", :locals => { :children => primary }) %>
