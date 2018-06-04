@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
   version: "1.0.0"
-  title: C-LEAP Buildings and Industry APIs
+  title: Buildings and Industry APIs
   description: |-
     A collection of APIs providing data related to buildings and industry including rooftop photovoltaic potential; building stock; and commercial and industrial activities.
 
