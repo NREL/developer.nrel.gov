@@ -1,6 +1,6 @@
 ---
 title: PVWatts V6
-summary: Version 6 is the current version of the PVWatts API. It is an update from version 5 that changes the defaults for weather data, and DC to AC ratio. The NSRDB dataset was also added with the release of version 6.
+summary: Version 6 is the current version of the PVWatts API, and is the version used by <a href="https://pvwatts.nrel.gov/">NREL's online version of PVWatts</a>. Updates from Version 5 include using the latest NREL National Solar Radiation Database (NSRDB) and minor changes to default values.
 url: GET /api/pvwatts/v6
 sort_value: "0"
 
@@ -8,9 +8,9 @@ sort_value: "0"
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
 
-PVWatts Version 6 is an update that uses different weather data by default than Version 5. Version 6 uses the NREL Physical Solar Model (PSM) TMY from the NREL National Solar Radiation Database (NSRDB) by default, however you can select to use NREL NSRDB 1991-2005 TMY3 data, international data, or a 10km gridded dataset covering all of India. PVWatts Version 6 also updates the default DC to AC ratio to 1.2 instead of 1.1, but you can still specify the DC to AC ratio that you wish to use in your simulation.
+PVWatts Version 6 is is the current version of the PVWatts API. Updates from Version 5 include access to the Physical Solar Model (PSM) TMY and SUNY South Asia solar resource data from the NREL National Solar Radiation Database (NSRDB) by default, with optional access to the legacy solar resource data: NSRDB MTS2 1991-2005 Update (TMY3), NSRDB MTS1 1961-1990 (TMY2), NREL international station data, and the legacy 2002-2014 10 km gridded dataset for India. PVWatts Version 6 also sets the default DC-to-AC ratio to 1.2 instead of 1.1, but you can specify a different DC to AC ratio for your simulation. For a complete description of PVWatts V6, see the <a href="https://pvwatts.nrel.gov/version_6.php">description on the PVWatts website</a>
 
-The algorithms used to calculate energy output have not changed from Version 5. Full technical details for the energy calculations can be found in:  Dobos, A. P. <a href="http://www.nrel.gov/docs/fy14osti/62641.pdf" target="_blank">PVWatts Version 5 Manual</a>. NREL/TP-6A20-62641, 2014.
+The algorithms used to calculate energy output are the same as in Version 5. For a technical description of the model, see Dobos, A. P. <a href="http://www.nrel.gov/docs/fy14osti/62641.pdf" target="_blank">PVWatts Version 5 Manual</a>. NREL/TP-6A20-62641, 2014.
 
 <ul id="toc"></ul>
 
@@ -297,7 +297,7 @@ The algorithms used to calculate energy output have not changed from Version 5. 
           <strong>Default:</strong> nsrdb
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Options:</strong> <i>nsrdb, tmy2, tmy3, intl, IN</i>
+          <strong>Options:</strong> <i>nsrdb, tmy2, tmy3, intl</i>
         </div>
       </td>
       <td class="doc-parameter-description">
@@ -332,12 +332,6 @@ The algorithms used to calculate energy output have not changed from Version 5. 
               <th scope="row">intl</th>
               <td>
                 <p>International station data</p>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">IN</th>
-              <td>
-                <p>India 10km gridded solar resource data (see <a href="http://www.nrel.gov/international/ra_india.html">India Solar Resource Maps</a>)</p>
               </td>
             </tr>
           </tbody>
