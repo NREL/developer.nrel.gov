@@ -142,9 +142,9 @@ summary: The REopt API provides access to a web version of a techno-economic dec
   <p>
   The <em>v1/job</em> endpoint accepts a JSON post of a <b>Scenario</b>, a set of nested input parameters. At each level in the <b>Scenario</b>, capitalized <em>directory</em> names are associated with sets of lower case <em>attribute</em> names and values (as well as possible capitalized <em>subdirectories</em>). Any missing attribute values that are not required will be filled in with default values as described in the tables below. 
   </p>
-
+  <h4>Examples and Tips</h4>
   <p>
-  <b>Note:</b> Optimizations include PV and storage technologies by default. To disable either, set its 'max_kw' to 0. 
+  Optimizations include PV and storage technologies by default. To disable either, set its 'max_kw' to 0. 
   </p>
 
   <p>
@@ -173,6 +173,12 @@ summary: The REopt API provides access to a web version of a techno-economic dec
   }
 }</code></pre>
     </div>
+
+    <div class="col col-xs-12" id="input-definitions">
+  <h4>Modeling Resilience</h4>
+  Note the REopt API can make system size recommendations such that a user defined outage can be survived. Define an outage duration, start time and end time in the LoadProfile directory to enable this capability. 
+  </div>
+
 
   <div class="row ">
   <div class="col col-xs-12" id="input-definitions">
