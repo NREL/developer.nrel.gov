@@ -1,8 +1,8 @@
 ---
-title: Central Asia Wind Data Download
-summary: Collect and download, as CSV, a configurable set of data fields from a multi-national collection of wind stations. This data represents wind-speed, temperature, and direction values at 80m, 100m, and 120m above the surface and air pressure at the surface, 100m, and 200m above the surface for the year 2015 produced using WRF v3.7. The model time resolution used was 15 minutes with a nominal spatial resolution of 3 km2 over Kazakhstan and 9 km2 over the surrounding region. For the U and V components used to derive the wind speed, a total of 41 pressure levels were used. 
-detail: This API is capabale of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single year at a time.
-url: /api/wind-toolkit/wind/central_asia_wind_download
+title: India Wind Data Download
+summary: Collect and download, as CSV, a configurable set of data fields from a national collection of wind stations. The India Wind Dataset, developed in part through the India Renewable Integration Study, contains simulated windspeed, direction, temperate and pressure values at 40m, 80m, 100m and 120m heights above the ground where available. The spatial resolution of the data is 3 km and the temporal resolution is 5 minutes. 
+detail: This API is capabale of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.
+url: /api/wind-toolkit/wind/india_wind_download
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
@@ -58,7 +58,7 @@ url: /api/wind-toolkit/wind/central_asia_wind_download
 
 			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
 
-			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>pressure_0m, temperature_80m, winddirection_80m, windspeed_80m, pressure_100m, temperature_100m, winddirection_100m, windspeed_100m, pressure_200m, temperature_120m, winddirection_120m, windspeed_120m</em></div>
+			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>pressure_40m, temperature_100m, temperature_120m, temperature_40m, temperature_80m, winddirection_100m, winddirection_120m, winddirection_40m, winddirection_80m, windspeed_100m, windspeed_120m, windspeed_40m, windspeed_80m, pressure_100m</em></div>
 			</td>
 			<td class="doc-parameter-description">Each specified attribute will be returned as a column in the resultant CSV download.</td>
 		</tr>
@@ -200,31 +200,33 @@ The response is composed of service-related informational fields and the results
 
 <h2>Examples</h2>
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?wkt=POINT(55.81054%2046.01222)&attributes=temperature_100m%2Ctemperature_120m%2Ctemperature_80m%2Cwinddirection_100m%2Cwinddirection_120m%2Cwinddirection_80m%2Cwindspeed_100m%2Cwindspeed_120m%2Cwindspeed_80m%2Cpressure_200m%2Cpressure_100m%2Cpressure_0m&names=2015&full_name=Data%20Lover&email=data.lover%40gmail.com&affiliation=NREL&mailing_list=false&reason=test&leap_day=true&utc=false&interval=15&csv_format=csv</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?wkt=POINT(75.36621%2024.726874)&attributes=pressure_40m%2Ctemperature_100m%2Ctemperature_120m%2Ctemperature_40m%2Ctemperature_80m%2Cwinddirection_100m%2Cwinddirection_120m%2Cwinddirection_40m%2Cwinddirection_80m%2Cwindspeed_100m%2Cwindspeed_120m%2Cwindspeed_40m%2Cwindspeed_80m%2Cpressure_100m&names=2014&full_name=Data%20Lover&email=data.lover%40gmail.com&affiliation=NREL&mailing_list=false&reason=test&leap_day=true&utc=false&interval=60</code></div>
 
 ```JSON
 {
   "errors": [],
   "inputs": {
-    "wkt": "POINT(55.810546875 46.01222384063236)",
+    "wkt": "POINT(75.36621 24.72687)",
     "attributes": [
+      "pressure_40m",
       "temperature_100m",
       "temperature_120m",
+      "temperature_40m",
       "temperature_80m",
       "winddirection_100m",
       "winddirection_120m",
+      "winddirection_40m",
       "winddirection_80m",
       "windspeed_100m",
       "windspeed_120m",
+      "windspeed_40m",
       "windspeed_80m",
-      "pressure_200m",
-      "pressure_100m",
-      "pressure_0m"
+      "pressure_100m"
     ],
     "names": [
-      2015
+      2014
     ],
-    "site_url": "wind-toolkit/wind/central_asia_wind_download.json",
+    "site_url": "wind-toolkit/wind/india_wind_download.json",
     "full_name": "Data Lover",
     "email": "data.lover@gmail.com",
     "affiliation": "NREL",
@@ -232,8 +234,7 @@ The response is composed of service-related informational fields and the results
     "reason": "test",
     "leap_day": true,
     "utc": false,
-    "interval": 15,
-    "csv_format": "csv"
+    "interval": "60"
   },
   "outputs": {
     "message": "File generation in progress. An email will be sent to data.lover@gmail.com when the download is ready."
@@ -241,19 +242,16 @@ The response is composed of service-related informational fields and the results
 }
 ```
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?wkt=POINT(55.81054%2046.01222)&attributes=temperature_100m%2Ctemperature_120m%2Ctemperature_80m%2Cwinddirection_100m%2Cwinddirection_120m%2Cwinddirection_80m%2Cwindspeed_100m%2Cwindspeed_120m%2Cwindspeed_80m%2Cpressure_200m%2Cpressure_100m%2Cpressure_0m&names=2015&full_name=Data%20Lover&email=data.lover%40gmail.com&affiliation=NREL&mailing_list=false&reason=test&leap_day=true&utc=false&interval=15&csv_format=csv</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?wkt=POINT(75.36621%2024.726874)&attributes=pressure_40m%2Ctemperature_100m%2Ctemperature_120m%2Ctemperature_40m%2Ctemperature_80m%2Cwinddirection_100m%2Cwinddirection_120m%2Cwinddirection_40m%2Cwinddirection_80m%2Cwindspeed_100m%2Cwindspeed_120m%2Cwindspeed_40m%2Cwindspeed_80m%2Cpressure_100m&names=2014&full_name=Data%20Lover&email=data.lover%40gmail.com&affiliation=NREL&mailing_list=false&reason=test&leap_day=true&utc=false&interval=60</code></div>
 
 ```csv 
-SiteID, 189730.0
-Longitude, 55.792724609375
-Latitude, 46.02188491821289
-Local Time Zone, 5.0
-Data Time Zone, 5.0
-Elevation, 35.0
-Year,Month,Day,Hour,Minute,Temperature at 100m (C),Temperature at 120m (C),Temperature at 80m (C),Wind Direction at 100m (Degrees),Wind Direction at 120m (Degrees),Wind Direction at 80m (Degrees),Wind Speed at 100m (m/s),Wind Speed at 120m (m/s),Wind Speed at 80m (m/s),Pressure at 200m (atm),Pressure at 100m (atm),Pressure at 0m (atm)
-2015,1,1,0,0,4.46,4.32,4.59,118.51,118.88,118.14,19.27,19.78,18.76,0.9695500000000001,0.9814900000000001,0.9939300000000001
-2015,1,1,0,15,4.53,4.39,4.67,120.06,120.4,119.72,18.73,19.25,18.19,0.9695500000000001,0.9815900000000001,0.9939300000000001
-2015,1,1,0,30,4.63,4.5,4.76,117.59,118.07000000000001,117.11,19.900000000000002,20.46,19.34,0.96886,0.9808000000000001,0.99304
+Site Timezone,5.5,Elevation,358,Is Offshore,0,WRF Region,0
+Longitude, 
+Latitude, 
+Year,Month,Day,Hour,Minute,air pressure at 40m (Pa),temperature at 100m (C),temperature at 120m (C),temperature at 40m (C),temperature at 80m (C),wind direction at 100m (deg),wind direction at 120m (deg),wind direction at 40m (deg),wind direction at 80m (deg),wind speed at 100m (m/s),wind speed at 120m (m/s),wind speed at 40m (m/s),wind speed at 80m (m/s),air pressure at 100m (Pa)
+2014,1,1,0,0,96690.0,15.15,15.36,13.73,14.89,47.97,53.42,15.290000000000001,41.61,3.59,3.87,1.77,3.2600000000000002,96010.0
+2014,1,1,0,5,96690.0,15.14,15.35,13.69,14.870000000000001,47.14,52.51,14.63,40.910000000000004,3.68,3.97,1.82,3.34,96010.0
+2014,1,1,0,10,96700.0,15.120000000000001,15.34,13.65,14.84,46.29,51.54,13.99,40.2,3.7800000000000002,4.07,1.87,3.43,96010.0
 ```
 
 <h2 id="rate-limits">Rate Limits</h2>
