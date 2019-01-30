@@ -1,7 +1,7 @@
 ---
-title: REopt Lite API (Version 1)
+title: REopt Lite™ API (Version 1)
 
-summary: The REopt API provides access to a web version of a techno-economic decision support model used to optimize energy systems for buildings, campuses, communities, and microgrids. 
+summary: The REopt™ API provides access to a web version of a techno-economic decision support model used to optimize energy systems for buildings, campuses, communities, and microgrids. 
 
 ---
 
@@ -10,11 +10,11 @@ summary: The REopt API provides access to a web version of a techno-economic dec
 <body><div class="container">
 
 <div class="row">
-    <h1>REopt Lite API (Version 1)</h1>
+    <h1>REopt Lite™ API (Version 1)</h1>
     <div class="col col-0.5"></div>
     <div class="col col-xs-12 ">
     <p>
-    The REopt Lite API recommends an optimal mix of renewable energy, conventional generation, and energy storage technologies to meet cost savings and energy performance goals, including the hourly optimal operation of the system. In addition to this API, the <a target='_blank' href='https://reopt.nrel.gov/tool'>REopt Lite Tool</a> provides an interface for interactively setting up input parameters. <a target='_blank' href='https://reopt.nrel.gov'>Click here</a> for more information about the REopt model.
+    The REopt Lite™ API recommends an optimal mix of renewable energy, conventional generation, and energy storage technologies to meet cost savings and energy performance goals, including the hourly optimal operation of the system. In addition to this API, the <a target='_blank' href='https://reopt.nrel.gov/tool'>REopt Lite™ Tool</a> provides an interface for interactively setting up input parameters. <a target='_blank' href='https://reopt.nrel.gov'>Click here</a> for more information about the REopt™ model.
     </p>
     <p>
     The API uses utility rates from the <a href="https://openei.org/wiki/Utility_Rate_Database" target="_blank">Utility Rate Database</a> and solar PV generation profiles from <a href="https://developer.nrel.gov/docs/solar/pvwatts-v5/" target="_blank">PV Watts (Version 5)</a>. It is capable of accepting custom load profiles, but is also equipped with simulated profiles from the Department of Energy <a href="https://energy.gov/eere/buildings/commercial-reference-buildings" target="_blank">Commercial Reference Buildings</a>. 
@@ -35,7 +35,7 @@ summary: The REopt API provides access to a web version of a techno-economic dec
   <h2>Endpoints</h2><br>
   <div class="col col-xs-12 " id="">
   <p>
-      The REopt Lite API provides a total of seven endpoints, hosted from the base <em>developer.nrel.gov/api/reopt/</em>. The following are intended to provide reference information in creating a scenario to optimize:
+      The REopt Lite™ API provides a total of seven endpoints, hosted from the base <em>developer.nrel.gov/api/reopt/</em>. The following are intended to provide reference information in creating a scenario to optimize:
       <div class="col-xs-12">
       <br><b><em>v1/help</em></b><br>
       <div class="col-xs-11 col-xs-offset-1">
@@ -78,7 +78,7 @@ summary: The REopt API provides access to a web version of a techno-economic dec
       </div>
       </div>
 
-      The remaining endpoints facilitate posting a REopt analysis job, retrieving the results, downloading a proforma, and obtaining some statistics related to how long a given energy system can meet a site critical load during electrical outages:
+      The remaining endpoints facilitate posting a REopt™ analysis job, retrieving the results, downloading a proforma, and obtaining some statistics related to how long a given energy system can meet a site critical load during electrical outages:
       
       <div class="col-xs-12">
 
@@ -110,8 +110,8 @@ summary: The REopt API provides access to a web version of a techno-economic dec
   <h2>User Workflow</h2><br>
   <div class="col col-xs-12 " id="">
   <p>
-  To use this API, create a REopt analysis job by posting a set input parameters in JSON format as described <a href="#input-definitions">below</a> to the <em>v1/job</em> endpoint along with your API key.<br><br>
-  At the time of job submission, a REopt analysis is scheduled and its unique identifer is returned as the API response. To check on the job status, the job identifier is submitted to the <em>v1/job/&lt;run_uuid&gt;/results</em> endpoint (where the &lt;run_uuid&gt; is the response from the job creation POST). If the task has completed, the status indicator (found in the outputs > Scenario > status response) will read 'optimal' and the results will be returned. Otherwise, the status indicator will note that the job is still in process or has encountered errors. <br><br>
+  To use this API, create a REopt™ analysis job by posting a set input parameters in JSON format as described <a href="#input-definitions">below</a> to the <em>v1/job</em> endpoint along with your API key.<br><br>
+  At the time of job submission, a REopt™ analysis is scheduled and its unique identifer is returned as the API response. To check on the job status, the job identifier is submitted to the <em>v1/job/&lt;run_uuid&gt;/results</em> endpoint (where the &lt;run_uuid&gt; is the response from the job creation POST). If the task has completed, the status indicator (found in the outputs > Scenario > status response) will read 'optimal' and the results will be returned. Otherwise, the status indicator will note that the job is still in process or has encountered errors. <br><br>
   The <em>v1/job/&lt;run_uuid&gt;/results</em> endpoint can be polled on a continuing basis until the status is updated and results are returned. Example Python scripts are provided at <a href="https://github.com/NREL/REopt-API-Examples" target="_blank">https://github.com/NREL/REopt-API-Examples</a>
   </p>
 
@@ -176,7 +176,7 @@ summary: The REopt API provides access to a web version of a techno-economic dec
 
     <div class="col col-xs-12" id="input-definitions">
   <h4>Modeling Resilience</h4>
-  Note the REopt API can make system size recommendations such that a user defined outage can be survived. Define an outage duration, start time and end time in the LoadProfile directory to enable this capability. 
+  Note the REopt™ API can make system size recommendations such that a user defined outage can be survived. Define an outage duration, start time and end time in the LoadProfile directory to enable this capability. 
   </div>
 
 
