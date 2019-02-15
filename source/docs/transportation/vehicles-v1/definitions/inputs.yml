@@ -1,0 +1,14 @@
+Id:
+  description: The parameters that were passed to the API
+  example:
+    id: 1
+
+Current:
+  description: The parameters that were passed to the API
+  example:
+    current: true
+
+FuelId:
+  description: The parameters that were passed to the API
+  example:
+    fuel_id: '1'

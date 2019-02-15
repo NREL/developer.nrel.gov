@@ -1,0 +1,38 @@
+HeavyDutyVehicleForEnginesAndHybrids:
+  description: This is a heavy duty vehicle
+  properties:
+    id:
+      type: integer
+      description: A unique identifier for the heavy duty vehicle
+      example: 1
+    model:
+      type: string
+      description: The model of the heavy duty vehicle
+      example: M4 Hybrid
+    heavy_duty_manufacturer_name:
+      type: string
+      description: The name of the manufacturer of the heavy duty vehicle
+      example: Blue Bird
+    num_passengers:
+      type: string
+      description: The seating capacity of the heavy duty vehicle
+      example: '78'
+    description:
+      type: string
+      description: Details about the heavy duty vehicle
+      example: Configurable with 150 or 200 kW e-motor
+    fuels:
+      type: array
+      description: A list of fuels associated to the heavy duty vehicle
+      items:
+        "$ref": "../models/fuel.yml#/FuelResult"
+    heavy_duty_power_systems:
+      type: array
+      description: A list of heavy duty power systems associated with the heavy duty vehicle
+      items:
+        "$ref": "../models/heavy_duty_power_system.yml" 
+    vehicle_categories:
+      type: array
+      description: A list of vehicle categories associated with the heavy duty vehicle
+      items:
+        "$ref": "../models/vehicle_category.yml"

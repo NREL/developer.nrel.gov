@@ -1,0 +1,10 @@
+description: This is a heavy duty emission certification
+properties:
+  id:
+    type: integer
+    description: A unique identifier for this specific emission certification
+    example: 1
+  name:
+    type: string
+    description: The name of the heavy duty emission certification
+    example: EPA 2010

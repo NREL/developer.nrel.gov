@@ -1,0 +1,82 @@
+FuelResult:
+  description: This is an alternative fuel
+  properties:
+    id:
+      type: integer
+      description: A unique identifier for this specific fuel
+      example: 1
+    name:
+      type: string
+      description: The name of the fuel
+      example: Propane
+    code:
+      type: string
+      description: A code used to identify this specific fuel
+      example: LPG
+
+FuelResponse:
+  description: This is an alternative fuel
+  properties:
+    id:
+      type: integer
+      description: A unique identifier for this specific fuel
+      example: 1
+    name:
+      type: string
+      description: The name of the fuel
+      example: Biodiesel (B20)
+    code:
+      type: string
+      description: The code used to identify the fuel
+      example: BD
+    has_vehicles?:
+      type: boolean
+      description: A true or false value to show if the fuel has associated heavy duty vehicles
+    has_engines?:
+      type: boolean
+      description: A true or false value to show if the fuel has associated engines
+    has_hybrids?:
+      type: boolean
+      description: A true or false value to show if the fuel has associated conversion or hybrid systems
+    has_light_duty_autombiles?:
+      type: boolean
+      description: A true or false values to show if the fuel has associated light duty automobiles
+    sort:
+      type: integer
+      description: Sort order for the fuel
+
+FuelResponseWithCurrentVehicleCategories:
+  description: This is an alternative fuel
+  properties:
+    id:
+      type: integer
+      description:  A code used to identify this specific fuel
+      example: 1
+    name:
+      type: string
+      description: The name of the fuel
+      example: Biodiesel (B20)
+    code:
+      type: string
+      description: The code used to identify the fuel
+      example: BD
+    has_vehicles?:
+      type: boolean
+      description: A true or false value to show if the fuel has associated heavy duty vehicles
+    has_engines?:
+      type: boolean
+      description: A true or false value to show if the fuel has associated engines
+    has_hybrids?:
+      type: boolean
+      description: A true or false value to show if the fuel has associated conversion or hybrid systems
+    has_light_duty_autombiles?:
+      type: boolean
+      description: A true or false values to show if the fuel has associated light duty automobiles
+    sort:
+      type: integer
+      description: Sort order for the fuel
+    current_vehicle_categories:
+      type: array
+      description: A list of vehicle categories associated to the fuel
+      items:
+        "$ref": "../models/vehicle_category.yml"

@@ -1,0 +1,52 @@
+get:
+  summary: Return a full list of heavy duty engines that match your query
+  operationId: getHeavyDutyEngines
+  parameters:
+    - in: path
+      name: output_format
+      description: Response format
+      required: true
+      type: string
+      enum:
+        - json
+        - xml
+        - csv
+    - in: query
+      name: api_key
+      description: API key
+      required: true
+      type: string
+      default: DEMO_KEY
+    - in: query
+      name: fuel_id
+      description: Return heavy duty engines associated with the fuel id(s) provided.  A single id or
+        a comma-separated list of multiple ids may be given.
+      type: array
+      collectionFormat: csv
+      items:
+        type: integer
+    - in: query
+      name: manufacturer_id
+      description: Return heavy duty engines associated with the manufacturer id(s) provided.  A single
+        id or a comma-separated list of multiple ids may be given.
+      type: array
+      collectionFormat: csv
+      items:
+        type: integer
+  responses:
+    '200':
+      description: Successful request
+      schema:
+        type: object
+        properties:
+          metadata:
+            "$ref": "../definitions/metadata.yml#/MetadataWithCount"
+          inputs:
+            "$ref": "../definitions/inputs.yml#/FuelId"
+          status:
+            "$ref": "../definitions/status.yml#/200"
+          result:
+            type: array
+            description: The array of heavy duty engines returned
+            items:
+              "$ref": "../models/heavy_duty_engine.yml"

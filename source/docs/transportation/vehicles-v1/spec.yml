@@ -1,0 +1,17 @@
+swagger: '2.0'
+basePath: "/api/vehicles"
+schemes:
+- https
+info:
+  version: 0.1.0
+  title: Vehicles
+  description: Query our database of alternative fuel vehicles, manufacturers, fuels, engines, and hybrid/conversion systems
+paths:
+  "/v1/fuels.{output_format}":
+    "$ref": "paths/fuels.yml"
+  "/v1/fuels/{id}.{output_format}":
+    "$ref": "paths/fuels_id.yml"
+  "/v1/heavy_duty_engines.{output_format}":
+    "$ref": "paths/heavy_duty_engines.yml"
+  "/v1/heavy_duty_engines/{id}.{output_format}":
+    "$ref": "paths/heavy_duty_engines_id.yml"

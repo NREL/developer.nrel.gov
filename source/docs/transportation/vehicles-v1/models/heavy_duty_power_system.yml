@@ -1,0 +1,59 @@
+descriptions: This is a heavy duty power system
+properties:
+  id:
+    type: integer
+    description: A unique identifier for this specific heavy duty power system
+    exammple: 1
+  heavy_duty_manufacturer_id:
+    type: integer
+    description: A unique identifier for this specific heavy duty power system's manufacturer
+    example: 1
+  heavy_duty_engine_origin_id:
+    type: integer
+    description: A unique identifier for the heavy duty engine origin associated with this specific
+      heavy duty power system
+    example: 1
+  heavy_duty_engine_power_source_id:
+    type: integer
+    description: A unique identifier for the heavy duty engine power source associated with
+      this specific heavy duty power system
+    example: 1
+  heavy_duty_engine_fuel_configuration_id:
+    type: integer
+    description: A unique identifier for the heavy duty engine fuel configuration associated
+      with this specific heavy duty power system
+    example: 1
+  heavy_duty_hybrid_type_id:
+    type: integer
+    description: A unique identifier for the heavy duty hybrid type associated with this specific
+      heavy duty power system
+    example: 1
+  heavy_duty_hybrid_storage_id:
+    type: integer
+    description:  A unique identifier for the heavy duty hybrid storage associated with this specific
+      heavy duty power system
+    example: 1
+  heavy_duty_hybrid_configuration_id:
+    type: integer
+    description: A unique identifier for the heavy duty hybrid configuration associated with this
+      heavy duty power system
+    example: 1
+  model:
+    type: string
+    description: Model name of this specific heavy duty power system
+    example: 6.8L V10
+  description:
+    type: string
+    description: Details for this specific heavy duty power system
+    example: Ford 6.8L engine with a CNG fuel system. 
+  comments:
+    type: string
+    description: Additional information
+  displacement:
+    type: string
+    description: Engine displacement for this specific heavy duty power system
+    example: 6.8
+  displacement_units:
+    type: string
+    description: Units for engine displacement measurement for this specific heavy duty power system
+    example: liters

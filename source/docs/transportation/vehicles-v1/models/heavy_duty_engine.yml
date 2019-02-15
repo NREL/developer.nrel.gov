@@ -1,0 +1,69 @@
+description: This is a heavy duty engine
+properties:
+  id:
+    type: integer
+    description: A unique identifier for this specific heavy duty engine
+    example: 1
+  model:
+    type: string
+    description: Heavy duty engine model
+    example: L9N 8.9L Near Zero
+  heavy_duty_manufacturer_id:
+    type: integer
+    description: A unique identifier for the heavy duty engine's manufacturer
+    example: 1
+  heavy_duty_manufacturer_name:
+    type: string
+    description: The name of the heavy duty engine's manufacturer
+    example: Lightning Systems
+  description:
+    type: string
+    description: Details about this specific heavy duty engine
+    example: The 8.9L ISL G (250-320 hp) in-line 6 cylinder engine combines Cummins
+      Exhaust gas recirculation technology with stoichiometric spark ignited combustion. 
+  comments:
+    type: string
+    description: Additional information
+  heavy_duty_chassis_ids:
+    type: array
+    description: Array of unique identifiers for assciated heavy duty chassis
+    example: [ 1 ]
+  heavy_duty_engine_origin_name:
+    type: string
+    description: Heavy duty engine origin - original equipment manufacturer or conversion
+    example: Original equipment manufacturer
+  heay_duty_engine_origin_id:
+    type: integer
+    description: A unique identifier for the associated heavy duty engine origin
+    example: 1
+  heavy_duty_engine_power_source_name:
+    type: string
+    description: The name of the power source for this specific heavy duty engine
+    example: Internal combustion engine
+  heavy_duty_engine_power_source_id:
+    type: integer
+    description: A unique identifier for the associated heavy duty engine power source
+    example: 1
+  heavy_duty_engine_fuel_configuration_name:
+    type: string
+    description: Fuel configuration type for this specific heavy duty engine
+    example: Dedicated fuel
+  heavy_duty_engine_fuel_configuration_id:
+    type: integer
+    description: A unique identifier for the associated heavy duty engine fuel configuration
+    example: 1
+  fuels:
+    type: array
+    description: A list of fuels associated to the heavy duty engine
+    items:
+      "$ref": "../models/fuel.yml#/FuelResult"
+  heavy_duty_emission_certifications:
+    type: array
+    description: A list of emission certifications for this specific heavy duty engine
+    items:
+      "$ref": "../models/heavy_duty_emission_certification.yml"
+  heavy_duty_vehicles:
+    type: array
+    description: A list of heavy duty vehicles associated to this specific heavy duty engine
+    items:
+      "$ref": "../models/heavy_duty_vehicle.yml#/HeavyDutyVehicleForEnginesAndHybrids"
