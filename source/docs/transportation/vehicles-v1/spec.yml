@@ -19,7 +19,6 @@ paths:
           type: string
           enum:
             - json
-            - xml
             - csv
         - in: query
           description: API key
@@ -34,14 +33,14 @@ paths:
           type: boolean
           default: false
         - in: query
-          description: Return only fuels associated with current heavy duty vehicles
+          description: Return only fuels associated with current heavy-duty vehicles
           name: current_heavy_duty
           required: false
           type: boolean
           default: false
         - in: query
           description: Return only fuels associated with current light duty automobiles and
-            current heavy duty vehicles
+            current heavy-duty vehicles
           name: current
           required: false
           type: boolean
@@ -91,6 +90,7 @@ paths:
           name: api_key
           required: true
           type: string
+          default: DEMO_KEY
       responses:
         '200':
           description: Successful request
@@ -118,7 +118,7 @@ paths:
                 "$ref": "#/definitions/Error"
   "/v1/heavy_duty_engines.{output_format}":
     get:
-      summary: Return a full list of heavy duty engines that match your query
+      summary: Return a full list of heavy-duty engines that match your query
       operationId: getHeavyDutyEngines
       parameters:
         - in: path
@@ -138,7 +138,7 @@ paths:
           default: DEMO_KEY
         - in: query
           name: fuel_id
-          description: Return heavy duty engines associated with the fuel id(s) provided.  A single id or
+          description: Return heavy-duty engines associated with the fuel id(s) provided.  A single id or
             a comma-separated list of multiple ids may be given.
           type: array
           collectionFormat: csv
@@ -146,7 +146,7 @@ paths:
             type: integer
         - in: query
           name: manufacturer_id
-          description: Return heavy duty engines associated with the manufacturer id(s) provided.  A single
+          description: Return heavy-duty engines associated with the manufacturer id(s) provided.  A single
             id or a comma-separated list of multiple ids may be given.
           type: array
           collectionFormat: csv
@@ -166,16 +166,16 @@ paths:
                 "$ref": "#/definitions/Status"
               result:
                 type: array
-                description: The array of heavy duty engines returned
+                description: The array of heavy-duty engines returned
                 items:
                   "$ref": "#/definitions/HeavyDutyEngineResponse"
   "/v1/heavy_duty_engines/{id}.{output_format}":
     get:
-      summary: Return all the details of a specific heavy duty engine given the heavy duty engine's ID
+      summary: Return all the details of a specific heavy-duty engine given the heavy-duty engine's ID
       operationId: getHeavyDutyEngine
       parameters:
         - in: path
-          description: The id of the heavy duty engine being searched
+          description: The id of the heavy-duty engine being searched
           name: id
           required: true
           type: integer
@@ -191,6 +191,7 @@ paths:
           name: api_key
           required: true
           type: string
+          default: DEMO_KEY
       responses:
         '200':
           description: Successful request
@@ -216,6 +217,60 @@ paths:
                 "$ref": "#/definitions/Status"
               errors:
                 "$ref": "#/definitions/Error"
+  "/v1/heavy_duty_hybrids.{output_format}":
+    get:
+      summary: Return a full list of heavy-duty hybrid/conversion systems
+      operationId: getHybrids
+      parameters:
+        - in: path
+          name: output_format
+          description: Response format
+          required: true
+          type: string
+          enum:
+            - json
+            - csv
+        - in: query
+          name: api_key
+          description: API key
+          required: true
+          type: string
+          default: DEMO_KEY
+        - in: query
+          name: fuel_id
+          description: Return heavy-duty hybrid/conversion systems associated with the fuel id(s) provided.  A single id or
+            a comma-separated list of multiple ids may be given.
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+        - in: query
+          name: manufacturer_id
+          description: Return heavy-duty hybrid/conversion systems  associated with the manufacturer id(s) provided.  A single
+            id or a comma-separated list of multiple ids may be given.
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            type: object
+            properties:
+              metadata:
+                "$ref": "#/definitions/MetadataWithCount"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                type: array
+                description: The array of heavy-duty hybrid/conversion systems returned
+                items:
+                  "$ref": "#/definitions/HeavyDutyHybridResponse"
+
+
 definitions:
   Metadata:
     description: The identifying metadata.
@@ -276,7 +331,7 @@ definitions:
         description: The code used to identify the fuel
       has_vehicles?:
         type: boolean
-        description: A true or false value to show if the fuel has associated heavy duty vehicles
+        description: A true or false value to show if the fuel has associated heavy-duty vehicles
       has_engines?:
         type: boolean
         description: A true or false value to show if the fuel has associated engines
@@ -303,7 +358,7 @@ definitions:
         description: The code used to identify the fuel
       has_vehicles?:
         type: boolean
-        description: A true or false value to show if the fuel has associated heavy duty vehicles
+        description: A true or false value to show if the fuel has associated heavy-duty vehicles
       has_engines?:
         type: boolean
         description: A true or false value to show if the fuel has associated engines
@@ -322,23 +377,23 @@ definitions:
         items:
           "$ref": "#/definitions/VehicleCategory"
   HeavyDutyEngineResponse:
-    description: This is a heavy duty engine
+    description: This is a heavy-duty engine
     properties:
       id:
         type: integer
-        description: A unique identifier for this heavy duty engine
+        description: A unique identifier for this heavy-duty engine
       model:
         type: string
         description: Heavy duty engine model
       heavy_duty_manufacturer_id:
         type: integer
-        description: A unique identifier for the heavy duty engine's manufacturer
+        description: A unique identifier for the heavy-duty engine's manufacturer
       heavy_duty_manufacturer_name:
         type: string
-        description: The name of the heavy duty engine's manufacturer
+        description: The name of the heavy-duty engine's manufacturer
       description:
         type: string
-        description: Details about this heavy duty engine
+        description: Details about this heavy-duty engine
       comments:
         type: string
         description: Additional information
@@ -346,82 +401,131 @@ definitions:
         type: array
         items: 
           type: integer
-        description: Array of unique identifiers for assciated heavy duty chassis
+        description: Array of unique identifiers for associated heavy-duty chassis
       heavy_duty_engine_origin_name:
         type: string
         description: Heavy duty engine origin - original equipment manufacturer or conversion
       heay_duty_engine_origin_id:
         type: integer
-        description: A unique identifier for the associated heavy duty engine origin
+        description: A unique identifier for the associated heavy-duty engine origin
       heavy_duty_engine_power_source_name:
         type: string
-        description: The name of the power source for this heavy duty engine
+        description: The name of the power source for this heavy-duty engine
       heavy_duty_engine_power_source_id:
         type: integer
-        description: A unique identifier for the associated heavy duty engine power source
+        description: A unique identifier for the associated heavy-duty engine power source
       heavy_duty_engine_fuel_configuration_name:
         type: string
-        description: Fuel configuration type for this heavy duty engine
+        description: Fuel configuration type for this heavy-duty engine
       heavy_duty_engine_fuel_configuration_id:
         type: integer
-        description: A unique identifier for the associated heavy duty engine fuel configuration
+        description: A unique identifier for the associated heavy-duty engine fuel configuration
       fuels:
         type: array
-        description: A list of fuels associated to the heavy duty engine
+        description: A list of fuels associated to the heavy-duty engine
         items:
           "$ref": "#/definitions/Fuel"
       heavy_duty_emission_certifications:
         type: array
-        description: A list of emission certifications for this heavy duty engine
+        description: A list of emission certifications for this heavy-duty engine
         items:
           "$ref": "#/definitions/HeavyDutyEmissionCertification"
       heavy_duty_vehicles:
         type: array
-        description: A list of heavy duty vehicles associated to this heavy duty engine
+        description: A list of heavy-duty vehicles associated to this heavy-duty engine
         items:
           "$ref": "#/definitions/HeavyDutyVehicleForEnginesAndHybrids"
-  HeavyDutyVehicleForEnginesAndHybrids:
-    description: This is a heavy duty vehicle
+  HeavyDutyHybridResponse:
+    description: This is a heavy-duty hybrid/conversion system
     properties:
       id:
         type: integer
-        description: A unique identifier for the heavy duty vehicle
+        description: A unique identifier for this heavy-duty hybrid/conversion system
       model:
         type: string
-        description: The model of the heavy duty vehicle
+        description: Heavy duty hybrid/conversion system model
+      heavy_duty_manufacturer_id:
+        type: integer
+        description: A unique identifier for the heavy-duty hybrid/conversion system's manufacturer
       heavy_duty_manufacturer_name:
         type: string
-        description: The name of the manufacturer of the heavy duty vehicle
-      num_passengers:
-        type: string
-        description: The seating capacity of the heavy duty vehicle
+        description: The name of the heavy-duty hybrid/conversion system's manufacturer
       description:
         type: string
-        description: Details about the heavy duty vehicle
+        description: Details about this heavy-duty hybrid/conversion system
+      comments:
+        type: string
+        description: Additional information
+      heavy_duty_hybrid_configuration_id:
+        type: integer
+        description: A unique identifier for the fuel configuration of this heavy-duty hybrid/conversion system
+      heavy_duty_hybrid_storage_id:
+        type: integer
+        description: A unique identifer for the storage system of this heavy-duty hybrid/conversion system
+      heavy_duty_hybrid_type_name:
+        type: string
+        description: The type of heavy-duty hybrid/conversion system
+      heavy_duty_hybrid_storage_name:
+        type: string
+        description: The name of the storage system for this heavy-duy hybrid/conversion system
+      heavy_duty_hybrid_type_id:
+        type: integer
+        description: A unique identifier for the type of heavy-duty hybrid/conversion system
+      heavy_duty_chassis_ids:
+        type: array
+        items:
+          type: integer
+        description: Array of unique identifiers for associated heavy-duty chassis
       fuels:
         type: array
-        description: A list of fuels associated to the heavy duty vehicle
+        items:
+          "$ref": "#/definitions/Fuel"
+      heavy_duty_vehicles:
+        type: array
+        items:
+          "$ref": "#/definitions/HeavyDutyVehicleForEnginesAndHybrids"
+  HeavyDutyVehicleForEnginesAndHybrids:
+    description: This is a heavy-duty vehicle
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for the heavy-duty vehicle
+      model:
+        type: string
+        description: The model of the heavy-duty vehicle
+      heavy_duty_manufacturer_name:
+        type: string
+        description: The name of the manufacturer of the heavy-duty vehicle
+      num_passengers:
+        type: string
+        description: The seating capacity of the heavy-duty vehicle
+      description:
+        type: string
+        description: Details about the heavy-duty vehicle
+      fuels:
+        type: array
+        description: A list of fuels associated to the heavy-duty vehicle
         items:
           "$ref": "#/definitions/Fuel"
       heavy_duty_power_systems:
         type: array
-        description: A list of heavy duty power systems associated with the heavy duty vehicle
+        description: A list of heavy-duty power systems associated with the heavy-duty vehicle
         items:
           "$ref": "#/definitions/HeavyDutyPowerSystem" 
       vehicle_categories:
         type: array
-        description: A list of vehicle categories associated with the heavy duty vehicle
+        description: A list of vehicle categories associated with the heavy-duty vehicle
         items:
           "$ref": "#/definitions/VehicleCategory"
   HeavyDutyEmissionCertification:
-    description: This is a heavy duty emission certification
+    description: This is a heavy-duty emission certification
     properties:
       id:
         type: integer
         description: A unique identifier for this emission certification
       name:
         type: string
-        description: The name of the heavy duty emission certification
+        description: The name of the heavy-duty emission certification
   VehicleCategory:
     description: This is a vehicle category
     properties:
@@ -435,50 +539,50 @@ definitions:
         type: integer
         description: Sort order for the vehicle category
   HeavyDutyPowerSystem:
-    description: This is a heavy duty power system
+    description: This is a heavy-duty power system
     properties:
       id:
         type: integer
-        description: A unique identifier for this heavy duty power system
+        description: A unique identifier for this heavy-duty power system
       heavy_duty_manufacturer_id:
         type: integer
-        description: A unique identifier for this heavy duty power system's manufacturer
+        description: A unique identifier for this heavy-duty power system's manufacturer
       heavy_duty_engine_origin_id:
         type: integer
-        description: A unique identifier for the heavy duty engine origin associated with this
-          heavy duty power system
+        description: A unique identifier for the heavy-duty engine origin associated with this
+          heavy-duty power system
       heavy_duty_engine_power_source_id:
         type: integer
-        description: A unique identifier for the heavy duty engine power source associated with
-          this heavy duty power system
+        description: A unique identifier for the heavy-duty engine power source associated with
+          this heavy-duty power system
       heavy_duty_engine_fuel_configuration_id:
         type: integer
-        description: A unique identifier for the heavy duty engine fuel configuration associated
-          with this heavy duty power system
+        description: A unique identifier for the heavy-duty engine fuel configuration associated
+          with this heavy-duty power system
       heavy_duty_hybrid_type_id:
         type: integer
-        description: A unique identifier for the heavy duty hybrid type associated with this
-          heavy duty power system
+        description: A unique identifier for the heavy-duty hybrid type associated with this
+          heavy-duty power system
       heavy_duty_hybrid_storage_id:
         type: integer
-        description:  A unique identifier for the heavy duty hybrid storage associated with this
-          heavy duty power system
+        description:  A unique identifier for the heavy-duty hybrid storage associated with this
+          heavy-duty power system
       heavy_duty_hybrid_configuration_id:
         type: integer
-        description: A unique identifier for the heavy duty hybrid configuration associated with this
-          heavy duty power system
+        description: A unique identifier for the heavy-duty hybrid configuration associated with this
+          heavy-duty power system
       model:
         type: string
-        description: Model name of this heavy duty power system
+        description: Model name of this heavy-duty power system
       description:
         type: string
-        description: Details for this heavy duty power system
+        description: Details for this heavy-duty power system
       comments:
         type: string
         description: Additional information
       displacement:
         type: string
-        description: Engine displacement for this heavy duty power system
+        description: Engine displacement for this heavy-duty power system
       displacement_units:
         type: string
-        description: Units for the engine displacement measurement for this heavy duty power system
+        description: Units for the engine displacement measurement for this heavy-duty power system
