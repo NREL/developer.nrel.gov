@@ -8,10 +8,477 @@ info:
   description: Query our database of alternative fuel vehicles, manufacturers, fuels, engines, and hybrid/conversion systems
 paths:
   "/v1/fuels.{output_format}":
-    "$ref": "paths/fuels.yml"
+    get:
+      summary: Return a full list of fuels that match your query
+      operationId: getFuels
+      parameters:
+        - in: path
+          name: output_format
+          description: Response format 
+          required: true
+          type: string
+          enum:
+            - json
+            - xml
+            - csv
+        - in: query
+          description: API key
+          name: api_key
+          required: true
+          type: string
+          default: DEMO_KEY
+        - in: query
+          description: Return only fuels associated with current light duty automobiles 
+          name: current_light_duty
+          required: false
+          type: boolean
+          default: false
+        - in: query
+          description: Return only fuels associated with current heavy duty vehicles
+          name: current_heavy_duty
+          required: false
+          type: boolean
+          default: false
+        - in: query
+          description: Return only fuels associated with current light duty automobiles and
+            current heavy duty vehicles
+          name: current
+          required: false
+          type: boolean
+          default: false
+        - in: query
+          description: Include associated vehicle categories for each fuel returned
+          name: with_categories
+          required: false
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            type: object
+            properties:
+              metadata:
+                "$ref": "#/definitions/MetadataWithCount"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                type: array
+                description: The array of fuels returned
+                items:
+                  "$ref": "#/definitions/FuelResponseWithCurrentVehicleCategories"
   "/v1/fuels/{id}.{output_format}":
-    "$ref": "paths/fuels_id.yml"
+    get:
+      summary: Return the details of a specific fuel given the fuel's ID
+      operationId: getFuel 
+      parameters:
+        - in: path
+          description: The id of the fuel being searched
+          name: id
+          required: true
+          type: integer
+        - in: path
+          description: Response format
+          name: output_format
+          required: true
+          type: string
+          enum:
+            - json
+        - in: query
+          description: API key
+          name: api_key
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                "$ref": "#/definitions/FuelResponse"
+        '404':
+          description: Not found
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              errors:
+                "$ref": "#/definitions/Error"
   "/v1/heavy_duty_engines.{output_format}":
-    "$ref": "paths/heavy_duty_engines.yml"
+    get:
+      summary: Return a full list of heavy duty engines that match your query
+      operationId: getHeavyDutyEngines
+      parameters:
+        - in: path
+          name: output_format
+          description: Response format
+          required: true
+          type: string
+          enum:
+            - json
+            - xml
+            - csv
+        - in: query
+          name: api_key
+          description: API key
+          required: true
+          type: string
+          default: DEMO_KEY
+        - in: query
+          name: fuel_id
+          description: Return heavy duty engines associated with the fuel id(s) provided.  A single id or
+            a comma-separated list of multiple ids may be given.
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+        - in: query
+          name: manufacturer_id
+          description: Return heavy duty engines associated with the manufacturer id(s) provided.  A single
+            id or a comma-separated list of multiple ids may be given.
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            type: object
+            properties:
+              metadata:
+                "$ref": "#/definitions/MetadataWithCount"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                type: array
+                description: The array of heavy duty engines returned
+                items:
+                  "$ref": "#/definitions/HeavyDutyEngineResponse"
   "/v1/heavy_duty_engines/{id}.{output_format}":
-    "$ref": "paths/heavy_duty_engines_id.yml"
+    get:
+      summary: Return all the details of a specific heavy duty engine given the heavy duty engine's ID
+      operationId: getHeavyDutyEngine
+      parameters:
+        - in: path
+          description: The id of the heavy duty engine being searched
+          name: id
+          required: true
+          type: integer
+        - in: path
+          description: Response format
+          name: output_format
+          required: true
+          type: string
+          enum:
+            - json
+        - in: query
+          description: API key
+          name: api_key
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                "$ref": "#/definitions/HeavyDutyEngineResponse"
+        '404':
+          description: Not found
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              errors:
+                "$ref": "#/definitions/Error"
+definitions:
+  Metadata:
+    description: The identifying metadata.
+    properties:
+      version:
+        type: string
+        description: This is the version of the API
+  MetadataWithCount:
+    description: The identifying metadata.
+    properties:
+      version:
+        type: string
+        description: This is the version of the API
+      resultset:
+        type: object
+        properties:
+          count:
+            type: integer
+            description: If the request returns an array of results, this is the number of results returned in the array
+  Inputs:
+    type: object
+    description: The parameters that were passed to the API
+  Status:
+    type: integer
+    description: HTTP Status Code
+  Error:
+    type: array
+    description: Error messages
+    items:
+      properties:
+        developer_message:
+          type: string
+        code:
+          type: string
+  Fuel:
+    description: This is an alternative fuel
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for this fuel
+      name:
+        type: string
+        description: The name of the fuel
+      code:
+        type: string
+        description: A code used to identify this fuel
+  FuelResponse:
+    description: This is an alternative fuel
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for this fuel
+      name:
+        type: string
+        description: The name of the fuel
+      code:
+        type: string
+        description: The code used to identify the fuel
+      has_vehicles?:
+        type: boolean
+        description: A true or false value to show if the fuel has associated heavy duty vehicles
+      has_engines?:
+        type: boolean
+        description: A true or false value to show if the fuel has associated engines
+      has_hybrids?:
+        type: boolean
+        description: A true or false value to show if the fuel has associated conversion or hybrid systems
+      has_light_duty_autombiles?:
+        type: boolean
+        description: A true or false values to show if the fuel has associated light duty automobiles
+      sort:
+        type: integer
+        description: Sort order for the fuel
+  FuelResponseWithCurrentVehicleCategories:
+    description: This is an alternative fuel
+    properties:
+      id:
+        type: integer
+        description:  A code used to identify this fuel
+      name:
+        type: string
+        description: The name of the fuel
+      code:
+        type: string
+        description: The code used to identify the fuel
+      has_vehicles?:
+        type: boolean
+        description: A true or false value to show if the fuel has associated heavy duty vehicles
+      has_engines?:
+        type: boolean
+        description: A true or false value to show if the fuel has associated engines
+      has_hybrids?:
+        type: boolean
+        description: A true or false value to show if the fuel has associated conversion or hybrid systems
+      has_light_duty_automobiles?:
+        type: boolean
+        description: A true or false value to show if the fuel has associated light duty automobiles
+      sort:
+        type: integer
+        description: Sort order for the fuel
+      current_vehicle_categories:
+        type: array
+        description: A list of associated vehicle categories
+        items:
+          "$ref": "#/definitions/VehicleCategory"
+  HeavyDutyEngineResponse:
+    description: This is a heavy duty engine
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for this heavy duty engine
+      model:
+        type: string
+        description: Heavy duty engine model
+      heavy_duty_manufacturer_id:
+        type: integer
+        description: A unique identifier for the heavy duty engine's manufacturer
+      heavy_duty_manufacturer_name:
+        type: string
+        description: The name of the heavy duty engine's manufacturer
+      description:
+        type: string
+        description: Details about this heavy duty engine
+      comments:
+        type: string
+        description: Additional information
+      heavy_duty_chassis_ids:
+        type: array
+        items: 
+          type: integer
+        description: Array of unique identifiers for assciated heavy duty chassis
+      heavy_duty_engine_origin_name:
+        type: string
+        description: Heavy duty engine origin - original equipment manufacturer or conversion
+      heay_duty_engine_origin_id:
+        type: integer
+        description: A unique identifier for the associated heavy duty engine origin
+      heavy_duty_engine_power_source_name:
+        type: string
+        description: The name of the power source for this heavy duty engine
+      heavy_duty_engine_power_source_id:
+        type: integer
+        description: A unique identifier for the associated heavy duty engine power source
+      heavy_duty_engine_fuel_configuration_name:
+        type: string
+        description: Fuel configuration type for this heavy duty engine
+      heavy_duty_engine_fuel_configuration_id:
+        type: integer
+        description: A unique identifier for the associated heavy duty engine fuel configuration
+      fuels:
+        type: array
+        description: A list of fuels associated to the heavy duty engine
+        items:
+          "$ref": "#/definitions/Fuel"
+      heavy_duty_emission_certifications:
+        type: array
+        description: A list of emission certifications for this heavy duty engine
+        items:
+          "$ref": "#/definitions/HeavyDutyEmissionCertification"
+      heavy_duty_vehicles:
+        type: array
+        description: A list of heavy duty vehicles associated to this heavy duty engine
+        items:
+          "$ref": "#/definitions/HeavyDutyVehicleForEnginesAndHybrids"
+  HeavyDutyVehicleForEnginesAndHybrids:
+    description: This is a heavy duty vehicle
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for the heavy duty vehicle
+      model:
+        type: string
+        description: The model of the heavy duty vehicle
+      heavy_duty_manufacturer_name:
+        type: string
+        description: The name of the manufacturer of the heavy duty vehicle
+      num_passengers:
+        type: string
+        description: The seating capacity of the heavy duty vehicle
+      description:
+        type: string
+        description: Details about the heavy duty vehicle
+      fuels:
+        type: array
+        description: A list of fuels associated to the heavy duty vehicle
+        items:
+          "$ref": "#/definitions/Fuel"
+      heavy_duty_power_systems:
+        type: array
+        description: A list of heavy duty power systems associated with the heavy duty vehicle
+        items:
+          "$ref": "#/definitions/HeavyDutyPowerSystem" 
+      vehicle_categories:
+        type: array
+        description: A list of vehicle categories associated with the heavy duty vehicle
+        items:
+          "$ref": "#/definitions/VehicleCategory"
+  HeavyDutyEmissionCertification:
+    description: This is a heavy duty emission certification
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for this emission certification
+      name:
+        type: string
+        description: The name of the heavy duty emission certification
+  VehicleCategory:
+    description: This is a vehicle category
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for this vehicle category
+      name:
+        type: string
+        description: The name of the vehicle category
+      sort:
+        type: integer
+        description: Sort order for the vehicle category
+  HeavyDutyPowerSystem:
+    description: This is a heavy duty power system
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for this heavy duty power system
+      heavy_duty_manufacturer_id:
+        type: integer
+        description: A unique identifier for this heavy duty power system's manufacturer
+      heavy_duty_engine_origin_id:
+        type: integer
+        description: A unique identifier for the heavy duty engine origin associated with this
+          heavy duty power system
+      heavy_duty_engine_power_source_id:
+        type: integer
+        description: A unique identifier for the heavy duty engine power source associated with
+          this heavy duty power system
+      heavy_duty_engine_fuel_configuration_id:
+        type: integer
+        description: A unique identifier for the heavy duty engine fuel configuration associated
+          with this heavy duty power system
+      heavy_duty_hybrid_type_id:
+        type: integer
+        description: A unique identifier for the heavy duty hybrid type associated with this
+          heavy duty power system
+      heavy_duty_hybrid_storage_id:
+        type: integer
+        description:  A unique identifier for the heavy duty hybrid storage associated with this
+          heavy duty power system
+      heavy_duty_hybrid_configuration_id:
+        type: integer
+        description: A unique identifier for the heavy duty hybrid configuration associated with this
+          heavy duty power system
+      model:
+        type: string
+        description: Model name of this heavy duty power system
+      description:
+        type: string
+        description: Details for this heavy duty power system
+      comments:
+        type: string
+        description: Additional information
+      displacement:
+        type: string
+        description: Engine displacement for this heavy duty power system
+      displacement_units:
+        type: string
+        description: Units for the engine displacement measurement for this heavy duty power system

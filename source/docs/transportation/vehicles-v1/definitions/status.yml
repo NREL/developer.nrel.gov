@@ -1,9 +1,0 @@
-200:
-  type: integer
-  description: HTTP Status Code
-  example: 200
-
-404:
-  type: integer
-  description: HTTP Status Code
-  example: 404
