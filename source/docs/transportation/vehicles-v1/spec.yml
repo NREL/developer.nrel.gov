@@ -71,6 +71,7 @@ paths:
   "/v1/fuels/{id}.{output_format}":
     get:
       summary: Return the details of a specific fuel given the fuel's ID
+      operationId: getFuelById
       parameters:
         - in: path
           description: The id of the fuel being searched
