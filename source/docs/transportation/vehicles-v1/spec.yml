@@ -12,20 +12,8 @@ paths:
       summary: Return a full list of fuels that match your query
       operationId: getFuels
       parameters:
-        - in: path
-          name: output_format
-          description: Response format 
-          required: true
-          type: string
-          enum:
-            - json
-            - csv
-        - in: query
-          description: API key
-          name: api_key
-          required: true
-          type: string
-          default: DEMO_KEY
+        - "$ref": "#/parameters/OutputFormat"
+        - "$ref": "#/parameters/ApiKey"
         - in: query
           description: Return only fuels associated with current light duty automobiles 
           name: current_light_duty
@@ -70,27 +58,12 @@ paths:
                   "$ref": "#/definitions/FuelResponseWithCurrentVehicleCategories"
   "/v1/fuels/{id}.{output_format}":
     get:
-      summary: Return the details of a specific fuel given the fuel's ID
-      operationId: getFuelById
+      summary: Return a single fuel given the fuel's ID
+      operationId: getFuelsById
       parameters:
-        - in: path
-          description: The id of the fuel being searched
-          name: id
-          required: true
-          type: integer
-        - in: path
-          description: Response format
-          name: output_format
-          required: true
-          type: string
-          enum:
-            - json
-        - in: query
-          description: API key
-          name: api_key
-          required: true
-          type: string
-          default: DEMO_KEY
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
       responses:
         '200':
           description: Successful request
@@ -121,21 +94,8 @@ paths:
       summary: Return a full list of heavy-duty engines that match your query
       operationId: getHeavyDutyEngines
       parameters:
-        - in: path
-          name: output_format
-          description: Response format
-          required: true
-          type: string
-          enum:
-            - json
-            - xml
-            - csv
-        - in: query
-          name: api_key
-          description: API key
-          required: true
-          type: string
-          default: DEMO_KEY
+        - "$ref": "#/parameters/OutputFormat"
+        - "$ref": "#/parameters/ApiKey"
         - in: query
           name: fuel_id
           description: Return heavy-duty engines associated with the fuel id(s) provided.  A single id or
@@ -171,27 +131,12 @@ paths:
                   "$ref": "#/definitions/HeavyDutyEngineResponse"
   "/v1/heavy_duty_engines/{id}.{output_format}":
     get:
-      summary: Return all the details of a specific heavy-duty engine given the heavy-duty engine's ID
+      summary: Return a single heavy-duty engine given the heavy-duty engine's ID
       operationId: getHeavyDutyEngine
       parameters:
-        - in: path
-          description: The id of the heavy-duty engine being searched
-          name: id
-          required: true
-          type: integer
-        - in: path
-          description: Response format
-          name: output_format
-          required: true
-          type: string
-          enum:
-            - json
-        - in: query
-          description: API key
-          name: api_key
-          required: true
-          type: string
-          default: DEMO_KEY
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
       responses:
         '200':
           description: Successful request
@@ -222,20 +167,8 @@ paths:
       summary: Return a full list of heavy-duty hybrid/conversion systems
       operationId: getHybrids
       parameters:
-        - in: path
-          name: output_format
-          description: Response format
-          required: true
-          type: string
-          enum:
-            - json
-            - csv
-        - in: query
-          name: api_key
-          description: API key
-          required: true
-          type: string
-          default: DEMO_KEY
+        - "$ref": "#/parameters/OutputFormat"
+        - "$ref": "#/parameters/ApiKey"
         - in: query
           name: fuel_id
           description: Return heavy-duty hybrid/conversion systems associated with the fuel id(s) provided.  A single id or
@@ -271,24 +204,11 @@ paths:
                   "$ref": "#/definitions/HeavyDutyHybridResponse"
   "/v1/heavy_duty_hybrids/{id}.{output_format}":
     get:
-      summary:  Return all the details of a specific heavy-duty hybrid/conversion system given the heavy-duty hybrid/conversion system's ID
+      summary:  Return a single heavy-duty hybrid/conversion system given the heavy-duty hybrid/conversion system's ID
       parameters:
-        - in: path
-          description: The id of the heavy-duty hybrid/conversion system being searched
-          name: id
-          required: true
-          type: integer
-        - in: path
-          description: Response format
-          name: output_format
-          required: true
-          type: string
-        - in: query
-          description: API key
-          name: api_key
-          required: true
-          type: string
-          default: DEMO_KEY
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
       responses:
         '200':
           description: Successful request
@@ -314,6 +234,115 @@ paths:
                 "$ref": "#/definitions/Status"
               errors:
                 "$ref": "#/definitions/Error"
+  "/v1/heavy_duty_manufacturers.{output_format}":
+    get:
+      summary: Return a full list of heavy-duty manufacturers
+      operationId: getHeavyDutyManufacturers
+      parameters:
+        - "$ref": "#/parameters/OutputFormat"
+        - "$ref": "#/parameters/ApiKey"
+        - in: query
+          name: has_vehicles
+          description: Return only heavy-duty manufacturers that have associated heavy-duty vehicles
+          required: false
+          type: boolean
+          default: false
+        - in: query
+          name: has_engines
+          description: Return only heavy-duty manufacturers that have associated heavy-duty engines
+          required: false
+          type: boolean
+          default: false
+        - in: query
+          name: has_hybrids
+          description: Return only heavy-duty manufacturers that have associated heavy-duty hybrid/conversion systems
+          required: false
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/MetadataWithCount"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                type: array
+                description: The array of heavy-duty manufacturers returned
+                items:
+                  "$ref": "#/definitions/HeavyDutyManufacturerResponse"
+  "/v1/heavy_duty_manufacturers/{id}.{output_format}":
+    get:
+      summary: Return a single heavy-duty manufacturer given the heavy-duty manufacturer's ID
+      operationId: getHeavyDutyManufacturerById
+      parameters:
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                "$ref": "#/definitions/HeavyDutyManufacturerResponse"
+        '404':
+          description: Not found
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              errors:
+                "$ref": "#/definitions/Error"
+
+parameters:
+  OutputFormat:
+    in: path
+    name: output_format
+    description: Response format
+    required: true
+    type: string
+    enum:
+      - json
+      - xml
+      - csv
+  OutputFormatNoCSV:
+    in: path
+    name: output_format
+    description: Response format
+    required: true
+    type: string
+    enum:
+      - json
+      - xml
+  ApiKey:
+    in: query
+    description: API key
+    name: api_key
+    required: true
+    type: string
+    default: DEMO_KEY
+  Id:
+    in: path
+    description: The id being searched
+    name: id
+    required: true
+    type: integer
+
 definitions:
   Metadata:
     description: The identifying metadata.
@@ -629,3 +658,21 @@ definitions:
       displacement_units:
         type: string
         description: Units for the engine displacement measurement for the heavy-duty power system
+  HeavyDutyManufacturerResponse:
+    description: This is a heavy-duty manufacturer
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for the heavy-duty manufacturer
+      name:
+        type: string
+        description: The name of the heavy-duty manufacturer
+      url:
+        type: string
+        description: The url for the heavy-duty manufacturer's website
+      phone:
+        type: string
+        description: The phone number for the heavy-duty manufacturer
+      comments:
+        type: string
+        description: Additional information
