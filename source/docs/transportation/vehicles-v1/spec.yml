@@ -308,6 +308,85 @@ paths:
                 "$ref": "#/definitions/Status"
               errors:
                 "$ref": "#/definitions/Error"
+  "/v1/heavy_duty_vehicles.{output_format}":
+    get:
+      summary: Return a full list of heavy-duty vehicles
+      operationId: getHeavyDutyVehicles
+      parameters:
+        - "$ref": "#/parameters/OutputFormat"
+        - "$ref": "#/parameters/ApiKey"
+        - in: query
+          name: manufacturer_id
+          description: Return heavy-duty vehicles associated with the manufacturer id(s) provided.  A single
+            id or a comma-separated list of multiple ids may be given.
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+        - in: query
+          name: category_id
+          description: Return heavy-duty vehicles associated with the vehicle category id(s) provided.  A single
+            id or a comma-separated list of multiple ids may be given.
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+        - in: query
+          name: fuel_id
+          description:  Return heavy-duty vehicles associated with the fuel id(s) provided.  A single id or
+            a comma-separated list of multiple ids may be given.
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/MetadataWithCount"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                type: array
+                items:
+                  "$ref": "#/definitions/HeavyDutyVehicleResponse"
+  "/v1/heavy_duty_vehicles/{id}.{output_format}":
+    get:
+      summary: Return a single heavy-duty vehicle given the heavy-duty vehicle's ID
+      operationId: getHeavyDutyVehiclesById
+      parameters:
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                "$ref": "#/definitions/HeavyDutyVehicleResponse"
+        '404':
+          description: Not found
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              errors:
+                "$ref": "#/definitions/Error"
 
 parameters:
   OutputFormat:
@@ -473,7 +552,7 @@ definitions:
         type: array
         items: 
           type: integer
-        description: Array of unique identifiers for associated heavy-duty chassis
+        description: An array of unique identifiers for associated heavy-duty chassis
       heavy_duty_engine_origin_name:
         type: string
         description: Heavy duty engine origin - original equipment manufacturer or conversion
@@ -547,7 +626,7 @@ definitions:
         type: array
         items:
           type: integer
-        description: Array of unique identifiers for associated heavy-duty chassis
+        description: An array of unique identifiers for associated heavy-duty chassis
       fuels:
         type: array
         items:
@@ -589,6 +668,115 @@ definitions:
         description: A list of vehicle categories associated with the heavy-duty vehicle
         items:
           "$ref": "#/definitions/VehicleCategory"
+  HeavyDutyVehicleResponse:
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for the heavy-duty vehicle
+      model:
+        type: string
+        description: The model of the heavy-duty vehicle
+      heavy_duty_manufacturer_name:
+        type: string
+        description: The name of the manufacturer of the heavy-duty vehicle
+      transmission_make:
+        type: string
+        description: The manufacturer of the transmission for the heavy-duty vehicle
+      num_passengers:
+        type: string
+        description: The seating capacity of the heavy-duty vehicle
+      photo_url:
+        type: string
+        description: The url for the image file of the heavy-duty vehicle
+      description:
+        type: string
+        description: Details about the heavy-duty vehicle
+      comments:
+        type: string
+        description: Additional information
+      notes:
+        type: string
+        description: Additional information
+      heavy_duty_manufacturer_id:
+        type: integer
+        description:  A unique identifier for the heavy-duty vehicle's manufacturer
+      heavy_duty_chassi_ids:
+        type: array
+        items:
+          type: integer
+          description: An array of unique identifiers for associated heavy-duty chassis
+      heavy_duty_power_system_ids:
+        type: array
+        items:
+          type:  integer
+          description: An array of unique identifiers for associated heavy-duty power systems
+      fuels:
+        type: array
+        description: A list of fuels associated with the heavy-duty vehicle
+        items:
+          "$ref": "#/definitions/Fuel"
+      vehicle_categories:
+        type: array
+        description: A list of vehicle categories associated with the heavy-duty vehicle
+        items:
+          properties:
+            id:
+              type: integer
+              description: A unique identifier for the vehicle category
+            name:
+              type: string
+              description: The name of the vehicle category
+      heavy_duty_transmission_types:
+        type: array
+        description: A list of transmission types associated with the heavy-duty vehicle
+        items:
+          properties:
+            id:
+              type: integer
+              description: A unique identifier for the heavy-duty transmission type
+            name:
+              type: string
+              description: The name of the heavy-duty transmission type
+      heavy_duty_weight_class:
+        description: The heavy-duty weight class associated with the heavy-duty vehicle
+        properties:
+          id:
+            type: integer
+            description: A unique identifier for the heavy-duty weight class
+          name:
+            type: string
+            description: The name of the heavy-duty weight class
+          type:
+            type: string
+            description: The type of the heavy-duty weight class
+      heavy_duty_engines:
+        type: array
+        description: A list of heavy-duty engines associated with the heavy-duty vehicle
+        items:
+          properties:
+            id:
+              type: integer
+              description: A unique identifier for the heavy-duty engine
+            model:
+              type: string
+              description: Heavy duty engine model
+            heavy_duty_manufacturer_name:
+              type: string
+              description: The name of the heavy-duty engine's manufacturer
+      heavy_duty_hybrids:
+        type: array
+        description: A list of heavy-duty hybrid/conversion systems associated with the heavy-duty vehicle
+        items:
+          properties:
+            id:
+              type: integer
+              description: A unique identifier for the heavy-duty hybrid/conversion system
+            model:
+              type: string
+              description: The model of the Heavy duty hybrid/conversion system
+            heavy_duty_manufacturer_name:
+              type: string
+              description: The name of the heavy-duty hybrid/conversion system's manufacturer
   HeavyDutyEmissionCertification:
     description: This is a heavy-duty emission certification
     properties:
