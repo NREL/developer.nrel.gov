@@ -71,7 +71,6 @@ paths:
   "/v1/fuels/{id}.{output_format}":
     get:
       summary: Return the details of a specific fuel given the fuel's ID
-      operationId: getFuel 
       parameters:
         - in: path
           description: The id of the fuel being searched
@@ -269,8 +268,51 @@ paths:
                 description: The array of heavy-duty hybrid/conversion systems returned
                 items:
                   "$ref": "#/definitions/HeavyDutyHybridResponse"
-
-
+  "/v1/heavy_duty_hybrids/{id}.{output_format}":
+    get:
+      summary:  Return all the details of a specific heavy-duty hybrid/conversion system given the heavy-duty hybrid/conversion system's ID
+      parameters:
+        - in: path
+          description: The id of the heavy-duty hybrid/conversion system being searched
+          name: id
+          required: true
+          type: integer
+        - in: path
+          description: Response format
+          name: output_format
+          required: true
+          type: string
+        - in: query
+          description: API key
+          name: api_key
+          required: true
+          type: string
+          default: DEMO_KEY
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                "$ref": "#/definitions/HeavyDutyHybridResponse"
+        '404':
+          description: Not found
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              errors:
+                "$ref": "#/definitions/Error"
 definitions:
   Metadata:
     description: The identifying metadata.
@@ -310,19 +352,19 @@ definitions:
     properties:
       id:
         type: integer
-        description: A unique identifier for this fuel
+        description: A unique identifier for the fuel
       name:
         type: string
         description: The name of the fuel
       code:
         type: string
-        description: A code used to identify this fuel
+        description: A code used to identify the fuel
   FuelResponse:
     description: This is an alternative fuel
     properties:
       id:
         type: integer
-        description: A unique identifier for this fuel
+        description: A unique identifier for the fuel
       name:
         type: string
         description: The name of the fuel
@@ -338,7 +380,7 @@ definitions:
       has_hybrids?:
         type: boolean
         description: A true or false value to show if the fuel has associated conversion or hybrid systems
-      has_light_duty_autombiles?:
+      has_light_duty_automobiles?:
         type: boolean
         description: A true or false values to show if the fuel has associated light duty automobiles
       sort:
@@ -349,7 +391,7 @@ definitions:
     properties:
       id:
         type: integer
-        description:  A code used to identify this fuel
+        description:  A code used to identify the fuel
       name:
         type: string
         description: The name of the fuel
@@ -381,7 +423,7 @@ definitions:
     properties:
       id:
         type: integer
-        description: A unique identifier for this heavy-duty engine
+        description: A unique identifier for the heavy-duty engine
       model:
         type: string
         description: Heavy duty engine model
@@ -393,7 +435,7 @@ definitions:
         description: The name of the heavy-duty engine's manufacturer
       description:
         type: string
-        description: Details about this heavy-duty engine
+        description: Details about the heavy-duty engine
       comments:
         type: string
         description: Additional information
@@ -410,13 +452,13 @@ definitions:
         description: A unique identifier for the associated heavy-duty engine origin
       heavy_duty_engine_power_source_name:
         type: string
-        description: The name of the power source for this heavy-duty engine
+        description: The name of the power source for the heavy-duty engine
       heavy_duty_engine_power_source_id:
         type: integer
         description: A unique identifier for the associated heavy-duty engine power source
       heavy_duty_engine_fuel_configuration_name:
         type: string
-        description: Fuel configuration type for this heavy-duty engine
+        description: Fuel configuration type for the heavy-duty engine
       heavy_duty_engine_fuel_configuration_id:
         type: integer
         description: A unique identifier for the associated heavy-duty engine fuel configuration
@@ -427,12 +469,12 @@ definitions:
           "$ref": "#/definitions/Fuel"
       heavy_duty_emission_certifications:
         type: array
-        description: A list of emission certifications for this heavy-duty engine
+        description: A list of emission certifications for the heavy-duty engine
         items:
           "$ref": "#/definitions/HeavyDutyEmissionCertification"
       heavy_duty_vehicles:
         type: array
-        description: A list of heavy-duty vehicles associated to this heavy-duty engine
+        description: A list of heavy-duty vehicles associated to the heavy-duty engine
         items:
           "$ref": "#/definitions/HeavyDutyVehicleForEnginesAndHybrids"
   HeavyDutyHybridResponse:
@@ -440,10 +482,10 @@ definitions:
     properties:
       id:
         type: integer
-        description: A unique identifier for this heavy-duty hybrid/conversion system
+        description: A unique identifier for the heavy-duty hybrid/conversion system
       model:
         type: string
-        description: Heavy duty hybrid/conversion system model
+        description: The model of the Heavy duty hybrid/conversion system
       heavy_duty_manufacturer_id:
         type: integer
         description: A unique identifier for the heavy-duty hybrid/conversion system's manufacturer
@@ -452,22 +494,22 @@ definitions:
         description: The name of the heavy-duty hybrid/conversion system's manufacturer
       description:
         type: string
-        description: Details about this heavy-duty hybrid/conversion system
+        description: Details about the heavy-duty hybrid/conversion system
       comments:
         type: string
         description: Additional information
       heavy_duty_hybrid_configuration_id:
         type: integer
-        description: A unique identifier for the fuel configuration of this heavy-duty hybrid/conversion system
+        description: A unique identifier for the fuel configuration of the heavy-duty hybrid/conversion system
       heavy_duty_hybrid_storage_id:
         type: integer
-        description: A unique identifer for the storage system of this heavy-duty hybrid/conversion system
+        description: A unique identifer for the storage system of the heavy-duty hybrid/conversion system
       heavy_duty_hybrid_type_name:
         type: string
         description: The type of heavy-duty hybrid/conversion system
       heavy_duty_hybrid_storage_name:
         type: string
-        description: The name of the storage system for this heavy-duy hybrid/conversion system
+        description: The name of the storage system for the heavy-duy hybrid/conversion system
       heavy_duty_hybrid_type_id:
         type: integer
         description: A unique identifier for the type of heavy-duty hybrid/conversion system
@@ -522,7 +564,7 @@ definitions:
     properties:
       id:
         type: integer
-        description: A unique identifier for this emission certification
+        description: A unique identifier for the emission certification
       name:
         type: string
         description: The name of the heavy-duty emission certification
@@ -531,7 +573,7 @@ definitions:
     properties:
       id:
         type: integer
-        description: A unique identifier for this vehicle category
+        description: A unique identifier for the vehicle category
       name:
         type: string
         description: The name of the vehicle category
@@ -543,46 +585,46 @@ definitions:
     properties:
       id:
         type: integer
-        description: A unique identifier for this heavy-duty power system
+        description: A unique identifier for the heavy-duty power system
       heavy_duty_manufacturer_id:
         type: integer
-        description: A unique identifier for this heavy-duty power system's manufacturer
+        description: A unique identifier for the heavy-duty power system's manufacturer
       heavy_duty_engine_origin_id:
         type: integer
-        description: A unique identifier for the heavy-duty engine origin associated with this
+        description: A unique identifier for the heavy-duty engine origin associated with the
           heavy-duty power system
       heavy_duty_engine_power_source_id:
         type: integer
         description: A unique identifier for the heavy-duty engine power source associated with
-          this heavy-duty power system
+          the heavy-duty power system
       heavy_duty_engine_fuel_configuration_id:
         type: integer
         description: A unique identifier for the heavy-duty engine fuel configuration associated
-          with this heavy-duty power system
+          with the heavy-duty power system
       heavy_duty_hybrid_type_id:
         type: integer
-        description: A unique identifier for the heavy-duty hybrid type associated with this
+        description: A unique identifier for the heavy-duty hybrid type associated with the
           heavy-duty power system
       heavy_duty_hybrid_storage_id:
         type: integer
-        description:  A unique identifier for the heavy-duty hybrid storage associated with this
+        description:  A unique identifier for the heavy-duty hybrid storage associated with the
           heavy-duty power system
       heavy_duty_hybrid_configuration_id:
         type: integer
-        description: A unique identifier for the heavy-duty hybrid configuration associated with this
+        description: A unique identifier for the heavy-duty hybrid configuration associated with the
           heavy-duty power system
       model:
         type: string
-        description: Model name of this heavy-duty power system
+        description: The model name of the heavy-duty power system
       description:
         type: string
-        description: Details for this heavy-duty power system
+        description: Details for the heavy-duty power system
       comments:
         type: string
         description: Additional information
       displacement:
         type: string
-        description: Engine displacement for this heavy-duty power system
+        description: Engine displacement for the heavy-duty power system
       displacement_units:
         type: string
-        description: Units for the engine displacement measurement for this heavy-duty power system
+        description: Units for the engine displacement measurement for the heavy-duty power system
