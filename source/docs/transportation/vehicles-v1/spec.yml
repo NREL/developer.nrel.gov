@@ -19,26 +19,22 @@ paths:
           name: current_light_duty
           required: false
           type: boolean
-          default: false
         - in: query
           description: Return only fuels associated with current heavy-duty vehicles
           name: current_heavy_duty
           required: false
           type: boolean
-          default: false
         - in: query
           description: Return only fuels associated with current light duty automobiles and
             current heavy-duty vehicles
           name: current
           required: false
           type: boolean
-          default: false
         - in: query
           description: Include associated vehicle categories for each fuel returned
           name: with_categories
           required: false
           type: boolean
-          default: false
       responses:
         '200':
           description: Successful request
@@ -98,7 +94,7 @@ paths:
         - "$ref": "#/parameters/ApiKey"
         - in: query
           name: fuel_id
-          description: Return heavy-duty engines associated with the fuel id(s) provided.  A single id or
+          description: Return only heavy-duty engines associated with the fuel id(s) provided.  A single id or
             a comma-separated list of multiple ids may be given.
           type: array
           collectionFormat: csv
@@ -106,7 +102,7 @@ paths:
             type: integer
         - in: query
           name: manufacturer_id
-          description: Return heavy-duty engines associated with the manufacturer id(s) provided.  A single
+          description: Return only heavy-duty engines associated with the manufacturer id(s) provided.  A single
             id or a comma-separated list of multiple ids may be given.
           type: array
           collectionFormat: csv
@@ -171,7 +167,7 @@ paths:
         - "$ref": "#/parameters/ApiKey"
         - in: query
           name: fuel_id
-          description: Return heavy-duty hybrid/conversion systems associated with the fuel id(s) provided.  A single id or
+          description: Return only heavy-duty hybrid/conversion systems associated with the fuel id(s) provided.  A single id or
             a comma-separated list of multiple ids may be given.
           type: array
           collectionFormat: csv
@@ -179,7 +175,7 @@ paths:
             type: integer
         - in: query
           name: manufacturer_id
-          description: Return heavy-duty hybrid/conversion systems  associated with the manufacturer id(s) provided.  A single
+          description: Return only heavy-duty hybrid/conversion systems  associated with the manufacturer id(s) provided.  A single
             id or a comma-separated list of multiple ids may be given.
           type: array
           collectionFormat: csv
@@ -246,19 +242,16 @@ paths:
           description: Return only heavy-duty manufacturers that have associated heavy-duty vehicles
           required: false
           type: boolean
-          default: false
         - in: query
           name: has_engines
           description: Return only heavy-duty manufacturers that have associated heavy-duty engines
           required: false
           type: boolean
-          default: false
         - in: query
           name: has_hybrids
           description: Return only heavy-duty manufacturers that have associated heavy-duty hybrid/conversion systems
           required: false
           type: boolean
-          default: false
       responses:
         '200':
           description: Successful request
@@ -274,7 +267,7 @@ paths:
                 type: array
                 description: The array of heavy-duty manufacturers returned
                 items:
-                  "$ref": "#/definitions/HeavyDutyManufacturerResponse"
+                  "$ref": "#/definitions/ManufacturerResponse"
   "/v1/heavy_duty_manufacturers/{id}.{output_format}":
     get:
       summary: Return a single heavy-duty manufacturer given the heavy-duty manufacturer's ID
@@ -295,7 +288,7 @@ paths:
               status:
                 "$ref": "#/definitions/Status"
               result:
-                "$ref": "#/definitions/HeavyDutyManufacturerResponse"
+                "$ref": "#/definitions/ManufacturerResponse"
         '404':
           description: Not found
           schema:
@@ -317,7 +310,7 @@ paths:
         - "$ref": "#/parameters/ApiKey"
         - in: query
           name: manufacturer_id
-          description: Return heavy-duty vehicles associated with the manufacturer id(s) provided.  A single
+          description: Return only heavy-duty vehicles associated with the manufacturer id(s) provided.  A single
             id or a comma-separated list of multiple ids may be given
           type: array
           collectionFormat: csv
@@ -325,7 +318,7 @@ paths:
             type: integer
         - in: query
           name: category_id
-          description: Return heavy-duty vehicles associated with the vehicle category id(s) provided.  A single
+          description: Return only heavy-duty vehicles associated with the vehicle category id(s) provided.  A single
             id or a comma-separated list of multiple ids may be given
           type: array
           collectionFormat: csv
@@ -333,7 +326,7 @@ paths:
             type: integer
         - in: query
           name: fuel_id
-          description:  Return heavy-duty vehicles associated with the fuel id(s) provided.  A single id or
+          description:  Return only heavy-duty vehicles associated with the fuel id(s) provided.  A single id or
             a comma-separated list of multiple ids may be given
           type: array
           collectionFormat: csv
@@ -481,6 +474,73 @@ paths:
                 "$ref": "#/definitions/Status"
               errors:
                 "$ref": "#/definitions/Error"
+  "/v1/light_duty_manufacturers.{output_format}":
+    get:
+      summary: Return a full list of light-duty manufacturers
+      operationId: getLightDutyManufacturers
+      parameters:
+        - "$ref": "#/parameters/OutputFormat"
+        - "$ref": "#/parameters/ApiKey"
+        - in: query
+          name: has_vehicles
+          description: Return only light-duty manufacturers that have associated light-duty vehicles
+          required: false
+          type: boolean
+        - in: query
+          name: current
+          description: Return only light-duty manufacturers with associated light-duty automobiles with a model
+            year of the current or previous calendar year
+          required: false
+          type: boolean
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/MetadataWithCount"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                type: array
+                description: The array of light-duty manufacturers returned
+                items:
+                  "$ref": "#/definitions/ManufacturerResponse"
+  "/v1/light_duty_manufacturers/{id}.{output_format}":
+    get:
+      summary: Return a single light-duty manufacturer given the light-duty manufacturer's ID
+      operationId: getLightDutyManufacturerById
+      parameters:
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                "$ref": "#/definitions/ManufacturerResponse"
+        '404':
+          description: Not found
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              errors:
+                "$ref": "#/definitions/Error"
 parameters:
   OutputFormat:
     in: path
@@ -593,7 +653,7 @@ definitions:
     properties:
       id:
         type: integer
-        description:  A code used to identify the fuel
+        description:  A unique identifier for the fuel
       name:
         type: string
         description: The name of the fuel
@@ -617,7 +677,7 @@ definitions:
         description: Sort order for the fuel
       current_vehicle_categories:
         type: array
-        description: A list of associated vehicle categories
+        description: A list of vehicle categories associated with the fuel
         items:
           "$ref": "#/definitions/VehicleCategory"
   HeavyDutyEngineResponse:
@@ -939,21 +999,21 @@ definitions:
       displacement_units:
         type: string
         description: Units for the engine displacement measurement for the heavy-duty power system
-  HeavyDutyManufacturerResponse:
-    description: This is a heavy-duty manufacturer
+  ManufacturerResponse:
+    description: This is a manufacturer
     properties:
       id:
         type: integer
-        description: A unique identifier for the heavy-duty manufacturer
+        description: A unique identifier for the manufacturer
       name:
         type: string
-        description: The name of the heavy-duty manufacturer
+        description: The name of the manufacturer
       url:
         type: string
-        description: The url for the heavy-duty manufacturer's website
+        description: The url for the manufacturer's website
       phone:
         type: string
-        description: The phone number for the heavy-duty manufacturer
+        description: The phone number for the manufacturer
       comments:
         type: string
         description: Additional information
