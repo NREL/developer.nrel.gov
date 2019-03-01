@@ -267,7 +267,7 @@ paths:
                 type: array
                 description: The array of heavy-duty manufacturers returned
                 items:
-                  "$ref": "#/definitions/ManufacturerResponse"
+                  "$ref": "#/definitions/HdLdManufacturerResponse"
   "/v1/heavy_duty_manufacturers/{id}.{output_format}":
     get:
       summary: Return a single heavy-duty manufacturer given the heavy-duty manufacturer's ID
@@ -288,7 +288,7 @@ paths:
               status:
                 "$ref": "#/definitions/Status"
               result:
-                "$ref": "#/definitions/ManufacturerResponse"
+                "$ref": "#/definitions/HdLdManufacturerResponse"
         '404':
           description: Not found
           schema:
@@ -507,7 +507,7 @@ paths:
                 type: array
                 description: The array of light-duty manufacturers returned
                 items:
-                  "$ref": "#/definitions/ManufacturerResponse"
+                  "$ref": "#/definitions/HdLdManufacturerResponse"
   "/v1/light_duty_manufacturers/{id}.{output_format}":
     get:
       summary: Return a single light-duty manufacturer given the light-duty manufacturer's ID
@@ -528,7 +528,73 @@ paths:
               status:
                 "$ref": "#/definitions/Status"
               result:
-                "$ref": "#/definitions/ManufacturerResponse"
+                "$ref": "#/definitions/HdLdManufacturerResponse"
+        '404':
+          description: Not found
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              errors:
+                "$ref": "#/definitions/Error"
+  "/v1/vehicle_categories.{output_format}":
+    get:
+      summary: Return a full list of vehicle categories
+      operationId: getVehicleCategories
+      parameters:
+        - "$ref": "#/parameters/OutputFormat"
+        - "$ref": "#/parameters/ApiKey"
+        - in: query
+          name: light_duty
+          description: Return only vehicle categories that have associated light-duty automobiles
+          required: false
+          type: boolean
+        - in: query
+          name: heavy_duty
+          description: Return only vehicle categories that have associated heavy-duty vehicles
+          required: false
+          type: boolean
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/MetadataWithCount"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                type: array
+                description: The array of light-duty manufacturers returned
+                items:
+                  "$ref": "#/definitions/VehicleCategoryResponse"
+  "/v1/vehicle_categories/{id}.{output_format}":
+    get:
+      summary: Return a single vehicle category given the vehicle category's ID
+      operationId: getVehicleCategoryById
+      parameters:
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                "$ref": "#/definitions/VehicleCategoryResponse"
         '404':
           description: Not found
           schema:
@@ -679,7 +745,7 @@ definitions:
         type: array
         description: A list of vehicle categories associated with the fuel
         items:
-          "$ref": "#/definitions/VehicleCategory"
+          "$ref": "#/definitions/VehicleCategoryResponse"
   HeavyDutyEngineResponse:
     description: This is a heavy-duty engine
     properties:
@@ -703,7 +769,7 @@ definitions:
         description: Additional information
       heavy_duty_chassis_ids:
         type: array
-        items: 
+        items:
           type: integer
         description: An array of unique identifiers for associated heavy-duty chassis
       heavy_duty_engine_origin_name:
@@ -815,12 +881,12 @@ definitions:
         type: array
         description: A list of heavy-duty power systems associated with the heavy-duty vehicle
         items:
-          "$ref": "#/definitions/HeavyDutyPowerSystem" 
+          "$ref": "#/definitions/HeavyDutyPowerSystem"
       vehicle_categories:
         type: array
         description: A list of vehicle categories associated with the heavy-duty vehicle
         items:
-          "$ref": "#/definitions/VehicleCategory"
+          "$ref": "#/definitions/VehicleCategoryResponse"
   HeavyDutyVehicleResponse:
     properties:
       id:
@@ -939,7 +1005,7 @@ definitions:
       name:
         type: string
         description: The name of the heavy-duty emission certification
-  VehicleCategory:
+  VehicleCategoryResponse:
     description: This is a vehicle category
     properties:
       id:
@@ -950,7 +1016,7 @@ definitions:
         description: The name of the vehicle category
       sort:
         type: integer
-        description: Sort order for the vehicle category
+        description: The sort order for the vehicle category
   HeavyDutyPowerSystem:
     description: This is a heavy-duty power system
     properties:
@@ -999,7 +1065,7 @@ definitions:
       displacement_units:
         type: string
         description: Units for the engine displacement measurement for the heavy-duty power system
-  ManufacturerResponse:
+  HdLdManufacturerResponse:
     description: This is a manufacturer
     properties:
       id:
