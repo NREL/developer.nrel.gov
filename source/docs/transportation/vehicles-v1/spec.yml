@@ -4,7 +4,7 @@ schemes:
 - https
 info:
   version: 0.1.0
-  title: Vehicles
+  title: Alternative Fuels and Advanced Vehicles
   description: Query our database of alternative fuel vehicles, manufacturers, fuels, engines, and hybrid/conversion systems
 paths:
   "/v1/fuels.{output_format}":
@@ -541,6 +541,75 @@ paths:
                 "$ref": "#/definitions/Status"
               errors:
                 "$ref": "#/definitions/Error"
+  "/v1/manufacturers.{output_format}":
+    get:
+      summary: Return a full list of manufacturers
+      operationId: getManufacturers
+      parameters:
+        - "$ref": "#/parameters/OutputFormat"
+        - "$ref": "#/parameters/ApiKey"
+        - in: query
+          name: has_vehicles
+          description: Return only manufacturers that have associated light-duty automobiles
+          required: false
+          type: boolean
+        - in: query
+          name: current
+          description: Return only manufacturers with associated light-duty automobiles with a model
+            year of the current or previous calendar year
+          required: false
+          type: boolean
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/MetadataWithCount"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                type: array
+                description: The array of manufacturers returned
+                items:
+                  "$ref": "#/definitions/ManufacturerResponse"
+  "/v1/manufacturers/{id}.{output_format}":
+    get:
+      summary: Return a single manufacturer given the manufacturer's ID
+      operationId: getManufacturerById
+      parameters:
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                "$ref": "#/definitions/ManufacturerResponse"
+        '404':
+          description: Not found
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              errors:
+                "$ref": "#/definitions/Error"
+
+
   "/v1/vehicle_categories.{output_format}":
     get:
       summary: Return a full list of vehicle categories
@@ -1083,6 +1152,27 @@ definitions:
       comments:
         type: string
         description: Additional information
+  ManufacturerResponse:
+    description: This is a manufacturer
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for the manufacturer
+      name:
+        type: string
+        description: The name of the manufacturer
+      url:
+        type: string
+        description: The url for the manufacturer's website
+      phone:
+        type: string
+        description: The phone number for the manufacturer
+      comments:
+        type: string
+        description: Additional information
+      type:
+        type: string
+        description: The type of the manufacturer
   LightDutyAutomobileResponse:
     description: This is a light-duty automobile
     properties:
@@ -1169,8 +1259,6 @@ definitions:
       notes:
         type: string
         description: Additional information
-      ld_searchable:
-        type: boolean
       manufacturer_name:
         type: string
         description: The name of the light-duty automobile's manufacturer
