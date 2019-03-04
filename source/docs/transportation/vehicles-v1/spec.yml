@@ -608,8 +608,68 @@ paths:
                 "$ref": "#/definitions/Status"
               errors:
                 "$ref": "#/definitions/Error"
-
-
+  "/v1/vehicles.{output_format}":
+    get:
+      summary: Return a full list of light-duty automobiles and heavy-duty vehicles
+      operationId: getVehicles
+      parameters:
+        - "$ref": "#/parameters/OutputFormat"
+        - "$ref": "#/parameters/ApiKey"
+        - in: query
+          name: current
+          description: Only applies to light-duty automobiles - Return light-duty automobiles with a model year
+            of the current or previous calendar year
+          required: false
+          type: boolean
+        - in: query
+          name: category_id
+          description: Return only vehicles associated with the vehicle category id(s) provided.  A single
+            id or a comma-separated list of multiple ids may be given
+          required: false
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+        - in: query
+          name: fuel_id
+          description: Return only vehicles associated with the fuel id(s) provided.  A single id or
+            a comma-separated list of multiple ids may be given
+          required: false
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+        - in: query
+          name: manufacturer_id
+          description: Return only vehicles associated with the manufacturer id(s) provided.  A single
+            id or a comma-separated list of multiple ids may be given
+          required: false
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+        - in: query
+          name: model_year
+          description:  Only applies to light-duty automobiles - Return light-duty automobiles with the
+            model year(s) provided.  A single model year or a comma-separated list of multiple model years may be given
+          required: false
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/MetadataWithCount"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                "$ref": "#/definitions/VehiclesResponse"
   "/v1/vehicle_categories.{output_format}":
     get:
       summary: Return a full list of vehicle categories
@@ -957,6 +1017,7 @@ definitions:
         items:
           "$ref": "#/definitions/VehicleCategoryResponse"
   HeavyDutyVehicleResponse:
+    description: This is a heavy-duty vehicle
     properties:
       id:
         type: integer
@@ -1313,3 +1374,265 @@ definitions:
             name:
               type: string
               description: The name of the light-duty emission certification
+  VehiclesResponse:
+    type: object
+    description: Includes both light-duty automobiles and heavy-duty vehicles
+    properties:
+      0:
+        type: object
+        description: This is a light-duty automobile
+        properties:
+          id:
+            type: integer
+            description: A unique identifier for the light-duty automobile
+          fuel_id:
+            type: integer
+            description: A unique identifier for the fuel associated with the light-duty automobile
+          phev_type:
+            type: string
+            description: The phev type of the light-duty automobile
+          light_duty_fuel_configuration_id:
+            type: integer
+            description: A unique identifier for the light-duty fuel configuration associated
+              with the light-duty automobile
+          light_duty_manufacturer_id:
+            type: integer
+            description: A unique identifier for the light-duty automobile's manufacturer
+          light_duty_weight_class_id:
+            type: integer
+            description: A unique identifier for the light-duty weight class associated with the light-duty automobile
+          light_duty_category_id:
+            type: integer
+            description: A unique identifier for the light-duty vehicle category associated with the
+              light-duty automobile
+          model:
+            type: string
+            description: The model of the light-duty automobile
+          model_year:
+            type: string
+            description: The model year of the light-duty automobile
+          photo_url:
+            type: string
+            description: The url for the image file of the light-duty automobile
+          range_city:
+            type: integer
+            description: The city driving range for the light-duty automobile
+          range_highway:
+            type: integer
+            description: The highway driving range for the light-duty automobile
+          electric_range:
+            type: integer
+            description: The electric-only driving range for the light-duty automobile
+          transmission_type:
+            type: string
+            description: The transmission type of the light-duty automobile
+          engine_type:
+            type: string
+            description: The engine type of the light-duty automobile
+          engine_size:
+            type: string
+            description: The engine size of the light-duty automobile
+          engine_cylinder_count:
+            type: integer
+            description: The engine cylinder count of the light-duty automobile
+          engine_description:
+            type: string
+            description: Additional information about the engine of the light-duty automobile
+          battery_type:
+            type: string
+            description: The battery type of the light-duty automobile
+          battery_voltage_amps:
+            type: string
+            description: The battery voltage amps of the light-duty automobile
+          charge_time_110v:
+            type: string
+            description: The charge time for the light-duty automobile at 110 volts
+          charge_time_220v:
+            type: string
+            description: The charge time for the light-duty automobile at 220 volts
+          warranty_info:
+            type: string
+            description: Warranty information for the light-duty automobile
+          ordering_info:
+            type: string
+            description: Ordering information for the light-duty automobile
+          description:
+            type: string
+            description: Details about the light-duty automobile
+          comments:
+            type: string
+            description: Additional information
+          notes:
+            type: string
+            description: Additional information
+          manufacturer_name:
+            type: string
+            description: The name of the light-duty automobile's manufacturer
+          manufacturer_url:
+            type: string
+            description: The url for the light-duty automobile's website
+          fuel_code:
+            type: string
+            description: A code used to identify the fuel associated with the light-duty automobile
+          fuel_name:
+            type: string
+            description: The name of the fuel associated with the light-duty automobile
+          light_duty_fuel_configuration_name:
+            type: string
+            description: The name of the light-duty fuel configuration associated with the light-duty automobile
+          category_name:
+            type: string
+            description: The name of the light-duty vehicle category associated with the light-duty automobile
+          alternative_fuel_economy_combined:
+            type: number
+            format: float
+            description: The combined alternative fuel economy for the light-duty automobile
+          conventional_fuel_economy_combined:
+            type: number
+            format: float
+            description: The combined conventional fuel economy for the light-duty automobile
+          alternative_fuel_economy_city:
+            type: number
+            format: float
+            description: The city driving alternative fuel economy for the light-duty automobile
+          alternative_fuel_economy_highway:
+            type: number
+            format: float
+            description: The highway driving alternative fuel economy for the light-duty automobile
+          conventional_fuel_economy_city:
+            type: number
+            format: float
+            description: The city driving conventional fuel economy for the light-duty automobile
+          conventional_fuel_economy_highway:
+            type: number
+            format: float
+            description: The highway driving conventional fuel economy for the light-duty automobile
+          light_duty_emission_certifications:
+            type: array
+            description: A list of light-duty emission certifications associated with the light-duty automobile
+            items:
+              description: This is a light-duty emission certification
+              properties:
+                id:
+                  type: integer
+                  description: A unique identifier for the light-duty emission certification
+                name:
+                  type: string
+                  description: The name of the light-duty emission certification
+          class:
+            type: string
+            description: The type of the vehicle
+      1:
+        type: object
+        description: This is a heavy-duty vehicle
+        properties:
+          id:
+            type: integer
+            description: A unique identifier for the heavy-duty vehicle
+          model:
+            type: string
+            description: The model of the heavy-duty vehicle
+          heavy_duty_manufacturer_name:
+            type: string
+            description: The name of the manufacturer of the heavy-duty vehicle
+          transmission_make:
+            type: string
+            description: The manufacturer of the transmission for the heavy-duty vehicle
+          num_passengers:
+            type: string
+            description: The seating capacity of the heavy-duty vehicle
+          photo_url:
+            type: string
+            description: The url for the image file of the heavy-duty vehicle
+          description:
+            type: string
+            description: Details about the heavy-duty vehicle
+          comments:
+            type: string
+            description: Additional information
+          notes:
+            type: string
+            description: Additional information
+          heavy_duty_manufacturer_id:
+            type: integer
+            description:  A unique identifier for the heavy-duty vehicle's manufacturer
+          heavy_duty_chassi_ids:
+            type: array
+            items:
+              type: integer
+              description: An array of unique identifiers for associated heavy-duty chassis
+          heavy_duty_power_system_ids:
+            type: array
+            items:
+              type:  integer
+              description: An array of unique identifiers for associated heavy-duty power systems
+          fuels:
+            type: array
+            description: A list of fuels associated with the heavy-duty vehicle
+            items:
+              "$ref": "#/definitions/Fuel"
+          vehicle_categories:
+            type: array
+            description: A list of vehicle categories associated with the heavy-duty vehicle
+            items:
+              properties:
+                id:
+                  type: integer
+                  description: A unique identifier for the vehicle category
+                name:
+                  type: string
+                  description: The name of the vehicle category
+          heavy_duty_transmission_types:
+            type: array
+            description: A list of transmission types associated with the heavy-duty vehicle
+            items:
+              properties:
+                id:
+                  type: integer
+                  description: A unique identifier for the heavy-duty transmission type
+                name:
+                  type: string
+                  description: The name of the heavy-duty transmission type
+          heavy_duty_weight_class:
+            description: The heavy-duty weight class associated with the heavy-duty vehicle
+            properties:
+              id:
+                type: integer
+                description: A unique identifier for the heavy-duty weight class
+              name:
+                type: string
+                description: The name of the heavy-duty weight class
+              type:
+                type: string
+                description: The type of the heavy-duty weight class
+          heavy_duty_engines:
+            type: array
+            description: A list of heavy-duty engines associated with the heavy-duty vehicle
+            items:
+              properties:
+                id:
+                  type: integer
+                  description: A unique identifier for the heavy-duty engine
+                model:
+                  type: string
+                  description: The model of the heavy-duty engine
+                heavy_duty_manufacturer_name:
+                  type: string
+                  description: The name of the heavy-duty engine's manufacturer
+          heavy_duty_hybrids:
+            type: array
+            description: A list of heavy-duty hybrid/conversion systems associated with the heavy-duty vehicle
+            items:
+              properties:
+                id:
+                  type: integer
+                  description: A unique identifier for the heavy-duty hybrid/conversion system
+                model:
+                  type: string
+                  description: The model of the Heavy duty hybrid/conversion system
+                heavy_duty_manufacturer_name:
+                  type: string
+                  description: The name of the heavy-duty hybrid/conversion system's manufacturer
+          class:
+            type: string
+            description: The type of the vehicle
