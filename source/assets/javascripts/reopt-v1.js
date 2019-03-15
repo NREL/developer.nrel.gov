@@ -615,176 +615,175 @@ var nested_input_definitions = {
         }
       },
       "Wind": {
-        "pbi_years": {
-          "default": 1,
-          "max": 1000000000.0,
-          "type": "float",
-          "description": "Duration of production-based incentives from installation date",
-          "min": 0
-        },
-        "macrs_bonus_pct": {
-          "default": 0.4,
-          "max": 1,
-          "type": "float",
-          "description": "Percent of upfront project costs to depreciate under MACRS",
-          "min": 0
-        },
-        "max_kw": {
-          "default": 1000000000.0,
-          "max": 1000000000.0,
-          "type": "float",
-          "description": "Maximum wind power capacity constraint for optimization. Set to zero to disable Wind. Enabled by default",
-          "min": 0
-        },
-        "pbi_max_us_dollars": {
-          "default": 1000000000.0,
-          "max": 1000000000.0,
-          "type": "float",
-          "description": "Maximum rebate allowed under utility production-based incentives",
-          "min": 0
+	"size_class": {
+          "type": "str",
+          "restrict_to": "['residential', 'commercial', 'medium', 'large']",
+          "description": "Turbine size-class. One of [residential, commercial, medium, large]"
         },
         "wind_meters_per_sec": {
           "type": "list_of_float",
           "description": "Data downloaded from Wind ToolKit for modeling wind turbine."
         },
-        "state_ibi_pct": {
-          "default": 0,
-          "max": 1,
-          "type": "float",
-          "description": "Percent of upfront project costs to discount under state investment based incentives",
-          "min": 0
-        },
-        "utility_rebate_max_us_dollars": {
-          "default": 10000000000.0,
-          "max": 10000000000.0,
-          "type": "float",
-          "description": "Maximum rebate allowed under utility rebates",
-          "min": 0
-        },
-        "installed_cost_us_dollars_per_kw": {
-          "default": 1874,
-          "max": 100000.0,
-          "type": "float",
-          "description": "Total upfront installed costs in US dollars/kW. Determined by size_class. For the 'large' (>1MW) size_class the cost is $1,874/kW. For the 'medium' size_class the cost is $4,111/kW and for the 'commercial' size_class the cost is $4,989/kW.",
-          "min": 0
-        },
-        "utility_ibi_max_us_dollars": {
-          "default": 10000000000.0,
-          "max": 10000000000.0,
-          "type": "float",
-          "description": "Maximum rebate allowed under utility investment based incentives",
-          "min": 0
-        },
-        "pressure_atmospheres": {
-          "type": "list_of_float",
-          "description": "Data downloaded from Wind ToolKit for modeling wind turbine."
-        },
-        "pbi_system_max_kw": {
-          "default": 1000000000.0,
-          "max": 1000000000.0,
-          "type": "float",
-          "description": "Maximum system size for which production-based incentives apply",
-          "min": 0
-        },
-        "utility_ibi_pct": {
-          "default": 0,
-          "max": 1,
-          "type": "float",
-          "description": "Percent of upfront project costs to discount under utility investment based incentives",
-          "min": 0
-        },
-        "state_ibi_max_us_dollars": {
-          "default": 10000000000.0,
-          "max": 10000000000.0,
-          "type": "float",
-          "description": "Maximum rebate allowed under state investment based incentives",
-          "min": 0
-        },
         "wind_direction_degrees": {
           "type": "list_of_float",
           "description": "Data downloaded from Wind ToolKit for modeling wind turbine."
-        },
-        "size_class": {
-          "type": "str",
-          "description": "Turbine size-class. One of [residential, commercial, medium, large]",
-          "restrict_to": "['residential', 'commercial', 'medium', 'large']"
-        },
-        "state_rebate_us_dollars_per_kw": {
-          "default": 0,
-          "max": 1000000000.0,
-          "type": "float",
-          "description": "State rebates based on installed capacity",
-          "min": 0
-        },
-        "macrs_option_years": {
-          "default": 5,
-          "type": "int",
-          "description": "MACRS schedule for financial analysis. Set to zero to disable",
-          "restrict_to": [
-            0,
-            5,
-            7
-          ]
-        },
-        "state_rebate_max_us_dollars": {
-          "default": 10000000000.0,
-          "max": 10000000000.0,
-          "type": "float",
-          "description": "Maximum rebate allowed under state rebates",
-          "min": 0
-        },
-        "federal_itc_pct": {
-          "default": 0.3,
-          "max": 1,
-          "type": "float",
-          "description": "Percent federal capital cost incentive",
-          "min": 0
         },
         "temperature_celsius": {
           "type": "list_of_float",
           "description": "Data downloaded from Wind ToolKit for modeling wind turbine."
         },
-        "pbi_us_dollars_per_kwh": {
-          "default": 0,
-          "max": 1000000000.0,
-          "type": "float",
-          "description": "Production-based incentive value",
-          "min": 0
-        },
-        "om_cost_us_dollars_per_kw": {
-          "default": 35,
-          "max": 1000.0,
-          "type": "float",
-          "description": "Total annual operations and maintenance costs",
-          "min": 0
-        },
-        "utility_rebate_us_dollars_per_kw": {
-          "default": 0,
-          "max": 1000000000.0,
-          "type": "float",
-          "description": "Utility rebates based on installed capacity",
-          "min": 0
+        "pressure_atmospheres": {
+          "type": "list_of_float",
+          "description": "Data downloaded from Wind ToolKit for modeling wind turbine."
         },
         "min_kw": {
-          "default": 0,
-          "max": 1000000000.0,
           "type": "float",
-          "description": "Minimum wind power capacity constraint for optimization",
-          "min": 0
+          "min": 0,
+          "max": 1e9,
+          "default": 0,
+          "description": "Minimum wind power capacity constraint for optimization"
+        },
+        "max_kw": {
+          "type": "float",
+          "min": 0,
+          "max": 1e9,
+          "default":1e9,
+          "description": "Maximum wind power capacity constraint for optimization. Set to zero to disable Wind. Enabled by default"
+        },
+        "installed_cost_us_dollars_per_kw": {
+          "type": "float",
+          "min": 0,
+          "max": 1e5,
+          "default": 3013,  
+          "description": "Total upfront installed costs in US dollars/kW. Determined by size_class. For the 'large' (>2MW) size_class the cost is $1,874/kW. For the 'medium commercial' size_class the cost is $4,111/kW. For the 'small commercial' size_class the cost is $4,989/kW and for the 'residential' size_class the cost is $10,792/kW "
+        },
+        "om_cost_us_dollars_per_kw": {
+          "type": "float",
+          "min": 0,
+          "max": 1e3,
+          "default": 35,
+          "description": "Total annual operations and maintenance costs"
+        },
+        "macrs_option_years": {
+          "type": "int",
+          "restrict_to": [0,
+            5,
+            7,
+	   ]
+          "default": 5,
+          "description": "MACRS schedule for financial analysis. Set to zero to disable"
+        },
+        "macrs_bonus_pct": {
+          "type": "float",
+          "min": 0,
+          "max": 1,
+          "default": 0,
+          "description": "Percent of upfront project costs to depreciate under MACRS"
         },
         "macrs_itc_reduction": {
-          "default": 0.5,
-          "max": 1,
           "type": "float",
-          "description": "Percent of the full ITC that depreciable basis is reduced by",
-          "min": 0
+          "min": 0,
+          "max": 1,
+          "default": 0.5,
+          "description": "Percent of the full ITC that depreciable basis is reduced by"
+        },
+        "federal_itc_pct": {
+          "type": "float",
+          "min": 0,
+          "max": 1,
+          "default": 0.30,
+          "description": "Percent federal capital cost incentive"
+        },
+        "state_ibi_pct": {
+          "type": "float",
+          "min": 0,
+          "max": 1,
+          "default": 0,
+          "description": "Percent of upfront project costs to discount under state investment based incentives"
+        },
+        "state_ibi_max_us_dollars": {
+          "type": "float",
+          "min": 0,
+          "max": 1e10,
+          "default": 1000000000.0,
+          "description": "Maximum rebate allowed under state investment based incentives"
+        },
+        "utility_ibi_pct": {
+          "type": "float",
+          "min": 0,
+          "max": 1,
+          "default": 0,
+          "description": "Percent of upfront project costs to discount under utility investment based incentives"
+        },
+        "utility_ibi_max_us_dollars": {
+          "type": "float",
+          "min": 0,
+          "max": 1e10,
+          "default": 1000000000.0,
+          "description": "Maximum rebate allowed under utility investment based incentives"
         },
         "federal_rebate_us_dollars_per_kw": {
-          "default": 0,
-          "max": 1000000000.0,
           "type": "float",
-          "description": "Federal rebate based on installed capacity",
-          "min": 0
+          "min": 0,
+          "max": 1e9,
+          "default": 0,
+          "description": "Federal rebate based on installed capacity"
+        },
+        "state_rebate_us_dollars_per_kw": {
+          "type": "float",
+          "min": 0,
+          "max": 1e9,
+          "default": 0,
+          "description": "State rebates based on installed capacity"
+        },
+        "state_rebate_max_us_dollars": {
+          "type": "float",
+          "min": 0,
+          "max": 1e10,
+          "default": 1000000000.0,
+          "description": "Maximum rebate allowed under state rebates"
+        },
+        "utility_rebate_us_dollars_per_kw": {
+          "type": "float",
+          "min": 0,
+          "max": 1e9,
+          "default": 0,
+          "description": "Utility rebates based on installed capacity"
+        },
+        "utility_rebate_max_us_dollars": {
+          "type": "float",
+          "min": 0,
+          "max": 1e10,
+          "default": 1000000000.0,
+          "description": "Maximum rebate allowed under utility rebates"
+        },
+        "pbi_us_dollars_per_kwh": {
+          "type": "float",
+          "min": 0,
+          "max": 1e9,
+          "default": 0,
+          "description": "Production-based incentive value"
+        },
+        "pbi_max_us_dollars": {
+          "type": "float",
+          "min": 0,
+          "max": 1e9,
+          "default": 1e9,
+          "description": "Maximum rebate allowed under utility production-based incentives"
+        },
+        "pbi_years": {
+          "type": "float",
+          "min": 0,
+          "max": 1e9,
+          "default": 1,
+          "description": "Duration of production-based incentives from installation date"
+        },
+        "pbi_system_max_kw": {
+          "type": "float",
+          "min": 0,
+          "max": 1e9,
+          "default": 1e9,
+          "description": "Maximum system size for which production-based incentives apply"
         }
       },
       "Financial": {
@@ -1221,6 +1220,48 @@ var nested_output_definitions = {
             "units": "kW"
           }
         },
+	"Wind": {
+	"size_kw": {
+	  "type": "float",
+	  "description": "Recommended wind system size",
+	  "units": "kW"
+	},
+	"average_yearly_energy_produced_kwh": {
+	  "type": "float",
+	  "description": "Average energy produced by the wind system over one year",
+	  "units": "kWh"
+	},
+	"average_yearly_energy_exported_kwh": {
+	  "type": "float",
+	  "description": "Average annual energy exported by the wind system",
+	  "units": "kWh"
+	},
+	"year_one_energy_produced_kwh": {
+	  "type": "float",
+	  "description": "Wind energy produced in year one",
+	  "units": "kWh"
+	},
+	"year_one_power_production_series_kw": {
+	  "type": "list_of_float",
+	  "description": "Hourly wind resource",
+	  "units": "kW"
+	},
+	"year_one_to_battery_series_kw": {
+	  "type": "list_of_float",
+	  "description": "Year one wind to battery time series",
+	  "units": "kW"
+	},
+	"year_one_to_load_series_kw": {
+	  "type": "list_of_float",
+	  "description": "Year one wind to load time series",
+	  "units": "kW"
+	},
+	"year_one_to_grid_series_kw": {
+	  "type": "list_of_float",
+	  "description": "Year one wind to grid time series",
+	  "units": "kW"
+	 }
+        },
         "Storage": {
           "size_kw": {
             "description": "Optimal battery power capacity",
@@ -1552,7 +1593,7 @@ var recursiveBuildReadTable = function(input_definitions, indent, table){
 
     var key_name = defKeys[i]
     
-    if (key_name[0]===key_name[0].toUpperCase() && key_name!= 'Wind' ){
+    if (key_name[0]===key_name[0].toUpperCase()){
       subdirectories.push(key_name)
     }
   }
