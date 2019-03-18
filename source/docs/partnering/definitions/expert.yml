@@ -53,7 +53,13 @@ experts_response:
       $ref: "./metadata.yml#/errors"
     resultset:
       type: object
-      $ref: "#/experts"
+      properties:
+        count:
+          type: integer
+          example: 20
+        result:
+          type: object
+          $ref: "#/experts"
 expert_response:
   type: object
   properties:

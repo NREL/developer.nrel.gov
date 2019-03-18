@@ -18,6 +18,34 @@ paths:
   /experts:
     get:
       summary: Returns a list of national laboratory experts
+      parameters:
+      - in: query
+        name: lab_alias
+        type: string
+        enum:
+          - ames
+          - anl
+          - bnl
+          - fnal
+          - inl
+          - kcnsc
+          - lanl
+          - lbnl
+          - llnl
+          - netl
+          - nrel
+          - ornl
+          - pantex
+          - pnnl
+          - pppl
+          - slac
+          - snl
+          - srnl
+          - tjnaf
+          - y12
+
+        required: false
+        description: National laboratory alias, when not specified all experts are returnd from all labs
       responses:
         200:
           description: Successful request
