@@ -1,0 +1,47 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: Patent APIs
+  description: |-
+    A collection of APIs providing data about national laboratorty patents related to associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
+schemes:
+  - https
+basePath: /api/lps/v1
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: query
+security:
+  - api_key: []
+paths:
+  /patents:
+    get:
+      summary: Returns a list of all national laboratory patents
+      responses:
+        200:
+          description: Successful request
+          schema:
+            $ref: "#/definitions/patents_response"
+  /patents/{patent_number}:
+    get:
+      summary: Returns detailed information about a national laboratory patent
+      parameters:
+      - in: path
+        name: patent_number
+        schema:
+          type: string
+        required: true
+        description: Number of the national laboratory patent to get
+      responses:
+        200:
+          description: Successful request
+          schema:
+            $ref: "#/definitions/patent_response"
+definitions:
+  patent_response:
+    type: object
+    $ref: "../definitions/patent.yml#/patent_response"
+  patents_response:
+    type: object
+    $ref: "../definitions/patent.yml#/patents_response"
