@@ -1,0 +1,177 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: Lab Innovation APIs
+  description: |-
+    A collection of APIs providing data related to energy technologies, experts, and patents associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
+schemes:
+  - https
+basePath: /api/lps/v1
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: query
+security:
+  - api_key: []
+paths:
+  /marketing_summaries:
+    get:
+      summary: Returns a list of marketing summaries
+      parameters:
+        - name: tech_type
+          in: query
+          type: string
+          description: Optional.  Choose from `advanced-materials, biomass-and-biofuels, building-energy-efficiency, electricity-transmission,
+                       energy-analysis, energy-storage, geothermal, hydrogen-and-fuel-cell, hydropower-wave-and-tidal, industrial-technologies,
+                       solar-photovoltaic, solar-thermal, vehicles-and-fuels, wind-energy`
+          enum:
+            - advanced-materials
+            - biomass-and-biofuels
+            - building-energy-efficiency
+            - electricity-transmission
+            - energy-analysis
+            - energy-storage
+            - geothermal
+            - hydrogen-and-fuel-cell
+            - hydropower-wave-and-tidal
+            - industrial-technologies
+            - solar-photovoltaic
+            - solar-thermal
+            - vehicles-and-fuels
+            - wind-energy
+      responses:
+          "200":
+            description: Successful request
+            schema:
+              $ref: "#/definitions/marketing_summaries"
+definitions:
+  marketing_summaries:
+    properties:
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0
+      inputs:
+        type: object
+        properties:
+          tech_type:
+            type: string
+            example: advanced-materials
+      errors:
+        type: array
+        items:
+          type: string
+          example:
+      resultset:
+        type: object
+        properties:
+          count:
+            type: number
+            example: 547
+          result:
+            type: array
+            items:
+              properties:
+                uuid:
+                  type: string
+                  example: 243e2911-3e43-40ba-b08b-418b21d23d38
+                tech_market_sector:
+                  type: array
+                  items:
+                    type: string
+                    example: Advanced Materials, Energy Analysis
+                lab:
+                  type: object
+                  properties:
+                    uuid:
+                      type: string
+                      example: 41665339-db90-4067-8f1a-e93567208f39
+                    name:
+                      type: string
+                      example: Ames Laboratory
+                    tto_url:
+                      type: string
+                      example: http://www.techtransfer.iastate.edu/
+                    contact_us_email:
+                      type: string
+                      example: contactus@iastate.edu
+                    avatar:
+                      type: string
+                      example: developer.nrel.gov/labs/41665339-db90-4067-8f1a-e93567208f39/avatar_uuid
+                    links:
+                      type: object
+                      properties:
+                        self:
+                          type: string
+                          example: developer.nrel.gov/api/v1/labs/41665339-db90-4067-8f1a-e93567208f39
+                title:
+                  type: string
+                  example: Microscope for Simultaneous Single Molecule AFM and Fluorescence Measurements
+                summary:
+                  type: string
+                  example: "<div>\r\n\t&nbsp;</div>\r\n<div>\r\n\tIowa State University and Ames Laboratory researchers have developed an integrated single molecule atomic force fluorescence microscope (smAFM-FM) that can perform multiple single molecule measurements.</div>\r\n<div>\r\n\t&nbsp;</div>\r\n<div>\r\n\tProof of concept has been demonstrated using the smAFM-FM instrument to measure force-dependent optical properties of nano-scale objects, and ISU is seeking commercialization partners for this technology.</div>\r\n"
+                description:
+                  type: string
+                  example: "<div>\r\n\t&nbsp;</div>\r\n<div>\r\n\tSingle molecule fluorescence resonance energy Transfer (FRET) and single molecule force measurements using atomic force microscope (AFM) are two widely used and powerful techniques that have advanced research in the biological sciences. However each of these techniques suffers from limitations in terms of the types of single molecule measurements they can perform.&nbsp; For instance, it is difficult to examine structural changes in molecules as they interact using a stand-alone AFM, while when using FRET alone, it is difficult to monitor optical changes in materials when forces are applied.&nbsp; To overcome these limitations, ISU and Ames Laboratory researchers have developed a microscope that combines a single molecule AFM-FRET approach to study molecules and nanoscale objects.&nbsp; This new instrument enables multiple single molecule measurements, including AFM-FRET intensity and lifetime measurements, AFM-fluorescence intensity and spectral measurements, AFM-photon antibunching experiments, and AFM-Raman measurements.&nbsp; The smAFM-FM has potential applications for life science research (such as determining the structure and dynamics of molecular interactions of biomolecules), drug discovery (such as direct observation of drug delivery and drug-target interactions in vitro and in cells or tissues), characterization of the optical properties of nanomaterials such as nanowires, semiconductor nanocrystals, nanotubes, etc., material science, and the optical MEMs industry (design of optical switches, pressure sensors, disk-drive, heads and biosensors). The utility of the smAFM-FM has been demonstrated by measuring the force dependence of the optical properties of CdS/CdSe tetrapod, an important semiconductor nanocrystal.</div>\r\n"
+                benefits:
+                  type: string
+                  example:
+                applications_and_industries:
+                  type: string
+                  example: "&bull;Capacitive deionization electrode material for desalination of large volumes of water <br />&bull;Supercapacitor electrode material, separations material, battery electrode material, catalyst support"
+                visibility:
+                  type: string
+                  example:
+                development_stage:
+                  type: string
+                  example: Prototype
+                publication_link:
+                  type: string
+                  example:
+                expert:
+                  type: object
+                  properties:
+                    uuid:
+                      type: string
+                      example: e1a934bf-5eb0-4fb6-8771-2a21ca3dfc9d
+                    first_name:
+                      type: string
+                      example: Som
+                    last_name:
+                      type: string
+                      example: Shrestha
+                    avatar:
+                      type: string
+                      example: developer.nrel.gov/experts/e1a934bf-5eb0-4fb6-8771-2a21ca3dfc9d/avatar
+                    links:
+                      type: object
+                      properties:
+                        self:
+                          type: string
+                          example: developer.nrel.gov/api/v1/experts/e1a934bf-5eb0-4fb6-8771-2a21ca3dfc9d
+                created_at:
+                  type: string
+                  example: "2010-01-27T15:32:25.000Z"
+                updated_at:
+                  type: string
+                  example: "2017-12-05T13:59:59.000Z"
+                patents:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      number:
+                        type: string
+                        example: 9472702
+                      title:
+                        type: string
+                        example: Photovoltaic cell with nano-patterned substrate
+                      granted_on:
+                        type: string
+                        example: 2016-10-18
+                      abstract:
+                        type: string
+                        example: A photovoltaic solar cell comprises a nano-patterned substrate layer. A plurality of nano-windows are etched into an intermediate substrate layer to form the nano-patterned substrate layer. The nano-patterned substrate layer is positioned between an n-type semiconductor layer composed of an n-type semiconductor material and a p-type semiconductor layer composed of a p-type semiconductor material. Semiconductor material accumulates in the plurality of nano-windows, causing a plurality of heterojunctions to form between the n-type semiconductor layer and the p-type semiconductor layer.

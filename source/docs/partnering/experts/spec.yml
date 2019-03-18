@@ -1,0 +1,47 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: Expert APIs
+  description: |-
+    A collection of APIs providing data about national laboratorty experts related to associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
+schemes:
+  - https
+basePath: /api/lps/v1
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: query
+security:
+  - api_key: []
+paths:
+  /experts:
+    get:
+      summary: Returns a list of national laboratory experts
+      responses:
+        200:
+          description: Successful request
+          schema:
+            $ref: "#/definitions/experts_response"
+  /experts/{expert_uuid}:
+    get:
+      summary: Returns detailed information about a national laboratory expert
+      parameters:
+      - in: path
+        name: expert_uuid
+        schema:
+          type: string
+        required: true
+        description: UUID of the national laboratory expert to get
+      responses:
+        200:
+          description: Successful request
+          schema:
+            $ref: "#/definitions/expert_response"
+definitions:
+  expert_response:
+    type: object
+    $ref: "../definitions/expert.yml#/expert_response"
+  experts_response:
+    type: object
+    $ref: "../definitions/expert.yml#/experts_response"

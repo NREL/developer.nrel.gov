@@ -1,0 +1,17 @@
+metadata:
+  type: object
+  properties:
+    version:
+      type: string
+      example: 1.0
+#inputs:
+#  type: object
+#  properties:
+#    uuid:
+#      type: string
+#      example: facca896-d97c-4a47-8260-7e75539f4010
+errors:
+  type: array
+  items:
+    type: string
+    example:
