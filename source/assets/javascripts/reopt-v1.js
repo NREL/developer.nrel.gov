@@ -615,27 +615,27 @@ var nested_input_definitions = {
         }
       },
       "Wind": {
-	"size_class": {
-          "type": "str",
-          "restrict_to": "['residential', 'commercial', 'medium', 'large']",
-          "description": "Turbine size-class. One of [residential, commercial, medium, large]"
-        },
-        "wind_meters_per_sec": {
-          "type": "list_of_float",
-          "description": "Data downloaded from Wind ToolKit for modeling wind turbine."
-        },
-        "wind_direction_degrees": {
-          "type": "list_of_float",
-          "description": "Data downloaded from Wind ToolKit for modeling wind turbine."
-        },
-        "temperature_celsius": {
-          "type": "list_of_float",
-          "description": "Data downloaded from Wind ToolKit for modeling wind turbine."
-        },
-        "pressure_atmospheres": {
-          "type": "list_of_float",
-          "description": "Data downloaded from Wind ToolKit for modeling wind turbine."
-        },
+    	"size_class": {
+              "type": "str",
+              "restrict_to": ['residential', 'commercial', 'medium', 'large'],
+              "description": "Turbine size-class. One of residential, commercial, medium, large"
+            },
+            "wind_meters_per_sec": {
+              "type": "list_of_float",
+              "description": "Data downloaded from Wind ToolKit for modeling wind turbine."
+            },
+            "wind_direction_degrees": {
+              "type": "list_of_float",
+              "description": "Data downloaded from Wind ToolKit for modeling wind turbine."
+            },
+            "temperature_celsius": {
+              "type": "list_of_float",
+              "description": "Data downloaded from Wind ToolKit for modeling wind turbine."
+            },
+            "pressure_atmospheres": {
+              "type": "list_of_float",
+              "description": "Data downloaded from Wind ToolKit for modeling wind turbine."
+            },
         "min_kw": {
           "type": "float",
           "min": 0,
@@ -668,8 +668,8 @@ var nested_input_definitions = {
           "type": "int",
           "restrict_to": [0,
             5,
-            7,
-	   ]
+            7
+	       ],
           "default": 5,
           "description": "MACRS schedule for financial analysis. Set to zero to disable"
         },
@@ -1349,6 +1349,7 @@ var tableValueCell = function(def) {
   }
 
   if ( def.hasOwnProperty("restrict_to") ) {
+    console.log(def)
     var options_string = $("<span>").html(" <br> <strong class='doc-parameters-value-field'>Options: </strong> <em>"+def["restrict_to"].join(', ')+"</em>")
     output.append(options_string)
   }
