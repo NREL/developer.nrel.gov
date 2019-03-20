@@ -1349,7 +1349,6 @@ var tableValueCell = function(def) {
   }
 
   if ( def.hasOwnProperty("restrict_to") ) {
-    console.log(def)
     var options_string = $("<span>").html(" <br> <strong class='doc-parameters-value-field'>Options: </strong> <em>"+def["restrict_to"].join(', ')+"</em>")
     output.append(options_string)
   }
