@@ -15,7 +15,7 @@ paths:
         - "$ref": "#/parameters/OutputFormat"
         - "$ref": "#/parameters/ApiKey"
         - in: query
-          description: Return only fuels associated with current light duty automobiles 
+          description: Return only fuels associated with current light-duty automobiles
           name: current_light_duty
           required: false
           type: boolean
@@ -25,7 +25,7 @@ paths:
           required: false
           type: boolean
         - in: query
-          description: Return only fuels associated with current light duty automobiles and
+          description: Return only fuels associated with current light-duty automobiles and
             current heavy-duty vehicles
           name: current
           required: false
@@ -94,16 +94,16 @@ paths:
         - "$ref": "#/parameters/ApiKey"
         - in: query
           name: fuel_id
-          description: Return only heavy-duty engines associated with the fuel id(s) provided.  A single id or
-            a comma-separated list of multiple ids may be given.
+          description: Return only heavy-duty engines associated with the fuel ID(s) provided.  A single ID or
+            a comma-separated list of multiple column may be given.
           type: array
           collectionFormat: csv
           items:
             type: integer
         - in: query
           name: manufacturer_id
-          description: Return only heavy-duty engines associated with the manufacturer id(s) provided.  A single
-            id or a comma-separated list of multiple ids may be given.
+          description: Return only heavy-duty engines associated with the manufacturer ID(s) provided.  A single
+            ID or a comma-separated list of multiple IDs may be given.
           type: array
           collectionFormat: csv
           items:
@@ -167,16 +167,16 @@ paths:
         - "$ref": "#/parameters/ApiKey"
         - in: query
           name: fuel_id
-          description: Return only heavy-duty hybrid/conversion systems associated with the fuel id(s) provided.  A single id or
-            a comma-separated list of multiple ids may be given.
+          description: Return only heavy-duty hybrid/conversion systems associated with the fuel ID(s) provided.  A single ID or
+            a comma-separated list of multiple IDs may be given.
           type: array
           collectionFormat: csv
           items:
             type: integer
         - in: query
           name: manufacturer_id
-          description: Return only heavy-duty hybrid/conversion systems  associated with the manufacturer id(s) provided.  A single
-            id or a comma-separated list of multiple ids may be given.
+          description: Return only heavy-duty hybrid/conversion systems  associated with the manufacturer ID(s) provided.  A single
+            ID or a comma-separated list of multiple IDs may be given.
           type: array
           collectionFormat: csv
           items:
@@ -310,24 +310,24 @@ paths:
         - "$ref": "#/parameters/ApiKey"
         - in: query
           name: manufacturer_id
-          description: Return only heavy-duty vehicles associated with the manufacturer id(s) provided.  A single
-            id or a comma-separated list of multiple ids may be given
+          description: Return only heavy-duty vehicles associated with the manufacturer ID(s) provided.  A single
+            ID or a comma-separated list of multiple IDs may be given
           type: array
           collectionFormat: csv
           items:
             type: integer
         - in: query
           name: category_id
-          description: Return only heavy-duty vehicles associated with the vehicle category id(s) provided.  A single
-            id or a comma-separated list of multiple ids may be given
+          description: Return only heavy-duty vehicles associated with the vehicle category ID(s) provided.  A single
+            ID or a comma-separated list of multiple IDs may be given
           type: array
           collectionFormat: csv
           items:
             type: integer
         - in: query
           name: fuel_id
-          description:  Return only heavy-duty vehicles associated with the fuel id(s) provided.  A single id or
-            a comma-separated list of multiple ids may be given
+          description:  Return only heavy-duty vehicles associated with the fuel ID(s) provided.  A single ID or
+            a comma-separated list of multiple IDs may be given
           type: array
           collectionFormat: csv
           items:
@@ -394,16 +394,16 @@ paths:
           type: boolean
         - in: query
           name: category_id
-          description: Return only light-duty automobiles associated with the vehicle category id(s) provided.  A single
-            id or a comma-separated list of multiple ids may be given
+          description: Return only light-duty automobiles associated with the vehicle category ID(s) provided.  A single
+            ID or a comma-separated list of multiple IDs may be given
           type: array
           collectionFormat: csv
           items:
             type: integer
         - in: query
           name: fuel_id
-          description:  Return only light-duty automobiles associated with the fuel id(s) provided.  A single id or
-            a comma-separated list of multiple ids may be given
+          description:  Return only light-duty automobiles associated with the fuel ID(s) provided.  A single ID or
+            a comma-separated list of multiple IDs may be given
           type: array
           collectionFormat: csv
           items:
@@ -418,8 +418,8 @@ paths:
             type: integer
         - in: query
           name: manufacturer_id
-          description: Return only light-duty automobiles associated with the manufacturer id(s) provided.  A single
-            id or a comma-separated list of multiple ids may be given
+          description: Return only light-duty automobiles associated with the manufacturer ID(s) provided.  A single
+            ID or a comma-separated list of multiple IDs may be given
           type: array
           collectionFormat: csv
           items:
@@ -623,8 +623,8 @@ paths:
           type: boolean
         - in: query
           name: category_id
-          description: Return only vehicles associated with the vehicle category id(s) provided.  A single
-            id or a comma-separated list of multiple ids may be given
+          description: Return only vehicles associated with the vehicle category ID(s) provided.  A single
+            ID or a comma-separated list of multiple IDs may be given
           required: false
           type: array
           collectionFormat: csv
@@ -632,8 +632,8 @@ paths:
             type: integer
         - in: query
           name: fuel_id
-          description: Return only vehicles associated with the fuel id(s) provided.  A single id or
-            a comma-separated list of multiple ids may be given
+          description: Return only vehicles associated with the fuel ID(s) provided.  A single ID or
+            a comma-separated list of multiple IDs may be given
           required: false
           type: array
           collectionFormat: csv
@@ -641,8 +641,8 @@ paths:
             type: integer
         - in: query
           name: manufacturer_id
-          description: Return only vehicles associated with the manufacturer id(s) provided.  A single
-            id or a comma-separated list of multiple ids may be given
+          description: Return only vehicles associated with the manufacturer ID(s) provided.  A single
+            ID or a comma-separated list of multiple IDs may be given
           required: false
           type: array
           collectionFormat: csv
@@ -700,7 +700,7 @@ paths:
                 "$ref": "#/definitions/Status"
               result:
                 type: array
-                description: The array of light-duty manufacturers returned
+                description: The array of vehicle categories returned
                 items:
                   "$ref": "#/definitions/VehicleCategoryResponse"
   "/v1/vehicle_categories/{id}.{output_format}":
@@ -765,7 +765,7 @@ parameters:
     default: DEMO_KEY
   Id:
     in: path
-    description: The id being searched
+    description: The ID being searched
     name: id
     required: true
     type: integer
@@ -839,7 +839,7 @@ definitions:
         description: A true or false value to show if the fuel has associated conversion or hybrid systems
       has_light_duty_automobiles?:
         type: boolean
-        description: A true or false values to show if the fuel has associated light duty automobiles
+        description: A true or false values to show if the fuel has associated light-duty automobiles
       sort:
         type: integer
         description: Sort order for the fuel
@@ -866,7 +866,7 @@ definitions:
         description: A true or false value to show if the fuel has associated conversion or hybrid systems
       has_light_duty_automobiles?:
         type: boolean
-        description: A true or false value to show if the fuel has associated light duty automobiles
+        description: A true or false value to show if the fuel has associated light-duty automobiles
       sort:
         type: integer
         description: Sort order for the fuel
@@ -903,7 +903,7 @@ definitions:
         description: An array of unique identifiers for associated heavy-duty chassis
       heavy_duty_engine_origin_name:
         type: string
-        description: Heavy duty engine origin - original equipment manufacturer or conversion
+        description: The heavy-duty engine origin (e.g., original equipment manufacturer or conversion).
       heay_duty_engine_origin_id:
         type: integer
         description: A unique identifier for the associated heavy-duty engine origin
@@ -921,7 +921,7 @@ definitions:
         description: A unique identifier for the associated heavy-duty engine fuel configuration
       fuels:
         type: array
-        description: A list of fuels associated to the heavy-duty engine
+        description: A list of fuels associated with the heavy-duty engine
         items:
           "$ref": "#/definitions/Fuel"
       heavy_duty_emission_certifications:
@@ -931,7 +931,7 @@ definitions:
           "$ref": "#/definitions/HeavyDutyEmissionCertification"
       heavy_duty_vehicles:
         type: array
-        description: A list of heavy-duty vehicles associated to the heavy-duty engine
+        description: A list of heavy-duty vehicles associated with the heavy-duty engine
         items:
           "$ref": "#/definitions/HeavyDutyVehicleForEnginesAndHybrids"
   HeavyDutyHybridResponse:
@@ -997,13 +997,13 @@ definitions:
         description: The name of the manufacturer of the heavy-duty vehicle
       num_passengers:
         type: string
-        description: The seating capacity of the heavy-duty vehicle
+        description: The maximum number of passengers that a bus can accommodate
       description:
         type: string
         description: Details about the heavy-duty vehicle
       fuels:
         type: array
-        description: A list of fuels associated to the heavy-duty vehicle
+        description: A list of fuels associated with the heavy-duty vehicle
         items:
           "$ref": "#/definitions/Fuel"
       heavy_duty_power_systems:
@@ -1033,7 +1033,7 @@ definitions:
         description: The manufacturer of the transmission for the heavy-duty vehicle
       num_passengers:
         type: string
-        description: The seating capacity of the heavy-duty vehicle
+        description: The maximum number of passengers that a bus can accommodate
       photo_url:
         type: string
         description: The url for the image file of the heavy-duty vehicle
@@ -1122,7 +1122,7 @@ definitions:
               description: A unique identifier for the heavy-duty hybrid/conversion system
             model:
               type: string
-              description: The model of the Heavy duty hybrid/conversion system
+              description: The model of the heavy-duty hybrid/conversion system
             heavy_duty_manufacturer_name:
               type: string
               description: The name of the heavy-duty hybrid/conversion system's manufacturer
@@ -1134,7 +1134,7 @@ definitions:
         description: A unique identifier for the emission certification
       name:
         type: string
-        description: The name of the heavy-duty emission certification
+        description: The name of the emission certification
   VehicleCategoryResponse:
     description: This is a vehicle category
     properties:
@@ -1540,7 +1540,7 @@ definitions:
             description: The manufacturer of the transmission for the heavy-duty vehicle
           num_passengers:
             type: string
-            description: The seating capacity of the heavy-duty vehicle
+            description: The maximum number of passengers that a bus can accommodate
           photo_url:
             type: string
             description: The url for the image file of the heavy-duty vehicle
