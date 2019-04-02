@@ -1,4 +1,4 @@
-FROM ruby:2.4.1
+FROM ruby:2.6.2
 
 RUN mkdir -p /app
 WORKDIR /app
