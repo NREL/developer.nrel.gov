@@ -17,9 +17,6 @@
 /.sass-cache
 /.cache
 
-# Ignore .DS_store file
-.DS_Store
-
 # Ignore environment specific configuration
 /.env
 /.env.*
@@ -36,6 +33,3 @@
 
 # NPM
 /node_modules
-
-# IDEs
-.idea
