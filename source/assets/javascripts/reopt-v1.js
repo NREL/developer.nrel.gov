@@ -911,6 +911,126 @@ var nested_input_definitions = {
             "blended_monthly_rates_us_dollars_per_kwh"
           ]
         },
+        "energyweekdayschedule": {
+          "replacement_sets": [
+            [
+              "urdb_response"
+            ],
+            [
+              "urdb_label"
+            ],
+            [
+              "urdb_utility_name",
+              "urdb_rate_name"
+            ]
+          ],
+          "type": "list_of_lists",
+          "description": "Tiered energy usage charge structure weekday schedule. Value is an array of arrays. The 12 top-level arrays correspond to a month of the year. Each month array contains one integer per hour of the weekday from 12am to 11pm, and the integer corresponds to the index of a period in energyratestructure.",
+          "depends_on": [
+            "energyratestructure",
+            "energyweekendschedule"
+          ]
+        },
+        "energyweekendschedule": {
+          "replacement_sets": [
+            [
+              "urdb_response"
+            ],
+            [
+              "urdb_label"
+            ],
+            [
+              "urdb_utility_name",
+              "urdb_rate_name"
+            ]
+          ],
+          "type": "list_of_lists",
+          "description": "Tiered energy usage charge structure weekday schedule. Value is an array of arrays. The 12 top-level arrays correspond to a month of the year. Each month array contains one integer per hour of the weekday from 12am to 11pm, and the integer corresponds to the index of a period in energyratestructure.",
+          "depends_on": [
+            "energyratestructure",
+            "energyweekdayschedule"
+          ]
+        },
+        "energyratestructure": {
+          "replacement_sets": [
+            [
+              "urdb_response"
+            ],
+            [
+              "urdb_label"
+            ],
+            [
+              "urdb_utility_name",
+              "urdb_rate_name"
+            ]
+          ],
+          "type": "list_of_lists",
+          "description": "Time of use energy charge structure. Value is an array of arrays. Each element in the top-level array corresponds to one period (see demandweekdayschedule and demandweekendschedule) and each array element within a period corresponds to one tier. Indices are zero-based and correspond with demandweekdayschedule and/or demandweekendschedule entries: [[{'max':(Tier 1 max),'rate':(Tier 1 rate)}, {'max':(Tier 2 max),'rate':(Tier 2 rate)}...],...]. Max and rate values must be decimal.",
+          "depends_on": [
+            "energyweekdayschedule",
+            "energyweekendschedule"
+          ]
+        },
+        "demandweekdayschedule": {
+          "replacement_sets": [
+            [
+              "urdb_response"
+            ],
+            [
+              "urdb_label"
+            ],
+            [
+              "urdb_utility_name",
+              "urdb_rate_name"
+            ]
+          ],
+          "type": "list_of_lists",
+          "description": "Time of use demand charge structure weekday schedule. Value is an array of arrays. The 12 top-level arrays correspond to a month of the year. Each month array contains one integer per hour of the weekday from 12am to 11pm, and the integer corresponds to the index of a period in demandratestructure.",
+          "depends_on": [
+            "demandratestructure",
+            "demandweekendschedule"
+          ]
+        },
+        "demandweekendschedule": {
+          "replacement_sets": [
+            [
+              "urdb_response"
+            ],
+            [
+              "urdb_label"
+            ],
+            [
+              "urdb_utility_name",
+              "urdb_rate_name"
+            ]
+          ],
+          "type": "list_of_lists",
+          "description": "Time of use demand charge structure weekend schedule. Value is an array of arrays. The 12 top-level arrays correspond to a month of the year. Each month array contains one integer per hour of the weekday from 12am to 11pm, and the integer corresponds to the index of a period in demandratestructure.",
+          "depends_on": [
+            "demandratestructure",
+            "demandweekdayschedule"
+          ]
+        },
+        "demandratestructure": {
+          "replacement_sets": [
+            [
+              "urdb_response"
+            ],
+            [
+              "urdb_label"
+            ],
+            [
+              "urdb_utility_name",
+              "urdb_rate_name"
+            ]
+          ],
+          "type": "list_of_lists",
+          "description": "Time of use demand charge structure. Value is an array of arrays. Each element in the top-level array corresponds to one period (see demandweekdayschedule and demandweekendschedule) and each array element within a period corresponds to one tier. Indices are zero-based and correspond with demandweekdayschedule and/or demandweekendschedule entries: [[{'max':(Tier 1 max),'rate':(Tier 1 rate)}, {'max':(Tier 2 max),'rate':(Tier 2 rate)}...],...]. Max and rate values must be decimal.",
+          "depends_on": [
+            "demandweekendschedule",
+            "demandweekdayschedule"
+          ]
+        },
         "urdb_utility_name": {
           "replacement_sets": [
             [
