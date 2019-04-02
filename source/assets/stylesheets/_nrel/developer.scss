@@ -2,29 +2,64 @@ h1 {
   margin-bottom: 0px;
 }
 
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row-eq-height [class*="col-"] {
+  margin-bottom: 1em;
+}
+
+@media (min-width: $screen-sm-min) {
+  .row-eq-height [class*="col-sm-"] {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  .row-eq-height [class*="col-md-"] {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  .row-eq-height [class*="col-lg-"] {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .feature {
   background-color: #f7f7f7;
   background-repeat: no-repeat;
-  background-position: 210px 120px;
+  background-position: 100% 100%;
 
   border: 1px solid #ddd;
   border-radius: 6px;
 
   padding: 6px 8px;
-
-  height: 210px;
+  height: 100%;
 }
 
 .feature-doc {
   background-image: url('/assets/images/nrel/features/doc.png');
+  background-position: calc(100% + 50px) calc(100% + 50px);
 }
 
 .feature-key {
   background-image: url('/assets/images/nrel/features/key.png');
+  background-position: calc(100% + 15px) calc(100% + 15px);
 }
 
 .feature-community {
   background-image: url('/assets/images/nrel/features/community.png');
+  background-position: calc(100% + 10px) calc(100% + 10px);
 }
 
 h2 {
