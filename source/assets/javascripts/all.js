@@ -1,4 +1,5 @@
 //= require jquery/jquery.js
+//= require bootstrap
 //= require _vendor/jquery.tableofcontents.js
 //= require swagger-ui/swagger-ui-bundle
 //= require swagger-ui/swagger-ui-standalone-preset
