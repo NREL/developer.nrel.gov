@@ -1,13 +1,13 @@
 <% unless(current_page.data.disable_breadcrumbs) %>
   <% crumbs = breadcrumbs_trail %>
   <% if(crumbs.length > 1) %>
-    <ol class="breadcrumb container">
+    <ol class="breadcrumb">
       <% crumbs.each_with_index do |page, index| %>
         <% if(page) %>
           <% if(current_page.url == page.url) %>
-            <li class="active"><%= page.data.title %></li>
+            <li class="breadcrumb-item active"><%= page.data.title %></li>
           <% else %>
-            <li><%= link_to(page.data.title, page) %></li>
+            <li class="breadcrumb-item"><%= link_to(page.data.title, page) %></li>
           <% end %>
         <% end %>
       <% end %>

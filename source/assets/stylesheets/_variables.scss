@@ -1,4 +1,4 @@
-$font-size-base: 13px;
+$font-size-base: 0.8125rem;
 
 $font-family-sans-serif: Verdana, Arial, Helvetica, sans-serif;
 $text-color: #000;
@@ -21,4 +21,9 @@ $navbar-default-link-active-bg: $navbar-default-link-hover-bg;
 
 $btn-primary-bg: #08c;
 
-$container-large-desktop: (1000px + 30px);
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1030px
+)

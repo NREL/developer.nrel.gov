@@ -7,12 +7,8 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
 
 <%= javascript_include_tag("reopt-v1") %>
 
-<body><div class="container">
+<h1>REopt Lite™ API (Version 1)</h1>
 
-<div class="row">
-    <h1>REopt Lite™ API (Version 1)</h1>
-    <div class="col col-0.5"></div>
-    <div class="col col-xs-12 ">
     <p>
     The REopt Lite™ API recommends an optimal mix of renewable energy, conventional generation, and energy storage technologies to meet cost savings and energy performance goals, including the hourly optimal operation of the system. In addition to this API, the <a target='_blank' href='https://reopt.nrel.gov/tool'>REopt Lite™ Tool</a> provides an interface for interactively setting up input parameters. <a target='_blank' href='https://reopt.nrel.gov'>Click here</a> for more information about the REopt™ model.
     </p>
@@ -22,26 +18,25 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
     <p>
     For a step-by-step guide for calling the API using a python script, visit our <a href="https://github.com/NREL/REopt-API-Analysis">REopt API Analysis Repo</a>.
     </p>
-    </div>
-</div>
 
 
 
 <div class="row">
-    <div  class="col-xs-4 ">
+    <div  class="col-4 ">
     <ul id ="toc"></ul>
     </div>
 </div>
 
 
-<div id = "urls" class="row">
+<div id = "urls">
   <h2>Endpoints</h2><br>
-  <div class="col col-xs-12 " id="">
+  <div>
   <p>
       The REopt Lite™ API provides a total of seven endpoints, hosted from the base <em>developer.nrel.gov/api/reopt/</em>. The following are intended to provide reference information in creating a scenario to optimize:
-      <div class="col-xs-12">
+      <div>
       <br><b><em>v1/help</em></b><br>
-      <div class="col-xs-11 col-xs-offset-1">
+      <div class="row">
+      <div class="col-11 offset-1">
         Provides a JSON response detailing the input parameters, including data formats, limitation onn acceptable ranges, and dependencies with related parameters. <br><br>
         Query parameters include:
           <ul>
@@ -51,9 +46,11 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
         Example:
         <pre><code>GET <em> https://developer.nrel.gov/api/reopt/v1/help?api_key={key}</em></code></pre>
       </div>
+      </div>
 
       <b><em>v1/invalid_urdb</em></b><br>
-      <div class="col-xs-11 col-xs-offset-1">
+      <div class="row">
+      <div class="col-11 offset-1">
         Provides a list of known invalid <a href="https://openei.org/wiki/Utility_Rate_Database" target="_blank">Utility Rate Database</a> labels, i.e. rates they may have incomplete information or cannot be modeled.<br><br>
         Query parameters include:
           <ul>
@@ -63,9 +60,11 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
         Example:
         <pre><code>GET <em> https://developer.nrel.gov/api/reopt/v1/invalid_urdb?api_key={key}</em></code></pre>
       </div>
+      </div>
 
       <b><em>v1/annual_kwh</em></b><br>
-      <div class="col-xs-11 col-xs-offset-1">
+      <div class="row">
+      <div class="col-11 offset-1">
         Provides the annual kWh consumed by a Department of Energy <a href="https://energy.gov/eere/buildings/commercial-reference-buildings" target="_blank">Commercial Reference Building</a>. These values are useful if you need a starting point for an unknown site load.<br><br>
 
         Query parameters include:
@@ -80,38 +79,47 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
         <pre><code>GET <em> https://developer.nrel.gov/api/reopt/v1/annual_kwh?api_key={key}&doe_reference_name=Hospital&latitude=40.123&longitude=-111.123</em></code></pre>
       </div>
       </div>
+      </div>
 
       The remaining endpoints facilitate posting a REopt™ analysis job, retrieving the results, downloading a proforma, and obtaining some statistics related to how long a given energy system can meet a site critical load during electrical outages:
       
-      <div class="col-xs-12">
+      <div>
 
       <br><b><em>v1/job</em></b><br>
-      <div class="col-xs-10 col-xs-offset-1">
+      <div class="row">
+      <div class="col-11 offset-1">
         Submit a job via a POST to this URL with optimization parameters in JSON format as defined in <a href="#input-definitions">Input Definitions</a> in the <b>Formatting and Posting a Job</b> section below. If the inputs are valid, then the API will return a <b>run_uuid</b> that can be used to access results, the proforma, and resilience statistics.<br><br>
+      </div>
       </div>
 
       <b><em>v1/job/&lt;run_uuid&gt;/results</em></b><br>
-      <div class="col-xs-10 col-xs-offset-1">
+      <div class="row">
+      <div class="col-11 offset-1">
         Returns status of the job and results when they are ready in JSON format. For more information, see the <a href="#ResultsURLsection">Getting Results</a> section below.<br><br>
+      </div>
       </div>
 
       <b><em>v1/job/&lt;run_uuid&gt;/proforma</em></b><br>
-      <div class="col-xs-10 col-xs-offset-1">
+      <div class="row">
+      <div class="col-11 offset-1">
         Returns a spreadsheet proforma in Excel format. Access this endpoint in a browser to automatically download the file.<br><br>
+      </div>
       </div>
 
       <b><em>v1/job/&lt;run_uuid&gt;/resilience_stats</em></b><br>
-        <div class="col-xs-10 col-xs-offset-1">
+      <div class="row">
+        <div class="col-11 offset-1">
           Returns descriptive statistics of resilience metrics explaining how long the system can function during outages.
+      </div>
       </div>
       </div>
   </p>
 
 </div>
 
-<div id = "InputFormatsection" class="row">
+<div id = "InputFormatsection">
   <h2>User Workflow</h2><br>
-  <div class="col col-xs-12 " id="">
+  <div>
   <p>
   To use this API, create a REopt™ analysis job by posting a set input parameters in JSON format as described <a href="#input-definitions">below</a> to the <em>v1/job</em> endpoint along with your API key.<br><br>
   At the time of job submission, a REopt™ analysis is scheduled and its unique identifer is returned as the API response. To check on the job status, the job identifier is submitted to the <em>v1/job/&lt;run_uuid&gt;/results</em> endpoint (where the &lt;run_uuid&gt; is the response from the job creation POST). If the task has completed, the status indicator (found in the outputs > Scenario > status response) will read 'optimal' and the results will be returned. Otherwise, the status indicator will note that the job is still in process or has encountered errors. <br><br>
@@ -121,25 +129,29 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
   <p>Note, an <a href="/signup/">API key</a> is required on all API requests. See <a href="/docs/api-key/">API key usage</a> for more information.</p>
 
   <b>Creating a Job</b><br>
-  <div class="col-xs-10 col-xs-offset-1">
+  <div class="row">
+  <div class="col-11 offset-1">
     <pre><code>POST <em> https://developer.nrel.gov/api/reopt/v1/job?api_key={key}</em>
 
     -data {"Scenario":{"Site":{...}}}</code></pre>
   </div>
   </div>
+  </div>
 
-   <div class="col col-xs-12"><br>
+   <div><br>
   <b>Checking Results</b><br>
-  <div class="col-xs-10 col-xs-offset-1">
+  <div class="row">
+  <div class="col-11 offset-1">
     <pre><code>GET <em> https://developer.nrel.gov/api/reopt/v1/job/&lt;run_uuid&gt;/results?api_key={key}</em></code></pre>
+  </div>
   </div>
   </div>
 </div>
 
 
-<div id = "SubmissionURLsection" class="row">
+<div id = "SubmissionURLsection">
 <h2>Formatting and Posting a Job</h2><br>
-<div class="col col-xs-12 " id="">
+<div>
 
 
   <p>
@@ -154,7 +166,8 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
   Below is an example of a simple valid post that disables storage in the optimization: 
   </p>
   
-  <div class="col-xs-10 col-xs-offset-1">
+  <div class="row">
+  <div class="col-11 offset-1">
       <pre><code>{
  "Scenario": {
   "Site": {
@@ -176,49 +189,57 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
   }
 }</code></pre>
     </div>
+    </div>
 
-    <div class="col col-xs-12" id="input-definitions">
+    <div id="input-definitions">
   <h4>Modeling Resilience</h4>
   Note the REopt™ API can make system size recommendations such that a user defined outage can be survived. Define an outage duration, start time and end time in the LoadProfile directory to enable this capability. 
   </div>
 
 
-  <div class="row ">
-  <div class="col col-xs-12" id="input-definitions">
+  <div>
+  <div id="input-definitions">
   <h4>Input Definitions</h4>
   <p>The <em>v1/job</em> endpoint accepts a JSON in a nested directory structure that at the top level contains a <b>Scenario</b> key that maps to a set of attributes and subdirectories as described below. Pay attention to capitalization, data formats and interdependent attributes.</p>
   
-  <div id = "input_definition_table" class="col col-xs-12"></div>
+  <div id = "input_definition_table"></div>
   </div>
   </div>
   <h4>API Response</h4>
   
   <p>The <em>v1/job</em> endpoint replies with a JSON consisting of the unique identifier of the task that will optimize the scenario.</p>
-    <div class="col-xs-10 col-xs-offset-1"><pre>{"run_uuid":"667bf625-df6c-4fba-836c-a0165f247005" }</pre></div>
+  <div class="row">
+    <div class="col-11 offset-1"><pre>{"run_uuid":"667bf625-df6c-4fba-836c-a0165f247005" }</pre></div>
+  </div>
   </div>
 </div>
 
 
-<div id = "ResultsURLsection" class="row">
+<div id = "ResultsURLsection">
 <h2>Getting Results</h2><br>
 
-    <div class="col col-xs-12">
+    <div>
           <p>The <em>v1/job/&lt;run_uuid&gt;/results</em> endpoint replies to a GET request containing a query string specifying the run_uuid for which to retrieve results.</p>
-          <div class="col-xs-10 col-xs-offset-1"><pre>GET https://developer.nrel.gov/api/reopt/v1/job/667bf625-df6c-4fba-836c-a0165f247005/results</pre></div>
+          <div class="row">
+          <div class="col-11 offset-1"><pre>GET https://developer.nrel.gov/api/reopt/v1/job/667bf625-df6c-4fba-836c-a0165f247005/results</pre></div>
+          </div>
     </div>
 
   
   
-   <div class="col col-xs-12">
+   <div>
     <h4>API Response</h4>
     <p>If results are not ready, the <em>v1/job/&lt;run_uuid&gt;/results</em> endpoint will respond with the message shown below. The Scenario directory  will contain a 'status' designated as <em>Optimizing...</em>. The URL can be polled at regular intervals, without rate-limiting, until the status changes to 'optimal' indicating that results are ready.</p>
     </div>
-    <div class="col-xs-10 col-xs-offset-1"><pre>{"inputs":{...},"outputs":{"Scenario":{"status":"Optimizing...",...}},"messages":{...}}</pre></div>
+    <div class="row">
+    <div class="col-11 offset-1"><pre>{"inputs":{...},"outputs":{"Scenario":{"status":"Optimizing...",...}},"messages":{...}}</pre></div>
+    </div>
 
-  <div class="col-xs-12">
+  <div>
   <p>If results are ready, the Results URL returns a JSON containing <b>inputs</b>, <b>outputs </b> and <b> messages</b>. The Scenario directory will contain a 'status' designated as <em>optimal</em>.</p>
   </div>
-  <div class="col-xs-10 col-xs-offset-1 pre-scrollable"><pre>
+  <div class="row">
+  <div class="col-11 offset-1 pre-scrollable"><pre>
 {
   "outputs": {
         "Scenario": {
@@ -61738,24 +61759,26 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
 
 
   </pre></div>
+  </div>
 
   
-      <div class="col-xs-12">
+      <div>
       <h4>Inputs</h4>
       <p> Inputs follow the structure described previously in <a href="#input_definition_table">Input Definitions</a>.</p>
       </div>
 
-      <div class="col-xs-12">
+      <div>
       <h4>Outputs</h4>
       <p> Outputs resemble the nested input structure and contain the following directories and attributes:</p>
-      <div id = "output_definition_table" class="col col-xs-12 "></div>
+      <div id = "output_definition_table"></div>
       </div>
       
-      <div class="col-xs-12">
+      <div>
       <h4>Messages</h4>
       <p> The messages section contains a description of any errors in an 'error' key, if errors are encountered. Addtional 'warnings' and 'input_errors' keys may also exist that provide supplemental information.</p>
       
-      <div class="col-xs-10 col-xs-offset-1"><pre>"messages": {
+      <div class="row">
+      <div class="col-11 offset-1"><pre>"messages": {
       "error":"Invalid inputs. See 'input_errors'."
       "input_errors": [
               "Could not convert timeout_seconds (ONE) in Scenario to 'float'>"
@@ -61765,19 +61788,21 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
               "Scenario": "time_steps_per_hour AND timeout_seconds"}
             }
       }
-      </pre></div><br>
+        </pre></div></div><br>
       </div>
 </div>
 
 
-<div id = "ProformaURLsection" class="row">
+<div id = "ProformaURLsection">
 <h2>Downloading a Proforma</h2><br>
 
-    <div class="col col-xs-12">
+    <div>
           <p>The <em>v1/job/&lt;run_uuid&gt;/proforma</em> endpoint replies to a GET request. The URL must contain the run_uuid for which to retrieve the proforma spreadsheet and the api key as shown below. </p>
-          <div class="col-xs-10 col-xs-offset-1"><pre>GET https://developer.nrel.gov/api/reopt/v1/job/667bf625-df6c-4fba-836c-a0165f247005/proforma?api_key={key}</pre>
+          <div class="row">
+          <div class="col-11 offset-1"><pre>GET https://developer.nrel.gov/api/reopt/v1/job/667bf625-df6c-4fba-836c-a0165f247005/proforma?api_key={key}</pre>
+          </div>
     </div>
-    <div class="col col-xs-12">
+    <div>
     <h4>API Response</h4>
     The API will respond with an Excel file to download. Note that in a web browser this URL will trigger an automatic download of the file.
     </div>
@@ -61785,18 +61810,20 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
     </div>
 </div>
 
-<div id = "ResilienceURLsection" class="row">
+<div id = "ResilienceURLsection">
 <h2>Getting Resilience Statistics</h2><br>
 
-    <div class="col col-xs-12">
+    <div>
           <p>The <em>v1/job/&lt;run_uuid&gt;/resilience_stats</em> endpoint replies to a GET request. The URL must contain the run_uuid for which to retrieve the resilience statistics and the api key as follows.</p>
-          <div class="col-xs-10 col-xs-offset-1"><pre>GET https://developer.nrel.gov/api/reopt/v1/job/667bf625-df6c-4fba-836c-a0165f247005/proforma?api_key={key}</pre>
+          <div class="row">
+          <div class="col-11 offset-1"><pre>GET https://developer.nrel.gov/api/reopt/v1/job/667bf625-df6c-4fba-836c-a0165f247005/proforma?api_key={key}</pre>
+          </div>
     </div>
-     <div class="col col-xs-12">
+     <div>
       <h4>API Response</h4>
         The <em>v1/job/&lt;run_uuid&gt;/resilience_stats</em> endpoint responds with a JSON containing the following metrics :<br><br>
 
-        <table class="table table-striped row doc-parameters"><thead>
+        <table class="table table-striped doc-parameters"><thead>
         <tr><th width="1%">Parameter</th><th width="4%">Value</th><th width="8%">Description</th></tr></thead>
         <tbody>
           <tr><td><small><b>resilience_by_timestep</b></small></td><td><div><small><span> <strong class="doc-parameters-value-field">Type: </strong>list of float</span><br><span> <br> <strong class="doc-parameters-value-field">Units: </strong> hours</span></small></div></td><td style="word-wrap: break-word;"><span>List of hours survived for outages starting at corresponding time steps</span></td></tr>
@@ -61820,12 +61847,13 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
 </div>
 
 
-<div id = "ResultsURLsection" class="row">
+<div id = "ResultsURLsection">
   <h2>Example Workflow</h2><br>
   The following provides an example of the ordered requests and responses that occur in a successful workflow. 
-  <div class="col col-xs-12">
+  <div>
   <b><p>Creating a Job</p></b>
-  <div class="col-xs-10 col-xs-offset-1 pre-scrollable">
+  <div class="row">
+  <div class="col-11 offset-1 pre-scrollable">
       
       <pre>POST  https://developer.nrel.gov/api/reopt/v1/job?api_key={key}
 {
@@ -62050,26 +62078,32 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
     </pre>
   </div>
   </div>
+  </div>
   
-<div class="col col-xs-12">
+<div>
 <b><p>Recieve a Job ID</p></b>
-  <div class="col  col-xs-10 col-xs-offset-1">
+  <div class="row">
+  <div class="col-11 offset-1">
     <pre>{"run_uuid":"667bf625-df6c-4fba-836c-a0165f247005"}</pre>
   </div>
+  </div>
 </div>
 
-<div class="col col-xs-12">
+<div>
 <b><p>Poll for Results</p></b>
-  <div class="col  col-xs-10 col-xs-offset-1">
+  <div class="row">
+  <div class="col-11 offset-1">
     <pre>GET <em>https://developer.nrel.gov/api/reopt/v1/job/667bf625-df6c-4fba-836c-a0165f247005/results?api_key={key}</em></pre>
+  </div>
   </div>
 </div>
 
 
 
-<div class="col col-xs-12">
+<div>
 <b><p>Recieve Results</p></b>
-   <div class="col  col-xs-10 col-xs-offset-1 pre-scrollable">
+   <div class="row">
+   <div class="col-11 offset-1 pre-scrollable">
     <pre>{
   "outputs": {
     "Scenario": {
@@ -62377,25 +62411,26 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
   }
 }</pre>
   </div>
+  </div>
 </div>
 
-<div class="col col-xs-12">
 <b><p>Download Proforma</p></b>
-  <div class="col  col-xs-10 col-xs-offset-1">
+<div class="row">
+  <div class="col-11 offset-1">
     <pre>GET <em>https://developer.nrel.gov/api/reopt/v1/job/667bf625-df6c-4fba-836c-a0165f247005/proforma?api_key={key}</em></pre>
   </div>
 </div>
 
-<div class="col col-xs-12">
 <b><p>Request Resilience Statistics</p></b>
-  <div class="col  col-xs-10 col-xs-offset-1">
+<div class="row">
+  <div class="col-11 offset-1">
     <pre>GET <em>https://developer.nrel.gov/api/reopt/v1/job/667bf625-df6c-4fba-836c-a0165f247005/resilience_stats?api_key={key}</em></pre>
   </div>
 </div>
 
-<div class="col col-xs-12">
 <b><p>Receive Resilience Statistics</p></b>
-  <div class="col  col-xs-10 col-xs-offset-1">
+<div class="row">
+  <div class="col-11 offset-1">
     <pre>{
   "probs_of_surviving": [0.3337, 0.2788, 0.2336, 0.1932, 0.1553, 0.1204, 0.0886, 0.0591, 0.0331, 0.0129, 0.0031, 0.0011, 0.0002],
   "resilience_hours_avg": 1.51,
@@ -62414,22 +62449,22 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
 
 
 
-<div class="row">
+<div>
 <h2>Common Errors</h2><br>
-<div id="Errorssection" class="col col-xs-12">
+<div id="Errorssection">
 
   
   <h5>Missing Inputs</h5>
   At the time of submission to the <em>/v1/job</em> endpoint, inputs are checked for required values. Some inputs (i.e. latitude), are required, while others are required only if another related input is provided as specififed in the documetation <a href="#data-definitions">above</a>. Missing inputs will be flagged in the API response.<br><br>
 
   <h4>POST to <em>v1/job</em> endpoint with missing inputs</h4>
-  <div class="col  col-xs-12">
+  <div>
     <pre>{"Scenario": {"Site":{"latitude":39.0}}}</pre>
   </div>
 
   <br>
   <h4>Response</h4>
-  <div class="col col-xs-12 ">
+  <div>
     
     <pre>{
   "inputs": {...},
@@ -62465,7 +62500,7 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
 <h5>Invalid Data Type</h5>
 At the time of submission to the <em>v1/job</em> endpoint, inputs checked for non-compliant values. Those found will be returned in the API response.<br><br>
 <h4>POST to <em>v1/job</em> endpoint with invalid input</h4>
-  <div class="col col-xs-12 pre-scrollable">
+  <div class="pre-scrollable">
     
     <pre>{"Scenario": {
 
@@ -62634,7 +62669,7 @@ At the time of submission to the <em>v1/job</em> endpoint, inputs checked for no
   </div>
   
   <h4>Response</h4>
-  <div class="col col-xs-12 ">
+  <div>
     <pre>{
   "inputs": {...},
   "messages": {
@@ -62674,5 +62709,4 @@ At the time of submission to the <em>v1/job</em> endpoint, inputs checked for no
    </ul>
 </div>
 
-</div>
 </div>

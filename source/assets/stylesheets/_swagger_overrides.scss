@@ -78,3 +78,16 @@
   font-style: italic;
   color: #555;
 }
+.swagger-ui .api-key-form .form-group {
+  margin-left: auto;
+}
+
+.swagger-ui .col,
+.swagger-ui .col-12 {
+  width: unset;
+  max-width: unset;
+  position: unset;
+  padding: unset;
+  flex-basis: unset;
+  flex-grow: unset;
+}

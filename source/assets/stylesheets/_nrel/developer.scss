@@ -2,37 +2,8 @@ h1 {
   margin-bottom: 0px;
 }
 
-.row-eq-height {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.row-eq-height [class*="col-"] {
-  margin-bottom: 1em;
-}
-
-@media (min-width: $screen-sm-min) {
-  .row-eq-height [class*="col-sm-"] {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-@media (min-width: $screen-md-min) {
-  .row-eq-height [class*="col-md-"] {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-@media (min-width: $screen-lg-min) {
-  .row-eq-height [class*="col-lg-"] {
-    display: flex;
-    flex-direction: column;
-  }
+.feature-row > div {
+  margin-bottom: 10px;
 }
 
 .feature {
@@ -62,8 +33,16 @@ h1 {
   background-position: calc(100% + 10px) calc(100% + 10px);
 }
 
+h1 {
+  margin-top: 18px;
+}
+
 h2 {
   margin-bottom: 0px;
+}
+
+h5, .h5 {
+  font-size: 13px;
 }
 
 .feature h2 {
@@ -96,7 +75,8 @@ h3.doc span.url {
 .doc-parameters thead th {
   border-style: none;
   color: #777;
-  @include gradient-vertical(#edeeef, #e5e5e5);
+  background-color: #e5e5e5;
+  background-image: linear-gradient(to bottom, #edeeef 0%, #e5e5e5 100%);
   text-shadow: #fff 1px 1px 0;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -136,4 +116,55 @@ h3.doc span.url {
   color: inherit;
   font-size: 22px;
   text-align: center;
+}
+
+pre {
+  font-size: 12px;
+  word-break: break-all;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8.5px;
+  margin-bottom: 9px;
+}
+
+code {
+  font-size: 12px;
+  padding: 2px 4px;
+  background-color: #f9f2f4;
+  border-radius: 4px;
+}
+
+pre code {
+  background-color: transparent;
+  border-radius: 0px;
+  padding: 0px;
+}
+
+small, .small {
+  font-size: 92%;
+}
+
+strong small, b small {
+  font-weight: bold;
+}
+
+blockquote {
+  @extend .blockquote;
+  padding: 9px 18px;
+  border-left: 5px solid #eeeeee
+}
+
+blockquote p:last-child,
+blockquote ul:last-child,
+blockquote ol:last-child {
+  margin-bottom: 0px;
+}
+
+#urls .card {
+  margin-bottom: 18px;
+
+  .card-header a {
+    color: #333;
+  }
 }

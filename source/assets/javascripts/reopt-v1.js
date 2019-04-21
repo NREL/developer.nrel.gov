@@ -1515,7 +1515,7 @@ var tableDescriptionCell = function(name, def) {
     text = text + "<p>Can be replaced by one of the following attribute sets: " + replacementSetList(def['replacement_sets'],name )
   }
 
-  return $("<td  style='word-wrap: break-word;'>").append($("<span>").html(text))
+  return $("<td  style='word-break: break-word;'>").append($("<span>").html(text))
 }
 
 
@@ -1611,7 +1611,7 @@ var buildAttributeTable = function(definition_dictionary, table_name) {
     var def_keys = sortAttributeTableRows(definition_dictionary)
     var attributeTableHead = $("<thead>")
     var attributeTableBody = $("<tbody>")
-    attributeTable = $('<table>').prop({'class':'table table-striped row doc-parameters'})
+    attributeTable = $('<table>').prop({'class':'table table-striped doc-parameters'})
     
     if (table_name=='inputs') {
       var tableColumns = ["Parameter","Required","Value","Description"]
@@ -1649,8 +1649,8 @@ var subDirectoriesCell = function (definition_dictionary,table_name){
 }
 
 var objectHeaderRow = function(table_name, key_name){
-  var output = $('<div class="panel-heading" role="tab">')
-  output.append($('<h5 class="panel-title">').html(
+  var output = $('<h5 class="card-header" role="tab">')
+  output.append($('<div>').html(
     $('<a data-toggle="collapse" data-parent="'+key_name+'Row" href="#'+key_name+'_collapsecontainer" aria-expanded="true" aria-controls="'+key_name+table_name+'_collapsecontainer">').html(key_name))
   )
   return output
@@ -1659,33 +1659,33 @@ var objectHeaderRow = function(table_name, key_name){
 
 var buildObjectRow = function(table_name, key_name, definition_dictionary, indent) {
   output = $('<div class="row">')
-  output_col = $('<div class="col col-xs-offset-'+indent.toString()+' col-xs-'+(12-indent).toString()+'">')
+  output_col = $('<div class="col offset-'+indent.toString()+' col-'+(12-indent).toString()+'">')
   
-  var object_panel = $('<div class="panel panel-default" role="tablist" id="'+key_name+table_name+'_panel">')
+  var object_panel = $('<div class="card" role="tablist" id="'+key_name+table_name+'_panel">')
 
   var objectTableNameRow = objectHeaderRow(table_name,key_name)
   object_panel.append(objectTableNameRow)
 
-  var collapse_container = $('<div id="'+key_name+table_name+'_collapsecontainer" class="panel-collapse collapse in panel-body" role="tabpanel" aria-labelledby="'+key_name+'_collapsebutton">')
+  var collapse_container = $('<div id="'+key_name+table_name+'_collapsecontainer" class="card-body" role="tabpanel" aria-labelledby="'+key_name+'_collapsebutton">')
   
   var objectSubTableAttributeRow = $('<div class="row">')
-  var attributeRowName = $('<div class="col col-xs-12">').html('<b><span class="text-secondary">Attributes</span></b><br><br>')
+  var attributeRowName = $('<div class="col col-12">').html('<b><span class="text-secondary">Attributes</span></b><br><br>')
   objectSubTableAttributeRow.append(attributeRowName)
   collapse_container.append(objectSubTableAttributeRow)
   
   var attributeTable = buildAttributeTable(definition_dictionary,table_name)
-  var attributeRowSpacer = $('<div class="col col-xs-1 ">').attr('style','width:3%')
-  var attributeRowContent = $('<div class="col col-xs-offset-0.5 col-xs-11">').html(attributeTable)
+  var attributeRowSpacer = $('<div class="col col-1">').attr('style','max-width:3%')
+  var attributeRowContent = $('<div class="col col-11">').html(attributeTable)
   objectSubTableAttributeRow.append(attributeRowSpacer)
   objectSubTableAttributeRow.append(attributeRowContent)
   collapse_container.append(objectSubTableAttributeRow)
 
 
   var objectSubTableSubdirectoryRow = $('<div class="row">')
-  var attributeRowName = $('<div class="col col-xs-12">').html('<b><span class="text-secondary">Sub Directories</span></b><br><br>')
+  var attributeRowName = $('<div class="col col-12">').html('<b><span class="text-secondary">Sub Directories</span></b><br><br>')
   objectSubTableSubdirectoryRow.append(attributeRowName)
   
-  var subdirectoryRowContent= $('<div class="col col-xs-offset-1 col-xs-10">').html(subDirectoriesCell(definition_dictionary,table_name))
+  var subdirectoryRowContent= $('<div class="col offset-1 col-10">').html(subDirectoriesCell(definition_dictionary,table_name))
   objectSubTableSubdirectoryRow.append(subdirectoryRowContent)
   collapse_container.append(objectSubTableSubdirectoryRow)
 
