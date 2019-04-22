@@ -43,7 +43,6 @@ paths:
           - srnl
           - tjnaf
           - y12
-
         required: false
         description: National laboratory alias, when not specified all experts are returnd from all labs
       responses:
