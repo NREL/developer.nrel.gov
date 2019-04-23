@@ -141,9 +141,3 @@ definitions:
       resultset:
         type: object
         $ref: "#/definitions/lab"
-#  lab_response:
-#    type: object
-#    $ref: "../definitions/lab.yml#/lab_response"
-#  labs_response:
-#    type: object
-#    $ref: "../definitions/lab.yml#/labs_response"

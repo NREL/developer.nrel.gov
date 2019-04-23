@@ -146,9 +146,3 @@ definitions:
       resultset:
         type: object
         $ref: "#/definitions/expert"
-#  expert_response:
-#    type: object
-#    $ref: "../definitions/expert.yml#/expert_response"
-#  experts_response:
-#    type: object
-#    $ref: "../definitions/expert.yml#/experts_response"
