@@ -56,8 +56,7 @@ paths:
       parameters:
       - in: path
         name: expert_uuid
-        schema:
-          type: string
+        type: string
         required: true
         description: UUID of the national laboratory expert to get
       responses:

@@ -29,8 +29,7 @@ paths:
       parameters:
       - in: path
         name: patent_number
-        schema:
-          type: string
+        type: string
         required: true
         description: Number of the national laboratory patent to get
       responses:

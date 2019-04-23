@@ -29,8 +29,7 @@ paths:
       parameters:
       - in: path
         name: lab_uuid
-        schema:
-          type: string
+        type: string
         required: true
         description: UUID of the national laboratory to get
       responses:
@@ -39,12 +38,6 @@ paths:
           schema:
             $ref: "#/definitions/lab_response"
 definitions:
-  laboratories:
-    type: object
-    $ref: "../definitions/lab.yml#/laboratories"
-  lab:
-    type: object
-    $ref: "../definitions/lab.yml#/lab"
   lab_response:
     type: object
     $ref: "../definitions/lab.yml#/lab_response"
