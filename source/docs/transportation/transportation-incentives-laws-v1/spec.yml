@@ -105,7 +105,7 @@ paths:
         type: boolean
         default: false
       - in: query
-        description: Show only expired, repealed or archived laws and incentives.
+        description: 'The ''true'' value returns only expired, repealed, or archived laws and incentives. The default ''false'' value returns only current laws and incentives.'
         name: expired
         required: false
         type: boolean
@@ -168,7 +168,7 @@ paths:
         type: boolean
         default: false
       - in: query
-        description: Fetch an expired, archived, or repealed law. The default returns only current laws.
+        description: 'The ''true'' value returns a record no matter its status (current, expired, archived, or repealed). The default ''false'' value returns only current laws and incentives.'
         name: expired
         required: false
         type: boolean
