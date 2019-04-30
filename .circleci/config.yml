@@ -28,5 +28,5 @@ jobs:
           paths:
             - ~/.cache/yarn
 
-      # Run build and test
+      # Build and test
       - run: rake --trace
