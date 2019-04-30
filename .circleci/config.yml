@@ -33,4 +33,4 @@ jobs:
             - ~/.cache/yarn
 
       # Build and test
-      - run: rake --trace
+      - run: bundle exec rake --trace
