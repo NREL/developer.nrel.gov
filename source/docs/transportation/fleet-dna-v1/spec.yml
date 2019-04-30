@@ -1,0 +1,62 @@
+---
+swagger: '2.0'
+basePath: "/api/fdna_reporting"
+schemes:
+- https
+info:
+  version: 1.0.0
+  title: Commercial Fleet Vehicle Operating Data
+  description: Query our database of commercial fleet vehicle operating data for medium and heavy-duty fleet vehicles
+paths:
+  "/v1/vehicle_types.{output_format}":
+    get:
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            "$ref": "#/definitions/VehicleTypes"
+      description: ''
+      summary: Return a list of commercial vehicle types.
+      # operationId: transportation_incentives_laws
+      parameters:
+      - in: path
+        description: "Response format (defaults to: json)"
+        name: output_format
+        required: false
+        type: string
+        default: json
+      - in: query
+        description: API Key
+        name: api_key
+        required: true
+        type: string
+        default: DEMO_KEY
+definitions:
+  Metadata:
+    properties:
+      version:
+        type: string
+        description: This is the version of the api
+  VehicleTypesResults:
+    required:
+    - id
+    - description
+    properties:
+      id:
+        type: integer
+        description: Unique id of vehicle type
+      description:
+        type: string
+        description: Vehicle type
+  VehicleTypes:
+    required:
+    - metadata
+    - result
+    properties:
+      metadata:
+        "$ref": "#/definitions/Metadata"
+      result:
+        description: List of vehicle types available
+        type: array
+        items:
+          "$ref": "#/definitions/VehicleTypesResults"
