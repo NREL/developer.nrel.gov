@@ -7,13 +7,20 @@ info:
   version: 1.0.0
   title: Commercial Fleet Vehicle Operating Data
   description: |-
-    Query our database of commercial fleet vehicle operating data for medium and heavy-duty vehicles operating within a chosen vocation.
+    Query our database of commercial fleet vehicle operating data for medium and heavy-duty vehicles. The data available consists of drive-cycle metrics across trips that characterize vehicle operating behavior. Data is grouped by vehicle day, which consists of a 24-hour period of operation.
 
-    Fleet DNA consists of high resolution vehicle operation data that NREL collects from fleets around the country. The data are processed using a standard processing routine, and the aggregated results of each study are cleansed of personally identifying information before being made available via this API. The data available are grouped by vehicle day, which consists of a 24-hour period of operation
+    Fleet DNA consists of high resolution vehicle operation data that NREL collects from fleets around the country. The data are processed using a standard processing routine, and the aggregated results of each study are cleansed of personally identifying information.
 
     This API was originally developed to support the <a href="https://www.nrel.gov/transportation/fleettest-fleet-dna.html">Fleet DNA Clearinghouse</a>, where visualizations of the data and more information can be found.
+
+    A <a href="https://www.nrel.gov/docs/fy14osti/62572.pdf">Fleet DNA Data Dictionary</a> is available and is especially helpful for identifying data fields of interest via the /results_days endpoint
+
+    Suggested workflow:
+    &#8226; Identify vehicle type id of interest via the /vehicle_types endpoint
+    &#8226; Identify data fields of interest via the /results_days endpoint (use data dictionary for explanation of fields)
+    &#8226; Gather data by sending request to the /results_days/{vehicle_type_id} endpoint with data fields of interest specified as col[] parameters
 paths:
-  "/v1/afdc_summaries.{output_format}":
+  "/v1/afdc_summaries":
     get:
       responses:
         '200':
@@ -23,19 +30,13 @@ paths:
       description: ''
       summary: Return a summary of the complete dataset.
       parameters:
-      - in: path
-        description: "Response format (defaults to: json)"
-        name: output_format
-        required: false
-        type: string
-        default: json
       - in: query
         description: API Key
         name: api_key
         required: true
         type: string
         default: DEMO_KEY
-  "/v1/vehicle_types.{output_format}":
+  "/v1/vehicle_types":
     get:
       responses:
         '200':
@@ -43,21 +44,31 @@ paths:
           schema:
             "$ref": "#/definitions/VehicleTypes"
       description: ''
-      summary: Return a list of commercial vehicle types. There are 39 total vehicle types. This endpoint is helpful for using the /results_days/{vehicle_type_ids} endpoint for specific vehicle types.
+      summary: Return a list of commercial vehicle types. There are 39 total vehicle types. This endpoint is helpful for specifying the vehicle type for the /results_days/{vehicle_type_id} endpoint below.
       parameters:
-      - in: path
-        description: "Response format (defaults to: json)"
-        name: output_format
-        required: false
-        type: string
-        default: json
       - in: query
         description: API Key
         name: api_key
         required: true
         type: string
         default: DEMO_KEY
-  "/v1/results_days/{vehicle_type_ids}":
+  "/v1/results_days":
+    get:
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            "$ref": "#/definitions/ResultsDaysDataFields"
+      description: ''
+      summary: Return a list of available data fields. These data fields can then be specified as parameters for the /results_days/{vehicle_type_id} endpoint below. There are 350 data fields to choose from.
+      parameters:
+      - in: query
+        description: API Key
+        name: api_key
+        required: true
+        type: string
+        default: DEMO_KEY
+  "/v1/results_days/{vehicle_type_id}":
     get:
       responses:
         '200':
@@ -65,8 +76,13 @@ paths:
           schema:
             "$ref": "#/definitions/ResultsDays"
       description: ''
-      summary: Return a series of daily specified values for specified vehicle types.
+      summary: Return a series of daily specified values (via the col[] parameters) for a specified vehicle type.
       parameters:
+      - in: path
+        description: Vehicle type id
+        name: vehicle_type_id
+        required: true
+        type: string
       - in: query
         description: API Key
         name: api_key
@@ -74,7 +90,13 @@ paths:
         type: string
         default: DEMO_KEY
       - in: query
-        description: List of trip values to be retrieved. Multiple values can be specified (this is an array field).
+        description: |-
+          List of data fields to be retrieved. Multiple values can be specified (this parameter is an array).  The options for the data fields to be retrieved are specified in the <a href='https://www.nrel.gov/docs/fy14osti/62572.pdf'>Fleet DNA Data Dictionary</a>. In addition to the fields in the data dictionary, users can specify the following fields:
+            + deployment.vehicle_class_id,
+            + deployment.vocation_id,
+            + deployment.vehicle_type_id,
+            + deployment.drivetrain_id,
+            + deployement.fuel_type_id
         name: col[]
         enum: [deployments.pid, deployments.vocation_id, results_days.total_average_speed, results_days.kinetic_intensity, results_days.vehicle_id]
         required: true
@@ -191,7 +213,7 @@ definitions:
           description: List of request inputs
           type: array
           example:
-            - vehicle_type_ids: [4, 6, 31, 39]
+            - vehicle_type_ids: [31]
             - columns: [results_days.vehicle_id, deployments.pid, deployments.vocation_id, results_days.kinetic_intensity, results_days.total_average_speed]
             - format: json
         result:
@@ -210,13 +232,41 @@ definitions:
               total_average_speed:
                 type: integer
           example:
-            - vehicle_id: 163
-              pid: 11
-              vocation_id: 14
-              kinetic_intensity: 0
-              total_average_speed: 23.201565630485
-            - vehicle_id: 163
-              pid: 11
-              vocation_id: 14
-              kinetic_intensity: 0
-              total_average_speed: 20.4686704984296
+            - vehicle_id: 112
+              pid: 3
+              vocation_id: 4
+              kinetic_intensity: 3.22199934474104
+              total_average_speed: 7.32241918206163
+            - vehicle_id: 112
+              pid: 3
+              vocation_id: 4
+              kinetic_intensity: 2.58558724559133
+              total_average_speed: 9.28415509409981
+  ResultsDaysDataFields:
+    required:
+    - metadata
+    - results
+    properties:
+      metadata:
+        "$ref": "#/definitions/Metadata"
+      result:
+        type: array
+        items:
+          type: string
+        example:
+          - deployments.nda
+          - results_days.vehicle_id
+          - results_days.deployment_id
+          - deployments.pid
+          - deployments.vehicle_class_id
+          - deployments.vocation_id
+          - deployments.vehicle_type_id
+          - deployments.drivetrain_id
+          - deployments.fuel_type_id
+          - results_days.day_id
+          - results_days.trip_count
+          - results_days.mt_count
+          - results_days.start_ts
+          - results_days.end_ts
+          - results_days.start_rts
+          - results_days.end_rts
