@@ -1,23 +1,27 @@
 ---
-swagger: '2.0'
+swagger: '3.0'
 basePath: "/api/fdna_reporting"
 schemes:
 - https
 info:
   version: 1.0.0
   title: Commercial Fleet Vehicle Operating Data
-  description: Query our database of commercial fleet vehicle operating data for medium and heavy-duty fleet vehicles
+  description: |-
+    Query our database of commercial fleet vehicle operating data for medium and heavy-duty vehicles operating within a chosen vocation.
+
+    Fleet DNA consists of high resolution vehicle operation data that NREL collects from fleets around the country. The data are processed using a standard processing routine, and the aggregated results of each study are cleansed of personally identifying information before being made available via this API. The data available are grouped by vehicle day, which consists of a 24-hour period of operation
+
+    This API was originally developed to support the <a href="https://www.nrel.gov/transportation/fleettest-fleet-dna.html">Fleet DNA Clearinghouse</a>, where visualizations of the data and more information can be found.
 paths:
-  "/v1/vehicle_types.{output_format}":
+  "/v1/afdc_summaries.{output_format}":
     get:
       responses:
         '200':
           description: Successful request
           schema:
-            "$ref": "#/definitions/VehicleTypes"
+            "$ref": "#/definitions/DataSummary"
       description: ''
-      summary: Return a list of commercial vehicle types.
-      # operationId: transportation_incentives_laws
+      summary: Return a summary of the complete dataset.
       parameters:
       - in: path
         description: "Response format (defaults to: json)"
@@ -31,23 +35,127 @@ paths:
         required: true
         type: string
         default: DEMO_KEY
+  "/v1/vehicle_types.{output_format}":
+    get:
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            "$ref": "#/definitions/VehicleTypes"
+      description: ''
+      summary: Return a list of commercial vehicle types. There are 39 total vehicle types. This endpoint is helpful for using the /results_days/{vehicle_type_ids} endpoint for specific vehicle types.
+      parameters:
+      - in: path
+        description: "Response format (defaults to: json)"
+        name: output_format
+        required: false
+        type: string
+        default: json
+      - in: query
+        description: API Key
+        name: api_key
+        required: true
+        type: string
+        default: DEMO_KEY
+  "/v1/results_days/{vehicle_type_ids}":
+    get:
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            "$ref": "#/definitions/ResultsDays"
+      description: ''
+      summary: Return a series of daily specified values for specified vehicle types.
+      parameters:
+      - in: query
+        description: API Key
+        name: api_key
+        required: true
+        type: string
+        default: DEMO_KEY
+      - in: query
+        description: List of trip values to be retrieved. Multiple values can be specified (this is an array field).
+        name: col[]
+        enum: [deployments.pid, deployments.vocation_id, results_days.total_average_speed, results_days.kinetic_intensity, results_days.vehicle_id]
+        required: true
+        type: string
+        default: results_days.kinetic_intensity
 definitions:
   Metadata:
     properties:
       version:
         type: string
         description: This is the version of the api
-  VehicleTypesResults:
+    example:
+      version: "1.0.0"
+  DataSummary:
     required:
-    - id
-    - description
+    - metadata
+    - result
     properties:
-      id:
-        type: integer
-        description: Unique id of vehicle type
-      description:
-        type: string
-        description: Vehicle type
+      metadata:
+        "$ref": "#/definitions/Metadata"
+      result:
+        description: Summary of commercial vehicle dataset
+        required:
+          - average_speed_average
+        properties:
+          average_speed_average:
+            type: integer
+            description: Avg. of vehicles' avg. speeds
+            example: 15
+          average_speed_min:
+            type: integer
+            description: Min. of vehicles' avg. speeds
+            example: 0
+          average_speed_max:
+            type: integer
+            description: Max. of vehicles' avg. speeds
+            example: 64
+          max_speed_average:
+            type: integer
+            description: Avg. of vehicles' max. speeds
+            example: 60
+          max_speed_min:
+            type: integer
+            description: Min. of vehicles' max. speeds
+            example: 19
+          max_speed_max:
+            type: integer
+            description: Max. of vehicles' max. speeds
+            example: 100
+          distance_average:
+            type: integer
+            description: Avg. of vehicles' distances traveled
+            example: 72
+          distance_min:
+            type: integer
+            description: Min. of vehicles' distances traveled
+            example: 1
+          distance_max:
+            type: integer
+            description: Max. of vehicles' distances traveled
+            example: 679
+          operating_time_average:
+            type: integer
+            description: Avg. of vehicles' operating times
+            example: 5
+          stops_average:
+            type: integer
+            description: Avg. of vehicles' stops
+            example: 122
+          stops_per_mile_average:
+            type: integer
+            description: Avg. of vehicles' stops per mile
+            example: 2
+          total_days:
+            type: integer
+            description: Summation of all vehicles' days during study
+            example: 6742
+          total_vehicles:
+            type: integer
+            description: Count of vehicles involved in study
+            example: 533
   VehicleTypes:
     required:
     - metadata
@@ -59,4 +167,56 @@ definitions:
         description: List of vehicle types available
         type: array
         items:
-          "$ref": "#/definitions/VehicleTypesResults"
+          required:
+          - id
+          - description
+          properties:
+            id:
+              type: integer
+              description: Unique id of vehicle type
+              example: 5
+            description:
+              type: string
+              description: Vehicle type
+              example: "City Transit Bus"
+  ResultsDays:
+      required:
+      - metadata
+      - inputs
+      - result
+      properties:
+        metadata:
+          "$ref": "#/definitions/Metadata"
+        inputs:
+          description: List of request inputs
+          type: array
+          example:
+            - vehicle_type_ids: [4, 6, 31, 39]
+            - columns: [results_days.vehicle_id, deployments.pid, deployments.vocation_id, results_days.kinetic_intensity, results_days.total_average_speed]
+            - format: json
+        result:
+          type: array
+          items:
+            type: object
+            properties:
+              vehicle_id:
+                type: integer
+              pid:
+                type: integer
+              vocation_id:
+                type: integer
+              kinetic_intensity:
+                type: integer
+              total_average_speed:
+                type: integer
+          example:
+            - vehicle_id: 163
+              pid: 11
+              vocation_id: 14
+              kinetic_intensity: 0
+              total_average_speed: 23.201565630485
+            - vehicle_id: 163
+              pid: 11
+              vocation_id: 14
+              kinetic_intensity: 0
+              total_average_speed: 20.4686704984296
