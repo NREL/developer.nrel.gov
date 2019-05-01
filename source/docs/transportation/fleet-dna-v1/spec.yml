@@ -1,5 +1,5 @@
 ---
-swagger: '3.0'
+swagger: '2.0'
 basePath: "/api/fdna_reporting"
 schemes:
 - https
