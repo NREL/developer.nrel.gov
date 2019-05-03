@@ -615,176 +615,175 @@ var nested_input_definitions = {
         }
       },
       "Wind": {
-        "pbi_years": {
-          "default": 1,
-          "max": 1000000000.0,
+    	"size_class": {
+              "type": "str",
+              "restrict_to": ['residential', 'commercial', 'medium', 'large'],
+              "description": "Turbine size-class. One of residential, commercial, medium, large"
+            },
+            "wind_meters_per_sec": {
+              "type": "list_of_float",
+              "description": "Data downloaded from Wind ToolKit for modeling wind turbine."
+            },
+            "wind_direction_degrees": {
+              "type": "list_of_float",
+              "description": "Data downloaded from Wind ToolKit for modeling wind turbine."
+            },
+            "temperature_celsius": {
+              "type": "list_of_float",
+              "description": "Data downloaded from Wind ToolKit for modeling wind turbine."
+            },
+            "pressure_atmospheres": {
+              "type": "list_of_float",
+              "description": "Data downloaded from Wind ToolKit for modeling wind turbine."
+            },
+        "min_kw": {
           "type": "float",
-          "description": "Duration of production-based incentives from installation date",
-          "min": 0
-        },
-        "macrs_bonus_pct": {
-          "default": 0.4,
-          "max": 1,
-          "type": "float",
-          "description": "Percent of upfront project costs to depreciate under MACRS",
-          "min": 0
+          "min": 0,
+          "max": 1e9,
+          "default": 0,
+          "description": "Minimum wind power capacity constraint for optimization"
         },
         "max_kw": {
-          "default": 1000000000.0,
-          "max": 1000000000.0,
           "type": "float",
-          "description": "Maximum wind power capacity constraint for optimization. Set to zero to disable Wind. Enabled by default",
-          "min": 0
-        },
-        "pbi_max_us_dollars": {
-          "default": 1000000000.0,
-          "max": 1000000000.0,
-          "type": "float",
-          "description": "Maximum rebate allowed under utility production-based incentives",
-          "min": 0
-        },
-        "wind_meters_per_sec": {
-          "type": "list_of_float",
-          "description": "Data downloaded from Wind ToolKit for modeling wind turbine."
-        },
-        "state_ibi_pct": {
-          "default": 0,
-          "max": 1,
-          "type": "float",
-          "description": "Percent of upfront project costs to discount under state investment based incentives",
-          "min": 0
-        },
-        "utility_rebate_max_us_dollars": {
-          "default": 10000000000.0,
-          "max": 10000000000.0,
-          "type": "float",
-          "description": "Maximum rebate allowed under utility rebates",
-          "min": 0
+          "min": 0,
+          "max": 1e9,
+          "default":1e9,
+          "description": "Maximum wind power capacity constraint for optimization. Set to zero to disable Wind. Enabled by default"
         },
         "installed_cost_us_dollars_per_kw": {
-          "default": 1874,
-          "max": 100000.0,
           "type": "float",
-          "description": "Total upfront installed costs in US dollars/kW. Determined by size_class. For the 'large' (>1MW) size_class the cost is $1,874/kW. For the 'medium' size_class the cost is $4,111/kW and for the 'commercial' size_class the cost is $4,989/kW.",
-          "min": 0
-        },
-        "utility_ibi_max_us_dollars": {
-          "default": 10000000000.0,
-          "max": 10000000000.0,
-          "type": "float",
-          "description": "Maximum rebate allowed under utility investment based incentives",
-          "min": 0
-        },
-        "pressure_atmospheres": {
-          "type": "list_of_float",
-          "description": "Data downloaded from Wind ToolKit for modeling wind turbine."
-        },
-        "pbi_system_max_kw": {
-          "default": 1000000000.0,
-          "max": 1000000000.0,
-          "type": "float",
-          "description": "Maximum system size for which production-based incentives apply",
-          "min": 0
-        },
-        "utility_ibi_pct": {
-          "default": 0,
-          "max": 1,
-          "type": "float",
-          "description": "Percent of upfront project costs to discount under utility investment based incentives",
-          "min": 0
-        },
-        "state_ibi_max_us_dollars": {
-          "default": 10000000000.0,
-          "max": 10000000000.0,
-          "type": "float",
-          "description": "Maximum rebate allowed under state investment based incentives",
-          "min": 0
-        },
-        "wind_direction_degrees": {
-          "type": "list_of_float",
-          "description": "Data downloaded from Wind ToolKit for modeling wind turbine."
-        },
-        "size_class": {
-          "type": "str",
-          "description": "Turbine size-class. One of [residential, commercial, medium, large]",
-          "restrict_to": "['residential', 'commercial', 'medium', 'large']"
-        },
-        "state_rebate_us_dollars_per_kw": {
-          "default": 0,
-          "max": 1000000000.0,
-          "type": "float",
-          "description": "State rebates based on installed capacity",
-          "min": 0
-        },
-        "macrs_option_years": {
-          "default": 5,
-          "type": "int",
-          "description": "MACRS schedule for financial analysis. Set to zero to disable",
-          "restrict_to": [
-            0,
-            5,
-            7
-          ]
-        },
-        "state_rebate_max_us_dollars": {
-          "default": 10000000000.0,
-          "max": 10000000000.0,
-          "type": "float",
-          "description": "Maximum rebate allowed under state rebates",
-          "min": 0
-        },
-        "federal_itc_pct": {
-          "default": 0.3,
-          "max": 1,
-          "type": "float",
-          "description": "Percent federal capital cost incentive",
-          "min": 0
-        },
-        "temperature_celsius": {
-          "type": "list_of_float",
-          "description": "Data downloaded from Wind ToolKit for modeling wind turbine."
-        },
-        "pbi_us_dollars_per_kwh": {
-          "default": 0,
-          "max": 1000000000.0,
-          "type": "float",
-          "description": "Production-based incentive value",
-          "min": 0
+          "min": 0,
+          "max": 1e5,
+          "default": 3013,  
+          "description": "Total upfront installed costs in US dollars/kW. Determined by size_class. For the 'large' (>2MW) size_class the cost is $1,874/kW. For the 'medium commercial' size_class the cost is $4,111/kW. For the 'small commercial' size_class the cost is $4,989/kW and for the 'residential' size_class the cost is $10,792/kW "
         },
         "om_cost_us_dollars_per_kw": {
+          "type": "float",
+          "min": 0,
+          "max": 1e3,
           "default": 35,
-          "max": 1000.0,
-          "type": "float",
-          "description": "Total annual operations and maintenance costs",
-          "min": 0
+          "description": "Total annual operations and maintenance costs"
         },
-        "utility_rebate_us_dollars_per_kw": {
-          "default": 0,
-          "max": 1000000000.0,
-          "type": "float",
-          "description": "Utility rebates based on installed capacity",
-          "min": 0
+        "macrs_option_years": {
+          "type": "int",
+          "restrict_to": [0,
+            5,
+            7
+	       ],
+          "default": 5,
+          "description": "MACRS schedule for financial analysis. Set to zero to disable"
         },
-        "min_kw": {
-          "default": 0,
-          "max": 1000000000.0,
+        "macrs_bonus_pct": {
           "type": "float",
-          "description": "Minimum wind power capacity constraint for optimization",
-          "min": 0
+          "min": 0,
+          "max": 1,
+          "default": 0,
+          "description": "Percent of upfront project costs to depreciate under MACRS"
         },
         "macrs_itc_reduction": {
-          "default": 0.5,
-          "max": 1,
           "type": "float",
-          "description": "Percent of the full ITC that depreciable basis is reduced by",
-          "min": 0
+          "min": 0,
+          "max": 1,
+          "default": 0.5,
+          "description": "Percent of the full ITC that depreciable basis is reduced by"
+        },
+        "federal_itc_pct": {
+          "type": "float",
+          "min": 0,
+          "max": 1,
+          "default": 0.30,
+          "description": "Percent federal capital cost incentive"
+        },
+        "state_ibi_pct": {
+          "type": "float",
+          "min": 0,
+          "max": 1,
+          "default": 0,
+          "description": "Percent of upfront project costs to discount under state investment based incentives"
+        },
+        "state_ibi_max_us_dollars": {
+          "type": "float",
+          "min": 0,
+          "max": 1e10,
+          "default": 1000000000.0,
+          "description": "Maximum rebate allowed under state investment based incentives"
+        },
+        "utility_ibi_pct": {
+          "type": "float",
+          "min": 0,
+          "max": 1,
+          "default": 0,
+          "description": "Percent of upfront project costs to discount under utility investment based incentives"
+        },
+        "utility_ibi_max_us_dollars": {
+          "type": "float",
+          "min": 0,
+          "max": 1e10,
+          "default": 1000000000.0,
+          "description": "Maximum rebate allowed under utility investment based incentives"
         },
         "federal_rebate_us_dollars_per_kw": {
-          "default": 0,
-          "max": 1000000000.0,
           "type": "float",
-          "description": "Federal rebate based on installed capacity",
-          "min": 0
+          "min": 0,
+          "max": 1e9,
+          "default": 0,
+          "description": "Federal rebate based on installed capacity"
+        },
+        "state_rebate_us_dollars_per_kw": {
+          "type": "float",
+          "min": 0,
+          "max": 1e9,
+          "default": 0,
+          "description": "State rebates based on installed capacity"
+        },
+        "state_rebate_max_us_dollars": {
+          "type": "float",
+          "min": 0,
+          "max": 1e10,
+          "default": 1000000000.0,
+          "description": "Maximum rebate allowed under state rebates"
+        },
+        "utility_rebate_us_dollars_per_kw": {
+          "type": "float",
+          "min": 0,
+          "max": 1e9,
+          "default": 0,
+          "description": "Utility rebates based on installed capacity"
+        },
+        "utility_rebate_max_us_dollars": {
+          "type": "float",
+          "min": 0,
+          "max": 1e10,
+          "default": 1000000000.0,
+          "description": "Maximum rebate allowed under utility rebates"
+        },
+        "pbi_us_dollars_per_kwh": {
+          "type": "float",
+          "min": 0,
+          "max": 1e9,
+          "default": 0,
+          "description": "Production-based incentive value"
+        },
+        "pbi_max_us_dollars": {
+          "type": "float",
+          "min": 0,
+          "max": 1e9,
+          "default": 1e9,
+          "description": "Maximum rebate allowed under utility production-based incentives"
+        },
+        "pbi_years": {
+          "type": "float",
+          "min": 0,
+          "max": 1e9,
+          "default": 1,
+          "description": "Duration of production-based incentives from installation date"
+        },
+        "pbi_system_max_kw": {
+          "type": "float",
+          "min": 0,
+          "max": 1e9,
+          "default": 1e9,
+          "description": "Maximum system size for which production-based incentives apply"
         }
       },
       "Financial": {
@@ -910,6 +909,126 @@ var nested_input_definitions = {
           "description": "Array (length of 12) of blended demand charges (demand charge cost in $ divided by monthly peak demand in kW)",
           "depends_on": [
             "blended_monthly_rates_us_dollars_per_kwh"
+          ]
+        },
+        "energyweekdayschedule": {
+          "replacement_sets": [
+            [
+              "urdb_response"
+            ],
+            [
+              "urdb_label"
+            ],
+            [
+              "urdb_utility_name",
+              "urdb_rate_name"
+            ]
+          ],
+          "type": "list_of_lists",
+          "description": "Tiered energy usage charge structure weekday schedule. Value is an array of arrays. The 12 top-level arrays correspond to a month of the year. Each month array contains one integer per hour of the weekday from 12am to 11pm, and the integer corresponds to the index of a period in energyratestructure.",
+          "depends_on": [
+            "energyratestructure",
+            "energyweekendschedule"
+          ]
+        },
+        "energyweekendschedule": {
+          "replacement_sets": [
+            [
+              "urdb_response"
+            ],
+            [
+              "urdb_label"
+            ],
+            [
+              "urdb_utility_name",
+              "urdb_rate_name"
+            ]
+          ],
+          "type": "list_of_lists",
+          "description": "Tiered energy usage charge structure weekday schedule. Value is an array of arrays. The 12 top-level arrays correspond to a month of the year. Each month array contains one integer per hour of the weekday from 12am to 11pm, and the integer corresponds to the index of a period in energyratestructure.",
+          "depends_on": [
+            "energyratestructure",
+            "energyweekdayschedule"
+          ]
+        },
+        "energyratestructure": {
+          "replacement_sets": [
+            [
+              "urdb_response"
+            ],
+            [
+              "urdb_label"
+            ],
+            [
+              "urdb_utility_name",
+              "urdb_rate_name"
+            ]
+          ],
+          "type": "list_of_lists",
+          "description": "Time of use energy charge structure. Value is an array of arrays. Each element in the top-level array corresponds to one period (see demandweekdayschedule and demandweekendschedule) and each array element within a period corresponds to one tier. Indices are zero-based and correspond with demandweekdayschedule and/or demandweekendschedule entries: [[{'max':(Tier 1 max),'rate':(Tier 1 rate)}, {'max':(Tier 2 max),'rate':(Tier 2 rate)}...],...]. Max and rate values must be decimal.",
+          "depends_on": [
+            "energyweekdayschedule",
+            "energyweekendschedule"
+          ]
+        },
+        "demandweekdayschedule": {
+          "replacement_sets": [
+            [
+              "urdb_response"
+            ],
+            [
+              "urdb_label"
+            ],
+            [
+              "urdb_utility_name",
+              "urdb_rate_name"
+            ]
+          ],
+          "type": "list_of_lists",
+          "description": "Time of use demand charge structure weekday schedule. Value is an array of arrays. The 12 top-level arrays correspond to a month of the year. Each month array contains one integer per hour of the weekday from 12am to 11pm, and the integer corresponds to the index of a period in demandratestructure.",
+          "depends_on": [
+            "demandratestructure",
+            "demandweekendschedule"
+          ]
+        },
+        "demandweekendschedule": {
+          "replacement_sets": [
+            [
+              "urdb_response"
+            ],
+            [
+              "urdb_label"
+            ],
+            [
+              "urdb_utility_name",
+              "urdb_rate_name"
+            ]
+          ],
+          "type": "list_of_lists",
+          "description": "Time of use demand charge structure weekend schedule. Value is an array of arrays. The 12 top-level arrays correspond to a month of the year. Each month array contains one integer per hour of the weekday from 12am to 11pm, and the integer corresponds to the index of a period in demandratestructure.",
+          "depends_on": [
+            "demandratestructure",
+            "demandweekdayschedule"
+          ]
+        },
+        "demandratestructure": {
+          "replacement_sets": [
+            [
+              "urdb_response"
+            ],
+            [
+              "urdb_label"
+            ],
+            [
+              "urdb_utility_name",
+              "urdb_rate_name"
+            ]
+          ],
+          "type": "list_of_lists",
+          "description": "Time of use demand charge structure. Value is an array of arrays. Each element in the top-level array corresponds to one period (see demandweekdayschedule and demandweekendschedule) and each array element within a period corresponds to one tier. Indices are zero-based and correspond with demandweekdayschedule and/or demandweekendschedule entries: [[{'max':(Tier 1 max),'rate':(Tier 1 rate)}, {'max':(Tier 2 max),'rate':(Tier 2 rate)}...],...]. Max and rate values must be decimal.",
+          "depends_on": [
+            "demandweekendschedule",
+            "demandweekdayschedule"
           ]
         },
         "urdb_utility_name": {
@@ -1221,6 +1340,48 @@ var nested_output_definitions = {
             "units": "kW"
           }
         },
+	"Wind": {
+	"size_kw": {
+	  "type": "float",
+	  "description": "Recommended wind system size",
+	  "units": "kW"
+	},
+	"average_yearly_energy_produced_kwh": {
+	  "type": "float",
+	  "description": "Average energy produced by the wind system over one year",
+	  "units": "kWh"
+	},
+	"average_yearly_energy_exported_kwh": {
+	  "type": "float",
+	  "description": "Average annual energy exported by the wind system",
+	  "units": "kWh"
+	},
+	"year_one_energy_produced_kwh": {
+	  "type": "float",
+	  "description": "Wind energy produced in year one",
+	  "units": "kWh"
+	},
+	"year_one_power_production_series_kw": {
+	  "type": "list_of_float",
+	  "description": "Hourly wind resource",
+	  "units": "kW"
+	},
+	"year_one_to_battery_series_kw": {
+	  "type": "list_of_float",
+	  "description": "Year one wind to battery time series",
+	  "units": "kW"
+	},
+	"year_one_to_load_series_kw": {
+	  "type": "list_of_float",
+	  "description": "Year one wind to load time series",
+	  "units": "kW"
+	},
+	"year_one_to_grid_series_kw": {
+	  "type": "list_of_float",
+	  "description": "Year one wind to grid time series",
+	  "units": "kW"
+	 }
+        },
         "Storage": {
           "size_kw": {
             "description": "Optimal battery power capacity",
@@ -1354,7 +1515,7 @@ var tableDescriptionCell = function(name, def) {
     text = text + "<p>Can be replaced by one of the following attribute sets: " + replacementSetList(def['replacement_sets'],name )
   }
 
-  return $("<td  style='word-wrap: break-word;'>").append($("<span>").html(text))
+  return $("<td  style='word-break: break-word;'>").append($("<span>").html(text))
 }
 
 
@@ -1450,7 +1611,7 @@ var buildAttributeTable = function(definition_dictionary, table_name) {
     var def_keys = sortAttributeTableRows(definition_dictionary)
     var attributeTableHead = $("<thead>")
     var attributeTableBody = $("<tbody>")
-    attributeTable = $('<table>').prop({'class':'table table-striped row doc-parameters'})
+    attributeTable = $('<table>').prop({'class':'table table-striped doc-parameters'})
     
     if (table_name=='inputs') {
       var tableColumns = ["Parameter","Required","Value","Description"]
@@ -1488,8 +1649,8 @@ var subDirectoriesCell = function (definition_dictionary,table_name){
 }
 
 var objectHeaderRow = function(table_name, key_name){
-  var output = $('<div class="panel-heading" role="tab">')
-  output.append($('<h5 class="panel-title">').html(
+  var output = $('<h5 class="card-header" role="tab">')
+  output.append($('<div>').html(
     $('<a data-toggle="collapse" data-parent="'+key_name+'Row" href="#'+key_name+'_collapsecontainer" aria-expanded="true" aria-controls="'+key_name+table_name+'_collapsecontainer">').html(key_name))
   )
   return output
@@ -1498,33 +1659,33 @@ var objectHeaderRow = function(table_name, key_name){
 
 var buildObjectRow = function(table_name, key_name, definition_dictionary, indent) {
   output = $('<div class="row">')
-  output_col = $('<div class="col col-xs-offset-'+indent.toString()+' col-xs-'+(12-indent).toString()+'">')
+  output_col = $('<div class="col offset-'+indent.toString()+' col-'+(12-indent).toString()+'">')
   
-  var object_panel = $('<div class="panel panel-default" role="tablist" id="'+key_name+table_name+'_panel">')
+  var object_panel = $('<div class="card" role="tablist" id="'+key_name+table_name+'_panel">')
 
   var objectTableNameRow = objectHeaderRow(table_name,key_name)
   object_panel.append(objectTableNameRow)
 
-  var collapse_container = $('<div id="'+key_name+table_name+'_collapsecontainer" class="panel-collapse collapse in panel-body" role="tabpanel" aria-labelledby="'+key_name+'_collapsebutton">')
+  var collapse_container = $('<div id="'+key_name+table_name+'_collapsecontainer" class="card-body" role="tabpanel" aria-labelledby="'+key_name+'_collapsebutton">')
   
   var objectSubTableAttributeRow = $('<div class="row">')
-  var attributeRowName = $('<div class="col col-xs-12">').html('<b><span class="text-secondary">Attributes</span></b><br><br>')
+  var attributeRowName = $('<div class="col col-12">').html('<b><span class="text-secondary">Attributes</span></b><br><br>')
   objectSubTableAttributeRow.append(attributeRowName)
   collapse_container.append(objectSubTableAttributeRow)
   
   var attributeTable = buildAttributeTable(definition_dictionary,table_name)
-  var attributeRowSpacer = $('<div class="col col-xs-1 ">').attr('style','width:3%')
-  var attributeRowContent = $('<div class="col col-xs-offset-0.5 col-xs-11">').html(attributeTable)
+  var attributeRowSpacer = $('<div class="col col-1">').attr('style','max-width:3%')
+  var attributeRowContent = $('<div class="col col-11">').html(attributeTable)
   objectSubTableAttributeRow.append(attributeRowSpacer)
   objectSubTableAttributeRow.append(attributeRowContent)
   collapse_container.append(objectSubTableAttributeRow)
 
 
   var objectSubTableSubdirectoryRow = $('<div class="row">')
-  var attributeRowName = $('<div class="col col-xs-12">').html('<b><span class="text-secondary">Sub Directories</span></b><br><br>')
+  var attributeRowName = $('<div class="col col-12">').html('<b><span class="text-secondary">Sub Directories</span></b><br><br>')
   objectSubTableSubdirectoryRow.append(attributeRowName)
   
-  var subdirectoryRowContent= $('<div class="col col-xs-offset-1 col-xs-10">').html(subDirectoriesCell(definition_dictionary,table_name))
+  var subdirectoryRowContent= $('<div class="col offset-1 col-10">').html(subDirectoriesCell(definition_dictionary,table_name))
   objectSubTableSubdirectoryRow.append(subdirectoryRowContent)
   collapse_container.append(objectSubTableSubdirectoryRow)
 
@@ -1552,7 +1713,7 @@ var recursiveBuildReadTable = function(input_definitions, indent, table){
 
     var key_name = defKeys[i]
     
-    if (key_name[0]===key_name[0].toUpperCase() && key_name!= 'Wind' ){
+    if (key_name[0]===key_name[0].toUpperCase()){
       subdirectories.push(key_name)
     }
   }

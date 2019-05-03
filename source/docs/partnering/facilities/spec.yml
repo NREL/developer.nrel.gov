@@ -1,0 +1,178 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: Facilities APIs
+  description: |-
+    A collection of APIs providing data about national laboratorty facilities related to associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
+schemes:
+- https
+basePath: /api/lps/v1
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: query
+security:
+- api_key: []
+paths:
+  /facilities:
+    get:
+      summary: Returns a paginated list of all national laboratory facilities
+      responses:
+        200:
+          description: Successful request
+          schema:
+            $ref: "#/definitions/facilities_response"
+  /facilities/{uuid}:
+    get:
+      summary: Returns detailed information about a single national laboratory facility
+      parameters:
+      - in: path
+        name: uuid
+        type: string
+        required: true
+        description: Unique identifer for a Facility
+      responses:
+        200:
+          description: Successful request
+          schema:
+            $ref: "#/definitions/facility_response"
+  /facilities/lab/{lab_alias}:
+    get:
+      summary: Returns detailed information about a specific national laboratory facility
+      parameters:
+      - in: path
+        name: lab_alias
+        type: string
+        required: true
+        description: An alias for a national laboratory in LPS
+      responses:
+        200:
+          description: Successful request
+          schema:
+            $ref: "#/definitions/lab_facilities_response"
+definitions:
+  facility:
+    type: object
+    properties:
+      uuid:
+        type: string
+        example: 'fc0baef1-e69e-4126-a7ae-5d5a73f58132'
+      name:
+        type: string
+        example: 'Materials Preparation Center'
+      alias:
+        type: string
+        example: mpc
+      description:
+        type: string
+        example: MPC is recognized throughout the worldwide research community for its unique capabilities etc
+      user_facility:
+        type: string
+        example: false
+      labs:
+        type: array
+        items:
+          properties:
+            uuid:
+              type: string
+              example: e2af34a8-8b90-4726-9edf-fa75fede52e8
+            name:
+              type: string
+              example: National Renewable Energy Laboratory
+            tto_url:
+              type: string
+              example: https://www.nrel.gov/workingwithus/technology-transfer.html
+            contact_us_email:
+              type: string
+              example: Eric.Payne@nrel.gov
+            links:
+              type: array
+              items:
+                properties:
+                  self:
+                    type: string
+                    example: "https://developer.nrel.gov/api/lps/v1/labs/e2af34a8-8b90-4726-9edf-fa75fede52e8"
+      links:
+        type: object
+        properties:
+          self:
+            type: string
+            example: https://test.labpartnering.org/api/v1/facilities/fc0baef1-e69e-4126-a7ae-5d5a73f58132
+    required:
+    - uuid
+    - name
+    - description
+    - user_facility
+  facilities:
+    type: array
+    items:
+      $ref: "#/definitions/facility"
+  metadata:
+    type: object
+    properties:
+      version:
+        type: string
+        example: 1.0
+  errors:
+    type: array
+    items:
+      type: string
+  facility_response:
+    type: object
+    properties:
+      metadata:
+        type: object
+        $ref: "#/definitions/metadata"
+      errors:
+        type: object
+        $ref: "#/definitions/errors"
+      resultset:
+        type: object
+        $ref: "#/definitions/facility"
+  facilities_response:
+    type: object
+    properties:
+      metadata:
+        type: object
+        $ref: "#/definitions/metadata"
+      errors:
+        type: object
+        $ref: "#/definitions/errors"
+      resultset:
+        type: object
+        properties:
+          total:
+            type: integer
+            example: 20000
+            description: Total number of records which meet the search criteria
+          count:
+            type: integer
+            example: 20
+            description: The number of records in a single response
+          number:
+            type: integer
+            example: 1
+            description: The current page number of paginated responses
+          pages:
+            type: integer
+            example: 39
+            description: The total number of pages in the paginated responses
+          result:
+            type: object
+            $ref: "#/definitions/facilities"
+  lab_facilities_response:
+    type: object
+    properties:
+      metadata:
+        type: object
+        $ref: "#/definitions/metadata"
+      errors:
+        type: object
+        $ref: "#/definitions/errors"
+      resultset:
+        type: object
+        properties:
+          result:
+            type: object
+            $ref: "#/definitions/facilities"

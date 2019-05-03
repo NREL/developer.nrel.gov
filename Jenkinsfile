@@ -15,7 +15,7 @@ pipeline {
   environment {
     PATH = "${JENKINS_HOME}/.rbenv/bin:${JENKINS_HOME}/.rbenv/shims:/usr/local/bin:/sbin:/usr/sbin:/bin:/usr/bin"
     AWS_DEFAULT_REGION = "us-west-2"
-    RBENV_VERSION = "2.4.1"
+    RBENV_VERSION = "2.6.2"
   }
 
   stages {

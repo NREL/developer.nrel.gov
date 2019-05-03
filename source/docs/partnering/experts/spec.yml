@@ -1,0 +1,148 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: Expert APIs
+  description: |-
+    A collection of APIs providing data about national laboratorty experts related to associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
+schemes:
+  - https
+basePath: /api/lps/v1
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: query
+security:
+  - api_key: []
+paths:
+  /experts:
+    get:
+      summary: Returns a list of national laboratory experts
+      parameters:
+      - in: query
+        name: lab_alias
+        type: string
+        enum:
+          - ames
+          - anl
+          - bnl
+          - fnal
+          - inl
+          - kcnsc
+          - lanl
+          - lbnl
+          - llnl
+          - netl
+          - nrel
+          - ornl
+          - pantex
+          - pnnl
+          - pppl
+          - slac
+          - snl
+          - srnl
+          - tjnaf
+          - y12
+        required: false
+        description: National laboratory alias, when not specified all experts are returnd from all labs
+      responses:
+        200:
+          description: Successful request
+          schema:
+            $ref: "#/definitions/experts_response"
+  /experts/{expert_uuid}:
+    get:
+      summary: Returns detailed information about a national laboratory expert
+      parameters:
+      - in: path
+        name: expert_uuid
+        type: string
+        required: true
+        description: UUID of the national laboratory expert to get
+      responses:
+        200:
+          description: Successful request
+          schema:
+            $ref: "#/definitions/expert_response"
+definitions:
+  metadata:
+    type: object
+    properties:
+      version:
+        type: string
+        example: 1.0
+  errors:
+    type: array
+    items:
+      type: string
+  expert:
+    type: object
+    properties:
+      uuid:
+        type: string
+        example: dc56d205-4ddf-46d4-bcd6-93ddc7fea84a
+      first_name:
+        type: string
+        example: Daniel
+      last_name:
+        type: string
+        example: Abraham
+      lab:
+        type: string
+        example: Argonne National Laboratory
+      avatar:
+        type: string
+        example: https://www.labpartnering.org/experts/dc56d205-4ddf-46d4-bcd6-93ddc7fea84a/avatar
+      links:
+        type: object
+        properties:
+          self:
+            type: string
+            example: https://developer.nrel.gov/api/lps/v1/experts/dc56d205-4ddf-46d4-bcd6-93ddc7fea84a
+      bio:
+        type: string
+        example: He is well known for his expertise in the field of lithium batteries at Argonne National Laboratory. Since graduating with a doctorate in metallurgical engineering from the University of Illinois at Urbana-Champaign
+    #    specialties:
+    #      type: array
+    #    technologies:
+    #      type: array
+    required:
+    - uuid
+    - first_name
+    - last_name
+    - lab
+    - bio
+  experts:
+    type: array
+    items:
+      $ref: "#/definitions/expert"
+  experts_response:
+    type: object
+    properties:
+      metadata:
+        type: object
+        $ref: "#/definitions/metadata"
+      errors:
+        type: object
+        $ref: "#/definitions/errors"
+      resultset:
+        type: object
+        properties:
+          count:
+            type: integer
+            example: 20
+          result:
+            type: object
+            $ref: "#/definitions/experts"
+  expert_response:
+    type: object
+    properties:
+      metadata:
+        type: object
+        $ref: "#/definitions/metadata"
+      errors:
+        type: object
+        $ref: "#/definitions/errors"
+      resultset:
+        type: object
+        $ref: "#/definitions/expert"

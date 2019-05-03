@@ -1,0 +1,174 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: Patent APIs
+  description: |-
+    A collection of APIs providing data about national laboratorty patents related to associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
+schemes:
+- https
+basePath: /api/lps/v1
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: query
+security:
+- api_key: []
+paths:
+  /patents:
+    get:
+      summary: Returns a list of all national laboratory patents
+      responses:
+        200:
+          description: Successful request
+          schema:
+            $ref: "#/definitions/patents_response"
+  /patents/{patent_number}:
+    get:
+      summary: Returns detailed information about a national laboratory patent
+      parameters:
+      - in: path
+        name: patent_number
+        type: string
+        required: true
+        description: Number of the national laboratory patent to get
+      responses:
+        200:
+          description: Successful request
+          schema:
+            $ref: "#/definitions/patent_response"
+definitions:
+  patent:
+    type: object
+    properties:
+      number:
+        type: string
+        example: 9,945,585
+      title:
+        type: string
+        example: Systems and methods for direct thermal receivers using near blackbody configurations
+      filed_on:
+        type: string
+        format: date
+        example: '2015-05-15'
+      issued_on:
+        type: string
+        format: date
+        example: '2018-04-17'
+        description: if issued_on is null the patent is in the application process
+      document_number:
+        type: string
+        example: 20150330668
+      document_published_on:
+        type: string
+        format: date
+        example: '2015-11-19'
+      abstract:
+        type: string
+        example: An aspect of the present disclosure is a receiver for receiving radiation from a heliostat array that includes at least one external panel configured to form an internal cavity and an open face. The open face is positioned substantially perpendicular to a longitudinal axis and forms an entrance to the internal cavity. The receiver also includes at least one internal panel positioned within the cavity and aligned substantially parallel to the longitudinal axis, and the at least one internal panel includes at least one channel configured to distribute a heat transfer medium.
+      government_interest:
+        type: string
+        example: CONTRACTUAL ORIGIN The United States Government has rights in this invention under Contract No. DE-AC36-08GO28308 between the United States Department of Energy and the Alliance for Sustainable Energy, LLC, the manager and operator of the National Renewable Energy Laboratory.
+      inventors:
+        type: array
+        items:
+          properties:
+            name:
+              type: string
+              example: Michael Wagner
+            location:
+              type: string
+              example: Highlands Ranch, CO, US
+      labs:
+        type: array
+        items:
+          properties:
+            uuid:
+              type: string
+              example: e2af34a8-8b90-4726-9edf-fa75fede52e8
+            name:
+              type: string
+              example: National Renewable Energy Laboratory
+            tto_url:
+              type: string
+              example: https://www.nrel.gov/workingwithus/technology-transfer.html
+            contact_us_email:
+              type: string
+              example: Eric.Payne@nrel.gov
+            links:
+              type: array
+              items:
+                properties:
+                  self:
+                    type: string
+                    example: "https://developer.nrel.gov/api/lps/v1/labs/e2af34a8-8b90-4726-9edf-fa75fede52e8"
+      links:
+        type: object
+        properties:
+          self:
+            type: string
+            example: https://developer.nrel.gov/api/lps/v1/patents/20010000475
+          html:
+            type: string
+            example: https://www.labpartnering.org/patents/9,945,585.html
+    required:
+    - number
+    - title
+    - abstract
+  patents:
+    type: array
+    items:
+      $ref: "#/definitions/patent"
+  metadata:
+    type: object
+    properties:
+      version:
+        type: string
+        example: 1.0
+  errors:
+    type: array
+    items:
+      type: string
+  patent_response:
+    type: object
+    properties:
+      metadata:
+        type: object
+        $ref: "#/definitions/metadata"
+      errors:
+        type: object
+        $ref: "#/definitions/errors"
+      resultset:
+        type: object
+        $ref: "#/definitions/patent"
+  patents_response:
+    type: object
+    properties:
+      metadata:
+        type: object
+        $ref: "#/definitions/metadata"
+      errors:
+        type: object
+        $ref: "#/definitions/errors"
+      resultset:
+        type: object
+        properties:
+          total:
+            type: integer
+            example: 20000
+            description: Total number of patents which meet the search criteria
+          count:
+            type: integer
+            example: 20
+            description: The number of patents in a single response
+          number:
+            type: integer
+            example: 1
+            description: The current page number of paginated responses
+          pages:
+            type: integer
+            example: 39
+            description: The total number of pages in the paginated responses
+          result:
+            type: object
+            $ref: "#/definitions/patents"
