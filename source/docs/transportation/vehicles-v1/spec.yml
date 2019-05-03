@@ -890,12 +890,6 @@ definitions:
       heavy_duty_manufacturer_name:
         type: string
         description: The name of the heavy-duty engine's manufacturer
-      description:
-        type: string
-        description: Details about the heavy-duty engine
-      comments:
-        type: string
-        description: Additional information
       heavy_duty_chassis_ids:
         type: array
         items:
@@ -949,15 +943,12 @@ definitions:
       heavy_duty_manufacturer_name:
         type: string
         description: The name of the heavy-duty hybrid/conversion system's manufacturer
-      description:
-        type: string
-        description: Details about the heavy-duty hybrid/conversion system
-      comments:
-        type: string
-        description: Additional information
       heavy_duty_hybrid_configuration_id:
         type: integer
         description: A unique identifier for the fuel configuration of the heavy-duty hybrid/conversion system
+      heavy_duty_hybrid_configuration_name:
+        type: string
+        description: The name of the heavy-duty hybrid/conversion system fuel configuration
       heavy_duty_hybrid_storage_id:
         type: integer
         description: A unique identifer for the storage system of the heavy-duty hybrid/conversion system
@@ -998,9 +989,6 @@ definitions:
       num_passengers:
         type: string
         description: The maximum number of passengers that a bus can accommodate
-      description:
-        type: string
-        description: Details about the heavy-duty vehicle
       fuels:
         type: array
         description: A list of fuels associated with the heavy-duty vehicle
@@ -1037,12 +1025,6 @@ definitions:
       photo_url:
         type: string
         description: The url for the image file of the heavy-duty vehicle
-      description:
-        type: string
-        description: Details about the heavy-duty vehicle
-      comments:
-        type: string
-        description: Additional information
       notes:
         type: string
         description: Additional information
@@ -1183,12 +1165,6 @@ definitions:
       model:
         type: string
         description: The model name of the heavy-duty power system
-      description:
-        type: string
-        description: Details for the heavy-duty power system
-      comments:
-        type: string
-        description: Additional information
       displacement:
         type: string
         description: Engine displacement for the heavy-duty power system
@@ -1253,9 +1229,6 @@ definitions:
       light_duty_manufacturer_id:
         type: integer
         description: A unique identifier for the light-duty automobile's manufacturer
-      light_duty_weight_class_id:
-        type: integer
-        description: A unique identifier for the light-duty weight class associated with the light-duty automobile
       light_duty_category_id:
         type: integer
         description: A unique identifier for the light-duty vehicle category associated with the
@@ -1269,12 +1242,6 @@ definitions:
       photo_url:
         type: string
         description: The url for the image file of the light-duty automobile
-      range_city:
-        type: integer
-        description: The city driving range for the light-duty automobile
-      range_highway:
-        type: integer
-        description: The highway driving range for the light-duty automobile
       electric_range:
         type: integer
         description: The electric-only driving range for the light-duty automobile
@@ -1293,30 +1260,6 @@ definitions:
       engine_description:
         type: string
         description: Additional information about the engine of the light-duty automobile
-      battery_type:
-        type: string
-        description: The battery type of the light-duty automobile
-      battery_voltage_amps:
-        type: string
-        description: The battery voltage amps of the light-duty automobile
-      charge_time_110v:
-        type: string
-        description: The charge time for the light-duty automobile at 110 volts
-      charge_time_220v:
-        type: string
-        description: The charge time for the light-duty automobile at 220 volts
-      warranty_info:
-        type: string
-        description: Warranty information for the light-duty automobile
-      ordering_info:
-        type: string
-        description: Ordering information for the light-duty automobile
-      description:
-        type: string
-        description: Details about the light-duty automobile
-      comments:
-        type: string
-        description: Additional information
       notes:
         type: string
         description: Additional information
@@ -1398,9 +1341,6 @@ definitions:
           light_duty_manufacturer_id:
             type: integer
             description: A unique identifier for the light-duty automobile's manufacturer
-          light_duty_weight_class_id:
-            type: integer
-            description: A unique identifier for the light-duty weight class associated with the light-duty automobile
           light_duty_category_id:
             type: integer
             description: A unique identifier for the light-duty vehicle category associated with the
@@ -1414,12 +1354,6 @@ definitions:
           photo_url:
             type: string
             description: The url for the image file of the light-duty automobile
-          range_city:
-            type: integer
-            description: The city driving range for the light-duty automobile
-          range_highway:
-            type: integer
-            description: The highway driving range for the light-duty automobile
           electric_range:
             type: integer
             description: The electric-only driving range for the light-duty automobile
@@ -1438,30 +1372,6 @@ definitions:
           engine_description:
             type: string
             description: Additional information about the engine of the light-duty automobile
-          battery_type:
-            type: string
-            description: The battery type of the light-duty automobile
-          battery_voltage_amps:
-            type: string
-            description: The battery voltage amps of the light-duty automobile
-          charge_time_110v:
-            type: string
-            description: The charge time for the light-duty automobile at 110 volts
-          charge_time_220v:
-            type: string
-            description: The charge time for the light-duty automobile at 220 volts
-          warranty_info:
-            type: string
-            description: Warranty information for the light-duty automobile
-          ordering_info:
-            type: string
-            description: Ordering information for the light-duty automobile
-          description:
-            type: string
-            description: Details about the light-duty automobile
-          comments:
-            type: string
-            description: Additional information
           notes:
             type: string
             description: Additional information
@@ -1544,12 +1454,6 @@ definitions:
           photo_url:
             type: string
             description: The url for the image file of the heavy-duty vehicle
-          description:
-            type: string
-            description: Details about the heavy-duty vehicle
-          comments:
-            type: string
-            description: Additional information
           notes:
             type: string
             description: Additional information
