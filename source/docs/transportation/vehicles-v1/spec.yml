@@ -1069,7 +1069,7 @@ definitions:
               type: string
               description: The name of the heavy-duty transmission type
       heavy_duty_weight_class:
-        description: The heavy-duty weight class associated with the heavy-duty vehicle
+        description: The weight class associated with the heavy-duty vehicle
         properties:
           id:
             type: integer
