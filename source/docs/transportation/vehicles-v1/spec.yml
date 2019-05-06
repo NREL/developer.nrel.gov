@@ -25,7 +25,7 @@ paths:
           required: false
           type: boolean
         - in: query
-          description: Return only fuels associated with current light-duty automobiles and
+          description: Return all fuels associated with current light-duty automobiles and
             current heavy-duty vehicles
           name: current
           required: false
@@ -488,7 +488,7 @@ paths:
           type: boolean
         - in: query
           name: current
-          description: Return only light-duty manufacturers with associated light-duty automobiles with a model
+          description: Return only light-duty manufacturers that have associated light-duty automobiles with a model
             year of the current or previous calendar year
           required: false
           type: boolean
@@ -555,7 +555,7 @@ paths:
           type: boolean
         - in: query
           name: current
-          description: Return only manufacturers with associated light-duty automobiles with a model
+          description: Return only manufacturers that have associated light-duty automobiles with a model
             year of the current or previous calendar year
           required: false
           type: boolean
@@ -936,7 +936,7 @@ definitions:
         description: A unique identifier for the heavy-duty hybrid/conversion system
       model:
         type: string
-        description: The model of the Heavy duty hybrid/conversion system
+        description: The model of the heavy-duty hybrid/conversion system
       heavy_duty_manufacturer_id:
         type: integer
         description: A unique identifier for the heavy-duty hybrid/conversion system's manufacturer
@@ -1024,7 +1024,7 @@ definitions:
         description: The maximum number of passengers that a bus can accommodate
       photo_url:
         type: string
-        description: The url for the image file of the heavy-duty vehicle
+        description: The URL for the image file of the heavy-duty vehicle
       notes:
         type: string
         description: Additional information
@@ -1069,7 +1069,7 @@ definitions:
               type: string
               description: The name of the heavy-duty transmission type
       heavy_duty_weight_class:
-        description: The heavy-duty weight class associated with the heavy-duty vehicle
+        description: The weight class associated with the heavy-duty vehicle
         properties:
           id:
             type: integer
@@ -1182,7 +1182,7 @@ definitions:
         description: The name of the manufacturer
       url:
         type: string
-        description: The url for the manufacturer's website
+        description: The URL for the manufacturer's website
       phone:
         type: string
         description: The phone number for the manufacturer
@@ -1200,7 +1200,7 @@ definitions:
         description: The name of the manufacturer
       url:
         type: string
-        description: The url for the manufacturer's website
+        description: The URL for the manufacturer's website
       phone:
         type: string
         description: The phone number for the manufacturer
@@ -1221,7 +1221,7 @@ definitions:
         description: A unique identifier for the fuel associated with the light-duty automobile
       phev_type:
         type: string
-        description: The phev type of the light-duty automobile
+        description: The PHEV type of the light-duty automobile
       light_duty_fuel_configuration_id:
         type: integer
         description: A unique identifier for the light-duty fuel configuration associated
@@ -1241,7 +1241,7 @@ definitions:
         description: The model year of the light-duty automobile
       photo_url:
         type: string
-        description: The url for the image file of the light-duty automobile
+        description: The URL for the image file of the light-duty automobile
       electric_range:
         type: integer
         description: The electric-only driving range for the light-duty automobile
@@ -1268,7 +1268,7 @@ definitions:
         description: The name of the light-duty automobile's manufacturer
       manufacturer_url:
         type: string
-        description: The url for the light-duty automobile's website
+        description: The URL for the light-duty automobile's website
       fuel_code:
         type: string
         description: A code used to identify the fuel associated with the light-duty automobile
@@ -1333,7 +1333,7 @@ definitions:
             description: A unique identifier for the fuel associated with the light-duty automobile
           phev_type:
             type: string
-            description: The phev type of the light-duty automobile
+            description: The PHEV type of the light-duty automobile
           light_duty_fuel_configuration_id:
             type: integer
             description: A unique identifier for the light-duty fuel configuration associated
@@ -1353,7 +1353,7 @@ definitions:
             description: The model year of the light-duty automobile
           photo_url:
             type: string
-            description: The url for the image file of the light-duty automobile
+            description: The URL for the image file of the light-duty automobile
           electric_range:
             type: integer
             description: The electric-only driving range for the light-duty automobile
@@ -1380,7 +1380,7 @@ definitions:
             description: The name of the light-duty automobile's manufacturer
           manufacturer_url:
             type: string
-            description: The url for the light-duty automobile's website
+            description: The URL for the light-duty automobile's website
           fuel_code:
             type: string
             description: A code used to identify the fuel associated with the light-duty automobile
@@ -1453,7 +1453,7 @@ definitions:
             description: The maximum number of passengers that a bus can accommodate
           photo_url:
             type: string
-            description: The url for the image file of the heavy-duty vehicle
+            description: The URL for the image file of the heavy-duty vehicle
           notes:
             type: string
             description: Additional information
@@ -1498,7 +1498,7 @@ definitions:
                   type: string
                   description: The name of the heavy-duty transmission type
           heavy_duty_weight_class:
-            description: The heavy-duty weight class associated with the heavy-duty vehicle
+            description: The weight class associated with the heavy-duty vehicle
             properties:
               id:
                 type: integer
@@ -1533,7 +1533,7 @@ definitions:
                   description: A unique identifier for the heavy-duty hybrid/conversion system
                 model:
                   type: string
-                  description: The model of the Heavy duty hybrid/conversion system
+                  description: The model of the heavy-duty hybrid/conversion system
                 heavy_duty_manufacturer_name:
                   type: string
                   description: The name of the heavy-duty hybrid/conversion system's manufacturer
