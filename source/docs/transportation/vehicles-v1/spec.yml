@@ -1353,7 +1353,7 @@ definitions:
             description: The model year of the light-duty automobile
           photo_url:
             type: string
-            description: The url for the image file of the light-duty automobile
+            description: The URL for the image file of the light-duty automobile
           electric_range:
             type: integer
             description: The electric-only driving range for the light-duty automobile
