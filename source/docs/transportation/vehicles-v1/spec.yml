@@ -936,7 +936,7 @@ definitions:
         description: A unique identifier for the heavy-duty hybrid/conversion system
       model:
         type: string
-        description: The model of the Heavy duty hybrid/conversion system
+        description: The model of the heavy-duty hybrid/conversion system
       heavy_duty_manufacturer_id:
         type: integer
         description: A unique identifier for the heavy-duty hybrid/conversion system's manufacturer
