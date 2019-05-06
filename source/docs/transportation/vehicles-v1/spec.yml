@@ -555,7 +555,7 @@ paths:
           type: boolean
         - in: query
           name: current
-          description: Return only manufacturers with associated light-duty automobiles with a model
+          description: Return only manufacturers that have associated light-duty automobiles with a model
             year of the current or previous calendar year
           required: false
           type: boolean
