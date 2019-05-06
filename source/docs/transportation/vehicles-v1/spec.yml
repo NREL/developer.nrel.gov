@@ -1380,7 +1380,7 @@ definitions:
             description: The name of the light-duty automobile's manufacturer
           manufacturer_url:
             type: string
-            description: The url for the light-duty automobile's website
+            description: The URL for the light-duty automobile's website
           fuel_code:
             type: string
             description: A code used to identify the fuel associated with the light-duty automobile
