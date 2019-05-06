@@ -1453,7 +1453,7 @@ definitions:
             description: The maximum number of passengers that a bus can accommodate
           photo_url:
             type: string
-            description: The url for the image file of the heavy-duty vehicle
+            description: The URL for the image file of the heavy-duty vehicle
           notes:
             type: string
             description: Additional information
