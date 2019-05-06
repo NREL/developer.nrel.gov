@@ -1182,7 +1182,7 @@ definitions:
         description: The name of the manufacturer
       url:
         type: string
-        description: The url for the manufacturer's website
+        description: The URL for the manufacturer's website
       phone:
         type: string
         description: The phone number for the manufacturer
