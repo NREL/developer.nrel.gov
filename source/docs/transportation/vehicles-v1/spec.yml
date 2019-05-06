@@ -95,7 +95,7 @@ paths:
         - in: query
           name: fuel_id
           description: Return only heavy-duty engines associated with the fuel ID(s) provided.  A single ID or
-            a comma-separated list of multiple column may be given.
+            a comma-separated list of multiple columns may be given.
           type: array
           collectionFormat: csv
           items:
