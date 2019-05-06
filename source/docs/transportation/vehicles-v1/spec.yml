@@ -1333,7 +1333,7 @@ definitions:
             description: A unique identifier for the fuel associated with the light-duty automobile
           phev_type:
             type: string
-            description: The phev type of the light-duty automobile
+            description: The PHEV type of the light-duty automobile
           light_duty_fuel_configuration_id:
             type: integer
             description: A unique identifier for the light-duty fuel configuration associated
