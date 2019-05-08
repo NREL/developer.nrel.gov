@@ -16,7 +16,7 @@
       </td>
       <td class="doc-parameter-description">
         <p>The type of alternative fuel the station provides. Fuel types are given as code values as described below:</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Value</th>
@@ -137,7 +137,7 @@
       </td>
       <td class="doc-parameter-description">
         <p>The current status of the station, given as code values as described below:</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Value</th>
@@ -178,8 +178,8 @@
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>A description of who is allowed to access the station and other station access information. </p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+        <p>A description of who is allowed to access the station and other station access information.</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Value</th>
@@ -253,7 +253,7 @@
       </td>
       <td class="doc-parameter-description">
         <p>A space-separated list of payment methods accepted. Payment methods are given as code values as described below:</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Value</th>
@@ -358,10 +358,10 @@
       </td>
       <td class="doc-parameter-description">
         <p>The type of organization that owns the fueling infrastructure. Owner types are given as code values as described below:</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
-              <th scope="col">Option</th>
+              <th scope="col">Value</th>
               <th scope="col">Description</th>
             </tr>
           </thead>
@@ -444,6 +444,72 @@
       </td>
     </tr>
     <tr>
+      <th class="doc-parameter-name" scope="row">e85_other_ethanol_blends</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For E85 stations, an array of strings identifying the range(s) of blends other than E85 available at the station, given as code values described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">E15</th>
+              <td>Station also offers E15.</td>
+            </tr>
+            <tr>
+              <th scope="row">E20-E25</th>
+              <td>Station also offers blends of E20-E25.</td>
+            </tr>
+            <tr>
+              <th scope="row">E30-E35</th>
+              <td>Station also offers blends of E30-E35.</td>
+            </tr>
+            <tr>
+              <th scope="row">E40-Plus</th>
+              <td>Station also offers blends of E40 and above.</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">lpg_nozzle_types</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For LPG stations, an array of strings, identifying the type of nozzles available at the station, given as code values described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">ACME</th>
+              <td>ACME</td>
+            </tr>
+            <tr>
+              <th scope="row">QUICK_CONNECT</th>
+              <td>Quick-connect</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
       <th class="doc-parameter-name" scope="row">lpg_primary</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -489,7 +555,7 @@
       </td>
       <td class="doc-parameter-description">
         <p>For CNG stations, the type of dispensing capability available, given as code values as described below:</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Value</th>
@@ -531,6 +597,241 @@
       </td>
       <td class="doc-parameter-description">
         <p>For CNG and LNG stations, the maximum vehicle size that can physically access the fueling infrastructure, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">LD</th>
+              <td>Station can only accommodate light-duty vehicles (Classes 1-2).</td>
+            </tr>
+            <tr>
+              <th scope="row">MD</th>
+              <td>Station can accommodate light- and medium-duty vehicles (Classes 1-5).</td>
+            </tr>
+            <tr>
+              <th scope="row">HD</th>
+              <td>Station can accommodate light-, medium-, and heavy-duty vehicles (Classes 1-8).</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Note: This field does not take into account station capacity or other considerations.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">cng_dispenser_num</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+      </td>
+      <td class="doc-parameter-description">For CNG stations, the number of CNG dispensers installed.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">cng_fill_type_code</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For CNG stations, the type of dispensing capability available, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Q</th>
+              <td>Quick fill</td>
+            </tr>
+            <tr>
+              <th scope="row">T</th>
+              <td>Timed fill</td>
+            </tr>
+            <tr>
+              <th scope="row">B</th>
+              <td>Both: quick fill and timed fill</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">cng_psi</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">For CNG stations, a space separated list of PSI pressures available.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">cng_renewable_source</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For CNG stations, the type of renewable energy used to generate CNG on-site, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">GEOTHERMAL</th>
+              <td>Geothermal</td>
+            </tr>
+            <tr>
+              <th scope="row">HYDRO</th>
+              <td>Hydropower</td>
+            </tr>
+            <tr>
+              <th scope="row">LANDFILL</th>
+              <td>Landfill</td>
+            </tr>
+            <tr>
+              <th scope="row">LIVESTOCK</th>
+              <td>Landfill</td>
+            </tr>
+            <tr>
+              <th scope="row">SOLAR</th>
+              <td>Solar</td>
+            </tr>
+            <tr>
+              <th scope="row">WASTEWATER</th>
+              <td>Wastewater</td>
+            </tr>
+            <tr>
+              <th scope="row">WIND</th>
+              <td>Wind</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">cng_total_compression</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+      </td>
+      <td class="doc-parameter-description">For CNG stations, the total compressor capacity per compressor, measured in standard cubic feet per minute (scfm).</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">cng_total_storage</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+      </td>
+      <td class="doc-parameter-description">For CNG stations, the total storage capacity, measured in standard cubic feet (scf).</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">cng_vehicle_class</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For CNG stations, the maximum vehicle size that can physically access the fueling infrastructure, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">LD</th>
+              <td>Station can only accommodate light-duty vehicles (Classes 1-2).</td>
+            </tr>
+            <tr>
+              <th scope="row">MD</th>
+              <td>Station can accommodate light- and medium-duty vehicles (Classes 1-5).</td>
+            </tr>
+            <tr>
+              <th scope="row">HD</th>
+              <td>Station can accommodate light-, medium-, and heavy-duty vehicles (Classes 1-8).</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Note: This field does not take into account station capacity or other considerations.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">lng_renewable_source</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For LNG stations, the type of renewable energy used to generate CNG on-site, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">GEOTHERMAL</th>
+              <td>Geothermal</td>
+            </tr>
+            <tr>
+              <th scope="row">HYDRO</th>
+              <td>Hydropower</td>
+            </tr>
+            <tr>
+              <th scope="row">LANDFILL</th>
+              <td>Landfill</td>
+            </tr>
+            <tr>
+              <th scope="row">LIVESTOCK</th>
+              <td>Landfill</td>
+            </tr>
+            <tr>
+              <th scope="row">SOLAR</th>
+              <td>Solar</td>
+            </tr>
+            <tr>
+              <th scope="row">WASTEWATER</th>
+              <td>Wastewater</td>
+            </tr>
+            <tr>
+              <th scope="row">WIND</th>
+              <td>Wind</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">lng_vehicle_class</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For LNG stations, the maximum vehicle size that can physically access the fueling infrastructure, given as code values as described below:</p>
         <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
@@ -668,6 +969,122 @@
       <td class="doc-parameter-description">For electric stations, the EVSE network Web site, if applicable.</td>
     </tr>
     <tr>
+      <th class="doc-parameter-name" scope="row">ev_pricing</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">For EVSE stations, information about whether and how much users must pay to use the EVSE.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">ev_renewable_source</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For EVSE stations, the type of renewable energy used to generate electricity on-site, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">GEOTHERMAL</th>
+              <td>Geothermal</td>
+            </tr>
+            <tr>
+              <th scope="row">HYDRO</th>
+              <td>Hydropower</td>
+            </tr>
+            <tr>
+              <th scope="row">LANDFILL</th>
+              <td>Landfill</td>
+            </tr>
+            <tr>
+              <th scope="row">LIVESTOCK</th>
+              <td>Landfill</td>
+            </tr>
+            <tr>
+              <th scope="row">SOLAR</th>
+              <td>Solar</td>
+            </tr>
+            <tr>
+              <th scope="row">WASTEWATER</th>
+              <td>Wastewater</td>
+            </tr>
+            <tr>
+              <th scope="row">WIND</th>
+              <td>Wind</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">hy_pressures</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For hydrogen stations, any array of strings identifying the pressures of the hydrogen available (in bar), given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">350</th>
+              <td>350 bar (35 megapascal, or MPa)</td>
+            </tr>
+            <tr>
+              <th scope="row">700</th>
+              <td>700 bar (70 MPa)</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">hy_standards</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For hydrogen stations, any array of strings identifying which SAE International fueling protocol standard(s) the infrastructure meets, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">J2601</th>
+              <td>SAE J2601</td>
+            </tr>
+            <tr>
+              <th scope="row">J2601-2</th>
+              <td>SAE J2601-2</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
       <th class="doc-parameter-name" scope="row">hy_status_link</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -685,7 +1102,7 @@
       </td>
       <td class="doc-parameter-description">
         <p>A rating indicating the approximate accuracy of the latitude and longitude for the station's address, given as code values as described below:</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Value</th>
@@ -802,6 +1219,263 @@
         </div>
       </td>
       <td class="doc-parameter-description">A unique identifier for this specific station.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">facility_type</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The type of facility at which the station is located, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">AIRPORT</th>
+              <td>Airport</td>
+            </tr>
+            <tr>
+              <th scope="row">ARENA</th>
+              <td>Arena</td>
+            </tr>
+            <tr>
+              <th scope="row">AUTO_REPAIR</th>
+              <td>Auto repair shop</td>
+            </tr>
+            <tr>
+              <th scope="row">BANK</th>
+              <td>Bank</td>
+            </tr>
+            <tr>
+              <th scope="row">BREWERY_DISTILLERY_WINERY</th>
+              <td>Brewery/distillery/winery</td>
+            </tr>
+            <tr>
+              <th scope="row">B_AND_B</th>
+              <td>B&B</td>
+            </tr>
+            <tr>
+              <th scope="row">CAMPGROUND</th>
+              <td>Campground</td>
+            </tr>
+            <tr>
+              <th scope="row">CARWASH</th>
+              <td>Carwash</td>
+            </tr>
+            <tr>
+              <th scope="row">CAR_DEALER</th>
+              <td>Car dealer</td>
+            </tr>
+            <tr>
+              <th scope="row">COLLEGE_CAMPUS</th>
+              <td>College campus</td>
+            </tr>
+            <tr>
+              <th scope="row">CONVENIENCE_STORE</th>
+              <td>Convenience store</td>
+            </tr>
+            <tr>
+              <th scope="row">CONVENTION_CENTER</th>
+              <td>Convention center</td>
+            </tr>
+            <tr>
+              <th scope="row">COOP</th>
+              <td>Co-op</td>
+            </tr>
+            <tr>
+              <th scope="row">FACTORY</th>
+              <td>Factory</td>
+            </tr>
+            <tr>
+              <th scope="row">FED_GOV</th>
+              <td>Federal government</td>
+            </tr>
+            <tr>
+              <th scope="row">FIRE_STATION</th>
+              <td>Fire station</td>
+            </tr>
+            <tr>
+              <th scope="row">FLEET_GARAGE</th>
+              <td>Fleet garage</td>
+            </tr>
+            <tr>
+              <th scope="row">FUEL_RESELLER</th>
+              <td>Fuel reseller</td>
+            </tr>
+            <tr>
+              <th scope="row">GAS_STATION</th>
+              <td>Service/gas station</td>
+            </tr>
+            <tr>
+              <th scope="row">GROCERY</th>
+              <td>Grocery store</td>
+            </tr>
+            <tr>
+              <th scope="row">HARDWARE_STORE</th>
+              <td>Hardware store</td>
+            </tr>
+            <tr>
+              <th scope="row">HOSPITAL</th>
+              <td>Hospital</td>
+            </tr>
+            <tr>
+              <th scope="row">HOTEL</th>
+              <td>Hotel</td>
+            </tr>
+            <tr>
+              <th scope="row">INN</th>
+              <td>Inn</td>
+            </tr>
+            <tr>
+              <th scope="row">LIBRARY</th>
+              <td>Library</td>
+            </tr>
+            <tr>
+              <th scope="row">MIL_BASE</th>
+              <td>Military base</td>
+            </tr>
+            <tr>
+              <th scope="row">MOTOR_POOL</th>
+              <td>Motor pool</td>
+            </tr>
+            <tr>
+              <th scope="row">MULTI_UNIT_DWELLING</th>
+              <td>Multi-Unit dwelling</td>
+            </tr>
+            <tr>
+              <th scope="row">MUNI_GOV</th>
+              <td>Municipal Government</td>
+            </tr>
+            <tr>
+              <th scope="row">MUSEUM</th>
+              <td>Museum</td>
+            </tr>
+            <tr>
+              <th scope="row">NATL_PARK</th>
+              <td>National park</td>
+            </tr>
+            <tr>
+              <th scope="row">OFFICE_BLDG</th>
+              <td>Office building</td>
+            </tr>
+            <tr>
+              <th scope="row">OTHER</th>
+              <td>Other</td>
+            </tr>
+            <tr>
+              <th scope="row">OTHER_ENTERTAINMENT</th>
+              <td>Other entertainment</td>
+            </tr>
+            <tr>
+              <th scope="row">PARK</th>
+              <td>Park</td>
+            </tr>
+            <tr>
+              <th scope="row">PARKING_GARAGE</th>
+              <td>Parking garage</td>
+            </tr>
+            <tr>
+              <th scope="row">PARKING_LOT</th>
+              <td>Parking lot</td>
+            </tr>
+            <tr>
+              <th scope="row">PAY_GARAGE</th>
+              <td>Pay-parking garage</td>
+            </tr>
+            <tr>
+              <th scope="row">PAY_LOT</th>
+              <td>Pay-parking lot</td>
+            </tr>
+            <tr>
+              <th scope="row">PHARMACY</th>
+              <td>Pharmacy</td>
+            </tr>
+            <tr>
+              <th scope="row">PLACE_OF_WORSHIP</th>
+              <td>Place of worship</td>
+            </tr>
+            <tr>
+              <th scope="row">PRISON</th>
+              <td>Prison</td>
+            </tr>
+            <tr>
+              <th scope="row">REC_SPORTS_FACILITY</th>
+              <td>Recreational sports facility</td>
+            </tr>
+            <tr>
+              <th scope="row">REFINERY</th>
+              <td>Refinery</td>
+            </tr>
+            <tr>
+              <th scope="row">RENTAL_CAR_RETURN</th>
+              <td>Rental car return</td>
+            </tr>
+            <tr>
+              <th scope="row">RESEARCH_FACILITY</th>
+              <td>Research facility/laboratory</td>
+            </tr>
+            <tr>
+              <th scope="row">RESTAURANT</th>
+              <td>Restaurant</td>
+            </tr>
+            <tr>
+              <th scope="row">REST_STOP</th>
+              <td>Rest stop</td>
+            </tr>
+            <tr>
+              <th scope="row">RV_PARK</th>
+              <td>RV Park</td>
+            </tr>
+            <tr>
+              <th scope="row">SCHOOL</th>
+              <td>School</td>
+            </tr>
+            <tr>
+              <th scope="row">SHOPPING_CENTER</th>
+              <td>Shopping center</td>
+            </tr>
+            <tr>
+              <th scope="row">SHOPPING_MALL</th>
+              <td>Shopping mall</td>
+            </tr>
+            <tr>
+              <th scope="row">STADIUM</th>
+              <td>Stadium</td>
+            </tr>
+            <tr>
+              <th scope="row">STANDALONE_STATION</th>
+              <td>Stand-alone station</td>
+            </tr>
+            <tr>
+              <th scope="row">STATE_GOV</th>
+              <td>State/provincial government</td>
+            </tr>
+            <tr>
+              <th scope="row">STORAGE</th>
+              <td>Storage facility</td>
+            </tr>
+            <tr>
+              <th scope="row">TRAVEL_CENTER</th>
+              <td>Travel center</td>
+            </tr>
+            <tr>
+              <th scope="row">TRUCK_STOP</th>
+              <td>Truck stop</td>
+            </tr>
+            <tr>
+              <th scope="row">UTILITY</th>
+              <td>Utility</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
     </tr>
     <% if(defined?(distance) && distance) %>
       <tr>
