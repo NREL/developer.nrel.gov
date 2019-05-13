@@ -99,7 +99,7 @@
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">The two character U.S. state code of the station's location.</td>
+      <td class="doc-parameter-description">The two character code for the U.S. state or Canadian province/territory of the station's location.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">zip</th>
@@ -118,6 +118,35 @@
         </div>
       </td>
       <td class="doc-parameter-description">The plus-4 portion of the station's ZIP code (U.S. ZIP codes only).</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">country</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The two character country code of the station's location.</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">US</th>
+              <td>United States</td>
+            </tr>
+            <tr>
+              <th scope="row">CA</th>
+              <td>Canada</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">station_phone</th>
@@ -169,6 +198,84 @@
         </div>
       </td>
       <td class="doc-parameter-description">For planned stations, the date the station is expected to open or start carrying alternative fuel. For temporarily unavailable stations, the expected date is the date the station is expected to reopen. This date is estimated but not guaranteed.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">access_code</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>A description of who is allowed to access the station, given as code values as described below.</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">public</th>
+              <td>Publicly available to all customers.</td>
+            </tr>
+            <tr>
+              <th scope="row">private</th>
+              <td>Private station.</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">access_detail_code</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Additional station access information, given as code values as described below.</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">KEY_ALWAYS</th>
+              <td>Card key at all times.</td>
+            </tr>
+            <tr>
+              <th scope="row">CREDIT_CARD_ALWAYS</th>
+              <td>Credit card at all times.</td>
+            </tr>
+            <tr>
+              <th scope="row">CREDIT_CARD_AFTER_HOURS</th>
+              <td>Credit card after hours.</td>
+            </tr>
+            <tr>
+              <th scope="row">FLEET</th>
+              <td>Fleet customers only.</td>
+            </tr>
+            <tr>
+              <th scope="row">GOVERNMENT</th>
+              <td>Government only.</td>
+            </tr>
+            <tr>
+              <th scope="row">KEY_AFTER_HOURS</th>
+              <td>Card key after hours.</td>
+            </tr>
+            <tr>
+              <th scope="row">CALL</th>
+              <td>Call ahead.</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">groups_with_access_code</th>
@@ -224,7 +331,7 @@
               <td>Publicly available, and accepts fleet cards or station-specific fueling cards 24 hours a day. See “Access Days Time” and “Cards Accepted” fields for more details.</td>
             </tr>
             <tr>
-              <th scope="row">PLANNED – not yet available</th>
+              <th scope="row">PLANNED – not yet accessible</th>
               <td>Not yet open, but plans to carry alternative fuel in the future. See the "Expected Date" field for an anticipated open date.</td>
             </tr>
             <tr>
@@ -1488,6 +1595,107 @@
         <td class="doc-parameter-description">The distance, in miles, from the given location and this station.</td>
       </tr>
     <% end %>
+    <tr>
+      <th class="doc-parameter-name" scope="row">intersection_directions_fr</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">Brief additional information about how to locate the station, in French. Only for Canadian stations, if available.grou</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">access_days_time_fr</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">Hours of operation for the station, in French. Only for Canadian stations, if available.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">bd_blends_fr</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">For biodiesel stations, the level of biodiesel blends the station provides, in French. Only for Canadian stations, if available.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">groups_with_access_code_fr</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>A description of who is allowed to access the station and other station access information, in French. Only for Canadian stations, if available.</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Privé</th>
+              <td>Private station.</td>
+            </tr>
+            <tr>
+              <th scope="row">Privé - réservé aux clients de parcs</th>
+              <td>Private station that may allow other entities to fuel through a business-to-business arrangement. For more information, fleet customers should refer to the “Access Days Time” field for contact information or contact the station directly.</td>
+            </tr>
+            <tr>
+              <th scope="row">Privé – réservé au gouvernement</th>
+              <td>Private station available only to government vehicles, or some subset of government vehicles.</td>
+            </tr>
+            <tr>
+              <th scope="row">Public</th>
+              <td>Publicly available to all customers.</td>
+            </tr>
+            <tr>
+              <th scope="row">Public – appeler à l'avance</th>
+              <td>Publicly available, but customers should call before visiting the station. See “Station Phone” for more details.</td>
+            </tr>
+            <tr>
+              <th scope="row">Public – carte de crédit en tout temps</th>
+              <td>Publicly available, but only accepts credit cards as payment. The station may also accept fleet cards or station-specific fueling cards. See “Cards Accepted” field for more details.</td>
+            </tr>
+            <tr>
+              <th scope="row">Public – carte-clé en tout temps</th>
+              <td>Publicly available, but only accepts fleet cards or station-specific fueling cards as payment. See “Cards Accepted” field for more details.</td>
+            </tr>
+            <tr>
+              <th scope="row">Public – carte de crédit après les heures d'ouverture</th>
+              <td>Publicly available, and accepts credit cards 24 hours a day. See “Access Days Time” and “Cards Accepted” fields for more details.</td>
+            </tr>
+            <tr>
+              <th scope="row">Public – carte-clé après les heures d'ouverture</th>
+              <td>Publicly available, and accepts fleet cards or station-specific fueling cards 24 hours a day. See “Access Days Time” and “Cards Accepted” fields for more details.</td>
+            </tr>
+            <tr>
+              <th scope="row">PRÉVU - pas encore accessible</th>
+              <td>Not yet open, but plans to carry alternative fuel in the future. See the "Expected Date" field for an anticipated open date.</td>
+            </tr>
+            <tr>
+              <th scope="row">TEMPORAIREMENT SUSPENDU</th>
+              <td>Temporarily unavailable. See the “Expected Date” field for an anticipated open date.</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">ev_pricing_fr</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">For EVSE stations, information about whether and how much users must pay to use the EVSE, in French. Only for Canadian stations, if available.</td>
+    </tr>
   </tbody>
 </table>
 
