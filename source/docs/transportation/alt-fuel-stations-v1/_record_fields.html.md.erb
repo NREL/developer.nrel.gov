@@ -207,7 +207,7 @@
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>A description of who is allowed to access the station, given as code values as described below.</p>
+        <p>A description of who is allowed to access the station, given as code values as described below:</p>
         <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
@@ -236,7 +236,7 @@
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>Additional station access information, given as code values as described below.</p>
+        <p>Additional station access information, given as code values as described below:</p>
         <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
@@ -660,31 +660,7 @@
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">
-        <p>For CNG stations, the type of dispensing capability available, given as code values as described below:</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
-          <thead>
-            <tr>
-              <th scope="col">Value</th>
-              <th scope="col">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Q</th>
-              <td>Quick fill</td>
-            </tr>
-            <tr>
-              <th scope="row">T</th>
-              <td>Timed fill</td>
-            </tr>
-            <tr>
-              <th scope="row">B</th>
-              <td>Both: quick fill and timed fill</td>
-            </tr>
-          </tbody>
-        </table>
-      </td>
+      <td class="doc-parameter-description">Deprecated: See <a href="#cng-fill-type-code">cng_fill_type_code</a>. (Note: this field will remain for legacy application support)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">ng_psi</th>
@@ -693,7 +669,7 @@
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">For CNG stations, a space separated list of PSI pressures available.</td>
+      <td class="doc-parameter-description">Deprecated: See <a href="#cng-psi">cng_psi</a>. (Note: this field will remain for legacy application support)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">ng_vehicle_class</th>
@@ -702,32 +678,7 @@
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">
-        <p>For CNG and LNG stations, the maximum vehicle size that can physically access the fueling infrastructure, given as code values as described below:</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
-          <thead>
-            <tr>
-              <th scope="col">Value</th>
-              <th scope="col">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">LD</th>
-              <td>Station can only accommodate light-duty vehicles (Classes 1-2).</td>
-            </tr>
-            <tr>
-              <th scope="row">MD</th>
-              <td>Station can accommodate light- and medium-duty vehicles (Classes 1-5).</td>
-            </tr>
-            <tr>
-              <th scope="row">HD</th>
-              <td>Station can accommodate light-, medium-, and heavy-duty vehicles (Classes 1-8).</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>Note: This field does not take into account station capacity or other considerations.</p>
-      </td>
+      <td class="doc-parameter-description">Deprecated: For CNG stations, see <a href="#cng-vehicle-class">cng_vehicle_class</a>. For LNG stations, see <a href="#lng-vehicle-class">lng_vehicle_class</a>. (Note: this field will remain for legacy application support)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">cng_dispenser_num</th>
@@ -738,7 +689,7 @@
       </td>
       <td class="doc-parameter-description">For CNG stations, the number of CNG dispensers installed.</td>
     </tr>
-    <tr>
+    <tr id='cng-fill-type-code'>
       <th class="doc-parameter-name" scope="row">cng_fill_type_code</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -771,7 +722,7 @@
         </table>
       </td>
     </tr>
-    <tr>
+    <tr id='cng-psi'>
       <th class="doc-parameter-name" scope="row">cng_psi</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -847,7 +798,7 @@
       </td>
       <td class="doc-parameter-description">For CNG stations, the total storage capacity, measured in standard cubic feet (scf).</td>
     </tr>
-    <tr>
+    <tr id='cng-vehicle-class'>
       <th class="doc-parameter-name" scope="row">cng_vehicle_class</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -930,7 +881,7 @@
         </table>
       </td>
     </tr>
-    <tr>
+    <tr id='lng-vehicle-class'>
       <th class="doc-parameter-name" scope="row">lng_vehicle_class</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
