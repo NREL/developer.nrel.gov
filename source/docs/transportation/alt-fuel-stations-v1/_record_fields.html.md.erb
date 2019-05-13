@@ -236,7 +236,7 @@
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>Additional station access information, given as code values as described below:</p>
+        <p>A description of other station access information, given as code values as described below:</p>
         <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
@@ -1085,6 +1085,35 @@
       </td>
     </tr>
     <tr>
+      <th class="doc-parameter-name" scope="row">hy_is_retail</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For hydrogen stations, whether a station offers the retail sale of hydrogen by accepting payment at the point of sale, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">true</th>
+              <td>Station meets the criteria to be considered retail.</td>
+            </tr>
+            <tr>
+              <th scope="row">false</th>
+              <td>Station does not meet the criteria to be considered retail.</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
       <th class="doc-parameter-name" scope="row">hy_pressures</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -1553,7 +1582,7 @@
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">Brief additional information about how to locate the station, in French. Only for Canadian stations, if available.grou</td>
+      <td class="doc-parameter-description">Brief additional information about how to locate the station, in French. Only for Canadian stations, if available.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">access_days_time_fr</th>
