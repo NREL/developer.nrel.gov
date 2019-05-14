@@ -31,6 +31,9 @@ gem "rake", "~> 12.0"
 # ExecJS runtime for middleman.
 gem "mini_racer", "~> 0.2.4"
 
+# For making API calls to generate docs.
+gem "rest-client", "~> 2.0.2"
+
 source "https://rails-assets.org" do
   # Swagger UI
   gem "rails-assets-swagger-ui", "~> 3.0.21"
