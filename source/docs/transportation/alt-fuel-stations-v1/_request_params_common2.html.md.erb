@@ -324,7 +324,7 @@
         <% federal_agencies.each do |federal_agency| %>
           <tr>
             <th scope="row"><%= federal_agency.fetch("key") %></th>
-            <td><%= federal_agency.fetch("name") %></td>
+            <td><%= federal_agency.fetch("name") %> (<%= federal_agency.fetch("country") %>)</td>
           </tr>
         <% end %>
       </tbody>
@@ -363,7 +363,7 @@
         <% federal_agencies.each do |federal_agency| %>
           <tr>
             <th scope="row"><%= federal_agency.fetch("id") %></th>
-            <td><%= federal_agency.fetch("name") %></td>
+            <td><%= federal_agency.fetch("name") %> (<%= federal_agency.fetch("country") %>)</td>
           </tr>
         <% end %>
       </tbody>
@@ -682,7 +682,7 @@
       <tbody>
         <tr>
           <th scope="row">all</th>
-          <td>Include all hydrgen stations.</td>
+          <td>Include all hydrogen stations.</td>
         </tr>
         <tr>
           <th scope="row">true</th>
@@ -711,7 +711,7 @@
     </div>
   </td>
   <td class="doc-parameter-description">
-    <p>Return only CNG stations that can accomodate the specified vehicle class size or greater.</p>
+    <p>Return only LNG stations that can accomodate the specified vehicle class size or greater.</p>
     <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
