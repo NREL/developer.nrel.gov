@@ -153,17 +153,7 @@ The response is composed of the fuel stations matching the requested query. For 
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th class="doc-parameter-name" scope="row">total_results</th>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> integer
-        </div>
-      </td>
-      <td class="doc-parameter-description">
-        <p>How many total stations match your requested query (regardless of any "limit" applied).</p>
-      </td>
-    </tr>
+    <%= partial("docs/transportation/alt-fuel-stations-v1/response_fields_common") %>
     <tr>
       <th class="doc-parameter-name" scope="row">offset</th>
       <td class="doc-parameter-value">
@@ -173,17 +163,6 @@ The response is composed of the fuel stations matching the requested query. For 
       </td>
       <td class="doc-parameter-description">
         <p>The result offset applied to this query (if the "offset" parameter was given).</p>
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">station_locator_url</th>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> string
-        </div>
-      </td>
-      <td class="doc-parameter-description">
-        <p>The URL of the Alternative Fueling Station Locator, the web application that supplies this data.</p>
       </td>
     </tr>
     <tr>
@@ -267,6 +246,8 @@ The individual fuel station records are returned in order of ascending distance 
     </tr>
   </tbody>
 </table>
+
+<%= partial("docs/transportation/alt-fuel-stations-v1/station_count_record_fields") %>
 
 ## Examples
 
