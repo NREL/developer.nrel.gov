@@ -1,0 +1,215 @@
+---
+swagger: '2.0'
+basePath: "/api/mep"
+schemes:
+- https
+info:
+  version: 1.0.0
+  title: MEP Mobility Metric
+  description: |-
+    Query our API to return the MEP (mobility, energy, productivity) mobility metric for a given location. Our database currently has MEP scores for the following metropolitan areas:
+      + Dallas, TX, USA
+      + Denver, CO, USA
+
+    NREL has developed a new quality of mobility metric known as the mobility, energy, productivity (MEP) metric. The MEP metric expands upon existing measures of mobility to include additional parameters such as energy consumption, total trip cost, and accessibility to opportunities (employment, health care, grocery, etc.). The resulting metric provides a robust assessment of the quality of mobility provided to each traveler at a given location, regardless of whether that traveler possesses their own mode of personal transportation.
+paths:
+  "/v1/":
+    get:
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            "$ref": "#/definitions/MepScore"
+      description: ''
+      summary: Return the MEP score for a given location.
+      parameters:
+      - in: query
+        description: Latitude of point of interest with a spatial reference identifier (SRID) of 4269
+        name: lat
+        required: true
+        type: string
+      - in: query
+        description: Longitude of point of interest with a spatial reference identifier (SRID) of 4269
+        name: lon
+        required: true
+        type: string
+      - in: query
+        description: API Key
+        name: api_key
+        required: true
+        type: string
+        default: DEMO_KEY
+  "/v1/by-mode":
+    get:
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            "$ref": "#/definitions/MepScoreByMode"
+      description: ''
+      summary: Return the MEP score for a given location and mode of transportation.
+      parameters:
+      - in: query
+        description: Latitude of point of interest with a spatial reference identifier (SRID) of 4269
+        name: lat
+        required: true
+        type: string
+      - in: query
+        description: Longitude of point of interest with a spatial reference identifier (SRID) of 4269
+        name: lon
+        required: true
+        type: string
+      - in: query
+        description: Mode of transportation.
+        name: mode
+        required: true
+        type: string
+        enum:
+          - drive
+          - tnc
+          - bike
+          - walk
+          - transit
+      - in: query
+        description: API Key
+        name: api_key
+        required: true
+        type: string
+        default: DEMO_KEY
+  "/v1/isochrone":
+    get:
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            "$ref": "#/definitions/Isochrone"
+      description: ''
+      summary: Return an ischrone for a given location, mode of transportation, and time (minutes)
+      parameters:
+      - in: query
+        description: Latitude of point of interest with a spatial reference identifier (SRID) of 4269
+        name: lat
+        required: true
+        type: string
+      - in: query
+        description: Longitude of point of interest with a spatial reference identifier (SRID) of 4269
+        name: lon
+        required: true
+        type: string
+      - in: query
+        description: Mode of transportation.
+        name: mode
+        required: true
+        type: string
+        enum:
+          - drive
+          - tnc
+          - bike
+          - walk
+          - transit
+      - in: query
+        description: Time of interest (minutes)
+        name: time
+        required: true
+        type: integer
+        enum:
+          - 10
+          - 20
+          - 30
+          - 40
+      - in: query
+        description: API Key
+        name: api_key
+        required: true
+        type: string
+        default: DEMO_KEY
+definitions:
+  Metadata:
+    description: The identifying metadata.
+    required:
+    - version
+    properties:
+      version:
+        type: string
+        description: This is the version of the api
+  MepScore:
+    required:
+      - metadata
+      - inputs
+      - score
+    properties:
+      metadata:
+        "$ref": "#/definitions/Metadata"
+      inputs:
+        description: The parameters that were passed to the API
+        required:
+        - lat
+        - lon
+        properties:
+          lat:
+            type: string
+            description: The specified latitude (SRID 4269)
+          lon:
+            type: string
+            description: The specified longitude (SRID 4269)
+      score:
+        description: MEP score for specified location
+        type: integer
+  MepScoreByMode:
+    required:
+      - metadata
+      - inputs
+      - score
+    properties:
+      metadata:
+        "$ref": "#/definitions/Metadata"
+      inputs:
+        description: The parameters that were passed to the API
+        required:
+        - lat
+        - lon
+        - mode
+        properties:
+          lat:
+            type: string
+            description: The specified latitude (SRID 4269)
+          lon:
+            type: string
+            description: The specified longitude (SRID 4269)
+          mode:
+            type: string
+            description: The specified mode of transportation
+      score:
+        description: MEP score for specified location and mode of transportation
+        type: integer
+  Isochrone:
+    required:
+      - metadata
+      - inputs
+      - score
+    properties:
+      metadata:
+        "$ref": "#/definitions/Metadata"
+      inputs:
+        description: The parameters that were passed to the API
+        required:
+        - lat
+        - lon
+        - mode
+        - time
+        properties:
+          lat:
+            type: string
+            description: The specified latitude (SRID 4269)
+          lon:
+            type: string
+            description: The specified longitude (SRID 4269)
+          mode:
+            type: string
+            description: The specified mode of transportation
+          time:
+            type: integer
+            description: The specified time in minutes
+      score:
+        description: MEP score for specified location and mode of transportation
+        type: integer
