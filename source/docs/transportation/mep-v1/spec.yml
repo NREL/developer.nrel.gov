@@ -132,6 +132,7 @@ definitions:
       version:
         type: string
         description: This is the version of the api
+        example: "1.0.0"
   MepScore:
     required:
       - metadata
@@ -149,12 +150,15 @@ definitions:
           lat:
             type: string
             description: The specified latitude (SRID 4269)
+            example: 33.0843489639987
           lon:
             type: string
             description: The specified longitude (SRID 4269)
+            example: -97.3967098885958
       score:
         description: MEP score for specified location
         type: integer
+        example: 16
   MepScoreByMode:
     required:
       - metadata
@@ -173,20 +177,31 @@ definitions:
           lat:
             type: string
             description: The specified latitude (SRID 4269)
+            example: 33.0843489639987
           lon:
             type: string
             description: The specified longitude (SRID 4269)
+            example: -97.3967098885958
           mode:
             type: string
             description: The specified mode of transportation
+            example: transit
       score:
         description: MEP score for specified location and mode of transportation
         type: integer
+        example: 16
+  Point2D:
+    type: array
+    maxItems: 2
+    minItems: 2
+    items:
+      type: number
+    example: [-97.3967098885958, 33.0843489639987]
   Isochrone:
     required:
       - metadata
       - inputs
-      - score
+      - isochrone
     properties:
       metadata:
         "$ref": "#/definitions/Metadata"
@@ -201,15 +216,31 @@ definitions:
           lat:
             type: string
             description: The specified latitude (SRID 4269)
+            example: 33.0843489639987
           lon:
             type: string
             description: The specified longitude (SRID 4269)
+            example: -97.3967098885958
           mode:
             type: string
             description: The specified mode of transportation
+            example: walk
           time:
             type: integer
             description: The specified time in minutes
-      score:
-        description: MEP score for specified location and mode of transportation
-        type: integer
+            example: 10
+      isochrone:
+          type: object
+          description: Isochrone as GeoJSON for given location, mode of transportation, and time.
+          externalDocs:
+            url: http://geojson.org/geojson-spec.html#id4
+          properties:
+            type:
+              type: string
+              example: "polygon"
+            coordinates:
+              type: array
+              items:
+                type: array
+                items:
+                  $ref: '#/definitions/Point2D'
