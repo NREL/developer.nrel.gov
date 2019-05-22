@@ -60,7 +60,7 @@ paths:
         required: true
         type: string
       - in: query
-        description: Mode of transportation.
+        description: Mode of transportation
         name: mode
         required: true
         type: string
@@ -97,7 +97,7 @@ paths:
         required: true
         type: string
       - in: query
-        description: Mode of transportation.
+        description: Mode of transportation
         name: mode
         required: true
         type: string
