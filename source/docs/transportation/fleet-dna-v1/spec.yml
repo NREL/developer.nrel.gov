@@ -14,11 +14,6 @@ info:
     This API was originally developed to support the <a href="https://www.nrel.gov/transportation/fleettest-fleet-dna.html">Fleet DNA Clearinghouse</a>, where visualizations of the data and more information can be found.
 
     A <a href="https://www.nrel.gov/docs/fy14osti/62572.pdf">Fleet DNA Data Dictionary</a> is available and is especially helpful for identifying data fields of interest via the /results_days endpoint
-
-    Suggested workflow:
-    &#8226; Identify vehicle type id of interest via the /vehicle_types endpoint
-    &#8226; Identify data fields of interest via the /results_days endpoint (use data dictionary for explanation of fields)
-    &#8226; Gather data by sending request to the /results_days/{vehicle_type_id} endpoint with data fields of interest specified as col[] parameters
 paths:
   "/v1/afdc_summaries":
     get:
@@ -36,15 +31,15 @@ paths:
         required: true
         type: string
         default: DEMO_KEY
-  "/v1/vehicle_types":
+  "/v1/results":
     get:
       responses:
         '200':
           description: Successful request
           schema:
-            "$ref": "#/definitions/VehicleTypes"
+            "$ref": "#/definitions/Results"
       description: ''
-      summary: Return a list of commercial vehicle types. There are 39 total vehicle types. This endpoint is helpful for specifying the vehicle type for the /results_days/{vehicle_type_id} endpoint below.
+      summary: Return vehicle day drive-cycle metrics. Results can be queried by vehicle class, vehicle type, drivetrain, fuel type, and vocation.
       parameters:
       - in: query
         description: API Key
@@ -52,56 +47,53 @@ paths:
         required: true
         type: string
         default: DEMO_KEY
-  "/v1/results_days":
-    get:
-      responses:
-        '200':
-          description: Successful request
-          schema:
-            "$ref": "#/definitions/ResultsDaysDataFields"
-      description: ''
-      summary: Return a list of available data fields. These data fields can then be specified as parameters for the /results_days/{vehicle_type_id} endpoint below. There are 350 data fields to choose from.
-      parameters:
       - in: query
-        description: API Key
-        name: api_key
-        required: true
-        type: string
-        default: DEMO_KEY
-  "/v1/results_days/{vehicle_type_id}":
-    get:
-      responses:
-        '200':
-          description: Successful request
-          schema:
-            "$ref": "#/definitions/ResultsDays"
-      description: ''
-      summary: Return a series of daily specified values (via the col[] parameters) for a specified vehicle type.
-      parameters:
-      - in: path
-        description: Vehicle type id
-        name: vehicle_type_id
-        required: true
-        type: string
+        description: Drive-cycle metrics to be returned. There are over 350 metrics available to choose from. If none are specified, all of the metrics for a given vehicle day will be returned. A <a href="https://www.nrel.gov/docs/fy14osti/62572.pdf" target="_blank">Data Dictionary</a> is available which contains a complete list of metrics and their descriptions.
+        name: metrics
+        required: false
+        type: array
+        items:
+          type: string
       - in: query
-        description: API Key
-        name: api_key
-        required: true
-        type: string
-        default: DEMO_KEY
+        description: Vehicle classes to query by
+        name: vehicle_classes
+        required: false
+        type: array
+        items:
+          type: string
+          enum: ["Class1", "Class2", "Class3", "Class4", "Class5", "Class6", "Class7", "Class8"]
       - in: query
-        description: |-
-          List of data fields to be retrieved. Multiple values can be specified (this parameter is an array).  The options for the data fields to be retrieved are specified in the <a href='https://www.nrel.gov/docs/fy14osti/62572.pdf'>Fleet DNA Data Dictionary</a>. In addition to the fields in the data dictionary, users can specify the following fields:
-            + deployment.vehicle_class_id,
-            + deployment.vocation_id,
-            + deployment.vehicle_type_id,
-            + deployment.drivetrain_id,
-            + deployement.fuel_type_id
-        name: col[]
-        enum: [deployments.pid, deployments.vocation_id, results_days.total_average_speed, results_days.kinetic_intensity, results_days.vehicle_id]
-        required: true
-        type: string
-        default: results_days.kinetic_intensity
+        description: Vehicle types to query by
+        name: vehicle_types
+        required: false
+        type: array
+        items:
+          type: string
+          enum: ["Beverage ", "Bucket Truck", "Cement Mixer", "City Delivery", "City Transit Bus", "Conventional Van", "Crew Size Pickup", "Dump Truck", "Fire Truck", "Fuel", "Full Size Pickup", "Furniture", "Heavy Semi Tractor", "High Profile Semi", "Home Fuel", "Landscape Utility", "Medium Semi Tractor", "Mini Bus", "Mini Pickup", "Minivan", "Rack", "Refrigerated Van", "Refuse Truck", "SUV", "School Bus", "Semi Sleeper", "Service Van", "Single Axle Van", "Stake Body", "Step Van", "Straight Truck", "Tour Bus", "Tow Truck", "Tractor", "Type C", "Utility Van", "Walk In"]
+      - in: query
+        description: Vehicle drivetrains to query by
+        name: drivetrains
+        required: false
+        type: array
+        items:
+          type: string
+          enum: ["Conventional", "Electric", "Hybrid", "HybridEV", "HybridElectric", "HydraulicHybrid", "ParallelHybrid", "SeriesHybrid"]
+      - in: query
+        description: Vehicle fuel types to query by
+        name: fuel_types
+        required: false
+        type: array
+        items:
+          type: string
+          enum: ["CNG", "Diesel", "Electricity", "Gasoline", "HEV"]
+      - in: query
+        description: Vehicle vocations to query by
+        name: vocations
+        required: false
+        type: array
+        items:
+          type: string
+          enum: ["BeverageDelivery", "FoodDelivery", "FoodDistribution", "GroceryDelivery", "LinenDelivery", "LocalDelivery", "LongHaul", "MassTransit", "ParcelDelivery", "Personal", "PortDrayage", "RefusePickup", "SchoolBus", "SnowPlow", "Telecom", "Towing", "Utility", "WarehouseDelivery"]
 definitions:
   Metadata:
     properties:
@@ -110,13 +102,50 @@ definitions:
         description: This is the version of the api
     example:
       version: "1.0.0"
+  Inputs:
+    properties:
+      inputs:
+        type: object
+        description: Parameters specified in the request
+        example:
+          vehicle_types: FullSizePickup,MiniPickup
+          drivetrains: Diesel
+          metrics: max_speed,kinetic_intensity
+  Results:
+    properties:
+      metadata:
+        "$ref": "#/definitions/Metadata"
+      inputs:
+        "$ref": "#/definitions/Inputs"
+      daily_results:
+        type: array
+        items:
+          type: object
+        example:
+          - max_speed: 74.8248511904762
+            kinetic_intensity: 0.459176722131882
+            vehicle_type: Tractor
+            vehicle_class: Class 7
+            vocation: Beverage Delivery
+            drivetrain: Conventional
+            fuel_type: Diesel
+          - max_speed: 58.195928885256
+            kinetic_intensity: 0.64974190558627
+            vehicle_type: Refuse Truck
+            vehicle_class: Class 8
+            vocation: Refuse Pickup
+            drivetrain: Conventional
+            fuel_type: CNG
   DataSummary:
     required:
     - metadata
+    - inputs
     - result
     properties:
       metadata:
         "$ref": "#/definitions/Metadata"
+      inputs:
+        "$ref": "#/definitions/Inputs"
       result:
         description: Summary of commercial vehicle dataset
         required:
@@ -178,95 +207,3 @@ definitions:
             type: integer
             description: Count of vehicles involved in study
             example: 533
-  VehicleTypes:
-    required:
-    - metadata
-    - result
-    properties:
-      metadata:
-        "$ref": "#/definitions/Metadata"
-      result:
-        description: List of vehicle types available
-        type: array
-        items:
-          required:
-          - id
-          - description
-          properties:
-            id:
-              type: integer
-              description: Unique id of vehicle type
-              example: 5
-            description:
-              type: string
-              description: Vehicle type
-              example: "City Transit Bus"
-  ResultsDays:
-      required:
-      - metadata
-      - inputs
-      - result
-      properties:
-        metadata:
-          "$ref": "#/definitions/Metadata"
-        inputs:
-          description: List of request inputs
-          type: array
-          example:
-            - vehicle_type_ids: [31]
-            - columns: [results_days.vehicle_id, deployments.pid, deployments.vocation_id, results_days.kinetic_intensity, results_days.total_average_speed]
-            - format: json
-        result:
-          type: array
-          items:
-            type: object
-            properties:
-              vehicle_id:
-                type: integer
-              pid:
-                type: integer
-              vocation_id:
-                type: integer
-              kinetic_intensity:
-                type: integer
-              total_average_speed:
-                type: integer
-          example:
-            - vehicle_id: 112
-              pid: 3
-              vocation_id: 4
-              kinetic_intensity: 3.22199934474104
-              total_average_speed: 7.32241918206163
-            - vehicle_id: 112
-              pid: 3
-              vocation_id: 4
-              kinetic_intensity: 2.58558724559133
-              total_average_speed: 9.28415509409981
-  ResultsDaysDataFields:
-    required:
-    - metadata
-    - results
-    properties:
-      metadata:
-        "$ref": "#/definitions/Metadata"
-      result:
-        type: array
-        items:
-          type: string
-        example:
-          - deployments.nda
-          - results_days.vehicle_id
-          - results_days.deployment_id
-          - deployments.pid
-          - deployments.vehicle_class_id
-          - deployments.vocation_id
-          - deployments.vehicle_type_id
-          - deployments.drivetrain_id
-          - deployments.fuel_type_id
-          - results_days.day_id
-          - results_days.trip_count
-          - results_days.mt_count
-          - results_days.start_ts
-          - results_days.end_ts
-          - results_days.start_rts
-          - results_days.end_rts
