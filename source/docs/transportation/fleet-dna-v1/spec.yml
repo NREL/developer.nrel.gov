@@ -69,7 +69,7 @@ paths:
         type: array
         items:
           type: string
-          enum: ["Beverage ", "Bucket Truck", "Cement Mixer", "City Delivery", "City Transit Bus", "Conventional Van", "Crew Size Pickup", "Dump Truck", "Fire Truck", "Fuel", "Full Size Pickup", "Furniture", "Heavy Semi Tractor", "High Profile Semi", "Home Fuel", "Landscape Utility", "Medium Semi Tractor", "Mini Bus", "Mini Pickup", "Minivan", "Rack", "Refrigerated Van", "Refuse Truck", "SUV", "School Bus", "Semi Sleeper", "Service Van", "Single Axle Van", "Stake Body", "Step Van", "Straight Truck", "Tour Bus", "Tow Truck", "Tractor", "Type C", "Utility Van", "Walk In"]
+          enum: ["Beverage", "BucketTruck", "CementMixer", "CityDelivery", "CityTransitBus", "ConventionalVan", "CrewSizePickup", "DumpTruck", "FireTruck", "Fuel", "FullSizePickup", "Furniture", "HeavySemiTractor", "HighProfileSemi", "HomeFuel", "LandscapeUtility", "MediumSemiTractor", "MiniBus", "MiniPickup", "Minivan", "Rack", "RefrigeratedVan", "RefuseTruck", "SUV", "SchoolBus", "SemiSleeper", "ServiceVan", "SingleAxleVan", "StakeBody", "StepVan", "StraightTruck", "TourBus", "TowTruck", "Tractor", "TypeC", "UtilityVan", "WalkIn"]
       - in: query
         description: Vehicle drivetrains to query by
         name: drivetrains
