@@ -1,0 +1,1717 @@
+---
+title: REDE Technical Potential
+
+summary: Technical Potential analysis tool for [The Renewable Energy Explorer](https://www.re-explorer.org/) which estimates the technical potential of specific renewable electricity generation technologies taking into account a variety of user supplied filters and other inputs.
+---
+
+<h1>REDE Technical Potential</h1>
+<p>
+    This API provides access to a Technical Potential analyses model developed at NREL in conjunction with USAID. The tool estimates the technical potential of specific renewable electricity generation technologies taking into account a variety of user supplied filters and other inputs. These are technology-specific estimates of energy generation potential based on renewable resource availability and quality, technical system performance, topographic limitations, environmental, and land-use constraints only. The estimates do not consider economic or market constraints, and therefore do not represent a level of renewable generation that might actually be deployed. Details on the application and use of this tool, as well as the methodology employed can be found at <a href="https://www.re-explorer.org/training.html">REexplorer Training</a> and <a href="https://www.nrel.gov/docs/fy12osti/51946.pdf">Renewable Energy Technical Potentials: A GIS-Based Analysis</a>. 
+</p>
+
+<div class="row">
+    <div class="col-4 ">
+        <ul id="toc"></ul>
+    </div>
+</div>
+
+
+<div id="urls">
+    <h2>Endpoints</h2><br>
+    <div>
+        <p>
+            The REDE Technical Potential API provides a total of two endpoints, hosted from the base
+            <em>developer.nrel.gov/api/opencarto/rede/</em>.
+
+            <div>
+                <br><b><em>v1/technical-potential/config</em></b><br>
+                <div class="row">
+                    <div class="col-11 offset-1">
+                        Provides a JSON response detailing the input parameters, including data formats, limitations on
+                        acceptable ranges, and dependencies with related parameters for the country or countries
+                        matching the provided <em>countries</em> or <em>well known text</em> value.<br><br>
+                        Query parameters include:
+                        <ul>
+                            <li>api_key</li>
+                            <li>countries</li>
+                            <li>wkt</li>
+                        </ul>
+
+                        Examples:
+                        <pre><code>GET <em> https://developer.nrel.gov/api/opencarto/rede/v1/technical-potential/config?countries=Indonesia,Bangladesh&api_key={key}</em></code></pre>
+                        <pre><code>GET <em> https://developer.nrel.gov/api/opencarto/rede/v1/technical-potential/config?wkt=POINT(77.216 28.644)&api_key={key}</em></code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <br><b><em>v1/technical-potential</em></b><br>
+                <div class="row">
+                    <div class="col-11 offset-1">
+                        Provides access to all functions for performing and managing a single analysis scenario. This
+                        endpoint respects HTTP verbs to provide the following features.<br><br>
+
+                        <b><em>POST</em></b><br>
+                        Full documentation for submitting a POST request containing the desired job parameters can be
+                        found in the [do stuff section].
+                        If a valid job is submitted this endpoint will return a jobId that can be used in subsequent
+                        calls for fetching job status and results.
+                        <br><br>
+                        <b><em>GET</em></b><br>
+                        Retrieves the status of a job while processing, or the results of a job once complete. Query
+                        parameters include:
+                        <ul>
+                            <li>api_key</li>
+                            <li>jobId</li>
+                        </ul>
+
+                        Example:
+                        <pre><code>GET <em> https://developer.nrel.gov/api/opencarto/rede/v1/technical-potential?jobId=tpot_result_singapore_2251&api_key={key}</em></code></pre>
+                        <br>
+                        <b><em>DELETE</em></b><br>
+                        Destroys the database and mapping assets created by an analysis job. The job summary data is
+                        never deleted. Query parameters include:
+                        <ul>
+                            <li>api_key</li>
+                            <li>jobId</li>
+                        </ul>
+
+                        Example:
+                        <pre><code>DELETE <em> https://developer.nrel.gov/api/opencarto/rede/v1/technical-potential?jobId=tpot_result_singapore_2251&api_key={key}</em></code></pre>
+                    </div>
+                </div>
+            </div>
+
+
+        </p>
+    </div>
+</div>
+
+<div id="InputFormatsection">
+    <h2>User Workflow</h2><br>
+    <div>
+        <p>
+            To use this API, first load the analysis configuration for the location(s) of interest. Then create a REDE
+            Technical Potential analysis job by posting a set input parameters in JSON
+            format as described <a href="#formatting-and-posting-a-job">below</a> to the <em>v1/technical-potential</em> endpoint
+            along with your API key.<br><br>
+            At the time of job submission, a Technical Potential analysis is scheduled and a unique job identifier is
+            returned as part of the API response. To check on the job status, the job identifier is submitted to the
+            <em>v1/technical-potential</em> endpoint (where the &lt;jobId&gt; is the response from the job creation
+            POST).
+            If the task has completed, the status indicator (found in the outputs > status response) will
+            read 'finished' and the results will be returned. Otherwise, the status indicator will note that the job
+            is still in process or has encountered errors. <br><br>
+            The <em>v1/technical-potential</em> endpoint can be polled on a continuing basis until the status is updated
+            and results are returned.
+        </p>
+
+        <p>Note, an <a href="/signup/">API key</a> is required on all API requests. See <a href="/docs/api-key/">API key
+                usage</a> for more information.</p>
+
+        <b>Loading Scenario Configuration for Location</b><br>
+        <div class="row">
+            <div class="col-11 offset-1">
+                <pre><code>GET <em> https://developer.nrel.gov/api/opencarto/rede/v1/technical-potential/config?wkt=POINT(77.216 28.644)&api_key={key}</em></code></pre>
+            </div>
+        </div>
+        <br>
+        <b>Creating an Analysis Job</b><br>
+        <div class="row">
+            <div class="col-11 offset-1">
+                <pre><code>POST <em> https://developer.nrel.gov/api/opencarto/rede/v1/technical-potential?api_key={key}</em>
+
+    -data {"region": "6", "resource": "32", "excludeProtectedAreas": "true", ...}</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <div><br>
+        <b>Checking Results</b><br>
+        <div class="row">
+            <div class="col-11 offset-1">
+                <pre><code>GET <em> https://developer.nrel.gov/api/opencarto/rede/v1/technical-potential?jobId={thejobid}&api_key={key}</em></code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="SubmissionURLsection">
+    <h2>Formatting and Posting a Job</h2><br>
+    <div>
+
+
+        <p>
+            The <em>v1/technical-potential</em> endpoint accepts a JSON post of a <b>Technical Potential Scenario</b>, a
+            set of nested input parameters. The possible scenario inputs for a given country/region will vary depending
+            on
+            the data resources available to perform this analysis for each region. It is necessary to inspect the
+            configuration
+            data to identify the full range of possible scenario inputs.
+        </p>
+
+
+
+        <h4>Examples</h4>
+        <p>
+            Below is an example of a Technical Potential configuration response for a given country/region.
+        </p>
+
+        <div class="row">
+            <div class="col-11 offset-1 pre-scrollable">
+                <pre><code>
+  {
+    "metadata": {
+        "version": "1.0.0",
+        "resultset": {
+            "count": 1
+        }
+    },
+    "inputs": {
+        "wkt": "POINT(77.216 28.644)"
+    },
+    "outputs": [
+        {
+            "id": 6,
+            "region": {
+                "id": 6,
+                "label": "India"
+            },
+            "availableResources": [
+                {
+                    "resource": {
+                        "id": 14,
+                        "key": "fixlat",
+                        "label": "Fixed Tilt PV System",
+                        "defaultPowerDensity": 36
+                    },
+                    "inputFields": [
+                        {
+                            "fieldId": 3,
+                            "fieldName": "excludeProtectedAreas",
+                            "dataType": "boolean"
+                        },
+                        {
+                            "fieldId": 7,
+                            "fieldName": "limitBySlope",
+                            "dataType": "min and/or max as number"
+                        },
+                        {
+                            "fieldId": 6,
+                            "fieldName": "limitToTransmissionCorridors",
+                            "dataType": "distance as number and units as one of kilometers or miles",
+                            "fieldValues": {
+                                "distance": [
+                                    1,
+                                    5,
+                                    10,
+                                    15,
+                                    20,
+                                    50,
+                                    100
+                                ],
+                                "units": [
+                                    "kilometers"
+                                ]
+                            }
+                        },
+                        {
+                            "fieldId": 17,
+                            "fieldName": "powerDensity",
+                            "dataType": "number"
+                        },
+                        {
+                            "fieldId": 18,
+                            "fieldName": "limitBySolarResource",
+                            "dataType": "min and/or max as number",
+                            "defaultValue": {
+                                "min": 2,
+                                "max": 9
+                            }
+                        },
+                        {
+                            "fieldId": 5,
+                            "fieldName": "limitToRoadCorridors",
+                            "dataType": "distance as number and units as one of kilometers or miles",
+                            "fieldValues": {
+                                "distance": [
+                                    1,
+                                    5,
+                                    10,
+                                    15,
+                                    20,
+                                    50,
+                                    100
+                                ],
+                                "units": [
+                                    "kilometers"
+                                ]
+                            }
+                        },
+                        {
+                            "fieldId": 8,
+                            "fieldName": "limitByGeographicExtent",
+                            "dataType": "array of strings including only provided geographic extents",
+                            "fieldValues": [
+                                "Andaman and Nicobar",
+                                "Andhra Pradesh",
+                                "Arunachal Pradesh",
+                                "Assam",
+                                "Bihar",
+                                "Chandigarh",
+                                "Chhattisgarh",
+                                "Dadra and Nagar Haveli",
+                                "Daman and Diu",
+                                "Delhi",
+                                "Goa",
+                                "Gujarat",
+                                "Haryana",
+                                "Himachal Pradesh",
+                                "Jammu & Kashmir",
+                                "Jharkhand",
+                                "Karnataka",
+                                "Kerala",
+                                "Lakshadweep",
+                                "Madhya Pradesh",
+                                "Maharashtra",
+                                "Manipur",
+                                "Meghalaya",
+                                "Mizoram",
+                                "Nagaland",
+                                "Orissa",
+                                "Puducherry",
+                                "Punjab",
+                                "Rajasthan",
+                                "Sikkim",
+                                "Tamil Nadu",
+                                "Telangana",
+                                "Tripura",
+                                "Uttarakhand",
+                                "Uttar Pradesh",
+                                "West Bengal"
+                            ]
+                        },
+                        {
+                            "fieldId": 4,
+                            "fieldName": "limitByLandUse",
+                            "dataType": "array of strings including only provided land use types",
+                            "fieldValues": [
+                                "Barren or Sparsely Vegetated",
+                                "Cropland/Grassland Mosaic",
+                                "Cropland/Woodland Mosaic",
+                                "Deciduous Broadleaf Forest",
+                                "Dryland Cropland and Pasture",
+                                "Evergreen Broadleaf Forest",
+                                "Evergreen Needleleaf Forest",
+                                "Grassland",
+                                "Herbaceous Wetland",
+                                "Irrigated Cropland and Pasture",
+                                "Mixed Forest",
+                                "Mixed Shrubland/Grassland",
+                                "Mixed Tundra",
+                                "Savanna",
+                                "Shrubland",
+                                "Snow or Ice",
+                                "Urban and Built-Up Land",
+                                "Water Bodies",
+                                "Wooded Tundra",
+                                "Wooded Wetland"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "resource": {
+                        "id": 15,
+                        "key": "csp",
+                        "label": "CSP",
+                        "defaultPowerDensity": 29
+                    },
+                    "inputFields": [
+                        {
+                            "fieldId": 3,
+                            "fieldName": "excludeProtectedAreas",
+                            "dataType": "boolean"
+                        },
+                        {
+                            "fieldId": 7,
+                            "fieldName": "limitBySlope",
+                            "dataType": "min and/or max as number"
+                        },
+                        {
+                            "fieldId": 6,
+                            "fieldName": "limitToTransmissionCorridors",
+                            "dataType": "distance as number and units as one of kilometers or miles",
+                            "fieldValues": {
+                                "distance": [
+                                    1,
+                                    5,
+                                    10,
+                                    15,
+                                    20,
+                                    50,
+                                    100
+                                ],
+                                "units": [
+                                    "kilometers"
+                                ]
+                            }
+                        },
+                        {
+                            "fieldId": 2,
+                            "fieldName": "limitBySolarResource",
+                            "dataType": "min and/or max as number",
+                            "defaultValue": {
+                                "min": 2,
+                                "max": 9
+                            }
+                        },
+                        {
+                            "fieldId": 17,
+                            "fieldName": "powerDensity",
+                            "dataType": "number"
+                        },
+                        {
+                            "fieldId": 5,
+                            "fieldName": "limitToRoadCorridors",
+                            "dataType": "distance as number and units as one of kilometers or miles",
+                            "fieldValues": {
+                                "distance": [
+                                    1,
+                                    5,
+                                    10,
+                                    15,
+                                    20,
+                                    50,
+                                    100
+                                ],
+                                "units": [
+                                    "kilometers"
+                                ]
+                            }
+                        },
+                        {
+                            "fieldId": 8,
+                            "fieldName": "limitByGeographicExtent",
+                            "dataType": "array of strings including only provided geographic extents",
+                            "fieldValues": [
+                                "Andaman and Nicobar",
+                                "Andhra Pradesh",
+                                "Arunachal Pradesh",
+                                "Assam",
+                                "Bihar",
+                                "Chandigarh",
+                                "Chhattisgarh",
+                                "Dadra and Nagar Haveli",
+                                "Daman and Diu",
+                                "Delhi",
+                                "Goa",
+                                "Gujarat",
+                                "Haryana",
+                                "Himachal Pradesh",
+                                "Jammu & Kashmir",
+                                "Jharkhand",
+                                "Karnataka",
+                                "Kerala",
+                                "Lakshadweep",
+                                "Madhya Pradesh",
+                                "Maharashtra",
+                                "Manipur",
+                                "Meghalaya",
+                                "Mizoram",
+                                "Nagaland",
+                                "Orissa",
+                                "Puducherry",
+                                "Punjab",
+                                "Rajasthan",
+                                "Sikkim",
+                                "Tamil Nadu",
+                                "Telangana",
+                                "Tripura",
+                                "Uttarakhand",
+                                "Uttar Pradesh",
+                                "West Bengal"
+                            ]
+                        },
+                        {
+                            "fieldId": 4,
+                            "fieldName": "limitByLandUse",
+                            "dataType": "array of strings including only provided land use types",
+                            "fieldValues": [
+                                "Barren or Sparsely Vegetated",
+                                "Cropland/Grassland Mosaic",
+                                "Cropland/Woodland Mosaic",
+                                "Deciduous Broadleaf Forest",
+                                "Dryland Cropland and Pasture",
+                                "Evergreen Broadleaf Forest",
+                                "Evergreen Needleleaf Forest",
+                                "Grassland",
+                                "Herbaceous Wetland",
+                                "Irrigated Cropland and Pasture",
+                                "Mixed Forest",
+                                "Mixed Shrubland/Grassland",
+                                "Mixed Tundra",
+                                "Savanna",
+                                "Shrubland",
+                                "Snow or Ice",
+                                "Urban and Built-Up Land",
+                                "Water Bodies",
+                                "Wooded Tundra",
+                                "Wooded Wetland"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "resource": {
+                        "id": 13,
+                        "key": "axis1",
+                        "label": "1 Axis Tracking PV System",
+                        "defaultPowerDensity": 31
+                    },
+                    "inputFields": [
+                        {
+                            "fieldId": 3,
+                            "fieldName": "excludeProtectedAreas",
+                            "dataType": "boolean"
+                        },
+                        {
+                            "fieldId": 7,
+                            "fieldName": "limitBySlope",
+                            "dataType": "min and/or max as number"
+                        },
+                        {
+                            "fieldId": 6,
+                            "fieldName": "limitToTransmissionCorridors",
+                            "dataType": "distance as number and units as one of kilometers or miles",
+                            "fieldValues": {
+                                "distance": [
+                                    1,
+                                    5,
+                                    10,
+                                    15,
+                                    20,
+                                    50,
+                                    100
+                                ],
+                                "units": [
+                                    "kilometers"
+                                ]
+                            }
+                        },
+                        {
+                            "fieldId": 17,
+                            "fieldName": "powerDensity",
+                            "dataType": "number"
+                        },
+                        {
+                            "fieldId": 18,
+                            "fieldName": "limitBySolarResource",
+                            "dataType": "min and/or max as number",
+                            "defaultValue": {
+                                "min": 2,
+                                "max": 9
+                            }
+                        },
+                        {
+                            "fieldId": 5,
+                            "fieldName": "limitToRoadCorridors",
+                            "dataType": "distance as number and units as one of kilometers or miles",
+                            "fieldValues": {
+                                "distance": [
+                                    1,
+                                    5,
+                                    10,
+                                    15,
+                                    20,
+                                    50,
+                                    100
+                                ],
+                                "units": [
+                                    "kilometers"
+                                ]
+                            }
+                        },
+                        {
+                            "fieldId": 8,
+                            "fieldName": "limitByGeographicExtent",
+                            "dataType": "array of strings including only provided geographic extents",
+                            "fieldValues": [
+                                "Andaman and Nicobar",
+                                "Andhra Pradesh",
+                                "Arunachal Pradesh",
+                                "Assam",
+                                "Bihar",
+                                "Chandigarh",
+                                "Chhattisgarh",
+                                "Dadra and Nagar Haveli",
+                                "Daman and Diu",
+                                "Delhi",
+                                "Goa",
+                                "Gujarat",
+                                "Haryana",
+                                "Himachal Pradesh",
+                                "Jammu & Kashmir",
+                                "Jharkhand",
+                                "Karnataka",
+                                "Kerala",
+                                "Lakshadweep",
+                                "Madhya Pradesh",
+                                "Maharashtra",
+                                "Manipur",
+                                "Meghalaya",
+                                "Mizoram",
+                                "Nagaland",
+                                "Orissa",
+                                "Puducherry",
+                                "Punjab",
+                                "Rajasthan",
+                                "Sikkim",
+                                "Tamil Nadu",
+                                "Telangana",
+                                "Tripura",
+                                "Uttarakhand",
+                                "Uttar Pradesh",
+                                "West Bengal"
+                            ]
+                        },
+                        {
+                            "fieldId": 4,
+                            "fieldName": "limitByLandUse",
+                            "dataType": "array of strings including only provided land use types",
+                            "fieldValues": [
+                                "Barren or Sparsely Vegetated",
+                                "Cropland/Grassland Mosaic",
+                                "Cropland/Woodland Mosaic",
+                                "Deciduous Broadleaf Forest",
+                                "Dryland Cropland and Pasture",
+                                "Evergreen Broadleaf Forest",
+                                "Evergreen Needleleaf Forest",
+                                "Grassland",
+                                "Herbaceous Wetland",
+                                "Irrigated Cropland and Pasture",
+                                "Mixed Forest",
+                                "Mixed Shrubland/Grassland",
+                                "Mixed Tundra",
+                                "Savanna",
+                                "Shrubland",
+                                "Snow or Ice",
+                                "Urban and Built-Up Land",
+                                "Water Bodies",
+                                "Wooded Tundra",
+                                "Wooded Wetland"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "resource": {
+                        "id": 32,
+                        "key": "wind_t200",
+                        "label": "Wind T-200",
+                        "defaultPowerDensity": 3
+                    },
+                    "inputFields": [
+                        {
+                            "fieldId": 3,
+                            "fieldName": "excludeProtectedAreas",
+                            "dataType": "boolean"
+                        },
+                        {
+                            "fieldId": 7,
+                            "fieldName": "limitBySlope",
+                            "dataType": "min and/or max as number"
+                        },
+                        {
+                            "fieldId": 6,
+                            "fieldName": "limitToTransmissionCorridors",
+                            "dataType": "distance as number and units as one of kilometers or miles",
+                            "fieldValues": {
+                                "distance": [
+                                    1,
+                                    5,
+                                    10,
+                                    15,
+                                    20,
+                                    50,
+                                    100
+                                ],
+                                "units": [
+                                    "kilometers"
+                                ]
+                            }
+                        },
+                        {
+                            "fieldId": 17,
+                            "fieldName": "powerDensity",
+                            "dataType": "number"
+                        },
+                        {
+                            "fieldId": 5,
+                            "fieldName": "limitToRoadCorridors",
+                            "dataType": "distance as number and units as one of kilometers or miles",
+                            "fieldValues": {
+                                "distance": [
+                                    1,
+                                    5,
+                                    10,
+                                    15,
+                                    20,
+                                    50,
+                                    100
+                                ],
+                                "units": [
+                                    "kilometers"
+                                ]
+                            }
+                        },
+                        {
+                            "fieldId": 21,
+                            "fieldName": "limitByWindSpeed",
+                            "dataType": "min and/or max as number",
+                            "defaultValue": {
+                                "min": 3,
+                                "max": null
+                            }
+                        },
+                        {
+                            "fieldId": 8,
+                            "fieldName": "limitByGeographicExtent",
+                            "dataType": "array of strings including only provided geographic extents",
+                            "fieldValues": [
+                                "Andaman and Nicobar",
+                                "Andhra Pradesh",
+                                "Arunachal Pradesh",
+                                "Assam",
+                                "Bihar",
+                                "Chandigarh",
+                                "Chhattisgarh",
+                                "Dadra and Nagar Haveli",
+                                "Daman and Diu",
+                                "Delhi",
+                                "Goa",
+                                "Gujarat",
+                                "Haryana",
+                                "Himachal Pradesh",
+                                "Jammu & Kashmir",
+                                "Jharkhand",
+                                "Karnataka",
+                                "Kerala",
+                                "Lakshadweep",
+                                "Madhya Pradesh",
+                                "Maharashtra",
+                                "Manipur",
+                                "Meghalaya",
+                                "Mizoram",
+                                "Nagaland",
+                                "Orissa",
+                                "Puducherry",
+                                "Punjab",
+                                "Rajasthan",
+                                "Sikkim",
+                                "Tamil Nadu",
+                                "Telangana",
+                                "Tripura",
+                                "Uttarakhand",
+                                "Uttar Pradesh",
+                                "West Bengal"
+                            ]
+                        },
+                        {
+                            "fieldId": 4,
+                            "fieldName": "limitByLandUse",
+                            "dataType": "array of strings including only provided land use types",
+                            "fieldValues": [
+                                "Barren or Sparsely Vegetated",
+                                "Cropland/Grassland Mosaic",
+                                "Cropland/Woodland Mosaic",
+                                "Deciduous Broadleaf Forest",
+                                "Dryland Cropland and Pasture",
+                                "Evergreen Broadleaf Forest",
+                                "Evergreen Needleleaf Forest",
+                                "Grassland",
+                                "Herbaceous Wetland",
+                                "Irrigated Cropland and Pasture",
+                                "Mixed Forest",
+                                "Mixed Shrubland/Grassland",
+                                "Mixed Tundra",
+                                "Savanna",
+                                "Shrubland",
+                                "Snow or Ice",
+                                "Urban and Built-Up Land",
+                                "Water Bodies",
+                                "Wooded Tundra",
+                                "Wooded Wetland"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "resource": {
+                        "id": 35,
+                        "key": "wind_t255",
+                        "label": "Wind T-255",
+                        "defaultPowerDensity": 3
+                    },
+                    "inputFields": [
+                        {
+                            "fieldId": 3,
+                            "fieldName": "excludeProtectedAreas",
+                            "dataType": "boolean"
+                        },
+                        {
+                            "fieldId": 7,
+                            "fieldName": "limitBySlope",
+                            "dataType": "min and/or max as number"
+                        },
+                        {
+                            "fieldId": 6,
+                            "fieldName": "limitToTransmissionCorridors",
+                            "dataType": "distance as number and units as one of kilometers or miles",
+                            "fieldValues": {
+                                "distance": [
+                                    1,
+                                    5,
+                                    10,
+                                    15,
+                                    20,
+                                    50,
+                                    100
+                                ],
+                                "units": [
+                                    "kilometers"
+                                ]
+                            }
+                        },
+                        {
+                            "fieldId": 17,
+                            "fieldName": "powerDensity",
+                            "dataType": "number"
+                        },
+                        {
+                            "fieldId": 5,
+                            "fieldName": "limitToRoadCorridors",
+                            "dataType": "distance as number and units as one of kilometers or miles",
+                            "fieldValues": {
+                                "distance": [
+                                    1,
+                                    5,
+                                    10,
+                                    15,
+                                    20,
+                                    50,
+                                    100
+                                ],
+                                "units": [
+                                    "kilometers"
+                                ]
+                            }
+                        },
+                        {
+                            "fieldId": 21,
+                            "fieldName": "limitByWindSpeed",
+                            "dataType": "min and/or max as number",
+                            "defaultValue": {
+                                "min": 3,
+                                "max": null
+                            }
+                        },
+                        {
+                            "fieldId": 8,
+                            "fieldName": "limitByGeographicExtent",
+                            "dataType": "array of strings including only provided geographic extents",
+                            "fieldValues": [
+                                "Andaman and Nicobar",
+                                "Andhra Pradesh",
+                                "Arunachal Pradesh",
+                                "Assam",
+                                "Bihar",
+                                "Chandigarh",
+                                "Chhattisgarh",
+                                "Dadra and Nagar Haveli",
+                                "Daman and Diu",
+                                "Delhi",
+                                "Goa",
+                                "Gujarat",
+                                "Haryana",
+                                "Himachal Pradesh",
+                                "Jammu & Kashmir",
+                                "Jharkhand",
+                                "Karnataka",
+                                "Kerala",
+                                "Lakshadweep",
+                                "Madhya Pradesh",
+                                "Maharashtra",
+                                "Manipur",
+                                "Meghalaya",
+                                "Mizoram",
+                                "Nagaland",
+                                "Orissa",
+                                "Puducherry",
+                                "Punjab",
+                                "Rajasthan",
+                                "Sikkim",
+                                "Tamil Nadu",
+                                "Telangana",
+                                "Tripura",
+                                "Uttarakhand",
+                                "Uttar Pradesh",
+                                "West Bengal"
+                            ]
+                        },
+                        {
+                            "fieldId": 4,
+                            "fieldName": "limitByLandUse",
+                            "dataType": "array of strings including only provided land use types",
+                            "fieldValues": [
+                                "Barren or Sparsely Vegetated",
+                                "Cropland/Grassland Mosaic",
+                                "Cropland/Woodland Mosaic",
+                                "Deciduous Broadleaf Forest",
+                                "Dryland Cropland and Pasture",
+                                "Evergreen Broadleaf Forest",
+                                "Evergreen Needleleaf Forest",
+                                "Grassland",
+                                "Herbaceous Wetland",
+                                "Irrigated Cropland and Pasture",
+                                "Mixed Forest",
+                                "Mixed Shrubland/Grassland",
+                                "Mixed Tundra",
+                                "Savanna",
+                                "Shrubland",
+                                "Snow or Ice",
+                                "Urban and Built-Up Land",
+                                "Water Bodies",
+                                "Wooded Tundra",
+                                "Wooded Wetland"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "resource": {
+                        "id": 34,
+                        "key": "wind_t245",
+                        "label": "Wind T-245",
+                        "defaultPowerDensity": 3
+                    },
+                    "inputFields": [
+                        {
+                            "fieldId": 3,
+                            "fieldName": "excludeProtectedAreas",
+                            "dataType": "boolean"
+                        },
+                        {
+                            "fieldId": 7,
+                            "fieldName": "limitBySlope",
+                            "dataType": "min and/or max as number"
+                        },
+                        {
+                            "fieldId": 6,
+                            "fieldName": "limitToTransmissionCorridors",
+                            "dataType": "distance as number and units as one of kilometers or miles",
+                            "fieldValues": {
+                                "distance": [
+                                    1,
+                                    5,
+                                    10,
+                                    15,
+                                    20,
+                                    50,
+                                    100
+                                ],
+                                "units": [
+                                    "kilometers"
+                                ]
+                            }
+                        },
+                        {
+                            "fieldId": 17,
+                            "fieldName": "powerDensity",
+                            "dataType": "number"
+                        },
+                        {
+                            "fieldId": 5,
+                            "fieldName": "limitToRoadCorridors",
+                            "dataType": "distance as number and units as one of kilometers or miles",
+                            "fieldValues": {
+                                "distance": [
+                                    1,
+                                    5,
+                                    10,
+                                    15,
+                                    20,
+                                    50,
+                                    100
+                                ],
+                                "units": [
+                                    "kilometers"
+                                ]
+                            }
+                        },
+                        {
+                            "fieldId": 21,
+                            "fieldName": "limitByWindSpeed",
+                            "dataType": "min and/or max as number",
+                            "defaultValue": {
+                                "min": 3,
+                                "max": null
+                            }
+                        },
+                        {
+                            "fieldId": 8,
+                            "fieldName": "limitByGeographicExtent",
+                            "dataType": "array of strings including only provided geographic extents",
+                            "fieldValues": [
+                                "Andaman and Nicobar",
+                                "Andhra Pradesh",
+                                "Arunachal Pradesh",
+                                "Assam",
+                                "Bihar",
+                                "Chandigarh",
+                                "Chhattisgarh",
+                                "Dadra and Nagar Haveli",
+                                "Daman and Diu",
+                                "Delhi",
+                                "Goa",
+                                "Gujarat",
+                                "Haryana",
+                                "Himachal Pradesh",
+                                "Jammu & Kashmir",
+                                "Jharkhand",
+                                "Karnataka",
+                                "Kerala",
+                                "Lakshadweep",
+                                "Madhya Pradesh",
+                                "Maharashtra",
+                                "Manipur",
+                                "Meghalaya",
+                                "Mizoram",
+                                "Nagaland",
+                                "Orissa",
+                                "Puducherry",
+                                "Punjab",
+                                "Rajasthan",
+                                "Sikkim",
+                                "Tamil Nadu",
+                                "Telangana",
+                                "Tripura",
+                                "Uttarakhand",
+                                "Uttar Pradesh",
+                                "West Bengal"
+                            ]
+                        },
+                        {
+                            "fieldId": 4,
+                            "fieldName": "limitByLandUse",
+                            "dataType": "array of strings including only provided land use types",
+                            "fieldValues": [
+                                "Barren or Sparsely Vegetated",
+                                "Cropland/Grassland Mosaic",
+                                "Cropland/Woodland Mosaic",
+                                "Deciduous Broadleaf Forest",
+                                "Dryland Cropland and Pasture",
+                                "Evergreen Broadleaf Forest",
+                                "Evergreen Needleleaf Forest",
+                                "Grassland",
+                                "Herbaceous Wetland",
+                                "Irrigated Cropland and Pasture",
+                                "Mixed Forest",
+                                "Mixed Shrubland/Grassland",
+                                "Mixed Tundra",
+                                "Savanna",
+                                "Shrubland",
+                                "Snow or Ice",
+                                "Urban and Built-Up Land",
+                                "Water Bodies",
+                                "Wooded Tundra",
+                                "Wooded Wetland"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "resource": {
+                        "id": 33,
+                        "key": "wind_t237",
+                        "label": "Wind T-237",
+                        "defaultPowerDensity": 3
+                    },
+                    "inputFields": [
+                        {
+                            "fieldId": 3,
+                            "fieldName": "excludeProtectedAreas",
+                            "dataType": "boolean"
+                        },
+                        {
+                            "fieldId": 7,
+                            "fieldName": "limitBySlope",
+                            "dataType": "min and/or max as number"
+                        },
+                        {
+                            "fieldId": 6,
+                            "fieldName": "limitToTransmissionCorridors",
+                            "dataType": "distance as number and units as one of kilometers or miles",
+                            "fieldValues": {
+                                "distance": [
+                                    1,
+                                    5,
+                                    10,
+                                    15,
+                                    20,
+                                    50,
+                                    100
+                                ],
+                                "units": [
+                                    "kilometers"
+                                ]
+                            }
+                        },
+                        {
+                            "fieldId": 17,
+                            "fieldName": "powerDensity",
+                            "dataType": "number"
+                        },
+                        {
+                            "fieldId": 5,
+                            "fieldName": "limitToRoadCorridors",
+                            "dataType": "distance as number and units as one of kilometers or miles",
+                            "fieldValues": {
+                                "distance": [
+                                    1,
+                                    5,
+                                    10,
+                                    15,
+                                    20,
+                                    50,
+                                    100
+                                ],
+                                "units": [
+                                    "kilometers"
+                                ]
+                            }
+                        },
+                        {
+                            "fieldId": 21,
+                            "fieldName": "limitByWindSpeed",
+                            "dataType": "min and/or max as number",
+                            "defaultValue": {
+                                "min": 3,
+                                "max": null
+                            }
+                        },
+                        {
+                            "fieldId": 8,
+                            "fieldName": "limitByGeographicExtent",
+                            "dataType": "array of strings including only provided geographic extents",
+                            "fieldValues": [
+                                "Andaman and Nicobar",
+                                "Andhra Pradesh",
+                                "Arunachal Pradesh",
+                                "Assam",
+                                "Bihar",
+                                "Chandigarh",
+                                "Chhattisgarh",
+                                "Dadra and Nagar Haveli",
+                                "Daman and Diu",
+                                "Delhi",
+                                "Goa",
+                                "Gujarat",
+                                "Haryana",
+                                "Himachal Pradesh",
+                                "Jammu & Kashmir",
+                                "Jharkhand",
+                                "Karnataka",
+                                "Kerala",
+                                "Lakshadweep",
+                                "Madhya Pradesh",
+                                "Maharashtra",
+                                "Manipur",
+                                "Meghalaya",
+                                "Mizoram",
+                                "Nagaland",
+                                "Orissa",
+                                "Puducherry",
+                                "Punjab",
+                                "Rajasthan",
+                                "Sikkim",
+                                "Tamil Nadu",
+                                "Telangana",
+                                "Tripura",
+                                "Uttarakhand",
+                                "Uttar Pradesh",
+                                "West Bengal"
+                            ]
+                        },
+                        {
+                            "fieldId": 4,
+                            "fieldName": "limitByLandUse",
+                            "dataType": "array of strings including only provided land use types",
+                            "fieldValues": [
+                                "Barren or Sparsely Vegetated",
+                                "Cropland/Grassland Mosaic",
+                                "Cropland/Woodland Mosaic",
+                                "Deciduous Broadleaf Forest",
+                                "Dryland Cropland and Pasture",
+                                "Evergreen Broadleaf Forest",
+                                "Evergreen Needleleaf Forest",
+                                "Grassland",
+                                "Herbaceous Wetland",
+                                "Irrigated Cropland and Pasture",
+                                "Mixed Forest",
+                                "Mixed Shrubland/Grassland",
+                                "Mixed Tundra",
+                                "Savanna",
+                                "Shrubland",
+                                "Snow or Ice",
+                                "Urban and Built-Up Land",
+                                "Water Bodies",
+                                "Wooded Tundra",
+                                "Wooded Wetland"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "resource": {
+                        "id": 36,
+                        "key": "wind_t325",
+                        "label": "Wind T-325",
+                        "defaultPowerDensity": 3
+                    },
+                    "inputFields": [
+                        {
+                            "fieldId": 3,
+                            "fieldName": "excludeProtectedAreas",
+                            "dataType": "boolean"
+                        },
+                        {
+                            "fieldId": 7,
+                            "fieldName": "limitBySlope",
+                            "dataType": "min and/or max as number"
+                        },
+                        {
+                            "fieldId": 6,
+                            "fieldName": "limitToTransmissionCorridors",
+                            "dataType": "distance as number and units as one of kilometers or miles",
+                            "fieldValues": {
+                                "distance": [
+                                    1,
+                                    5,
+                                    10,
+                                    15,
+                                    20,
+                                    50,
+                                    100
+                                ],
+                                "units": [
+                                    "kilometers"
+                                ]
+                            }
+                        },
+                        {
+                            "fieldId": 17,
+                            "fieldName": "powerDensity",
+                            "dataType": "number"
+                        },
+                        {
+                            "fieldId": 5,
+                            "fieldName": "limitToRoadCorridors",
+                            "dataType": "distance as number and units as one of kilometers or miles",
+                            "fieldValues": {
+                                "distance": [
+                                    1,
+                                    5,
+                                    10,
+                                    15,
+                                    20,
+                                    50,
+                                    100
+                                ],
+                                "units": [
+                                    "kilometers"
+                                ]
+                            }
+                        },
+                        {
+                            "fieldId": 21,
+                            "fieldName": "limitByWindSpeed",
+                            "dataType": "min and/or max as number",
+                            "defaultValue": {
+                                "min": 3,
+                                "max": null
+                            }
+                        },
+                        {
+                            "fieldId": 8,
+                            "fieldName": "limitByGeographicExtent",
+                            "dataType": "array of strings including only provided geographic extents",
+                            "fieldValues": [
+                                "Andaman and Nicobar",
+                                "Andhra Pradesh",
+                                "Arunachal Pradesh",
+                                "Assam",
+                                "Bihar",
+                                "Chandigarh",
+                                "Chhattisgarh",
+                                "Dadra and Nagar Haveli",
+                                "Daman and Diu",
+                                "Delhi",
+                                "Goa",
+                                "Gujarat",
+                                "Haryana",
+                                "Himachal Pradesh",
+                                "Jammu & Kashmir",
+                                "Jharkhand",
+                                "Karnataka",
+                                "Kerala",
+                                "Lakshadweep",
+                                "Madhya Pradesh",
+                                "Maharashtra",
+                                "Manipur",
+                                "Meghalaya",
+                                "Mizoram",
+                                "Nagaland",
+                                "Orissa",
+                                "Puducherry",
+                                "Punjab",
+                                "Rajasthan",
+                                "Sikkim",
+                                "Tamil Nadu",
+                                "Telangana",
+                                "Tripura",
+                                "Uttarakhand",
+                                "Uttar Pradesh",
+                                "West Bengal"
+                            ]
+                        },
+                        {
+                            "fieldId": 4,
+                            "fieldName": "limitByLandUse",
+                            "dataType": "array of strings including only provided land use types",
+                            "fieldValues": [
+                                "Barren or Sparsely Vegetated",
+                                "Cropland/Grassland Mosaic",
+                                "Cropland/Woodland Mosaic",
+                                "Deciduous Broadleaf Forest",
+                                "Dryland Cropland and Pasture",
+                                "Evergreen Broadleaf Forest",
+                                "Evergreen Needleleaf Forest",
+                                "Grassland",
+                                "Herbaceous Wetland",
+                                "Irrigated Cropland and Pasture",
+                                "Mixed Forest",
+                                "Mixed Shrubland/Grassland",
+                                "Mixed Tundra",
+                                "Savanna",
+                                "Shrubland",
+                                "Snow or Ice",
+                                "Urban and Built-Up Land",
+                                "Water Bodies",
+                                "Wooded Tundra",
+                                "Wooded Wetland"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "errors": [],
+    "status": 200
+}
+  </code></pre>
+            </div>
+        </div>
+        <br>
+        <p>
+            Here is an example of a valid Technical Potential input scenario to POST
+        </p>
+
+
+        <div class="row">
+            <div class="col-11 offset-1">
+                <pre><code>
+{
+    "region": "6",
+    "resource": "32",
+    "excludeProtectedAreas": "true",
+    "limitBySlope": {
+        "min": "1",
+        "max": "12"
+    },
+    "limitToTransmissionCorridors": {
+        "distance": "50",
+        "units": "kilometers"
+    },
+    "powerDensity": "3",
+    "limitToRoadCorridors": {
+        "distance": "50",
+        "units": "kilometers"
+    },
+    "limitByWindSpeed": {
+        "min": "3",
+        "max": "20"
+    },
+    "limitByGeographicExtent": [
+        "Andaman and Nicobar",
+        "Chhattisgarh"
+    ],
+    "limitByLandUse": [
+        "Urban and Built-Up Land",
+        "Water Bodies",
+        "Wooded Wetland"
+    ]
+}
+</code></pre>
+            </div>
+        </div>
+
+        <h4>API Response</h4>
+
+        <p>The <em>v1/technical-potential</em> endpoint replies with a JSON consisting of the unique identifier of the
+            new job in the <em>outputs > jobId</em> field.</p>
+        <div class="row">
+            <div class="col-11 offset-1">
+                <pre>
+ {
+    "metadata": {
+        "version": "1.0.0",
+        "resultset": {
+            "count": 1
+        }
+    },
+    "inputs": {...},
+    "outputs": {
+        "jobId": "tpot_result_india_3513",
+        "status": "queued"
+    },
+    "errors": [],
+    "status": 200
+  }
+                </pre>
+            </div>
+        </div>
+
+
+        <h4>Input Object Data Format</h4>
+        <p>
+            The <em>v1/technical-potential/config</em> endpoint replies with a JSON defining the possible inputs for a given location. The description of the fields is detailed in the table below including where each field would be used in forming a valid JSON request object when running an analysis job. For reference, the example above has one instance of each type of input field.
+        </p>
+        <div class="row">
+            <div class="col-11 offset-1">
+                <table class="table table-striped doc-parameters">
+                    <tr>
+                        <th>Input Field Name</th>
+                        <th>Value</th>
+                        <th>Field Name used in POST request body</th>
+                    </tr>
+                    <tr>
+                        <td>outputs</td>
+                        <td>An array of configuration objects, one per relevant country/region</td>
+                        <td>The <em>id</em> field is used as the <em>region</em> field in the POST body</td>
+                    </tr>
+                    <tr>
+                        <td>availableResources</td>
+                        <td>An array of configuration objects, one per supported resource type in the country/region</td>
+                        <td>The <em>id</em> field is used as the <em>resource</em> field in the POST body</td>
+                    </tr>
+                    <tr>
+                        <td>inputFields</td>
+                        <td>An array of configuration objects, each defining a valid analysis input for the given resource in the given country/region</td>
+                        <td>
+                            <ul>
+                                <li>The <em>fieldName</em> field is used as the input key in the POST body</li>
+                                <li>The <em>dataType</em> field defines the data type of the input field</li>
+                                <li>The <em>fieldValues</em> field is an optional set of possible values for this field</li>
+                                <li>The <em>defaultValue</em> field is an optional value showing a reasonable default value for this field</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ResultsURLsection">
+    <h2>Getting Results</h2><br>
+
+    <div>
+        <p>The <em>v1/technical-potential</em> endpoint replies to a GET request containing a query string specifying
+            the jobId for which to retrieve results.</p>
+        <div class="row">
+            <div class="col-11 offset-1">
+                <pre>GET https://developer.nrel.gov/api/opencarto/rede/v1/technical-potential?jobId=tpot_result_india_3513&api_key={key}</pre>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h4>API Response</h4>
+        <p>If results are not ready, the <em>v1/technical-potential</em> endpoint will respond with the message shown
+            below. The outputs > status field will indicate <em>queued</em> or <em>started</em>. The URL can be polled
+            at regular intervals, without rate-limiting, until the status changes to 'finished' indicating that results
+            are ready.</p>
+    </div>
+    <div class="row">
+        <div class="col-11 offset-1">
+            <pre>
+{
+  "metadata": {
+    "version": "1.0.0",
+    "resultset": {
+      "count": 1
+    }
+  },
+  "inputs": {
+    "jobId": "tpot_result_india_3513"
+  },
+  "outputs": {
+    "disposition": "started",
+    "status": "started",
+    "runtime_seconds": 26.98
+  },
+  "errors": [],
+  "status": 200
+}
+    </pre>
+        </div>
+    </div>
+
+    <div>
+        <p>If results are ready, the Results URL returns a JSON containing <b>inputs</b>, <b>outputs </b> and <b>
+                messages</b>. The Scenario directory will contain a 'status' designated as <em>optimal</em>.</p>
+    </div>
+    <div class="row">
+        <div class="col-11 offset-1 pre-scrollable">
+            <pre>
+{
+  "inputs": {
+    "jobId": "tpot_result_india_3513"
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "resultset": {
+      "count": 1
+    }
+  },
+  "status": 200,
+  "outputs": {
+    "disposition": "finished",
+    "status": "finished",
+    "map_data_deleted": true,
+    "runtime_seconds": 33,
+    "results": {
+      "cumulative_stats": {
+        "total_nameplate_capacity_mw": 159505.72,
+        "total_ac_generation_mwh": 186734332.23,
+        "total_land_area_sq_km": 53168.58,
+        "min": 0,
+        "max": 6,
+        "classes": [
+          {
+            "nameplate_capacity_mw": 18032.3,
+            "ac_generation_mwh": 13315479.02,
+            "land_area_sq_km": 6010.77,
+            "min": 0.001,
+            "max": 4
+          },
+          {
+            "nameplate_capacity_mw": 84262.49,
+            "ac_generation_mwh": 89380648.56,
+            "land_area_sq_km": 28087.5,
+            "min": 4,
+            "max": 4.5
+          },
+          {
+            "nameplate_capacity_mw": 51030.66,
+            "ac_generation_mwh": 72680604.54,
+            "land_area_sq_km": 17010.22,
+            "min": 4.5,
+            "max": 5
+          },
+          {
+            "nameplate_capacity_mw": 5897.27,
+            "ac_generation_mwh": 10723113.91,
+            "land_area_sq_km": 1965.76,
+            "min": 5,
+            "max": 5.5
+          },
+          {
+            "nameplate_capacity_mw": 279.28,
+            "ac_generation_mwh": 624751.38,
+            "land_area_sq_km": 93.09,
+            "min": 5.5,
+            "max": 6
+          },
+          {
+            "nameplate_capacity_mw": 3.72,
+            "ac_generation_mwh": 9734.82,
+            "land_area_sq_km": 1.24,
+            "min": 6,
+            "max": 6.5
+          }
+        ]
+      },
+      "regional_stats": {
+        "Chhattisgarh": {
+          "total_nameplate_capacity_mw": 159505.72,
+          "total_ac_generation_mwh": 186734332.23,
+          "total_land_area_sq_km": 53168.58,
+          "regional_min": 1,
+          "regional_max": 6,
+          "classes": [
+            {
+              "nameplate_capacity_mw": 18032.3,
+              "ac_generation_mwh": 13315479.02,
+              "land_area_sq_km": 6010.77,
+              "min": 0.001,
+              "max": 4
+            },
+            {
+              "nameplate_capacity_mw": 84262.49,
+              "ac_generation_mwh": 89380648.56,
+              "land_area_sq_km": 28087.5,
+              "min": 4,
+              "max": 4.5
+            },
+            {
+              "nameplate_capacity_mw": 51030.66,
+              "ac_generation_mwh": 72680604.54,
+              "land_area_sq_km": 17010.22,
+              "min": 4.5,
+              "max": 5
+            },
+            {
+              "nameplate_capacity_mw": 5897.27,
+              "ac_generation_mwh": 10723113.91,
+              "land_area_sq_km": 1965.76,
+              "min": 5,
+              "max": 5.5
+            },
+            {
+              "nameplate_capacity_mw": 279.28,
+              "ac_generation_mwh": 624751.38,
+              "land_area_sq_km": 93.09,
+              "min": 5.5,
+              "max": 6
+            },
+            {
+              "nameplate_capacity_mw": 3.72,
+              "ac_generation_mwh": 9734.82,
+              "land_area_sq_km": 1.24,
+              "min": 6,
+              "max": 6.5
+            }
+          ]
+        }
+      },
+      "resource_data": {
+        "type": "wind_t200",
+        "units": "kWh/m<sup>2</sup>/day"
+      }
+    }
+  },
+  "errors": []
+}
+  </pre>
+        </div>
+    </div>
+    <div><br>
+        <h4>Inputs</h4>
+        <p> Inputs echoes back the JSON representation of the Technical Potential scenario inputs provided to create
+            this analysis job</a>.</p>
+    </div>
+    <div><br>
+        <h4>Outputs</h4>
+        <p> Outputs provides the results of the anlaysis.</p>
+        <div class="row">
+            <div class="col-11 offset-1">
+                <table class="table table-striped doc-parameters">
+                    <tr>
+                        <th>Output Field Name</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr>
+                        <td>results</td>
+                        <td>Location of the analysis results</td>
+                    </tr>
+                    <tr>
+                        <td>cumulative_stats</td>
+                        <td>Aggregated outputs for the entire set of selected sub-regions</td>
+                    </tr>
+                    <tr>
+                        <td>regional_stats</td>
+                        <td>Calculated outputs for each of the individually selected sub-regions</td>
+                    </tr>
+                    <tr>
+                        <td>classes</td>
+                        <td>Logical binning of outputs for ease of charting and mapping</td>
+                    </tr>
+                    <tr>
+                        <td>resource_data</td>
+                        <td>Metadata defining the resource that was the subject of the analysis (type of solar or wind generator)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div><br>
+        <h4>Metadata</h4>
+        <p> The metadata section contains tool versioning and other high level information.</p>
+    </div>
+    <div><br>
+        <h4>Errors</h4>
+        <p> The errors section contains messages detailing any errors should they have occurred.</p>
+    </div>
+</div>
+
+<div id="curl-example">
+    <h2>POST request example</h2>
+    <br>
+    <p>
+        An example of a valid POST request made using the cUrl command line tool. 
+    </p>
+    <pre>
+        <code>
+curl -X POST \
+  https://developer.nrel.gov/api/opencarto/rede/v1/technical-potential?api_key={KEY} \
+  -H 'Content-Type: application/json' \
+  -H 'Pragma: no-cache' \
+  -H 'cache-control: no-cache' \
+  -d '{
+    "region": "6",
+    "resource": "32",
+    "excludeProtectedAreas": "true",
+    "limitBySlope": {
+        "min": "1",
+        "max": "12"
+    },
+    "limitToTransmissionCorridors": {
+        "distance": "50",
+        "units": "kilometers"
+    },
+    "powerDensity": "3",
+    "limitToRoadCorridors": {
+        "distance": "50",
+        "units": "kilometers"
+    },
+    "limitByWindSpeed": {
+        "min": "3",
+        "max": "20"
+    },
+    "limitByGeographicExtent": [
+        "Andaman and Nicobar",
+        "Chhattisgarh"
+    ],
+    "limitByLandUse": [
+        "Urban and Built-Up Land",
+        "Water Bodies",
+        "Wooded Wetland"
+    ]
+}'
+        </code>
+    </pre>
+</div>
