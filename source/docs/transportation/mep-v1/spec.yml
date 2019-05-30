@@ -9,7 +9,6 @@ info:
   description: |-
     Query our API to return the MEP (mobility, energy, productivity) mobility metric for a given location. Our database currently has MEP scores for the following metropolitan areas:
       + Dallas, TX, USA
-      + Denver, CO, USA
 
     NREL has developed a new quality of mobility metric known as the mobility, energy, productivity (MEP) metric. The MEP metric expands upon existing measures of mobility to include additional parameters such as energy consumption, total trip cost, and accessibility to opportunities (employment, health care, grocery, etc.). The resulting metric provides a robust assessment of the quality of mobility provided to each traveler at a given location, regardless of whether that traveler possesses their own mode of personal transportation.
 paths:
