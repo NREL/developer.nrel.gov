@@ -11,9 +11,9 @@ info:
 
     Fleet DNA consists of high resolution vehicle operation data that NREL collects from fleets around the country. The data are processed using a standard processing routine, and the aggregated results of each study are cleansed of personally identifying information.
 
-    This API was originally developed to support the <a href="https://www.nrel.gov/transportation/fleettest-fleet-dna.html">Fleet DNA Clearinghouse</a>, where visualizations of the data and more information can be found.
+    This API was originally developed to support the <a href="https://www.nrel.gov/transportation/fleettest-fleet-dna.html">Fleet DNA Clearinghouse</a>, where visualizations of the data can be found.
 
-    A <a href="https://www.nrel.gov/docs/fy14osti/62572.pdf">Fleet DNA Data Dictionary</a> is available and is especially helpful for identifying data fields of interest via the /results_days endpoint
+    A <a href="https://www.nrel.gov/docs/fy14osti/62572.pdf">Fleet DNA Data Dictionary</a> is available and is especially helpful for identifying data fields of interest via the /results endpoint
 paths:
   "/v1/afdc_summaries":
     get:
