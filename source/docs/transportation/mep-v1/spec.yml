@@ -1,8 +1,21 @@
 ---
 swagger: '2.0'
-basePath: "/api/mep"
+host: api.data.gov
+basePath: "/TEST/doe/livewire/mep"
 schemes:
 - https
+securityDefinitions:
+  ApiKeyQueryAuth:
+    type: apiKey
+    in: query
+    name: api_key
+  ApiKeyHeaderAuth:
+    type: apiKey
+    in: header
+    name: X-Api-Key
+security:
+  - ApiKeyQueryAuth: []
+  - ApiKeyHeaderAuth: []
 info:
   version: 1.0.0
   title: MEP Mobility Metric
@@ -32,12 +45,6 @@ paths:
         name: lon
         required: true
         type: string
-      - in: query
-        description: API Key
-        name: api_key
-        required: true
-        type: string
-        default: DEMO_KEY
   "/v1/by-mode":
     get:
       responses:
@@ -69,12 +76,6 @@ paths:
           - bike
           - walk
           - transit
-      - in: query
-        description: API Key
-        name: api_key
-        required: true
-        type: string
-        default: DEMO_KEY
   "/v1/isochrone":
     get:
       responses:
@@ -116,12 +117,6 @@ paths:
           - 20
           - 30
           - 40
-      - in: query
-        description: API Key
-        name: api_key
-        required: true
-        type: string
-        default: DEMO_KEY
 definitions:
   Metadata:
     description: The identifying metadata.
