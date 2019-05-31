@@ -1,7 +1,7 @@
 ---
 swagger: '2.0'
-host: api.data.gov
-basePath: "/TEST/doe/livewire/mep"
+host: devstage.nrel.gov
+basePath: "/api/mep"
 schemes:
 - https
 securityDefinitions:
