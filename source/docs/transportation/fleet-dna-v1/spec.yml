@@ -1,8 +1,21 @@
 ---
 swagger: '2.0'
+host: "devstage.nrel.gov"
 basePath: "/api/fdna_reporting"
 schemes:
 - https
+securityDefinitions:
+  ApiKeyQueryAuth:
+    type: apiKey
+    in: query
+    name: api_key
+  ApiKeyHeaderAuth:
+    type: apiKey
+    in: header
+    name: X-Api-Key
+security:
+  - ApiKeyQueryAuth: []
+  - ApiKeyHeaderAuth: []
 info:
   version: 1.0.0
   title: Commercial Fleet Vehicle Operating Data
@@ -24,14 +37,7 @@ paths:
             "$ref": "#/definitions/DataSummary"
       description: ''
       summary: Return a summary of the complete dataset.
-      parameters:
-      - in: query
-        description: API Key
-        name: api_key
-        required: true
-        type: string
-        default: DEMO_KEY
-  "/v1/results":
+  "/v1/vehicle_days":
     get:
       responses:
         '200':
@@ -39,14 +45,8 @@ paths:
           schema:
             "$ref": "#/definitions/Results"
       description: ''
-      summary: Return vehicle day drive-cycle metrics. Results can be queried by vehicle class, vehicle type, drivetrain, fuel type, and vocation.
+      summary: Return drive-cycle metrics grouped by vehicle day. Results can be queried by city of vehicle depot, state of vehicle depot, vehicle class, vehicle type, drivetrain, fuel type, and vocation.
       parameters:
-      - in: query
-        description: API Key
-        name: api_key
-        required: true
-        type: string
-        default: DEMO_KEY
       - in: query
         description: Drive-cycle metrics to be returned. There are over 350 metrics available to choose from. If none are specified, all of the metrics for a given vehicle day will be returned. A <a href="https://www.nrel.gov/docs/fy14osti/62572.pdf" target="_blank">Data Dictionary</a> is available which contains a complete list of metrics and their descriptions.
         name: metrics
