@@ -186,10 +186,10 @@ paths:
                 "name": "Brookhaven National Laboratory",
                 "tto_url": "https://www.bnl.gov/techtransfer/ ",
                 "contact_us_email": "tech@bnl.gov",
-                "links": {"self": "https://dev.labpartnering.org/labs/b9bb03a5-2c32-4cba-a2e3-024938bcba78"}
+                "links": {"self": "https://www.labpartnering.org/labs/b9bb03a5-2c32-4cba-a2e3-024938bcba78"}
                 }
                 ],
-                "links": {"self": "https://dev.labpartnering.org/facilities/8c23ee2b-fc02-45ca-8ca8-3a3d860b3916"}
+                "links": {"self": "https://www.labpartnering.org/facilities/8c23ee2b-fc02-45ca-8ca8-3a3d860b3916"}
                 }
                 ]
                 }

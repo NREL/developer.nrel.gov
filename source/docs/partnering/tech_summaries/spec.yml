@@ -270,13 +270,13 @@ definitions:
             example: "Anne.Miller@nrel.gov"
           avatar:
             type: string
-            example: "https//dev.labpartnering.org/p/files/labs/4"
+            example: "https//www.labpartnering.org/p/files/labs/4"
           links:
             type: object
             properties:
               self:
                 type: string
-                example: "https://dev.labpartnering.org/labs/e2af34a8-8b90-4726-9edf-fa75fede52e8"
+                example: "https://www.labpartnering.org/labs/e2af34a8-8b90-4726-9edf-fa75fede52e8"
       expert:
         type: object
         properties:
@@ -291,13 +291,13 @@ definitions:
             example: Piette
           avatar:
             type: string
-            example: "https://dev.labpartnering.org/p/files/experts/ebeceabc-af74-4674-8ac2-a84bdb08806d"
+            example: "https://www.labpartnering.org/p/files/experts/ebeceabc-af74-4674-8ac2-a84bdb08806d"
           links:
             type: object
             properties:
               self:
                 type: string
-                example: "https://dev.labpartnering.org/experts/ebeceabc-af74-4674-8ac2-a84bdb08806d"
+                example: "https://www.labpartnering.org/experts/ebeceabc-af74-4674-8ac2-a84bdb08806d"
   tech_summaries:
     type: array
     items:
