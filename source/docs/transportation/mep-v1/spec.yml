@@ -17,7 +17,7 @@ security:
   - ApiKeyQueryAuth: []
   - ApiKeyHeaderAuth: []
 info:
-  version: 1.0.0
+  version: "0.1.0"
   title: MEP Mobility Metric
   description: |-
     Query our API to return the MEP (mobility, energy, productivity) mobility metric for a given location. Our database currently has MEP scores for the following metropolitan areas:
@@ -132,7 +132,7 @@ definitions:
       version:
         type: string
         description: This is the version of the api
-        example: "1.0.0"
+        example: "0.1.0"
   MepScore:
     required:
       - metadata
