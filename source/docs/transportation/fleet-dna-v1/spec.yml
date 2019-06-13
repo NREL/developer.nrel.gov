@@ -26,10 +26,12 @@ info:
 
     This API was originally developed to support the <a href="https://www.nrel.gov/transportation/fleettest-fleet-dna.html">Fleet DNA Clearinghouse</a>, where visualizations of the data can be found.
 
-    A <a href="https://www.nrel.gov/docs/fy14osti/62572.pdf">Fleet DNA Data Dictionary</a> is available and is especially helpful for identifying data fields of interest via the /results endpoint
+    A <a href="https://www.nrel.gov/docs/fy14osti/62572.pdf">Fleet DNA Data Dictionary</a> is available and is especially helpful for identifying data fields of interest via the /vehicle_days endpoint
 paths:
   "/v1/afdc_summaries":
     get:
+      tags:
+      - Summary
       responses:
         '200':
           description: Successful request
@@ -39,6 +41,8 @@ paths:
       summary: Return a summary of the complete dataset.
   "/v1/vehicle_days":
     get:
+      tags:
+      - Drive-Cycle Metrics
       responses:
         '200':
           description: Successful request
@@ -48,14 +52,47 @@ paths:
       summary: Return drive-cycle metrics grouped by vehicle day. Results can be queried by city of vehicle depot, state of vehicle depot, vehicle class, vehicle type, drivetrain, fuel type, and vocation.
       parameters:
       - in: query
-        description: Drive-cycle metrics to be returned. There are over 350 metrics available to choose from. If none are specified, all of the metrics for a given vehicle day will be returned. A <a href="https://www.nrel.gov/docs/fy14osti/62572.pdf" target="_blank">Data Dictionary</a> is available which contains a complete list of metrics and their descriptions.
+        description: |-
+          City where vehicle depot is located
+          | | | |
+          |-|-|-|
+          |Adams County, CO|Fresno, CA|Minneapolis, MN|
+          |Austin, TX|Indianapolis, IN|Ontario, CA|
+          |Baltimore, MD|Irwindale, CA|Orlando, FL|
+          |Bohemia, NY|Knoxville, TN|Phoenix, AZ|
+          |Columbus, OH|Lake Washington, WA|San Diego, CA|
+          |Denver, CO|Los Angeles, CA|San Francisco, CA|
+          |Federal Way, WA|Miami, FL|Schenectady, NY|
+        name: city
+        required: false
+        type: string
+        enum: ["Adams County", "Austin", "Baltimore", "Bohemia", "Columbus", "Denver", "Federal Way", "Fresno", "Indianapolis", "Irwindale", "Knoxville", "Lake Washington", "Los Angeles", "Miami", "Minneapolis", "Ontario", "Orlando", "Phoenix", "San Diego", "San Francisco", "Schenectady"]
+      - in: query
+        description: State where vehicle depot is located
+        name: state
+        required: false
+        type: string
+        enum: ["AZ", "CA", "CO", "FL", "IN", "MD", "MN", "NY", "OH", "TN", "TX", "WA"]
+      - in: query
+        description: Drive-cycle metrics to be returned. There are over 350 metrics available to choose from. At least one metric must be specified. A <a href="https://www.nrel.gov/docs/fy14osti/62572.pdf" target="_blank">Data Dictionary</a> is available which contains a complete list of metrics and their descriptions.
         name: metrics
         required: false
         type: array
         items:
           type: string
       - in: query
-        description: Vehicle classes to query by
+        description: |-
+          Vehicle classes to query by. See below for weights associated with each vehicle class:
+          | Class | Min. Weight (lbs) | Max. Weight (lbs) |
+          |-----|-----|-------|
+          | Class1 | 0 | 6,000 |
+          | Class2 | 6,001 | 10,000 |
+          | Class3 | 10,001 | 14,000 |
+          | Class4 | 14,001 | 16,000 |
+          | Class5 | 16,001 | 19,500 |
+          | Class6 | 19,501 | 26,000 |
+          | Class7 | 26,001 | 33,000 |
+          | Class8 | 33,001 | 100,000 |
         name: vehicle_classes
         required: false
         type: array
@@ -108,9 +145,10 @@ definitions:
         type: object
         description: Parameters specified in the request
         example:
-          vehicle_types: FullSizePickup,MiniPickup
+          vehicle_types: Tractor
           drivetrains: Diesel
           metrics: max_speed,kinetic_intensity
+          state: CA
   Results:
     properties:
       metadata:
@@ -122,20 +160,24 @@ definitions:
         items:
           type: object
         example:
-          - max_speed: 74.8248511904762
-            kinetic_intensity: 0.459176722131882
+          - max_speed: 14.915931235544
+            kinetic_intensity: 12.525365279877
             vehicle_type: Tractor
-            vehicle_class: Class 7
-            vocation: Beverage Delivery
-            drivetrain: Conventional
+            vehicle_class: Class8
+            vocation: BeverageDelivery
+            drivetrain: ParallelHybrid
             fuel_type: Diesel
-          - max_speed: 58.195928885256
-            kinetic_intensity: 0.64974190558627
-            vehicle_type: Refuse Truck
-            vehicle_class: Class 8
-            vocation: Refuse Pickup
-            drivetrain: Conventional
-            fuel_type: CNG
+            city: "San Diego"
+            state: "CA"
+          - max_speed: 15.6300537731231
+            kinetic_intensity: 10.1998318066872
+            vehicle_type: Tractor
+            vehicle_class: Class8
+            vocation: BeverageDelivery
+            drivetrain: ParallelHybrid
+            fuel_type: Diesel
+            city: "San Diego"
+            state: "CA"
   DataSummary:
     required:
     - metadata
