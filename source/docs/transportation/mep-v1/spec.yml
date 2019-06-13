@@ -27,6 +27,8 @@ info:
 paths:
   "/v1/":
     get:
+      tags:
+      - "MEP"
       responses:
         '200':
           description: Successful request
@@ -47,6 +49,8 @@ paths:
         type: string
   "/v1/by-mode":
     get:
+      tags:
+      - "MEP"
       responses:
         '200':
           description: Successful request
@@ -78,6 +82,8 @@ paths:
           - transit
   "/v1/isochrone":
     get:
+      tags:
+      - "MEP"
       responses:
         '200':
           description: Successful request
@@ -144,11 +150,11 @@ definitions:
           lat:
             type: string
             description: The specified latitude (SRID 4269)
-            example: 33.0843489639987
+            example: 33.04444
           lon:
             type: string
             description: The specified longitude (SRID 4269)
-            example: -97.3967098885958
+            example: -97.3176617
       score:
         description: MEP score for specified location
         type: integer
@@ -171,11 +177,11 @@ definitions:
           lat:
             type: string
             description: The specified latitude (SRID 4269)
-            example: 33.0843489639987
+            example: 33.04444
           lon:
             type: string
             description: The specified longitude (SRID 4269)
-            example: -97.3967098885958
+            example: -97.3176617
           mode:
             type: string
             description: The specified mode of transportation
@@ -210,11 +216,11 @@ definitions:
           lat:
             type: string
             description: The specified latitude (SRID 4269)
-            example: 33.0843489639987
+            example: 33.04444
           lon:
             type: string
             description: The specified longitude (SRID 4269)
-            example: -97.3967098885958
+            example: -97.3176617
           mode:
             type: string
             description: The specified mode of transportation
