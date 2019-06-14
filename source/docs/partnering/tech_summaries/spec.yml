@@ -1,11 +1,11 @@
 info:
-  version: "1.0"
+  version: 1
   title: Technology Summaries APIs
   description: |-
     A collection of APIs providing data related to energy technologies, experts, and patents associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
 schemes:
   - https
-basePath: /tech_summaries
+basePath: /api/v1/tech_summaries
 securityDefinitions:
   api_key:
     type: apiKey
@@ -14,15 +14,15 @@ securityDefinitions:
 security:
   - api_key: []
 paths:
-  /tech_summaries:
+  /api/v1/tech_summaries:
     get:
       summary: Returns a list of technology summaries
       parameters:
         - in: query
           name: version
           type: integer
-          required: false
-          description: API version, default is 1
+          required: true
+          description: API version
         - in: query
           name: limit
           type: integer
@@ -40,7 +40,7 @@ paths:
             $ref: "#/definitions/tech_summaries_response"
           examples:
             Valid:
-              metadata: {"version": "1.0"}
+              metadata: {"version": 1}
               inputs: {}
               errors: {}
               resultset: {
@@ -68,15 +68,15 @@ paths:
                   "name": "Brookhaven National Laboratory",
                   "tto_url": "https://www.bnl.gov/techtransfer/ ",
                   "contact_us_email": "tech@bnl.gov",
-                  "avatar": "https//dev.labpartnering.org/p/files/labs/1",
-                  "links": {"self": "https://dev.labpartnering.org/labs/b9bb03a5-2c32-4cba-a2e3-024938bcba78"}
+                  "avatar": "https//www.labpartnering.org/files/labs/1",
+                  "links": {"self": "https://www.labpartnering.org/api/v1/labs/b9bb03a5-2c32-4cba-a2e3-024938bcba78"}
                 },
                 "expert": {
                   "uuid": "a86f59b3-f23c-4c4f-94bb-386cdfea7ce5",
                   "first_name": "Joel W.",
                   "last_name": "Ager",
-                  "avatar": "https://dev.labpartnering.org/p/files/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5",
-                  "links": {"self": "https://dev.labpartnering.org/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5"}
+                  "avatar": "https://www.labpartnering.org/files/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5",
+                  "links": {"self": "https://www.labpartnering.org/api/v1/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5"}
                 }
                 },
                 {
@@ -98,38 +98,38 @@ paths:
                   "name": "Lawrence Berkeley National Laboratory",
                   "tto_url": "http://ipo.lbl.gov/ ",
                   "contact_us_email": "ipo@lbl.gov",
-                  "avatar": "https//dev.labpartnering.org/p/files/labs/2",
-                  "links": {"self": "https://dev.labpartnering.org/labs/02bfeac1-ea4d-4356-8c61-b1e0259658d7"}
+                  "avatar": "https//www.labpartnering.org/files/labs/2",
+                  "links": {"self": "https://www.labpartnering.org/api/v1/labs/02bfeac1-ea4d-4356-8c61-b1e0259658d7"}
                 },
                 "expert": {
                   "uuid": "f74c6dae-8c5a-4d3b-aa99-e90038d6434e",
                   "first_name": "Frances",
                   "last_name": "Houle",
-                  "avatar": "https://dev.labpartnering.org/p/files/experts/f74c6dae-8c5a-4d3b-aa99-e90038d6434e",
-                  "links": {"self": "https://dev.labpartnering.org/experts/f74c6dae-8c5a-4d3b-aa99-e90038d6434e"}
+                  "avatar": "https://www.labpartnering.org/files/experts/f74c6dae-8c5a-4d3b-aa99-e90038d6434e",
+                  "links": {"self": "https://www.labpartnering.org/api/v1/experts/f74c6dae-8c5a-4d3b-aa99-e90038d6434e"}
                 }
                 }
                 ]
                 }
             Invalid:
-              metadata: {"version": "1.0"}
+              metadata: {"version": 1}
               inputs: {"version": 2}
               errors: {"status": 400, "detail": "unsupported version"}
               resultset: []
-  /tech_summaries/{tech_summary_uuid}:
+  /api/v1/tech_summaries/{tech_summary_uuid}:
     get:
       summary: Returns detailed information about one national laboratory technology summary
       parameters:
+        - in: path
+          name: version
+          type: integer
+          required: true
+          description: API version
         - in: path
           name: tech_summary_uuid
           type: string
           required: true
           description: uuid of the national laboratory technology summary requested
-        - in: query
-          name: version
-          type: integer
-          required: false
-          description: API version, default is 1
       responses:
         200:
           description: Successful request
@@ -137,7 +137,7 @@ paths:
             $ref: "#/definitions/tech_summaries_response"
           examples:
             Valid:
-              metadata: {"version": "1.0"}
+              metadata: {"version": 1}
               inputs: {"uuid": "35a53992-22f3-4e50-a17c-39d1f246e1fd"}
               errors: {}
               resultset: {
@@ -165,21 +165,21 @@ paths:
                   "name": "National Renewable Energy Laboratory",
                   "tto_url": "https://www.nrel.gov/workingwithus/technology-transfer.html",
                   "contact_us_email": "Anne.Miller@nrel.gov",
-                  "avatar": "https//dev.labpartnering.org/p/files/labs/4",
-                  "links": {"self": "https://dev.labpartnering.org/labs/e2af34a8-8b90-4726-9edf-fa75fede52e8"}
+                  "avatar": "https//www.labpartnering.org/files/labs/4",
+                  "links": {"self": "https://www.labpartnering.org/api/v1/labs/e2af34a8-8b90-4726-9edf-fa75fede52e8"}
                 },
                 "expert": {
                   "uuid": "ebeceabc-af74-4674-8ac2-a84bdb08806d",
                   "first_name": "Mary Ann",
                   "last_name": "Piette",
-                  "avatar": "https://dev.labpartnering.org/p/files/experts/ebeceabc-af74-4674-8ac2-a84bdb08806d",
-                  "links": {"self": "https://dev.labpartnering.org/experts/ebeceabc-af74-4674-8ac2-a84bdb08806d"}
+                  "avatar": "https://www.labpartnering.org/files/experts/ebeceabc-af74-4674-8ac2-a84bdb08806d",
+                  "links": {"self": "https://www.labpartnering.org/api/v1/experts/ebeceabc-af74-4674-8ac2-a84bdb08806d"}
                 }
                 }
                 ]
                 }
             Invalid:
-              metadata: {"version": "1.0"}
+              metadata: {"version": 1}
               inputs: {"version": 2}
               errors: {"status": 400, "details": "unsupported version"}
               resultset: []
@@ -188,8 +188,8 @@ definitions:
     type: object
     properties:
       version:
-        type: string
-        example: 1.0
+        type: integer
+        example: 1
   inputs:
     type: object
     properties:
@@ -270,13 +270,13 @@ definitions:
             example: "Anne.Miller@nrel.gov"
           avatar:
             type: string
-            example: "https//www.labpartnering.org/p/files/labs/4"
+            example: "https//www.labpartnering.org/files/labs/4"
           links:
             type: object
             properties:
               self:
                 type: string
-                example: "https://www.labpartnering.org/labs/e2af34a8-8b90-4726-9edf-fa75fede52e8"
+                example: "https://www.labpartnering.org/api/v1/labs/e2af34a8-8b90-4726-9edf-fa75fede52e8"
       expert:
         type: object
         properties:
@@ -291,13 +291,13 @@ definitions:
             example: Piette
           avatar:
             type: string
-            example: "https://www.labpartnering.org/p/files/experts/ebeceabc-af74-4674-8ac2-a84bdb08806d"
+            example: "https://www.labpartnering.org/files/experts/ebeceabc-af74-4674-8ac2-a84bdb08806d"
           links:
             type: object
             properties:
               self:
                 type: string
-                example: "https://www.labpartnering.org/experts/ebeceabc-af74-4674-8ac2-a84bdb08806d"
+                example: "https://www.labpartnering.org/api/v1/experts/ebeceabc-af74-4674-8ac2-a84bdb08806d"
   tech_summaries:
     type: array
     items:

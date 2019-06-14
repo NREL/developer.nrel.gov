@@ -1,11 +1,11 @@
 info:
-  version: "1.0"
+  version: 1
   title: Expert APIs
   description: |-
     A collection of APIs providing data about national laboratorty experts associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
 schemes:
   - https
-basePath: /experts
+basePath: /api/v1/experts
 securityDefinitions:
   api_key:
     type: apiKey
@@ -14,15 +14,15 @@ securityDefinitions:
 security:
   - api_key: []
 paths:
-  /experts:
+  /api/v1/experts:
     get:
       summary: Returns a list of national laboratory experts
       parameters:
-        - in: query
+        - in: path
           name: version
           type: integer
-          required: false
-          description: API version, default is 1
+          required: true
+          description: API version
         - in: query
           name: limit
           type: integer
@@ -40,7 +40,7 @@ paths:
             $ref: "#/definitions/experts_response"
           examples:
             Valid:
-              metadata: {"version": "1.0"}
+              metadata: {"version": 1}
               inputs: {}
               errors: {}
               resultset: {
@@ -53,8 +53,8 @@ paths:
                 "uuid": "a86f59b3-f23c-4c4f-94bb-386cdfea7ce5",
                 "first_name": "joel w.",
                 "last_name": "ager",
-                "avatar": "https://www.labpartnering.org/p/files/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5",
-                "links": {"self": "https://www.labpartnering.org/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5"},
+                "avatar": "https://www.labpartnering.org/files/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5",
+                "links": {"self": "https://www.labpartnering.org/api/v1/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5"},
                 "lab": "lawrence berkeley national laboratory",
                 "bio": "as a materials sciences division staff scientist and joint center for artificial photosynthesis (jcap) principal investigator (pi), he leads research into the fundamental electronic and transport characteristics of photovoltaic materials, develops new photoanodes and photocathodes based on abundant elements for solar fuels production, and discovers new oxide and sulfide-based transparent conductors. as the pi of cooperative research and development agreements (cradas) with companies, such as intel, applied materials, and seagate, he has extensive experience in tech transfer and collaborations with industry. he is frequently invited to speak at international conferences and has published over 270 papers in refereed journals.",
                 "specialties": [
@@ -71,8 +71,8 @@ paths:
                 "uuid": "f74c6dae-8c5a-4d3b-aa99-e90038d6434e",
                 "first_name": "frances",
                 "last_name": "houle",
-                "avatar": "https://www.labpartnering.org/p/files/experts/f74c6dae-8c5a-4d3b-aa99-e90038d6434e",
-                "links": {"self": "https://www.labpartnering.org/experts/f74c6dae-8c5a-4d3b-aa99-e90038d6434e"},
+                "avatar": "https://www.labpartnering.org/files/experts/f74c6dae-8c5a-4d3b-aa99-e90038d6434e",
+                "links": {"self": "https://www.labpartnering.org/api/v1/experts/f74c6dae-8c5a-4d3b-aa99-e90038d6434e"},
                 "lab": "lawrence berkeley national laboratory",
                 "bio": "as the chemical sciences division director of strategic initiatives and joint center for artificial photosynthesis (jcap) deputy director, she leads technical research and development program design and management, both foundational and applied, in semiconductor and energy science and technology arenas. she is broadly experienced in characterization of complex materials systems using solid state and gas phase methods and modeling of materials transformations, as well as process innovation, development, and root cause analysis, particularly for nanoscale modifications. prior to joining lawrence berkeley national laboratory, she managed materials development for the startup invisage technologies and handled materials research, business planning, and research alliances at ibm's almaden research center.",
                 "specialties": [
@@ -90,24 +90,24 @@ paths:
                 ]
                 }
             Invalid:
-              metadata: {"version": "1.0"}
+              metadata: {"version": 1}
               inputs: {"version": 2}
               errors: {"status": 400, "detail": "unsupported version"}
               resultset: []
-  /experts/{expert_uuid}:
+  /api/v1/experts/{expert_uuid}:
     get:
       summary: Returns detailed information about one national laboratory expert
       parameters:
+        - in: path
+          name: version
+          type: integer
+          required: true
+          description: API version
         - in: path
           name: expert_uuid
           type: string
           required: true
           description: uuid of the national laboratory expert requested
-        - in: query
-          name: version
-          type: integer
-          required: false
-          description: API version, default is 1
       responses:
         200:
           description: Successful request
@@ -115,7 +115,7 @@ paths:
             $ref: "#/definitions/experts_response"
           examples:
             Valid:
-              metadata: {"version": "1.0"}
+              metadata: {"version": 1}
               inputs: {"uuid":"a86f59b3-f23c-4c4f-94bb-386cdfea7ce5"}
               errors: {}
               resultset: {
@@ -128,8 +128,8 @@ paths:
                 "uuid": "a86f59b3-f23c-4c4f-94bb-386cdfea7ce5",
                 "first_name": "joel w.",
                 "last_name": "ager",
-                "avatar": "https://www.labpartnering.org/p/files/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5",
-                "links": {"self": "https://www.labpartnering.org/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5"},
+                "avatar": "https://www.labpartnering.org/files/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5",
+                "links": {"self": "https://www.labpartnering.org/api/v1/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5"},
                 "lab": "lawrence berkeley national laboratory",
                 "bio": "as a materials sciences division staff scientist and joint center for artificial photosynthesis (jcap) principal investigator (pi), he leads research into the fundamental electronic and transport characteristics of photovoltaic materials, develops new photoanodes and photocathodes based on abundant elements for solar fuels production, and discovers new oxide and sulfide-based transparent conductors. as the pi of cooperative research and development agreements (cradas) with companies, such as intel, applied materials, and seagate, he has extensive experience in tech transfer and collaborations with industry. he is frequently invited to speak at international conferences and has published over 270 papers in refereed journals.",
                 "specialties": [
@@ -145,7 +145,7 @@ paths:
                 ]
                 }
             Invalid:
-              metadata: {"version": "1.0"}
+              metadata: {"version": 1}
               inputs: {"version": 2}
               errors: {"status": 400, "detail": "unsupported version"}
               resultset: []
@@ -154,8 +154,8 @@ definitions:
     type: object
     properties:
       version:
-        type: string
-        example: "1.0"
+        type: integer
+        example: 1
   inputs:
     type: object
     properties:
@@ -190,7 +190,7 @@ definitions:
         properties:
           self:
             type: string
-            example: https://www.labpartnering.org/experts/dc56d205-4ddf-46d4-bcd6-93ddc7fea84a
+            example: https://www.labpartnering.org/api/v1/experts/dc56d205-4ddf-46d4-bcd6-93ddc7fea84a
       lab:
         type: string
         description: Laboratory expert is associated with

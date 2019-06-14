@@ -1,11 +1,11 @@
 info:
-  version: "1.0"
+  version: 1
   title: Facilities APIs
   description: |-
     A collection of APIs providing data about national laboratorty facilities associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
 schemes:
 - https
-basePath: /facilities
+basePath: /api/v1/facilities
 securityDefinitions:
   api_key:
     type: apiKey
@@ -14,15 +14,15 @@ securityDefinitions:
 security:
 - api_key: []
 paths:
-  /facilities:
+  /api/v1/facilities:
     get:
       summary: Returns a paginated list of all national laboratory facilities
       parameters:
-        - in: query
+        - in: path
           name: version
           type: integer
-          required: false
-          description: API version, default is 1
+          required: true
+          description: API version
         - in: query
           name: limit
           type: integer
@@ -40,7 +40,7 @@ paths:
             $ref: "#/definitions/facilities_response"
           examples:
             Valid:
-              metadata: {"version": "1.0"}
+              metadata: {"version": 1}
               inputs: {}
               errors: {}
               resultset: {
@@ -61,10 +61,10 @@ paths:
                 "name": "Ames Laboratory",
                 "tto_url": "https://www.ameslab.gov/techtransfer",
                 "contact_us_email": "ameslps@ameslab.gov",
-                "links": {"self": "https://www.labpartnering.org/labs/facca896-d97c-4a47-8260-7e75539f4010"}
+                "links": {"self": "https://www.labpartnering.org/api/v1/labs/facca896-d97c-4a47-8260-7e75539f4010"}
                 }
                 ],
-                "links": {"self": "https://www.labpartnering.org/facilities/40941550-a3d7-4e33-9f5c-5503cdaf70d7"}
+                "links": {"self": "https://www.labpartnering.org/api/v1/facilities/40941550-a3d7-4e33-9f5c-5503cdaf70d7"}
                 },
                 {
                 "uuid": "fc0baef1-e69e-4126-a7ae-5d5a73f58132",
@@ -78,32 +78,32 @@ paths:
                 "name": "Ames Laboratory",
                 "tto_url": "https://www.ameslab.gov/techtransfer",
                 "contact_us_email": "ameslps@ameslab.gov",
-                "links": {"self": "https://www.labpartnering.org/labs/facca896-d97c-4a47-8260-7e75539f4010"}
+                "links": {"self": "https://www.labpartnering.org/api/v1/labs/facca896-d97c-4a47-8260-7e75539f4010"}
                 }
                 ],
-                "links": {"self": "https://www.labpartnering.org/facilities/fc0baef1-e69e-4126-a7ae-5d5a73f58132"}
+                "links": {"self": "https://www.labpartnering.org/api/v1/facilities/fc0baef1-e69e-4126-a7ae-5d5a73f58132"}
                 }
                 ]
                 }
             Invalid:
-              metadata: {"version": "1.0"}
+              metadata: {"version": 1}
               inputs: {"version": 2}
               errors: {"status": 400, "detail": "unsupported version"}
               resultset: []
-  /facilities/{facility_uuid}:
+  /api/v1/facilities/{facility_uuid}:
     get:
       summary: Returns detailed information about one national laboratory facility
       parameters:
+      - in: path
+        name: version
+        type: integer
+        required: true
+        description: API version
       - in: path
         name: facility_uuid
         type: string
         required: true
         description: Unique identifer for a Facility
-      - in: query
-        name: version
-        type: integer
-        required: false
-        description: API version, default is 1
       responses:
         200:
           description: Successful request
@@ -111,7 +111,7 @@ paths:
             $ref: "#/definitions/facilities_response"
           examples:
             Valid:
-              metadata: {"version": "1.0"}
+              metadata: {"version": 1}
               inputs: {"uuid": "0dde3661-0bf7-4241-9074-7b19136565a0"}
               errors: {}
               resultset: {
@@ -132,32 +132,32 @@ paths:
                 "name": "Ames Laboratory",
                 "tto_url": "https://www.ameslab.gov/techtransfer",
                 "contact_us_email": "ameslps@ameslab.gov",
-                "links": {"self": "https://www.labpartnering.org/labs/facca896-d97c-4a47-8260-7e75539f4010"}
+                "links": {"self": "https://www.labpartnering.org/api/v1/labs/facca896-d97c-4a47-8260-7e75539f4010"}
                 }
                 ],
-                "links": {"self": "https://www.labpartnering.org/facilities/0dde3661-0bf7-4241-9074-7b19136565a0"}
+                "links": {"self": "https://www.labpartnering.org/api/v1/facilities/0dde3661-0bf7-4241-9074-7b19136565a0"}
                 }
                 ]
                 }
             Invalid:
-              metadata: {"version": "1.0"}
+              metadata: {"version": 1}
               inputs: {"version": 2}
               errors: {"status": 400, "detail": "unsupported version"}
               resultset: []
-  /facilities/lab/{lab_alias}:
+  /api/v1/facilities/lab/{lab_alias}:
     get:
       summary: Returns detailed information about a specific national laboratory facility
       parameters:
+        - in: path
+          name: version
+          type: integer
+          required: true
+          description: API version
         - in: path
           name: lab_alias
           type: string
           required: true
           description: An alias for a national laboratory in LPS
-        - in: query
-          name: version
-          type: integer
-          required: false
-          description: API version, default is 1
       responses:
         200:
           description: Successful request
@@ -165,7 +165,7 @@ paths:
             $ref: "#/definitions/lab_facilities_response"
           examples:
             Valid:
-              metadata: {"version": "1.0"}
+              metadata: {"version": 1}
               inputs: {"alias": "emf"}
               errors: {}
               resultset: {
@@ -186,15 +186,15 @@ paths:
                 "name": "Brookhaven National Laboratory",
                 "tto_url": "https://www.bnl.gov/techtransfer/ ",
                 "contact_us_email": "tech@bnl.gov",
-                "links": {"self": "https://www.labpartnering.org/labs/b9bb03a5-2c32-4cba-a2e3-024938bcba78"}
+                "links": {"self": "https://www.labpartnering.org/api/v1/labs/b9bb03a5-2c32-4cba-a2e3-024938bcba78"}
                 }
                 ],
-                "links": {"self": "https://www.labpartnering.org/facilities/8c23ee2b-fc02-45ca-8ca8-3a3d860b3916"}
+                "links": {"self": "https://www.labpartnering.org/api/v1/facilities/8c23ee2b-fc02-45ca-8ca8-3a3d860b3916"}
                 }
                 ]
                 }
             Invalid:
-              metadata: {"version": "1.0"}
+              metadata: {"version": 1}
               inputs: {"version": 2}
               errors: {"status": 400, "detail": "unsupported version"}
               resultset: []
@@ -203,8 +203,8 @@ definitions:
     type: object
     properties:
       version:
-        type: string
-        example: "1.0"
+        type: integer
+        example: 1
   inputs:
     type: object
     properties:
@@ -257,13 +257,13 @@ definitions:
                 properties:
                   self:
                     type: string
-                    example: "https://www.labpartnering.org/labs/facca896-d97c-4a47-8260-7e75539f4010"
+                    example: "https://www.labpartnering.org/api/v1/labs/facca896-d97c-4a47-8260-7e75539f4010"
       links:
         type: object
         properties:
           self:
             type: string
-            example: "https://www.labpartnering.org/facilities/0dde3661-0bf7-4241-9074-7b19136565a0"
+            example: "https://www.labpartnering.org/api/v1/facilities/0dde3661-0bf7-4241-9074-7b19136565a0"
   facilities:
     type: array
     items:
