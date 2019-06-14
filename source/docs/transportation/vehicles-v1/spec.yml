@@ -4,7 +4,7 @@ schemes:
 - https
 info:
   version: 0.1.0
-  title: Alternative Fuels and Advanced Vehicles
+  title: Alternative Fuel Vehicles
   description: Query our database of alternative fuel vehicles, manufacturers, fuels, engines, and hybrid/conversion systems
 paths:
   "/v1/fuels.{output_format}":

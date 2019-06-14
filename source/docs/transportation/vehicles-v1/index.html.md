@@ -1,5 +1,5 @@
 ---
-title: Alternative Fuels and Advanced Vehicles
+title: Alternative Fuel Vehicles
 summary: Query our database of alternative fuel vehicles, manufacturers, fuels, engines, and hybrid/conversion systems
 layout: swagger
 swagger_url: /docs/transportation/vehicles-v1/spec.yml
