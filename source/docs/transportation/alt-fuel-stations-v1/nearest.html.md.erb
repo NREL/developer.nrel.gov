@@ -153,17 +153,7 @@ The response is composed of the fuel stations matching the requested query. For 
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th class="doc-parameter-name" scope="row">total_results</th>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> integer
-        </div>
-      </td>
-      <td class="doc-parameter-description">
-        <p>How many total stations match your requested query (regardless of any "limit" applied).</p>
-      </td>
-    </tr>
+    <%= partial("docs/transportation/alt-fuel-stations-v1/response_fields_common") %>
     <tr>
       <th class="doc-parameter-name" scope="row">offset</th>
       <td class="doc-parameter-value">
@@ -173,17 +163,6 @@ The response is composed of the fuel stations matching the requested query. For 
       </td>
       <td class="doc-parameter-description">
         <p>The result offset applied to this query (if the "offset" parameter was given).</p>
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">station_locator_url</th>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> string
-        </div>
-      </td>
-      <td class="doc-parameter-description">
-        <p>The URL of the Alternative Fueling Station Locator, the web application that supplies this data.</p>
       </td>
     </tr>
     <tr>
@@ -268,6 +247,8 @@ The individual fuel station records are returned in order of ascending distance 
   </tbody>
 </table>
 
+<%= partial("docs/transportation/alt-fuel-stations-v1/station_count_record_fields") %>
+
 ## Examples
 
 ### JSON Output Format
@@ -276,62 +257,125 @@ The individual fuel station records are returned in order of ascending distance 
 
 ```json
 {
+  "latitude": 39.74311,
+  "longitude": -105.152332,
+  "location_country": "US",
+  "precision": {
+    "value": 9,
+    "name": "premise",
+    "types": [
+      "premise"
+    ]
+  },
+  "station_locator_url": "http://www.afdc.energy.gov/afdc/locator/stations/",
+  "total_results": 34,
+  "station_counts": {
+    "total": 106,
+    "fuels": {
+      "BD": {
+        "total": 0
+      },
+      "E85": {
+        "total": 0
+      },
+      "ELEC": {
+        "total": 106,
+        "stations": {
+          "total": 34
+        }
+      },
+      "HY": {
+        "total": 0
+      },
+      "LNG": {
+        "total": 0
+      },
+      "CNG": {
+        "total": 0
+      },
+      "LPG": {
+        "total": 0
+      }
+    }
+  },
+  "offset": 0,
   "fuel_stations": [
     {
-      "access_days_time": null,
-      "bd_blends": null,
+      "access_code": "public",
+      "access_days_time": "MO: 12:00am-12:00am; TU: 12:00am-12:00am; WE: 12:00am-12:00am; TH: 12:00am-12:00am; FR: 12:00am-12:00am; SA: 12:00am-12:00am; SU: 12:00am-12:00am",
+      "access_detail_code": null,
       "cards_accepted": null,
-      "city": "Golden",
-      "date_last_confirmed": "2012-12-31",
+      "date_last_confirmed": "2019-04-02",
       "expected_date": null,
       "fuel_type_code": "ELEC",
-      "geocode_status": "200-8",
-      "groups_with_access_code": "Private access only",
-      "hy_status_link": null,
-      "intersection_directions": "Building 17",
-      "latitude": 39.7408399,
-      "longitude": -105.1685277,
-      "open_date": "2011-05-20",
-      "owner_type_code": "FG",
-      "plus4": null,
-      "station_name": "National Renewable Energy Laboratory - Denver West",
-      "station_phone": null,
+      "groups_with_access_code": "Public",
+      "id": 118375,
+      "open_date": null,
+      "owner_type_code": null,
       "status_code": "E",
-      "street_address": "15013 Denver West Pkwy",
-      "zip": "80401",
+      "station_name": "Denver West Bldg 17",
+      "station_phone": "800-663-5633",
+      "updated_at": "2019-04-02T09:03:50Z",
+      "facility_type": null,
+      "geocode_status": "GPS",
+      "latitude": 39.744703073211,
+      "longitude": -105.15229735145,
+      "city": "Lakewood",
+      "intersection_directions": "The stations are located in the back of the building on the I-70 side.",
+      "plus4": null,
       "state": "CO",
+      "street_address": "1626 Cole Boulevard",
+      "zip": "80401",
+      "country": "US",
+      "bd_blends": null,
+      "cng_dispenser_num": null,
+      "cng_fill_type_code": null,
+      "cng_psi": null,
+      "cng_renewable_source": null,
+      "cng_total_compression": null,
+      "cng_total_storage": null,
+      "cng_vehicle_class": null,
+      "e85_blender_pump": null,
+      "e85_other_ethanol_blends": null,
+      "ev_connector_types": [
+        "J1772"
+      ],
+      "ev_dc_fast_num": null,
+      "ev_level1_evse_num": null,
+      "ev_level2_evse_num": 2,
+      "ev_network": "SemaCharge Network",
+      "ev_network_web": "http://www.semacharge.com/",
+      "ev_other_evse": null,
+      "ev_pricing": "FREE",
+      "hy_is_retail": null,
+      "hy_pressures": null,
+      "hy_standards": null,
+      "hy_status_link": null,
+      "lng_renewable_source": null,
+      "lng_vehicle_class": null,
+      "lpg_primary": null,
+      "lpg_nozzle_types": null,
       "ng_fill_type_code": null,
       "ng_psi": null,
       "ng_vehicle_class": null,
-      "e85_blender_pump": null,
-      "ev_level1_evse_num": null,
-      "ev_level2_evse_num": 38,
-      "ev_dc_fast_num": null,
-      "ev_other_evse": null,
-      "ev_network": null,
-      "ev_network_web": null,
-      "lpg_primary": null,
-      "id": 39534,
-      "updated_at": "2013-01-16T16:09:02Z",
-      "distance": 0.92673,
-      "federal_agency": {
-        "id": 8,
-        "name": "U.S. Department of Energy"
-      }
+      "access_days_time_fr": null,
+      "intersection_directions_fr": null,
+      "bd_blends_fr": null,
+      "groups_with_access_code_fr": "Public",
+      "ev_pricing_fr": null,
+      "ev_network_ids": {
+        "station": [
+          "1309"
+        ],
+        "posts": [
+          "2976",
+          "3633"
+        ]
+      },
+      "distance": 0.10992,
+      "distance_km": 0.1769
     }
-  ],
-  "latitude": 39.744696,
-  "longitude": -105.15186,
-  "offset": 0,
-  "precision": {
-    "name": "address",
-    "types": [
-      "street_address"
-    ],
-    "value": 8
-  },
-  "station_locator_url": "http://www.afdc.energy.gov/afdc/locator/stations/",
-  "total_results": 12
+  ]
 }
 ```
 
@@ -342,60 +386,123 @@ The individual fuel station records are returned in order of ascending distance 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <response>
-  <latitude>39.744696</latitude>
-  <longitude>-105.15186</longitude>
+  <latitude>39.74311</latitude>
+  <longitude>-105.152332</longitude>
+  <location-country>US</location-country>
   <precision>
-    <name>address</name>
+    <value type="integer">9</value>
+    <name>premise</name>
     <types type="array">
-      <type>street_address</type>
+      <type>premise</type>
     </types>
-    <value type="integer">8</value>
   </precision>
   <station-locator-url>http://www.afdc.energy.gov/afdc/locator/stations/</station-locator-url>
-  <total-results>12</total-results>
+  <total-results>34</total-results>
+  <station-counts>
+    <total>106</total>
+    <fuels>
+      <BD>
+        <total>0</total>
+      </BD>
+      <E85>
+        <total>0</total>
+      </E85>
+      <ELEC>
+        <total>106</total>
+        <stations>
+          <total>34</total>
+        </stations>
+      </ELEC>
+      <HY>
+        <total>0</total>
+      </HY>
+      <LNG>
+        <total>0</total>
+      </LNG>
+      <CNG>
+        <total>0</total>
+      </CNG>
+      <LPG>
+        <total>0</total>
+      </LPG>
+    </fuels>
+  </station-counts>
   <offset>0</offset>
   <fuel-stations type="array">
     <fuel-station>
-      <access-days-time nil="true"/>
-      <bd-blends nil="true"/>
+      <access-code>public</access-code>
+      <access-days-time>MO: 12:00am-12:00am; TU: 12:00am-12:00am; WE: 12:00am-12:00am; TH: 12:00am-12:00am; FR: 12:00am-12:00am; SA: 12:00am-12:00am; SU: 12:00am-12:00am</access-days-time>
+      <access-detail-code nil="true"/>
       <cards-accepted nil="true"/>
-      <city>Golden</city>
-      <date-last-confirmed>2012-12-31</date-last-confirmed>
+      <date-last-confirmed>2019-04-02</date-last-confirmed>
       <expected-date nil="true"/>
       <fuel-type-code>ELEC</fuel-type-code>
-      <geocode-status>200-8</geocode-status>
-      <groups-with-access-code>Private access only</groups-with-access-code>
-      <hy-status-link nil="true"/>
-      <intersection-directions>Building 17</intersection-directions>
-      <latitude>39.7408399</latitude>
-      <longitude>-105.1685277</longitude>
-      <open-date>2011-05-20</open-date>
-      <owner-type-code>FG</owner-type-code>
-      <plus4 nil="true"/>
-      <station-name>National Renewable Energy Laboratory - Denver West</station-name>
-      <station-phone nil="true"/>
+      <groups-with-access-code>Public</groups-with-access-code>
+      <id>118375</id>
+      <open-date nil="true"/>
+      <owner-type-code nil="true"/>
       <status-code>E</status-code>
-      <street-address>15013 Denver West Pkwy</street-address>
-      <zip>80401</zip>
+      <station-name>Denver West Bldg 17</station-name>
+      <station-phone>800-663-5633</station-phone>
+      <updated-at>2019-04-02 09:03:50 UTC</updated-at>
+      <facility-type nil="true"/>
+      <geocode-status>GPS</geocode-status>
+      <latitude>39.744703073211</latitude>
+      <longitude>-105.15229735145</longitude>
+      <city>Lakewood</city>
+      <intersection-directions>The stations are located in the back of the building on the I-70 side.</intersection-directions>
+      <plus4 nil="true"/>
       <state>CO</state>
+      <street-address>1626 Cole Boulevard</street-address>
+      <zip>80401</zip>
+      <country>US</country>
+      <bd-blends nil="true"/>
+      <cng-dispenser-num nil="true"/>
+      <cng-fill-type-code nil="true"/>
+      <cng-psi nil="true"/>
+      <cng-renewable-source nil="true"/>
+      <cng-total-compression nil="true"/>
+      <cng-total-storage nil="true"/>
+      <cng-vehicle-class nil="true"/>
+      <e85-blender-pump nil="true"/>
+      <e85-other-ethanol-blends nil="true"/>
+      <ev-connector-types>
+        <ev-connector-type>J1772</ev-connector-type>
+      </ev-connector-types>
+      <ev-dc-fast-num nil="true"/>
+      <ev-level1-evse-num nil="true"/>
+      <ev-level2-evse-num>2</ev-level2-evse-num>
+      <ev-network>SemaCharge Network</ev-network>
+      <ev-network-web>http://www.semacharge.com/</ev-network-web>
+      <ev-other-evse nil="true"/>
+      <ev-pricing>FREE</ev-pricing>
+      <hy-is-retail nil="true"/>
+      <hy-pressures nil="true"/>
+      <hy-standards nil="true"/>
+      <hy-status-link nil="true"/>
+      <lng-renewable-source nil="true"/>
+      <lng-vehicle-class nil="true"/>
+      <lpg-primary nil="true"/>
+      <lpg-nozzle-types nil="true"/>
       <ng-fill-type-code nil="true"/>
       <ng-psi nil="true"/>
       <ng-vehicle-class nil="true"/>
-      <e85-blender-pump nil="true"/>
-      <ev-level1-evse-num nil="true"/>
-      <ev-level2-evse-num>38</ev-level2-evse-num>
-      <ev-dc-fast-num nil="true"/>
-      <ev-other-evse nil="true"/>
-      <ev-network nil="true"/>
-      <ev-network-web nil="true"/>
-      <lpg-primary nil="true"/>
-      <id>39534</id>
-      <updated-at>2013-01-16T16:09:02Z</updated-at>
-      <distance>0.92673</distance>
-      <federal-agency>
-        <id type="integer">8</id>
-        <name>U.S. Department of Energy</name>
-      </federal-agency>
+      <access-days-time-fr nil="true"/>
+      <intersection-directions-fr nil="true"/>
+      <bd-blends-fr nil="true"/>
+      <groups-with-access-code-fr>Public</groups-with-access-code-fr>
+      <ev-pricing-fr nil="true"/>
+      <ev-network-ids>
+        <station>
+          <station>1309</station>
+        </station>
+        <posts>
+          <post>2976</post>
+          <post>3633</post>
+        </posts>
+      </ev-network-ids>
+      <distance>0.10992</distance>
+      <distance-km>0.1769</distance-km>
     </fuel-station>
   </fuel-stations>
 </response>
@@ -406,8 +513,8 @@ The individual fuel station records are returned in order of ascending distance 
 <pre>GET <a href="/api/alt-fuel-stations/v1/nearest.csv?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.csv?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1</a></pre>
 
 ```
-Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Distance,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump
-ELEC,National Renewable Energy Laboratory - Denver West,15013 Denver West Pkwy,Building 17,Golden,CO,80401,,,E,,Private access only,,,,,,,38,,,,,200-8,39.7408399,-105.1685277,2012-12-31,39534,0.92673,2013-01-16 16:09:02 UTC,FG,8,U.S. Department of Energy,2011-05-20,,,,
+Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Distance,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump,EV Connector Types,Country,Distance (km),Intersection Directions (French),Access Days Time (French),BD Blends (French),Groups With Access Code (French),Hydrogen Is Retail,Access Code,Access Detail Code,Federal Agency Code,Facility Type,CNG Dispenser Num,CNG On-Site Renewable Source,CNG Total Compression Capacity,CNG Storage Capacity,LNG On-Site Renewable Source,E85 Other Ethanol Blends,EV Pricing,EV Pricing (French),LPG Nozzle Types,Hydrogen Pressures,Hydrogen Standards,CNG Fill Type Code,CNG PSI,CNG Vehicle Class,LNG Vehicle Class
+ELEC,Denver West Bldg 17,1626 Cole Boulevard,The stations are located in the back of the building on the I-70 side.,Lakewood,CO,80401,,800-663-5633,E,,Public,MO: 12:00am-12:00am; TU: 12:00am-12:00am; WE: 12:00am-12:00am; TH: 12:00am-12:00am; FR: 12:00am-12:00am; SA: 12:00am-12:00am; SU: 12:00am-12:00am,,,,,,2,,,SemaCharge Network,http://www.semacharge.com/,GPS,39.744703073211,-105.15229735145,2019-04-02,118375,0.10992,2019-04-02 09:03:50 UTC,,,,,,,,,J1772,US,0.1769,,,,Public,,public,,,,,,,,,,FREE,,,,,,,,
 ```
 
 ## Rate Limits

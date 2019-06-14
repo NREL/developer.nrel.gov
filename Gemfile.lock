@@ -37,6 +37,8 @@ GEM
     concurrent-ruby (1.1.5)
     contracts (0.13.0)
     crass (1.0.4)
+    domain_name (0.5.20180417)
+      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.2)
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
@@ -55,6 +57,8 @@ GEM
     hamster (3.0.0)
       concurrent-ruby (~> 1.0)
     hashie (3.6.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     http_parser.rb (0.6.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
@@ -111,11 +115,15 @@ GEM
     middleman-syntax (3.0.0)
       middleman-core (>= 3.2)
       rouge (~> 2.0)
+    mime-types (3.2.2)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2019.0331)
     mini_portile2 (2.4.0)
     mini_racer (0.2.5)
       libv8 (>= 6.9.411)
     minitest (5.11.3)
     multi_json (1.13.1)
+    netrc (0.11.0)
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
     padrino-helpers (0.13.3.4)
@@ -154,6 +162,10 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    rest-client (2.0.2)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rouge (2.2.1)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -185,6 +197,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.6)
 
 PLATFORMS
   ruby
@@ -205,6 +220,7 @@ DEPENDENCIES
   rails-assets-parsleyjs (~> 2.9.0)!
   rails-assets-swagger-ui (~> 3.0.21)!
   rake (~> 12.0)
+  rest-client (~> 2.0.2)
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
