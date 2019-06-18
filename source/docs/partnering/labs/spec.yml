@@ -55,7 +55,7 @@ paths:
                  "tto_url": "https://www.bnl.gov/techtransfer/ ",
                  "contact_us_email": "tech@bnl.gov",
                  "avatar": "https://www.labpartnering.org/files/labs/1",
-                 "links": {"self": "https://www.labpartnering.org/api/v1/labs/b9bb03a5-2c32-4cba-a2e3-024938bcba78"},
+                 "links": {"self": "https://developer.nrel.gov/api/lps/v1/labs/b9bb03a5-2c32-4cba-a2e3-024938bcba78"},
                  "alias": "bnl",
                  "description": "Brookhaven National Laboratory (BNL) is a multipurpose research institution funded primarily by the U.S. Department of Energy&apos;s Office of Science and located in the center of Long Island, New York. Home to seven Nobel Prizes, BNL brings world-class facilities and expertise to the most exciting and important questions in basic and applied science-from the birth of our universe to the sustainable energy technology of tomorrow. We operate cutting-edge large-scale facilities for studies in physics, chemistry, biology, energy, applied science, and a wide range of advanced technologies. The Laboratory's 2,700 scientists, engineers, and support staff are joined each year by more than 4,000 visiting researchers from around the world. Our award-winning history stretches back to 1947, and we continue to unravel mysteries from the nanoscale to the cosmic scale, and everything in between.\r\n\r\n<br>\r\n<br>\r\nEnergy research represents a major focus for BNL over the next decade.  We are using a multifaceted approach driven by the unique state-of-the art laboratory facilities and the inter-disciplinary expertise of our scientific staff to solve fundamental questions regarding U.S. energy independence and to translate discoveries into deployable technologies.  The laboratory has identified several energy focus areas - including biofuels, complex materials, catalysis, and solar energy.\r\n\r\n<br>\r\n<br>\r\nBNL&apos;s one-of-kind user facilities include the <a target='_blank' href='https://www.bnl.gov/ps/'>National Synchrotron Light Source II</a> NSLS-II, which produces extremely bright beams of x-ray, ultraviolet, and infrared light for scientists exploring materials-including superconductors, catalysts, geological samples, and proteins-to accelerate advances in energy, environmental science, and medicine. Scientists at our <a target='_blank' href='http://www.bnl.gov/cfn/'>Center for Functional Nanomaterials</a> create materials and explore their unique structure and properties at the nanoscale, with a focus on more efficient solar and energy storage materials. And at BNL&apos;s Northeast Solar Energy Research Center, where researchers from labs, academia, and industry study test new solar technologies, working to make solar &quot;power plants&quot; more efficient and economical\r\n\r\n<br>\r\n<br>\r\nIn addition to fundamental research, the laboratory actively collaborates with industry and other academic institutions to bring the benefits of scientific discoveries to the marketplace.  Brookhaven's <a target='_blank' href='https://www.bnl.gov/partnerships/'>Office of Strategic Partnerships</a> integrates Brookhaven Lab&apos;s industry engagement, technology licensing, and economic development functions to expand the impact of collaborative research and technology commercialization.  Strategic Partnerships supports the Laboratory&apos;s science mission through identifying, pursuing and managing partnerships with a broad set of private-sector companies, federal agencies, and non-federal entities.  For information on licensing and industry.",
                  "contact_email": "pupadhya@bnl.gov",
@@ -180,7 +180,7 @@ paths:
                 "tto_url": "https://www.nrel.gov/workingwithus/technology-transfer.html",
                 "contact_us_email": "Eric.Payne@nrel.gov",
                 "avatar": "https://www.labpartnering.org/files/labs/4",
-                "links": {"self": "https://www.labpartnering.org/api/v1/labs/e2af34a8-8b90-4726-9edf-fa75fede52e8"},
+                "links": {"self": "https://developer.nrel.gov/api/lps/v1/labs/e2af34a8-8b90-4726-9edf-fa75fede52e8"},
                 "alias": "nrel",
                 "description": " The National Renewable Energy Laboratory is the only federal laboratory dedicated to the research, development, commercialization, and deployment of renewable energy and energy efficiency technologies.We focus on creative answers to today's energy challenges, from breakthroughs in fundamental science to new clean technologies to integrated energy systems that power our lives.  NREL researchers are transforming the way the nation and the world use energy. Our primary research and development areas are:  Analysis, Bioenergy, Buildings, Geothermal, Grid Modernization, Hydrogen and Fuel Cells, Solar, Transportation, Water Power and Wind Energy.",
                 "contact_email": "Eric.Payne@nrel.gov",
@@ -262,7 +262,7 @@ definitions:
         properties:
           self:
             type: string
-            example: https://www.labpartnering.org/api/v1/labs/e2af34a8-8b90-4726-9edf-fa75fede52e8
+            example: https://developer.nrel.gov/api/lps/v1/labs/e2af34a8-8b90-4726-9edf-fa75fede52e8
       alias:
         type: string
         example: nrel
@@ -302,7 +302,7 @@ definitions:
               properties:
                 self:
                   type: string
-                  example: https://www.labpartnering.org/api/v1/experts/d78ce187-f5ed-4ddc-9e4e-063f6eaf11be
+                  example: https://developer.nrel.gov/api/lps/v1/experts/d78ce187-f5ed-4ddc-9e4e-063f6eaf11be
   laboratories:
     type: array
     items:

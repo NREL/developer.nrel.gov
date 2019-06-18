@@ -54,7 +54,7 @@ paths:
                 "first_name": "joel w.",
                 "last_name": "ager",
                 "avatar": "https://www.labpartnering.org/files/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5",
-                "links": {"self": "https://www.labpartnering.org/api/v1/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5"},
+                "links": {"self": "https://developer.nrel.gov/api/lps/v1/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5"},
                 "lab": "lawrence berkeley national laboratory",
                 "bio": "as a materials sciences division staff scientist and joint center for artificial photosynthesis (jcap) principal investigator (pi), he leads research into the fundamental electronic and transport characteristics of photovoltaic materials, develops new photoanodes and photocathodes based on abundant elements for solar fuels production, and discovers new oxide and sulfide-based transparent conductors. as the pi of cooperative research and development agreements (cradas) with companies, such as intel, applied materials, and seagate, he has extensive experience in tech transfer and collaborations with industry. he is frequently invited to speak at international conferences and has published over 270 papers in refereed journals.",
                 "specialties": [
@@ -72,7 +72,7 @@ paths:
                 "first_name": "frances",
                 "last_name": "houle",
                 "avatar": "https://www.labpartnering.org/files/experts/f74c6dae-8c5a-4d3b-aa99-e90038d6434e",
-                "links": {"self": "https://www.labpartnering.org/api/v1/experts/f74c6dae-8c5a-4d3b-aa99-e90038d6434e"},
+                "links": {"self": "https://developer.nrel.gov/api/lps/v1/experts/f74c6dae-8c5a-4d3b-aa99-e90038d6434e"},
                 "lab": "lawrence berkeley national laboratory",
                 "bio": "as the chemical sciences division director of strategic initiatives and joint center for artificial photosynthesis (jcap) deputy director, she leads technical research and development program design and management, both foundational and applied, in semiconductor and energy science and technology arenas. she is broadly experienced in characterization of complex materials systems using solid state and gas phase methods and modeling of materials transformations, as well as process innovation, development, and root cause analysis, particularly for nanoscale modifications. prior to joining lawrence berkeley national laboratory, she managed materials development for the startup invisage technologies and handled materials research, business planning, and research alliances at ibm's almaden research center.",
                 "specialties": [
@@ -129,7 +129,7 @@ paths:
                 "first_name": "joel w.",
                 "last_name": "ager",
                 "avatar": "https://www.labpartnering.org/files/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5",
-                "links": {"self": "https://www.labpartnering.org/api/v1/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5"},
+                "links": {"self": "https://developer.nrel.gov/api/lps/v1/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5"},
                 "lab": "lawrence berkeley national laboratory",
                 "bio": "as a materials sciences division staff scientist and joint center for artificial photosynthesis (jcap) principal investigator (pi), he leads research into the fundamental electronic and transport characteristics of photovoltaic materials, develops new photoanodes and photocathodes based on abundant elements for solar fuels production, and discovers new oxide and sulfide-based transparent conductors. as the pi of cooperative research and development agreements (cradas) with companies, such as intel, applied materials, and seagate, he has extensive experience in tech transfer and collaborations with industry. he is frequently invited to speak at international conferences and has published over 270 papers in refereed journals.",
                 "specialties": [
@@ -190,7 +190,7 @@ definitions:
         properties:
           self:
             type: string
-            example: https://www.labpartnering.org/api/v1/experts/dc56d205-4ddf-46d4-bcd6-93ddc7fea84a
+            example: https://developer.nrel.gov/api/lps/v1/experts/dc56d205-4ddf-46d4-bcd6-93ddc7fea84a
       lab:
         type: string
         description: Laboratory expert is associated with

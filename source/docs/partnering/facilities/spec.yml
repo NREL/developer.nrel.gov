@@ -61,10 +61,10 @@ paths:
                 "name": "Ames Laboratory",
                 "tto_url": "https://www.ameslab.gov/techtransfer",
                 "contact_us_email": "ameslps@ameslab.gov",
-                "links": {"self": "https://www.labpartnering.org/api/v1/labs/facca896-d97c-4a47-8260-7e75539f4010"}
+                "links": {"self": "https://developer.nrel.gov/api/lps/v1/labs/facca896-d97c-4a47-8260-7e75539f4010"}
                 }
                 ],
-                "links": {"self": "https://www.labpartnering.org/api/v1/facilities/40941550-a3d7-4e33-9f5c-5503cdaf70d7"}
+                "links": {"self": "https://developer.nrel.gov/api/lps/v1/facilities/40941550-a3d7-4e33-9f5c-5503cdaf70d7"}
                 },
                 {
                 "uuid": "fc0baef1-e69e-4126-a7ae-5d5a73f58132",
@@ -78,10 +78,10 @@ paths:
                 "name": "Ames Laboratory",
                 "tto_url": "https://www.ameslab.gov/techtransfer",
                 "contact_us_email": "ameslps@ameslab.gov",
-                "links": {"self": "https://www.labpartnering.org/api/v1/labs/facca896-d97c-4a47-8260-7e75539f4010"}
+                "links": {"self": "https://developer.nrel.gov/api/lps/v1/labs/facca896-d97c-4a47-8260-7e75539f4010"}
                 }
                 ],
-                "links": {"self": "https://www.labpartnering.org/api/v1/facilities/fc0baef1-e69e-4126-a7ae-5d5a73f58132"}
+                "links": {"self": "https://developer.nrel.gov/api/lps/v1/facilities/fc0baef1-e69e-4126-a7ae-5d5a73f58132"}
                 }
                 ]
                 }
@@ -132,10 +132,10 @@ paths:
                 "name": "Ames Laboratory",
                 "tto_url": "https://www.ameslab.gov/techtransfer",
                 "contact_us_email": "ameslps@ameslab.gov",
-                "links": {"self": "https://www.labpartnering.org/api/v1/labs/facca896-d97c-4a47-8260-7e75539f4010"}
+                "links": {"self": "https://developer.nrel.gov/api/lps/v1/labs/facca896-d97c-4a47-8260-7e75539f4010"}
                 }
                 ],
-                "links": {"self": "https://www.labpartnering.org/api/v1/facilities/0dde3661-0bf7-4241-9074-7b19136565a0"}
+                "links": {"self": "https://developer.nrel.gov/api/lps/v1/facilities/0dde3661-0bf7-4241-9074-7b19136565a0"}
                 }
                 ]
                 }
@@ -186,10 +186,10 @@ paths:
                 "name": "Brookhaven National Laboratory",
                 "tto_url": "https://www.bnl.gov/techtransfer/ ",
                 "contact_us_email": "tech@bnl.gov",
-                "links": {"self": "https://www.labpartnering.org/api/v1/labs/b9bb03a5-2c32-4cba-a2e3-024938bcba78"}
+                "links": {"self": "https://developer.nrel.gov/api/lps/v1/labs/b9bb03a5-2c32-4cba-a2e3-024938bcba78"}
                 }
                 ],
-                "links": {"self": "https://www.labpartnering.org/api/v1/facilities/8c23ee2b-fc02-45ca-8ca8-3a3d860b3916"}
+                "links": {"self": "https://developer.nrel.gov/api/lps/v1/facilities/8c23ee2b-fc02-45ca-8ca8-3a3d860b3916"}
                 }
                 ]
                 }
@@ -257,13 +257,13 @@ definitions:
                 properties:
                   self:
                     type: string
-                    example: "https://www.labpartnering.org/api/v1/labs/facca896-d97c-4a47-8260-7e75539f4010"
+                    example: "https://developer.nrel.gov/api/lps/v1/labs/facca896-d97c-4a47-8260-7e75539f4010"
       links:
         type: object
         properties:
           self:
             type: string
-            example: "https://www.labpartnering.org/api/v1/facilities/0dde3661-0bf7-4241-9074-7b19136565a0"
+            example: "https://developer.nrel.gov/api/lps/v1/facilities/0dde3661-0bf7-4241-9074-7b19136565a0"
   facilities:
     type: array
     items:
