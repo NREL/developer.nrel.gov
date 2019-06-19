@@ -5,7 +5,7 @@ info:
     A collection of APIs providing data about national laboratorty experts associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
 schemes:
   - https
-basePath: /api/lps/v1/
+basePath: /api/lps
 securityDefinitions:
   api_key:
     type: apiKey
@@ -14,7 +14,7 @@ securityDefinitions:
 security:
   - api_key: []
 paths:
-  experts:
+  /v{version}/experts:
     get:
       summary: Returns a list of national laboratory experts
       parameters:
@@ -94,7 +94,7 @@ paths:
               inputs: {"version": 2}
               errors: {"status": 400, "detail": "unsupported version"}
               resultset: []
-  experts/{expert_uuid}:
+  /v{version}/experts/{expert_uuid}:
     get:
       summary: Returns detailed information about one national laboratory expert
       parameters:

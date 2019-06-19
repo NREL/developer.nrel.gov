@@ -5,7 +5,7 @@ info:
     A collection of APIs providing data about national laboratorty facilities associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
 schemes:
 - https
-basePath: /api/lps/v1/
+basePath: /api/lps
 securityDefinitions:
   api_key:
     type: apiKey
@@ -14,7 +14,7 @@ securityDefinitions:
 security:
 - api_key: []
 paths:
-  facilities:
+  /v{version}/facilities:
     get:
       summary: Returns a paginated list of all national laboratory facilities
       parameters:
@@ -90,7 +90,7 @@ paths:
               inputs: {"version": 2}
               errors: {"status": 400, "detail": "unsupported version"}
               resultset: []
-  facilities/{facility_uuid}:
+  /v{version}/facilities/{facility_uuid}:
     get:
       summary: Returns detailed information about one national laboratory facility
       parameters:
@@ -144,7 +144,7 @@ paths:
               inputs: {"version": 2}
               errors: {"status": 400, "detail": "unsupported version"}
               resultset: []
-  facilities/lab/{lab_alias}:
+  /v{version}/facilities/lab/{lab_alias}:
     get:
       summary: Returns detailed information about a specific national laboratory facility
       parameters:
