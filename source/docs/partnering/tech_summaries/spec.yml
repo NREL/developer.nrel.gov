@@ -5,7 +5,7 @@ info:
     A collection of APIs providing data related to energy technologies, experts, and patents associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
 schemes:
   - https
-basePath: /api/v1/tech_summaries
+basePath: /api/lps/v1/
 securityDefinitions:
   api_key:
     type: apiKey
@@ -14,7 +14,7 @@ securityDefinitions:
 security:
   - api_key: []
 paths:
-  /api/v1/tech_summaries:
+  tech_summaries:
     get:
       summary: Returns a list of technology summaries
       parameters:
@@ -116,7 +116,7 @@ paths:
               inputs: {"version": 2}
               errors: {"status": 400, "detail": "unsupported version"}
               resultset: []
-  /api/v1/tech_summaries/{tech_summary_uuid}:
+  tech_summaries/{tech_summary_uuid}:
     get:
       summary: Returns detailed information about one national laboratory technology summary
       parameters:

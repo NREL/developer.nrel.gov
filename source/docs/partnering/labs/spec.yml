@@ -5,7 +5,7 @@ info:
     A collection of APIs providing data about national laboratories associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
 schemes:
   - https
-basePath: /api/v1/labs
+basePath: /api/lps/v1/
 securityDefinitions:
   api_key:
     type: apiKey
@@ -14,7 +14,7 @@ securityDefinitions:
 security:
   - api_key: []
 paths:
-  /api/v1/labs:
+  labs:
     get:
       summary: Returns a list of national laboratories
       parameters:
@@ -144,7 +144,7 @@ paths:
               inputs: {"version": 2}
               errors: {"status": 400, "detail": "unsupported version"}
               resultset: []
-  /api/v1/labs/{lab_uuid}:
+  labs/{lab_uuid}:
     get:
       summary: Returns detailed information about one national laboratory
       parameters:
