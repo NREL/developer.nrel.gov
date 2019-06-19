@@ -5,7 +5,7 @@ info:
     A collection of APIs providing data about national laboratorty patents associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
 schemes:
 - https
-basePath: /api/lps
+basePath: /
 securityDefinitions:
   api_key:
     type: apiKey
@@ -14,7 +14,7 @@ securityDefinitions:
 security:
   - api_key: []
 paths:
-  /v{version}/patents:
+  /api/lps/v{version}/patents:
     get:
       summary: Returns a list of all national laboratory patents
       parameters:
@@ -116,7 +116,7 @@ paths:
               inputs: {"version": 2}
               errors: {"status": 400, "detail": "unsupported version"}
               resultset: []
-  /v{version}/patents/{patent_number}:
+  /api/lps/v{version}/patents/{patent_number}:
     get:
       summary: Returns detailed information about a national laboratory patent
       parameters:
