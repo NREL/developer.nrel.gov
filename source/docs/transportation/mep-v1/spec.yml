@@ -189,7 +189,7 @@ definitions:
       score:
         description: MEP score for specified location and mode of transportation
         type: integer
-        example: 16
+        example: 18
   Point2D:
     type: array
     maxItems: 2
