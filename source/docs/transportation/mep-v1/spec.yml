@@ -158,7 +158,7 @@ definitions:
       score:
         description: MEP score for specified location
         type: integer
-        example: 16
+        example: 18
   MepScoreByMode:
     required:
       - metadata
