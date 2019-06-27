@@ -22,7 +22,7 @@ paths:
           name: version
           type: integer
           required: true
-          description: API version
+          description: API version, only current option is 1
         - in: query
           name: limit
           type: integer
@@ -124,7 +124,7 @@ paths:
           name: version
           type: integer
           required: true
-          description: API version
+          description: API version, only current option is 1
         - in: path
           name: patent_number
           type: string
