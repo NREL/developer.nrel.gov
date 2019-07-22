@@ -89,7 +89,7 @@ paths:
           schema:
             "$ref": "#/definitions/Isochrone"
       description: ''
-      summary: Return an ischrone for a given location, mode of transportation, and time (minutes)
+      summary: Return an isochrone for a given location, mode of transportation, and time (minutes). This endpoint requires approval to access. Please email Yi.Hou@nrel.gov to request approval.
       parameters:
       - in: query
         description: Latitude of point of interest with a spatial reference identifier (SRID) of 4269
