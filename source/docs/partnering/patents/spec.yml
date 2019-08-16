@@ -1,84 +1,245 @@
-swagger: "2.0"
 info:
-  version: "1.0.0"
+  version: 1
   title: Patent APIs
   description: |-
-    A collection of APIs providing data about national laboratorty patents related to associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
+    A collection of APIs providing data about national laboratorty patents associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
 schemes:
 - https
-basePath: /api/lps/v1
+basePath: /
 securityDefinitions:
   api_key:
     type: apiKey
     name: api_key
     in: query
 security:
-- api_key: []
+  - api_key: []
 paths:
-  /patents:
+  /api/lps/v{version}/patents:
     get:
       summary: Returns a list of all national laboratory patents
+      parameters:
+        - in: path
+          name: version
+          type: integer
+          required: true
+          description: API version, only current option is 1
+        - in: query
+          name: limit
+          type: integer
+          required: false
+          description: Number of results to return, default is 25, max is 200; to receive more than <i>limit</i> number of results, increment page param in subsequent request.
+        - in: query
+          name: page
+          type: integer
+          required: false
+          description: Page number of results, default is 0; see limit
       responses:
         200:
           description: Successful request
           schema:
             $ref: "#/definitions/patents_response"
-  /patents/{patent_number}:
+          examples:
+            Valid:
+              metadata: {"version": 1}
+              inputs: {}
+              errors: {}
+              resultset: {
+                "total": 37357,
+                "count": 25,
+                "number": 0,
+                "pages": 1495,
+                "result": [
+                {
+                "number": "9,275,844",
+                "title": "9,275,844",
+                "filed_on": "2013-05-16",
+                "issued_on": "2016-03-01",
+                "document_number": "20130308756",
+                "document_published_on": "2013-11-21",
+                "abstract": "Techniques for nanoflow serial femtosecond x-ray protein crystallography include providing a sample fluid by mixing a plurality of a first target of interest with a carrier fluid and injecting the sample fluid into a vacuum chamber at a rate less than about 4 microliters per minute. In some embodiments, the carrier fluid has a viscosity greater than about 3 centipoise.",
+                "government_interest": "STATEMENT OF GOVERNMENTAL INTEREST This invention was made with Government support under contract DE-AC02-76SF00515 awarded by the Department of Energy. The Government has certain rights in the invention.",
+                "links": {
+                  "self": "https://developer.nrel.gov/api/lps/v1/patents/9,275,844",
+                  "html": "https://www.labpartnering.org/patents/9,275,844.html",
+                  "source": "http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=/netahtml/PTO/srchnum.htm&r=0&f=S&l=50&TERM1=9,275,844"
+                  },
+                "labs": [],
+                "inventors": [
+                {
+                "name": "Michael J. Bogan",
+                "location": "San Francisco CA, US"
+                },
+                {
+                "name": "Hartawan Laksmono",
+                "location": "Sunnyvale CA, US"
+                },
+                {
+                "name": "Raymond G. Sierra",
+                "location": "Stanford CA, US"
+                }
+                ]
+                },
+                {
+                "number": "9,287,598",
+                "title": "9,287,598",
+                "filed_on": "2014-05-07",
+                "issued_on": "2016-03-15",
+                "document_number": "20140333395",
+                "document_published_on": "2014-11-13",
+                "abstract": "A high-power microwave RF window is provided that includes a cylindrical waveguide, where the cylindrical waveguide includes a ceramic disk concentrically housed in a central region of the cylindrical waveguide, a first rectangular waveguide, where the first rectangular waveguide is connected by a first elliptical joint to a proximal end of the cylindrical waveguide, and a second rectangular waveguide, where the second rectangular waveguide is connected by a second elliptical joint to a distal end of the cylindrical waveguide.",
+                "government_interest": "STATEMENT OF GOVERNMENT SPONSORED SUPPORT This invention was made with Government support under grant (or contract) no. DE-AC02-76SF00515 awarded by the Department of Energy. The Government has certain rights in this invention.",
+                "links": {
+                  "self": "https://developer.nrel.gov/api/lps/v1/patents/9,287,598",
+                  "html": "https://www.labpartnering.org/patents/9,287,598.html",
+                  "source": "http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=/netahtml/PTO/srchnum.htm&r=0&f=S&l=50&TERM1=9,287,598"
+                  },
+                "labs": [],
+                "inventors": [
+                {
+                "name": "Sami G. Tantawi",
+                "location": "Stanford CA, US"
+                },
+                {
+                "name": "Valery A. Dolgashev",
+                "location": "San Carlos CA, US"
+                },
+                {
+                "name": "Anahid D. Yeremian",
+                "location": "Menlo Park CA, US"
+                }
+                ]
+                }
+                ]
+                }
+            Invalid:
+              metadata: {"version": 1}
+              inputs: {"version": 2}
+              errors: {"status": 400, "detail": "unsupported version"}
+              resultset: []
+  /api/lps/v{version}/patents/{patent_number}:
     get:
       summary: Returns detailed information about a national laboratory patent
       parameters:
-      - in: path
-        name: patent_number
-        type: string
-        required: true
-        description: Number of the national laboratory patent to get
+        - in: path
+          name: version
+          type: integer
+          required: true
+          description: API version, only current option is 1
+        - in: path
+          name: patent_number
+          type: string
+          required: true
+          description: Number of the national laboratory patent to get
       responses:
         200:
           description: Successful request
           schema:
             $ref: "#/definitions/patent_response"
+          examples:
+            Valid:
+              metadata": {"version": 1}
+              inputs: {"number": "9,966,598"}
+              errors: {}
+              resultset: {
+                "total": 1,
+                "count": 1,
+                "number": 0,
+                "pages": 1,
+                "result": [
+                {
+                "number": "9,966,598",
+                "title": "9,966,598",
+                "filed_on": "2015-09-29",
+                "issued_on": "2018-05-08",
+                "document_number": "20160093884",
+                "document_published_on": "2016-03-31",
+                "abstract": "Described here is a method for making an anode of a rechargeable battery, comprising incorporating a composition comprising Li.sub.xM into the anode, wherein M is a Group 14 element. Also described here is an anode comprising a composition comprising Li.sub.xM, wherein M is a Group 14 element, and a rechargeable battery comprising the anode.",
+                "government_interest": "FEDERALLY SPONSORED RESEARCH OR DEVELOPMENT This invention was made with Government support under Contract No. DE-AC02-76SF00515, awarded by U.S. Department of Energy. The Government has certain rights in the invention.",
+                "links": {
+                  "self": "https://developer.nrel.gov/api/lps/v1/patents/9,966,598",
+                  "html": "https://www.labpartnering.org/patents/9,966,598.html",
+                  "source": "http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=/netahtml/PTO/srchnum.htm&r=0&f=S&l=50&TERM1=9,966,598"
+                },
+                "labs": [],
+                "inventors": [
+                {
+                "name": "Yi Cui",
+                "location": "Stanford CA, US"
+                },
+                {
+                "name": "Jie Zhao",
+                "location": "Stanford CA, US"
+                },
+                {
+                "name": "Zhenda Lu",
+                "location": "Stanford CA, US"
+                }
+                ]
+                }
+                ]
+                }
 definitions:
+  metadata:
+    type: object
+    properties:
+      version:
+        type: integer
+        example: 1
+  inputs:
+    type: object
+    properties:
+      input_name:
+        type: string
+  errors:
+    type: Object
+    properties:
+      status:
+        type: integer
+      detail:
+        type: string
   patent:
     type: object
     properties:
       number:
         type: string
-        example: 9,945,585
+        example: 9,966,598
       title:
         type: string
         example: Systems and methods for direct thermal receivers using near blackbody configurations
       filed_on:
         type: string
         format: date
-        example: '2015-05-15'
+        example: "2015-09-29"
       issued_on:
         type: string
         format: date
-        example: '2018-04-17'
-        description: if issued_on is null the patent is in the application process
+        example: "2018-05-08"
+        description: If issued_on is null, the patent is in the application process
       document_number:
         type: string
-        example: 20150330668
+        example: 20160093884
       document_published_on:
         type: string
         format: date
-        example: '2015-11-19'
+        example: "2016-03-31"
       abstract:
         type: string
-        example: An aspect of the present disclosure is a receiver for receiving radiation from a heliostat array that includes at least one external panel configured to form an internal cavity and an open face. The open face is positioned substantially perpendicular to a longitudinal axis and forms an entrance to the internal cavity. The receiver also includes at least one internal panel positioned within the cavity and aligned substantially parallel to the longitudinal axis, and the at least one internal panel includes at least one channel configured to distribute a heat transfer medium.
+        example: "Described here is a method for making an anode of a rechargeable battery, comprising incorporating a composition comprising Li.sub.xM into the anode, wherein M is a Group 14 element. Also described here is an anode comprising a composition comprising Li.sub.xM, wherein M is a Group 14 element, and a rechargeable battery comprising the anode."
       government_interest:
         type: string
         example: CONTRACTUAL ORIGIN The United States Government has rights in this invention under Contract No. DE-AC36-08GO28308 between the United States Department of Energy and the Alliance for Sustainable Energy, LLC, the manager and operator of the National Renewable Energy Laboratory.
-      inventors:
-        type: array
-        items:
-          properties:
-            name:
-              type: string
-              example: Michael Wagner
-            location:
-              type: string
-              example: Highlands Ranch, CO, US
+      links:
+        type: object
+        properties:
+          self:
+            type: string
+            example: "https://developer.nrel.gov/api/lps/v1/patents/9,966,598"
+          html:
+            type: string
+            example: "https://www.labpartnering.org/patents/9,966,598.html"
+          source:
+            type: string
+            example: "http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=/netahtml/PTO/srchnum.htm&r=0&f=S&l=50&TERM1=9,966,598"
       labs:
         type: array
         items:
@@ -101,52 +262,30 @@ definitions:
                 properties:
                   self:
                     type: string
-                    example: "https://developer.nrel.gov/api/lps/v1/labs/e2af34a8-8b90-4726-9edf-fa75fede52e8"
-      links:
-        type: object
-        properties:
-          self:
-            type: string
-            example: https://developer.nrel.gov/api/lps/v1/patents/20010000475
-          html:
-            type: string
-            example: https://www.labpartnering.org/patents/9,945,585.html
-    required:
-    - number
-    - title
-    - abstract
+                    example: "https://www.labpartnering.org/labs/facca896-d97c-4a47-8260-7e75539f4010"
+      inventors:
+        type: array
+        items:
+          properties:
+            name:
+              type: string
+              example: Michael Wagner
+            location:
+              type: string
+              example: Highlands Ranch, CO, US
   patents:
     type: array
     items:
       $ref: "#/definitions/patent"
-  metadata:
-    type: object
-    properties:
-      version:
-        type: string
-        example: 1.0
-  errors:
-    type: array
-    items:
-      type: string
   patent_response:
     type: object
     properties:
       metadata:
         type: object
         $ref: "#/definitions/metadata"
-      errors:
+      inputs:
         type: object
-        $ref: "#/definitions/errors"
-      resultset:
-        type: object
-        $ref: "#/definitions/patent"
-  patents_response:
-    type: object
-    properties:
-      metadata:
-        type: object
-        $ref: "#/definitions/metadata"
+        $ref: "#/definitions/inputs"
       errors:
         type: object
         $ref: "#/definitions/errors"
@@ -155,12 +294,12 @@ definitions:
         properties:
           total:
             type: integer
-            example: 20000
-            description: Total number of patents which meet the search criteria
+            example: 37357
+            description: Total number of records which meet the search criteria
           count:
             type: integer
             example: 20
-            description: The number of patents in a single response
+            description: The number of records in a single response
           number:
             type: integer
             example: 1
@@ -169,6 +308,24 @@ definitions:
             type: integer
             example: 39
             description: The total number of pages in the paginated responses
+          result:
+            type: object
+            $ref: "#/definitions/patents"
+  patents_response:
+    type: object
+    properties:
+      metadata:
+        type: object
+        $ref: "#/definitions/metadata"
+      inputs:
+        type: object
+        $ref: "#/definitions/inputs"
+      errors:
+        type: object
+        $ref: "#/definitions/errors"
+      resultset:
+        type: object
+        properties:
           result:
             type: object
             $ref: "#/definitions/patents"
