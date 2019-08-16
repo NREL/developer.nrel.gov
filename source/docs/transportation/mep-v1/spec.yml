@@ -25,7 +25,7 @@ info:
 
     NREL has developed a new quality of mobility metric known as the mobility, energy, productivity (MEP) metric. The MEP metric expands upon existing measures of mobility to include additional parameters such as energy consumption, total trip cost, and accessibility to opportunities (employment, health care, grocery, etc.). The resulting metric provides a robust assessment of the quality of mobility provided to each traveler at a given location, regardless of whether that traveler possesses their own mode of personal transportation.
 paths:
-  "/v1/":
+  "/v0/":
     get:
       tags:
       - "MEP"
@@ -47,7 +47,7 @@ paths:
         name: lon
         required: true
         type: string
-  "/v1/by-mode":
+  "/v0/by-mode":
     get:
       tags:
       - "MEP"
@@ -79,7 +79,7 @@ paths:
           - bike
           - walk
           - transit
-  "/v1/isochrone":
+  "/v0/isochrone":
     get:
       tags:
       - "MEP"
