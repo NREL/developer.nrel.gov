@@ -20,8 +20,60 @@ info:
   version: "0.1.0"
   title: MEP Mobility Metric
   description: |-
-    Query our API to return the MEP (mobility, energy, productivity) mobility metric for a given location. Our database currently has MEP scores for the following metropolitan areas:
-      + Dallas, TX, USA
+    Query our API to return the MEP (mobility, energy, productivity) mobility metric for a given location. Our database currently has MEP scores for the following metropolitan areas throughout the USA:
+      + Atlanta, GA
+      + Austin, TX
+      + Baltimore, MD
+      + Birmimngham, AL
+      + Boston, MA
+      + Bridgeport, CT
+      + Charlotte, NC
+      + Chicago, IL
+      + Cincinnati, OH
+      + Cleveland, OH
+      + Columbia, SC
+      + Colombus, OH
+      + Dallas-Fort Worth, TX
+      + Denver, CO
+      + Detroit, MI
+      + Hartford, CT
+      + Houston, TX
+      + Indianapolis, IN
+      + Jacksonville, FL
+      + Kansas City, MO
+      + Knoxville, TN
+      + Las Vegas, NV
+      + Los Angeles, CA
+      + Louisville, KY
+      + Memphis, TN
+      + Miami, FL
+      + Milwaukee, WI
+      + Minneapolis, MN
+      + Nashville, TN
+      + New York, NY
+      + Oklahoma City, OK
+      + Orlando, FL
+      + Philadelphia, PA
+      + Phoenix, AZ
+      + Portland, OR
+      + Providence, RI
+      + Raleigh, NC
+      + Richmond, VA
+      + Riverside, CA
+      + Sacramento, CA
+      + San Antonio, TX
+      + San Diego, CA
+      + San Francisco, CA
+      + San Jose, CA
+      + Seattle, WA
+      + Sioux Falls, SD
+      + St. Louis, MO
+      + Tampa, FL
+      + Topeka, KS
+      + Honolulu, HI
+      + Virginia Beach, VA
+      + Washington DC
+      + Wichita, KS
 
     NREL has developed a new quality of mobility metric known as the mobility, energy, productivity (MEP) metric. The MEP metric expands upon existing measures of mobility to include additional parameters such as energy consumption, total trip cost, and accessibility to opportunities (employment, health care, grocery, etc.). The resulting metric provides a robust assessment of the quality of mobility provided to each traveler at a given location, regardless of whether that traveler possesses their own mode of personal transportation.
 paths:
