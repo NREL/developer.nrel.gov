@@ -482,6 +482,7 @@
     <p>If <code>true</code>, then return only E85 stations that also have a blender pump capable of providing mid-level ethanol blends.</p>
   </td>
 </tr>
+<% ev_networks = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/electric-networks.json?api_key=#{ENV["DOCS_API_KEY"]}&country=all")).reject { |f| f.fetch("key") == "all" } %>
 <tr>
   <th class="doc-parameter-name" scope="row">ev_network</th>
   <td class="doc-parameter-required">No</td>
@@ -493,7 +494,7 @@
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>all, Blink Network, ChargePoint Network, Electrify America, EV Connect, eVgo Network, GE WattStation, Greenlots, OpConnect, SemaCharge Network, Tesla, Tesla Destination, Webasto</em>
+      <strong>Options:</strong> <em>all, (see table to right for options)</em>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -508,42 +509,11 @@
         <tr>
           <th scope="row">all</th>
         </tr>
-        <tr>
-          <th scope="row">Blink Network</th>
-        </tr>
-        <tr>
-          <th scope="row">ChargePoint Network</th>
-        </tr>
-        <tr>
-          <th scope="row">Electrify America</th>
-        </tr>
-        <tr>
-          <th scope="row">EV Connect</th>
-        </tr>
-        <tr>
-          <th scope="row">eVgo Network</th>
-        </tr>
-        <tr>
-          <th scope="row">GE WattStation</th>
-        </tr>
-        <tr>
-          <th scope="row">Greenlots</th>
-        </tr>
-        <tr>
-          <th scope="row">OpConnect</th>
-        </tr>
-        <tr>
-          <th scope="row">SemaCharge Network</th>
-        </tr>
-        <tr>
-          <th scope="row">Tesla</th>
-        </tr>
-        <tr>
-          <th scope="row">Tesla Destination</th>
-        </tr>
-        <tr>
-          <th scope="row">Webasto</th>
-        </tr>
+        <% ev_networks.each do |ev_network| %>
+          <tr>
+            <th scope="row"><%= ev_network.fetch("key") %></th>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </td>
