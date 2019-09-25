@@ -173,6 +173,52 @@ paths:
           - 20
           - 30
           - 40
+  "/v0/bulk_data":
+    get:
+      tags:
+      - "MEP"
+      produces:
+        - text/csv
+      responses:
+        200:
+          description: |-
+            id,lon,lat,grid_geom,drive,bike,walk,transit,sch_day_rel,medical,shop_err,recreation,meals,jobs,mep
+            1,-97.38038223,37.84682061,"{""type"":""MultiPolygon"",""coordinates"":[[[[-97.38183153,37.843576],[-97.38184,37.84558],[-97.381138,37.850431],[-97.379152,37.85043165],[-97.379152,37.843576],[-97.38183153,37.843576]]]]}",25,2,0,0,1,1,9,6,4,6,27
+            2,-97.37558285,37.84700411,"{""type"":""MultiPolygon"",""coordinates"":[[[[-97.379152,37.85043165],[-97.372016,37.850434],[-97.37201223,37.843576],[-97.379152,37.843576],[-97.379152,37.85043165]]]]}",26,1,0,0,1,1,9,6,4,6,27
+            3,-97.35194828,37.84895086,"{""type"":""MultiPolygon"",""coordinates"":[[[[-97.35398367,37.843576],[-97.354042,37.853541],[-97.349416,37.853576],[-97.349392,37.848145],[-97.351717,37.848144],[-97.351704,37.846484],[-97.350373,37.846502],[-97.35036332,37.843576],[-97.35398367,37.843576]]]]}",32,2,0,0,1,1,11,9,5,8,34
+            4,-97.38949933,37.83905578,"{""type"":""MultiPolygon"",""coordinates"":[[[[-97.389152,37.83815867],[-97.390194,37.839504],[-97.389152,37.83950466],[-97.389152,37.83815867]]]]}",21,1,0,0,1,1,8,5,3,5,22
+            ...
+      description: ''
+      summary: Return bulk data download for entire city as csv.
+      parameters:
+      - in: query
+        description: City name
+        name: city
+        required: true
+        type: string
+      - in: query
+        description: State name
+        name: state
+        required: true
+        type: string
+      # - in: query
+      #   description: Data type to be downloaded. This will return either mep scores or isochrones for the gridded areas throughout a given city.
+      #   name: data_type
+      #   required: true
+      #   type: string
+      #   enum:
+      #     - mep
+      #     - isochrone
+      # - in: query
+      #   description: Mode of transportation. Only needed if data_type is set to isochrone.
+      #   name: mode
+      #   required: true
+      #   type: string
+      #   enum:
+      #     - bike
+      #     - walk
+      #     - drive
+      #     - transit
 definitions:
   Metadata:
     description: The identifying metadata.
