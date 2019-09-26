@@ -195,31 +195,116 @@ paths:
         description: City name
         name: city
         required: true
-        type: string
+        enum:
+          - Atlanta
+          - Austin
+          - Baltimore
+          - Birmimngham
+          - Boston
+          - Bridgeport
+          - Charlotte
+          - Chicago
+          - Cincinnati
+          - Cleveland
+          - Columbia
+          - Colombus
+          - Dallas-Fort Worth
+          - Denver
+          - Detroit
+          - Hartford
+          - Houston
+          - Indianapolis
+          - Jacksonville
+          - Kansas City
+          - Knoxville
+          - Las Vegas
+          - Los Angeles
+          - Louisville
+          - Memphis
+          - Miami
+          - Milwaukee
+          - Minneapolis
+          - Nashville
+          - New York
+          - Oklahoma City
+          - Orlando
+          - Philadelphia
+          - Phoenix
+          - Portland
+          - Providence
+          - Raleigh
+          - Richmond
+          - Riverside
+          - Sacramento
+          - San Antonio
+          - San Diego
+          - San Francisco
+          - San Jose
+          - Seattle
+          - Sioux Falls
+          - St. Louis
+          - Tampa
+          - Topeka
+          - Honolulu
+          - Virginia Beach
+          - Washington DC
+          - Wichita
       - in: query
         description: State name
         name: state
         required: true
-        type: string
-      - in: query
-        description: Data type to be downloaded. This will return either mep scores or isochrones for the gridded areas throughout a given city.
-        name: data_type
-        required: true
-        type: string
         enum:
-          - mep
-          - isochrone
-      - in: query
-        description: Mode of transportation. Only needed if data_type is set to isochrone.
-        name: mode
-        required: true
-        type: string
-        enum:
-          - ' '
-          - bike
-          - walk
-          - drive
-          - transit
+          - AL
+          - AZ
+          - CA
+          - CO
+          - CT
+          - FL
+          - GA
+          - HI
+          - IL
+          - IN
+          - KS
+          - KY
+          - MA
+          - MD
+          - MI
+          - MN
+          - MO
+          - NC
+          - NV
+          - NY
+          - OH
+          - OK
+          - OR
+          - PA
+          - RI
+          - SC
+          - SD
+          - TN
+          - TX
+          - VA
+          - WA
+          - WI
+      # - in: query
+      #   description: Data type to be downloaded. This will return either mep scores or isochrones for the gridded areas throughout a given city.
+      #   name: data_type
+      #   required: true
+      #   type: string
+      #   enum:
+      #     - mep
+      #     - isochrone
+      # - in: query
+      #   description: Mode of transportation. Only needed if data_type is set to isochrone.
+      #   name: mode
+      #   required: true
+      #   type: string
+      #   enum:
+      #     - ' '
+      #     - bike
+      #     - walk
+      #     - drive
+      #     - transit
 definitions:
   Metadata:
     description: The identifying metadata.
