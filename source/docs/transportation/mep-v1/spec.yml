@@ -21,13 +21,21 @@ info:
   title: MEP Mobility Metric
   description: |-
     Query our API to return the MEP (mobility, energy, productivity) mobility metric for a given location. Our database currently has MEP scores for the following metropolitan areas throughout the USA:
+      + Albuquerque, NM
+      + Anchorage, AK
       + Atlanta, GA
       + Austin, TX
       + Baltimore, MD
+      + Billings, MT
       + Birmimngham, AL
+      + Boise, ID
       + Boston, MA
       + Bridgeport, CT
       + Charlotte, NC
+      + Charleston, SC
+      + Charleston, WV
+      + Chattanooga, TN
+      + Cheyenne, WY
       + Chicago, IL
       + Cincinnati, OH
       + Cleveland, OH
@@ -36,13 +44,16 @@ info:
       + Dallas-Fort Worth, TX
       + Denver, CO
       + Detroit, MI
+      + Fargo, ND
       + Hartford, CT
       + Houston, TX
       + Indianapolis, IN
+      + Jackson, MO
       + Jacksonville, FL
       + Kansas City, MO
       + Knoxville, TN
       + Las Vegas, NV
+      + Little Rock, AR
       + Los Angeles, CA
       + Louisville, KY
       + Memphis, TN
@@ -196,13 +207,21 @@ paths:
         name: city
         required: true
         enum:
+          - Albuquerque
+          - Anchorage
           - Atlanta
           - Austin
           - Baltimore
+          - Billings
           - Birmimngham
+          - Boise
           - Boston
           - Bridgeport
           - Charlotte
+          - Charleston
+          - Charleston
+          - Chattanooga
+          - Cheyenne
           - Chicago
           - Cincinnati
           - Cleveland
@@ -211,13 +230,16 @@ paths:
           - Dallas-Fort Worth
           - Denver
           - Detroit
+          - Fargo
           - Hartford
           - Houston
           - Indianapolis
+          - Jackson
           - Jacksonville
           - Kansas City
           - Knoxville
           - Las Vegas
+          - Little Rock
           - Los Angeles
           - Louisville
           - Memphis
@@ -254,7 +276,9 @@ paths:
         name: state
         required: true
         enum:
+          - AK
           - AL
+          - AR
           - AZ
           - CA
           - CO
@@ -262,6 +286,7 @@ paths:
           - FL
           - GA
           - HI
+          - ID
           - IL
           - IN
           - KS
@@ -271,7 +296,10 @@ paths:
           - MI
           - MN
           - MO
+          - MT
           - NC
+          - ND
+          - NM
           - NV
           - NY
           - OH
@@ -286,25 +314,8 @@ paths:
           - VA
           - WA
           - WI
-      # - in: query
-      #   description: Data type to be downloaded. This will return either mep scores or isochrones for the gridded areas throughout a given city.
-      #   name: data_type
-      #   required: true
-      #   type: string
-      #   enum:
-      #     - mep
-      #     - isochrone
-      # - in: query
-      #   description: Mode of transportation. Only needed if data_type is set to isochrone.
-      #   name: mode
-      #   required: true
-      #   type: string
-      #   enum:
-      #     - ' '
-      #     - bike
-      #     - walk
-      #     - drive
-      #     - transit
+          - WV
+          - WY
 definitions:
   Metadata:
     description: The identifying metadata.
