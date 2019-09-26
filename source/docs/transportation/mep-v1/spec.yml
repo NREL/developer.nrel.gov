@@ -201,24 +201,25 @@ paths:
         name: state
         required: true
         type: string
-      # - in: query
-      #   description: Data type to be downloaded. This will return either mep scores or isochrones for the gridded areas throughout a given city.
-      #   name: data_type
-      #   required: true
-      #   type: string
-      #   enum:
-      #     - mep
-      #     - isochrone
-      # - in: query
-      #   description: Mode of transportation. Only needed if data_type is set to isochrone.
-      #   name: mode
-      #   required: true
-      #   type: string
-      #   enum:
-      #     - bike
-      #     - walk
-      #     - drive
-      #     - transit
+      - in: query
+        description: Data type to be downloaded. This will return either mep scores or isochrones for the gridded areas throughout a given city.
+        name: data_type
+        required: true
+        type: string
+        enum:
+          - mep
+          - isochrone
+      - in: query
+        description: Mode of transportation. Only needed if data_type is set to isochrone.
+        name: mode
+        required: true
+        type: string
+        enum:
+          - ' '
+          - bike
+          - walk
+          - drive
+          - transit
 definitions:
   Metadata:
     description: The identifying metadata.
