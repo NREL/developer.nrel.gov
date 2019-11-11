@@ -702,7 +702,7 @@ var nested_input_definitions = {
           "min": 0
         },
         "tilt": {
-          "default": 0.537,
+          "default": "Site latitude",
           "max": 90,
           "type": "float",
           "description": "PV system tilt",
@@ -874,7 +874,7 @@ var nested_input_definitions = {
         "size_class": {
           "type": "str",
           "description": "Turbine size-class. One of [residential, commercial, medium, large]",
-          "restrict_to": "['residential', 'commercial', 'medium', 'large']"
+          "restrict_to": ['residential', 'commercial', 'medium', 'large']
         },
         "state_rebate_us_dollars_per_kw": {
           "default": 0,
