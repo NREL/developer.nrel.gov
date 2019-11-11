@@ -1155,6 +1155,126 @@ var nested_input_definitions = {
             "blended_monthly_rates_us_dollars_per_kwh"
           ]
         },
+        "energyweekdayschedule": {
+          "replacement_sets": [
+            [
+              "urdb_response"
+            ],
+            [
+              "urdb_label"
+            ],
+            [
+              "urdb_utility_name",
+              "urdb_rate_name"
+            ]
+          ],
+          "type": "list_of_lists",
+          "description": "Tiered energy usage charge structure weekday schedule. Value is an array of arrays. The 12 top-level arrays correspond to a month of the year. Each month array contains one integer per hour of the weekday from 12am to 11pm, and the integer corresponds to the index of a period in energyratestructure.",
+          "depends_on": [
+            "energyratestructure",
+            "energyweekendschedule"
+          ]
+        },
+        "energyweekendschedule": {
+          "replacement_sets": [
+            [
+              "urdb_response"
+            ],
+            [
+              "urdb_label"
+            ],
+            [
+              "urdb_utility_name",
+              "urdb_rate_name"
+            ]
+          ],
+          "type": "list_of_lists",
+          "description": "Tiered energy usage charge structure weekday schedule. Value is an array of arrays. The 12 top-level arrays correspond to a month of the year. Each month array contains one integer per hour of the weekday from 12am to 11pm, and the integer corresponds to the index of a period in energyratestructure.",
+          "depends_on": [
+            "energyratestructure",
+            "energyweekdayschedule"
+          ]
+        },
+        "energyratestructure": {
+          "replacement_sets": [
+            [
+              "urdb_response"
+            ],
+            [
+              "urdb_label"
+            ],
+            [
+              "urdb_utility_name",
+              "urdb_rate_name"
+            ]
+          ],
+          "type": "list_of_lists",
+          "description": "Time of use energy charge structure. Value is an array of arrays. Each element in the top-level array corresponds to one period (see demandweekdayschedule and demandweekendschedule) and each array element within a period corresponds to one tier. Indices are zero-based and correspond with demandweekdayschedule and/or demandweekendschedule entries: [[{'max':(Tier 1 max),'rate':(Tier 1 rate)}, {'max':(Tier 2 max),'rate':(Tier 2 rate)}...],...]. Max and rate values must be decimal.",
+          "depends_on": [
+            "energyweekdayschedule",
+            "energyweekendschedule"
+          ]
+        },
+        "demandweekdayschedule": {
+          "replacement_sets": [
+            [
+              "urdb_response"
+            ],
+            [
+              "urdb_label"
+            ],
+            [
+              "urdb_utility_name",
+              "urdb_rate_name"
+            ]
+          ],
+          "type": "list_of_lists",
+          "description": "Time of use demand charge structure weekday schedule. Value is an array of arrays. The 12 top-level arrays correspond to a month of the year. Each month array contains one integer per hour of the weekday from 12am to 11pm, and the integer corresponds to the index of a period in demandratestructure.",
+          "depends_on": [
+            "demandratestructure",
+            "demandweekendschedule"
+          ]
+        },
+        "demandweekendschedule": {
+          "replacement_sets": [
+            [
+              "urdb_response"
+            ],
+            [
+              "urdb_label"
+            ],
+            [
+              "urdb_utility_name",
+              "urdb_rate_name"
+            ]
+          ],
+          "type": "list_of_lists",
+          "description": "Time of use demand charge structure weekend schedule. Value is an array of arrays. The 12 top-level arrays correspond to a month of the year. Each month array contains one integer per hour of the weekday from 12am to 11pm, and the integer corresponds to the index of a period in demandratestructure.",
+          "depends_on": [
+            "demandratestructure",
+            "demandweekdayschedule"
+          ]
+        },
+        "demandratestructure": {
+          "replacement_sets": [
+            [
+              "urdb_response"
+            ],
+            [
+              "urdb_label"
+            ],
+            [
+              "urdb_utility_name",
+              "urdb_rate_name"
+            ]
+          ],
+          "type": "list_of_lists",
+          "description": "Time of use demand charge structure. Value is an array of arrays. Each element in the top-level array corresponds to one period (see demandweekdayschedule and demandweekendschedule) and each array element within a period corresponds to one tier. Indices are zero-based and correspond with demandweekdayschedule and/or demandweekendschedule entries: [[{'max':(Tier 1 max),'rate':(Tier 1 rate)}, {'max':(Tier 2 max),'rate':(Tier 2 rate)}...],...]. Max and rate values must be decimal.",
+          "depends_on": [
+            "demandweekendschedule",
+            "demandweekdayschedule"
+          ]
+        },
         "urdb_utility_name": {
           "replacement_sets": [
             [
@@ -1801,7 +1921,7 @@ var tableDescriptionCell = function(name, def) {
     text = text + "<p>Can be replaced by one of the following attribute sets: " + replacementSetList(def['replacement_sets'],name )
   }
 
-  return $("<td  style='word-wrap: break-word;'>").append($("<span>").html(text))
+  return $("<td  style='word-break: break-word;'>").append($("<span>").html(text))
 }
 
 
@@ -1897,7 +2017,7 @@ var buildAttributeTable = function(definition_dictionary, table_name) {
     var def_keys = sortAttributeTableRows(definition_dictionary)
     var attributeTableHead = $("<thead>")
     var attributeTableBody = $("<tbody>")
-    attributeTable = $('<table>').prop({'class':'table table-striped row doc-parameters'})
+    attributeTable = $('<table>').prop({'class':'table table-striped doc-parameters'})
     
     if (table_name=='inputs') {
       var tableColumns = ["Parameter","Required","Value","Description"]
@@ -1935,8 +2055,8 @@ var subDirectoriesCell = function (definition_dictionary,table_name){
 }
 
 var objectHeaderRow = function(table_name, key_name){
-  var output = $('<div class="panel-heading" role="tab">')
-  output.append($('<h5 class="panel-title">').html(
+  var output = $('<h5 class="card-header" role="tab">')
+  output.append($('<div>').html(
     $('<a data-toggle="collapse" data-parent="'+key_name+'Row" href="#'+key_name+'_collapsecontainer" aria-expanded="true" aria-controls="'+key_name+table_name+'_collapsecontainer">').html(key_name))
   )
   return output
@@ -1945,33 +2065,33 @@ var objectHeaderRow = function(table_name, key_name){
 
 var buildObjectRow = function(table_name, key_name, definition_dictionary, indent) {
   output = $('<div class="row">')
-  output_col = $('<div class="col col-xs-offset-'+indent.toString()+' col-xs-'+(12-indent).toString()+'">')
+  output_col = $('<div class="col offset-'+indent.toString()+' col-'+(12-indent).toString()+'">')
   
-  var object_panel = $('<div class="panel panel-default" role="tablist" id="'+key_name+table_name+'_panel">')
+  var object_panel = $('<div class="card" role="tablist" id="'+key_name+table_name+'_panel">')
 
   var objectTableNameRow = objectHeaderRow(table_name,key_name)
   object_panel.append(objectTableNameRow)
 
-  var collapse_container = $('<div id="'+key_name+table_name+'_collapsecontainer" class="panel-collapse collapse in panel-body" role="tabpanel" aria-labelledby="'+key_name+'_collapsebutton">')
+  var collapse_container = $('<div id="'+key_name+table_name+'_collapsecontainer" class="card-body" role="tabpanel" aria-labelledby="'+key_name+'_collapsebutton">')
   
   var objectSubTableAttributeRow = $('<div class="row">')
-  var attributeRowName = $('<div class="col col-xs-12">').html('<b><span class="text-secondary">Attributes</span></b><br><br>')
+  var attributeRowName = $('<div class="col col-12">').html('<b><span class="text-secondary">Attributes</span></b><br><br>')
   objectSubTableAttributeRow.append(attributeRowName)
   collapse_container.append(objectSubTableAttributeRow)
   
   var attributeTable = buildAttributeTable(definition_dictionary,table_name)
-  var attributeRowSpacer = $('<div class="col col-xs-1 ">').attr('style','width:3%')
-  var attributeRowContent = $('<div class="col col-xs-offset-0.5 col-xs-11">').html(attributeTable)
+  var attributeRowSpacer = $('<div class="col col-1">').attr('style','max-width:3%')
+  var attributeRowContent = $('<div class="col col-11">').html(attributeTable)
   objectSubTableAttributeRow.append(attributeRowSpacer)
   objectSubTableAttributeRow.append(attributeRowContent)
   collapse_container.append(objectSubTableAttributeRow)
 
 
   var objectSubTableSubdirectoryRow = $('<div class="row">')
-  var attributeRowName = $('<div class="col col-xs-12">').html('<b><span class="text-secondary">Sub Directories</span></b><br><br>')
+  var attributeRowName = $('<div class="col col-12">').html('<b><span class="text-secondary">Sub Directories</span></b><br><br>')
   objectSubTableSubdirectoryRow.append(attributeRowName)
   
-  var subdirectoryRowContent= $('<div class="col col-xs-offset-1 col-xs-10">').html(subDirectoriesCell(definition_dictionary,table_name))
+  var subdirectoryRowContent= $('<div class="col offset-1 col-10">').html(subDirectoriesCell(definition_dictionary,table_name))
   objectSubTableSubdirectoryRow.append(subdirectoryRowContent)
   collapse_container.append(objectSubTableSubdirectoryRow)
 

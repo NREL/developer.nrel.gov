@@ -14,8 +14,7 @@
   color: #3c4349;
 }
 
-.breadcrumb > li + li::before {
-  content: '\00BB\00a0';
+.breadcrumb-item + .breadcrumb-item::before {
+  content: '\00BB';
   color: #3c4349;
-  padding: 0px 2px;
 }

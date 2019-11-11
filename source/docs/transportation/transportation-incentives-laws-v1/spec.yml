@@ -84,11 +84,11 @@ paths:
       - in: query
         description: 'Search by the user type. A single type, or a comma-separate
           list of multiple types, may be given. Values and what they stand for are
-          as follows: ''IND'' for Vehicle Owner/Driver, ''FLEET'' for Fleet Purchaser/Manager,
-          ''STATION'' for Fueling / TSE Infrastructure Owner, ''AFP'' for Alternative
-          Fuel Producer, ''AFS'' for Alternative Fuel Dealer, ''PURCH'' for Alternative
-          Fuel Purchaser, ''MAN'' for AFV Manufacturer/Retrofitter, and ''OTHER''
-          for Other'
+          as follows: ''FLEET'' for Private Business, ''GOV'' for Government Entity,
+          ''IND'' for Personal Vehicle Owner or Driver, ''STATION'' for Alternative
+          Fuel Infrastructure Operator, ''AFP'' for Alternative Fuel Producer,
+          ''PURCH'' for Alternative Fuel Purchaser, ''MAN'' for Alternative Fuel
+          Vehicle (AFV) Manufacturer or Retrofitter, and ''OTHER'' for Other'
         name: user_type
         required: false
         type: string
@@ -105,7 +105,7 @@ paths:
         type: boolean
         default: false
       - in: query
-        description: Show only expired, repealed or archived laws and incentives.
+        description: 'The ''true'' value returns only expired, repealed, or archived laws and incentives. The default ''false'' value returns only current laws and incentives.'
         name: expired
         required: false
         type: boolean
@@ -164,6 +164,12 @@ paths:
       - in: query
         description: Include points of contacts in the return value.
         name: poc
+        required: false
+        type: boolean
+        default: false
+      - in: query
+        description: 'The ''true'' value returns a record no matter its status (current, expired, archived, or repealed). The default ''false'' value returns only current laws and incentives.'
+        name: expired
         required: false
         type: boolean
         default: false

@@ -82,4 +82,6 @@ configure :build do
   ]
 end
 
+ENV["DOCS_API_KEY"] ||= "Rr247zstse9kbndOttzlhKIKnS04mW7UUXIplAqd"
+
 activate :alias

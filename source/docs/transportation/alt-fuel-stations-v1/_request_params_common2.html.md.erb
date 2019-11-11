@@ -14,7 +14,7 @@
   </td>
   <td class="doc-parameter-description">
     <p>Return stations that match the given status. A single status, or a comma-separated list of multiple statuses, may be given.</p>
-    <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+      <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">Option</th>
@@ -76,7 +76,7 @@
   </td>
   <td class="doc-parameter-description">
     <p>Return stations that supply any of the given fuel types. A single fuel type, or a comma-separated list of multiple fuel types, may be given.</p>
-    <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">Option</th>
@@ -136,7 +136,7 @@
   </td>
   <td class="doc-parameter-description">
     <p>Return stations that accept any of the given payment methods. A single payment method, or a comma-separated list of multiple payment methods, may be given.</p>
-    <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">Option</th>
@@ -252,7 +252,7 @@
   </td>
   <td class="doc-parameter-description">
     <p>Return stations owned by the given types of owners. A single owner type, or a comma-separated list of multiple owner types, may be given.</p>
-    <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">Option</th>
@@ -292,6 +292,45 @@
     </table>
   </td>
 </tr>
+<tr id="request-federal-agency">
+  <th class="doc-parameter-name" scope="row">federal_agency</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all, (see table to right for codes)</em>
+    </div>
+  </td>
+  <% federal_agencies = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/federal-agencies.json?api_key=#{ENV["DOCS_API_KEY"]}")).reject { |f| f.fetch("id") == "all" } %>
+  <td class="doc-parameter-description">
+    <p>Return stations owned by the given federal agency. A federal agency code, or a comma-separated list of multiple federal agency codes, may be given.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">all</th>
+          <td>Include all stations, regardless of federal agency owner</td>
+        </tr>
+        <% federal_agencies.each do |federal_agency| %>
+          <tr>
+            <th scope="row"><%= federal_agency.fetch("key") %></th>
+            <td><%= federal_agency.fetch("name") %> (<%= federal_agency.fetch("country") %>)</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </td>
+</tr>
 <tr>
   <th class="doc-parameter-name" scope="row">federal_agency_id</th>
   <td class="doc-parameter-required">No</td>
@@ -307,8 +346,9 @@
     </div>
   </td>
   <td class="doc-parameter-description">
+    <p>Deprecated: See <a href="#request-federal-agency">federal_agency</a>. (Note: this query parameter will remain for legacy application support)</p>
     <p>Return stations owned by the given federal agency. A federal agency ID, or a comma-separated list of multiple federal agency IDs, may be given.</p>
-    <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">Option</th>
@@ -320,86 +360,129 @@
           <th scope="row">all</th>
           <td>Include all stations, regardless of federal agency owner</td>
         </tr>
+        <% federal_agencies.each do |federal_agency| %>
+          <tr>
+            <th scope="row"><%= federal_agency.fetch("id") %></th>
+            <td><%= federal_agency.fetch("name") %> (<%= federal_agency.fetch("country") %>)</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </td>
+</tr>
+<tr>
+  <th class="doc-parameter-name" scope="row">cng_fill_type</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all, Q, T</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only CNG stations that provide the specified type of dispensing capability. A single type, or a comma separated list of multiple types, may be given.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
         <tr>
-          <th scope="row">3</th>
-          <td>Defense Agencies</td>
+          <th scope="col">Value</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Q</th>
+          <td>Quick fill</td>
         </tr>
         <tr>
-          <th scope="row">4</th>
-          <td>U.S. Department of Agriculture</td>
-        </tr>
-        <tr>
-          <th scope="row">5</th>
-          <td>Department of Air Force</td>
-        </tr>
-        <tr>
-          <th scope="row">6</th>
-          <td>Department of Army</td>
-        </tr>
-        <tr>
-          <th scope="row">7</th>
-          <td>Department of Commerce</td>
-        </tr>
-        <tr>
-          <th scope="row">8</th>
-          <td>U.S. Department of Energy</td>
-        </tr>
-        <tr>
-          <th scope="row">9</th>
-          <td>Department of Health and Human Services</td>
-        </tr>
-        <tr>
-          <th scope="row">10</th>
-          <td>Department of Homeland Security</td>
-        </tr>
-        <tr>
-          <th scope="row">12</th>
-          <td>Department of Justice</td>
-        </tr>
-        <tr>
-          <th scope="row">14</th>
-          <td>Department of Navy</td>
-        </tr>
-        <tr>
-          <th scope="row">16</th>
-          <td>Department of the Interior</td>
-        </tr>
-        <tr>
-          <th scope="row">17</th>
-          <td>U.S. Department of Transportation</td>
-        </tr>
-        <tr>
-          <th scope="row">19</th>
-          <td>Department of Veterans Affairs</td>
-        </tr>
-        <tr>
-          <th scope="row">20</th>
-          <td>U.S. Environmental Protection Agency</td>
-        </tr>
-        <tr>
-          <th scope="row">22</th>
-          <td>National Aeronautics and Space Administration</td>
-        </tr>
-        <tr>
-          <th scope="row">23</th>
-          <td>Smithsonian Institution</td>
-        </tr>
-        <tr>
-          <th scope="row">24</th>
-          <td>Social Security Administration</td>
-        </tr>
-        <tr>
-          <th scope="row">25</th>
-          <td>U.S. Postal Service</td>
-        </tr>
-        <tr>
-          <th scope="row">26</th>
-          <td>United States Marine Corps</td>
+          <th scope="row">T</th>
+          <td>Timed fill</td>
         </tr>
       </tbody>
     </table>
   </td>
 </tr>
+<tr>
+  <th class="doc-parameter-name" scope="row">cng_psi</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all, 2400, 3000, 3600</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only CNG stations that provide the specified PSI pressure. A single pressure level, or a comma separated list of multiple pressure levels, may be given.</p>
+  </td>
+</tr>
+<tr>
+  <th class="doc-parameter-name" scope="row">cng_vehicle_class</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all, LD, MD, HD</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only CNG stations that can accomodate the specified vehicle class size or greater.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Value</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">LD</th>
+          <td>Return stations that can accomodate light-duty vehicles or greater.</td>
+        </tr>
+        <tr>
+          <th scope="row">MD</th>
+          <td>Return stations that can accomodate medium-duty vehicles or greater.</td>
+        </tr>
+        <tr>
+          <th scope="row">HD</th>
+          <td>Return stations that can accomodate heavy-duty vehicles or greater.</td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+<tr>
+  <th class="doc-parameter-name" scope="row">e85_has_blender_pump</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all, true</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>If <code>true</code>, then return only E85 stations that also have a blender pump capable of providing mid-level ethanol blends.</p>
+  </td>
+</tr>
+<% ev_networks = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/electric-networks.json?api_key=#{ENV["DOCS_API_KEY"]}&country=all")).reject { |f| f.fetch("key") == "all" } %>
 <tr>
   <th class="doc-parameter-name" scope="row">ev_network</th>
   <td class="doc-parameter-required">No</td>
@@ -411,12 +494,12 @@
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>all, AeroVironment Network, Blink Network, ChargePoint Network, Electrify America, EV Connect, eVgo Network, GE WattStation, Greenlots, OpConnect, SemaCharge Network, Tesla, Tesla Destination</em>
+      <strong>Options:</strong> <em>all, (see table to right for options)</em>
     </div>
   </td>
   <td class="doc-parameter-description">
     <p>Return only electric charging stations that belong to the given network. A single network, or a comma separate list of multiple networks, may be given.</p>
-    <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">Option</th>
@@ -426,42 +509,11 @@
         <tr>
           <th scope="row">all</th>
         </tr>
-        <tr>
-          <th scope="row">AeroVironment Network</th>
-        </tr>
-        <tr>
-          <th scope="row">Blink Network</th>
-        </tr>
-        <tr>
-          <th scope="row">ChargePoint Network</th>
-        </tr>
-        <tr>
-          <th scope="row">Electrify America</th>
-        </tr>
-        <tr>
-          <th scope="row">EV Connect</th>
-        </tr>
-        <tr>
-          <th scope="row">eVgo Network</th>
-        </tr>
-        <tr>
-          <th scope="row">GE WattStation</th>
-        </tr>
-        <tr>
-          <th scope="row">Greenlots</th>
-        </tr>
-        <tr>
-          <th scope="row">OpConnect</th>
-        </tr>
-        <tr>
-          <th scope="row">SemaCharge Network</th>
-        </tr>
-        <tr>
-          <th scope="row">Tesla</th>
-        </tr>
-        <tr>
-          <th scope="row">Tesla Destination</th>
-        </tr>
+        <% ev_networks.each do |ev_network| %>
+          <tr>
+            <th scope="row"><%= ev_network.fetch("key") %></th>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </td>
@@ -482,7 +534,7 @@
   </td>
   <td class="doc-parameter-description">
     <p>Return only electric charging stations that provide the given level of electric vehicle supply equipment (EVSE).</p>
-    <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">Option</th>
@@ -530,7 +582,7 @@
   </td>
   <td class="doc-parameter-description">
     <p>Return only electric charging stations that provide the given connector types.</p>
-    <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">Option</th>
@@ -575,6 +627,123 @@
   </td>
 </tr>
 <tr>
+  <th class="doc-parameter-name" scope="row">ev_connector_type_operator</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>OR</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>OR, AND</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Control how multiple connector type options passed to the <code>ev_connector_type</code> parameter behave. The default of <code>OR</code> will return stations that have <em>any</em> of the connectors present. Specifying <code>AND</code> will only return stations that have <em>all</em> of the connectors present.</p>
+    <p>For example, with the default <code>OR</code> value, then performing a query for <code>ev_connector_type=CHADEMO,J1772COMBO</code> will return any station that has either <code>CHADEMO</code> or <code>J1772COMBO</code> connectors present. Compare that to a query for <code>ev_connector_type=CHADEMO,J1772COMBO&#8203;&ev_connector_type_operator=AND</code> which will return stations that must have both <code>CHADEMO</code> and <code>J1772COMBO</code> connectors present at the same station.</p>
+  </td>
+</tr>
+<tr>
+  <th class="doc-parameter-name" scope="row">hy_is_retail</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all, true, false</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only hydrogen stations that match the value. A single retail value, or a comma-separated list of multiple retail values, may be given.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Value</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">all</th>
+          <td>Include all hydrogen stations.</td>
+        </tr>
+        <tr>
+          <th scope="row">true</th>
+          <td>Station meets the criteria to be considered retail.</td>
+        </tr>
+        <tr>
+          <th scope="row">false</th>
+          <td>Station does not meet the criteria to be considered retail.</td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+<tr>
+  <th class="doc-parameter-name" scope="row">lng_vehicle_class</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all, LD, MD, HD</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only LNG stations that can accomodate the specified vehicle class size or greater.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Value</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">LD</th>
+          <td>Return stations that can accomodate light-duty vehicles or greater.</td>
+        </tr>
+        <tr>
+          <th scope="row">MD</th>
+          <td>Return stations that can accomodate medium-duty vehicles or greater.</td>
+        </tr>
+        <tr>
+          <th scope="row">HD</th>
+          <td>Return stations that can accomodate heavy-duty vehicles or greater.</td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+<tr>
+  <th class="doc-parameter-name" scope="row">lpg_include_secondary</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all, false</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>If <code>false</code>, then exclude LPG stations that do not meet the <a href="#response-lpg-primary">criteria</a> to be considered primary.</p>
+  </td>
+</tr>
+<tr>
   <th class="doc-parameter-name" scope="row">state</th>
   <td class="doc-parameter-required">No</td>
   <td class="doc-parameter-value">
@@ -616,7 +785,7 @@
   </td>
   <td class="doc-parameter-description">
     <p>Return only stations within the given country code.</p>
-    <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">Option</th>

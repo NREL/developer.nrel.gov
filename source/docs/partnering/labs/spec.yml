@@ -1,0 +1,345 @@
+info:
+  version: 1
+  title: Lab APIs
+  description: |-
+    A collection of APIs providing data about national laboratories associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
+schemes:
+  - https
+basePath: /
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: query
+security:
+  - api_key: []
+paths:
+  /api/lps/v{version}/labs:
+    get:
+      summary: Returns a list of national laboratories
+      parameters:
+        - in: path
+          name: version
+          type: integer
+          required: true
+          description: API version, only current option is 1
+        - in: query
+          name: limit
+          type: integer
+          required: false
+          description: Number of results to return, default is 25, max is 200; to receive more than <i>limit</i> number of results, increment page param in subsequent requests
+        - in: query
+          name: page
+          type: integer
+          required: false
+          description: Page number of results, default is 0; see limit
+      responses:
+        200:
+          description: Successful request
+          schema:
+            $ref: "#/definitions/labs_response"
+          examples:
+            Valid:
+              metadata: {"version": 1}
+              inputs: {}
+              errors: {}
+              resultset: {
+                "total": 8,
+                "count": 8,
+                "number": 0,
+                "pages": 1,
+                "result": [
+                {
+                 "uuid": "b9bb03a5-2c32-4cba-a2e3-024938bcba78",
+                 "name": "Brookhaven National Laboratory",
+                 "tto_url": "https://www.bnl.gov/techtransfer/ ",
+                 "contact_us_email": "tech@bnl.gov",
+                 "avatar": "https://www.labpartnering.org/files/labs/1",
+                 "links": {"self": "https://developer.nrel.gov/api/lps/v1/labs/b9bb03a5-2c32-4cba-a2e3-024938bcba78"},
+                 "alias": "bnl",
+                 "description": "Brookhaven National Laboratory (BNL) is a multipurpose research institution funded primarily by the U.S. Department of Energy&apos;s Office of Science and located in the center of Long Island, New York. Home to seven Nobel Prizes, BNL brings world-class facilities and expertise to the most exciting and important questions in basic and applied science-from the birth of our universe to the sustainable energy technology of tomorrow. We operate cutting-edge large-scale facilities for studies in physics, chemistry, biology, energy, applied science, and a wide range of advanced technologies. The Laboratory's 2,700 scientists, engineers, and support staff are joined each year by more than 4,000 visiting researchers from around the world. Our award-winning history stretches back to 1947, and we continue to unravel mysteries from the nanoscale to the cosmic scale, and everything in between.\r\n\r\n<br>\r\n<br>\r\nEnergy research represents a major focus for BNL over the next decade.  We are using a multifaceted approach driven by the unique state-of-the art laboratory facilities and the inter-disciplinary expertise of our scientific staff to solve fundamental questions regarding U.S. energy independence and to translate discoveries into deployable technologies.  The laboratory has identified several energy focus areas - including biofuels, complex materials, catalysis, and solar energy.\r\n\r\n<br>\r\n<br>\r\nBNL&apos;s one-of-kind user facilities include the <a target='_blank' href='https://www.bnl.gov/ps/'>National Synchrotron Light Source II</a> NSLS-II, which produces extremely bright beams of x-ray, ultraviolet, and infrared light for scientists exploring materials-including superconductors, catalysts, geological samples, and proteins-to accelerate advances in energy, environmental science, and medicine. Scientists at our <a target='_blank' href='http://www.bnl.gov/cfn/'>Center for Functional Nanomaterials</a> create materials and explore their unique structure and properties at the nanoscale, with a focus on more efficient solar and energy storage materials. And at BNL&apos;s Northeast Solar Energy Research Center, where researchers from labs, academia, and industry study test new solar technologies, working to make solar &quot;power plants&quot; more efficient and economical\r\n\r\n<br>\r\n<br>\r\nIn addition to fundamental research, the laboratory actively collaborates with industry and other academic institutions to bring the benefits of scientific discoveries to the marketplace.  Brookhaven's <a target='_blank' href='https://www.bnl.gov/partnerships/'>Office of Strategic Partnerships</a> integrates Brookhaven Lab&apos;s industry engagement, technology licensing, and economic development functions to expand the impact of collaborative research and technology commercialization.  Strategic Partnerships supports the Laboratory&apos;s science mission through identifying, pursuing and managing partnerships with a broad set of private-sector companies, federal agencies, and non-federal entities.  For information on licensing and industry.",
+                 "contact_email": "pupadhya@bnl.gov",
+                 "contact_name": "Poorni Upadhya",
+                 "location": "Upton, New York ",
+                 "operator": "Brookhaven Science Associates, LLC",
+                 "experts": [
+                 {
+                 "uuid": "53fdfd1c-50de-4713-baf6-edec118cf848",
+                 "first_name": "David",
+                 "last_name": "Bock",
+                 "avatar": "https://www.labpartnering.org/files/experts/53fdfd1c-50de-4713-baf6-edec118cf848",
+                 "links": {"self": "https://www.labpartnering.org/experts/53fdfd1c-50de-4713-baf6-edec118cf848"}
+                 },
+                 {
+                 "uuid": "7edd9755-4161-4e12-bb45-062c1d9c694b",
+                 "first_name": "Xiao-Qing",
+                 "last_name": "Yang",
+                 "avatar": "https://www.labpartnering.org/files/experts/7edd9755-4161-4e12-bb45-062c1d9c694b",
+                 "links": {"self": "https://www.labpartnering.org/experts/7edd9755-4161-4e12-bb45-062c1d9c694b"}
+                 },
+                 {
+                 "uuid": "87745052-2f0c-4bbf-857a-04509d04a00a",
+                 "first_name": "Esther",
+                 "last_name": "Takeuchi",
+                 "avatar": "https://www.labpartnering.org/files/experts/87745052-2f0c-4bbf-857a-04509d04a00a",
+                 "links": {"self": "https://www.labpartnering.org/experts/87745052-2f0c-4bbf-857a-04509d04a00a"}
+                 },
+                 {
+                 "uuid": "71301584-2d70-4b65-86b8-dde4af39b35a",
+                 "first_name": "J. Anibal",
+                 "last_name": "Boscoboinik",
+                 "avatar": "https://www.labpartnering.org/files/experts/71301584-2d70-4b65-86b8-dde4af39b35a",
+                 "links": {"self": "https://www.labpartnering.org/experts/71301584-2d70-4b65-86b8-dde4af39b35a"}
+                 },
+                 {
+                 "uuid": "770f3415-cec2-4285-beb3-f978cf0ce9f0",
+                 "first_name": "Qiang",
+                 "last_name": "Li",
+                 "avatar": "https://www.labpartnering.org/files/experts/770f3415-cec2-4285-beb3-f978cf0ce9f0",
+                 "links": {"self": "https://www.labpartnering.org/experts/770f3415-cec2-4285-beb3-f978cf0ce9f0"}
+                 },
+                {
+                "uuid": "132a7d28-5d48-4f15-9ac0-69d8a133129e",
+                "first_name": "Eric",
+                "last_name": "Dooryhee",
+                "avatar": "https://www.labpartnering.org/files/experts/132a7d28-5d48-4f15-9ac0-69d8a133129e",
+                "links": {
+                  "self": "https://www.labpartnering.org/experts/132a7d28-5d48-4f15-9ac0-69d8a133129e"
+                  }
+                },
+                {
+                "uuid": "a0126d55-7cf8-4012-9543-979ac85d09c0",
+                "first_name": "Charles T.",
+                "last_name": "Black",
+                "avatar": "https://www.labpartnering.org/files/experts/a0126d55-7cf8-4012-9543-979ac85d09c0",
+                "links": {"self": "https://www.labpartnering.org/experts/a0126d55-7cf8-4012-9543-979ac85d09c0"}
+                },
+                {
+                "uuid": "755d3863-5361-4bb2-85ff-8ef83586113f",
+                "first_name": "Alessandra",
+                "last_name": "Colli",
+                "avatar": "https://www.labpartnering.org/files/experts/755d3863-5361-4bb2-85ff-8ef83586113f",
+                "links": {"self": "https://www.labpartnering.org/experts/755d3863-5361-4bb2-85ff-8ef83586113f"}
+                },
+                {
+                "uuid": "c5859b47-47d8-43f6-ae02-003aed8c679b",
+                "first_name": "Oleg",
+                "last_name": "Gang",
+                "avatar": "https://www.labpartnering.org/files/experts/c5859b47-47d8-43f6-ae02-003aed8c679b",
+                "links": {"self": "https://www.labpartnering.org/experts/c5859b47-47d8-43f6-ae02-003aed8c679b"}
+                },
+                {
+                "uuid": "49a5fddc-093c-44b4-8925-8684b7ba272d",
+                "first_name": "Dong",
+                "last_name": "Su",
+                "avatar": "https://www.labpartnering.org/files/experts/49a5fddc-093c-44b4-8925-8684b7ba272d",
+                "links": {"self": "https://www.labpartnering.org/experts/49a5fddc-093c-44b4-8925-8684b7ba272d"}
+                }
+                ]
+                }
+                ]
+                }
+            Invalid:
+              metadata: {"version": 1}
+              inputs: {"version": 2}
+              errors: {"status": 400, "detail": "unsupported version"}
+              resultset: []
+  /api/lps/v{version}/labs/{lab_uuid}:
+    get:
+      summary: Returns detailed information about one national laboratory
+      parameters:
+      - in: path
+        name: version
+        type: integer
+        required: true
+        description: API version, only current option is 1
+      - in: path
+        name: lab_uuid
+        type: string
+        required: true
+        description: UUID of the national laboratory requested
+      responses:
+        200:
+          description: Successful request
+          schema:
+            $ref: "#/definitions/labs_response"
+          examples:
+            Valid:
+              metadata: {"version": 1}
+              inputs: {"uuid": "e2af34a8-8b90-4726)-9edf-fa75fede52e8"}
+              errors: {}
+              resultset: {
+                "total": 1,
+                "count": 1,
+                "number": 0,
+                "pages": 1,
+                "result": [
+                {
+                "uuid": "e2af34a8-8b90-4726-9edf-fa75fede52e8",
+                "name": "National Renewable Energy Laboratory",
+                "tto_url": "https://www.nrel.gov/workingwithus/technology-transfer.html",
+                "contact_us_email": "Eric.Payne@nrel.gov",
+                "avatar": "https://www.labpartnering.org/files/labs/4",
+                "links": {"self": "https://developer.nrel.gov/api/lps/v1/labs/e2af34a8-8b90-4726-9edf-fa75fede52e8"},
+                "alias": "nrel",
+                "description": " The National Renewable Energy Laboratory is the only federal laboratory dedicated to the research, development, commercialization, and deployment of renewable energy and energy efficiency technologies.We focus on creative answers to today's energy challenges, from breakthroughs in fundamental science to new clean technologies to integrated energy systems that power our lives.  NREL researchers are transforming the way the nation and the world use energy. Our primary research and development areas are:  Analysis, Bioenergy, Buildings, Geothermal, Grid Modernization, Hydrogen and Fuel Cells, Solar, Transportation, Water Power and Wind Energy.",
+                "contact_email": "Eric.Payne@nrel.gov",
+                "contact_name": "Eric Payne",
+                "location": "Golden, Colorado ",
+                "operator": "Alliance for Sustainable Energy, LLC",
+                "experts": [
+                {
+                "uuid": "d78ce187-f5ed-4ddc-9e4e-063f6eaf11be",
+                "first_name": "Judith",
+                "last_name": "Vidal",
+                "avatar": "https://www.labpartnering.org/files/experts/d78ce187-f5ed-4ddc-9e4e-063f6eaf11be",
+                "links": {"self": "https://www.labpartnering.org/experts/d78ce187-f5ed-4ddc-9e4e-063f6eaf11be"}
+                },
+                {
+                "uuid": "26891482-b3fa-44d2-8a55-ca1f29762ae2",
+                "first_name": "Robert",
+                "last_name": "Tenent",
+                "avatar": "https://www.labpartnering.org/files/experts/26891482-b3fa-44d2-8a55-ca1f29762ae2",
+                "links": {"self": "https://www.labpartnering.org/experts/26891482-b3fa-44d2-8a55-ca1f29762ae2"}
+                },
+                {
+                "uuid": "8f8861eb-f8da-4f4c-91de-bec5b2c5e908",
+                "first_name": "Daniel",
+                "last_name": "Friedman",
+                "avatar": "https://www.labpartnering.org/files/experts/8f8861eb-f8da-4f4c-91de-bec5b2c5e908",
+                "links": {"self": "https://www.labpartnering.org/experts/8f8861eb-f8da-4f4c-91de-bec5b2c5e908"}
+                },
+                {
+                "uuid": "aa956102-f59f-464a-af3d-1788fa222ba0",
+                "first_name": "Robert M.",
+                "last_name": "Baldwin",
+                "avatar": "https://www.labpartnering.org/files/experts/aa956102-f59f-464a-af3d-1788fa222ba0",
+                "links": {"self": "https://www.labpartnering.org/experts/aa956102-f59f-464a-af3d-1788fa222ba0"}
+                }
+                ]
+                }
+                ]
+                }
+definitions:
+  metadata:
+    type: object
+    properties:
+      version:
+        type: integer
+        example: 1
+  inputs:
+    type: Object
+    properties:
+      input_name:
+        type: string
+  errors:
+    type: Object
+    properties:
+      status:
+        type: integer
+      detail:
+        type: string
+  lab:
+    type: object
+    properties:
+      uuid:
+        type: string
+        example: e2af34a8-8b90-4726-9edf-fa75fede52e8
+      name:
+        type: string
+        example: National Renewable Energy Laboratory
+      tto_url:
+        type: string
+        example: https://www.nrel.gov/workingwithus/technology-transfer.html
+      contact_us_email:
+        type: string
+        example: Eric.Payne@nrel.gov
+      avatar:
+        type: string
+        example: https://www.labpartnering.org/files/labs/4
+      links:
+        type: object
+        properties:
+          self:
+            type: string
+            example: https://developer.nrel.gov/api/lps/v1/labs/e2af34a8-8b90-4726-9edf-fa75fede52e8
+      alias:
+        type: string
+        example: nrel
+      description:
+        type: string
+        example: "The National Renewable Energy Laboratory is the only federal laboratory dedicated to the research, development, commercialization, and deployment of renewable energy and energy efficiency technologies.We focus on creative answers to today's energy challenges, from breakthroughs in fundamental science to new clean technologies to integrated energy systems that power our lives.  NREL researchers are transforming the way the nation and the world use energy. Our primary research and development areas are:  Analysis, Bioenergy, Buildings, Geothermal, Grid Modernization, Hydrogen and Fuel Cells, Solar, Transportation, Water Power and Wind Energy."
+      contact_email:
+        type: string
+        example: Eric.Payne@nrel.gov
+      contact_name:
+        type: string
+        example: Eric Payne
+      location:
+        type: string
+        example: Golden, Colorado
+      operator:
+        type: string
+        example: Alliance for Sustainable Energy, LLC
+      experts:
+        type: array
+        items:
+          properties:
+            uuid:
+              type: string
+              example: d78ce187-f5ed-4ddc-9e4e-063f6eaf11be
+            first_name:
+              type: string
+              example: Judith
+            last_name:
+              type: string
+              example: Vidal
+            avatar:
+              type: string
+              example: https://www.labpartnering.org/files/experts/d78ce187-f5ed-4ddc-9e4e-063f6eaf11be
+            links:
+              type: object
+              properties:
+                self:
+                  type: string
+                  example: https://developer.nrel.gov/api/lps/v1/experts/d78ce187-f5ed-4ddc-9e4e-063f6eaf11be
+  laboratories:
+    type: array
+    items:
+      $ref: "#/definitions/lab"
+  labs_response:
+    type: object
+    properties:
+      metadata:
+        type: object
+        $ref: "#/definitions/metadata"
+      inputs:
+        type: object
+        $ref: "#/definitions/inputs"
+      errors:
+        type: object
+        $ref: "#/definitions/errors"
+      resultset:
+        type: object
+        properties:
+          total:
+            type: integer
+            description: Total number of matching results (this number will be >= count)
+            example: 8
+          count:
+            type: integer
+            description: Number of results returned (this number will be <= total)
+            example: 8
+          number:
+            type: integer
+            description: Page number of this result set, zero-indexed
+            example: 0
+          pages:
+            type: integer
+            description: Total number of pages for all matching results
+            example: 1
+          result:
+            type: array
+            items:
+              type: object
+              $ref: "#/definitions/lab"
