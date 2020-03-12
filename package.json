@@ -1,5 +1,7 @@
 {
+  "private": true,
   "dependencies": {
+    "gh-pages": "^2.2.0",
     "swagger-tools": "^0.10.1"
   }
 }
