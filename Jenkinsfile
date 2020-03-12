@@ -55,11 +55,11 @@ pipeline {
       steps {
         script {
           withCredentials([[$class: "UsernamePasswordMultiBinding", credentialsId: "aws-jenkins", usernameVariable: "AWS_ACCESS_KEY_ID", passwordVariable: "AWS_SECRET_ACCESS_KEY"]]) {
-            // Push production builds to "gh-pages" branch to maintain
+            // Push production builds to "build-history" branch to maintain
             // history of deployed versions.
             if(env.BRANCH_NAME == "master") {
               sshagent(credentials: ["github-com-developer-nrel-gov"]) {
-                sh "yarn run gh-pages --dist ./build/ --user 'Jenkins <jenkins-tada-ci@nrel.gov>' --repo 'git@github.com:NREL/developer.nrel.gov.git'"
+                sh "yarn run gh-pages --dist ./build/ --branch build-history --user 'Jenkins <jenkins-tada-ci@nrel.gov>' --repo 'git@github.com:NREL/developer.nrel.gov.git'"
               }
             }
 
