@@ -58,7 +58,7 @@ pipeline {
             // Push production builds to "build-history" branch to maintain
             // history of deployed versions.
             if(env.BRANCH_NAME == "master") {
-              run "yarn run gh-pages --dist ./build/ --branch build-history --user 'Jenkins <jenkins-tada-ci@nrel.gov>'"
+              sh "yarn run gh-pages --dist ./build/ --branch build-history --user 'Jenkins <jenkins-tada-ci@nrel.gov>'"
             }
 
             def dest
