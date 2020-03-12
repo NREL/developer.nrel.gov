@@ -59,7 +59,7 @@ pipeline {
             // history of deployed versions.
             if(env.BRANCH_NAME == "master") {
               sshagent(credentials: ["github-com-developer-nrel-gov"]) {
-                sh "yarn run gh-pages --dist ./build/ --user 'Jenkins <jenkins-tada-ci@nrel.gov>'"
+                sh "yarn run gh-pages --dist ./build/ --user 'Jenkins <jenkins-tada-ci@nrel.gov>' --repo 'git@github.com:NREL/developer.nrel.gov.git'"
               }
             }
 
