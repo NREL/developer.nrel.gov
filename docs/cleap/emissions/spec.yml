@@ -1,0 +1,227 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: Emissions APIs
+  description: |-
+    A collection of APIs providing data related to GHG emissions.
+
+    These endpoints return derived data for places, which are queried via state_abbr and type.
+
+    - Data is rounded to give approximations due to derived status.
+    - There is no index dump of all data.  A `state_abbr` and `type` must be provided.
+    - All APIs require the `api_key` parameter. Get an API key from https://developer.nrel.gov/signup/.
+schemes:
+  - https
+basePath: /api/cleap/v1
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: query
+security:
+  - api_key: []
+paths:
+  /state_co2_emissions:
+    get:
+      summary: Get CO2 emissions by state and type.
+      parameters:
+        - name: state_abbr
+          in: query
+          type: string
+          required: true
+          description: Required, along with `type`.
+        - name: type
+          in: query
+          type: string
+          required: true
+          description: Required, along with `state_abbr`.  Choices are `'commercial', 'electric', 'residential', 'industrial', 'transportation', 'total'`.
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/state_co2_emissions"
+definitions:
+  error:
+    type: object
+    properties:
+      code:
+        type: string
+        description: A static code value representing the type of error.
+        example: NOT_FOUND
+      developer_message:
+        type: string
+        description: A human readable description of the error message.
+        example: No data was found for the gisjoin provided
+  state_co2_emissions:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/error"
+        example: []
+      inputs:
+        type: object
+        properties:
+          type:
+            type: string
+            example: residential
+          state_abbr:
+            type: string
+            example: ny
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      result:
+        type: array
+        items:
+          properties:
+            series_id:
+              type: string
+              example: EMISS.CO2-TOTV-IC-TO-CO.A
+            name:
+              type: string
+              example: "Industrial carbon dioxide emissions, all fuels, Colorado"
+            units:
+              type: string
+              example: million metric tons CO2
+            f:
+              type: string
+              example: A
+            unitsshort:
+              type: string
+              example: mmt CO2
+            description:
+              type: string
+              example: See http://www.eia.gov/environment/emissions/state/analysis/ for technical notes and documentation.
+            copyright:
+              type: string
+              example: None
+            source:
+              type: string
+              example: "EIA, U.S. Energy Information Administration"
+            iso3166:
+              type: string
+              example: USA-CO
+            geography:
+              type: string
+              example: USA-CO
+            start:
+              type: number
+              example: 1980
+            end:
+              type: number
+              example: 2014
+            updated:
+              type: string
+              example: 2017-01-26T14:27:58-0500
+            data:
+              type: object
+              properties:
+                "1980":
+                  type: number
+                  example: 10.516286
+                "1981":
+                  type: number
+                  example: 8.392009
+                "1982":
+                  type: number
+                  example: 7.190044
+                "1983":
+                  type: number
+                  example: 6.452622
+                "1984":
+                  type: number
+                  example: 6.244769
+                "1985":
+                  type: number
+                  example: 5.313541
+                "1986":
+                  type: number
+                  example: 5.570528
+                "1987":
+                  type: number
+                  example: 5.095779
+                "1988":
+                  type: number
+                  example: 5.85142
+                "1989":
+                  type: number
+                  example: 6.421156
+                "1990":
+                  type: number
+                  example: 6.509537
+                "1991":
+                  type: number
+                  example: 7.509993
+                "1992":
+                  type: number
+                  example: 7.699262
+                "1993":
+                  type: number
+                  example: 8.419759
+                "1994":
+                  type: number
+                  example: 7.84506
+                "1995":
+                  type: number
+                  example: 7.758708
+                "1996":
+                  type: number
+                  example: 7.990315
+                "1997":
+                  type: number
+                  example: 8.328755
+                "1998":
+                  type: number
+                  example: 8.872571
+                "1999":
+                  type: number
+                  example: 8.518556
+                "2000":
+                  type: number
+                  example: 9.3555
+                "2001":
+                  type: number
+                  example: 12.872679
+                "2002":
+                  type: number
+                  example: 12.176083
+                "2003":
+                  type: number
+                  example: 11.939549
+                "2004":
+                  type: number
+                  example: 12.643321
+                "2005":
+                  type: number
+                  example: 13.562539
+                "2006":
+                  type: number
+                  example: 13.616127
+                "2007":
+                  type: number
+                  example: 13.597258
+                "2008":
+                  type: number
+                  example: 13.984433
+                "2009":
+                  type: number
+                  example: 13.619995
+                "2010":
+                  type: number
+                  example: 14.634091
+                "2011":
+                  type: number
+                  example: 13.193981
+                "2012":
+                  type: number
+                  example: 13.412163
+                "2013":
+                  type: number
+                  example: 13.486865
+                "2014":
+                  type: number
+                  example: 14.237501

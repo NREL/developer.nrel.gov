@@ -1,0 +1,525 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: Transportation APIs
+  description: |-
+    A collection of APIs providing data related to on-road transportation markets including fuel use, vehicle miles traveled, and vehicle fuel breakdown.
+
+    These endpoints return derived data for places, which are queried via ZIP codes, city/state or gisjoin parameters.
+
+    - Data is rounded to give approximations due to derived status.
+    - There is no index dump of all data, a city/state or zip must be included if not querying a gisjoin.
+    - Obtain gisjoin IDs via the [`/api/cleap/v1/cities`](/docs/cleap/general/) API.
+    - All APIs require the `api_key` parameter. Get an API key from https://developer.nrel.gov/signup/.
+schemes:
+  - https
+basePath: /api/cleap/v1
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: query
+security:
+  - api_key: []
+paths:
+  /city_vmt_estimates:
+    get:
+      summary: Get the city vmt estimates data for a zip or city/state.
+      parameters:
+        - name: city
+          in: query
+          type: string
+          description: Required, along with `state_abbr`, unless `zip` is specified.
+        - name: state_abbr
+          in: query
+          type: string
+          description: Required, along with `city`, unless `zip` is specified.
+        - name: zip
+          in: query
+          type: string
+          description: Required, unless `city` and `state_abbr` are specified.
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/city_vmt_estimates"
+  /city_vmt_estimates/{gisjoin}:
+    get:
+      summary: Get the city vmt estimates data for the specific gisjoin.
+      parameters:
+        - name: gisjoin
+          in: path
+          required: true
+          type: string
+          description: Required. Query the [`/api/cleap/v1/cities`](/docs/cleap/general/) API for this value.
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/city_vmt_estimates_gisjoin"
+  /gasoline_and_diesel_use:
+    get:
+      summary: Get the gasoline and diesel use data for a zip or city/state.
+      parameters:
+        - name: city
+          in: query
+          type: string
+          description: Required, along with `state_abbr`, unless `zip` is specified.
+        - name: state_abbr
+          in: query
+          type: string
+          description: Required, along with `city`, unless `zip` is specified.
+        - name: zip
+          in: query
+          type: string
+          description: Required, unless `city` and `state_abbr` are specified.
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/gasoline_and_diesel_use"
+
+  /gasoline_and_diesel_use/{gisjoin}:
+    get:
+      summary: Get the gasoline and diesel use data for the specific gisjoin.
+      parameters:
+        - name: gisjoin
+          in: path
+          required: true
+          type: string
+          description: Required. Query the [`/api/cleap/v1/cities`](/docs/cleap/general/) API for this value.
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/gasoline_and_diesel_use_gisjoin"
+
+  /vmt_by_road_class:
+    get:
+      summary: Get the vmt by road class data for a zip or city/state.
+      parameters:
+        - name: city
+          in: query
+          type: string
+          description: Required, along with `state_abbr`, unless `zip` is specified.
+        - name: state_abbr
+          in: query
+          type: string
+          description: Required, along with `city`, unless `zip` is specified.
+        - name: zip
+          in: query
+          type: string
+          description: Required, unless `city` and `state_abbr` are specified.
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/vmt_by_road_class"
+
+  /vmt_by_road_class/{gisjoin}:
+    get:
+      summary: Get the vmt by road class data for the specific gisjoin.
+      parameters:
+        - name: gisjoin
+          in: path
+          required: true
+          type: string
+          description: Required. Query the [`/api/cleap/v1/cities`](/docs/cleap/general/) API for this value.
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/vmt_by_road_class_gisjoin"
+
+definitions:
+  error:
+    type: object
+    properties:
+      code:
+        type: string
+        description: A static code value representing the type of error.
+        example: NOT_FOUND
+      developer_message:
+        type: string
+        description: A human readable description of the error message.
+        example: No data was found for the gisjoin provided
+  city_vmt_estimates:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/error"
+        example: []
+      inputs:
+        type: object
+        properties:
+          city:
+            type: string
+            example: denver
+          state_abbr:
+            type: string
+            example: co
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      result:
+        type: object
+        properties:
+          "Denver":
+            type: object
+            properties:
+              city_vmt_estimate:
+                type: number
+                example: 5275238199
+                description: city vmt estimate
+              natl_avg_vmt_estimate:
+                type: number
+                example: 75422411
+                description: national average vmt estimate
+              natl_per_capita_vmt_estimate:
+                type: number
+                example: 7863
+                description: national per capita vmt estimate
+  city_vmt_estimates_gisjoin:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/error"
+        example: []
+      inputs:
+        type: object
+        properties:
+          gisjoin:
+            type: string
+            example: G08020000
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      result:
+        type: object
+        properties:
+          city_vmt_estimate:
+            type: number
+            example: 5275238199
+            description: city vmt estimate
+          natl_avg_vmt_estimate:
+            type: number
+            example: 75422411
+            description: national average vmt estimate
+          natl_per_capita_vmt_estimate:
+            type: number
+            example: 7863
+            description: national per capita vmt estimate
+  gasoline_and_diesel_use:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/error"
+        example: []
+      inputs:
+        type: object
+        properties:
+          city:
+            type: string
+            example: denver
+          state_abbr:
+            type: string
+            example: co
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      result:
+        type: object
+        properties:
+          "Denver":
+            type: object
+            properties:
+              city_fuel_use:
+                type: object
+                properties:
+                  diesel_gal:
+                    type: number
+                    example: 42766300
+                    description: diesel gallons
+                  gas_gal:
+                    type: number
+                    example: 242556600
+                    description: gas gallons
+                  diesel_gal_bin_min:
+                    type: number
+                    example: 100
+                    description: diesel gallons bin min
+                  diesel_gal_bin_max:
+                    type: number
+                    example: 43222900
+                    description: diesel gallons bin max
+                  gas_gal_bin_min:
+                    type: number
+                    example: 223759500
+                    description: gas gallonons bin min
+                  gas_gal_bin_max:
+                    type: number
+                    example: 261052800
+                    description: gas gallons bin max
+                  diesel_ghg_lb:
+                    type: number
+                    example: 1240632000
+                    description: diesel ghg lb
+                  gas_ghg_lb:
+                    type: number
+                    example: 5846666000
+                    description: gas ghg lb
+                  diesel_min_ghg_lb:
+                    type: number
+                    example: 2900
+                    description: diesel min ghg lb
+                  diesel_max_ghg_lb:
+                    type: number
+                    example:  1253877700
+                    description: diesel max ghg lb
+                  gas_min_ghg_lb:
+                    type: number
+                    example: 5393574400
+                    description: gas min ghg lb
+                  gas_max_ghg_lb:
+                    type: number
+                    example: 6292504700
+                    description: gas max ghg lb
+              natl_avg_diesel_gal:
+                type: number
+                example: 810518
+                description: national avg diesel gal
+              natl_avg_gas_gal:
+                type: number
+                example: 3492002
+                description: national average gas gallons
+              natl_per_capita_diesel_gal:
+                type: number
+                example: 84
+                description: national per capita diesel gallons
+              natl_per_capita_gas_gal:
+                type: number
+                example: 363
+                description: national per capita gas gallons
+  gasoline_and_diesel_use_gisjoin:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/error"
+        example: []
+      inputs:
+        type: object
+        properties:
+          gisjoin:
+            type: string
+            example: G08020000
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      result:
+        type: object
+        properties:
+          city_fuel_use:
+            type: object
+            properties:
+              diesel_gal:
+                type: number
+                example: 42766300
+                description: diesel gallons
+              gas_gal:
+                type: number
+                example: 242556600
+                description: gas gallons
+              diesel_gal_bin_min:
+                type: number
+                example: 100
+                description: diesel gallons bin min
+              diesel_gal_bin_max:
+                type: number
+                example: 43222900
+                description: diesel gallons bin max
+              gas_gal_bin_min:
+                type: number
+                example: 223759500
+                description: gas gallonons bin min
+              gas_gal_bin_max:
+                type: number
+                example: 261052800
+                description: gas gallons bin max
+              diesel_ghg_lb:
+                type: number
+                example: 1240632000
+                description: diesel ghg lb
+              gas_ghg_lb:
+                type: number
+                example: 5846666000
+                description: gas ghg lb
+              diesel_min_ghg_lb:
+                type: number
+                example: 2900
+                description: diesel min ghg lb
+              diesel_max_ghg_lb:
+                type: number
+                example:  1253877700
+                description: diesel max ghg lb
+              gas_min_ghg_lb:
+                type: number
+                example: 5393574400
+                description: gas min ghg lb
+              gas_max_ghg_lb:
+                type: number
+                example: 6292504700
+                description: gas max ghg lb
+          natl_avg_diesel_gal:
+            type: number
+            example: 810518
+            description: national avg diesel gal
+          natl_avg_gas_gal:
+            type: number
+            example: 3492002
+            description: national average gas gallons
+          natl_per_capita_diesel_gal:
+            type: number
+            example: 84
+            description: national per capita diesel gallons
+          natl_per_capita_gas_gal:
+            type: number
+            example: 363
+            description: national per capita gas gallons
+  vmt_by_road_class:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/error"
+        example: []
+      inputs:
+        type: object
+        properties:
+          city:
+            type: string
+            example: denver
+          state_abbr:
+            type: string
+            example: co
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      result:
+        type: object
+        properties:
+          "Denver":
+            type: object
+            properties:
+              vmt_road_class_estimate:
+                type: object
+                properties:
+                  gisjoin:
+                    type: string
+                    example: G08020000
+                    description: gisjoin ID
+                  vmt_interstate:
+                    type: number
+                    example: 1955130180.39869
+                    description: vmt interstate
+                  vmt_other_free_and_expressways:
+                    type: number
+                    example: 605575732.681072
+                    description: vmt other free and expressways
+                  vmt_other_principal_arterial:
+                    type: number
+                    example: 1185949525.58136
+                    description: vmt other principal arterial
+                  vmt_minor_arterial:
+                    type: number
+                    example: 700179246.143859
+                    description: vmt minor arterial
+                  vmt_major_collector:
+                    type: number
+                    example: 386894412.690908
+                    description: vmt majior collector
+                  vmt_minor_collector:
+                    type: number
+                    x-nullable: true
+                    example: 0
+                    description: vmt minor collector
+                  vmt_local:
+                    type: number
+                    example: 441509101.007461
+                    description: vmt local
+  vmt_by_road_class_gisjoin:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/error"
+        example: []
+      inputs:
+        type: object
+        properties:
+          gisjoin:
+            type: string
+            example: G08020000
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      result:
+        type: object
+        properties:
+          vmt_road_class_estimate:
+            type: object
+            properties:
+              gisjoin:
+                type: string
+                example: G08020000
+                description: gisjoin ID
+              vmt_interstate:
+                type: number
+                example: 1955130180.39869
+                description: vmt interstate
+              vmt_other_free_and_expressways:
+                type: number
+                example: 605575732.681072
+                description: vmt other free and expressways
+              vmt_other_principal_arterial:
+                type: number
+                example: 1185949525.58136
+                description: vmt other principal arterial
+              vmt_minor_arterial:
+                type: number
+                example: 700179246.143859
+                description: vmt minor arterial
+              vmt_major_collector:
+                type: number
+                example: 386894412.690908
+                description: vmt majior collector
+              vmt_minor_collector:
+                type: number
+                x-nullable: true
+                example: 0
+                description: vmt minor collector
+              vmt_local:
+                type: number
+                example: 441509101.007461
+                description: vmt local

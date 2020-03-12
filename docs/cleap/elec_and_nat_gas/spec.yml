@@ -1,0 +1,823 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: Electricity and Natural Gas APIs
+  description: |-
+    A collection of APIs providing data related to electricity and natural gas markets, including energy usage and expenditures, and GHG emissions.
+
+    These APIs return derived data for places, which are queried via ZIP codes, city/state or gisjoin parameters.
+
+    - Data is rounded to give approximations due to derived status.
+    - There is no index dump of all data, a city/state or zip must be included if not querying a gisjoin.
+    - Obtain gisjoin IDs via the [`/api/cleap/v1/cities`](/docs/cleap/general/) API.
+    - All APIs require the `api_key` parameter. Get an API key from https://developer.nrel.gov/signup/.
+schemes:
+  - https
+basePath: /api/cleap/v1
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: query
+security:
+  - api_key: []
+paths:
+  /energy_expenditures_and_ghg_by_sector:
+    get:
+      summary: Get the energy expenditures and ghg by sector data for a zip or city/state.
+      parameters:
+        - name: city
+          in: query
+          type: string
+          description: Required, along with `state_abbr`, unless `zip` is specified.
+        - name: state_abbr
+          in: query
+          type: string
+          description: Required, along with `city`, unless `zip` is specified.
+        - name: zip
+          in: query
+          type: string
+          description: Required, unless `city` and `state_abbr` are specified.
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/energy_expenditures_and_ghg_by_sector"
+
+  /energy_expenditures_and_ghg_by_sector/{gisjoin}:
+    get:
+      summary: Get the energy expenditures and ghg by sector data for the specific gisjoin.
+      parameters:
+        - name: gisjoin
+          in: path
+          required: true
+          type: string
+          description: Required. Query the [`/api/cleap/v1/cities`](/docs/cleap/general/) API for this value.
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/energy_expenditures_and_ghg_by_sector_gisjoin"
+
+  /electricity_and_gas_stats:
+    get:
+      summary: Get the electricity and gas statistics by sector.
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/electricity_and_gas_stats"
+definitions:
+  error:
+    type: object
+    properties:
+      code:
+        type: string
+        description: A static code value representing the type of error.
+        example: NOT_FOUND
+      developer_message:
+        type: string
+        description: A human readable description of the error message.
+        example: No data was found for the gisjoin provided
+  energy_expenditures_and_ghg_by_sector:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/error"
+        example: []
+      inputs:
+        type: object
+        properties:
+          city:
+            type: string
+            example: new york
+          state_abbr:
+            type: string
+            example: ny
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      result:
+        type: object
+        properties:
+          "New York":
+            type: object
+            properties:
+              residential:
+                type: object
+                properties:
+                  housing_units:
+                    type: number
+                    example: 3356900
+                    description: residential housing units
+                  total_pop:
+                    type: number
+                    example: 8115600
+                    description: total residential population
+                  elec_1kdollars:
+                    type: number
+                    example: 4209600
+                    description: residential electric 1k dollars
+                  elec_mwh:
+                    type: number
+                    example: 18200300
+                    description: residential electric megawatt hours
+                  gas_1kdollars:
+                    type: number
+                    example: 1969200
+                    description: residential gas 1k dollars
+                  gas_mcf:
+                    type: number
+                    example: 180069600
+                    description: residential gas mcf
+                  elec_1kdollars_bin_min:
+                    type: number
+                    x-nullable: true
+                    example: 1868100
+                    description: residential elec 1k dollars bin min
+                  elec_1kdollars_bin_max:
+                    type: number
+                    x-nullable: true
+                    example: 4209700
+                    description: residential elec 1k dollars bin max
+                  elec_mwh_bin_min:
+                    type: number
+                    x-nullable: true
+                    example: 13130500
+                    description: residential elec mwh bin min
+                  elec_mwh_bin_max:
+                    type: number
+                    x-nullable: true
+                    example: 17671200
+                    description: residential elec mwh bin max
+                  gas_1kdollars_bin_min:
+                    type: number
+                    x-nullable: true
+                    example: 838700
+                    description: residential gas 1k dollars bin min
+                  gas_1kdollars_bin_max:
+                    type: number
+                    x-nullable: true
+                    example: 1969200
+                    description: residential gas 1k dollars bin max
+                  gas_mcf_bin_min:
+                    type: number
+                    x-nullable: true
+                    example: 90085400
+                    description: residential gas mcf bin min
+                  gas_mcf_bin_max:
+                    type: number
+                    x-nullable: true
+                    example: 180069700
+                    description: residential gas mcf bin min
+                  elec_lb_ghg:
+                    type: number
+                    example: 12338215200
+                    description: residential elec lb ghg
+                  elec_min_lb_ghg:
+                    type: number
+                    example: 9167858100
+                    description: residential elec min lb ghg
+                  elec_max_lb_ghg:
+                    type: number
+                    example: 12338224300
+                    description: residential elec max lb ghg
+                  gas_lb_ghg:
+                    type: number
+                    example: 21616050300
+                    description: residential gas lb ghg
+                  gas_min_lb_ghg:
+                    type: number
+                    example: 10814093900
+                    description: residential gas min lb ghg
+                  gas_max_lb_ghg:
+                    type: number
+                    example: 21616051500
+              commercial:
+                type: object
+                properties:
+                  num_establishments:
+                    type: number
+                    example: 225400
+                  elec_1kdollars:
+                    type: number
+                    example: 3882200
+                    description: commercial electric 1k dollars
+                  elec_mwh:
+                    type: number
+                    example: 35045800
+                    description: commercial electric megawatt hours
+                  gas_1kdollars:
+                    type: number
+                    example: 646200
+                    description: commercial gas 1k dollars
+                  gas_mcf:
+                    type: number
+                    example: 138667300
+                    description: commercial gas mcf
+                  elec_1kdollars_bin_min:
+                    type: number
+                    x-nullable: true
+                    example: 2247300
+                    description: commercial elec 1k dollars bin min
+                  elec_1kdollars_bin_max:
+                    type: number
+                    x-nullable: true
+                    example: 3882300
+                    description: commercial elec 1k dollars bin max
+                  elec_mwh_bin_min:
+                    type: number
+                    x-nullable: true
+                    example: 17527800
+                    description: commercial elec mwh bin min
+                  elec_mwh_bin_max:
+                    type: number
+                    x-nullable: true
+                    example: 35045800
+                    description: commercial elec mwh bin max
+                  gas_1kdollars_bin_min:
+                    type: number
+                    x-nullable: true
+                    example: 251100
+                    description: commercial gas 1k dollars bin min
+                  gas_1kdollars_bin_max:
+                    type: number
+                    x-nullable: true
+                    example: 684200
+                    description: commercial gas 1k dollars bin max
+                  gas_mcf_bin_min:
+                    type: number
+                    x-nullable: true
+                    example: 61413400
+                    description: commercial gas mcf bin min
+                  gas_mcf_bin_max:
+                    type: number
+                    x-nullable: true
+                    example: 138667400
+                    description: commercial gas mcf bin min
+                  elec_lb_ghg:
+                    type: number
+                    example: 24469356933
+                    description: commercial elec lb ghg
+                  elec_min_lb_ghg:
+                    type: number
+                    example: 12238100838
+                    description: commercial elec min lb ghg
+                  elec_max_lb_ghg:
+                    type: number
+                    example: 24469359209
+                    description: commercial elec max lb ghg
+                  gas_lb_ghg:
+                    type: number
+                    example: 16646000800
+                    description: commercial gas lb ghg
+                  gas_min_lb_ghg:
+                    type: number
+                    example: 7372229800
+                    description: commercial gas min lb ghg
+                  gas_max_lb_ghg:
+                    type: number
+                    example: 16646007900
+              industrial:
+                type: object
+                properties:
+                  num_establishments:
+                    type: number
+                    example: 5600
+                  elec_1kdollars:
+                    type: number
+                    example: 170900
+                    description: industrial electric 1k dollars
+                  elec_mwh:
+                    type: number
+                    example: 1832700
+                    description: industrial electric megawatt hours
+                  gas_1kdollars:
+                    type: number
+                    example: 41300
+                    description: industrial gas 1k dollars
+                  gas_mcf:
+                    type: number
+                    example: 7491700
+                    description: industrial gas mcf
+                  elec_1kdollars_bin_min:
+                    type: number
+                    x-nullable: true
+                    example: 166400
+                    description: industrial elec 1k dollars bin min
+                  elec_1kdollars_bin_max:
+                    type: number
+                    x-nullable: true
+                    example: 332800
+                    description: industrial elec 1k dollars bin max
+                  elec_mwh_bin_min:
+                    type: number
+                    x-nullable: true
+                    example: 1175600
+                    description: industrial elec mwh bin min
+                  elec_mwh_bin_max:
+                    type: number
+                    x-nullable: true
+                    example: 2351300
+                    description: industrial elec mwh bin max
+                  gas_1kdollars_bin_min:
+                    type: number
+                    x-nullable: true
+                    example: 0
+                    description: industrial gas 1k dollars bin min
+                  gas_1kdollars_bin_max:
+                    type: number
+                    x-nullable: true
+                    example: 90300
+                    description: industrial gas 1k dollars bin max
+                  gas_mcf_bin_min:
+                    type: number
+                    x-nullable: true
+                    example: 0
+                    description: industrial gas mcf bin min
+                  gas_mcf_bin_max:
+                    type: number
+                    x-nullable: true
+                    example: 12004200
+                    description: industrial gas mcf bin min
+                  elec_lb_ghg:
+                    type: number
+                    example: 1279653000
+                    description: industrial elec lb ghg
+                  elec_min_lb_ghg:
+                    type: number
+                    example: 820816700
+                    description: industrial elec min lb ghg
+                  elec_max_lb_ghg:
+                    type: number
+                    example: 1641703300
+                    description: industrial elec max lb ghg
+                  gas_lb_ghg:
+                    type: number
+                    example: 899329000
+                    description: industrial gas lb ghg
+                  gas_min_lb_ghg:
+                    type: number
+                    example: 7700
+                    description: industrial gas min lb ghg
+                  gas_max_lb_ghg:
+                    type: number
+                    example: 1441016500
+  energy_expenditures_and_ghg_by_sector_gisjoin:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/error"
+        example: []
+      inputs:
+        type: object
+        properties:
+          gisjoin:
+            type: string
+            example: G36051000
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      result:
+        type: object
+        properties:
+          residential:
+            type: object
+            properties:
+              housing_units:
+                type: number
+                example: 3356900
+                description: residential housing units
+              total_pop:
+                type: number
+                example: 8115600
+                description: total residential population
+              elec_1kdollars:
+                type: number
+                example: 4209600
+                description: residential electric 1k dollars
+              elec_mwh:
+                type: number
+                example: 18200300
+                description: residential electric megawatt hours
+              gas_1kdollars:
+                type: number
+                example: 1969200
+                description: residential gas 1k dollars
+              gas_mcf:
+                type: number
+                example: 180069600
+                description: residential gas mcf
+              elec_1kdollars_bin_min:
+                type: number
+                x-nullable: true
+                example: 1868100
+                description: residential elec 1k dollars bin min
+              elec_1kdollars_bin_max:
+                type: number
+                x-nullable: true
+                example: 4209700
+                description: residential elec 1k dollars bin max
+              elec_mwh_bin_min:
+                type: number
+                x-nullable: true
+                example: 13130500
+                description: residential elec mwh bin min
+              elec_mwh_bin_max:
+                type: number
+                x-nullable: true
+                example: 17671200
+                description: residential elec mwh bin max
+              gas_1kdollars_bin_min:
+                type: number
+                x-nullable: true
+                example: 838700
+                description: residential gas 1k dollars bin min
+              gas_1kdollars_bin_max:
+                type: number
+                x-nullable: true
+                example: 1969200
+                description: residential gas 1k dollars bin max
+              gas_mcf_bin_min:
+                type: number
+                x-nullable: true
+                example: 90085400
+                description: residential gas mcf bin min
+              gas_mcf_bin_max:
+                type: number
+                x-nullable: true
+                example: 180069700
+                description: residential gas mcf bin min
+              elec_lb_ghg:
+                type: number
+                example: 12338215200
+                description: residential elec lb ghg
+              elec_min_lb_ghg:
+                type: number
+                example: 9167858100
+                description: residential elec min lb ghg
+              elec_max_lb_ghg:
+                type: number
+                example: 12338224300
+                description: residential elec max lb ghg
+              gas_lb_ghg:
+                type: number
+                example: 21616050300
+                description: residential gas lb ghg
+              gas_min_lb_ghg:
+                type: number
+                example: 10814093900
+                description: residential gas min lb ghg
+              gas_max_lb_ghg:
+                type: number
+                example: 21616051500
+          commercial:
+            type: object
+            properties:
+              num_establishments:
+                type: number
+                example: 225400
+              elec_1kdollars:
+                type: number
+                example: 3882200
+                description: commercial electric 1k dollars
+              elec_mwh:
+                type: number
+                example: 35045800
+                description: commercial electric megawatt hours
+              gas_1kdollars:
+                type: number
+                example: 646200
+                description: commercial gas 1k dollars
+              gas_mcf:
+                type: number
+                example: 138667300
+                description: commercial gas mcf
+              elec_1kdollars_bin_min:
+                type: number
+                x-nullable: true
+                example: 2247300
+                description: commercial elec 1k dollars bin min
+              elec_1kdollars_bin_max:
+                type: number
+                x-nullable: true
+                example: 3882300
+                description: commercial elec 1k dollars bin max
+              elec_mwh_bin_min:
+                type: number
+                x-nullable: true
+                example: 17527800
+                description: commercial elec mwh bin min
+              elec_mwh_bin_max:
+                type: number
+                x-nullable: true
+                example: 35045800
+                description: commercial elec mwh bin max
+              gas_1kdollars_bin_min:
+                type: number
+                x-nullable: true
+                example: 251100
+                description: commercial gas 1k dollars bin min
+              gas_1kdollars_bin_max:
+                type: number
+                x-nullable: true
+                example: 684200
+                description: commercial gas 1k dollars bin max
+              gas_mcf_bin_min:
+                type: number
+                x-nullable: true
+                example: 61413400
+                description: commercial gas mcf bin min
+              gas_mcf_bin_max:
+                type: number
+                x-nullable: true
+                example: 138667400
+                description: commercial gas mcf bin min
+              elec_lb_ghg:
+                type: number
+                example: 24469356933
+                description: commercial elec lb ghg
+              elec_min_lb_ghg:
+                type: number
+                example: 12238100838
+                description: commercial elec min lb ghg
+              elec_max_lb_ghg:
+                type: number
+                example: 24469359209
+                description: commercial elec max lb ghg
+              gas_lb_ghg:
+                type: number
+                example: 16646000800
+                description: commercial gas lb ghg
+              gas_min_lb_ghg:
+                type: number
+                example: 7372229800
+                description: commercial gas min lb ghg
+              gas_max_lb_ghg:
+                type: number
+                example: 16646007900
+          industrial:
+            type: object
+            properties:
+              num_establishments:
+                type: number
+                example: 5600
+              elec_1kdollars:
+                type: number
+                example: 170900
+                description: industrial electric 1k dollars
+              elec_mwh:
+                type: number
+                example: 1832700
+                description: industrial electric megawatt hours
+              gas_1kdollars:
+                type: number
+                example: 41300
+                description: industrial gas 1k dollars
+              gas_mcf:
+                type: number
+                example: 7491700
+                description: industrial gas mcf
+              elec_1kdollars_bin_min:
+                type: number
+                x-nullable: true
+                example: 166400
+                description: industrial elec 1k dollars bin min
+              elec_1kdollars_bin_max:
+                type: number
+                x-nullable: true
+                example: 332800
+                description: industrial elec 1k dollars bin max
+              elec_mwh_bin_min:
+                type: number
+                x-nullable: true
+                example: 1175600
+                description: industrial elec mwh bin min
+              elec_mwh_bin_max:
+                type: number
+                x-nullable: true
+                example: 2351300
+                description: industrial elec mwh bin max
+              gas_1kdollars_bin_min:
+                type: number
+                x-nullable: true
+                example: 0
+                description: industrial gas 1k dollars bin min
+              gas_1kdollars_bin_max:
+                type: number
+                x-nullable: true
+                example: 90300
+                description: industrial gas 1k dollars bin max
+              gas_mcf_bin_min:
+                type: number
+                x-nullable: true
+                example: 0
+                description: industrial gas mcf bin min
+              gas_mcf_bin_max:
+                type: number
+                x-nullable: true
+                example: 12004200
+                description: industrial gas mcf bin min
+              elec_lb_ghg:
+                type: number
+                example: 1279653000
+                description: industrial elec lb ghg
+              elec_min_lb_ghg:
+                type: number
+                example: 820816700
+                description: industrial elec min lb ghg
+              elec_max_lb_ghg:
+                type: number
+                example: 1641703300
+                description: industrial elec max lb ghg
+              gas_lb_ghg:
+                type: number
+                example: 899329000
+                description: industrial gas lb ghg
+              gas_min_lb_ghg:
+                type: number
+                example: 7700
+                description: industrial gas min lb ghg
+              gas_max_lb_ghg:
+                type: number
+                example: 1441016500
+  electricity_and_gas_stats:
+    properties:
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/error"
+        example: []
+      inputs:
+        type: object
+        example: {}
+      result:
+        type: object
+        properties:
+          commercial:
+            type: object
+            properties:
+              elec_mwh_per_city:
+                type: number
+                example: 45387.256
+                description: elec mwh per city
+              elec_1kdollars_per_city:
+                type: number
+                example: 4107.144
+                description: elec 1k dollars per city
+              elec_mwh_per_capita:
+                type: number
+                example: 4.628
+                description: elec mwh per capita
+              elec_1kdollars_per_capita:
+                type: number
+                example: 0.419
+                description: elec 1k dollars per capita
+              elec_mwh_per_establishment:
+                type: number
+                example: 176.632
+                description: elec mwh per establishment
+              elec_1kdollars_per_establishment:
+                type: number
+                example: 15.984
+                description: elec 1k dollars per establishment
+              gas_mcf_per_city:
+                type: number
+                example: 151639.007
+                description: gas mcf per city
+              gas_1kdollars_per_city:
+                type: number
+                example: 833.822
+                description: gas 1k dollars per city
+              gas_mcf_per_capita:
+                type: number
+                example: 12.126
+                description: gas mcf per capita
+              gas_1kdollars_per_capita:
+                type: number
+                example: 0.067
+                description: gas 1k dollars per capita
+              gas_mcf_per_establishment:
+                type: number
+                example: 462.829
+                description: gas mcf per establishment
+              gas_1kdollars_per_establishment:
+                type: number
+                example: 2.545
+                description: gas 1k dollars per establishment
+          residential:
+            type: object
+            properties:
+              elec_mwh_per_city:
+                type: number
+                example: 45387.256
+                description: elec mwh per city
+              elec_1kdollars_per_city:
+                type: number
+                example: 4107.144
+                description: elec 1k dollars per city
+              elec_mwh_per_capita:
+                type: number
+                example: 4.628
+                description: elec mwh per capita
+              elec_1kdollars_per_capita:
+                type: number
+                example: 0.419
+                description: elec 1k dollars per capita
+              elec_mwh_per_housing_unit:
+                type: number
+                example: 176.632
+                description: elec mwh per housing unit
+              elec_1kdollars_per_housing_unit:
+                type: number
+                example: 15.984
+                description: elec 1k dollars per housing unit
+              gas_mcf_per_city:
+                type: number
+                example: 151639.007
+                description: gas mcf per city
+              gas_1kdollars_per_city:
+                type: number
+                example: 833.822
+                description: gas 1k dollars per city
+              gas_mcf_per_capita:
+                type: number
+                example: 12.126
+                description: gas mcf per capita
+              gas_1kdollars_per_capita:
+                type: number
+                example: 0.067
+                description: gas 1k dollars per capita
+              gas_mcf_per_housing_unit:
+                type: number
+                example: 462.829
+                description: gas mcf per housing unit
+              gas_1kdollars_per_housing_unit:
+                type: number
+                example: 2.545
+                description: gas 1k dollars per housing unit
+          industrial:
+            type: object
+            properties:
+              elec_mwh_per_city:
+                type: number
+                example: 45387.256
+                description: elec mwh per city
+              elec_1kdollars_per_city:
+                type: number
+                example: 4107.144
+                description: elec 1k dollars per city
+              elec_mwh_per_capita:
+                type: number
+                example: 4.628
+                description: elec mwh per capita
+              elec_1kdollars_per_capita:
+                type: number
+                example: 0.419
+                description: elec 1k dollars per capita
+              elec_mwh_per_establishment:
+                type: number
+                example: 176.632
+                description: elec mwh per establishment
+              elec_1kdollars_per_establishment:
+                type: number
+                example: 15.984
+                description: elec 1k dollars per establishment
+              gas_mcf_per_city:
+                type: number
+                example: 151639.007
+                description: gas mcf per city
+              gas_1kdollars_per_city:
+                type: number
+                example: 833.822
+                description: gas 1k dollars per city
+              gas_mcf_per_capita:
+                type: number
+                example: 12.126
+                description: gas mcf per capita
+              gas_1kdollars_per_capita:
+                type: number
+                example: 0.067
+                description: gas 1k dollars per capita
+              gas_mcf_per_establishment:
+                type: number
+                example: 462.829
+                description: gas mcf per establishment
+              gas_1kdollars_per_establishment:
+                type: number
+                example: 2.545
+                description: gas 1k dollars per establishment

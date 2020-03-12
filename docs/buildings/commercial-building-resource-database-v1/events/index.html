@@ -18,12 +18,12 @@
       }
     </script>
 
-    <link href="../../../../assets/stylesheets/all-246bf420.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/stylesheets/all-02a9dc3b.css" rel="stylesheet" />
 
     <!--[if lt IE 9]>
-      <script src="../../../../assets/javascripts/ie_lt_9-abc24081.js" type="text/javascript"></script>
+      <script src="/assets/javascripts/ie_lt_9-9f2d2b9c.js"></script>
     <![endif]-->
-    <script src="../../../../assets/javascripts/all-494330ff.js" type="text/javascript"></script>
+    <script src="/assets/javascripts/all-8a1a7f07.js"></script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -42,25 +42,30 @@
         <area shape="rect" coords="0,0,840,58" href="/" alt="Developer Network" />
       <area shape="rect" coords="840,0,1000,58" href="http://www.nrel.gov/" alt="NREL" />
     </map>
-    <img alt="NREL Developer Network" usemap="#header_map" width="1000" height="58" src="../../../../assets/images/nrel/header-1bfbcb1a.png" />
+    <img src="/assets/images/nrel/header-1bfbcb1a.png" alt="NREL Developer Network" usemap="#header_map" width="1000" height="58" class="img-fluid" />
   </header>
-  <nav class="navbar navbar-default">
-    <ul class="nav navbar-nav">
-      <li class="nav-home "><a href="/">Home</a></li>
-      <li class="nav-documentation active"><a href="/docs">Documentation</a></li>
-      <li class="nav-community "><a href="/community">Community</a></li>
-    </ul>
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_nav" aria-controls="navbar_nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar_nav">
+      <ul class="navbar-nav">
+        <li class="nav-item nav-home "><a href="/" class="nav-link">Home</a></li>
+        <li class="nav-item nav-documentation active"><a href="/docs" class="nav-link">Documentation</a></li>
+        <li class="nav-item nav-community "><a href="/community" class="nav-link">Community</a></li>
+      </ul>
+    </div>
   </nav>
 
-      <ol class="breadcrumb container">
-            <li><a href="/docs/">Documentation</a></li>
-            <li><a href="/docs/buildings/">Buildings</a></li>
-            <li><a href="/docs/buildings/commercial-building-resource-database-v1/">Commercial Building Resource Database</a></li>
-            <li class="active">Commercial Building Resource Events</li>
+      <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/docs/">Documentation</a></li>
+            <li class="breadcrumb-item"><a href="/docs/buildings/">Buildings</a></li>
+            <li class="breadcrumb-item"><a href="/docs/buildings/commercial-building-resource-database-v1/">Commercial Building Resource Database</a></li>
+            <li class="breadcrumb-item active">Commercial Building Resource Events</li>
     </ol>
 
 
-    <h1 id="commercial-building-resource-events-span-classurlget-apicommercial-building-resourcesv1eventsspan">Commercial Building Resource Events <span class="url">(GET /api/commercial-building-resources/v1/events)</span></h1>
+    <h1 id="commercial-building-resource-events-get-apicommercial-building-resourcesv1events">Commercial Building Resource Events <span class="url">(GET /api/commercial-building-resources/v1/events)</span></h1>
 <p>Upcoming and/or past events added to the Commercial Building Resource Database.</p>
 
 <ul id="toc"></ul>
@@ -623,7 +628,7 @@
 
 <pre>GET <a href="/api/commercial-building-resources/v1/events.json?portal=6&amp;api_key=DEMO_KEY">/api/commercial-building-resources/v1/events.json?portal=6&amp;api_key=DEMO_KEY</a></pre>
 
-<pre><code class="highlight json"><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"18"</span><span class="p">:{</span><span class="w">
     </span><span class="s2">"vid"</span><span class="p">:</span><span class="s2">"51"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"title"</span><span class="p">:</span><span class="s2">"Wireless Metering Challenge Webinar"</span><span class="p">,</span><span class="w">
@@ -688,10 +693,10 @@
     </span><span class="s2">"body"</span><span class="p">:{</span><span class="w">
       </span><span class="s2">"und"</span><span class="p">:[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"&lt;strong&gt;Time:&lt;/strong&gt; Tuesday, April 30, 2013, 2:00-4:00 p.m. ET/11:00 a.m.-1:00 p.m. PT\r\n\r\n&lt;strong&gt;Presenter: &lt;/strong&gt;The Department of Energy\u2019s Building Technologies Office\r\n\r\n&lt;strong&gt;Overview: &lt;/strong&gt;The U.S. Department of Energy\u2019s Building Technologies Office announced plans to issue a new &lt;A HREF=\"http://www1.eere.energy.gov/buildings/commercial/bba_wireless_metering.html\"&gt;Wireless Metering Challenge&lt;/A&gt; to spur the development of low cost electric metering devices that can serve growing interest in panel level sub metering being seen throughout the commercial sector. \r\n\r\nKey features of the challenge specification include a low cost target, essential requirements for electrical energy measurement, and wireless data transmission to an onsite collection point. Draft specifications for the wireless metering device are now &lt;A HREF=\"http://apps1.eere.energy.gov/buildings/publications/pdfs/alliances/wireless_energy_meter_specification_draft.pdf\"&gt;available for review&lt;/A&gt;. \r\n\r\nBuilding owners, managers, manufacturers and other interested parties are invited to &lt;A HREF=\"http://apps1.eere.energy.gov/buildings/publications/pdfs/alliances/wireless_energy_meter_specification_draft.pdf\"&gt;review and comment&lt;/A&gt; on the draft specification by April 23, 2013. All comments and feedback should be submitted to wireless.meter@ee.doe.gov. The specification will be revised based on stakeholder feedback. \r\n\r\nThis webinar will present the revised specification and address any further questions.\r\n\r\n&lt;strong&gt;Target Audience:&lt;/strong&gt; The primary audience for this webinar is the commercial sector, manufacturers and federal agencies. \r\n\r\n"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"&lt;strong&gt;Time:&lt;/strong&gt; Tuesday, April 30, 2013, 2:00-4:00 p.m. ET/11:00 a.m.-1:00 p.m. PT</span><span class="se">\r\n\r\n</span><span class="s2">&lt;strong&gt;Presenter: &lt;/strong&gt;The Department of Energy</span><span class="se">\u</span><span class="s2">2019s Building Technologies Office</span><span class="se">\r\n\r\n</span><span class="s2">&lt;strong&gt;Overview: &lt;/strong&gt;The U.S. Department of Energy</span><span class="se">\u</span><span class="s2">2019s Building Technologies Office announced plans to issue a new &lt;A HREF=</span><span class="se">\"</span><span class="s2">http://www1.eere.energy.gov/buildings/commercial/bba_wireless_metering.html</span><span class="se">\"</span><span class="s2">&gt;Wireless Metering Challenge&lt;/A&gt; to spur the development of low cost electric metering devices that can serve growing interest in panel level sub metering being seen throughout the commercial sector. </span><span class="se">\r\n\r\n</span><span class="s2">Key features of the challenge specification include a low cost target, essential requirements for electrical energy measurement, and wireless data transmission to an onsite collection point. Draft specifications for the wireless metering device are now &lt;A HREF=</span><span class="se">\"</span><span class="s2">http://apps1.eere.energy.gov/buildings/publications/pdfs/alliances/wireless_energy_meter_specification_draft.pdf</span><span class="se">\"</span><span class="s2">&gt;available for review&lt;/A&gt;. </span><span class="se">\r\n\r\n</span><span class="s2">Building owners, managers, manufacturers and other interested parties are invited to &lt;A HREF=</span><span class="se">\"</span><span class="s2">http://apps1.eere.energy.gov/buildings/publications/pdfs/alliances/wireless_energy_meter_specification_draft.pdf</span><span class="se">\"</span><span class="s2">&gt;review and comment&lt;/A&gt; on the draft specification by April 23, 2013. All comments and feedback should be submitted to wireless.meter@ee.doe.gov. The specification will be revised based on stakeholder feedback. </span><span class="se">\r\n\r\n</span><span class="s2">This webinar will present the revised specification and address any further questions.</span><span class="se">\r\n\r\n</span><span class="s2">&lt;strong&gt;Target Audience:&lt;/strong&gt; The primary audience for this webinar is the commercial sector, manufacturers and federal agencies. </span><span class="se">\r\n\r\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"summary"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
           </span><span class="s2">"format"</span><span class="p">:</span><span class="s2">"filtered_html"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"safe_value"</span><span class="p">:</span><span class="s2">"&lt;p&gt;&lt;strong&gt;Time:&lt;/strong&gt; Tuesday, April 30, 2013, 2:00-4:00 p.m. ET/11:00 a.m.-1:00 p.m. PT&lt;/p&gt;\n&lt;p&gt;&lt;strong&gt;Presenter: &lt;/strong&gt;The Department of Energy\u2019s Building Technologies Office&lt;/p&gt;\n&lt;p&gt;&lt;strong&gt;Overview: &lt;/strong&gt;The U.S. Department of Energy\u2019s Building Technologies Office announced plans to issue a new &lt;a href=\"http://www1.eere.energy.gov/buildings/commercial/bba_wireless_metering.html\"&gt;Wireless Metering Challenge&lt;/a&gt; to spur the development of low cost electric metering devices that can serve growing interest in panel level sub metering being seen throughout the commercial sector. &lt;/p&gt;\n&lt;p&gt;Key features of the challenge specification include a low cost target, essential requirements for electrical energy measurement, and wireless data transmission to an onsite collection point. Draft specifications for the wireless metering device are now &lt;a href=\"http://apps1.eere.energy.gov/buildings/publications/pdfs/alliances/wireless_energy_meter_specification_draft.pdf\"&gt;available for review&lt;/a&gt;. &lt;/p&gt;\n&lt;p&gt;Building owners, managers, manufacturers and other interested parties are invited to &lt;a href=\"http://apps1.eere.energy.gov/buildings/publications/pdfs/alliances/wireless_energy_meter_specification_draft.pdf\"&gt;review and comment&lt;/a&gt; on the draft specification by April 23, 2013. All comments and feedback should be submitted to &lt;a href=\"mailto:wireless.meter@ee.doe.gov\"&gt;wireless.meter@ee.doe.gov&lt;/a&gt;. The specification will be revised based on stakeholder feedback. &lt;/p&gt;\n&lt;p&gt;This webinar will present the revised specification and address any further questions.&lt;/p&gt;\n&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; The primary audience for this webinar is the commercial sector, manufacturers and federal agencies.&lt;/p&gt;\n"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"safe_value"</span><span class="p">:</span><span class="s2">"&lt;p&gt;&lt;strong&gt;Time:&lt;/strong&gt; Tuesday, April 30, 2013, 2:00-4:00 p.m. ET/11:00 a.m.-1:00 p.m. PT&lt;/p&gt;</span><span class="se">\n</span><span class="s2">&lt;p&gt;&lt;strong&gt;Presenter: &lt;/strong&gt;The Department of Energy</span><span class="se">\u</span><span class="s2">2019s Building Technologies Office&lt;/p&gt;</span><span class="se">\n</span><span class="s2">&lt;p&gt;&lt;strong&gt;Overview: &lt;/strong&gt;The U.S. Department of Energy</span><span class="se">\u</span><span class="s2">2019s Building Technologies Office announced plans to issue a new &lt;a href=</span><span class="se">\"</span><span class="s2">http://www1.eere.energy.gov/buildings/commercial/bba_wireless_metering.html</span><span class="se">\"</span><span class="s2">&gt;Wireless Metering Challenge&lt;/a&gt; to spur the development of low cost electric metering devices that can serve growing interest in panel level sub metering being seen throughout the commercial sector. &lt;/p&gt;</span><span class="se">\n</span><span class="s2">&lt;p&gt;Key features of the challenge specification include a low cost target, essential requirements for electrical energy measurement, and wireless data transmission to an onsite collection point. Draft specifications for the wireless metering device are now &lt;a href=</span><span class="se">\"</span><span class="s2">http://apps1.eere.energy.gov/buildings/publications/pdfs/alliances/wireless_energy_meter_specification_draft.pdf</span><span class="se">\"</span><span class="s2">&gt;available for review&lt;/a&gt;. &lt;/p&gt;</span><span class="se">\n</span><span class="s2">&lt;p&gt;Building owners, managers, manufacturers and other interested parties are invited to &lt;a href=</span><span class="se">\"</span><span class="s2">http://apps1.eere.energy.gov/buildings/publications/pdfs/alliances/wireless_energy_meter_specification_draft.pdf</span><span class="se">\"</span><span class="s2">&gt;review and comment&lt;/a&gt; on the draft specification by April 23, 2013. All comments and feedback should be submitted to &lt;a href=</span><span class="se">\"</span><span class="s2">mailto:wireless.meter@ee.doe.gov</span><span class="se">\"</span><span class="s2">&gt;wireless.meter@ee.doe.gov&lt;/a&gt;. The specification will be revised based on stakeholder feedback. &lt;/p&gt;</span><span class="se">\n</span><span class="s2">&lt;p&gt;This webinar will present the revised specification and address any further questions.&lt;/p&gt;</span><span class="se">\n</span><span class="s2">&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; The primary audience for this webinar is the commercial sector, manufacturers and federal agencies.&lt;/p&gt;</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"safe_summary"</span><span class="p">:</span><span class="s2">""</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
@@ -841,9 +846,8 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="err">...</span><span class="w">
-</span><span class="err">}</span><span class="w">
-</span></code></pre>
-
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <h3 id="xml-output-format">XML Output Format</h3>
 
 <pre>GET /api/commercial-building-resources/v1/events.xml?portal=6&amp;api_key=DEMO_KEY</pre>
@@ -857,11 +861,11 @@
 <p><a href="/docs/errors">Standard errors</a> may be returned.</p>
 
     <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
-  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/buildings/commercial-building-resource-database-v1/events.md.erb">Help Improve this Content</a>
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/buildings/commercial-building-resource-database-v1/events.html.md.erb">Help Improve this Content</a>
 </div>
 
       <footer class="container-fluid">
-    <div align="center"><img alt="NREL is a national laboratory of the U.S. Department of Energy, Office of Energy Efficiency and Renewable Energy, operated by the Alliance for Sustainable Energy, LLC." usemap="#footer_map" src="../../../../assets/images/nrel/foot_nrelis-8e56f120.gif" /></div>
+    <div align="center"><img src="/assets/images/nrel/foot_nrelis-8e56f120.gif" alt="NREL is a national laboratory of the U.S. Department of Energy, Office of Energy Efficiency and Renewable Energy, operated by the Alliance for Sustainable Energy, LLC." usemap="#footer_map" class="img-fluid" /></div>
 
     <map name="footer_map" id="footer_map">
       <area shape="rect" coords="27,7,61,20" href="http://www.nrel.gov/" alt="NREL" />

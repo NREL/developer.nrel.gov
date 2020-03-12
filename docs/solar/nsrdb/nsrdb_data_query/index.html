@@ -18,12 +18,12 @@
       }
     </script>
 
-    <link href="../../../../assets/stylesheets/all-246bf420.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/stylesheets/all-02a9dc3b.css" rel="stylesheet" />
 
     <!--[if lt IE 9]>
-      <script src="../../../../assets/javascripts/ie_lt_9-abc24081.js" type="text/javascript"></script>
+      <script src="/assets/javascripts/ie_lt_9-9f2d2b9c.js"></script>
     <![endif]-->
-    <script src="../../../../assets/javascripts/all-494330ff.js" type="text/javascript"></script>
+    <script src="/assets/javascripts/all-8a1a7f07.js"></script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -42,25 +42,30 @@
         <area shape="rect" coords="0,0,840,58" href="/" alt="Developer Network" />
       <area shape="rect" coords="840,0,1000,58" href="http://www.nrel.gov/" alt="NREL" />
     </map>
-    <img alt="NREL Developer Network" usemap="#header_map" width="1000" height="58" src="../../../../assets/images/nrel/header-1bfbcb1a.png" />
+    <img src="/assets/images/nrel/header-1bfbcb1a.png" alt="NREL Developer Network" usemap="#header_map" width="1000" height="58" class="img-fluid" />
   </header>
-  <nav class="navbar navbar-default">
-    <ul class="nav navbar-nav">
-      <li class="nav-home "><a href="/">Home</a></li>
-      <li class="nav-documentation active"><a href="/docs">Documentation</a></li>
-      <li class="nav-community "><a href="/community">Community</a></li>
-    </ul>
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_nav" aria-controls="navbar_nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar_nav">
+      <ul class="navbar-nav">
+        <li class="nav-item nav-home "><a href="/" class="nav-link">Home</a></li>
+        <li class="nav-item nav-documentation active"><a href="/docs" class="nav-link">Documentation</a></li>
+        <li class="nav-item nav-community "><a href="/community" class="nav-link">Community</a></li>
+      </ul>
+    </div>
   </nav>
 
-      <ol class="breadcrumb container">
-            <li><a href="/docs/">Documentation</a></li>
-            <li><a href="/docs/solar/">Solar</a></li>
-            <li><a href="/docs/solar/nsrdb/">NSRDB Data Downloads</a></li>
-            <li class="active">NSRDB Data Query</li>
+      <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/docs/">Documentation</a></li>
+            <li class="breadcrumb-item"><a href="/docs/solar/">Solar</a></li>
+            <li class="breadcrumb-item"><a href="/docs/solar/nsrdb/">NSRDB Data Downloads</a></li>
+            <li class="breadcrumb-item active">NSRDB Data Query</li>
     </ol>
 
 
-    <h1 id="nsrdb-data-query-span-classurlapisolarnsrdbdataqueryspan">NSRDB Data Query <span class="url">(/api/solar/nsrdb_data_query)</span></h1>
+    <h1 id="nsrdb-data-query-apisolarnsrdb_data_query">NSRDB Data Query <span class="url">(/api/solar/nsrdb_data_query)</span></h1>
 <p>Returns information on the closest NSRDB datasets for a location including a set of links that can be used to download the data. For information about the NSRDB and the datasets represented by this service please visit <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a>.</p>
 
 <ul id="toc"></ul>
@@ -233,13 +238,17 @@
   </tbody>
 </table>
 
-<h2>Examples</h2>
+<h2 id="data-file-format">Data File Format</h2>
+
+<p>Generated data files are formatted in accordance with the Standard Time Series Data File Format. This file format has been developed to support <a href="https://sam.nrel.gov/">SAM</a> and other NREL models and is documented fully in <a href="https://sam.nrel.gov/sites/default/files/content/documents/pdf/wfcsv.pdf">this PDF</a>. More information on SAM file formats avaialable on <a href="https://sam.nrel.gov/weather">the SAM weather page</a>.</p>
+
+<h2 id="examples">Examples</h2>
 
 <h3 id="json-output-format">JSON Output Format</h3>
 
 <div class="doc-example-url"><code>GET /api/solar/nsrdb_data_query.json?api_key=DEMO_KEY&amp;wkt=POINT(91.287+23.832)</code></div>
 
-<pre><code class="highlight json"><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="s2">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"wkt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POINT(91.287 23.832)"</span><span class="w">
@@ -357,13 +366,12 @@
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-
+</span></code></pre></div>
 <h3 id="xml-output-format">XML Output Format</h3>
 
 <div class="doc-example-url"><code>GET /api/solar/nsrdb_data_query.xml?api_key=DEMO_KEY&amp;wkt=POINT(91.287+23.832)</code></div>
 
-<pre><code class="highlight xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<div class="highlight"><pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;hash&gt;</span>
   <span class="nt">&lt;errors</span> <span class="na">type=</span><span class="s">"array"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;inputs&gt;</span>
@@ -482,8 +490,7 @@
     <span class="nt">&lt;/output&gt;</span>
   <span class="nt">&lt;/outputs&gt;</span>
 <span class="nt">&lt;/hash&gt;</span>
-</code></pre>
-
+</code></pre></div>
 <h2 id="rate-limits">Rate Limits</h2>
 
 <p><a href="/docs/rate-limits">Standard rate limits</a> apply. No more than 1,000 requests may be made in any hour</p>
@@ -508,11 +515,11 @@
 </table>
 
     <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
-  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/solar/nsrdb/nsrdb_data_query.md.erb">Help Improve this Content</a>
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/solar/nsrdb/nsrdb_data_query.html.md.erb">Help Improve this Content</a>
 </div>
 
       <footer class="container-fluid">
-    <div align="center"><img alt="NREL is a national laboratory of the U.S. Department of Energy, Office of Energy Efficiency and Renewable Energy, operated by the Alliance for Sustainable Energy, LLC." usemap="#footer_map" src="../../../../assets/images/nrel/foot_nrelis-8e56f120.gif" /></div>
+    <div align="center"><img src="/assets/images/nrel/foot_nrelis-8e56f120.gif" alt="NREL is a national laboratory of the U.S. Department of Energy, Office of Energy Efficiency and Renewable Energy, operated by the Alliance for Sustainable Energy, LLC." usemap="#footer_map" class="img-fluid" /></div>
 
     <map name="footer_map" id="footer_map">
       <area shape="rect" coords="27,7,61,20" href="http://www.nrel.gov/" alt="NREL" />

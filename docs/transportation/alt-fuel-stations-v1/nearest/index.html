@@ -18,12 +18,12 @@
       }
     </script>
 
-    <link href="../../../../assets/stylesheets/all-246bf420.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/stylesheets/all-02a9dc3b.css" rel="stylesheet" />
 
     <!--[if lt IE 9]>
-      <script src="../../../../assets/javascripts/ie_lt_9-abc24081.js" type="text/javascript"></script>
+      <script src="/assets/javascripts/ie_lt_9-9f2d2b9c.js"></script>
     <![endif]-->
-    <script src="../../../../assets/javascripts/all-494330ff.js" type="text/javascript"></script>
+    <script src="/assets/javascripts/all-8a1a7f07.js"></script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -42,25 +42,30 @@
         <area shape="rect" coords="0,0,840,58" href="/" alt="Developer Network" />
       <area shape="rect" coords="840,0,1000,58" href="http://www.nrel.gov/" alt="NREL" />
     </map>
-    <img alt="NREL Developer Network" usemap="#header_map" width="1000" height="58" src="../../../../assets/images/nrel/header-1bfbcb1a.png" />
+    <img src="/assets/images/nrel/header-1bfbcb1a.png" alt="NREL Developer Network" usemap="#header_map" width="1000" height="58" class="img-fluid" />
   </header>
-  <nav class="navbar navbar-default">
-    <ul class="nav navbar-nav">
-      <li class="nav-home "><a href="/">Home</a></li>
-      <li class="nav-documentation active"><a href="/docs">Documentation</a></li>
-      <li class="nav-community "><a href="/community">Community</a></li>
-    </ul>
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_nav" aria-controls="navbar_nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar_nav">
+      <ul class="navbar-nav">
+        <li class="nav-item nav-home "><a href="/" class="nav-link">Home</a></li>
+        <li class="nav-item nav-documentation active"><a href="/docs" class="nav-link">Documentation</a></li>
+        <li class="nav-item nav-community "><a href="/community" class="nav-link">Community</a></li>
+      </ul>
+    </div>
   </nav>
 
-      <ol class="breadcrumb container">
-            <li><a href="/docs/">Documentation</a></li>
-            <li><a href="/docs/transportation/">Transportation</a></li>
-            <li><a href="/docs/transportation/alt-fuel-stations-v1/">Alternative Fuel Stations</a></li>
-            <li class="active">Nearest Stations</li>
+      <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/docs/">Documentation</a></li>
+            <li class="breadcrumb-item"><a href="/docs/transportation/">Transportation</a></li>
+            <li class="breadcrumb-item"><a href="/docs/transportation/alt-fuel-stations-v1/">Alternative Fuel Stations</a></li>
+            <li class="breadcrumb-item active">Nearest Stations</li>
     </ol>
 
 
-    <h1 id="nearest-stations-span-classurlget-apialt-fuel-stationsv1nearestspan">Nearest Stations <span class="url">(GET /api/alt-fuel-stations/v1/nearest)</span></h1>
+    <h1 id="nearest-stations-get-apialt-fuel-stationsv1nearest">Nearest Stations <span class="url">(GET /api/alt-fuel-stations/v1/nearest)</span></h1>
 <p>Return the nearest alternative fuel stations within a distance of a given location.</p>
 
 <ul id="toc"></ul>
@@ -207,7 +212,7 @@
   </td>
   <td class="doc-parameter-description">
     <p>Return stations that match the given status. A single status, or a comma-separated list of multiple statuses, may be given.</p>
-    <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+      <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">Option</th>
@@ -269,7 +274,7 @@
   </td>
   <td class="doc-parameter-description">
     <p>Return stations that supply any of the given fuel types. A single fuel type, or a comma-separated list of multiple fuel types, may be given.</p>
-    <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">Option</th>
@@ -329,7 +334,7 @@
   </td>
   <td class="doc-parameter-description">
     <p>Return stations that accept any of the given payment methods. A single payment method, or a comma-separated list of multiple payment methods, may be given.</p>
-    <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">Option</th>
@@ -445,7 +450,7 @@
   </td>
   <td class="doc-parameter-description">
     <p>Return stations owned by the given types of owners. A single owner type, or a comma-separated list of multiple owner types, may be given.</p>
-    <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">Option</th>
@@ -485,6 +490,286 @@
     </table>
   </td>
 </tr>
+<tr id="request-federal-agency">
+  <th class="doc-parameter-name" scope="row">federal_agency</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all, (see table to right for codes)</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return stations owned by the given federal agency. A federal agency code, or a comma-separated list of multiple federal agency codes, may be given.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">all</th>
+          <td>Include all stations, regardless of federal agency owner</td>
+        </tr>
+          <tr>
+            <th scope="row">AAF</th>
+            <td>Agriculture and Agri-Food (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">CH</th>
+            <td>Canadian Heritage (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">CHSW</th>
+            <td>Canadian Heritage (Status of Women) (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">USACE_CW</th>
+            <td>Corps of Engineers, Civil Works (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">CSOSA</th>
+            <td>Court Services and Offender Supervision Agency (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DEF</th>
+            <td>Defense Agencies (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DAF</th>
+            <td>Department of Air Force (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DA</th>
+            <td>Department of Army (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DOC</th>
+            <td>Department of Commerce (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">HHS</th>
+            <td>Department of Health and Human Services (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DHS</th>
+            <td>Department of Homeland Security (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">HUD</th>
+            <td>Department of Housing and Urban Development (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DOJ</th>
+            <td>Department of Justice (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DOL</th>
+            <td>Department of Labor (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DON</th>
+            <td>Department of Navy (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DOS</th>
+            <td>Department of State (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DOI</th>
+            <td>Department of the Interior (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DOT</th>
+            <td>Department of Transportation (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DTS</th>
+            <td>Department of Treasury (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">VA</th>
+            <td>Department of Veterans Affairs (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">EWDL</th>
+            <td>Employment, Workforce Development and Labour (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">ECC</th>
+            <td>Environment and Climate Change (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">FCSD</th>
+            <td>Families, Children and Social Development (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">FTC</th>
+            <td>Federal Trade Commission (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">FIN</th>
+            <td>Finance (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">FOCCG</th>
+            <td>Fisheries, Oceans and the Canadian Coast Guard (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">GSA</th>
+            <td>General Services Administration (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">GAFA</th>
+            <td>Global Affairs (Foreign Affairs) (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">GAID</th>
+            <td>Global Affairs (International Development) (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">GAIT</th>
+            <td>Global Affairs (International Trade) (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">HLTH</th>
+            <td>Health (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">IRC</th>
+            <td>Immigration, Refugees and Citizenship (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">INA</th>
+            <td>Indigenous and Northern Affairs (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">IC</th>
+            <td>Infrastructure and Communities (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">ISED</th>
+            <td>Innovation, Science and Economic Development (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">JUS</th>
+            <td>Justice (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">LGHC</th>
+            <td>Leader of the Government in the House of Commons (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">NASA</th>
+            <td>National Aeronautics and Space Administration (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">NDEF</th>
+            <td>National Defence (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">NREV</th>
+            <td>National Revenue (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">NRES</th>
+            <td>Natural Resources (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">PARL</th>
+            <td>Parliament (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">PQPCC</th>
+            <td>President of the Queen's Privy Council for Canada (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">PM</th>
+            <td>Prime Minister (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">PSEP</th>
+            <td>Public Safety and Emergency Preparedness (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">PSP</th>
+            <td>Public Services and Procurement (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">SCI</th>
+            <td>Science (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">SBT</th>
+            <td>Small Business and Tourism (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">SI</th>
+            <td>Smithsonian Institution (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">SSA</th>
+            <td>Social Security Administration (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">TRANS</th>
+            <td>Transport (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">TREAS</th>
+            <td>Treasury Board (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">USMC</th>
+            <td>United States Marine Corps (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">CBP</th>
+            <td>U.S. Customs and Border Protection (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">USDA</th>
+            <td>U.S. Department of Agriculture (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DOD</th>
+            <td>U.S. Department of Defense (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DOE</th>
+            <td>U.S. Department of Energy (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">EPA</th>
+            <td>U.S. Environmental Protection Agency (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">FAA</th>
+            <td>U.S. Federal Aviation Administration (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">IRS</th>
+            <td>U.S. Internal Revenue Service (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">USPS</th>
+            <td>U.S. Postal Service (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">VAFF</th>
+            <td>Veterans Affairs (CA)</td>
+          </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
 <tr>
   <th class="doc-parameter-name" scope="row">federal_agency_id</th>
   <td class="doc-parameter-required">No</td>
@@ -500,8 +785,9 @@
     </div>
   </td>
   <td class="doc-parameter-description">
+    <p>Deprecated: See <a href="#request-federal-agency">federal_agency</a>. (Note: this query parameter will remain for legacy application support)</p>
     <p>Return stations owned by the given federal agency. A federal agency ID, or a comma-separated list of multiple federal agency IDs, may be given.</p>
-    <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">Option</th>
@@ -513,84 +799,368 @@
           <th scope="row">all</th>
           <td>Include all stations, regardless of federal agency owner</td>
         </tr>
+          <tr>
+            <th scope="row">32</th>
+            <td>Agriculture and Agri-Food (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">33</th>
+            <td>Canadian Heritage (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">34</th>
+            <td>Canadian Heritage (Status of Women) (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Corps of Engineers, Civil Works (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">28</th>
+            <td>Court Services and Offender Supervision Agency (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Defense Agencies (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td>Department of Air Force (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">6</th>
+            <td>Department of Army (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">7</th>
+            <td>Department of Commerce (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">9</th>
+            <td>Department of Health and Human Services (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">10</th>
+            <td>Department of Homeland Security (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">11</th>
+            <td>Department of Housing and Urban Development (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">12</th>
+            <td>Department of Justice (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">13</th>
+            <td>Department of Labor (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">14</th>
+            <td>Department of Navy (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">15</th>
+            <td>Department of State (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">16</th>
+            <td>Department of the Interior (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">17</th>
+            <td>Department of Transportation (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">18</th>
+            <td>Department of Treasury (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">19</th>
+            <td>Department of Veterans Affairs (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">35</th>
+            <td>Employment, Workforce Development and Labour (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">36</th>
+            <td>Environment and Climate Change (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">37</th>
+            <td>Families, Children and Social Development (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">31</th>
+            <td>Federal Trade Commission (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">38</th>
+            <td>Finance (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">39</th>
+            <td>Fisheries, Oceans and the Canadian Coast Guard (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">21</th>
+            <td>General Services Administration (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">40</th>
+            <td>Global Affairs (Foreign Affairs) (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">41</th>
+            <td>Global Affairs (International Development) (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">42</th>
+            <td>Global Affairs (International Trade) (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">43</th>
+            <td>Health (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">44</th>
+            <td>Immigration, Refugees and Citizenship (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">45</th>
+            <td>Indigenous and Northern Affairs (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">46</th>
+            <td>Infrastructure and Communities (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">47</th>
+            <td>Innovation, Science and Economic Development (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">48</th>
+            <td>Justice (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">49</th>
+            <td>Leader of the Government in the House of Commons (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">22</th>
+            <td>National Aeronautics and Space Administration (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">50</th>
+            <td>National Defence (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">51</th>
+            <td>National Revenue (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">52</th>
+            <td>Natural Resources (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">53</th>
+            <td>Parliament (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">54</th>
+            <td>President of the Queen's Privy Council for Canada (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">55</th>
+            <td>Prime Minister (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">56</th>
+            <td>Public Safety and Emergency Preparedness (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">57</th>
+            <td>Public Services and Procurement (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">58</th>
+            <td>Science (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">59</th>
+            <td>Small Business and Tourism (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">23</th>
+            <td>Smithsonian Institution (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">24</th>
+            <td>Social Security Administration (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">60</th>
+            <td>Transport (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">61</th>
+            <td>Treasury Board (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">26</th>
+            <td>United States Marine Corps (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">1</th>
+            <td>U.S. Customs and Border Protection (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>U.S. Department of Agriculture (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">29</th>
+            <td>U.S. Department of Defense (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">8</th>
+            <td>U.S. Department of Energy (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">20</th>
+            <td>U.S. Environmental Protection Agency (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">30</th>
+            <td>U.S. Federal Aviation Administration (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">27</th>
+            <td>U.S. Internal Revenue Service (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">25</th>
+            <td>U.S. Postal Service (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">62</th>
+            <td>Veterans Affairs (CA)</td>
+          </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+<tr>
+  <th class="doc-parameter-name" scope="row">cng_fill_type</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all, Q, T</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only CNG stations that provide the specified type of dispensing capability. A single type, or a comma separated list of multiple types, may be given.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
         <tr>
-          <th scope="row">3</th>
-          <td>Defense Agencies</td>
+          <th scope="col">Value</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Q</th>
+          <td>Quick fill</td>
         </tr>
         <tr>
-          <th scope="row">4</th>
-          <td>U.S. Department of Agriculture</td>
-        </tr>
-        <tr>
-          <th scope="row">5</th>
-          <td>Department of Air Force</td>
-        </tr>
-        <tr>
-          <th scope="row">6</th>
-          <td>Department of Army</td>
-        </tr>
-        <tr>
-          <th scope="row">7</th>
-          <td>Department of Commerce</td>
-        </tr>
-        <tr>
-          <th scope="row">8</th>
-          <td>U.S. Department of Energy</td>
-        </tr>
-        <tr>
-          <th scope="row">9</th>
-          <td>Department of Health and Human Services</td>
-        </tr>
-        <tr>
-          <th scope="row">10</th>
-          <td>Department of Homeland Security</td>
-        </tr>
-        <tr>
-          <th scope="row">12</th>
-          <td>Department of Justice</td>
-        </tr>
-        <tr>
-          <th scope="row">14</th>
-          <td>Department of Navy</td>
-        </tr>
-        <tr>
-          <th scope="row">16</th>
-          <td>Department of the Interior</td>
-        </tr>
-        <tr>
-          <th scope="row">17</th>
-          <td>U.S. Department of Transportation</td>
-        </tr>
-        <tr>
-          <th scope="row">19</th>
-          <td>Department of Veterans Affairs</td>
-        </tr>
-        <tr>
-          <th scope="row">20</th>
-          <td>U.S. Environmental Protection Agency</td>
-        </tr>
-        <tr>
-          <th scope="row">22</th>
-          <td>National Aeronautics and Space Administration</td>
-        </tr>
-        <tr>
-          <th scope="row">23</th>
-          <td>Smithsonian Institution</td>
-        </tr>
-        <tr>
-          <th scope="row">24</th>
-          <td>Social Security Administration</td>
-        </tr>
-        <tr>
-          <th scope="row">25</th>
-          <td>U.S. Postal Service</td>
-        </tr>
-        <tr>
-          <th scope="row">26</th>
-          <td>United States Marine Corps</td>
+          <th scope="row">T</th>
+          <td>Timed fill</td>
         </tr>
       </tbody>
     </table>
+  </td>
+</tr>
+<tr>
+  <th class="doc-parameter-name" scope="row">cng_psi</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all, 2400, 3000, 3600</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only CNG stations that provide the specified PSI pressure. A single pressure level, or a comma separated list of multiple pressure levels, may be given.</p>
+  </td>
+</tr>
+<tr>
+  <th class="doc-parameter-name" scope="row">cng_vehicle_class</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all, LD, MD, HD</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only CNG stations that can accomodate the specified vehicle class size or greater.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Value</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">LD</th>
+          <td>Return stations that can accomodate light-duty vehicles or greater.</td>
+        </tr>
+        <tr>
+          <th scope="row">MD</th>
+          <td>Return stations that can accomodate medium-duty vehicles or greater.</td>
+        </tr>
+        <tr>
+          <th scope="row">HD</th>
+          <td>Return stations that can accomodate heavy-duty vehicles or greater.</td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+<tr>
+  <th class="doc-parameter-name" scope="row">e85_has_blender_pump</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all, true</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>If <code>true</code>, then return only E85 stations that also have a blender pump capable of providing mid-level ethanol blends.</p>
   </td>
 </tr>
 <tr>
@@ -604,12 +1174,12 @@
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>all, AeroVironment Network, Blink Network, ChargePoint Network, EV Connect, eVgo Network, GE WattStation, Greenlots, OpConnect, SemaCharge Network, Tesla</em>
+      <strong>Options:</strong> <em>all, (see table to right for options)</em>
     </div>
   </td>
   <td class="doc-parameter-description">
-    <p>Return only electric charging stations that belong to the given network. A single network, or a comma separate list of multiple networks, may be given.</p>
-    <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+    <p>Return only electric charging stations that belong to the given network. A single network, or a comma separated list of multiple networks, may be given.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">Option</th>
@@ -619,36 +1189,60 @@
         <tr>
           <th scope="row">all</th>
         </tr>
-        <tr>
-          <th scope="row">AeroVironment Network</th>
-        </tr>
-        <tr>
-          <th scope="row">Blink Network</th>
-        </tr>
-        <tr>
-          <th scope="row">ChargePoint Network</th>
-        </tr>
-        <tr>
-          <th scope="row">EV Connect</th>
-        </tr>
-        <tr>
-          <th scope="row">eVgo Network</th>
-        </tr>
-        <tr>
-          <th scope="row">GE WattStation</th>
-        </tr>
-        <tr>
-          <th scope="row">Greenlots</th>
-        </tr>
-        <tr>
-          <th scope="row">OpConnect</th>
-        </tr>
-        <tr>
-          <th scope="row">SemaCharge Network</th>
-        </tr>
-        <tr>
-          <th scope="row">Tesla</th>
-        </tr>
+          <tr>
+            <th scope="row">Blink Network</th>
+          </tr>
+          <tr>
+            <th scope="row">ChargePoint Network</th>
+          </tr>
+          <tr>
+            <th scope="row">Circuit électrique</th>
+          </tr>
+          <tr>
+            <th scope="row">Electrify America</th>
+          </tr>
+          <tr>
+            <th scope="row">Electrify Canada</th>
+          </tr>
+          <tr>
+            <th scope="row">EV Connect</th>
+          </tr>
+          <tr>
+            <th scope="row">eVgo Network</th>
+          </tr>
+          <tr>
+            <th scope="row">FLO</th>
+          </tr>
+          <tr>
+            <th scope="row">GE WattStation</th>
+          </tr>
+          <tr>
+            <th scope="row">Greenlots</th>
+          </tr>
+          <tr>
+            <th scope="row">Non-Networked</th>
+          </tr>
+          <tr>
+            <th scope="row">OpConnect</th>
+          </tr>
+          <tr>
+            <th scope="row">SemaCharge Network</th>
+          </tr>
+          <tr>
+            <th scope="row">Sun Country Highway</th>
+          </tr>
+          <tr>
+            <th scope="row">Tesla Destination</th>
+          </tr>
+          <tr>
+            <th scope="row">Tesla</th>
+          </tr>
+          <tr>
+            <th scope="row">Volta</th>
+          </tr>
+          <tr>
+            <th scope="row">Webasto</th>
+          </tr>
       </tbody>
     </table>
   </td>
@@ -669,7 +1263,7 @@
   </td>
   <td class="doc-parameter-description">
     <p>Return only electric charging stations that provide the given level of electric vehicle supply equipment (EVSE).</p>
-    <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">Option</th>
@@ -717,7 +1311,7 @@
   </td>
   <td class="doc-parameter-description">
     <p>Return only electric charging stations that provide the given connector types.</p>
-    <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">Option</th>
@@ -762,6 +1356,123 @@
   </td>
 </tr>
 <tr>
+  <th class="doc-parameter-name" scope="row">ev_connector_type_operator</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>OR</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>OR, AND</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Control how multiple connector type options passed to the <code>ev_connector_type</code> parameter behave. The default of <code>OR</code> will return stations that have <em>any</em> of the connectors present. Specifying <code>AND</code> will only return stations that have <em>all</em> of the connectors present.</p>
+    <p>For example, with the default <code>OR</code> value, then performing a query for <code>ev_connector_type=CHADEMO,J1772COMBO</code> will return any station that has either <code>CHADEMO</code> or <code>J1772COMBO</code> connectors present. Compare that to a query for <code>ev_connector_type=CHADEMO,J1772COMBO&#8203;&amp;ev_connector_type_operator=AND</code> which will return stations that must have both <code>CHADEMO</code> and <code>J1772COMBO</code> connectors present at the same station.</p>
+  </td>
+</tr>
+<tr>
+  <th class="doc-parameter-name" scope="row">hy_is_retail</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all, true, false</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only hydrogen stations that match the value. A single retail value, or a comma-separated list of multiple retail values, may be given.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Value</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">all</th>
+          <td>Include all hydrogen stations.</td>
+        </tr>
+        <tr>
+          <th scope="row">true</th>
+          <td>Station meets the criteria to be considered retail.</td>
+        </tr>
+        <tr>
+          <th scope="row">false</th>
+          <td>Station does not meet the criteria to be considered retail.</td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+<tr>
+  <th class="doc-parameter-name" scope="row">lng_vehicle_class</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all, LD, MD, HD</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only LNG stations that can accomodate the specified vehicle class size or greater.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Value</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">LD</th>
+          <td>Return stations that can accomodate light-duty vehicles or greater.</td>
+        </tr>
+        <tr>
+          <th scope="row">MD</th>
+          <td>Return stations that can accomodate medium-duty vehicles or greater.</td>
+        </tr>
+        <tr>
+          <th scope="row">HD</th>
+          <td>Return stations that can accomodate heavy-duty vehicles or greater.</td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+<tr>
+  <th class="doc-parameter-name" scope="row">lpg_include_secondary</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all, false</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>If <code>false</code>, then exclude LPG stations that do not meet the <a href="#response-lpg-primary">criteria</a> to be considered primary.</p>
+  </td>
+</tr>
+<tr>
   <th class="doc-parameter-name" scope="row">state</th>
   <td class="doc-parameter-required">No</td>
   <td class="doc-parameter-value">
@@ -787,22 +1498,58 @@
   </td>
   <td class="doc-parameter-description">Return only stations within the given ZIP code. ZIP codes must be exactly 5 digits long. A single ZIP code, or a comma-separate list of multiple ZIP codes, may be given.</td>
 </tr>
+<tr>
+  <th class="doc-parameter-name" scope="row">country</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>US</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>US, CA</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only stations within the given country code.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">US</th>
+          <td>United States</td>
+        </tr>
+        <tr>
+          <th scope="row">CA</th>
+          <td>Canada</td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
 
     <tr>
       <th class="doc-parameter-name" scope="row">limit</th>
       <td class="doc-parameter-required">No</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
-          <strong>Type:</strong> integer
+          <strong>Type:</strong> integer or string
         </div>
         <div class="doc-parameter-value-field">
           <strong>Default:</strong> 20
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Minimum:</strong> <i>1</i>
+          <strong>Range:</strong> <em>0</em> to <em>200</em>, or <em>all</em>
         </div>
       </td>
-      <td class="doc-parameter-description">The maximum number of results to return.</td>
+      <td class="doc-parameter-description">The maximum number of results to return. An explicit limit of up to 200 may be passed in, or the special <code>all</code> string may be passed in to return all results.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">offset</th>
@@ -837,16 +1584,39 @@
   </thead>
   <tbody>
     <tr>
-      <th class="doc-parameter-name" scope="row">total_results</th>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> integer
-        </div>
-      </td>
-      <td class="doc-parameter-description">
-        <p>How many total stations match your requested query (regardless of any "limit" applied).</p>
-      </td>
-    </tr>
+  <th class="doc-parameter-name" scope="row">total_results</th>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> integer
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    How many total fuel station records match your requested query (regardless of any <code>limit</code> applied).
+  </td>
+</tr>
+<tr>
+  <th class="doc-parameter-name" scope="row">station_counts</th>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> record
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    A record that details the total number of stations and charging outlets that match your requested query (regardless of any <code>limit</code> applied). See <a href="#station-count-record-fields">station count record fields</a> for response details.
+  </td>
+</tr>
+<tr>
+  <th class="doc-parameter-name" scope="row">station_locator_url</th>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    The URL of the Alternative Fueling Station Locator, the web application that supplies this data.
+  </td>
+</tr>
+
     <tr>
       <th class="doc-parameter-name" scope="row">offset</th>
       <td class="doc-parameter-value">
@@ -856,17 +1626,6 @@
       </td>
       <td class="doc-parameter-description">
         <p>The result offset applied to this query (if the "offset" parameter was given).</p>
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">station_locator_url</th>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> string
-        </div>
-      </td>
-      <td class="doc-parameter-description">
-        <p>The URL of the Alternative Fueling Station Locator, the web application that supplies this data.</p>
       </td>
     </tr>
     <tr>
@@ -922,7 +1681,7 @@
       </td>
       <td class="doc-parameter-description">
         <p>The type of alternative fuel the station provides. Fuel types are given as code values as described below:</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Value</th>
@@ -1005,7 +1764,7 @@
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">The two character U.S. state code of the station's location.</td>
+      <td class="doc-parameter-description">The two character code for the U.S. state or Canadian province/territory of the station's location.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">zip</th>
@@ -1026,6 +1785,35 @@
       <td class="doc-parameter-description">The plus-4 portion of the station's ZIP code (U.S. ZIP codes only).</td>
     </tr>
     <tr>
+      <th class="doc-parameter-name" scope="row">country</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The two character country code of the station's location.</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">US</th>
+              <td>United States</td>
+            </tr>
+            <tr>
+              <th scope="row">CA</th>
+              <td>Canada</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
       <th class="doc-parameter-name" scope="row">station_phone</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -1043,7 +1831,7 @@
       </td>
       <td class="doc-parameter-description">
         <p>The current status of the station, given as code values as described below:</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Value</th>
@@ -1077,6 +1865,84 @@
       <td class="doc-parameter-description">For planned stations, the date the station is expected to open or start carrying alternative fuel. For temporarily unavailable stations, the expected date is the date the station is expected to reopen. This date is estimated but not guaranteed.</td>
     </tr>
     <tr>
+      <th class="doc-parameter-name" scope="row">access_code</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>A description of who is allowed to access the station, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">public</th>
+              <td>Publicly available to all customers.</td>
+            </tr>
+            <tr>
+              <th scope="row">private</th>
+              <td>Private station.</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">access_detail_code</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>A description of other station access information, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">KEY_ALWAYS</th>
+              <td>Card key at all times.</td>
+            </tr>
+            <tr>
+              <th scope="row">CREDIT_CARD_ALWAYS</th>
+              <td>Credit card at all times.</td>
+            </tr>
+            <tr>
+              <th scope="row">CREDIT_CARD_AFTER_HOURS</th>
+              <td>Credit card after hours.</td>
+            </tr>
+            <tr>
+              <th scope="row">FLEET</th>
+              <td>Fleet customers only.</td>
+            </tr>
+            <tr>
+              <th scope="row">GOVERNMENT</th>
+              <td>Government only.</td>
+            </tr>
+            <tr>
+              <th scope="row">KEY_AFTER_HOURS</th>
+              <td>Card key after hours.</td>
+            </tr>
+            <tr>
+              <th scope="row">CALL</th>
+              <td>Call ahead.</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
       <th class="doc-parameter-name" scope="row">groups_with_access_code</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -1084,8 +1950,8 @@
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>A description of who is allowed to access the station and other station access information. </p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+        <p>A description of who is allowed to access the station and other station access information.</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Value</th>
@@ -1130,7 +1996,7 @@
               <td>Publicly available, and accepts fleet cards or station-specific fueling cards 24 hours a day. See “Access Days Time” and “Cards Accepted” fields for more details.</td>
             </tr>
             <tr>
-              <th scope="row">PLANNED – not yet available</th>
+              <th scope="row">PLANNED – not yet accessible</th>
               <td>Not yet open, but plans to carry alternative fuel in the future. See the "Expected Date" field for an anticipated open date.</td>
             </tr>
             <tr>
@@ -1159,7 +2025,7 @@
       </td>
       <td class="doc-parameter-description">
         <p>A space-separated list of payment methods accepted. Payment methods are given as code values as described below:</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Value</th>
@@ -1264,10 +2130,10 @@
       </td>
       <td class="doc-parameter-description">
         <p>The type of organization that owns the fueling infrastructure. Owner types are given as code values as described below:</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
-              <th scope="col">Option</th>
+              <th scope="col">Value</th>
               <th scope="col">Description</th>
             </tr>
           </thead>
@@ -1286,11 +2152,11 @@
             </tr>
             <tr>
               <th scope="row">LG</th>
-              <td>Local government owned</td>
+              <td>Local/Municipal government owned</td>
             </tr>
             <tr>
               <th scope="row">SG</th>
-              <td>State government owned</td>
+              <td>State/Provincial government owned</td>
             </tr>
             <tr>
               <th scope="row">J</th>
@@ -1350,6 +2216,72 @@
       </td>
     </tr>
     <tr>
+      <th class="doc-parameter-name" scope="row">e85_other_ethanol_blends</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For E85 stations, an array of strings identifying the range(s) of blends other than E85 available at the station, given as code values described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">E15</th>
+              <td>Station also offers E15.</td>
+            </tr>
+            <tr>
+              <th scope="row">E20-E25</th>
+              <td>Station also offers blends of E20-E25.</td>
+            </tr>
+            <tr>
+              <th scope="row">E30-E35</th>
+              <td>Station also offers blends of E30-E35.</td>
+            </tr>
+            <tr>
+              <th scope="row">E40-Plus</th>
+              <td>Station also offers blends of E40 and above.</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">lpg_nozzle_types</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For LPG stations, an array of strings, identifying the type of nozzles available at the station, given as code values described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">ACME</th>
+              <td>ACME</td>
+            </tr>
+            <tr>
+              <th scope="row">QUICK_CONNECT</th>
+              <td>Quick-connect</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr id="response-lpg-primary">
       <th class="doc-parameter-name" scope="row">lpg_primary</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -1373,7 +2305,7 @@
 
                 <ol>
                   <li>The station is staffed and able to fuel vehicles during normal business hours (e.g., 8am-5pm M-F), and does not require drivers to call ahead;</li>
-                  <li>The station is equipped with a dedicated or purpose-built fuel dispenser for vehicle fueling; and</li>
+                  <li>The station can fill vehicles at a rate of 8-12 gallons per minute or faster, or at a rate similar to filling a gasoline vehicle; and</li>
                   <li>The station accepts credit cards or fleet cards.</li>
                 </ol>
               </td>
@@ -1393,9 +2325,45 @@
           <strong>Type:</strong> string
         </div>
       </td>
+      <td class="doc-parameter-description">Deprecated: See <a href="#cng-fill-type-code">cng_fill_type_code</a>. (Note: this field will remain for legacy application support)</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">ng_psi</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">Deprecated: See <a href="#cng-psi">cng_psi</a>. (Note: this field will remain for legacy application support)</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">ng_vehicle_class</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">Deprecated: For CNG stations, see <a href="#cng-vehicle-class">cng_vehicle_class</a>. For LNG stations, see <a href="#lng-vehicle-class">lng_vehicle_class</a>. (Note: this field will remain for legacy application support)</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">cng_dispenser_num</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+      </td>
+      <td class="doc-parameter-description">For CNG stations, the number of CNG dispensers installed.</td>
+    </tr>
+    <tr id="cng-fill-type-code">
+      <th class="doc-parameter-name" scope="row">cng_fill_type_code</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
       <td class="doc-parameter-description">
         <p>For CNG stations, the type of dispensing capability available, given as code values as described below:</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Value</th>
@@ -1419,8 +2387,8 @@
         </table>
       </td>
     </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">ng_psi</th>
+    <tr id="cng-psi">
+      <th class="doc-parameter-name" scope="row">cng_psi</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
           <strong>Type:</strong> string
@@ -1429,14 +2397,164 @@
       <td class="doc-parameter-description">For CNG stations, a space separated list of PSI pressures available.</td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">ng_vehicle_class</th>
+      <th class="doc-parameter-name" scope="row">cng_renewable_source</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
           <strong>Type:</strong> string
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>For CNG and LNG stations, the maximum vehicle size that can physically access the fueling infrastructure, given as code values as described below:</p>
+        <p>For CNG stations, the type of renewable energy used to generate CNG on-site, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">GEOTHERMAL</th>
+              <td>Geothermal</td>
+            </tr>
+            <tr>
+              <th scope="row">HYDRO</th>
+              <td>Hydropower</td>
+            </tr>
+            <tr>
+              <th scope="row">LANDFILL</th>
+              <td>Landfill</td>
+            </tr>
+            <tr>
+              <th scope="row">LIVESTOCK</th>
+              <td>Livestock Operations</td>
+            </tr>
+            <tr>
+              <th scope="row">SOLAR</th>
+              <td>Solar</td>
+            </tr>
+            <tr>
+              <th scope="row">WASTEWATER</th>
+              <td>Wastewater Treatment</td>
+            </tr>
+            <tr>
+              <th scope="row">WIND</th>
+              <td>Wind</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">cng_total_compression</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+      </td>
+      <td class="doc-parameter-description">For CNG stations, the total compressor capacity per compressor, measured in standard cubic feet per minute (scfm).</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">cng_total_storage</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+      </td>
+      <td class="doc-parameter-description">For CNG stations, the total storage capacity, measured in standard cubic feet (scf).</td>
+    </tr>
+    <tr id="cng-vehicle-class">
+      <th class="doc-parameter-name" scope="row">cng_vehicle_class</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For CNG stations, the maximum vehicle size that can physically access the fueling infrastructure, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">LD</th>
+              <td>Station can only accommodate light-duty vehicles (Classes 1-2).</td>
+            </tr>
+            <tr>
+              <th scope="row">MD</th>
+              <td>Station can accommodate light- and medium-duty vehicles (Classes 1-5).</td>
+            </tr>
+            <tr>
+              <th scope="row">HD</th>
+              <td>Station can accommodate light-, medium-, and heavy-duty vehicles (Classes 1-8).</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Note: This field does not take into account station capacity or other considerations.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">lng_renewable_source</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For LNG stations, the type of renewable energy used to generate LNG on-site, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">GEOTHERMAL</th>
+              <td>Geothermal</td>
+            </tr>
+            <tr>
+              <th scope="row">HYDRO</th>
+              <td>Hydropower</td>
+            </tr>
+            <tr>
+              <th scope="row">LANDFILL</th>
+              <td>Landfill</td>
+            </tr>
+            <tr>
+              <th scope="row">LIVESTOCK</th>
+              <td>Livestock Operations</td>
+            </tr>
+            <tr>
+              <th scope="row">SOLAR</th>
+              <td>Solar</td>
+            </tr>
+            <tr>
+              <th scope="row">WASTEWATER</th>
+              <td>Wastewater Treatment</td>
+            </tr>
+            <tr>
+              <th scope="row">WIND</th>
+              <td>Wind</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr id="lng-vehicle-class">
+      <th class="doc-parameter-name" scope="row">lng_vehicle_class</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For LNG stations, the maximum vehicle size that can physically access the fueling infrastructure, given as code values as described below:</p>
         <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
@@ -1565,6 +2683,17 @@
       <td class="doc-parameter-description">For electric stations, the name of the EVSE network, if applicable.</td>
     </tr>
     <tr>
+      <th class="doc-parameter-name" scope="row">ev_network_ids</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> record
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        For electric stations, if the station belongs to an EVSE network, a record describing the network-specific IDs for this station. See <a href="#ev-network-id-record-fields">EV network ID record fields</a> for response details.
+      </td>
+    </tr>
+    <tr>
       <th class="doc-parameter-name" scope="row">ev_network_web</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -1572,6 +2701,151 @@
         </div>
       </td>
       <td class="doc-parameter-description">For electric stations, the EVSE network Web site, if applicable.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">ev_pricing</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">For EVSE stations, information about whether and how much users must pay to use the EVSE.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">ev_renewable_source</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For EVSE stations, the type of renewable energy used to generate electricity on-site, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">GEOTHERMAL</th>
+              <td>Geothermal</td>
+            </tr>
+            <tr>
+              <th scope="row">HYDRO</th>
+              <td>Hydropower</td>
+            </tr>
+            <tr>
+              <th scope="row">LANDFILL</th>
+              <td>Landfill</td>
+            </tr>
+            <tr>
+              <th scope="row">LIVESTOCK</th>
+              <td>Livestock Operations</td>
+            </tr>
+            <tr>
+              <th scope="row">SOLAR</th>
+              <td>Solar</td>
+            </tr>
+            <tr>
+              <th scope="row">WASTEWATER</th>
+              <td>Wastewater Treatment</td>
+            </tr>
+            <tr>
+              <th scope="row">WIND</th>
+              <td>Wind</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">hy_is_retail</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For hydrogen stations, whether a station offers the retail sale of hydrogen by accepting payment at the point of sale, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">true</th>
+              <td>Station meets the criteria to be considered retail.</td>
+            </tr>
+            <tr>
+              <th scope="row">false</th>
+              <td>Station does not meet the criteria to be considered retail.</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">hy_pressures</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For hydrogen stations, any array of strings identifying the pressures of the hydrogen available (in bar), given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">350</th>
+              <td>350 bar (35 megapascal, or MPa)</td>
+            </tr>
+            <tr>
+              <th scope="row">700</th>
+              <td>700 bar (70 MPa)</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">hy_standards</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For hydrogen stations, any array of strings identifying which SAE International fueling protocol standard(s) the infrastructure meets, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">J2601</th>
+              <td>SAE J2601</td>
+            </tr>
+            <tr>
+              <th scope="row">J2601-2</th>
+              <td>SAE J2601-2</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">hy_status_link</th>
@@ -1591,7 +2865,7 @@
       </td>
       <td class="doc-parameter-description">
         <p>A rating indicating the approximate accuracy of the latitude and longitude for the station's address, given as code values as described below:</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Value</th>
@@ -1709,6 +2983,267 @@
       </td>
       <td class="doc-parameter-description">A unique identifier for this specific station.</td>
     </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">facility_type</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The type of facility at which the station is located, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <th scope="row">AIRPORT</th>
+                <td>Airport</td>
+              </tr>
+              <tr>
+                <th scope="row">ARENA</th>
+                <td>Arena</td>
+              </tr>
+              <tr>
+                <th scope="row">AUTO_REPAIR</th>
+                <td>Auto Repair Shop</td>
+              </tr>
+              <tr>
+                <th scope="row">BANK</th>
+                <td>Bank</td>
+              </tr>
+              <tr>
+                <th scope="row">B_AND_B</th>
+                <td>B&amp;B</td>
+              </tr>
+              <tr>
+                <th scope="row">BREWERY_DISTILLERY_WINERY</th>
+                <td>Brewery/Distillery/Winery</td>
+              </tr>
+              <tr>
+                <th scope="row">CAMPGROUND</th>
+                <td>Campground</td>
+              </tr>
+              <tr>
+                <th scope="row">CAR_DEALER</th>
+                <td>Car Dealer</td>
+              </tr>
+              <tr>
+                <th scope="row">CARWASH</th>
+                <td>Carwash</td>
+              </tr>
+              <tr>
+                <th scope="row">COLLEGE_CAMPUS</th>
+                <td>College Campus</td>
+              </tr>
+              <tr>
+                <th scope="row">CONVENIENCE_STORE</th>
+                <td>Convenience Store</td>
+              </tr>
+              <tr>
+                <th scope="row">CONVENTION_CENTER</th>
+                <td>Convention Center</td>
+              </tr>
+              <tr>
+                <th scope="row">COOP</th>
+                <td>Co-Op</td>
+              </tr>
+              <tr>
+                <th scope="row">FACTORY</th>
+                <td>Factory</td>
+              </tr>
+              <tr>
+                <th scope="row">FED_GOV</th>
+                <td>Federal Government</td>
+              </tr>
+              <tr>
+                <th scope="row">FIRE_STATION</th>
+                <td>Fire Station</td>
+              </tr>
+              <tr>
+                <th scope="row">FLEET_GARAGE</th>
+                <td>Fleet Garage</td>
+              </tr>
+              <tr>
+                <th scope="row">FUEL_RESELLER</th>
+                <td>Fuel Reseller</td>
+              </tr>
+              <tr>
+                <th scope="row">GROCERY</th>
+                <td>Grocery Store</td>
+              </tr>
+              <tr>
+                <th scope="row">HARDWARE_STORE</th>
+                <td>Hardware Store</td>
+              </tr>
+              <tr>
+                <th scope="row">HOSPITAL</th>
+                <td>Hospital</td>
+              </tr>
+              <tr>
+                <th scope="row">HOTEL</th>
+                <td>Hotel</td>
+              </tr>
+              <tr>
+                <th scope="row">INN</th>
+                <td>Inn</td>
+              </tr>
+              <tr>
+                <th scope="row">LIBRARY</th>
+                <td>Library</td>
+              </tr>
+              <tr>
+                <th scope="row">MIL_BASE</th>
+                <td>Military Base</td>
+              </tr>
+              <tr>
+                <th scope="row">MOTOR_POOL</th>
+                <td>Motor Pool</td>
+              </tr>
+              <tr>
+                <th scope="row">MULTI_UNIT_DWELLING</th>
+                <td>Multi-Unit Dwelling</td>
+              </tr>
+              <tr>
+                <th scope="row">MUNI_GOV</th>
+                <td>Municipal Government</td>
+              </tr>
+              <tr>
+                <th scope="row">MUSEUM</th>
+                <td>Museum</td>
+              </tr>
+              <tr>
+                <th scope="row">NATL_PARK</th>
+                <td>National Park</td>
+              </tr>
+              <tr>
+                <th scope="row">OFFICE_BLDG</th>
+                <td>Office Building</td>
+              </tr>
+              <tr>
+                <th scope="row">OTHER</th>
+                <td>Other</td>
+              </tr>
+              <tr>
+                <th scope="row">OTHER_ENTERTAINMENT</th>
+                <td>Other Entertainment</td>
+              </tr>
+              <tr>
+                <th scope="row">PARK</th>
+                <td>Park</td>
+              </tr>
+              <tr>
+                <th scope="row">PARKING_GARAGE</th>
+                <td>Parking Garage</td>
+              </tr>
+              <tr>
+                <th scope="row">PARKING_LOT</th>
+                <td>Parking Lot</td>
+              </tr>
+              <tr>
+                <th scope="row">PAY_GARAGE</th>
+                <td>Pay-Parking Garage</td>
+              </tr>
+              <tr>
+                <th scope="row">PAY_LOT</th>
+                <td>Pay-Parking Lot</td>
+              </tr>
+              <tr>
+                <th scope="row">PHARMACY</th>
+                <td>Pharmacy</td>
+              </tr>
+              <tr>
+                <th scope="row">PLACE_OF_WORSHIP</th>
+                <td>Place of Worship</td>
+              </tr>
+              <tr>
+                <th scope="row">PRISON</th>
+                <td>Prison</td>
+              </tr>
+              <tr>
+                <th scope="row">REC_SPORTS_FACILITY</th>
+                <td>Recreational Sports Facility</td>
+              </tr>
+              <tr>
+                <th scope="row">REFINERY</th>
+                <td>Refinery</td>
+              </tr>
+              <tr>
+                <th scope="row">RENTAL_CAR_RETURN</th>
+                <td>Rental Car Return</td>
+              </tr>
+              <tr>
+                <th scope="row">RESEARCH_FACILITY</th>
+                <td>Research Facility/Laboratory</td>
+              </tr>
+              <tr>
+                <th scope="row">RESTAURANT</th>
+                <td>Restaurant</td>
+              </tr>
+              <tr>
+                <th scope="row">REST_STOP</th>
+                <td>Rest Stop</td>
+              </tr>
+              <tr>
+                <th scope="row">RV_PARK</th>
+                <td>RV Park</td>
+              </tr>
+              <tr>
+                <th scope="row">SCHOOL</th>
+                <td>School</td>
+              </tr>
+              <tr>
+                <th scope="row">GAS_STATION</th>
+                <td>Service/Gas Station</td>
+              </tr>
+              <tr>
+                <th scope="row">SHOPPING_CENTER</th>
+                <td>Shopping Center</td>
+              </tr>
+              <tr>
+                <th scope="row">SHOPPING_MALL</th>
+                <td>Shopping Mall</td>
+              </tr>
+              <tr>
+                <th scope="row">STADIUM</th>
+                <td>Stadium</td>
+              </tr>
+              <tr>
+                <th scope="row">STANDALONE_STATION</th>
+                <td>Standalone Station</td>
+              </tr>
+              <tr>
+                <th scope="row">STATE_GOV</th>
+                <td>State/Provincial Government</td>
+              </tr>
+              <tr>
+                <th scope="row">STORAGE</th>
+                <td>Storage Facility</td>
+              </tr>
+              <tr>
+                <th scope="row">STREET_PARKING</th>
+                <td>Street Parking</td>
+              </tr>
+              <tr>
+                <th scope="row">TRAVEL_CENTER</th>
+                <td>Travel Center</td>
+              </tr>
+              <tr>
+                <th scope="row">TRUCK_STOP</th>
+                <td>Truck Stop</td>
+              </tr>
+              <tr>
+                <th scope="row">UTILITY</th>
+                <td>Utility</td>
+              </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
       <tr>
         <th class="doc-parameter-name" scope="row">distance</th>
         <td class="doc-parameter-value">
@@ -1718,6 +3253,107 @@
         </td>
         <td class="doc-parameter-description">The distance, in miles, from the given location and this station.</td>
       </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">intersection_directions_fr</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">Brief additional information about how to locate the station, in French, if available.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">access_days_time_fr</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">Hours of operation for the station, in French, if available.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">bd_blends_fr</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">For biodiesel stations, the level of biodiesel blends the station provides, in French, if available.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">groups_with_access_code_fr</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>A description of who is allowed to access the station and other station access information, in French, if available.</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Privé</th>
+              <td>Private station.</td>
+            </tr>
+            <tr>
+              <th scope="row">Privé - réservé aux clients de parcs</th>
+              <td>Private station that may allow other entities to fuel through a business-to-business arrangement. For more information, fleet customers should refer to the “Access Days Time” field for contact information or contact the station directly.</td>
+            </tr>
+            <tr>
+              <th scope="row">Privé – réservé au gouvernement</th>
+              <td>Private station available only to government vehicles, or some subset of government vehicles.</td>
+            </tr>
+            <tr>
+              <th scope="row">Public</th>
+              <td>Publicly available to all customers.</td>
+            </tr>
+            <tr>
+              <th scope="row">Public – appeler à l'avance</th>
+              <td>Publicly available, but customers should call before visiting the station. See “Station Phone” for more details.</td>
+            </tr>
+            <tr>
+              <th scope="row">Public – carte de crédit en tout temps</th>
+              <td>Publicly available, but only accepts credit cards as payment. The station may also accept fleet cards or station-specific fueling cards. See “Cards Accepted” field for more details.</td>
+            </tr>
+            <tr>
+              <th scope="row">Public – carte-clé en tout temps</th>
+              <td>Publicly available, but only accepts fleet cards or station-specific fueling cards as payment. See “Cards Accepted” field for more details.</td>
+            </tr>
+            <tr>
+              <th scope="row">Public – carte de crédit après les heures d'ouverture</th>
+              <td>Publicly available, and accepts credit cards 24 hours a day. See “Access Days Time” and “Cards Accepted” fields for more details.</td>
+            </tr>
+            <tr>
+              <th scope="row">Public – carte-clé après les heures d'ouverture</th>
+              <td>Publicly available, and accepts fleet cards or station-specific fueling cards 24 hours a day. See “Access Days Time” and “Cards Accepted” fields for more details.</td>
+            </tr>
+            <tr>
+              <th scope="row">PRÉVU - pas encore accessible</th>
+              <td>Not yet open, but plans to carry alternative fuel in the future. See the "Expected Date" field for an anticipated open date.</td>
+            </tr>
+            <tr>
+              <th scope="row">TEMPORAIREMENT SUSPENDU</th>
+              <td>Temporarily unavailable. See the “Expected Date” field for an anticipated open date.</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">ev_pricing_fr</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">For EVSE stations, information about whether and how much users must pay to use the EVSE, in French, if available.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1749,6 +3385,47 @@
         </div>
       </td>
       <td class="doc-parameter-description">The name of the federal agency.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="ev-network-id-record-fields">EV Network ID Record Fields</h3>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">station</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">The identifier for the station provided by the EV network, if available.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">posts</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">An array of strings containing the identifier(s) for the post(s) provided by the EV network, if available.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">ports</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">An array of strings containing the identifier(s) for the port(s) provided by EV network, if available.</td>
     </tr>
   </tbody>
 </table>
@@ -1798,145 +3475,300 @@
   </tbody>
 </table>
 
+<h3 id="station-count-record-fields">Station Count Record Fields</h3>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">total</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+      </td>
+      <td class="doc-parameter-description">The total number of stations for all fuel types that matched your query. Individual stations count multiple times if the station offers more than one fuel type. For electric, the count includes charging outlets.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">fuels</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> record
+        </div>
+      </td>
+      <td class="doc-parameter-description">The number of stations for individual fuel types that mached your query. This object's structure provides a <code>total</code> field under each fuel key. For electric, the count includes charging outlets. For electric, there is a further <code>stations.total</code> field that returns the number of fuel station records matched, not counting charging outlets.</td>
+    </tr>
+  </tbody>
+</table>
+
 <h2 id="examples">Examples</h2>
 
 <h3 id="json-output-format">JSON Output Format</h3>
 
 <pre>GET <a href="/api/alt-fuel-stations/v1/nearest.json?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.json?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1</a></pre>
 
-<pre><code class="highlight json"><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.74311</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-105.152332</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"location_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"precision"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"premise"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"premise"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"station_locator_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.afdc.energy.gov/afdc/locator/stations/"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"total_results"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"station_counts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">106</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fuels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"BD"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"E85"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"ELEC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">106</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"stations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"HY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"LNG"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"CNG"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"LPG"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"fuel_stations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"access_days_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"bd_blends"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"access_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"access_days_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MO: 12:00am-12:00am; TU: 12:00am-12:00am; WE: 12:00am-12:00am; TH: 12:00am-12:00am; FR: 12:00am-12:00am; SA: 12:00am-12:00am; SU: 12:00am-12:00am"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"access_detail_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"cards_accepted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Golden"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"date_last_confirmed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-12-31"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"date_last_confirmed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-02"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"expected_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"fuel_type_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ELEC"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"geocode_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200-8"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"groups_with_access_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Private access only"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hy_status_link"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"intersection_directions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Building 17"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.7408399</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-105.1685277</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"open_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-05-20"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"owner_type_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FG"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"plus4"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"National Renewable Energy Laboratory - Denver West"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"station_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"groups_with_access_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Public"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118375</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"open_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"owner_type_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15013 Denver West Pkwy"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80401"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Denver West Bldg 17"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"station_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"800-663-5633"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-02T09:03:50Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"facility_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"geocode_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GPS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.744703073211</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-105.15229735145</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lakewood"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"intersection_directions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The stations are located in the back of the building on the I-70 side."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"plus4"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CO"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1626 Cole Boulevard"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80401"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bd_blends"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cng_dispenser_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cng_fill_type_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cng_psi"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cng_renewable_source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cng_total_compression"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cng_total_storage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cng_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"e85_blender_pump"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"e85_other_ethanol_blends"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ev_connector_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"J1772"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"ev_dc_fast_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ev_level1_evse_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ev_level2_evse_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ev_network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SemaCharge Network"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ev_network_web"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.semacharge.com/"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ev_other_evse"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ev_pricing"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FREE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hy_is_retail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hy_pressures"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hy_standards"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hy_status_link"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lng_renewable_source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lng_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lpg_primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lpg_nozzle_types"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"ng_fill_type_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"ng_psi"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"ng_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"e85_blender_pump"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ev_level1_evse_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ev_level2_evse_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">38</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ev_dc_fast_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ev_other_evse"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ev_network"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ev_network_web"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lpg_primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39534</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-01-16T16:09:02Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.92673</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"federal_agency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"U.S. Department of Energy"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+      </span><span class="s2">"access_days_time_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"intersection_directions_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bd_blends_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"groups_with_access_code_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Public"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ev_pricing_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ev_network_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"station"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"1309"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"posts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"2976"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"3633"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.10992</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"distance_km"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1769</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.744696</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-105.15186</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"precision"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"address"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"street_address"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"station_locator_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.afdc.energy.gov/afdc/locator/stations/"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"total_results"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-
+</span></code></pre></div>
 <h3 id="xml-output-format">XML Output Format</h3>
 
 <pre>GET <a href="/api/alt-fuel-stations/v1/nearest.xml?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.xml?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1</a></pre>
 
-<pre><code class="highlight xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<div class="highlight"><pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;response&gt;</span>
-  <span class="nt">&lt;latitude&gt;</span>39.744696<span class="nt">&lt;/latitude&gt;</span>
-  <span class="nt">&lt;longitude&gt;</span>-105.15186<span class="nt">&lt;/longitude&gt;</span>
+  <span class="nt">&lt;latitude&gt;</span>39.74311<span class="nt">&lt;/latitude&gt;</span>
+  <span class="nt">&lt;longitude&gt;</span>-105.152332<span class="nt">&lt;/longitude&gt;</span>
+  <span class="nt">&lt;location-country&gt;</span>US<span class="nt">&lt;/location-country&gt;</span>
   <span class="nt">&lt;precision&gt;</span>
-    <span class="nt">&lt;name&gt;</span>address<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>9<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;name&gt;</span>premise<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;types</span> <span class="na">type=</span><span class="s">"array"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;type&gt;</span>street_address<span class="nt">&lt;/type&gt;</span>
+      <span class="nt">&lt;type&gt;</span>premise<span class="nt">&lt;/type&gt;</span>
     <span class="nt">&lt;/types&gt;</span>
-    <span class="nt">&lt;value</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>8<span class="nt">&lt;/value&gt;</span>
   <span class="nt">&lt;/precision&gt;</span>
   <span class="nt">&lt;station-locator-url&gt;</span>http://www.afdc.energy.gov/afdc/locator/stations/<span class="nt">&lt;/station-locator-url&gt;</span>
-  <span class="nt">&lt;total-results&gt;</span>12<span class="nt">&lt;/total-results&gt;</span>
+  <span class="nt">&lt;total-results&gt;</span>34<span class="nt">&lt;/total-results&gt;</span>
+  <span class="nt">&lt;station-counts&gt;</span>
+    <span class="nt">&lt;total&gt;</span>106<span class="nt">&lt;/total&gt;</span>
+    <span class="nt">&lt;fuels&gt;</span>
+      <span class="nt">&lt;BD&gt;</span>
+        <span class="nt">&lt;total&gt;</span>0<span class="nt">&lt;/total&gt;</span>
+      <span class="nt">&lt;/BD&gt;</span>
+      <span class="nt">&lt;E85&gt;</span>
+        <span class="nt">&lt;total&gt;</span>0<span class="nt">&lt;/total&gt;</span>
+      <span class="nt">&lt;/E85&gt;</span>
+      <span class="nt">&lt;ELEC&gt;</span>
+        <span class="nt">&lt;total&gt;</span>106<span class="nt">&lt;/total&gt;</span>
+        <span class="nt">&lt;stations&gt;</span>
+          <span class="nt">&lt;total&gt;</span>34<span class="nt">&lt;/total&gt;</span>
+        <span class="nt">&lt;/stations&gt;</span>
+      <span class="nt">&lt;/ELEC&gt;</span>
+      <span class="nt">&lt;HY&gt;</span>
+        <span class="nt">&lt;total&gt;</span>0<span class="nt">&lt;/total&gt;</span>
+      <span class="nt">&lt;/HY&gt;</span>
+      <span class="nt">&lt;LNG&gt;</span>
+        <span class="nt">&lt;total&gt;</span>0<span class="nt">&lt;/total&gt;</span>
+      <span class="nt">&lt;/LNG&gt;</span>
+      <span class="nt">&lt;CNG&gt;</span>
+        <span class="nt">&lt;total&gt;</span>0<span class="nt">&lt;/total&gt;</span>
+      <span class="nt">&lt;/CNG&gt;</span>
+      <span class="nt">&lt;LPG&gt;</span>
+        <span class="nt">&lt;total&gt;</span>0<span class="nt">&lt;/total&gt;</span>
+      <span class="nt">&lt;/LPG&gt;</span>
+    <span class="nt">&lt;/fuels&gt;</span>
+  <span class="nt">&lt;/station-counts&gt;</span>
   <span class="nt">&lt;offset&gt;</span>0<span class="nt">&lt;/offset&gt;</span>
   <span class="nt">&lt;fuel-stations</span> <span class="na">type=</span><span class="s">"array"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;fuel-station&gt;</span>
-      <span class="nt">&lt;access-days-time</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;bd-blends</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;access-code&gt;</span>public<span class="nt">&lt;/access-code&gt;</span>
+      <span class="nt">&lt;access-days-time&gt;</span>MO: 12:00am-12:00am; TU: 12:00am-12:00am; WE: 12:00am-12:00am; TH: 12:00am-12:00am; FR: 12:00am-12:00am; SA: 12:00am-12:00am; SU: 12:00am-12:00am<span class="nt">&lt;/access-days-time&gt;</span>
+      <span class="nt">&lt;access-detail-code</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;cards-accepted</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;city&gt;</span>Golden<span class="nt">&lt;/city&gt;</span>
-      <span class="nt">&lt;date-last-confirmed&gt;</span>2012-12-31<span class="nt">&lt;/date-last-confirmed&gt;</span>
+      <span class="nt">&lt;date-last-confirmed&gt;</span>2019-04-02<span class="nt">&lt;/date-last-confirmed&gt;</span>
       <span class="nt">&lt;expected-date</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;fuel-type-code&gt;</span>ELEC<span class="nt">&lt;/fuel-type-code&gt;</span>
-      <span class="nt">&lt;geocode-status&gt;</span>200-8<span class="nt">&lt;/geocode-status&gt;</span>
-      <span class="nt">&lt;groups-with-access-code&gt;</span>Private access only<span class="nt">&lt;/groups-with-access-code&gt;</span>
-      <span class="nt">&lt;hy-status-link</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;intersection-directions&gt;</span>Building 17<span class="nt">&lt;/intersection-directions&gt;</span>
-      <span class="nt">&lt;latitude&gt;</span>39.7408399<span class="nt">&lt;/latitude&gt;</span>
-      <span class="nt">&lt;longitude&gt;</span>-105.1685277<span class="nt">&lt;/longitude&gt;</span>
-      <span class="nt">&lt;open-date&gt;</span>2011-05-20<span class="nt">&lt;/open-date&gt;</span>
-      <span class="nt">&lt;owner-type-code&gt;</span>FG<span class="nt">&lt;/owner-type-code&gt;</span>
-      <span class="nt">&lt;plus4</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;station-name&gt;</span>National Renewable Energy Laboratory - Denver West<span class="nt">&lt;/station-name&gt;</span>
-      <span class="nt">&lt;station-phone</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;groups-with-access-code&gt;</span>Public<span class="nt">&lt;/groups-with-access-code&gt;</span>
+      <span class="nt">&lt;id&gt;</span>118375<span class="nt">&lt;/id&gt;</span>
+      <span class="nt">&lt;open-date</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;owner-type-code</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;status-code&gt;</span>E<span class="nt">&lt;/status-code&gt;</span>
-      <span class="nt">&lt;street-address&gt;</span>15013 Denver West Pkwy<span class="nt">&lt;/street-address&gt;</span>
-      <span class="nt">&lt;zip&gt;</span>80401<span class="nt">&lt;/zip&gt;</span>
+      <span class="nt">&lt;station-name&gt;</span>Denver West Bldg 17<span class="nt">&lt;/station-name&gt;</span>
+      <span class="nt">&lt;station-phone&gt;</span>800-663-5633<span class="nt">&lt;/station-phone&gt;</span>
+      <span class="nt">&lt;updated-at&gt;</span>2019-04-02 09:03:50 UTC<span class="nt">&lt;/updated-at&gt;</span>
+      <span class="nt">&lt;facility-type</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;geocode-status&gt;</span>GPS<span class="nt">&lt;/geocode-status&gt;</span>
+      <span class="nt">&lt;latitude&gt;</span>39.744703073211<span class="nt">&lt;/latitude&gt;</span>
+      <span class="nt">&lt;longitude&gt;</span>-105.15229735145<span class="nt">&lt;/longitude&gt;</span>
+      <span class="nt">&lt;city&gt;</span>Lakewood<span class="nt">&lt;/city&gt;</span>
+      <span class="nt">&lt;intersection-directions&gt;</span>The stations are located in the back of the building on the I-70 side.<span class="nt">&lt;/intersection-directions&gt;</span>
+      <span class="nt">&lt;plus4</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;state&gt;</span>CO<span class="nt">&lt;/state&gt;</span>
+      <span class="nt">&lt;street-address&gt;</span>1626 Cole Boulevard<span class="nt">&lt;/street-address&gt;</span>
+      <span class="nt">&lt;zip&gt;</span>80401<span class="nt">&lt;/zip&gt;</span>
+      <span class="nt">&lt;country&gt;</span>US<span class="nt">&lt;/country&gt;</span>
+      <span class="nt">&lt;bd-blends</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;cng-dispenser-num</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;cng-fill-type-code</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;cng-psi</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;cng-renewable-source</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;cng-total-compression</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;cng-total-storage</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;cng-vehicle-class</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;e85-blender-pump</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;e85-other-ethanol-blends</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;ev-connector-types&gt;</span>
+        <span class="nt">&lt;ev-connector-type&gt;</span>J1772<span class="nt">&lt;/ev-connector-type&gt;</span>
+      <span class="nt">&lt;/ev-connector-types&gt;</span>
+      <span class="nt">&lt;ev-dc-fast-num</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;ev-level1-evse-num</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;ev-level2-evse-num&gt;</span>2<span class="nt">&lt;/ev-level2-evse-num&gt;</span>
+      <span class="nt">&lt;ev-network&gt;</span>SemaCharge Network<span class="nt">&lt;/ev-network&gt;</span>
+      <span class="nt">&lt;ev-network-web&gt;</span>http://www.semacharge.com/<span class="nt">&lt;/ev-network-web&gt;</span>
+      <span class="nt">&lt;ev-other-evse</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;ev-pricing&gt;</span>FREE<span class="nt">&lt;/ev-pricing&gt;</span>
+      <span class="nt">&lt;hy-is-retail</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;hy-pressures</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;hy-standards</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;hy-status-link</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;lng-renewable-source</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;lng-vehicle-class</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;lpg-primary</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;lpg-nozzle-types</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;ng-fill-type-code</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;ng-psi</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;ng-vehicle-class</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;e85-blender-pump</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;ev-level1-evse-num</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;ev-level2-evse-num&gt;</span>38<span class="nt">&lt;/ev-level2-evse-num&gt;</span>
-      <span class="nt">&lt;ev-dc-fast-num</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;ev-other-evse</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;ev-network</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;ev-network-web</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;lpg-primary</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;id&gt;</span>39534<span class="nt">&lt;/id&gt;</span>
-      <span class="nt">&lt;updated-at&gt;</span>2013-01-16T16:09:02Z<span class="nt">&lt;/updated-at&gt;</span>
-      <span class="nt">&lt;distance&gt;</span>0.92673<span class="nt">&lt;/distance&gt;</span>
-      <span class="nt">&lt;federal-agency&gt;</span>
-        <span class="nt">&lt;id</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>8<span class="nt">&lt;/id&gt;</span>
-        <span class="nt">&lt;name&gt;</span>U.S. Department of Energy<span class="nt">&lt;/name&gt;</span>
-      <span class="nt">&lt;/federal-agency&gt;</span>
+      <span class="nt">&lt;access-days-time-fr</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;intersection-directions-fr</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;bd-blends-fr</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;groups-with-access-code-fr&gt;</span>Public<span class="nt">&lt;/groups-with-access-code-fr&gt;</span>
+      <span class="nt">&lt;ev-pricing-fr</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;ev-network-ids&gt;</span>
+        <span class="nt">&lt;station&gt;</span>
+          <span class="nt">&lt;station&gt;</span>1309<span class="nt">&lt;/station&gt;</span>
+        <span class="nt">&lt;/station&gt;</span>
+        <span class="nt">&lt;posts&gt;</span>
+          <span class="nt">&lt;post&gt;</span>2976<span class="nt">&lt;/post&gt;</span>
+          <span class="nt">&lt;post&gt;</span>3633<span class="nt">&lt;/post&gt;</span>
+        <span class="nt">&lt;/posts&gt;</span>
+      <span class="nt">&lt;/ev-network-ids&gt;</span>
+      <span class="nt">&lt;distance&gt;</span>0.10992<span class="nt">&lt;/distance&gt;</span>
+      <span class="nt">&lt;distance-km&gt;</span>0.1769<span class="nt">&lt;/distance-km&gt;</span>
     <span class="nt">&lt;/fuel-station&gt;</span>
   <span class="nt">&lt;/fuel-stations&gt;</span>
 <span class="nt">&lt;/response&gt;</span>
-</code></pre>
-
+</code></pre></div>
 <h3 id="csv-output-format">CSV Output Format</h3>
 
 <pre>GET <a href="/api/alt-fuel-stations/v1/nearest.csv?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.csv?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1</a></pre>
 
-<pre><code class="highlight plaintext">Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Distance,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump
-ELEC,National Renewable Energy Laboratory - Denver West,15013 Denver West Pkwy,Building 17,Golden,CO,80401,,,E,,Private access only,,,,,,,38,,,,,200-8,39.7408399,-105.1685277,2012-12-31,39534,0.92673,2013-01-16 16:09:02 UTC,FG,8,U.S. Department of Energy,2011-05-20,,,,
-</code></pre>
-
+<div class="highlight"><pre class="highlight plaintext"><code>Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Distance,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump,EV Connector Types,Country,Distance (km),Intersection Directions (French),Access Days Time (French),BD Blends (French),Groups With Access Code (French),Hydrogen Is Retail,Access Code,Access Detail Code,Federal Agency Code,Facility Type,CNG Dispenser Num,CNG On-Site Renewable Source,CNG Total Compression Capacity,CNG Storage Capacity,LNG On-Site Renewable Source,E85 Other Ethanol Blends,EV Pricing,EV Pricing (French),LPG Nozzle Types,Hydrogen Pressures,Hydrogen Standards,CNG Fill Type Code,CNG PSI,CNG Vehicle Class,LNG Vehicle Class
+ELEC,Denver West Bldg 17,1626 Cole Boulevard,The stations are located in the back of the building on the I-70 side.,Lakewood,CO,80401,,800-663-5633,E,,Public,MO: 12:00am-12:00am; TU: 12:00am-12:00am; WE: 12:00am-12:00am; TH: 12:00am-12:00am; FR: 12:00am-12:00am; SA: 12:00am-12:00am; SU: 12:00am-12:00am,,,,,,2,,,SemaCharge Network,http://www.semacharge.com/,GPS,39.744703073211,-105.15229735145,2019-04-02,118375,0.10992,2019-04-02 09:03:50 UTC,,,,,,,,,J1772,US,0.1769,,,,Public,,public,,,,,,,,,,FREE,,,,,,,,
+</code></pre></div>
 <h2 id="rate-limits">Rate Limits</h2>
 
 <p><a href="/docs/rate-limits">Standard rate limits</a> apply. No more than 1,000 requests may be made in any hour</p>
@@ -1961,11 +3793,11 @@ ELEC,National Renewable Energy Laboratory - Denver West,15013 Denver West Pkwy,B
 </table>
 
     <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
-  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/transportation/alt-fuel-stations-v1/nearest.md.erb">Help Improve this Content</a>
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/transportation/alt-fuel-stations-v1/nearest.html.md.erb">Help Improve this Content</a>
 </div>
 
       <footer class="container-fluid">
-    <div align="center"><img alt="NREL is a national laboratory of the U.S. Department of Energy, Office of Energy Efficiency and Renewable Energy, operated by the Alliance for Sustainable Energy, LLC." usemap="#footer_map" src="../../../../assets/images/nrel/foot_nrelis-8e56f120.gif" /></div>
+    <div align="center"><img src="/assets/images/nrel/foot_nrelis-8e56f120.gif" alt="NREL is a national laboratory of the U.S. Department of Energy, Office of Energy Efficiency and Renewable Energy, operated by the Alliance for Sustainable Energy, LLC." usemap="#footer_map" class="img-fluid" /></div>
 
     <map name="footer_map" id="footer_map">
       <area shape="rect" coords="27,7,61,20" href="http://www.nrel.gov/" alt="NREL" />
