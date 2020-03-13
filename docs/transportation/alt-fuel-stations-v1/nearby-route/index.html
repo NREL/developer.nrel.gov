@@ -209,12 +209,12 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>all</em>, <i>E, P, T</i>
+      <strong>Options:</strong> <em>all</em>, <em>E</em>, <em>P</em>, <em>T</em>
     </div>
   </td>
   <td class="doc-parameter-description">
     <p>Return stations that match the given status. A single status, or a comma-separated list of multiple statuses, may be given.</p>
-      <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">Option</th>
@@ -222,22 +222,22 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">all</th>
-          <td>Include both open and planned stations.</td>
-        </tr>
-        <tr>
-          <th scope="row">E</th>
-          <td>Open: The station is open and carries alternative fuel.</td>
-        </tr>
-        <tr>
-          <th scope="row">P</th>
-          <td>Planned: The station is not yet open, but plans to carry alternative fuel in the future, or the station is temporarily out of service.</td>
-        </tr>
-        <tr>
-          <th scope="row">T</th>
-          <td>Temporarily unavailable: The station is temporarily unavailable. See the “Expected Date” field for an anticipated open date.</td>
-        </tr>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th scope="row">E</th>
+            <td>Available</td>
+          </tr>
+          <tr>
+            <th scope="row">P</th>
+            <td>Planned</td>
+          </tr>
+          <tr>
+            <th scope="row">T</th>
+            <td>Temporarily Unavailable</td>
+          </tr>
       </tbody>
     </table>
   </td>
@@ -253,11 +253,33 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <i>all, public, private</i>
+      <strong>Options:</strong> <em>all</em>, <em>public</em>, <em>private</em>
     </div>
   </td>
   <td class="doc-parameter-description">
     <p>Return stations with the given access type.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th scope="row">public</th>
+            <td>Public</td>
+          </tr>
+          <tr>
+            <th scope="row">private</th>
+            <td>Private</td>
+          </tr>
+      </tbody>
+    </table>
   </td>
 </tr>
 <tr>
@@ -271,7 +293,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>all</em>, <em>BD</em>, <em>CNG</em>, <em>E85</em>, <em>ELEC</em>, <em>HY</em>, <em>LNG</em>, <em>LPG</em>
+      <strong>Options:</strong> <em>all</em>, <em>BD</em>, <em>CNG</em>, <em>ELEC</em>, <em>E85</em>, <em>HY</em>, <em>LNG</em>, <em>LPG</em>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -279,43 +301,43 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
-          <th scope="col">Option</th>
+          <th scope="col">Value</th>
           <th scope="col">Description</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">all</th>
-          <td>Include all fuel types</td>
-        </tr>
-        <tr>
-          <th scope="row">BD</th>
-          <td>Biodiesel (B20 and above)</td>
-        </tr>
-        <tr>
-          <th scope="row">CNG</th>
-          <td>Compressed Natural Gas</td>
-        </tr>
-        <tr>
-          <th scope="row">E85</th>
-          <td>Ethanol (E85)</td>
-        </tr>
-        <tr>
-          <th scope="row">ELEC</th>
-          <td>Electric</td>
-        </tr>
-        <tr>
-          <th scope="row">HY</th>
-          <td>Hydrogen</td>
-        </tr>
-        <tr>
-          <th scope="row">LNG</th>
-          <td>Liquefied Natural Gas</td>
-        </tr>
-        <tr>
-          <th scope="row">LPG</th>
-          <td>Liquefied Petroleum Gas (Propane)</td>
-        </tr>
+          <tr>
+            <th scope="row">all</th>
+            <td>All Fuels</td>
+          </tr>
+          <tr>
+            <th scope="row">BD</th>
+            <td>Biodiesel (B20 and above)</td>
+          </tr>
+          <tr>
+            <th scope="row">CNG</th>
+            <td>Compressed Natural Gas (CNG)</td>
+          </tr>
+          <tr>
+            <th scope="row">ELEC</th>
+            <td>Electric</td>
+          </tr>
+          <tr>
+            <th scope="row">E85</th>
+            <td>Ethanol (E85)</td>
+          </tr>
+          <tr>
+            <th scope="row">HY</th>
+            <td>Hydrogen</td>
+          </tr>
+          <tr>
+            <th scope="row">LNG</th>
+            <td>Liquefied Natural Gas (LNG)</td>
+          </tr>
+          <tr>
+            <th scope="row">LPG</th>
+            <td>Propane (LPG)</td>
+          </tr>
       </tbody>
     </table>
   </td>
@@ -331,7 +353,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>all, A, D, M, V, Cash, Checks, CFN, CleanEnergy, Comdata, EFS, FleetOne, FuelMan, GasCard, PHH, PacificPride, Speedway, Tchek, TCH, Trillium, Voyager, Wright_Exp</em>
+      <strong>Options:</strong> <em>all</em>, <em>A</em>, <em>Debit</em>, <em>D</em>, <em>M</em>, <em>V</em>, <em>Cash</em>, <em>Checks</em>, <em>ARI</em>, <em>CleanEnergy</em>, <em>Comdata</em>, <em>CFN</em>, <em>EFS</em>, <em>FleetOne</em>, <em>FuelMan</em>, <em>GasCard</em>, <em>PacificPride</em>, <em>PHH</em>, <em>Proprietor</em>, <em>Speedway</em>, <em>SuperPass</em>, <em>TCH</em>, <em>Tchek</em>, <em>Trillium</em>, <em>Voyager</em>, <em>Wright_Exp</em>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -344,94 +366,110 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">all</th>
-          <td>Include all payment types</td>
-        </tr>
-        <tr>
-          <th scope="row">A</th>
-          <td>American Express</td>
-        </tr>
-        <tr>
-          <th scope="row">D</th>
-          <td>Discover</td>
-        </tr>
-        <tr>
-          <th scope="row">M</th>
-          <td>MasterCard</td>
-        </tr>
-        <tr>
-          <th scope="row">V</th>
-          <td>VISA</td>
-        </tr>
-        <tr>
-          <th scope="row">Cash</th>
-          <td>Cash</td>
-        </tr>
-        <tr>
-          <th scope="row">Checks</th>
-          <td>Check</td>
-        </tr>
-        <tr>
-          <th scope="row">CFN</th>
-          <td>Commercial Fueling Network</td>
-        </tr>
-        <tr>
-          <th scope="row">CleanEnergy</th>
-          <td>Clean Energy</td>
-        </tr>
-        <tr>
-          <th scope="row">Comdata</th>
-          <td>Comdata</td>
-        </tr>
-        <tr>
-          <th scope="row">EFS</th>
-          <td>EFS</td>
-        </tr>
-        <tr>
-          <th scope="row">FleetOne</th>
-          <td>Fleet One</td>
-        </tr>
-        <tr>
-          <th scope="row">FuelMan</th>
-          <td>Fuelman</td>
-        </tr>
-        <tr>
-          <th scope="row">GasCard</th>
-          <td>GASCARD</td>
-        </tr>
-        <tr>
-          <th scope="row">PHH</th>
-          <td>PHH</td>
-        </tr>
-        <tr>
-          <th scope="row">PacificPride</th>
-          <td>Pacific Pride</td>
-        </tr>
-        <tr>
-          <th scope="row">Speedway</th>
-          <td>Speedway</td>
-        </tr>
-        <tr>
-          <th scope="row">Tchek</th>
-          <td>T-Chek T-Card</td>
-        </tr>
-        <tr>
-          <th scope="row">TCH</th>
-          <td>TCH</td>
-        </tr>
-        <tr>
-          <th scope="row">Trillium</th>
-          <td>Trillium</td>
-        </tr>
-        <tr>
-          <th scope="row">Voyager</th>
-          <td>Voyager</td>
-        </tr>
-        <tr>
-          <th scope="row">Wright_Exp</th>
-          <td>WEX</td>
-        </tr>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th scope="row">A</th>
+            <td>American Express</td>
+          </tr>
+          <tr>
+            <th scope="row">Debit</th>
+            <td>Debit</td>
+          </tr>
+          <tr>
+            <th scope="row">D</th>
+            <td>Discover</td>
+          </tr>
+          <tr>
+            <th scope="row">M</th>
+            <td>MasterCard</td>
+          </tr>
+          <tr>
+            <th scope="row">V</th>
+            <td>Visa</td>
+          </tr>
+          <tr>
+            <th scope="row">Cash</th>
+            <td>Cash</td>
+          </tr>
+          <tr>
+            <th scope="row">Checks</th>
+            <td>Check</td>
+          </tr>
+          <tr>
+            <th scope="row">ARI</th>
+            <td>ARI</td>
+          </tr>
+          <tr>
+            <th scope="row">CleanEnergy</th>
+            <td>Clean Energy</td>
+          </tr>
+          <tr>
+            <th scope="row">Comdata</th>
+            <td>Comdata</td>
+          </tr>
+          <tr>
+            <th scope="row">CFN</th>
+            <td>Commercial Fueling Network</td>
+          </tr>
+          <tr>
+            <th scope="row">EFS</th>
+            <td>EFS</td>
+          </tr>
+          <tr>
+            <th scope="row">FleetOne</th>
+            <td>Fleet One</td>
+          </tr>
+          <tr>
+            <th scope="row">FuelMan</th>
+            <td>Fuelman</td>
+          </tr>
+          <tr>
+            <th scope="row">GasCard</th>
+            <td>GASCARD</td>
+          </tr>
+          <tr>
+            <th scope="row">PacificPride</th>
+            <td>Pacific Pride</td>
+          </tr>
+          <tr>
+            <th scope="row">PHH</th>
+            <td>PHH</td>
+          </tr>
+          <tr>
+            <th scope="row">Proprietor</th>
+            <td>Proprietor Fleet Card</td>
+          </tr>
+          <tr>
+            <th scope="row">Speedway</th>
+            <td>Speedway</td>
+          </tr>
+          <tr>
+            <th scope="row">SuperPass</th>
+            <td>SuperPass</td>
+          </tr>
+          <tr>
+            <th scope="row">TCH</th>
+            <td>TCH</td>
+          </tr>
+          <tr>
+            <th scope="row">Tchek</th>
+            <td>T-Chek T-Card</td>
+          </tr>
+          <tr>
+            <th scope="row">Trillium</th>
+            <td>Trillium</td>
+          </tr>
+          <tr>
+            <th scope="row">Voyager</th>
+            <td>Voyager</td>
+          </tr>
+          <tr>
+            <th scope="row">Wright_Exp</th>
+            <td>WEX</td>
+          </tr>
       </tbody>
     </table>
   </td>
@@ -447,7 +485,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>all, FG, LG, P, SG, T</em>
+      <strong>Options:</strong> <em>all</em>, <em>FG</em>, <em>J</em>, <em>LG</em>, <em>P</em>, <em>SG</em>, <em>T</em>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -460,34 +498,34 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">all</th>
-          <td>Include all owner types</td>
-        </tr>
-        <tr>
-          <th scope="row">P</th>
-          <td>Privately owned</td>
-        </tr>
-        <tr>
-          <th scope="row">T</th>
-          <td>Utility owned</td>
-        </tr>
-        <tr>
-          <th scope="row">FG</th>
-          <td>Federal government owned</td>
-        </tr>
-        <tr>
-          <th scope="row">LG</th>
-          <td>Local government owned</td>
-        </tr>
-        <tr>
-          <th scope="row">SG</th>
-          <td>State government owned</td>
-        </tr>
-        <tr>
-          <th scope="row">J</th>
-          <td>Jointly owned (combination of owner types)</td>
-        </tr>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th scope="row">FG</th>
+            <td>Federal Government Owned</td>
+          </tr>
+          <tr>
+            <th scope="row">J</th>
+            <td>Jointly Owned</td>
+          </tr>
+          <tr>
+            <th scope="row">LG</th>
+            <td>Local/Municipal Government Owned</td>
+          </tr>
+          <tr>
+            <th scope="row">P</th>
+            <td>Privately Owned</td>
+          </tr>
+          <tr>
+            <th scope="row">SG</th>
+            <td>State/Provincial Government Owned</td>
+          </tr>
+          <tr>
+            <th scope="row">T</th>
+            <td>Utility Owned</td>
+          </tr>
       </tbody>
     </table>
   </td>
@@ -503,7 +541,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>all, (see table to right for codes)</em>
+      <strong>Options:</strong> <em>all</em>, <em>AAF</em>, <em>CH</em>, <em>CHSW</em>, <em>USACE_CW</em>, <em>CSOSA</em>, <em>DEF</em>, <em>DAF</em>, <em>DA</em>, <em>DOC</em>, <em>HHS</em>, <em>DHS</em>, <em>HUD</em>, <em>DOJ</em>, <em>DOL</em>, <em>DON</em>, <em>DOS</em>, <em>DOI</em>, <em>DOT</em>, <em>DTS</em>, <em>VA</em>, <em>EWDL</em>, <em>ECC</em>, <em>FCSD</em>, <em>FTC</em>, <em>FIN</em>, <em>FOCCG</em>, <em>GSA</em>, <em>GAFA</em>, <em>GAID</em>, <em>GAIT</em>, <em>HLTH</em>, <em>IRC</em>, <em>INA</em>, <em>IC</em>, <em>ISED</em>, <em>JUS</em>, <em>LGHC</em>, <em>NASA</em>, <em>NDEF</em>, <em>NREV</em>, <em>NRES</em>, <em>PARL</em>, <em>PQPCC</em>, <em>PM</em>, <em>PSEP</em>, <em>PSP</em>, <em>SCI</em>, <em>SBT</em>, <em>SI</em>, <em>SSA</em>, <em>TRANS</em>, <em>TREAS</em>, <em>USMC</em>, <em>CBP</em>, <em>USDA</em>, <em>DOD</em>, <em>DOE</em>, <em>EPA</em>, <em>FAA</em>, <em>IRS</em>, <em>USPS</em>, <em>VAFF</em>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -516,10 +554,10 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">all</th>
-          <td>Include all stations, regardless of federal agency owner</td>
-        </tr>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
           <tr>
             <th scope="row">AAF</th>
             <td>Agriculture and Agri-Food (CA)</td>
@@ -783,11 +821,11 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>all, (see table to right for IDs)</em>
+      <strong>Options:</strong> <em>all</em>, <em>32</em>, <em>33</em>, <em>34</em>, <em>2</em>, <em>28</em>, <em>3</em>, <em>5</em>, <em>6</em>, <em>7</em>, <em>9</em>, <em>10</em>, <em>11</em>, <em>12</em>, <em>13</em>, <em>14</em>, <em>15</em>, <em>16</em>, <em>17</em>, <em>18</em>, <em>19</em>, <em>35</em>, <em>36</em>, <em>37</em>, <em>31</em>, <em>38</em>, <em>39</em>, <em>21</em>, <em>40</em>, <em>41</em>, <em>42</em>, <em>43</em>, <em>44</em>, <em>45</em>, <em>46</em>, <em>47</em>, <em>48</em>, <em>49</em>, <em>22</em>, <em>50</em>, <em>51</em>, <em>52</em>, <em>53</em>, <em>54</em>, <em>55</em>, <em>56</em>, <em>57</em>, <em>58</em>, <em>59</em>, <em>23</em>, <em>24</em>, <em>60</em>, <em>61</em>, <em>26</em>, <em>1</em>, <em>4</em>, <em>29</em>, <em>8</em>, <em>20</em>, <em>30</em>, <em>27</em>, <em>25</em>, <em>62</em>
     </div>
   </td>
   <td class="doc-parameter-description">
-    <p>Deprecated: See <a href="#request-federal-agency">federal_agency</a>. (Note: this query parameter will remain for legacy application support)</p>
+    <p>Deprecated: See <a href="#request-federal-agency"><code>federal_agency</code></a>. (Note: this query parameter will remain for legacy application support)</p>
     <p>Return stations owned by the given federal agency. A federal agency ID, or a comma-separated list of multiple federal agency IDs, may be given.</p>
     <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
@@ -797,10 +835,10 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">all</th>
-          <td>Include all stations, regardless of federal agency owner</td>
-        </tr>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
           <tr>
             <th scope="row">32</th>
             <td>Agriculture and Agri-Food (CA)</td>
@@ -1064,7 +1102,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>all, Q, T</em>
+      <strong>Options:</strong> <em>all</em>, <em>B</em>, <em>Q</em>, <em>T</em>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -1077,14 +1115,22 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">Q</th>
-          <td>Quick fill</td>
-        </tr>
-        <tr>
-          <th scope="row">T</th>
-          <td>Timed fill</td>
-        </tr>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th scope="row">B</th>
+            <td>Fast-fill and time-fill</td>
+          </tr>
+          <tr>
+            <th scope="row">Q</th>
+            <td>Fast-fill</td>
+          </tr>
+          <tr>
+            <th scope="row">T</th>
+            <td>Time-fill</td>
+          </tr>
       </tbody>
     </table>
   </td>
@@ -1100,11 +1146,37 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>all, 2400, 3000, 3600</em>
+      <strong>Options:</strong> <em>all</em>, <em>2400</em>, <em>3000</em>, <em>3600</em>
     </div>
   </td>
   <td class="doc-parameter-description">
     <p>Return only CNG stations that provide the specified PSI pressure. A single pressure level, or a comma separated list of multiple pressure levels, may be given.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Value</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th scope="row">2400</th>
+            <td>2400 psi</td>
+          </tr>
+          <tr>
+            <th scope="row">3000</th>
+            <td>3000 psi</td>
+          </tr>
+          <tr>
+            <th scope="row">3600</th>
+            <td>3600 psi</td>
+          </tr>
+      </tbody>
+    </table>
   </td>
 </tr>
 <tr>
@@ -1118,7 +1190,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>all, LD, MD, HD</em>
+      <strong>Options:</strong> <em>all</em>, <em>LD</em>, <em>MD</em>, <em>HD</em>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -1131,18 +1203,22 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">LD</th>
-          <td>Return stations that can accomodate light-duty vehicles or greater.</td>
-        </tr>
-        <tr>
-          <th scope="row">MD</th>
-          <td>Return stations that can accomodate medium-duty vehicles or greater.</td>
-        </tr>
-        <tr>
-          <th scope="row">HD</th>
-          <td>Return stations that can accomodate heavy-duty vehicles or greater.</td>
-        </tr>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th scope="row">LD</th>
+            <td>Passenger vehicles (class 1-2)</td>
+          </tr>
+          <tr>
+            <th scope="row">MD</th>
+            <td>Medium-duty (class 3-5)</td>
+          </tr>
+          <tr>
+            <th scope="row">HD</th>
+            <td>Heavy-duty (class 6-8)</td>
+          </tr>
       </tbody>
     </table>
   </td>
@@ -1176,7 +1252,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>all, (see table to right for options)</em>
+      <strong>Options:</strong> <em>all</em>, <em>Blink Network</em>, <em>ChargePoint Network</em>, <em>Circuit électrique</em>, <em>Electrify America</em>, <em>Electrify Canada</em>, <em>EV Connect</em>, <em>eVgo Network</em>, <em>FLO</em>, <em>GE WattStation</em>, <em>Greenlots</em>, <em>Non-Networked</em>, <em>OpConnect</em>, <em>SemaCharge Network</em>, <em>Sun Country Highway</em>, <em>Tesla Destination</em>, <em>Tesla</em>, <em>Volta</em>, <em>Webasto</em>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -1185,65 +1261,85 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <thead>
         <tr>
           <th scope="col">Option</th>
+          <th scope="col">Description</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">all</th>
-        </tr>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
           <tr>
             <th scope="row">Blink Network</th>
+            <td>Blink</td>
           </tr>
           <tr>
             <th scope="row">ChargePoint Network</th>
+            <td>ChargePoint</td>
           </tr>
           <tr>
             <th scope="row">Circuit électrique</th>
+            <td>Circuit électrique</td>
           </tr>
           <tr>
             <th scope="row">Electrify America</th>
+            <td>Electrify America</td>
           </tr>
           <tr>
             <th scope="row">Electrify Canada</th>
+            <td>Electrify Canada</td>
           </tr>
           <tr>
             <th scope="row">EV Connect</th>
+            <td>EV Connect</td>
           </tr>
           <tr>
             <th scope="row">eVgo Network</th>
+            <td>EVgo</td>
           </tr>
           <tr>
             <th scope="row">FLO</th>
+            <td>FLO</td>
           </tr>
           <tr>
             <th scope="row">GE WattStation</th>
+            <td>GE WattStation</td>
           </tr>
           <tr>
             <th scope="row">Greenlots</th>
+            <td>Greenlots</td>
           </tr>
           <tr>
             <th scope="row">Non-Networked</th>
+            <td>Non-Networked</td>
           </tr>
           <tr>
             <th scope="row">OpConnect</th>
+            <td>OpConnect</td>
           </tr>
           <tr>
             <th scope="row">SemaCharge Network</th>
+            <td>SemaCharge</td>
           </tr>
           <tr>
             <th scope="row">Sun Country Highway</th>
+            <td>Sun Country Highway</td>
           </tr>
           <tr>
             <th scope="row">Tesla Destination</th>
+            <td>Tesla Destination</td>
           </tr>
           <tr>
             <th scope="row">Tesla</th>
+            <td>Tesla Supercharger</td>
           </tr>
           <tr>
             <th scope="row">Volta</th>
+            <td>Volta</td>
           </tr>
           <tr>
             <th scope="row">Webasto</th>
+            <td>Webasto</td>
           </tr>
       </tbody>
     </table>
@@ -1260,7 +1356,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>all, 1, 2, dc_fast, legacy</em>
+      <strong>Options:</strong> <em>all</em>, <em>1</em>, <em>2</em>, <em>dc_fast</em>, <em>legacy</em>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -1273,26 +1369,26 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">all</th>
-          <td>Include all charging levels</td>
-        </tr>
-        <tr>
-          <th scope="row">1</th>
-          <td>Level 1 EVSE (standard 110V outlet)</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Level 2 EVSE (J1772 connector)</td>
-        </tr>
-        <tr>
-          <th scope="row">dc_fast</th>
-          <td>DC Fast Charging</td>
-        </tr>
-        <tr>
-          <th scope="row">legacy</th>
-          <td>Legacy charging systems (such as inductive paddles)</td>
-        </tr>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th scope="row">1</th>
+            <td>Level 1</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Level 2</td>
+          </tr>
+          <tr>
+            <th scope="row">dc_fast</th>
+            <td>DC Fast</td>
+          </tr>
+          <tr>
+            <th scope="row">legacy</th>
+            <td>Legacy chargers</td>
+          </tr>
       </tbody>
     </table>
   </td>
@@ -1308,7 +1404,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>all, NEMA515, NEMA520, NEMA1450, J1772, CHADEMO, J1772COMBO, TESLA</em>
+      <strong>Options:</strong> <em>all</em>, <em>NEMA1450</em>, <em>NEMA515</em>, <em>NEMA520</em>, <em>J1772</em>, <em>CHADEMO</em>, <em>J1772COMBO</em>, <em>TESLA</em>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -1321,38 +1417,38 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">all</th>
-          <td>Include all electric connector types</td>
-        </tr>
-        <tr>
-          <th scope="row">NEMA515</th>
-          <td>NEMA 5-15 (Level 1)</td>
-        </tr>
-        <tr>
-          <th scope="row">NEMA520</th>
-          <td>NEMA 5-20 (Level 1)</td>
-        </tr>
-        <tr>
-          <th scope="row">NEMA1450</th>
-          <td>NEMA 14-50 (Level 1)</td>
-        </tr>
-        <tr>
-          <th scope="row">J1772</th>
-          <td>J1772 (Level 2)</td>
-        </tr>
-        <tr>
-          <th scope="row">CHADEMO</th>
-          <td>CHAdeMO (DC fast charging)</td>
-        </tr>
-        <tr>
-          <th scope="row">J1772COMBO</th>
-          <td>SAE J1772 Combo (DC fast charging)</td>
-        </tr>
-        <tr>
-          <th scope="row">TESLA</th>
-          <td>Tesla (DC fast charging and Level 2)</td>
-        </tr>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th scope="row">NEMA1450</th>
+            <td>NEMA 14-50</td>
+          </tr>
+          <tr>
+            <th scope="row">NEMA515</th>
+            <td>NEMA 5-15</td>
+          </tr>
+          <tr>
+            <th scope="row">NEMA520</th>
+            <td>NEMA 5-20</td>
+          </tr>
+          <tr>
+            <th scope="row">J1772</th>
+            <td>J1772</td>
+          </tr>
+          <tr>
+            <th scope="row">CHADEMO</th>
+            <td>CHAdeMO</td>
+          </tr>
+          <tr>
+            <th scope="row">J1772COMBO</th>
+            <td>SAE CCS</td>
+          </tr>
+          <tr>
+            <th scope="row">TESLA</th>
+            <td>Tesla</td>
+          </tr>
       </tbody>
     </table>
   </td>
@@ -1427,7 +1523,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>all, LD, MD, HD</em>
+      <strong>Options:</strong> <em>all</em>, <em>LD</em>, <em>MD</em>, <em>HD</em>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -1440,18 +1536,22 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">LD</th>
-          <td>Return stations that can accomodate light-duty vehicles or greater.</td>
-        </tr>
-        <tr>
-          <th scope="row">MD</th>
-          <td>Return stations that can accomodate medium-duty vehicles or greater.</td>
-        </tr>
-        <tr>
-          <th scope="row">HD</th>
-          <td>Return stations that can accomodate heavy-duty vehicles or greater.</td>
-        </tr>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th scope="row">LD</th>
+            <td>Passenger vehicles (class 1-2)</td>
+          </tr>
+          <tr>
+            <th scope="row">MD</th>
+            <td>Medium-duty (class 3-5)</td>
+          </tr>
+          <tr>
+            <th scope="row">HD</th>
+            <td>Heavy-duty (class 6-8)</td>
+          </tr>
       </tbody>
     </table>
   </td>
@@ -1511,7 +1611,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <strong>Default:</strong> <em>US</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>US, CA</em>
+      <strong>Options:</strong> <em>all</em>, <em>US</em>, <em>CA</em>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -1519,19 +1619,23 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
-          <th scope="col">Option</th>
+          <th scope="col">Value</th>
           <th scope="col">Description</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">US</th>
-          <td>United States</td>
-        </tr>
-        <tr>
-          <th scope="row">CA</th>
-          <td>Canada</td>
-        </tr>
+          <tr>
+            <th scope="row">all</th>
+            <td>U.S. and Canada</td>
+          </tr>
+          <tr>
+            <th scope="row">US</th>
+            <td>United States</td>
+          </tr>
+          <tr>
+            <th scope="row">CA</th>
+            <td>Canada</td>
+          </tr>
       </tbody>
     </table>
   </td>
@@ -1691,34 +1795,34 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">BD</th>
-              <td>Biodiesel (B20 and above)</td>
-            </tr>
-            <tr>
-              <th scope="row">CNG</th>
-              <td>Compressed Natural Gas</td>
-            </tr>
-            <tr>
-              <th scope="row">E85</th>
-              <td>Ethanol (E85)</td>
-            </tr>
-            <tr>
-              <th scope="row">ELEC</th>
-              <td>Electric</td>
-            </tr>
-            <tr>
-              <th scope="row">HY</th>
-              <td>Hydrogen</td>
-            </tr>
-            <tr>
-              <th scope="row">LNG</th>
-              <td>Liquefied Natural Gas</td>
-            </tr>
-            <tr>
-              <th scope="row">LPG</th>
-              <td>Liquefied Petroleum Gas (Propane)</td>
-            </tr>
+              <tr>
+                <th scope="row">BD</th>
+                <td>Biodiesel (B20 and above)</td>
+              </tr>
+              <tr>
+                <th scope="row">CNG</th>
+                <td>Compressed Natural Gas (CNG)</td>
+              </tr>
+              <tr>
+                <th scope="row">ELEC</th>
+                <td>Electric</td>
+              </tr>
+              <tr>
+                <th scope="row">E85</th>
+                <td>Ethanol (E85)</td>
+              </tr>
+              <tr>
+                <th scope="row">HY</th>
+                <td>Hydrogen</td>
+              </tr>
+              <tr>
+                <th scope="row">LNG</th>
+                <td>Liquefied Natural Gas (LNG)</td>
+              </tr>
+              <tr>
+                <th scope="row">LPG</th>
+                <td>Propane (LPG)</td>
+              </tr>
           </tbody>
         </table>
       </td>
@@ -1803,14 +1907,14 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">US</th>
-              <td>United States</td>
-            </tr>
-            <tr>
-              <th scope="row">CA</th>
-              <td>Canada</td>
-            </tr>
+              <tr>
+                <th scope="row">US</th>
+                <td>United States</td>
+              </tr>
+              <tr>
+                <th scope="row">CA</th>
+                <td>Canada</td>
+              </tr>
           </tbody>
         </table>
       </td>
@@ -1841,18 +1945,18 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">E</th>
-              <td>Open: The station is open.</td>
-            </tr>
-            <tr>
-              <th scope="row">P</th>
-              <td>Planned: The station is not yet open, but plans to carry alternative fuel in the future, or the station is temporarily out of service. See the "Expected Date" field for an anticipated open date.</td>
-            </tr>
-            <tr>
-              <th scope="row">T</th>
-              <td>Temporarily unavailable: The station is temporarily unavailable. See the “Expected Date” field for an anticipated open date.</td>
-            </tr>
+              <tr>
+                <th scope="row">E</th>
+                <td>Available</td>
+              </tr>
+              <tr>
+                <th scope="row">P</th>
+                <td>Planned</td>
+              </tr>
+              <tr>
+                <th scope="row">T</th>
+                <td>Temporarily Unavailable</td>
+              </tr>
           </tbody>
         </table>
       </td>
@@ -1883,14 +1987,14 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">public</th>
-              <td>Publicly available to all customers.</td>
-            </tr>
-            <tr>
-              <th scope="row">private</th>
-              <td>Private station.</td>
-            </tr>
+              <tr>
+                <th scope="row">public</th>
+                <td>Public</td>
+              </tr>
+              <tr>
+                <th scope="row">private</th>
+                <td>Private</td>
+              </tr>
           </tbody>
         </table>
       </td>
@@ -1912,34 +2016,34 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">KEY_ALWAYS</th>
-              <td>Card key at all times.</td>
-            </tr>
-            <tr>
-              <th scope="row">CREDIT_CARD_ALWAYS</th>
-              <td>Credit card at all times.</td>
-            </tr>
-            <tr>
-              <th scope="row">CREDIT_CARD_AFTER_HOURS</th>
-              <td>Credit card after hours.</td>
-            </tr>
-            <tr>
-              <th scope="row">FLEET</th>
-              <td>Fleet customers only.</td>
-            </tr>
-            <tr>
-              <th scope="row">GOVERNMENT</th>
-              <td>Government only.</td>
-            </tr>
-            <tr>
-              <th scope="row">KEY_AFTER_HOURS</th>
-              <td>Card key after hours.</td>
-            </tr>
-            <tr>
-              <th scope="row">CALL</th>
-              <td>Call ahead.</td>
-            </tr>
+              <tr>
+                <th scope="row">CALL</th>
+                <td>Call ahead</td>
+              </tr>
+              <tr>
+                <th scope="row">KEY_AFTER_HOURS</th>
+                <td>Card key after hours</td>
+              </tr>
+              <tr>
+                <th scope="row">KEY_ALWAYS</th>
+                <td>Card key at all times</td>
+              </tr>
+              <tr>
+                <th scope="row">CREDIT_CARD_AFTER_HOURS</th>
+                <td>Credit card after hours</td>
+              </tr>
+              <tr>
+                <th scope="row">CREDIT_CARD_ALWAYS</th>
+                <td>Credit card at all times</td>
+              </tr>
+              <tr>
+                <th scope="row">FLEET</th>
+                <td>Fleet customers only</td>
+              </tr>
+              <tr>
+                <th scope="row">GOVERNMENT</th>
+                <td>Government only</td>
+              </tr>
           </tbody>
         </table>
       </td>
@@ -1952,61 +2056,8 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </div>
       </td>
       <td class="doc-parameter-description">
+        <p>Deprecated: See the <a href="#"><code>access_code</code></a>, <a href="#"><code>access_detail_code</code></a>, and <a href="#"><code>status</code></a> fields for equivalent information in a more structured format. (Note: this field will remain for legacy application support)</p>
         <p>A description of who is allowed to access the station and other station access information.</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
-          <thead>
-            <tr>
-              <th scope="col">Value</th>
-              <th scope="col">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Private</th>
-              <td>Private station.</td>
-            </tr>
-            <tr>
-              <th scope="row">Private - fleet customers only</th>
-              <td>Private station that may allow other entities to fuel through a business-to-business arrangement. For more information, fleet customers should refer to the “Access Days Time” field for contact information or contact the station directly.</td>
-            </tr>
-            <tr>
-              <th scope="row">Private – government only</th>
-              <td>Private station available only to government vehicles, or some subset of government vehicles.</td>
-            </tr>
-            <tr>
-              <th scope="row">Public</th>
-              <td>Publicly available to all customers.</td>
-            </tr>
-            <tr>
-              <th scope="row">Public – call ahead </th>
-              <td>Publicly available, but customers should call before visiting the station. See “Station Phone” for more details.</td>
-            </tr>
-            <tr>
-              <th scope="row">Public – credit card at all times</th>
-              <td>Publicly available, but only accepts credit cards as payment. The station may also accept fleet cards or station-specific fueling cards. See “Cards Accepted” field for more details.</td>
-            </tr>
-            <tr>
-              <th scope="row">Public – card key at all times</th>
-              <td>Publicly available, but only accepts fleet cards or station-specific fueling cards as payment. See “Cards Accepted” field for more details.</td>
-            </tr>
-            <tr>
-              <th scope="row">Public – credit card after hours</th>
-              <td>Publicly available, and accepts credit cards 24 hours a day. See “Access Days Time” and “Cards Accepted” fields for more details.</td>
-            </tr>
-            <tr>
-              <th scope="row">Public – card key after hours</th>
-              <td>Publicly available, and accepts fleet cards or station-specific fueling cards 24 hours a day. See “Access Days Time” and “Cards Accepted” fields for more details.</td>
-            </tr>
-            <tr>
-              <th scope="row">PLANNED – not yet accessible</th>
-              <td>Not yet open, but plans to carry alternative fuel in the future. See the "Expected Date" field for an anticipated open date.</td>
-            </tr>
-            <tr>
-              <th scope="row">TEMPORARILY UNAVAILBLE</th>
-              <td>Temporarily unavailable. See the “Expected Date” field for an anticipated open date.</td>
-            </tr>
-          </tbody>
-        </table>
       </td>
     </tr>
     <tr>
@@ -2035,90 +2086,106 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">A</th>
-              <td>American Express</td>
-            </tr>
-            <tr>
-              <th scope="row">D</th>
-              <td>Discover</td>
-            </tr>
-            <tr>
-              <th scope="row">M</th>
-              <td>MasterCard</td>
-            </tr>
-            <tr>
-              <th scope="row">V</th>
-              <td>VISA</td>
-            </tr>
-            <tr>
-              <th scope="row">Cash</th>
-              <td>Cash</td>
-            </tr>
-            <tr>
-              <th scope="row">Checks</th>
-              <td>Check</td>
-            </tr>
-            <tr>
-              <th scope="row">CFN</th>
-              <td>Commercial Fueling Network</td>
-            </tr>
-            <tr>
-              <th scope="row">CleanEnergy</th>
-              <td>Clean Energy</td>
-            </tr>
-            <tr>
-              <th scope="row">Comdata</th>
-              <td>Comdata</td>
-            </tr>
-            <tr>
-              <th scope="row">EFS</th>
-              <td>EFS</td>
-            </tr>
-            <tr>
-              <th scope="row">FleetOne</th>
-              <td>Fleet One</td>
-            </tr>
-            <tr>
-              <th scope="row">FuelMan</th>
-              <td>Fuelman</td>
-            </tr>
-            <tr>
-              <th scope="row">GasCard</th>
-              <td>GASCARD</td>
-            </tr>
-            <tr>
-              <th scope="row">PHH</th>
-              <td>PHH</td>
-            </tr>
-            <tr>
-              <th scope="row">PacificPride</th>
-              <td>Pacific Pride</td>
-            </tr>
-            <tr>
-              <th scope="row">Speedway</th>
-              <td>Speedway</td>
-            </tr>
-            <tr>
-              <th scope="row">Tchek</th>
-              <td>T-Chek T-Card</td>
-            </tr>
-            <tr>
-              <th scope="row">TCH</th>
-              <td>TCH</td>
-            </tr>
-            <tr>
-              <th scope="row">Trillium</th>
-              <td>Trillium</td>
-            </tr>
-            <tr>
-              <th scope="row">Voyager</th>
-              <td>Voyager</td>
-            </tr>
-            <tr>
-              <th scope="row">Wright_Exp</th>
-              <td>WEX</td>
-            </tr>
+              <tr>
+                <th scope="row">A</th>
+                <td>American Express</td>
+              </tr>
+              <tr>
+                <th scope="row">Debit</th>
+                <td>Debit</td>
+              </tr>
+              <tr>
+                <th scope="row">D</th>
+                <td>Discover</td>
+              </tr>
+              <tr>
+                <th scope="row">M</th>
+                <td>MasterCard</td>
+              </tr>
+              <tr>
+                <th scope="row">V</th>
+                <td>Visa</td>
+              </tr>
+              <tr>
+                <th scope="row">Cash</th>
+                <td>Cash</td>
+              </tr>
+              <tr>
+                <th scope="row">Checks</th>
+                <td>Check</td>
+              </tr>
+              <tr>
+                <th scope="row">ARI</th>
+                <td>ARI</td>
+              </tr>
+              <tr>
+                <th scope="row">CleanEnergy</th>
+                <td>Clean Energy</td>
+              </tr>
+              <tr>
+                <th scope="row">Comdata</th>
+                <td>Comdata</td>
+              </tr>
+              <tr>
+                <th scope="row">CFN</th>
+                <td>Commercial Fueling Network</td>
+              </tr>
+              <tr>
+                <th scope="row">EFS</th>
+                <td>EFS</td>
+              </tr>
+              <tr>
+                <th scope="row">FleetOne</th>
+                <td>Fleet One</td>
+              </tr>
+              <tr>
+                <th scope="row">FuelMan</th>
+                <td>Fuelman</td>
+              </tr>
+              <tr>
+                <th scope="row">GasCard</th>
+                <td>GASCARD</td>
+              </tr>
+              <tr>
+                <th scope="row">PacificPride</th>
+                <td>Pacific Pride</td>
+              </tr>
+              <tr>
+                <th scope="row">PHH</th>
+                <td>PHH</td>
+              </tr>
+              <tr>
+                <th scope="row">Proprietor</th>
+                <td>Proprietor Fleet Card</td>
+              </tr>
+              <tr>
+                <th scope="row">Speedway</th>
+                <td>Speedway</td>
+              </tr>
+              <tr>
+                <th scope="row">SuperPass</th>
+                <td>SuperPass</td>
+              </tr>
+              <tr>
+                <th scope="row">TCH</th>
+                <td>TCH</td>
+              </tr>
+              <tr>
+                <th scope="row">Tchek</th>
+                <td>T-Chek T-Card</td>
+              </tr>
+              <tr>
+                <th scope="row">Trillium</th>
+                <td>Trillium</td>
+              </tr>
+              <tr>
+                <th scope="row">Voyager</th>
+                <td>Voyager</td>
+              </tr>
+              <tr>
+                <th scope="row">Wright_Exp</th>
+                <td>WEX</td>
+              </tr>
           </tbody>
         </table>
       </td>
@@ -2140,30 +2207,30 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">P</th>
-              <td>Privately owned</td>
-            </tr>
-            <tr>
-              <th scope="row">T</th>
-              <td>Utility owned</td>
-            </tr>
-            <tr>
-              <th scope="row">FG</th>
-              <td>Federal government owned</td>
-            </tr>
-            <tr>
-              <th scope="row">LG</th>
-              <td>Local/Municipal government owned</td>
-            </tr>
-            <tr>
-              <th scope="row">SG</th>
-              <td>State/Provincial government owned</td>
-            </tr>
-            <tr>
-              <th scope="row">J</th>
-              <td>Jointly owned (combination of owner types)</td>
-            </tr>
+              <tr>
+                <th scope="row">FG</th>
+                <td>Federal Government Owned</td>
+              </tr>
+              <tr>
+                <th scope="row">J</th>
+                <td>Jointly Owned</td>
+              </tr>
+              <tr>
+                <th scope="row">LG</th>
+                <td>Local/Municipal Government Owned</td>
+              </tr>
+              <tr>
+                <th scope="row">P</th>
+                <td>Privately Owned</td>
+              </tr>
+              <tr>
+                <th scope="row">SG</th>
+                <td>State/Provincial Government Owned</td>
+              </tr>
+              <tr>
+                <th scope="row">T</th>
+                <td>Utility Owned</td>
+              </tr>
           </tbody>
         </table>
       </td>
@@ -2234,22 +2301,22 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">E15</th>
-              <td>Station also offers E15.</td>
-            </tr>
-            <tr>
-              <th scope="row">E20-E25</th>
-              <td>Station also offers blends of E20-E25.</td>
-            </tr>
-            <tr>
-              <th scope="row">E30-E35</th>
-              <td>Station also offers blends of E30-E35.</td>
-            </tr>
-            <tr>
-              <th scope="row">E40-Plus</th>
-              <td>Station also offers blends of E40 and above.</td>
-            </tr>
+              <tr>
+                <th scope="row">E15</th>
+                <td>E15</td>
+              </tr>
+              <tr>
+                <th scope="row">E20-E25</th>
+                <td>E20-E25</td>
+              </tr>
+              <tr>
+                <th scope="row">E30-E35</th>
+                <td>E30-E35</td>
+              </tr>
+              <tr>
+                <th scope="row">E40-Plus</th>
+                <td>E40 and above</td>
+              </tr>
           </tbody>
         </table>
       </td>
@@ -2271,14 +2338,14 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">ACME</th>
-              <td>ACME</td>
-            </tr>
-            <tr>
-              <th scope="row">QUICK_CONNECT</th>
-              <td>Quick-connect</td>
-            </tr>
+              <tr>
+                <th scope="row">ACME</th>
+                <td>ACME</td>
+              </tr>
+              <tr>
+                <th scope="row">QUICK_CONNECT</th>
+                <td>Quick-connect</td>
+              </tr>
           </tbody>
         </table>
       </td>
@@ -2327,7 +2394,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">Deprecated: See <a href="#cng-fill-type-code">cng_fill_type_code</a>. (Note: this field will remain for legacy application support)</td>
+      <td class="doc-parameter-description">Deprecated: See <a href="#cng-fill-type-code"><code>cng_fill_type_code</code></a>. (Note: this field will remain for legacy application support)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">ng_psi</th>
@@ -2336,7 +2403,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">Deprecated: See <a href="#cng-psi">cng_psi</a>. (Note: this field will remain for legacy application support)</td>
+      <td class="doc-parameter-description">Deprecated: See <a href="#cng-psi"><code>cng_psi</code></a>. (Note: this field will remain for legacy application support)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">ng_vehicle_class</th>
@@ -2345,7 +2412,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">Deprecated: For CNG stations, see <a href="#cng-vehicle-class">cng_vehicle_class</a>. For LNG stations, see <a href="#lng-vehicle-class">lng_vehicle_class</a>. (Note: this field will remain for legacy application support)</td>
+      <td class="doc-parameter-description">Deprecated: For CNG stations, see <a href="#cng-vehicle-class"><code>cng_vehicle_class</code></a>. For LNG stations, see <a href="#lng-vehicle-class"><code>lng_vehicle_class</code></a>. (Note: this field will remain for legacy application support)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">cng_dispenser_num</th>
@@ -2373,18 +2440,18 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">Q</th>
-              <td>Quick fill</td>
-            </tr>
-            <tr>
-              <th scope="row">T</th>
-              <td>Timed fill</td>
-            </tr>
-            <tr>
-              <th scope="row">B</th>
-              <td>Both: quick fill and timed fill</td>
-            </tr>
+              <tr>
+                <th scope="row">B</th>
+                <td>Fast-fill and time-fill</td>
+              </tr>
+              <tr>
+                <th scope="row">Q</th>
+                <td>Fast-fill</td>
+              </tr>
+              <tr>
+                <th scope="row">T</th>
+                <td>Time-fill</td>
+              </tr>
           </tbody>
         </table>
       </td>
@@ -2396,7 +2463,31 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">For CNG stations, a space separated list of PSI pressures available.</td>
+      <td class="doc-parameter-description">
+        <p>For CNG stations, a space separated list of PSI pressures available.</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <th scope="row">2400</th>
+                <td>2400 psi</td>
+              </tr>
+              <tr>
+                <th scope="row">3000</th>
+                <td>3000 psi</td>
+              </tr>
+              <tr>
+                <th scope="row">3600</th>
+                <td>3600 psi</td>
+              </tr>
+          </tbody>
+        </table>
+      </td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">cng_renewable_source</th>
@@ -2415,34 +2506,34 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">GEOTHERMAL</th>
-              <td>Geothermal</td>
-            </tr>
-            <tr>
-              <th scope="row">HYDRO</th>
-              <td>Hydropower</td>
-            </tr>
-            <tr>
-              <th scope="row">LANDFILL</th>
-              <td>Landfill</td>
-            </tr>
-            <tr>
-              <th scope="row">LIVESTOCK</th>
-              <td>Livestock Operations</td>
-            </tr>
-            <tr>
-              <th scope="row">SOLAR</th>
-              <td>Solar</td>
-            </tr>
-            <tr>
-              <th scope="row">WASTEWATER</th>
-              <td>Wastewater Treatment</td>
-            </tr>
-            <tr>
-              <th scope="row">WIND</th>
-              <td>Wind</td>
-            </tr>
+              <tr>
+                <th scope="row">GEOTHERMAL</th>
+                <td>Geothermal</td>
+              </tr>
+              <tr>
+                <th scope="row">HYDRO</th>
+                <td>Hydropower</td>
+              </tr>
+              <tr>
+                <th scope="row">LANDFILL</th>
+                <td>Landfill</td>
+              </tr>
+              <tr>
+                <th scope="row">LIVESTOCK</th>
+                <td>Livestock</td>
+              </tr>
+              <tr>
+                <th scope="row">SOLAR</th>
+                <td>Solar</td>
+              </tr>
+              <tr>
+                <th scope="row">WASTEWATER</th>
+                <td>Wastewater</td>
+              </tr>
+              <tr>
+                <th scope="row">WIND</th>
+                <td>Wind</td>
+              </tr>
           </tbody>
         </table>
       </td>
@@ -2482,18 +2573,18 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">LD</th>
-              <td>Station can only accommodate light-duty vehicles (Classes 1-2).</td>
-            </tr>
-            <tr>
-              <th scope="row">MD</th>
-              <td>Station can accommodate light- and medium-duty vehicles (Classes 1-5).</td>
-            </tr>
-            <tr>
-              <th scope="row">HD</th>
-              <td>Station can accommodate light-, medium-, and heavy-duty vehicles (Classes 1-8).</td>
-            </tr>
+              <tr>
+                <th scope="row">LD</th>
+                <td>Passenger vehicles (class 1-2)</td>
+              </tr>
+              <tr>
+                <th scope="row">MD</th>
+                <td>Medium-duty (class 3-5)</td>
+              </tr>
+              <tr>
+                <th scope="row">HD</th>
+                <td>Heavy-duty (class 6-8)</td>
+              </tr>
           </tbody>
         </table>
         <p>Note: This field does not take into account station capacity or other considerations.</p>
@@ -2516,34 +2607,34 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">GEOTHERMAL</th>
-              <td>Geothermal</td>
-            </tr>
-            <tr>
-              <th scope="row">HYDRO</th>
-              <td>Hydropower</td>
-            </tr>
-            <tr>
-              <th scope="row">LANDFILL</th>
-              <td>Landfill</td>
-            </tr>
-            <tr>
-              <th scope="row">LIVESTOCK</th>
-              <td>Livestock Operations</td>
-            </tr>
-            <tr>
-              <th scope="row">SOLAR</th>
-              <td>Solar</td>
-            </tr>
-            <tr>
-              <th scope="row">WASTEWATER</th>
-              <td>Wastewater Treatment</td>
-            </tr>
-            <tr>
-              <th scope="row">WIND</th>
-              <td>Wind</td>
-            </tr>
+              <tr>
+                <th scope="row">GEOTHERMAL</th>
+                <td>Geothermal</td>
+              </tr>
+              <tr>
+                <th scope="row">HYDRO</th>
+                <td>Hydropower</td>
+              </tr>
+              <tr>
+                <th scope="row">LANDFILL</th>
+                <td>Landfill</td>
+              </tr>
+              <tr>
+                <th scope="row">LIVESTOCK</th>
+                <td>Livestock</td>
+              </tr>
+              <tr>
+                <th scope="row">SOLAR</th>
+                <td>Solar</td>
+              </tr>
+              <tr>
+                <th scope="row">WASTEWATER</th>
+                <td>Wastewater</td>
+              </tr>
+              <tr>
+                <th scope="row">WIND</th>
+                <td>Wind</td>
+              </tr>
           </tbody>
         </table>
       </td>
@@ -2565,18 +2656,18 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">LD</th>
-              <td>Station can only accommodate light-duty vehicles (Classes 1-2).</td>
-            </tr>
-            <tr>
-              <th scope="row">MD</th>
-              <td>Station can accommodate light- and medium-duty vehicles (Classes 1-5).</td>
-            </tr>
-            <tr>
-              <th scope="row">HD</th>
-              <td>Station can accommodate light-, medium-, and heavy-duty vehicles (Classes 1-8).</td>
-            </tr>
+              <tr>
+                <th scope="row">LD</th>
+                <td>Passenger vehicles (class 1-2)</td>
+              </tr>
+              <tr>
+                <th scope="row">MD</th>
+                <td>Medium-duty (class 3-5)</td>
+              </tr>
+              <tr>
+                <th scope="row">HD</th>
+                <td>Heavy-duty (class 6-8)</td>
+              </tr>
           </tbody>
         </table>
         <p>Note: This field does not take into account station capacity or other considerations.</p>
@@ -2643,34 +2734,34 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">NEMA515</th>
-              <td>NEMA 5-15 (Level 1)</td>
-            </tr>
-            <tr>
-              <th scope="row">NEMA520</th>
-              <td>NEMA 5-20 (Level 1)</td>
-            </tr>
-            <tr>
-              <th scope="row">NEMA1450</th>
-              <td>NEMA 14-50 (Level 1)</td>
-            </tr>
-            <tr>
-              <th scope="row">J1772</th>
-              <td>J1772 (Level 2)</td>
-            </tr>
-            <tr>
-              <th scope="row">CHADEMO</th>
-              <td>CHAdeMO (DC fast charging)</td>
-            </tr>
-            <tr>
-              <th scope="row">J1772COMBO</th>
-              <td>SAE J1772 Combo (DC fast charging)</td>
-            </tr>
-            <tr>
-              <th scope="row">TESLA</th>
-              <td>Tesla (DC fast charging and Level 2)</td>
-            </tr>
+              <tr>
+                <th scope="row">NEMA1450</th>
+                <td>NEMA 14-50</td>
+              </tr>
+              <tr>
+                <th scope="row">NEMA515</th>
+                <td>NEMA 5-15</td>
+              </tr>
+              <tr>
+                <th scope="row">NEMA520</th>
+                <td>NEMA 5-20</td>
+              </tr>
+              <tr>
+                <th scope="row">J1772</th>
+                <td>J1772</td>
+              </tr>
+              <tr>
+                <th scope="row">CHADEMO</th>
+                <td>CHAdeMO</td>
+              </tr>
+              <tr>
+                <th scope="row">J1772COMBO</th>
+                <td>SAE CCS</td>
+              </tr>
+              <tr>
+                <th scope="row">TESLA</th>
+                <td>Tesla</td>
+              </tr>
           </tbody>
         </table>
       </td>
@@ -2730,34 +2821,34 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">GEOTHERMAL</th>
-              <td>Geothermal</td>
-            </tr>
-            <tr>
-              <th scope="row">HYDRO</th>
-              <td>Hydropower</td>
-            </tr>
-            <tr>
-              <th scope="row">LANDFILL</th>
-              <td>Landfill</td>
-            </tr>
-            <tr>
-              <th scope="row">LIVESTOCK</th>
-              <td>Livestock Operations</td>
-            </tr>
-            <tr>
-              <th scope="row">SOLAR</th>
-              <td>Solar</td>
-            </tr>
-            <tr>
-              <th scope="row">WASTEWATER</th>
-              <td>Wastewater Treatment</td>
-            </tr>
-            <tr>
-              <th scope="row">WIND</th>
-              <td>Wind</td>
-            </tr>
+              <tr>
+                <th scope="row">GEOTHERMAL</th>
+                <td>Geothermal</td>
+              </tr>
+              <tr>
+                <th scope="row">HYDRO</th>
+                <td>Hydropower</td>
+              </tr>
+              <tr>
+                <th scope="row">LANDFILL</th>
+                <td>Landfill</td>
+              </tr>
+              <tr>
+                <th scope="row">LIVESTOCK</th>
+                <td>Livestock</td>
+              </tr>
+              <tr>
+                <th scope="row">SOLAR</th>
+                <td>Solar</td>
+              </tr>
+              <tr>
+                <th scope="row">WASTEWATER</th>
+                <td>Wastewater</td>
+              </tr>
+              <tr>
+                <th scope="row">WIND</th>
+                <td>Wind</td>
+              </tr>
           </tbody>
         </table>
       </td>
@@ -2808,14 +2899,14 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">350</th>
-              <td>350 bar (35 megapascal, or MPa)</td>
-            </tr>
-            <tr>
-              <th scope="row">700</th>
-              <td>700 bar (70 MPa)</td>
-            </tr>
+              <tr>
+                <th scope="row">350</th>
+                <td>350</td>
+              </tr>
+              <tr>
+                <th scope="row">700</th>
+                <td>700</td>
+              </tr>
           </tbody>
         </table>
       </td>
@@ -2837,14 +2928,14 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">J2601</th>
-              <td>SAE J2601</td>
-            </tr>
-            <tr>
-              <th scope="row">J2601-2</th>
-              <td>SAE J2601-2</td>
-            </tr>
+              <tr>
+                <th scope="row">J2601</th>
+                <td>J2601</td>
+              </tr>
+              <tr>
+                <th scope="row">J2601-2</th>
+                <td>J2601-2</td>
+              </tr>
           </tbody>
         </table>
       </td>
@@ -2875,50 +2966,58 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">GPS</th>
-              <td>The location is from a real GPS readout at the station.</td>
-            </tr>
-            <tr>
-              <th scope="row">200-9</th>
-              <td>Premise (building name, property name, shopping center, etc.) level accuracy.</td>
-            </tr>
-            <tr>
-              <th scope="row">200-8</th>
-              <td>Address level accuracy.</td>
-            </tr>
-            <tr>
-              <th scope="row">200-7</th>
-              <td>Intersection level accuracy.</td>
-            </tr>
-            <tr>
-              <th scope="row">200-6</th>
-              <td>Street level accuracy.</td>
-            </tr>
-            <tr>
-              <th scope="row">200-5</th>
-              <td>ZIP code (postal code) level accuracy.</td>
-            </tr>
-            <tr>
-              <th scope="row">200-4</th>
-              <td>Town (city, village) level accuracy.</td>
-            </tr>
-            <tr>
-              <th scope="row">200-3</th>
-              <td>Sub-region (county, municipality, etc.) level accuracy.</td>
-            </tr>
-            <tr>
-              <th scope="row">200-2</th>
-              <td>Region (state, province, prefecture, etc.) level accuracy.</td>
-            </tr>
-            <tr>
-              <th scope="row">200-1</th>
-              <td>Country level accuracy.</td>
-            </tr>
-            <tr>
-              <th scope="row">200-0</th>
-              <td>Unknown accuracy.</td>
-            </tr>
+              <tr>
+                <th scope="row">GPS</th>
+                <td>GPS</td>
+              </tr>
+              <tr>
+                <th scope="row">200-9</th>
+                <td>Point</td>
+              </tr>
+              <tr>
+                <th scope="row">200-8</th>
+                <td>Address</td>
+              </tr>
+              <tr>
+                <th scope="row">200-7</th>
+                <td>Intersection</td>
+              </tr>
+              <tr>
+                <th scope="row">200-6</th>
+                <td>Street</td>
+              </tr>
+              <tr>
+                <th scope="row">200-5</th>
+                <td>Neighborhood</td>
+              </tr>
+              <tr>
+                <th scope="row">200-5</th>
+                <td>Postal Code - Extended</td>
+              </tr>
+              <tr>
+                <th scope="row">200-5</th>
+                <td>Postal Code</td>
+              </tr>
+              <tr>
+                <th scope="row">200-4</th>
+                <td>City/Town</td>
+              </tr>
+              <tr>
+                <th scope="row">200-3</th>
+                <td>County</td>
+              </tr>
+              <tr>
+                <th scope="row">200-2</th>
+                <td>State/Province</td>
+              </tr>
+              <tr>
+                <th scope="row">200-1</th>
+                <td>Country</td>
+              </tr>
+              <tr>
+                <th scope="row">200-0</th>
+                <td>Unknown</td>
+              </tr>
           </tbody>
         </table>
       </td>
@@ -3290,61 +3389,8 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </div>
       </td>
       <td class="doc-parameter-description">
+        <p>Deprecated: See the <a href="#"><code>access_code</code></a>, <a href="#"><code>access_detail_code</code></a>, and <a href="#"><code>status</code></a> fields for equivalent information in a more structured format. (Note: this field will remain for legacy application support)</p>
         <p>A description of who is allowed to access the station and other station access information, in French, if available.</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
-          <thead>
-            <tr>
-              <th scope="col">Value</th>
-              <th scope="col">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Privé</th>
-              <td>Private station.</td>
-            </tr>
-            <tr>
-              <th scope="row">Privé - réservé aux clients de parcs</th>
-              <td>Private station that may allow other entities to fuel through a business-to-business arrangement. For more information, fleet customers should refer to the “Access Days Time” field for contact information or contact the station directly.</td>
-            </tr>
-            <tr>
-              <th scope="row">Privé – réservé au gouvernement</th>
-              <td>Private station available only to government vehicles, or some subset of government vehicles.</td>
-            </tr>
-            <tr>
-              <th scope="row">Public</th>
-              <td>Publicly available to all customers.</td>
-            </tr>
-            <tr>
-              <th scope="row">Public – appeler à l'avance</th>
-              <td>Publicly available, but customers should call before visiting the station. See “Station Phone” for more details.</td>
-            </tr>
-            <tr>
-              <th scope="row">Public – carte de crédit en tout temps</th>
-              <td>Publicly available, but only accepts credit cards as payment. The station may also accept fleet cards or station-specific fueling cards. See “Cards Accepted” field for more details.</td>
-            </tr>
-            <tr>
-              <th scope="row">Public – carte-clé en tout temps</th>
-              <td>Publicly available, but only accepts fleet cards or station-specific fueling cards as payment. See “Cards Accepted” field for more details.</td>
-            </tr>
-            <tr>
-              <th scope="row">Public – carte de crédit après les heures d'ouverture</th>
-              <td>Publicly available, and accepts credit cards 24 hours a day. See “Access Days Time” and “Cards Accepted” fields for more details.</td>
-            </tr>
-            <tr>
-              <th scope="row">Public – carte-clé après les heures d'ouverture</th>
-              <td>Publicly available, and accepts fleet cards or station-specific fueling cards 24 hours a day. See “Access Days Time” and “Cards Accepted” fields for more details.</td>
-            </tr>
-            <tr>
-              <th scope="row">PRÉVU - pas encore accessible</th>
-              <td>Not yet open, but plans to carry alternative fuel in the future. See the "Expected Date" field for an anticipated open date.</td>
-            </tr>
-            <tr>
-              <th scope="row">TEMPORAIREMENT SUSPENDU</th>
-              <td>Temporarily unavailable. See the “Expected Date” field for an anticipated open date.</td>
-            </tr>
-          </tbody>
-        </table>
       </td>
     </tr>
     <tr>
