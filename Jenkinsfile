@@ -9,7 +9,7 @@ pipeline {
     disableConcurrentBuilds()
   }
   tools {
-    nodejs "6.10"
+    nodejs "12.x"
   }
 
   environment {
