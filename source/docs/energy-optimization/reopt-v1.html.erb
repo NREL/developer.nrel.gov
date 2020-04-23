@@ -61797,12 +61797,12 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
 <h2>PV Customization</h2><br>
     <h4>Multiple PV's</h4>
     <div>
-      The REopt Lite API currently accepts one ot more PV systems to allow for difference between roof orientation (i.e east vs west facing pitches) and siting (i.e. ground vs roof mount). To assess multiple PV systems pass an array of inputs insteat of a standard single set of PV assumption key value pairs.
+      The REopt Lite API currently accepts one or more PV systems to allow for optimization between roof orientation (i.e east vs west facing pitches) and siting (i.e. ground vs roof mount) considerations. To assess multiple PV systems, pass an array of inputs instead of a standard set of PV assumption key value pairs. To keep track of PV system results, a <em>pv_name</em> parameter allows you to tag each pv in an array with a name or description.
     </div><br>
 
   <h4>Production Factors</h4>
     <div>
-      By default, production factors are sourced from PV Watts. Custom production factors can be used in place of these profiles by providing a prod_factor_series_kw timeseries (a powerflow array at the resolutions of the scenario's time_steps_per_hour setting)
+      By default, production factors are sourced from PVWatts. Custom production factors can be used in place of these profiles by providing a <em>prod_factor_series_kw</em> timeseries (a powerflow array at the resolutions of the scenario's <em>time_steps_per_hour</em> setting).
     </div>
 </div>
 

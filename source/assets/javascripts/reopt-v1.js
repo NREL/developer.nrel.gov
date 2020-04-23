@@ -1845,7 +1845,7 @@ var nested_output_definitions = {
     }
   }
 
-var special_cases = {'PV': "<b>Note:</b> PV accepts a set of key value pairs or a list of key value pairs formatted accoring to this template to account for multiple roof aspects or siting considerations (i.e roof vs ground) each with their own costs and technoeconomic parameters.<br><br>"}
+var special_cases_inputs = {'PV': "<b>Note:</b> PV accepts a set of key value pairs or a list of key value pairs formatted accoring to this template to account for multiple roof aspects or siting considerations (i.e roof vs ground) each with their own costs and technoeconomic parameters.<br><br>"}
 
 
 var tableParameterCell = function(name) {
@@ -2079,7 +2079,7 @@ var objectHeaderRow = function(table_name, key_name){
 }
 
 
-var buildObjectRow = function(table_name, key_name, definition_dictionary, indent) {
+var buildObjectRow = function(table_name, key_name, definition_dictionary, indent, special_cases) {
   output = $('<div class="row">')
   output_col = $('<div class="col offset-'+indent.toString()+' col-'+(12-indent).toString()+'">')
   
@@ -2129,7 +2129,7 @@ var buildObjectRow = function(table_name, key_name, definition_dictionary, inden
 }
 
 
-var recursiveBuildReadTable = function(input_definitions, indent, table){
+var recursiveBuildReadTable = function(input_definitions, indent, table, special_cases){
 
   var indent_adder = 1
 
@@ -2156,8 +2156,8 @@ var recursiveBuildReadTable = function(input_definitions, indent, table){
       var key_name = subdirectories[i]
       var next_object_defintion = input_definitions[key_name]
       var table_name =  table.attr('id')
-      table.append(buildObjectRow(table_name, key_name, next_object_defintion, indent))
-      recursiveBuildReadTable(next_object_defintion,indent+indent_adder,table)   
+      table.append(buildObjectRow(table_name, key_name, next_object_defintion, indent, special_cases))
+      recursiveBuildReadTable(next_object_defintion,indent+indent_adder,table, special_cases)   
   }
 }
 
@@ -2166,8 +2166,8 @@ $(document).ready(function() {
   var inputDefTable = $('<div id ="inputs" class="container">')
   var outputDefTable = $('<div id ="ouputs" class="container">')
   
-  recursiveBuildReadTable(nested_input_definitions,-1,inputDefTable)
-  recursiveBuildReadTable(nested_output_definitions,-1,outputDefTable)
+  recursiveBuildReadTable(nested_input_definitions,-1,inputDefTable, special_cases_inputs)
+  recursiveBuildReadTable(nested_output_definitions,-1,outputDefTable, {})
 
   $('#input_definition_table').html(inputDefTable.prop('outerHTML'))
   $('#output_definition_table').html(outputDefTable.prop('outerHTML'))
