@@ -353,7 +353,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>all</em>, <em>A</em>, <em>Debit</em>, <em>D</em>, <em>M</em>, <em>V</em>, <em>Cash</em>, <em>Checks</em>, <em>ARI</em>, <em>CleanEnergy</em>, <em>Comdata</em>, <em>CFN</em>, <em>EFS</em>, <em>FleetOne</em>, <em>FuelMan</em>, <em>GasCard</em>, <em>PacificPride</em>, <em>PHH</em>, <em>Proprietor</em>, <em>Speedway</em>, <em>SuperPass</em>, <em>TCH</em>, <em>Tchek</em>, <em>Trillium</em>, <em>Voyager</em>, <em>Wright_Exp</em>
+      <strong>Options:</strong> <em>all</em>, <em>A</em>, <em>Debit</em>, <em>D</em>, <em>M</em>, <em>V</em>, <em>Cash</em>, <em>Checks</em>, <em>ALL</em>, <em>ARI</em>, <em>CleanEnergy</em>, <em>Comdata</em>, <em>CFN</em>, <em>EFS</em>, <em>FleetOne</em>, <em>FuelMan</em>, <em>GasCard</em>, <em>PacificPride</em>, <em>PHH</em>, <em>Proprietor</em>, <em>Speedway</em>, <em>SuperPass</em>, <em>TCH</em>, <em>Tchek</em>, <em>Trillium</em>, <em>Voyager</em>, <em>Wright_Exp</em>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -397,6 +397,10 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
           <tr>
             <th scope="row">Checks</th>
             <td>Check</td>
+          </tr>
+          <tr>
+            <th scope="row">ALL</th>
+            <td>Alliance AutoGas</td>
           </tr>
           <tr>
             <th scope="row">ARI</th>
@@ -1327,7 +1331,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
           </tr>
           <tr>
             <th scope="row">SemaCharge Network</th>
-            <td>SemaCharge</td>
+            <td>SemaConnect</td>
           </tr>
           <tr>
             <th scope="row">Sun Country Highway</th>
@@ -1412,7 +1416,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>all</em>, <em>NEMA1450</em>, <em>NEMA515</em>, <em>NEMA520</em>, <em>J1772</em>, <em>CHADEMO</em>, <em>J1772COMBO</em>, <em>TESLA</em>
+      <strong>Options:</strong> <em>all</em>, <em>NEMA1450</em>, <em>NEMA515</em>, <em>NEMA520</em>, <em>J1772</em>, <em>J1772COMBO</em>, <em>CHADEMO</em>, <em>TESLA</em>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -1446,12 +1450,12 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
             <td>J1772</td>
           </tr>
           <tr>
-            <th scope="row">CHADEMO</th>
-            <td>CHAdeMO</td>
+            <th scope="row">J1772COMBO</th>
+            <td>CCS</td>
           </tr>
           <tr>
-            <th scope="row">J1772COMBO</th>
-            <td>SAE CCS</td>
+            <th scope="row">CHADEMO</th>
+            <td>CHAdeMO</td>
           </tr>
           <tr>
             <th scope="row">TESLA</th>
@@ -2123,6 +2127,10 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
                 <td>Check</td>
               </tr>
               <tr>
+                <th scope="row">ALL</th>
+                <td>Alliance AutoGas</td>
+              </tr>
+              <tr>
                 <th scope="row">ARI</th>
                 <td>ARI</td>
               </tr>
@@ -2528,7 +2536,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
               </tr>
               <tr>
                 <th scope="row">LIVESTOCK</th>
-                <td>Livestock</td>
+                <td>Livestock Operations</td>
               </tr>
               <tr>
                 <th scope="row">SOLAR</th>
@@ -2536,7 +2544,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
               </tr>
               <tr>
                 <th scope="row">WASTEWATER</th>
-                <td>Wastewater</td>
+                <td>Wastewater Treatment</td>
               </tr>
               <tr>
                 <th scope="row">WIND</th>
@@ -2629,7 +2637,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
               </tr>
               <tr>
                 <th scope="row">LIVESTOCK</th>
-                <td>Livestock</td>
+                <td>Livestock Operations</td>
               </tr>
               <tr>
                 <th scope="row">SOLAR</th>
@@ -2637,7 +2645,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
               </tr>
               <tr>
                 <th scope="row">WASTEWATER</th>
-                <td>Wastewater</td>
+                <td>Wastewater Treatment</td>
               </tr>
               <tr>
                 <th scope="row">WIND</th>
@@ -2759,12 +2767,12 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
                 <td>J1772</td>
               </tr>
               <tr>
-                <th scope="row">CHADEMO</th>
-                <td>CHAdeMO</td>
+                <th scope="row">J1772COMBO</th>
+                <td>CCS</td>
               </tr>
               <tr>
-                <th scope="row">J1772COMBO</th>
-                <td>SAE CCS</td>
+                <th scope="row">CHADEMO</th>
+                <td>CHAdeMO</td>
               </tr>
               <tr>
                 <th scope="row">TESLA</th>
@@ -2843,7 +2851,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
               </tr>
               <tr>
                 <th scope="row">LIVESTOCK</th>
-                <td>Livestock</td>
+                <td>Livestock Operations</td>
               </tr>
               <tr>
                 <th scope="row">SOLAR</th>
@@ -2851,7 +2859,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
               </tr>
               <tr>
                 <th scope="row">WASTEWATER</th>
-                <td>Wastewater</td>
+                <td>Wastewater Treatment</td>
               </tr>
               <tr>
                 <th scope="row">WIND</th>
