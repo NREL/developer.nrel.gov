@@ -142,7 +142,7 @@ paths:
           - bike
           - walk
           - transit
-  "/v0/isochrone":
+  "/v0/isochrones":
     get:
       tags:
       - "MEP"
@@ -150,9 +150,9 @@ paths:
         '200':
           description: Successful request
           schema:
-            "$ref": "#/definitions/Isochrone"
+            "$ref": "#/definitions/Isochrones"
       description: ''
-      summary: Return an isochrone for a given location, mode of transportation, and time (minutes). This endpoint requires approval to access. Please email Yi.Hou@nrel.gov to request approval.
+      summary: Return isochrones by mode and time for a given location. This endpoint requires approval to access. Please email Yi.Hou@nrel.gov to request approval.
       parameters:
       - in: query
         description: Latitude of point of interest with a spatial reference identifier (SRID) of 4269
@@ -164,26 +164,6 @@ paths:
         name: lon
         required: true
         type: string
-      - in: query
-        description: Mode of transportation
-        name: mode
-        required: true
-        type: string
-        enum:
-          - drive
-          - bike
-          - walk
-          - transit
-      - in: query
-        description: Time of interest (minutes)
-        name: time
-        required: true
-        type: integer
-        enum:
-          - 10
-          - 20
-          - 30
-          - 40
   "/v0/bulk_data":
     get:
       tags:
@@ -383,18 +363,11 @@ definitions:
         description: MEP score for specified location and mode of transportation
         type: integer
         example: 0
-  Point2D:
-    type: array
-    maxItems: 2
-    minItems: 2
-    items:
-      type: number
-    example: [-97.3967098885958, 33.0843489639987]
-  Isochrone:
+  Isochrones:
     required:
       - metadata
       - inputs
-      - isochrone
+      - isochrones
     properties:
       metadata:
         "$ref": "#/definitions/Metadata"
@@ -403,8 +376,6 @@ definitions:
         required:
         - lat
         - lon
-        - mode
-        - time
         properties:
           lat:
             type: string
@@ -414,26 +385,101 @@ definitions:
             type: string
             description: The specified longitude (SRID 4269)
             example: -97.3176617
-          mode:
-            type: string
-            description: The specified mode of transportation
-            example: walk
-          time:
-            type: integer
-            description: The specified time in minutes
-            example: 10
-      isochrone:
+      isochrones:
           type: object
-          description: Isochrone as GeoJSON for given location, mode of transportation, and time.
+          description: Isochrones by mode and time as GeoJSON for given location.
           externalDocs:
             url: http://geojson.org/geojson-spec.html#id4
           properties:
-            type:
-              type: string
-              example: "polygon"
-            coordinates:
-              type: array
-              items:
-                type: array
-                items:
-                  $ref: '#/definitions/Point2D'
+            bike:
+              type: object
+              properties:
+                10_min:
+                  type: object
+                  $ref: '#/definitions/IsochroneByModeAndTime'
+                20_min:
+                  type: object
+                  $ref: '#/definitions/IsochroneByModeAndTime'
+                30_min:
+                  type: object
+                  $ref: '#/definitions/IsochroneByModeAndTime'
+                40_min:
+                  type: object
+                  $ref: '#/definitions/IsochroneByModeAndTime'
+            drive:
+              type: object
+              properties:
+                10_min:
+                  type: object
+                  $ref: '#/definitions/IsochroneByModeAndTime'
+                20_min:
+                  type: object
+                  $ref: '#/definitions/IsochroneByModeAndTime'
+                30_min:
+                  type: object
+                  $ref: '#/definitions/IsochroneByModeAndTime'
+                40_min:
+                  type: object
+                  $ref: '#/definitions/IsochroneByModeAndTime'
+            tnc:
+              type: object
+              properties:
+                10_min:
+                  type: object
+                  $ref: '#/definitions/IsochroneByModeAndTime'
+                20_min:
+                  type: object
+                  $ref: '#/definitions/IsochroneByModeAndTime'
+                30_min:
+                  type: object
+                  $ref: '#/definitions/IsochroneByModeAndTime'
+                40_min:
+                  type: object
+                  $ref: '#/definitions/IsochroneByModeAndTime'
+            transit:
+              type: object
+              properties:
+                10_min:
+                  type: object
+                  $ref: '#/definitions/IsochroneByModeAndTime'
+                20_min:
+                  type: object
+                  $ref: '#/definitions/IsochroneByModeAndTime'
+                30_min:
+                  type: object
+                  $ref: '#/definitions/IsochroneByModeAndTime'
+                40_min:
+                  type: object
+                  $ref: '#/definitions/IsochroneByModeAndTime'
+            walk:
+              type: object
+              properties:
+                10_min:
+                  type: object
+                  $ref: '#/definitions/IsochroneByModeAndTime'
+                20_min:
+                  type: object
+                  $ref: '#/definitions/IsochroneByModeAndTime'
+                30_min:
+                  type: object
+                  $ref: '#/definitions/IsochroneByModeAndTime'
+                40_min:
+                  type: object
+                  $ref: '#/definitions/IsochroneByModeAndTime'
+  Point2D:
+    type: array
+    maxItems: 2
+    minItems: 2
+    items:
+      type: number
+    example: [-97.3967098885958, 33.0843489639987]
+  IsochroneByModeAndTime:
+    type: object
+    properties:
+      type:
+        type: string
+        example: "Polygon"
+      coordinates:
+        type: array
+        items:
+          $ref: '#/definitions/Point2D'
