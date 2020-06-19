@@ -1991,7 +1991,7 @@ var sortAttributeTableRows = function (def){
   var other_keys = []
 
   for (var i=0;i<all_keys.length;i++){
-    if (all_keys[i]===all_keys[i].toLowerCase()) {
+    if (all_keys[i][0]===all_keys[i][0].toLowerCase()) {
       var req = false
       
       if ( def[all_keys[i]].hasOwnProperty("required") ) {
@@ -2136,12 +2136,10 @@ var recursiveBuildReadTable = function(input_definitions, indent, table, special
   if (indent < 0) {
     indent_adder = 0    
   }
-  try {
+  
   var defKeys = Object.keys(input_definitions)
   var subdirectories = []
-  } catch {
-    debugger
-  }
+  
   for (var i=0;i<defKeys.length;i++){
 
     var key_name = defKeys[i]
