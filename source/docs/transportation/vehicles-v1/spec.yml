@@ -1289,6 +1289,9 @@ definitions:
         type: number
         format: float
         description: The combined conventional fuel economy for the light-duty automobile
+      fuel_economy_estimated_by_manufacturer:
+        type: boolean
+        description: The fuel economy data are estimates from the manufacturer
       alternative_fuel_economy_city:
         type: number
         format: float
