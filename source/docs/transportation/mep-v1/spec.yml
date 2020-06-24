@@ -158,7 +158,7 @@ paths:
         name: state
         type: string
       - in: query
-        description: Region of interest
+        description: Region of interest as returned by /mep-breakdown/regions
         name: region
         type: string
   "/v0/mep-breakdown":
@@ -191,12 +191,12 @@ paths:
       - in: query
         description: Number of records to return (max = 3000)
         name: limit
-        required: false
+        required: true
         type: integer
       - in: query
         description: Record offset
         name: offset
-        required: false
+        required: true
         type: integer
   "/v0/mep-breakdown/regions":
     get:
