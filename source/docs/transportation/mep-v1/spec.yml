@@ -88,7 +88,7 @@ info:
 
     NREL has developed a new quality of mobility metric known as the mobility, energy, productivity (MEP) metric. The MEP metric expands upon existing measures of mobility to include additional parameters such as energy consumption, total trip cost, and accessibility to opportunities (employment, health care, grocery, etc.). The resulting metric provides a robust assessment of the quality of mobility provided to each traveler at a given location, regardless of whether that traveler possesses their own mode of personal transportation.
 paths:
-  "/v0/":
+  "/v0/score":
     get:
       tags:
       - "MEP"
@@ -110,38 +110,6 @@ paths:
         name: lon
         required: true
         type: string
-  "/v0/by-mode":
-    get:
-      tags:
-      - "MEP"
-      responses:
-        '200':
-          description: Successful request
-          schema:
-            "$ref": "#/definitions/MepScoreByMode"
-      description: ''
-      summary: Return the MEP score for a given location and mode of transportation.
-      parameters:
-      - in: query
-        description: Latitude of point of interest with a spatial reference identifier (SRID) of 4269
-        name: lat
-        required: true
-        type: string
-      - in: query
-        description: Longitude of point of interest with a spatial reference identifier (SRID) of 4269
-        name: lon
-        required: true
-        type: string
-      - in: query
-        description: Mode of transportation
-        name: mode
-        required: true
-        type: string
-        enum:
-          - drive
-          - bike
-          - walk
-          - transit
   "/v0/isochrones":
     get:
       tags:
@@ -150,7 +118,7 @@ paths:
         '200':
           description: Successful request
           schema:
-            "$ref": "#/definitions/Isochrones"
+            "$ref": "#/definitions/IsochronesByLatLon"
       description: ''
       summary: Return isochrones by mode and time for a given location. This endpoint requires approval to access. Please email Yi.Hou@nrel.gov to request approval.
       parameters:
@@ -164,6 +132,83 @@ paths:
         name: lon
         required: true
         type: string
+  "/v0/isochrones/by-grid-cell":
+    get:
+      tags:
+      - "MEP"
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            "$ref": "#/definitions/IsochronesByGridCell"
+      description: ''
+      summary: Return isochrones by mode and time for a given location. This endpoint requires approval to access. Please email Yi.Hou@nrel.gov to request approval.
+      parameters:
+      - in: query
+        description: Id of cell within city grid
+        name: cell_id
+        required: true
+        type: integer
+      - in: query
+        description: City of interest
+        name: city
+        type: string
+      - in: query
+        description: State of interest
+        name: state
+        type: string
+      - in: query
+        description: Region of interest
+        name: region
+        type: string
+  "/v0/mep-breakdown":
+    get:
+      tags:
+      - "MEP"
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            "$ref": "#/definitions/MepBreakdown"
+      description: ''
+      summary: Return the constituent elements that comprise a MEP score by city grid cell.
+      parameters:
+      - in: query
+        description: City of interest
+        name: city
+        required: false
+        type: string
+      - in: query
+        description: State of interest
+        name: state
+        required: false
+        type: string
+      - in: query
+        description: Region of interest as returned by /mep-breakdown/regions
+        name: region
+        required: false
+        type: string
+      - in: query
+        description: Number of records to return (max = 3000)
+        name: limit
+        required: false
+        type: integer
+      - in: query
+        description: Record offset
+        name: offset
+        required: false
+        type: integer
+  "/v0/mep-breakdown/regions":
+    get:
+      tags:
+      - "MEP"
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            "$ref": "#/definitions/MepBreakdownRegions"
+      description: ''
+      summary: Return the regions available for querying the /mep-breakdown endpoint.
   "/v0/bulk_data":
     get:
       tags:
@@ -329,10 +374,32 @@ definitions:
             description: The specified longitude (SRID 4269)
             example: -97.3176617
       score:
-        description: MEP score for specified location
-        type: integer
-        example: 88
-  MepScoreByMode:
+        type: object
+        properties:
+          overall:
+            type: number
+            description: Overall MEP score for specified location
+            example: 309.0
+          by_mode:
+            type: object
+            properties:
+              drive:
+                type: number
+                description: Drive MEP score for specified location
+                example: 288.0
+              bike:
+                type: number
+                description: Drive MEP score for specified location
+                example: 71.0
+              walk:
+                type: number
+                description: Drive MEP score for specified location
+                example: 2.0
+              transit:
+                type: number
+                description: Drive MEP score for specified location
+                example: 9.0
+  MepBreakdown:
     required:
       - metadata
       - inputs
@@ -343,27 +410,273 @@ definitions:
       inputs:
         description: The parameters that were passed to the API
         required:
-        - lat
-        - lon
-        - mode
+        - city
+        - state
+        - region
+        - limit
+        - offset
         properties:
-          lat:
+          city:
             type: string
-            description: The specified latitude (SRID 4269)
-            example: 33.04444
-          lon:
+            description: City of interest
+            example: atlanta
+          state:
             type: string
-            description: The specified longitude (SRID 4269)
-            example: -97.3176617
-          mode:
-            type: string
-            description: The specified mode of transportation
-            example: transit
-      score:
-        description: MEP score for specified location and mode of transportation
+            description: State of interest
+            example: ga
+          limit:
+            type: integer
+            description: Number of records to return
+            example: 3000
+          offset:
+            type: integer
+            description: Record offset
+            example: 6000
+      total_cell_count:
         type: integer
-        example: 0
+        description: Total number of cells within city grid
+        example: 8148
+      scores_by_grid_cell:
+        type: object
+        properties:
+          id:
+            type: integer
+            description: Unique ID of grid cell
+            example: 14
+          scores:
+            type: object
+            properties:
+              all_jobs:
+                type: number
+                example: 25.6772
+              all_meals:
+                type: number
+                example: 25.6772
+              all_medical:
+                type: number
+                example: 25.6772
+              all_recreation:
+                type: number
+                example: 25.6772
+              all_sch_day_rel:
+                type: number
+                example: 25.6772
+              all_shop_err:
+                type: number
+                example: 25.6772
+              bike_all:
+                type: number
+                example: 25.6772
+              bike_jobs:
+                type: number
+                example: 25.6772
+              bike_meals:
+                type: number
+                example: 25.6772
+              bike_medical:
+                type: number
+                example: 25.6772
+              bike_recreation:
+                type: number
+                example: 25.6772
+              bike_sch_day_rel:
+                type: number
+                example: 25.6772
+              bike_shop_err:
+                type: number
+                example: 25.6772
+              drive_all:
+                type: number
+                example: 25.6772
+              drive_jobs:
+                type: number
+                example: 25.6772
+              drive_meals:
+                type: number
+                example: 25.6772
+              drive_medical:
+                type: number
+                example: 25.6772
+              drive_recreation:
+                type: number
+                example: 25.6772
+              drive_sch_day_rel:
+                type: number
+                example: 25.6772
+              drive_shop_err:
+                type: number
+                example: 25.6772
+              lat:
+                type: number
+                example: 25.6772
+              lon:
+                type: number
+                example: 25.6772
+              mep:
+                type: number
+                example: 25.6772
+              population:
+                type: number
+                example: 25.6772
+              tnc_all:
+                type: number
+                example: 25.6772
+              tnc_jobs:
+                type: number
+                example: 25.6772
+              tnc_meals:
+                type: number
+                example: 25.6772
+              tnc_medical:
+                type: number
+                example: 25.6772
+              tnc_recreation:
+                type: number
+                example: 25.6772
+              tnc_sch_day_rel:
+                type: number
+                example: 25.6772
+              tnc_shop_err:
+                type: number
+                example: 25.6772
+              transit_all:
+                type: number
+                example: 25.6772
+              transit_jobs:
+                type: number
+                example: 25.6772
+              transit_meals:
+                type: number
+                example: 25.6772
+              transit_medical:
+                type: number
+                example: 25.6772
+              transit_recreation:
+                type: number
+                example: 25.6772
+              transit_sch_day_rel:
+                type: number
+                example: 25.6772
+              transit_shop_err:
+                type: number
+                example: 25.6772
+              walk_all:
+                type: number
+                example: 25.6772
+              walk_meals:
+                type: number
+                example: 25.6772
+              walk_medical:
+                type: number
+                example: 25.6772
+              walk_sch_day_rel:
+                type: number
+                example: 25.6772
+              walk_shop_err:
+                type: number
+                example: 25.6772
+              walk_recreation:
+                type: number
+                example: 25.6772
+              walk_jobs:
+                type: number
+                example: 25.6772
+  Regions:
+    type: string
+    example: atlanta_ga
+  MepBreakdownRegions:
+    required:
+      - metadata
+    properties:
+      metadata:
+        "$ref": "#/definitions/Metadata"
+      regions_available:
+        type: array
+        description: Regions available for querying the /mep-breakdown endpoint
+        items:
+          $ref: '#/definitions/Regions'
   Isochrones:
+    type: object
+    description: Isochrones by mode and time as GeoJSON for given location.
+    externalDocs:
+      url: http://geojson.org/geojson-spec.html#id4
+    properties:
+      bike:
+        type: object
+        properties:
+          10_min:
+            type: object
+            $ref: '#/definitions/IsochroneByModeAndTime'
+          20_min:
+            type: object
+            $ref: '#/definitions/IsochroneByModeAndTime'
+          30_min:
+            type: object
+            $ref: '#/definitions/IsochroneByModeAndTime'
+          40_min:
+            type: object
+            $ref: '#/definitions/IsochroneByModeAndTime'
+      drive:
+        type: object
+        properties:
+          10_min:
+            type: object
+            $ref: '#/definitions/IsochroneByModeAndTime'
+          20_min:
+            type: object
+            $ref: '#/definitions/IsochroneByModeAndTime'
+          30_min:
+            type: object
+            $ref: '#/definitions/IsochroneByModeAndTime'
+          40_min:
+            type: object
+            $ref: '#/definitions/IsochroneByModeAndTime'
+      tnc:
+        type: object
+        properties:
+          10_min:
+            type: object
+            $ref: '#/definitions/IsochroneByModeAndTime'
+          20_min:
+            type: object
+            $ref: '#/definitions/IsochroneByModeAndTime'
+          30_min:
+            type: object
+            $ref: '#/definitions/IsochroneByModeAndTime'
+          40_min:
+            type: object
+            $ref: '#/definitions/IsochroneByModeAndTime'
+      transit:
+        type: object
+        properties:
+          10_min:
+            type: object
+            $ref: '#/definitions/IsochroneByModeAndTime'
+          20_min:
+            type: object
+            $ref: '#/definitions/IsochroneByModeAndTime'
+          30_min:
+            type: object
+            $ref: '#/definitions/IsochroneByModeAndTime'
+          40_min:
+            type: object
+            $ref: '#/definitions/IsochroneByModeAndTime'
+      walk:
+        type: object
+        properties:
+          10_min:
+            type: object
+            $ref: '#/definitions/IsochroneByModeAndTime'
+          20_min:
+            type: object
+            $ref: '#/definitions/IsochroneByModeAndTime'
+          30_min:
+            type: object
+            $ref: '#/definitions/IsochroneByModeAndTime'
+          40_min:
+            type: object
+            $ref: '#/definitions/IsochroneByModeAndTime'
+  IsochronesByLatLon:
     required:
       - metadata
       - inputs
@@ -386,86 +699,36 @@ definitions:
             description: The specified longitude (SRID 4269)
             example: -97.3176617
       isochrones:
-          type: object
-          description: Isochrones by mode and time as GeoJSON for given location.
-          externalDocs:
-            url: http://geojson.org/geojson-spec.html#id4
-          properties:
-            bike:
-              type: object
-              properties:
-                10_min:
-                  type: object
-                  $ref: '#/definitions/IsochroneByModeAndTime'
-                20_min:
-                  type: object
-                  $ref: '#/definitions/IsochroneByModeAndTime'
-                30_min:
-                  type: object
-                  $ref: '#/definitions/IsochroneByModeAndTime'
-                40_min:
-                  type: object
-                  $ref: '#/definitions/IsochroneByModeAndTime'
-            drive:
-              type: object
-              properties:
-                10_min:
-                  type: object
-                  $ref: '#/definitions/IsochroneByModeAndTime'
-                20_min:
-                  type: object
-                  $ref: '#/definitions/IsochroneByModeAndTime'
-                30_min:
-                  type: object
-                  $ref: '#/definitions/IsochroneByModeAndTime'
-                40_min:
-                  type: object
-                  $ref: '#/definitions/IsochroneByModeAndTime'
-            tnc:
-              type: object
-              properties:
-                10_min:
-                  type: object
-                  $ref: '#/definitions/IsochroneByModeAndTime'
-                20_min:
-                  type: object
-                  $ref: '#/definitions/IsochroneByModeAndTime'
-                30_min:
-                  type: object
-                  $ref: '#/definitions/IsochroneByModeAndTime'
-                40_min:
-                  type: object
-                  $ref: '#/definitions/IsochroneByModeAndTime'
-            transit:
-              type: object
-              properties:
-                10_min:
-                  type: object
-                  $ref: '#/definitions/IsochroneByModeAndTime'
-                20_min:
-                  type: object
-                  $ref: '#/definitions/IsochroneByModeAndTime'
-                30_min:
-                  type: object
-                  $ref: '#/definitions/IsochroneByModeAndTime'
-                40_min:
-                  type: object
-                  $ref: '#/definitions/IsochroneByModeAndTime'
-            walk:
-              type: object
-              properties:
-                10_min:
-                  type: object
-                  $ref: '#/definitions/IsochroneByModeAndTime'
-                20_min:
-                  type: object
-                  $ref: '#/definitions/IsochroneByModeAndTime'
-                30_min:
-                  type: object
-                  $ref: '#/definitions/IsochroneByModeAndTime'
-                40_min:
-                  type: object
-                  $ref: '#/definitions/IsochroneByModeAndTime'
+        "$ref": "#definitions/Isochrones"
+  IsochronesByGridCell:
+    required:
+      - metadata
+      - inputs
+      - isochrones
+    properties:
+      metadata:
+        "$ref": "#/definitions/Metadata"
+      inputs:
+        description: The parameters that were passed to the API
+        required:
+        - cell_id
+        - city
+        - state
+        properties:
+          cell_id:
+            type: integer
+            description: The cell id within the city grid
+            example: 14
+          city:
+            type: string
+            description: City of interest
+            example: atlanta
+          state:
+            type: string
+            description: State of interest
+            example: ga
+      isochrones:
+        "$ref": "#definitions/Isochrones"
   Point2D:
     type: array
     maxItems: 2
