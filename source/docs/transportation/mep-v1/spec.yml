@@ -20,74 +20,46 @@ info:
   version: "0.1.0"
   title: MEP Mobility Metric
   description: |-
-    Query our API to return the MEP (mobility, energy, productivity) mobility metric for a given location. Our database currently has MEP scores for the following metropolitan areas throughout the USA:
-      + Albuquerque, NM
-      + Anchorage, AK
-      + Atlanta, GA
-      + Austin, TX
-      + Baltimore, MD
-      + Billings, MT
-      + Birmimngham, AL
-      + Boise, ID
-      + Boston, MA
-      + Bridgeport, CT
-      + Charlotte, NC
-      + Charleston, SC
-      + Charleston, WV
-      + Chattanooga, TN
-      + Cheyenne, WY
-      + Chicago, IL
-      + Cincinnati, OH
-      + Cleveland, OH
-      + Columbia, SC
-      + Colombus, OH
-      + Dallas-Fort Worth, TX
-      + Denver, CO
-      + Detroit, MI
-      + Fargo, ND
-      + Hartford, CT
-      + Houston, TX
-      + Indianapolis, IN
-      + Jackson, MO
-      + Jacksonville, FL
-      + Kansas City, MO
-      + Knoxville, TN
-      + Las Vegas, NV
-      + Little Rock, AR
-      + Los Angeles, CA
-      + Louisville, KY
-      + Memphis, TN
-      + Miami, FL
-      + Milwaukee, WI
-      + Minneapolis, MN
-      + Nashville, TN
-      + New York, NY
-      + Oklahoma City, OK
-      + Orlando, FL
-      + Philadelphia, PA
-      + Phoenix, AZ
-      + Portland, OR
-      + Providence, RI
-      + Raleigh, NC
-      + Richmond, VA
-      + Riverside, CA
-      + Sacramento, CA
-      + San Antonio, TX
-      + San Diego, CA
-      + San Francisco, CA
-      + San Jose, CA
-      + Seattle, WA
-      + Sioux Falls, SD
-      + St. Louis, MO
-      + Tampa, FL
-      + Topeka, KS
-      + Honolulu, HI
-      + Virginia Beach, VA
-      + Washington DC
-      + Wichita, KS
+    Query our API to return the MEP (mobility, energy, productivity) mobility metric for a given location. Our database currently has MEP scores for over 100 metropolitan areas throughout the U.S.A.  Query the `/cities` endpoint to see a list of available cities.
 
     NREL has developed a new quality of mobility metric known as the mobility, energy, productivity (MEP) metric. The MEP metric expands upon existing measures of mobility to include additional parameters such as energy consumption, total trip cost, and accessibility to opportunities (employment, health care, grocery, etc.). The resulting metric provides a robust assessment of the quality of mobility provided to each traveler at a given location, regardless of whether that traveler possesses their own mode of personal transportation.
 paths:
+  "/v0/cities":
+    get:
+      tags:
+      - "MEP"
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            "$ref": "#/definitions/Cities"
+      description: ''
+      summary: Return the list of cities with mep scores and isochrones available.
+      parameters:
+  "/v0/city-boundary":
+    get:
+      tags:
+      - "MEP"
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            "$ref": "#/definitions/CityBoundary"
+      description: ''
+      summary: Return the specified city boundary as a GeoJSON object.
+      parameters:
+        - in: query
+          description: Required along with `state` unless `region` is specified
+          name: city
+          type: string
+        - in: query
+          description: Required along with `city` unless `region` is specified
+          name: state
+          type: string
+        - in: query
+          description: Required unless `state` and `region` are specified
+          name: region
+          type: string
   "/v0/score":
     get:
       tags:
@@ -150,15 +122,15 @@ paths:
         required: true
         type: integer
       - in: query
-        description: City of interest
+        description: Required along with `state` unless `region` is specified
         name: city
         type: string
       - in: query
-        description: State of interest
+        description: Required along with `city` unless `region` is specified
         name: state
         type: string
       - in: query
-        description: Region of interest as returned by /mep-breakdown/regions
+        description: Required unless `state` and `region` are specified
         name: region
         type: string
   "/v0/mep-breakdown":
@@ -171,22 +143,19 @@ paths:
           schema:
             "$ref": "#/definitions/MepBreakdown"
       description: ''
-      summary: Return the constituent elements that comprise a MEP score by city grid cell.
+      summary: Return the constituent elements that comprise a MEP score by city grid cell. This endpoint requires approval to access. Please email Yi.Hou@nrel.gov to request approval.
       parameters:
       - in: query
-        description: City of interest
+        description: Required along with `state` unless `region` is specified
         name: city
-        required: false
         type: string
       - in: query
-        description: State of interest
+        description: Required along with `city` unless `region` is specified
         name: state
-        required: false
         type: string
       - in: query
-        description: Region of interest as returned by /mep-breakdown/regions
+        description: Required unless `state` and `region` are specified
         name: region
-        required: false
         type: string
       - in: query
         description: Number of records to return (max = 3000)
@@ -198,17 +167,6 @@ paths:
         name: offset
         required: true
         type: integer
-  "/v0/mep-breakdown/regions":
-    get:
-      tags:
-      - "MEP"
-      responses:
-        '200':
-          description: Successful request
-          schema:
-            "$ref": "#/definitions/MepBreakdownRegions"
-      description: ''
-      summary: Return the regions available for querying the /mep-breakdown endpoint.
   "/v0/bulk_data":
     get:
       tags:
@@ -231,116 +189,10 @@ paths:
         description: City name
         name: city
         required: true
-        enum:
-          - Albuquerque
-          - Anchorage
-          - Atlanta
-          - Austin
-          - Baltimore
-          - Billings
-          - Birmimngham
-          - Boise
-          - Boston
-          - Bridgeport
-          - Charlotte
-          - Charleston
-          - Charleston
-          - Chattanooga
-          - Cheyenne
-          - Chicago
-          - Cincinnati
-          - Cleveland
-          - Columbia
-          - Colombus
-          - Dallas-Fort Worth
-          - Denver
-          - Detroit
-          - Fargo
-          - Hartford
-          - Houston
-          - Indianapolis
-          - Jackson
-          - Jacksonville
-          - Kansas City
-          - Knoxville
-          - Las Vegas
-          - Little Rock
-          - Los Angeles
-          - Louisville
-          - Memphis
-          - Miami
-          - Milwaukee
-          - Minneapolis
-          - Nashville
-          - New York
-          - Oklahoma City
-          - Orlando
-          - Philadelphia
-          - Phoenix
-          - Portland
-          - Providence
-          - Raleigh
-          - Richmond
-          - Riverside
-          - Sacramento
-          - San Antonio
-          - San Diego
-          - San Francisco
-          - San Jose
-          - Seattle
-          - Sioux Falls
-          - St. Louis
-          - Tampa
-          - Topeka
-          - Honolulu
-          - Virginia Beach
-          - Washington DC
-          - Wichita
       - in: query
         description: State name
         name: state
         required: true
-        enum:
-          - AK
-          - AL
-          - AR
-          - AZ
-          - CA
-          - CO
-          - CT
-          - FL
-          - GA
-          - HI
-          - ID
-          - IL
-          - IN
-          - KS
-          - KY
-          - MA
-          - MD
-          - MI
-          - MN
-          - MO
-          - MT
-          - NC
-          - ND
-          - NM
-          - NV
-          - NY
-          - OH
-          - OK
-          - OR
-          - PA
-          - RI
-          - SC
-          - SD
-          - TN
-          - TX
-          - VA
-          - WA
-          - WI
-          - WV
-          - WY
 definitions:
   Metadata:
     description: The identifying metadata.
@@ -351,6 +203,18 @@ definitions:
         type: string
         description: This is the version of the api
         example: "0.1.0"
+  Cities:
+    required:
+      - metadata
+      - cities_available
+    properties:
+      metadata:
+        "$ref": "#/definitions/Metadata"
+      cities_available:
+        type: array
+        items:
+          type: string
+        example: ["Albuquerque, NM", "Anchorage, AK", "Atlanta, GA", "Augusta-Richmond County, GA--SC", "Austin, TX", "Baltimore, MD",]
   MepScore:
     required:
       - metadata
@@ -584,17 +448,6 @@ definitions:
   Regions:
     type: string
     example: atlanta_ga
-  MepBreakdownRegions:
-    required:
-      - metadata
-    properties:
-      metadata:
-        "$ref": "#/definitions/Metadata"
-      regions_available:
-        type: array
-        description: Regions available for querying the /mep-breakdown endpoint
-        items:
-          $ref: '#/definitions/Regions'
   Isochrones:
     type: object
     description: Isochrones by mode and time as GeoJSON for given location.
@@ -746,3 +599,37 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Point2D'
+  CityBoundary:
+    required:
+      - metadata
+      - inputs
+      - boundary
+    type: object
+    properties:
+      metadata:
+        "$ref": "#/definitions/Metadata"
+      inputs:
+        description: The parameters that were passed to the API
+        required:
+        - city
+        - state
+        properties:
+          city:
+            type: string
+            description: City of interest
+            example: atlanta
+          state:
+            type: string
+            description: State of interest
+            example: ga
+      boundary:
+        type: object
+        description: City boundary as GeoJSON object
+        properties:
+          type:
+            type: string
+            example: "MultiPolygon"
+          coordinates:
+            type: array
+            items:
+              $ref: '#/definitions/Point2D'
