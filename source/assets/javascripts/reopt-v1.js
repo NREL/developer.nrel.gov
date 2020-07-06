@@ -164,7 +164,7 @@ var nested_input_definitions = {
               "doe_reference_name"
             ]
           ],
-          "description": "Simulated load profile from DOE <a href='https: //energy.gov/eere/buildings/commercial-reference-buildings' target='blank'>Commercial Reference Buildings</a>"
+          "description": "Simulated load profile from DOE <a href='https://energy.gov/eere/buildings/commercial-reference-buildings' target='blank'>Commercial Reference Buildings</a>"
         },
         "annual_kwh": {
           "type": "float",
@@ -312,7 +312,7 @@ var nested_input_definitions = {
           "depends_on": [
             "urdb_rate_name"
           ],
-          "description": "Name of Utility from  <a href='https: //openei.org/wiki/Utility_Rate_Database' target='blank'>Utility Rate Database</a>"
+          "description": "Name of Utility from  <a href='https://openei.org/wiki/Utility_Rate_Database' target='blank'>Utility Rate Database</a>"
         },
         "urdb_rate_name": {
           "type": "str",
@@ -339,7 +339,7 @@ var nested_input_definitions = {
           "depends_on": [
             "urdb_utility_name"
           ],
-          "description": "Name of utility rate from  <a href='https: //openei.org/wiki/Utility_Rate_Database' target='blank'>Utility Rate Database</a>"
+          "description": "Name of utility rate from  <a href='https://openei.org/wiki/Utility_Rate_Database' target='blank'>Utility Rate Database</a>"
         },
         "add_blended_rates_to_urdb_rate": {
           "type": "bool",
@@ -508,7 +508,7 @@ var nested_input_definitions = {
               "urdb_rate_name"
             ]
           ],
-          "description": "Utility rate structure from <a href='https: //openei.org/services/doc/rest/util_rates/?version=3' target='blank'>Utility Rate Database API</a>"
+          "description": "Utility rate structure from <a href='https://openei.org/services/doc/rest/util_rates/?version=3' target='blank'>Utility Rate Database API</a>"
         },
         "urdb_label": {
           "type": "str",
@@ -532,7 +532,7 @@ var nested_input_definitions = {
               "urdb_rate_name"
             ]
           ],
-          "description": "Label attribute of utility rate structure from <a href='https: //openei.org/services/doc/rest/util_rates/?version=3' target='blank'>Utility Rate Database API</a>"
+          "description": "Label attribute of utility rate structure from <a href='https://openei.org/services/doc/rest/util_rates/?version=3' target='blank'>Utility Rate Database API</a>"
         }
       },
       "Wind": {
