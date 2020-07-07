@@ -51,8 +51,8 @@ paths:
           in: query
           type: string
           required: true
-          enum: [SEDAN, SUV, EQUAL]
-          description: Vehicle class distribution.  Must be one of `[X, SUV, X]` where `SEDAN` is sedan dominant scenario (80/20), `SUV` is SUV dominant (20/80), and `EQUAL` represents equal distribution (50/50).
+          enum: [Sedan, SUV, Equal]
+          description: Vehicle class distribution.  Must be one of `[Sedan, SUV, Equal]` where `Sedan` is sedan dominant scenario (80/20), `SUV` is SUV dominant (20/80), and `Equal` represents equal distribution (50/50).
         - name: pref_dist
           in: query
           type: string
@@ -69,14 +69,14 @@ paths:
           in: query
           type: string
           required: true
-          enum: [MostL1, MostL2, ???]
-          description: Options for home power distribution scenarios where `MostL1` represents 80% L1 charging, 20% L2, `MostL2` represents 20% L1 charging, 80% L2, and `EvenL2` represents 50% L1 charging, 50% L2.  Must be one of `[MostL1, MostL2, ?]`
+          enum: [MostL1, MostL2, Equal]
+          description: Options for home power distribution scenarios where `MostL1` represents 80% L1 charging, 20% L2, `MostL2` represents 20% L1 charging, 80% L2, and `Equal` represents 50% L1 charging, 50% L2.  Must be one of `[MostL1, MostL2, Equal]`
         - name: work_power_dist
           in: query
           type: string
           required: true
-          enum: [MostL1, MostL2, ???]
-          description: Options for work power distribution scenarios where `MostL1` represents 80% L1 charging, 20% L2, `MostL2` represents 20% L1 charging, 80% L2, and `EvenL2` represents 50% L1 charging, 50% L2.  Must be one of `[MostL1, MostL2, ?]`
+          enum: [MostL1, MostL2, Equal]
+          description: Options for work power distribution scenarios where `MostL1` represents 80% L1 charging, 20% L2, `MostL2` represents 20% L1 charging, 80% L2, and `Equal` represents 50% L1 charging, 50% L2.  Must be one of `[MostL1, MostL2, Equal]`
       responses:
         "200":
           description: Successful request
