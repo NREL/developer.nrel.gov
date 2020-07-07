@@ -1,5 +1,5 @@
 ---
-title: EVI-Pro
+title: EVI-Pro Lite
 summary: Get results from the EVI-Pro model
 layout: swagger
 swagger_url: /docs/transportation/evi-pro-v1/spec.yml
