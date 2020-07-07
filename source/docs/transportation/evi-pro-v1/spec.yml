@@ -26,48 +26,57 @@ paths:
         - name: temp_c
           in: query
           type: string
+          enum: [-20, -10, 0, 10, 20, 30, 40]
           required: true
-          description: Degrees in Celsius for the day on which load profile shape is desired.
+          description: Degrees in Celsius for the day on which load profile shape is desired.  Must be one of `[-20, -10, 0, 10, 20, 30, 40]`.
         - name: fleet_size
           in: query
           type: string
           required: true
-          description: Fleet size
+          enum: [1000, 10000, 50000]
+          description: Fleet size.  Must be one of `[1000, 10000, 50000]`.
         - name: mean_dvmt
           in: query
           type: string
           required: true
-          description: Average daily vehicle miles traveled
+          enum: [25, 35, 45]
+          description: Average fleet daily vehicle miles traveled.  Must be one of `[25, 35, 45]`.
         - name: pev_dist
           in: query
           type: string
           required: true
-          description: Fleet size
+          enum: [BEV, PHEV, EQUAL]
+          description: PEV distribution where numbers correlate to % of vehicle type `PHEV20, PHEV50, BEV100, BEV250`.  Must be one of `[BEV, PHEV, EQUAL]` where `BEV` represents BEV dominant scenario (10/15/25/50), `PHEV` represents PHEV dominant (25/50/10/15), and `EQUAL` represents PHEV/BEV equal shares (15/35/15/35).
         - name: class_dist
           in: query
           type: string
           required: true
-          description: Fleet size
+          enum: [SEDAN, SUV, EQUAL]
+          description: Vehicle class distribution.  Must be one of `[X, SUV, X]` where `SEDAN` is sedan dominant scenario (80/20), `SUV` is SUV dominant (20/80), and `EQUAL` represents equal distribution (50/50).
         - name: pref_dist
           in: query
           type: string
           required: true
-          description: Fleet size
+          enum: [HOME60, HOME80, HOME100]
+          description: Preference for charging at home (versus at work).  Must be one of `[HOME60, HOME80, HOME100]` where 60% perfer home charging, 80% prefer home charging, and 100% prefer home charging.
         - name: home_access_dist
           in: query
           type: string
           required: true
-          description: Fleet size
+          enum: [HA50, HA75, HA100]
+          description: Access to home power where numbers represent access to home power.  Must be one of `[HA50, HA75, HA100]` where `HA100` reflects a region with a high fraction of single family homes.
         - name: home_power_dist
           in: query
           type: string
           required: true
-          description: Fleet size
+          enum: [MostL1, MostL2, ???]
+          description: Options for home power distribution scenarios where `MostL1` represents 80% L1 charging, 20% L2, `MostL2` represents 20% L1 charging, 80% L2, and `EvenL2` represents 50% L1 charging, 50% L2.  Must be one of `[MostL1, MostL2, ?]`
         - name: work_power_dist
           in: query
           type: string
           required: true
-          description: Fleet size
+          enum: [MostL1, MostL2, ???]
+          description: Options for work power distribution scenarios where `MostL1` represents 80% L1 charging, 20% L2, `MostL2` represents 20% L1 charging, 80% L2, and `EvenL2` represents 50% L1 charging, 50% L2.  Must be one of `[MostL1, MostL2, ?]`
       responses:
         "200":
           description: Successful request
