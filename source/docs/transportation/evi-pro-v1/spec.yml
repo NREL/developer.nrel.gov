@@ -183,27 +183,6 @@ definitions:
       work_power_dist:
         type: string
         example: MostL2
-      day_of_week:
-        type: string
-        example: foo
-      pev_type:
-        type: string
-        example: foo
-      class_type:
-        type: string
-        example: foo
-      dest_type:
-        type: string
-        example: foo
-      dest_chg_level:
-        type: string
-        example: foo
-      type:
-        type: string
-        example: residential
-      state_abbr:
-        type: string
-        example: ny
   weekdayLoadProfile:
     type: object
     properties:
@@ -232,14 +211,24 @@ definitions:
         items:
           $ref: "#/definitions/error"
         example: []
-      inputs:
-          $ref: "#/definitions/loadProfileInputs"
       metadata:
         type: object
         properties:
           version:
             type: string
-            example: 1.0.0
+            example: 0.0.0
+          inputs:
+            type: hash
+            example:
+              temp_c: -20
+              fleet_size: 1000
+              mean_dvmt: 45
+              pev_dist: PHEV
+              class_dist: SUV
+              pref_dist: Home60
+              home_access_dist: HA50
+              home_power_dist: MostL2
+              work_power_dist: MostL2
       results:
         type: object
         properties:
@@ -281,8 +270,6 @@ definitions:
         items:
           $ref: "#/definitions/error"
         example: []
-      inputs:
-          $ref: "#/definitions/loadProfileInputs"
       metadata:
         type: object
         properties:
