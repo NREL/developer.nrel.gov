@@ -3,15 +3,9 @@ info:
   version: "1.0.0"
   title: EVI-Pro Lite API
   description: |-
-    APIs providing output from NREL's EVI-Pro model.  Used to power the EVI-Pro Lite tool at https://afdc.energy.gov/evi-pro-lite.
-
-    EVI-Pro Lite is a simplified version of the Electric Vehicle Infrastructure Projection Tool (EVI-Pro). Assumptions in EVI-Pro Lite are consistent with a 2017 EVI-Pro analysis investigating charging infrastructure requirements at the national-level which relied on advanced PEV simulations using millions of miles of real-world daily driving schedules sourced from large public and commercial travel data sets (additional regional analyses have been conducted in Massachusetts, Columbus, California, and Maryland). Charging at non-residential stations is simulated on an as-necessary basis such that consumers are able to maximize electric vehicle miles traveled (eVMT). It is assumed that future PEVs will be driven in a manner consistent with present day gasoline vehicles (e.g., 70% of daily driving under 40 miles and 95% under 100 miles). Technical considerations are made for the spatial density of PEVs, ambient temperature effects on electric driving range, and frequency of long-distance driving days.
-
-    This project has been scoped to:
-
-    - Provide additional geographic resolution to the infrastructure estimates
-    - Enable calculation of fleet-level charging load profiles
-    - Make infrastructure and load profile estimates accessible via APIs on NREL's Developer Network
+    APIs providing output from NREL's EVI-Pro model. Used to power the EVI-Pro Lite tool at https://afdc.energy.gov/evi-pro-lite. These endpoints provide daily (24 hour) fleet-level charging load profiles for a variety of customizable scenarios.  
+    
+    EVI-Pro Lite is a simplified version of the Electric Vehicle Infrastructure Projection Tool (EVI-Pro). EVI-Pro uses real-world travel data from mass market consumers to estimate future requirements for residential, workplace, and public charging under a variety of scenarios. For more information regarding EVI-Pro Lite, see the [methodology and assumptions page](https://evi-pro-vue.afdc-stage.nrel.gov/evi-pro-lite/load-profile/assumptions). 
 schemes:
   - https
 basePath: /api/evi-pro/v1
