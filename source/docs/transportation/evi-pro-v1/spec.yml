@@ -17,7 +17,7 @@ security:
 paths:
   /load_profile:
     get:
-      summary: Get the load profile
+      summary: Get the daily load profile for a given scenario
       parameters:
         - name: temp_c
           in: query
@@ -77,7 +77,70 @@ paths:
         "200":
           description: Successful request
           schema:
-            $ref: "#/definitions/load_profile"
+            $ref: "#/definitions/loadProfile"
+  /load_profile/breakdown:
+    get:
+      summary: Get the daily load profile for a given scenario broken down by pev_type (one of PHEV20, PHEV50, BEV100, BEV250) and class_type (Sedan or SUV)
+      parameters:
+        - name: temp_c
+          in: query
+          type: string
+          enum: [-20, -10, 0, 10, 20, 30, 40]
+          required: true
+          description: Degrees in Celsius for the day on which load profile shape is desired.  Must be one of `[-20, -10, 0, 10, 20, 30, 40]`.
+        - name: fleet_size
+          in: query
+          type: string
+          required: true
+          enum: [1000, 10000, 50000]
+          description: Fleet size.  Must be one of `[1000, 10000, 50000]`.
+        - name: mean_dvmt
+          in: query
+          type: string
+          required: true
+          enum: [25, 35, 45]
+          description: Average fleet daily vehicle miles traveled.  Must be one of `[25, 35, 45]`.
+        - name: pev_dist
+          in: query
+          type: string
+          required: true
+          enum: [BEV, PHEV, EQUAL]
+          description: PEV distribution where numbers correlate to % of vehicle type `PHEV20, PHEV50, BEV100, BEV250`.  Must be one of `[BEV, PHEV, EQUAL]` where `BEV` represents BEV dominant scenario (10/15/25/50), `PHEV` represents PHEV dominant (25/50/10/15), and `EQUAL` represents PHEV/BEV equal shares (15/35/15/35).
+        - name: class_dist
+          in: query
+          type: string
+          required: true
+          enum: [Sedan, SUV, Equal]
+          description: Vehicle class distribution.  Must be one of `[Sedan, SUV, Equal]` where `Sedan` is sedan dominant scenario (80/20), `SUV` is SUV dominant (20/80), and `Equal` represents equal distribution (50/50).
+        - name: pref_dist
+          in: query
+          type: string
+          required: true
+          enum: [HOME60, HOME80, HOME100]
+          description: Preference for charging at home (versus at work).  Must be one of `[HOME60, HOME80, HOME100]` where 60% perfer home charging, 80% prefer home charging, and 100% prefer home charging.
+        - name: home_access_dist
+          in: query
+          type: string
+          required: true
+          enum: [HA50, HA75, HA100]
+          description: Access to home power where numbers represent access to home power.  Must be one of `[HA50, HA75, HA100]` where `HA100` reflects a region with a high fraction of single family homes.
+        - name: home_power_dist
+          in: query
+          type: string
+          required: true
+          enum: [MostL1, MostL2, Equal]
+          description: Options for home power distribution scenarios where `MostL1` represents 80% L1 charging, 20% L2, `MostL2` represents 20% L1 charging, 80% L2, and `Equal` represents 50% L1 charging, 50% L2.  Must be one of `[MostL1, MostL2, Equal]`
+        - name: work_power_dist
+          in: query
+          type: string
+          required: true
+          enum: [MostL1, MostL2, Equal]
+          description: Options for work power distribution scenarios where `MostL1` represents 80% L1 charging, 20% L2, `MostL2` represents 20% L1 charging, 80% L2, and `Equal` represents 50% L1 charging, 50% L2.  Must be one of `[MostL1, MostL2, Equal]`
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/loadProfileBreakdown"
 definitions:
   error:
     type: object
@@ -90,8 +153,136 @@ definitions:
         type: string
         description: A human readable description of the error message.
         example: No data was found for the gisjoin provided
-  load_profile:
+  loadProfileInputs:
+    type: object
     properties:
+      temp_c:
+        type: string
+        example: -20
+      fleet_size:
+        type: string
+        example: 1000
+      mean_dvmt:
+        type: string
+        example: 45
+      pev_dist:
+        type: string
+        example: PHEV
+      class_dist:
+        type: string
+        example: SUV
+      pref_dist:
+        type: string
+        example: Home60
+      home_access_dist:
+        type: string
+        example: HA50
+      home_power_dist:
+        type: string
+        example: MostL2
+      work_power_dist:
+        type: string
+        example: MostL2
+      day_of_week:
+        type: string
+        example: foo
+      pev_type:
+        type: string
+        example: foo
+      class_type:
+        type: string
+        example: foo
+      dest_type:
+        type: string
+        example: foo
+      dest_chg_level:
+        type: string
+        example: foo
+      type:
+        type: string
+        example: residential
+      state_abbr:
+        type: string
+        example: ny
+  weekdayLoadProfile:
+    type: object
+    properties:
+      home_l1:
+        type: array
+        example: [0, 1, 2, ..., 95]
+      home_l2:
+        type: array
+        example: [0, 1, 2, ..., 95]
+      work_l1:
+        type: array
+        example: [0, 1, 2, ..., 95]
+      work_l2:
+        type: array
+        example: [0, 1, 2, ..., 95]
+      public_l2:
+        type: array
+        example: [0, 1, 2, ..., 95]
+      public_l3:
+        type: array
+        example: [0, 1, 2, ..., 95]
+  loadProfile:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/error"
+        example: []
+      inputs:
+          $ref: "#/definitions/loadProfileInputs"
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 1.0.0
+      results:
+        type: object
+        properties:
+          weekday_load_profile:
+            $ref: "#/definitions/weekdayLoadProfile"
+          weekend_load_profile:
+            $ref: "#/definitions/weekdayLoadProfile"
+  breakdownByCharger:
+    type: object
+    properties:
+      bev100_sedan:
+        type: array
+        example: [0, 1, 2, ..., 95]
+      bev250_sedan:
+        type: array
+        example: [0, 1, 2, ..., 95]
+      bev100_suv:
+        type: array
+        example: [0, 1, 2, ..., 95]
+      bev250_suv:
+        type: array
+        example: [0, 1, 2, ..., 95]
+      phev20_sedan:
+        type: array
+        example: [0, 1, 2, ..., 95]
+      phev50_sedan:
+        type: array
+        example: [0, 1, 2, ..., 95]
+      phev20_suv:
+        type: array
+        example: [0, 1, 2, ..., 95]
+      phev50_suv:
+        type: array
+        example: [0, 1, 2, ..., 95]
+  loadProfileBreakdown:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/error"
+        example: []
+      inputs:
+          $ref: "#/definitions/loadProfileInputs"
       metadata:
         type: object
         properties:
@@ -110,11 +301,6 @@ definitions:
               home_access_dist: HA50
               home_power_dist: MostL2
               work_power_dist: MostL2
-      errors:
-        type: array
-        items:
-          $ref: "#/definitions/error"
-        example: []
       results:
         type: object
         properties:
@@ -721,6 +907,17 @@ definitions:
                            0,
                            0,
                            0                            
+                $ref: "#/definitions/breakdownByCharger"
+                home_l2:
+                  $ref: "#/definitions/breakdownByCharger"
+                work_l1:
+                  $ref: "#/definitions/breakdownByCharger"
+                work_l2:
+                  $ref: "#/definitions/breakdownByCharger"
+                public_l2:
+                  $ref: "#/definitions/breakdownByCharger"
+                public_l3:
+                  $ref: "#/definitions/breakdownByCharger"
           weekend_load_profile:
             type: object
             properties:
@@ -1324,3 +1521,14 @@ definitions:
                            0,
                            0,
                            0
+                $ref: "#/definitions/breakdownByCharger"
+                home_l2:
+                  $ref: "#/definitions/breakdownByCharger"
+                work_l1:
+                  $ref: "#/definitions/breakdownByCharger"
+                work_l2:
+                  $ref: "#/definitions/breakdownByCharger"
+                public_l2:
+                  $ref: "#/definitions/breakdownByCharger"
+                public_l3:
+                  $ref: "#/definitions/breakdownByCharger"
