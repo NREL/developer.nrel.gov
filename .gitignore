@@ -33,3 +33,5 @@
 
 # NPM
 /node_modules
+
+/tmp

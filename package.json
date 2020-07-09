@@ -1,7 +1,37 @@
 {
   "private": true,
   "dependencies": {
-    "gh-pages": "^2.2.0",
-    "swagger-tools": "^0.10.1"
+    "@fortawesome/fontawesome-svg-core": "^1.2.29",
+    "@fortawesome/free-brands-svg-icons": "^5.13.1",
+    "@fortawesome/free-solid-svg-icons": "^5.13.1",
+    "bootbox": "^5.4.0",
+    "bootstrap": "^4.5.0",
+    "file-loader": "^6.0.0",
+    "jquery": "^3.5.1",
+    "parsleyjs": "^2.9.2",
+    "popper.js": "^1.16.1",
+    "swagger-ui": "^3.28.0",
+    "swagger-ui-dist": "^3.28.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.6.0",
+    "gh-pages": "^3.1.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.14.1",
+    "postcss-flexbugs-fixes": "^4.2.1",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "sass-loader": "^9.0.1",
+    "swagger-tools": "^0.10.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "scripts": {
+    "start": "NODE_ENV=development webpack --watch -d --color",
+    "build": "NODE_ENV=production webpack --bail -p"
   }
 }

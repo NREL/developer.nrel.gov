@@ -8,42 +8,21 @@ gem "middleman-livereload", "~> 3.4.6"
 gem "dotenv", "~> 2.7.2"
 
 # Syntax highlighting
-gem "middleman-syntax", "~> 3.0.0"
+gem "middleman-syntax", "~> 3.2.0"
 
 # Assets
 gem "middleman-sprockets", "~> 4.1.0"
-
-# Bootstrap
-gem "bootstrap", "~> 4.3.1"
-
-# Icons
-gem "font-awesome-sass", "~> 4.7.0"
+#gem "sprockets", "< 4"
+#gem "sass", "~> 3.7.4"
 
 # Redirects
 gem "middleman-alias", "~> 0.0.17"
 
 # JSON validation
-gem "multi_json", "~> 1.13.1"
+gem "multi_json", "~> 1.14.1"
 
 # Test tasks
-gem "rake", "~> 12.0"
-
-# ExecJS runtime for middleman.
-gem "mini_racer", "~> 0.2.4"
+gem "rake", "~> 13.0"
 
 # For making API calls to generate docs.
-gem "rest-client", "~> 2.0.2"
-
-source "https://rails-assets.org" do
-  # Swagger UI
-  gem "rails-assets-swagger-ui", "~> 3.0.21"
-
-  # jQuery
-  gem "rails-assets-jquery", "~> 3.4.0"
-
-  # Programmatic bootstrap modals
-  gem "rails-assets-bootbox", "~> 5.1.1"
-
-  # Form validation
-  gem "rails-assets-parsleyjs", "~> 2.9.0"
-end
+gem "rest-client", "~> 2.1.0"

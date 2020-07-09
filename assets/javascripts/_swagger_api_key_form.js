@@ -1,11 +1,11 @@
-function ApiKeyFormPlugin() {
+export default function ApiKeyFormPlugin() {
   return {
     statePlugins: {
       spec: {
         wrapActions: {
           // After the spec has been fetched and the page is being
           // rendered, inject our custom api key form onto the page.
-          updateResolved: function(origAction, system) {
+          updateSpec: function(origAction, system) {
             return function() {
               var origReturn = origAction.apply(undefined, arguments);
 
