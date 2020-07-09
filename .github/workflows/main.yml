@@ -1,0 +1,120 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        deploy_env: [production, staging]
+    env:
+      BUNDLE_JOBS: 4
+      BUNDLE_RETRY: 3
+      BUNDLE_PATH: vendor/bundle
+      BUNDLE_CLEAN: "true"
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: "2.6"
+
+      # Ruby dependencies
+      - name: Bundle Cache
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - name: Bundle Install
+        run: bundle install
+
+      # Yarn dependencies
+      - name: Yarn Cache Path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Yarn Cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Yarn Install
+        run: yarn install
+
+      # Build
+      - name: Build
+        run: bundle exec middleman build --clean --verbose --environment=${{ matrix.deploy_env }}
+
+      - name: Lint
+        run: bundle exec rake lint
+
+      - uses: actions/upload-artifact@v1
+        with:
+          name: build-${{ matrix.deploy_env }}
+          path: ./build
+
+  deploy:
+    if: success() && github.ref == 'refs/heads/master'
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        deploy_env: [production, staging]
+        include:
+          - deploy_env: production
+            bucket_name_secret_name: PRODUCTION_BUCKET_NAME
+          - deploy_env: staging
+            bucket_name_secret_name: STAGING_BUCKET_NAME
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+        with:
+          ruby-version: "3.8"
+      - uses: dschep/install-pipenv-action@v1
+
+      # Python deployment dependencies
+      - name: Pipenv Cache
+        uses: actions/cache@v1
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pipenv-
+      - name: Pipenv Install
+        run: pipenv install
+
+      # Deploy to S3 bucket.
+      - uses: actions/download-artifact@v1
+        with:
+          name: build-${{ matrix.deploy_env }}
+          path: ./build
+      - name: Deploy
+        env:
+          BUCKET_NAME: ${{ secrets[matrix.bucket_name_secret_name] }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+        run: |
+          # Sync all cache-busted assets with long cache-control expirations.
+          pipenv run aws s3 sync ./build/ "s3://${BUCKET_NAME}/" \
+            --exclude '*' \
+            --include 'static/fonts/*' \
+            --include 'static/img/*' \
+            --include 'static/javascripts/all-*' \
+            --include 'static/javascripts/ie_lt_9-*' \
+            --include 'static/stylesheets/*' \
+            --include 'metrics/css/*' \
+            --include 'metrics/js/*' \
+            --cache-control 'public, max-age=31536000, immutable'
+          # Sync the remaining files, disallowing caching on those.
+          pipenv run aws s3 sync ./build/ "s3://${BUCKET_NAME}/" --cache-control 'max-age=0, no-cache, must-revalidate'
+          # Run the sync one more time to delete old files. Run this separately
+          # since otherwise --deletes occur first:
+          # https://github.com/aws/aws-cli/issues/1417
+          sleep 5
+          pipenv run aws s3 sync ./build/ "s3://${BUCKET_NAME}/" --cache-control 'max-age=0, no-cache, must-revalidate' --delete
