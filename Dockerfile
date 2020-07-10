@@ -1,11 +1,11 @@
-FROM ruby:2.6.3
+FROM ruby:2.6.6-buster
 
 # Determine Debian version
 RUN apt-get update && apt-get -y install lsb-release
 
 # NodeJS and Yarn
 RUN set -x && \
-  VERSION=node_8.x && \
+  VERSION=node_12.x && \
   DISTRO="$(lsb_release -s -c)" && \
   curl -sS https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
   echo "deb http://deb.nodesource.com/$VERSION $DISTRO main" > /etc/apt/sources.list.d/nodesource.list && \
@@ -22,7 +22,7 @@ WORKDIR /app
 COPY Gemfile Gemfile.lock /app/
 RUN bundle install --jobs=20 --retry=5
 
-COPY yarn.lock /app/
+COPY package.json yarn.lock /app/
 RUN yarn
 
 COPY . /app
