@@ -59,13 +59,13 @@ jobs:
 
       # Artifact
       - uses: actions/upload-artifact@v1
-        if: success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/staging')
+        if: success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/webpack')
         with:
           name: build
           path: ./build
 
   deploy:
-    if: success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/staging')
+    if: success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/webpack')
     needs: build
     runs-on: ubuntu-latest
     steps:
