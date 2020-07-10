@@ -22,7 +22,7 @@ WORKDIR /app
 COPY Gemfile Gemfile.lock /app/
 RUN bundle install --jobs=20 --retry=5
 
-COPY yarn.lock /app/
+COPY package.json yarn.lock /app/
 RUN yarn
 
 COPY . /app
