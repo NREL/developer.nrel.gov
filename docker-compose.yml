@@ -5,6 +5,7 @@ services:
     volumes:
       - .:/app
       - bundle_cache:/usr/local/bundle
+      - yarn_cache:/usr/local/node_modules
     environment:
       MIDDLEMAN_LIVERELOAD_PORT: 4481
       MIDDLEMAN_LIVERELOAD_JS_HOST: 127.0.0.1
@@ -13,3 +14,4 @@ services:
       - "4481:4481"
 volumes:
   bundle_cache:
+  yarn_cache:

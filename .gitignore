@@ -25,9 +25,6 @@
 /REVISION
 /config/deployed.yml
 
-# ignore bin directory
-/bin
-
 # Ignore .ruby-version file CircleCI uses.
 /.ruby-version
 
@@ -35,3 +32,4 @@
 /node_modules
 
 /tmp
+/docker-compose.override.yml
