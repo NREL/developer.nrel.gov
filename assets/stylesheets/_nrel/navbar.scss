@@ -1,0 +1,28 @@
+.navbar {
+  margin-bottom: 8px;
+  padding: 0px;
+  background-image: linear-gradient(to bottom, #0067b7 0%, #00509a 100%);
+}
+
+.navbar-nav {
+	text-transform: uppercase;
+}
+
+.nav-item {
+  border-right: 1px solid #91b6e2;
+  font-size: 12px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff;
+  text-decoration: none;
+  padding: 1.5px 15px;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:focus,
+.navbar-dark .navbar-nav .active > .nav-link {
+  color: #06539b;
+  background-color: #fff;
+  background-image: linear-gradient(to bottom, #fff 0%, #d8dfeb 100%);
+}

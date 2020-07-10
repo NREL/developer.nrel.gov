@@ -17,9 +17,6 @@
 /.sass-cache
 /.cache
 
-# Ignore .DS_store file
-.DS_Store
-
 # Ignore environment specific configuration
 /.env
 /.env.*
@@ -28,11 +25,11 @@
 /REVISION
 /config/deployed.yml
 
-# ignore bin directory
-/bin
-
 # Ignore .ruby-version file CircleCI uses.
 /.ruby-version
 
 # NPM
 /node_modules
+
+/tmp
+/docker-compose.override.yml

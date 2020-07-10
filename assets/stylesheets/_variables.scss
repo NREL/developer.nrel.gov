@@ -1,0 +1,29 @@
+$font-size-base: 0.8125rem;
+
+$font-family-sans-serif: Verdana, Arial, Helvetica, sans-serif;
+$text-color: #000;
+
+$link-color: #004f99;
+$link-hover-color: #c60;
+
+$headings-color: #c60;
+$headings-font-weight: bold;
+
+$navbar-height: 21px;
+
+$navbar-default-bg: #0067b7;
+$navbar-default-color: #fff;
+$navbar-default-link-color: $navbar-default-color;
+$navbar-default-link-hover-color: #06539b;
+$navbar-default-link-hover-bg: #fff;
+$navbar-default-link-active-color: $navbar-default-link-hover-color;
+$navbar-default-link-active-bg: $navbar-default-link-hover-bg;
+
+$btn-primary-bg: #08c;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1030px
+)

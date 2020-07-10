@@ -113,6 +113,38 @@ Version 3 is the current version of the utility rates API. Previous versions hav
       </td>
       <td class="doc-parameter-description">The longitude for the location to use. Required if address not given.</td>
     </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">radius</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> decimal
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> <i>0</i>
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Range:</strong> <em>0.0</em> to <em>200.0</em>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The radius (in miles) around the search location to search for utility rates with intersecting boundaries.</p>
+        <p>With the default radius of 0, only utility rates whose boundaries contain the search location point will be returned.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">limit</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+      </td>
+      <td class="doc-parameter-description">The maximum number of results to return. If no limit is specified then all matching results will be returned.</td>
+    </tr>
   </tbody>
 </table>
 

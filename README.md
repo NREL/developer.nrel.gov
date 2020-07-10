@@ -13,6 +13,10 @@ The content files to edit are in [`./source`](https://github.com/NREL/developer.
 3. Inside the `developer.nrel.gov` directory, run `docker-compose up`.
 4. View your changes at: http://localhost:4480/
 
+### Linting
+
+If you're working on Swagger documentation, you can run `rake lint` locally to check for potential warnings or errors with the Swagger specification files.
+
 ## Deploy
 
 - Changes committed to the `staging` branch will automatically be deployed to the staging site.

@@ -10,19 +10,19 @@ We often receive requests from users interested in downloading larger segments o
 
 The API is restricted in both the number of requests a single user can make in a 24 hour period, as well as in the maximum size of a single request. The API rate limits are set at:
 
-> 300 requests per day
+> 600 requests per day
 > 1 request every 2 seconds
 
 For downloading directly via CSV there are separate rate limits. This is due to the fact that it is only possible to download a single site for a single year via the CSV endpoint, therefor these requests are always quite small by comparison:
 
-> 2000 requests per day
+> 4000 requests per day
 > 1 request per second
 
-The size limit per each single request is determined by the number of total attributes in each request. The maximum weight of each request is **63072000**. The calculation for determining the weight of each request is:
+The size limit per each single request is determined by the number of total attributes in each request. The maximum weight of each request is **175000000**. The calculation for determining the weight of each request is:
 
 > <em>site-count\*attribute-count\*year-count\*data-intervals-per-year</em>
 
- * **site-count** is derived from the WKT value submitted and can be retrieved using the [site_count](/docs/wind/wind-toolkit/site_count) API endpoint. 
+ * **site-count** is derived from the WKT value submitted and can be retrieved using the [site_count](/docs/wind/wind-toolkit/site_count) API endpoint.
  * **attribute-count** is equal to the number of attributes requested
  * **year-count** is equal to the number of years requested
  * **data-intervals-per-year** is *((60/interval)\*24\*365)* where interval is the interval requested

@@ -1,3 +1,4 @@
+<% loader = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/locator/loader.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
   <thead>
     <tr>
@@ -7,6 +8,7 @@
     </tr>
   </thead>
   <tbody>
+    <% fuels = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/fuels.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr>
       <th class="doc-parameter-name" scope="row">fuel_type_code</th>
       <td class="doc-parameter-value">
@@ -16,7 +18,7 @@
       </td>
       <td class="doc-parameter-description">
         <p>The type of alternative fuel the station provides. Fuel types are given as code values as described below:</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Value</th>
@@ -24,34 +26,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">BD</th>
-              <td>Biodiesel (B20 and above)</td>
-            </tr>
-            <tr>
-              <th scope="row">CNG</th>
-              <td>Compressed Natural Gas</td>
-            </tr>
-            <tr>
-              <th scope="row">E85</th>
-              <td>Ethanol (E85)</td>
-            </tr>
-            <tr>
-              <th scope="row">ELEC</th>
-              <td>Electric</td>
-            </tr>
-            <tr>
-              <th scope="row">HY</th>
-              <td>Hydrogen</td>
-            </tr>
-            <tr>
-              <th scope="row">LNG</th>
-              <td>Liquefied Natural Gas</td>
-            </tr>
-            <tr>
-              <th scope="row">LPG</th>
-              <td>Liquefied Petroleum Gas (Propane)</td>
-            </tr>
+            <% fuels.each do |fuel| %>
+              <% next if fuel.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= fuel.fetch("key") %></th>
+                <td><%= fuel.fetch("name") %></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
       </td>
@@ -99,7 +80,7 @@
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">The two character U.S. state code of the station's location.</td>
+      <td class="doc-parameter-description">The two character code for the U.S. state or Canadian province/territory of the station's location.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">zip</th>
@@ -120,6 +101,34 @@
       <td class="doc-parameter-description">The plus-4 portion of the station's ZIP code (U.S. ZIP codes only).</td>
     </tr>
     <tr>
+      <th class="doc-parameter-name" scope="row">country</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The two character country code of the station's location.</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% loader.fetch("countries").each do |country| %>
+              <% next if country.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= country.fetch("key") %></th>
+                <td><%= country.fetch("name") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
       <th class="doc-parameter-name" scope="row">station_phone</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -137,7 +146,7 @@
       </td>
       <td class="doc-parameter-description">
         <p>The current status of the station, given as code values as described below:</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Value</th>
@@ -145,18 +154,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">E</th>
-              <td>Open: The station is open.</td>
-            </tr>
-            <tr>
-              <th scope="row">P</th>
-              <td>Planned: The station is not yet open, but plans to carry alternative fuel in the future, or the station is temporarily out of service. See the "Expected Date" field for an anticipated open date.</td>
-            </tr>
-            <tr>
-              <th scope="row">T</th>
-              <td>Temporarily unavailable: The station is temporarily unavailable. See the “Expected Date” field for an anticipated open date.</td>
-            </tr>
+            <% loader.fetch("status_types").each do |status_type| %>
+              <% next if status_type.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= status_type.fetch("key") %></th>
+                <td><%= status_type.fetch("name") %></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
       </td>
@@ -171,15 +175,15 @@
       <td class="doc-parameter-description">For planned stations, the date the station is expected to open or start carrying alternative fuel. For temporarily unavailable stations, the expected date is the date the station is expected to reopen. This date is estimated but not guaranteed.</td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">groups_with_access_code</th>
+      <th class="doc-parameter-name" scope="row">access_code</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
           <strong>Type:</strong> string
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>A description of who is allowed to access the station and other station access information. </p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+        <p>A description of who is allowed to access the station, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Value</th>
@@ -187,52 +191,56 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">Private</th>
-              <td>Private station.</td>
-            </tr>
-            <tr>
-              <th scope="row">Private - fleet customers only</th>
-              <td>Private station that may allow other entities to fuel through a business-to-business arrangement. For more information, fleet customers should refer to the “Access Days Time” field for contact information or contact the station directly.</td>
-            </tr>
-            <tr>
-              <th scope="row">Private – government only</th>
-              <td>Private station available only to government vehicles, or some subset of government vehicles.</td>
-            </tr>
-            <tr>
-              <th scope="row">Public</th>
-              <td>Publicly available to all customers.</td>
-            </tr>
-            <tr>
-              <th scope="row">Public – call ahead </th>
-              <td>Publicly available, but customers should call before visiting the station. See “Station Phone” for more details.</td>
-            </tr>
-            <tr>
-              <th scope="row">Public – credit card at all times</th>
-              <td>Publicly available, but only accepts credit cards as payment. The station may also accept fleet cards or station-specific fueling cards. See “Cards Accepted” field for more details.</td>
-            </tr>
-            <tr>
-              <th scope="row">Public – card key at all times</th>
-              <td>Publicly available, but only accepts fleet cards or station-specific fueling cards as payment. See “Cards Accepted” field for more details.</td>
-            </tr>
-            <tr>
-              <th scope="row">Public – credit card after hours</th>
-              <td>Publicly available, and accepts credit cards 24 hours a day. See “Access Days Time” and “Cards Accepted” fields for more details.</td>
-            </tr>
-            <tr>
-              <th scope="row">Public – card key after hours</th>
-              <td>Publicly available, and accepts fleet cards or station-specific fueling cards 24 hours a day. See “Access Days Time” and “Cards Accepted” fields for more details.</td>
-            </tr>
-            <tr>
-              <th scope="row">PLANNED – not yet available</th>
-              <td>Not yet open, but plans to carry alternative fuel in the future. See the "Expected Date" field for an anticipated open date.</td>
-            </tr>
-            <tr>
-              <th scope="row">TEMPORARILY UNAVAILBLE</th>
-              <td>Temporarily unavailable. See the “Expected Date” field for an anticipated open date.</td>
-            </tr>
+            <% loader.fetch("access_types").each do |access_type| %>
+              <% next if access_type.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= access_type.fetch("key") %></th>
+                <td><%= access_type.fetch("name") %></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
+      </td>
+    </tr>
+    <% access_details = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/access-details.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
+    <tr>
+      <th class="doc-parameter-name" scope="row">access_detail_code</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>A description of other station access information, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% access_details.each do |access_detail| %>
+              <% next if access_detail.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= access_detail.fetch("key") %></th>
+                <td><%= access_detail.fetch("name") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">groups_with_access_code</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Deprecated: See the <a href="#"><code>access_code</code></a>, <a href="#"><code>access_detail_code</code></a>, and <a href="#"><code>status</code></a> fields for equivalent information in a more structured format. (Note: this field will remain for legacy application support)</p>
+        <p>A description of who is allowed to access the station and other station access information.</p>
       </td>
     </tr>
     <tr>
@@ -244,6 +252,7 @@
       </td>
       <td class="doc-parameter-description">Hours of operation for the station.</td>
     </tr>
+    <% payment_methods = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/payment-methods.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr>
       <th class="doc-parameter-name" scope="row">cards_accepted</th>
       <td class="doc-parameter-value">
@@ -253,7 +262,7 @@
       </td>
       <td class="doc-parameter-description">
         <p>A space-separated list of payment methods accepted. Payment methods are given as code values as described below:</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Value</th>
@@ -261,94 +270,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">A</th>
-              <td>American Express</td>
-            </tr>
-            <tr>
-              <th scope="row">D</th>
-              <td>Discover</td>
-            </tr>
-            <tr>
-              <th scope="row">M</th>
-              <td>MasterCard</td>
-            </tr>
-            <tr>
-              <th scope="row">V</th>
-              <td>VISA</td>
-            </tr>
-            <tr>
-              <th scope="row">Cash</th>
-              <td>Cash</td>
-            </tr>
-            <tr>
-              <th scope="row">Checks</th>
-              <td>Check</td>
-            </tr>
-            <tr>
-              <th scope="row">CFN</th>
-              <td>Commercial Fueling Network</td>
-            </tr>
-            <tr>
-              <th scope="row">CleanEnergy</th>
-              <td>Clean Energy</td>
-            </tr>
-            <tr>
-              <th scope="row">Comdata</th>
-              <td>Comdata</td>
-            </tr>
-            <tr>
-              <th scope="row">EFS</th>
-              <td>EFS</td>
-            </tr>
-            <tr>
-              <th scope="row">FleetOne</th>
-              <td>Fleet One</td>
-            </tr>
-            <tr>
-              <th scope="row">FuelMan</th>
-              <td>Fuelman</td>
-            </tr>
-            <tr>
-              <th scope="row">GasCard</th>
-              <td>GASCARD</td>
-            </tr>
-            <tr>
-              <th scope="row">PHH</th>
-              <td>PHH</td>
-            </tr>
-            <tr>
-              <th scope="row">PacificPride</th>
-              <td>Pacific Pride</td>
-            </tr>
-            <tr>
-              <th scope="row">Speedway</th>
-              <td>Speedway</td>
-            </tr>
-            <tr>
-              <th scope="row">Tchek</th>
-              <td>T-Chek T-Card</td>
-            </tr>
-            <tr>
-              <th scope="row">TCH</th>
-              <td>TCH</td>
-            </tr>
-            <tr>
-              <th scope="row">Trillium</th>
-              <td>Trillium</td>
-            </tr>
-            <tr>
-              <th scope="row">Voyager</th>
-              <td>Voyager</td>
-            </tr>
-            <tr>
-              <th scope="row">Wright_Exp</th>
-              <td>WEX</td>
-            </tr>
+            <% payment_methods.each do |payment_method| %>
+              <% next if payment_method.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= payment_method.fetch("key") %></th>
+                <td><%= payment_method.fetch("name") %></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
       </td>
     </tr>
+    <% owner_types = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/owner-types.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr>
       <th class="doc-parameter-name" scope="row">owner_type_code</th>
       <td class="doc-parameter-value">
@@ -358,38 +291,21 @@
       </td>
       <td class="doc-parameter-description">
         <p>The type of organization that owns the fueling infrastructure. Owner types are given as code values as described below:</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
-              <th scope="col">Option</th>
+              <th scope="col">Value</th>
               <th scope="col">Description</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">P</th>
-              <td>Privately owned</td>
-            </tr>
-            <tr>
-              <th scope="row">T</th>
-              <td>Utility owned</td>
-            </tr>
-            <tr>
-              <th scope="row">FG</th>
-              <td>Federal government owned</td>
-            </tr>
-            <tr>
-              <th scope="row">LG</th>
-              <td>Local government owned</td>
-            </tr>
-            <tr>
-              <th scope="row">SG</th>
-              <td>State government owned</td>
-            </tr>
-            <tr>
-              <th scope="row">J</th>
-              <td>Jointly owned (combination of owner types)</td>
-            </tr>
+            <% owner_types.each do |owner_type| %>
+              <% next if owner_type.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= owner_type.fetch("key") %></th>
+                <td><%= owner_type.fetch("name") %></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
       </td>
@@ -443,7 +359,65 @@
         </table>
       </td>
     </tr>
+    <% ethanol_blends = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/ethanol-blends.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr>
+      <th class="doc-parameter-name" scope="row">e85_other_ethanol_blends</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For E85 stations, an array of strings identifying the range(s) of blends other than E85 available at the station, given as code values described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% ethanol_blends.each do |ethanol_blend| %>
+              <% next if ethanol_blend.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= ethanol_blend.fetch("key") %></th>
+                <td><%= ethanol_blend.fetch("name") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <% lpg_nozzle_types = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/lpg-nozzle-types.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
+    <tr>
+      <th class="doc-parameter-name" scope="row">lpg_nozzle_types</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For LPG stations, an array of strings, identifying the type of nozzles available at the station, given as code values described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% lpg_nozzle_types.each do |lpg_nozzle_type| %>
+              <% next if lpg_nozzle_type.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= lpg_nozzle_type.fetch("key") %></th>
+                <td><%= lpg_nozzle_type.fetch("name") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr id="response-lpg-primary">
       <th class="doc-parameter-name" scope="row">lpg_primary</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -467,7 +441,7 @@
 
                 <ol>
                   <li>The station is staffed and able to fuel vehicles during normal business hours (e.g., 8am-5pm M-F), and does not require drivers to call ahead;</li>
-                  <li>The station is equipped with a dedicated or purpose-built fuel dispenser for vehicle fueling; and</li>
+                  <li>The station can fill vehicles at a rate of 8-12 gallons per minute or faster, or at a rate similar to filling a gasoline vehicle; and</li>
                   <li>The station accepts credit cards or fleet cards.</li>
                 </ol>
               </td>
@@ -487,31 +461,7 @@
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">
-        <p>For CNG stations, the type of dispensing capability available, given as code values as described below:</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
-          <thead>
-            <tr>
-              <th scope="col">Value</th>
-              <th scope="col">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Q</th>
-              <td>Quick fill</td>
-            </tr>
-            <tr>
-              <th scope="row">T</th>
-              <td>Timed fill</td>
-            </tr>
-            <tr>
-              <th scope="row">B</th>
-              <td>Both: quick fill and timed fill</td>
-            </tr>
-          </tbody>
-        </table>
-      </td>
+      <td class="doc-parameter-description">Deprecated: See <a href="#cng-fill-type-code"><code>cng_fill_type_code</code></a>. (Note: this field will remain for legacy application support)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">ng_psi</th>
@@ -520,7 +470,7 @@
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">For CNG stations, a space separated list of PSI pressures available.</td>
+      <td class="doc-parameter-description">Deprecated: See <a href="#cng-psi"><code>cng_psi</code></a>. (Note: this field will remain for legacy application support)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">ng_vehicle_class</th>
@@ -529,8 +479,27 @@
           <strong>Type:</strong> string
         </div>
       </td>
+      <td class="doc-parameter-description">Deprecated: For CNG stations, see <a href="#cng-vehicle-class"><code>cng_vehicle_class</code></a>. For LNG stations, see <a href="#lng-vehicle-class"><code>lng_vehicle_class</code></a>. (Note: this field will remain for legacy application support)</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">cng_dispenser_num</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+      </td>
+      <td class="doc-parameter-description">For CNG stations, the number of CNG dispensers installed.</td>
+    </tr>
+    <% cng_fill_types = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/cng-fill-types.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
+    <tr id="cng-fill-type-code">
+      <th class="doc-parameter-name" scope="row">cng_fill_type_code</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
       <td class="doc-parameter-description">
-        <p>For CNG and LNG stations, the maximum vehicle size that can physically access the fueling infrastructure, given as code values as described below:</p>
+        <p>For CNG stations, the type of dispensing capability available, given as code values as described below:</p>
         <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
@@ -539,18 +508,176 @@
             </tr>
           </thead>
           <tbody>
+            <% cng_fill_types.each do |cng_fill_type| %>
+              <% next if cng_fill_type.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= cng_fill_type.fetch("key") %></th>
+                <td><%= cng_fill_type.fetch("name") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <% cng_psis = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/cng-psis.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
+    <tr id="cng-psi">
+      <th class="doc-parameter-name" scope="row">cng_psi</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For CNG stations, a space separated list of PSI pressures available.</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
             <tr>
-              <th scope="row">LD</th>
-              <td>Station can only accommodate light-duty vehicles (Classes 1-2).</td>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
             </tr>
+          </thead>
+          <tbody>
+            <% cng_psis.each do |cng_psi| %>
+              <% next if cng_psi.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= cng_psi.fetch("key") %></th>
+                <td><%= cng_psi.fetch("name") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <% renewable_sources = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/renewable-sources.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
+    <tr>
+      <th class="doc-parameter-name" scope="row">cng_renewable_source</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For CNG stations, the type of renewable energy used to generate CNG on-site, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
             <tr>
-              <th scope="row">MD</th>
-              <td>Station can accommodate light- and medium-duty vehicles (Classes 1-5).</td>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
             </tr>
+          </thead>
+          <tbody>
+            <% renewable_sources.each do |renewable_source| %>
+              <% next if renewable_source.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= renewable_source.fetch("key") %></th>
+                <td><%= renewable_source.fetch("name") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">cng_total_compression</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+      </td>
+      <td class="doc-parameter-description">For CNG stations, the total compressor capacity per compressor, measured in standard cubic feet per minute (scfm).</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">cng_total_storage</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+      </td>
+      <td class="doc-parameter-description">For CNG stations, the total storage capacity, measured in standard cubic feet (scf).</td>
+    </tr>
+    <% cng_vehicle_classes = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/cng-vehicle-classes.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
+    <tr id="cng-vehicle-class">
+      <th class="doc-parameter-name" scope="row">cng_vehicle_class</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For CNG stations, the maximum vehicle size that can physically access the fueling infrastructure, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
             <tr>
-              <th scope="row">HD</th>
-              <td>Station can accommodate light-, medium-, and heavy-duty vehicles (Classes 1-8).</td>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
             </tr>
+          </thead>
+          <tbody>
+            <% cng_vehicle_classes.each do |cng_vehicle_class| %>
+              <% next if cng_vehicle_class.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= cng_vehicle_class.fetch("key") %></th>
+                <td><%= cng_vehicle_class.fetch("name") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <p>Note: This field does not take into account station capacity or other considerations.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">lng_renewable_source</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For LNG stations, the type of renewable energy used to generate LNG on-site, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% renewable_sources.each do |renewable_source| %>
+              <% next if renewable_source.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= renewable_source.fetch("key") %></th>
+                <td><%= renewable_source.fetch("name") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <% lng_vehicle_classes = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/lng-vehicle-classes.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
+    <tr id="lng-vehicle-class">
+      <th class="doc-parameter-name" scope="row">lng_vehicle_class</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For LNG stations, the maximum vehicle size that can physically access the fueling infrastructure, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% lng_vehicle_classes.each do |lng_vehicle_class| %>
+              <% next if lng_vehicle_class.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= lng_vehicle_class.fetch("key") %></th>
+                <td><%= lng_vehicle_class.fetch("name") %></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
         <p>Note: This field does not take into account station capacity or other considerations.</p>
@@ -600,6 +727,7 @@
         </ul>
       </td>
     </tr>
+    <% electric_connectors = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/electric-connectors.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr>
       <th class="doc-parameter-name" scope="row">ev_connector_types</th>
       <td class="doc-parameter-value">
@@ -617,34 +745,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">NEMA515</th>
-              <td>NEMA 5-15 (Level 1)</td>
-            </tr>
-            <tr>
-              <th scope="row">NEMA520</th>
-              <td>NEMA 5-20 (Level 1)</td>
-            </tr>
-            <tr>
-              <th scope="row">NEMA1450</th>
-              <td>NEMA 14-50 (Level 1)</td>
-            </tr>
-            <tr>
-              <th scope="row">J1772</th>
-              <td>J1772 (Level 2)</td>
-            </tr>
-            <tr>
-              <th scope="row">CHADEMO</th>
-              <td>CHAdeMO (DC fast charging)</td>
-            </tr>
-            <tr>
-              <th scope="row">J1772COMBO</th>
-              <td>SAE J1772 Combo (DC fast charging)</td>
-            </tr>
-            <tr>
-              <th scope="row">TESLA</th>
-              <td>Tesla (DC fast charging and Level 2)</td>
-            </tr>
+            <% electric_connectors.each do |electric_connector| %>
+              <% next if electric_connector.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= electric_connector.fetch("key") %></th>
+                <td><%= electric_connector.fetch("name") %></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
       </td>
@@ -659,6 +766,17 @@
       <td class="doc-parameter-description">For electric stations, the name of the EVSE network, if applicable.</td>
     </tr>
     <tr>
+      <th class="doc-parameter-name" scope="row">ev_network_ids</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> record
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        For electric stations, if the station belongs to an EVSE network, a record describing the network-specific IDs for this station. See <a href="#ev-network-id-record-fields">EV network ID record fields</a> for response details.
+      </td>
+    </tr>
+    <tr>
       <th class="doc-parameter-name" scope="row">ev_network_web</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -666,6 +784,130 @@
         </div>
       </td>
       <td class="doc-parameter-description">For electric stations, the EVSE network Web site, if applicable.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">ev_pricing</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">For EVSE stations, information about whether and how much users must pay to use the EVSE.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">ev_renewable_source</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For EVSE stations, the type of renewable energy used to generate electricity on-site, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% renewable_sources.each do |renewable_source| %>
+              <% next if renewable_source.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= renewable_source.fetch("key") %></th>
+                <td><%= renewable_source.fetch("name") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">hy_is_retail</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For hydrogen stations, whether a station offers the retail sale of hydrogen by accepting payment at the point of sale, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">true</th>
+              <td>Station meets the criteria to be considered retail.</td>
+            </tr>
+            <tr>
+              <th scope="row">false</th>
+              <td>Station does not meet the criteria to be considered retail.</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <% hy_pressures = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/hy-pressures.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
+    <tr>
+      <th class="doc-parameter-name" scope="row">hy_pressures</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For hydrogen stations, any array of strings identifying the pressures of the hydrogen available (in bar), given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% hy_pressures.each do |hy_pressure| %>
+              <% next if hy_pressure.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= hy_pressure.fetch("key") %></th>
+                <td><%= hy_pressure.fetch("name") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <% hy_standards = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/hy-standards.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
+    <tr>
+      <th class="doc-parameter-name" scope="row">hy_standards</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For hydrogen stations, any array of strings identifying which SAE International fueling protocol standard(s) the infrastructure meets, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% hy_standards.each do |hy_standard| %>
+              <% next if hy_standard.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= hy_standard.fetch("key") %></th>
+                <td><%= hy_standard.fetch("name") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">hy_status_link</th>
@@ -676,6 +918,7 @@
       </td>
       <td class="doc-parameter-description">For hydrogen stations, a link to a website that provides up-to-date information about the current status of this hydrogen station.</td>
     </tr>
+    <% geocode_statuses = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/geocode-statuses.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr>
       <th class="doc-parameter-name" scope="row">geocode_status</th>
       <td class="doc-parameter-value">
@@ -685,7 +928,7 @@
       </td>
       <td class="doc-parameter-description">
         <p>A rating indicating the approximate accuracy of the latitude and longitude for the station's address, given as code values as described below:</p>
-        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Value</th>
@@ -693,50 +936,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">GPS</th>
-              <td>The location is from a real GPS readout at the station.</td>
-            </tr>
-            <tr>
-              <th scope="row">200-9</th>
-              <td>Premise (building name, property name, shopping center, etc.) level accuracy.</td>
-            </tr>
-            <tr>
-              <th scope="row">200-8</th>
-              <td>Address level accuracy.</td>
-            </tr>
-            <tr>
-              <th scope="row">200-7</th>
-              <td>Intersection level accuracy.</td>
-            </tr>
-            <tr>
-              <th scope="row">200-6</th>
-              <td>Street level accuracy.</td>
-            </tr>
-            <tr>
-              <th scope="row">200-5</th>
-              <td>ZIP code (postal code) level accuracy.</td>
-            </tr>
-            <tr>
-              <th scope="row">200-4</th>
-              <td>Town (city, village) level accuracy.</td>
-            </tr>
-            <tr>
-              <th scope="row">200-3</th>
-              <td>Sub-region (county, municipality, etc.) level accuracy.</td>
-            </tr>
-            <tr>
-              <th scope="row">200-2</th>
-              <td>Region (state, province, prefecture, etc.) level accuracy.</td>
-            </tr>
-            <tr>
-              <th scope="row">200-1</th>
-              <td>Country level accuracy.</td>
-            </tr>
-            <tr>
-              <th scope="row">200-0</th>
-              <td>Unknown accuracy.</td>
-            </tr>
+            <% geocode_statuses.each do |geocode_status| %>
+              <% next if geocode_status.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= geocode_status.fetch("key") %></th>
+                <td><%= geocode_status.fetch("name") %></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
       </td>
@@ -803,6 +1009,35 @@
       </td>
       <td class="doc-parameter-description">A unique identifier for this specific station.</td>
     </tr>
+    <% facility_types = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/facility-types.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
+    <tr>
+      <th class="doc-parameter-name" scope="row">facility_type</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The type of facility at which the station is located, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% facility_types.each do |facility_type| %>
+              <% next if facility_type.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= facility_type.fetch("key") %></th>
+                <td><%= facility_type.fetch("name") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </td>
+    </tr>
     <% if(defined?(distance) && distance) %>
       <tr>
         <th class="doc-parameter-name" scope="row">distance</th>
@@ -814,6 +1049,54 @@
         <td class="doc-parameter-description">The distance, in miles, from the given location and this station.</td>
       </tr>
     <% end %>
+    <tr>
+      <th class="doc-parameter-name" scope="row">intersection_directions_fr</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">Brief additional information about how to locate the station, in French, if available.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">access_days_time_fr</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">Hours of operation for the station, in French, if available.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">bd_blends_fr</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">For biodiesel stations, the level of biodiesel blends the station provides, in French, if available.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">groups_with_access_code_fr</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Deprecated: See the <a href="#"><code>access_code</code></a>, <a href="#"><code>access_detail_code</code></a>, and <a href="#"><code>status</code></a> fields for equivalent information in a more structured format. (Note: this field will remain for legacy application support)</p>
+        <p>A description of who is allowed to access the station and other station access information, in French, if available.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">ev_pricing_fr</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">For EVSE stations, information about whether and how much users must pay to use the EVSE, in French, if available.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -845,6 +1128,47 @@
         </div>
       </td>
       <td class="doc-parameter-description">The name of the federal agency.</td>
+    </tr>
+  </tbody>
+</table>
+
+### EV Network ID Record Fields
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">station</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">The identifier for the station provided by the EV network, if available.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">posts</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">An array of strings containing the identifier(s) for the post(s) provided by the EV network, if available.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">ports</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">An array of strings containing the identifier(s) for the port(s) provided by EV network, if available.</td>
     </tr>
   </tbody>
 </table>
