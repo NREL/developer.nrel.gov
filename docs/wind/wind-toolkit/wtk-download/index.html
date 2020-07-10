@@ -11,19 +11,17 @@
       NREL: Developer Network
     </title>
 
-    <link rel="canonical" href="https://developer.nrel.gov/docs/wind/wind-toolkit/wind-toolkit-extract/" />
+    <link rel="canonical" href="https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-download/" />
     <script>
       if(window.location.href.indexOf('nrel.github.io') !== -1) {
-        window.location.href = 'https://developer.nrel.gov/docs/wind/wind-toolkit/wind-toolkit-extract/';
+        window.location.href = 'https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-download/';
       }
     </script>
 
-    <link href="/assets/stylesheets/all-02a9dc3b.css" rel="stylesheet" />
+    <link href="/assets/stylesheets/all-2b7f33b3.css" rel="stylesheet" />
 
-    <!--[if lt IE 9]>
-      <script src="/assets/javascripts/ie_lt_9-9f2d2b9c.js"></script>
-    <![endif]-->
-    <script src="/assets/javascripts/all-8a1a7f07.js"></script>
+    <script src="/assets/javascripts/shared-8f31eae2.js"></script>
+    <script src="/assets/javascripts/all-172ea8d4.js"></script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -35,7 +33,7 @@
 </script>
 
   </head>
-  <body class="docs docs_wind docs_wind_wind-toolkit docs_wind_wind-toolkit_wind-toolkit-extract docs_wind_wind-toolkit_wind-toolkit-extract_index">
+  <body class="docs docs_wind docs_wind_wind-toolkit docs_wind_wind-toolkit_wtk-download docs_wind_wind-toolkit_wtk-download_index">
     <div class="container">
   <header>
     <map name="header_map">
@@ -65,16 +63,16 @@
     </ol>
 
 
-    <h1 id="wind-toolkit-data-apiwind-toolkitwindwtk_download">Wind Toolkit Data <span class="url">(/api/wind-toolkit/wind/wtk_download)</span></h1>
-<p>Collect and download, as CSV, a configurable set of data fields from a national collection of wind stations. The Wind Integration National Dataset (WIND) Toolkit is an update and expansion of the Eastern and Western Wind Datasets, and is intended to support the next generation of integration studies. The WIND Toolkit includes meteorological conditions and turbine power for more than 126,000 sites in the continental United States for the years 2007–2013.</p>
+    <h1 id="wind-toolkit-data-apiwind-toolkitv2windwtk-download">Wind Toolkit Data <span class="url">(/api/wind-toolkit/v2/wind/wtk-download)</span></h1>
+<p>Collect and download, as CSV, a configurable set of data fields from a national collection of wind stations. The Wind Integration National Dataset (WIND) Toolkit is an update and expansion of the Eastern and Western Wind Datasets, and is intended to support the next generation of integration studies. The WIND Toolkit includes meteorological conditions at multiple hub heights for more than 2,488,136 sites in the continental United States for the years 2007–2014.</p>
 
-<p>This API is capabale of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.</p>
+<p>This API is capabale of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.</p>
 
 <ul id="toc"></ul>
 
 <h2 id="request-url">Request URL</h2>
 
-<pre>GET /api/wind-toolkit/wind/wtk_download<em>.format?parameters</em></pre>
+<pre>GET /api/wind-toolkit/v2/wind/wtk-download<em>.format?parameters</em></pre>
 
 <h2 id="request-parameters">Request Parameters</h2>
 
@@ -112,13 +110,13 @@
 		</tr>
 		<tr>
 			<th class="doc-parameter-name" scope="row">attributes</th>
-			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-required">No</td>
 			<td class="doc-parameter-value">
 			<div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
 
-			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+			<div class="doc-parameter-value-field"><strong>Default:</strong> All available</div>
 
-			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>wind_speed, wind_direction, power, pressure, temperature, density</em></div>
+			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>pressure_0m, pressure_100m, pressure_200m, relativehumidity_2m, precipitationrate_0m, windspeed_10m, windspeed_40m, windspeed_60m, windspeed_80m, windspeed_100m, windspeed_120m, windspeed_140m, windspeed_160m, windspeed_200m, winddirection_10m, winddirection_40m, winddirection_60m, winddirection_80m, winddirection_100m, winddirection_120m, winddirection_140m, winddirection_160m, winddirection_200m, temperature_10m, temperature_40m, temperature_60m, temperature_80m, temperature_100m, temperature_120m, temperature_140m, temperature_160m, temperature_200m</em></div>
 			</td>
 			<td class="doc-parameter-description">Each specified attribute will be returned as a column in the resultant CSV download.</td>
 		</tr>
@@ -134,6 +132,18 @@
 			</td>
 			<td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
 		</tr>
+		<tr>
+      <th class="doc-parameter-name" scope="row">interval</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> integer</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> 60</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>5, 15, 30, 60</em></div>
+      </td>
+      <td class="doc-parameter-description">
+        Desired data timestep resolution in minutes.
+      </td>
+    </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">utc</th>
       <td class="doc-parameter-required">No</td>
@@ -257,122 +267,45 @@
 
 <h2>Examples</h2>
 
-<div class="doc-example-url"><code>GET /api/wind-toolkit/wind/wtk_download.csv?api_key=DEMO_KEY&amp;wkt=POINT(-104.23828125%2039.90973623453719)&amp;attributes=wind_speed,wind_direction,power,temperature,pressure&amp;names=2009&amp;full_name=Sample User&amp;email=sample@email.com&amp;affiliation=Test Organization&amp;reason=Example</code></div>
+<h3 id="csv-format">CSV Format</h3>
+<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/wtk-download.csv?api_key={{API_KEY}}&amp;wkt=POINT(-78.483215 32.104233)&amp;names=2009&amp;utc=true&amp;leap_day=true&amp;email=user@nrel.gov&amp;reason=example&amp;affiliation=NREL</code></div>
 
-<table border="1" cellpadding="1" cellspacing="0" style="border-collapse:
- collapse;width:455pt" width="455">
-	<colgroup>
-		<col span="7" style="width:65pt" width="65" />
-	</colgroup>
-	<tbody>
-		<tr height="15" style="height:15.0pt">
-			<td height="15" style="height:15.0pt;width:65pt" width="65">SiteID</td>
-			<td align="right" style="width:65pt" width="65">12</td>
-			<td style="width:65pt" width="65">&nbsp;</td>
-			<td style="width:65pt" width="65">&nbsp;</td>
-			<td style="width:65pt" width="65">&nbsp;</td>
-			<td style="width:65pt" width="65">&nbsp;</td>
-			<td style="width:65pt" width="65">&nbsp;</td>
-		</tr>
-		<tr height="15" style="height:15.0pt">
-			<td height="15" style="height:15.0pt">Longitude</td>
-			<td align="right">-97.483215</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr height="15" style="height:15.0pt">
-			<td height="15" style="height:15.0pt">Latitude</td>
-			<td align="right">25.104233</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr height="15" style="height:15.0pt">
-			<td height="15" style="height:15.0pt">Year</td>
-			<td>Month</td>
-			<td>Day</td>
-			<td>Hour</td>
-			<td>Minute</td>
-			<td>density at hub height (kg/m^3)</td>
-			<td>power (MW)</td>
-			<td>surface air pressure (Pa)</td>
-			<td>air temperature at 2m (K)</td>
-			<td>wind direction at 100m (deg)</td>
-			<td>wind speed at 100m (m/s)</td>
-		</tr>
-		<tr height="15" style="height:15.0pt">
-			<td align="right" class="xl63" height="15" style="height:15.0pt">2009</td>
-			<td align="right">1</td>
-			<td align="right">1</td>
-			<td align="right">0</td>
-			<td align="right">0</td>
-			<td align="right">1.043</td>
-			<td align="right">0.589</td>
-			<td align="right">84508.176</td>
-			<td align="right">270.81</td>
-			<td align="right">201.457</td>
-			<td align="right">4.065</td>
-		</tr>
-		<tr height="15" style="height:15.0pt">
-			<td align="right" class="xl63" height="15" style="height:15.0pt">2009</td>
-			<td align="right">1</td>
-			<td align="right">1</td>
-			<td align="right">0</td>
-			<td align="right">5</td>
-			<td align="right">1.042</td>
-			<td align="right">0.657</td>
-			<td align="right">84501.776</td>
-			<td align="right">270.847</td>
-			<td align="right">201.094</td>
-			<td align="right">4.165</td>
-		</tr>
-		<tr height="15" style="height:15.0pt">
-			<td align="right" class="xl63" height="15" style="height:15.0pt">2009</td>
-			<td align="right">1</td>
-			<td align="right">1</td>
-			<td align="right">0</td>
-			<td align="right">10</td>
-			<td align="right">1.04</td>
-			<td align="right">0.722</td>
-			<td align="right">84494.456</td>
-			<td align="right">270.853</td>
-			<td align="right">201.797</td>
-			<td align="right">4.263</td>
-		</tr>
-		<tr height="15" style="height:15.0pt">
-			<td align="right" class="xl63" height="15" style="height:15.0pt">2009</td>
-			<td align="right">1</td>
-			<td align="right">1</td>
-			<td align="right">0</td>
-			<td align="right">15</td>
-			<td align="right">1.039</td>
-			<td align="right">0.719</td>
-			<td align="right">84490.792</td>
-			<td align="right">270.832</td>
-			<td align="right">202.039</td>
-			<td align="right">4.26</td>
-		</tr>
-		<tr height="15" style="height:15.0pt">
-			<td align="right" class="xl63" height="15" style="height:15.0pt">...</td>
-			<td align="right">...</td>
-			<td align="right">...</td>
-			<td align="right">...</td>
-			<td align="right">...</td>
-			<td align="right">...</td>
-			<td align="right">...</td>
-			<td align="right">...</td>
-			<td align="right">...</td>
-			<td align="right">...</td>
-			<td align="right">...</td>
-		</tr>
-	</tbody>
-</table>
+<div class="highlight"><pre class="highlight plaintext"><code>SiteID,2226728,Site Timezone,-5,Data Timezone,0,Longitude,-78.4798583984,Latitude,32.0998420715
+Year,Month,Day,Hour,Minute,surface air pressure (Pa),air pressure at 100m (Pa),air pressure at 200m (Pa),relative humidity at 2m (%),surface precipitation rate (mm/h),wind speed at 10m (m/s),wind speed at 40m (m/s),wind speed at 60m (m/s),wind speed at 80m (m/s),wind speed at 100m (m/s),wind speed at 120m (m/s),wind speed at 140m (m/s),wind speed at 160m (m/s),wind speed at 200m (m/s),wind direction at 10m (deg),wind direction at 40m (deg),wind direction at 60m (deg),wind direction at 80m (deg),wind direction at 100m (deg),wind direction at 120m (deg),wind direction at 140m (deg),wind direction at 160m (deg),wind direction at 200m (deg),air temperature at 10m (C),air temperature at 40m (C),air temperature at 60m (C),air temperature at 80m (C),air temperature at 100m (C),air temperature at 120m (C),air temperature at 140m (C),air temperature at 160m (C),air temperature at 200m (C)
+2009,1,1,0,30,101830,100620,99430,58.25,0,14.91,16.28,16.65,16.84,16.96,17.03,17.080000000000002,17.11,17.13,353.25,353.2,353.16,353.12,353.08,353.05,353.01,352.97,352.90000000000003,14.96,14.07,1377,13.5,13.26,13.040000000000001,12.81,12.6,12.18,N/A,N/A
+2009,1,1,1,30,101960,100730,99540,61.28,0,15.700000000000001,17.150000000000002,17.55,17.76,17.89,17.98,18.04,18.080000000000002,18.12,357.56,357.47,357.42,357.37,357.34000000000003,357.3,357.26,357.23,357.16,13.700000000000001,12.71,1239,12.11,11.85,11.63,11.4,11.18,10.76,N/A,N/A
+2009,1,1,2,30,102060,100830,99640,59.82,0,15.55,16.98,17.38,17.6,17.740000000000002,17.84,17.91,17.96,18.02,358.29,358.34000000000003,358.37,358.40000000000003,358.42,358.45,358.47,358.49,358.53000000000003,12.75,11.72,1138,11.1,10.84,10.620000000000001,10.38,10.16,9.74,N/A,N/A
+2009,1,1,3,30,102100,100870,99670,64.71000000000001,0,15.48,16.9,17.28,17.47,17.6,17.69,17.740000000000002,17.78,17.82,3.42,3.35,3.3000000000000003,3.2600000000000002,3.22,3.19,3.15,3.11,3.04,12.08,11.03,1069,10.4,10.14,9.91,9.67,9.46,9.03,N/A,N/A
+2009,1,1,4,30,102150,100910,99710,62.97,0,15.33,16.7,17.07,17.26,17.39,17.48,17.53,17.57,17.61,4.42,4.36,4.33,4.3100000000000005,4.3,4.28,4.2700000000000005,4.25,4.23,11.47,10.39,1004,9.76,9.49,9.26,9.03,8.81,8.38,N/A,N/A
+...
+</code></pre></div>
+<h3 id="json-format">JSON Format</h3>
+<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/wtk-download.json?api_key={{API_KEY}}&amp;wkt=POINT(-78.483215 32.104233)&amp;names=2009&amp;utc=true&amp;leap_day=true&amp;email=user@nrel.gov&amp;reason=example&amp;affiliation=NREL</code></div>
 
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "inputs": {
+        "names": "2009",
+        "utc": "true",
+        "leap_day": "true",
+        "email": "user@nrel.gov",
+        "wkt": "POINT(-78.483215 32.104233)",
+        "reason": "example",
+        "affiliation": "NREL"
+    },
+    "metadata": {
+        "version": "2.0.0",
+        "resultset": {
+            "count": 1
+        }
+    },
+    "status": 200,
+    "outputs": {
+        "message": "File generation in progress. An email will be sent to user@nrel.gov when the download is ready.",
+        "downloadUrl": "https://mapfiles.nrel.gov/data/wind/9ff030427d65498be728ef90e35d8eaf.zip"
+    },
+    "errors": []
+}
+</code></pre></div>
 <h2 id="rate-limits">Rate Limits</h2>
 
 <p>Rate limits for this application are significantly less than the <a href="/docs/rate-limits" target="_blank">standard rate limits</a> for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.</p>
@@ -403,7 +336,7 @@
 </table>
 
     <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
-  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/wind/wind-toolkit/wind-toolkit-extract.html.md.erb">Help Improve this Content</a>
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/wind/wind-toolkit/wtk-download.html.md.erb">Help Improve this Content</a>
 </div>
 
       <footer class="container-fluid">

@@ -18,12 +18,10 @@
       }
     </script>
 
-    <link href="/assets/stylesheets/all-02a9dc3b.css" rel="stylesheet" />
+    <link href="/assets/stylesheets/all-2b7f33b3.css" rel="stylesheet" />
 
-    <!--[if lt IE 9]>
-      <script src="/assets/javascripts/ie_lt_9-9f2d2b9c.js"></script>
-    <![endif]-->
-    <script src="/assets/javascripts/all-8a1a7f07.js"></script>
+    <script src="/assets/javascripts/shared-8f31eae2.js"></script>
+    <script src="/assets/javascripts/all-172ea8d4.js"></script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -72,18 +70,18 @@
 <p>The API is restricted in both the number of requests a single user can make in a 24 hour period, as well as in the maximum size of a single request. The API rate limits are set at:</p>
 
 <blockquote>
-  <p>300 requests per day<br />
+  <p>600 requests per day<br />
 1 request every 2 seconds</p>
 </blockquote>
 
 <p>For downloading directly via CSV there are separate rate limits. This is due to the fact that it is only possible to download a single site for a single year via the CSV endpoint, therefor these requests are always quite small by comparison:</p>
 
 <blockquote>
-  <p>2000 requests per day<br />
+  <p>4000 requests per day<br />
 1 request per second</p>
 </blockquote>
 
-<p>The size limit per each single request is determined by the number of total attributes in each request. The maximum weight of each request is <strong>63072000</strong>. The calculation for determining the weight of each request is:</p>
+<p>The size limit per each single request is determined by the number of total attributes in each request. The maximum weight of each request is <strong>175000000</strong>. The calculation for determining the weight of each request is:</p>
 
 <blockquote>
   <p><em>site-count*attribute-count*year-count*data-intervals-per-year</em></p>

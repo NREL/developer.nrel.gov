@@ -18,12 +18,10 @@
       }
     </script>
 
-    <link href="/assets/stylesheets/all-02a9dc3b.css" rel="stylesheet" />
+    <link href="/assets/stylesheets/all-2b7f33b3.css" rel="stylesheet" />
 
-    <!--[if lt IE 9]>
-      <script src="/assets/javascripts/ie_lt_9-9f2d2b9c.js"></script>
-    <![endif]-->
-    <script src="/assets/javascripts/all-8a1a7f07.js"></script>
+    <script src="/assets/javascripts/shared-8f31eae2.js"></script>
+    <script src="/assets/javascripts/all-172ea8d4.js"></script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -65,7 +63,7 @@
     </ol>
 
 
-    <h1 id="india-wind-data-download-apiwind-toolkitwindindia_wind_download">India Wind Data Download <span class="url">(/api/wind-toolkit/wind/india_wind_download)</span></h1>
+    <h1 id="india-wind-data-download-apiwind-toolkitv2windindia-wind-download">India Wind Data Download <span class="url">(/api/wind-toolkit/v2/wind/india-wind-download)</span></h1>
 <p>Collect and download, as CSV, a configurable set of data fields from a national collection of wind stations. The India Wind Dataset, developed in part through the India Renewable Integration Study, contains simulated windspeed, direction, temperate and pressure values at 40m, 80m, 100m and 120m heights above the ground where available. The spatial resolution of the data is 3 km and the temporal resolution is 5 minutes.</p>
 
 <p>This API is capabale of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.</p>
@@ -74,7 +72,7 @@
 
 <h2 id="request-url">Request URL</h2>
 
-<pre>GET /api/wind-toolkit/wind/india_wind_download<em>.format?parameters</em></pre>
+<pre>GET /api/wind-toolkit/v2/wind/india-wind-download<em>.format?parameters</em></pre>
 
 <h2 id="request-parameters">Request Parameters</h2>
 
@@ -260,7 +258,7 @@
 
 <h2>Examples</h2>
 
-<div class="doc-example-url"><code>GET /api/wind-toolkit/wind/india_wind_download.json?wkt=POINT(75.36621%2024.726874)&amp;attributes=pressure_40m%2Ctemperature_100m%2Ctemperature_120m%2Ctemperature_40m%2Ctemperature_80m%2Cwinddirection_100m%2Cwinddirection_120m%2Cwinddirection_40m%2Cwinddirection_80m%2Cwindspeed_100m%2Cwindspeed_120m%2Cwindspeed_40m%2Cwindspeed_80m%2Cpressure_100m&amp;names=2014&amp;full_name=Data%20Lover&amp;email=data.lover%40gmail.com&amp;affiliation=NREL&amp;mailing_list=false&amp;reason=test&amp;leap_day=true&amp;utc=false&amp;interval=60</code></div>
+<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/india-wind-download.json?wkt=POINT(75.36621%2024.726874)&amp;attributes=pressure_40m%2Ctemperature_100m%2Ctemperature_120m%2Ctemperature_40m%2Ctemperature_80m%2Cwinddirection_100m%2Cwinddirection_120m%2Cwinddirection_40m%2Cwinddirection_80m%2Cwindspeed_100m%2Cwindspeed_120m%2Cwindspeed_40m%2Cwindspeed_80m%2Cpressure_100m&amp;names=2014&amp;full_name=Data%20Lover&amp;email=data.lover%40gmail.com&amp;affiliation=NREL&amp;mailing_list=false&amp;reason=test&amp;leap_day=true&amp;utc=false&amp;interval=60</code></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>{
   "errors": [],
@@ -300,11 +298,11 @@
   }
 }
 </code></pre></div>
-<div class="doc-example-url"><code>GET /api/wind-toolkit/wind/india_wind_download.csv?wkt=POINT(75.36621%2024.726874)&amp;attributes=pressure_40m%2Ctemperature_100m%2Ctemperature_120m%2Ctemperature_40m%2Ctemperature_80m%2Cwinddirection_100m%2Cwinddirection_120m%2Cwinddirection_40m%2Cwinddirection_80m%2Cwindspeed_100m%2Cwindspeed_120m%2Cwindspeed_40m%2Cwindspeed_80m%2Cpressure_100m&amp;names=2014&amp;full_name=Data%20Lover&amp;email=data.lover%40gmail.com&amp;affiliation=NREL&amp;mailing_list=false&amp;reason=test&amp;leap_day=true&amp;utc=false&amp;interval=60</code></div>
+<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/india-wind-download.csv?wkt=POINT(75.36621%2024.726874)&amp;attributes=pressure_40m%2Ctemperature_100m%2Ctemperature_120m%2Ctemperature_40m%2Ctemperature_80m%2Cwinddirection_100m%2Cwinddirection_120m%2Cwinddirection_40m%2Cwinddirection_80m%2Cwindspeed_100m%2Cwindspeed_120m%2Cwindspeed_40m%2Cwindspeed_80m%2Cpressure_100m&amp;names=2014&amp;full_name=Data%20Lover&amp;email=data.lover%40gmail.com&amp;affiliation=NREL&amp;mailing_list=false&amp;reason=test&amp;leap_day=true&amp;utc=false&amp;interval=60</code></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>Site Timezone,5.5,Elevation,358,Is Offshore,0,WRF Region,0
-Longitude, 
-Latitude, 
+Longitude,
+Latitude,
 Year,Month,Day,Hour,Minute,air pressure at 40m (Pa),temperature at 100m (C),temperature at 120m (C),temperature at 40m (C),temperature at 80m (C),wind direction at 100m (deg),wind direction at 120m (deg),wind direction at 40m (deg),wind direction at 80m (deg),wind speed at 100m (m/s),wind speed at 120m (m/s),wind speed at 40m (m/s),wind speed at 80m (m/s),air pressure at 100m (Pa)
 2014,1,1,0,0,96690.0,15.15,15.36,13.73,14.89,47.97,53.42,15.290000000000001,41.61,3.59,3.87,1.77,3.2600000000000002,96010.0
 2014,1,1,0,5,96690.0,15.14,15.35,13.69,14.870000000000001,47.14,52.51,14.63,40.910000000000004,3.68,3.97,1.82,3.34,96010.0
