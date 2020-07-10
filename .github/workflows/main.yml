@@ -51,6 +51,8 @@ jobs:
         if: github.ref != 'refs/heads/master'
         run: echo "::set-env name=DEPLOY_ENV::staging"
       - name: Build
+        env:
+          DOCS_API_KEY: ${{ secrets.DOCS_API_KEY }}
         run: bundle exec middleman build --clean --verbose --environment=${{ env.DEPLOY_ENV }}
 
       # Lint
