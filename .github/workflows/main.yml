@@ -5,9 +5,6 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        deploy_env: [production, staging]
     env:
       BUNDLE_JOBS: 4
       BUNDLE_RETRY: 3
@@ -47,29 +44,30 @@ jobs:
         run: yarn install
 
       # Build
+      - name: Set production DEPLOY_ENV
+        if: github.ref == 'refs/heads/master'
+        run: echo "::set-env name=DEPLOY_ENV::production"
+      - name: Set staging DEPLOY_ENV
+        if: github.ref != 'refs/heads/master'
+        run: echo "::set-env name=DEPLOY_ENV::staging"
       - name: Build
-        run: bundle exec middleman build --clean --verbose --environment=${{ matrix.deploy_env }}
+        run: bundle exec middleman build --clean --verbose --environment=${{ env.DEPLOY_ENV }}
 
+      # Lint
       - name: Lint
         run: bundle exec rake lint
 
+      # Artifact
       - uses: actions/upload-artifact@v1
+        if: success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/staging')
         with:
-          name: build-${{ matrix.deploy_env }}
+          name: build
           path: ./build
 
   deploy:
-    if: success() && github.ref == 'refs/heads/master'
+    if: success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/staging')
     needs: build
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        deploy_env: [production, staging]
-        include:
-          - deploy_env: production
-            bucket_name_secret_name: PRODUCTION_BUCKET_NAME
-          - deploy_env: staging
-            bucket_name_secret_name: STAGING_BUCKET_NAME
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v1
@@ -91,11 +89,16 @@ jobs:
       # Deploy to S3 bucket.
       - uses: actions/download-artifact@v1
         with:
-          name: build-${{ matrix.deploy_env }}
+          name: build
           path: ./build
+      - name: Set production BUCKET_NAME
+        if: github.ref == 'refs/heads/master'
+        run: echo "::set-env name=BUCKET_NAME::${{ secrets.PRODUCTION_BUCKET_NAME }}"
+      - name: Set staging BUCKET_NAME
+        if: github.ref != 'refs/heads/master'
+        run: echo "::set-env name=BUCKET_NAME::${{ secrets.STAGING_BUCKET_NAME }}"
       - name: Deploy
         env:
-          BUCKET_NAME: ${{ secrets[matrix.bucket_name_secret_name] }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
