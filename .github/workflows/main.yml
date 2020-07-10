@@ -61,7 +61,7 @@ jobs:
 
       # Artifact
       - uses: actions/upload-artifact@v1
-        if: success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/webpack')
+        if: success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/staging')
         with:
           name: build
           path: ./build
@@ -69,13 +69,13 @@ jobs:
       # Push production builds to "build-history" branch to maintain history of
       # built and deployed versions.
       - name: Commit Build History
-        if: success() && github.ref == 'refs/heads/webpack'
+        if: success() && github.ref == 'refs/heads/production'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: yarn run gh-pages --dist ./build/ --branch build-history-test --user "$GITHUB_ACTOR <$GITHUB_ACTOR@users.noreply.github.com>" --repo "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        run: yarn run gh-pages --dist ./build/ --branch build-history --user "$GITHUB_ACTOR <$GITHUB_ACTOR@users.noreply.github.com>" --repo "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
   deploy:
-    if: success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/webpack')
+    if: success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/staging')
     needs: build
     runs-on: ubuntu-latest
     steps:
