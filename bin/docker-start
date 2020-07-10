@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -Eeuxo pipefail
+
+# Ensure gems are installed.
+bundle install
+
+# Install NPM dependencies.
+rm -rf ./node_modules
+mkdir -p /usr/local/node_modules
+ln -s /usr/local/node_modules ./node_modules
+yarn install
+
+bundle exec middleman server --port 4480
