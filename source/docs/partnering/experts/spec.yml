@@ -1,12 +1,11 @@
-swagger: "2.0"
 info:
-  version: "1.0.0"
+  version: 1
   title: Expert APIs
   description: |-
-    A collection of APIs providing data about national laboratorty experts related to associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
+    A collection of APIs providing data about national laboratorty experts associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
 schemes:
   - https
-basePath: /api/lps/v1
+basePath: /
 securityDefinitions:
   api_key:
     type: apiKey
@@ -15,71 +14,166 @@ securityDefinitions:
 security:
   - api_key: []
 paths:
-  /experts:
+  /api/lps/v{version}/experts:
     get:
       summary: Returns a list of national laboratory experts
       parameters:
-      - in: query
-        name: lab_alias
-        type: string
-        enum:
-          - ames
-          - anl
-          - bnl
-          - fnal
-          - inl
-          - kcnsc
-          - lanl
-          - lbnl
-          - llnl
-          - netl
-          - nrel
-          - ornl
-          - pantex
-          - pnnl
-          - pppl
-          - slac
-          - snl
-          - srnl
-          - tjnaf
-          - y12
-        required: false
-        description: National laboratory alias, when not specified all experts are returnd from all labs
+        - in: path
+          name: version
+          type: integer
+          required: true
+          description: API version, only current option is 1
+        - in: query
+          name: limit
+          type: integer
+          required: false
+          description: Number of results to return, default is 25, max is 200; to receive more than <i>limit</i> number of results, increment page param in subsequent request.
+        - in: query
+          name: page
+          type: integer
+          required: false
+          description: Page number of results, default is 0; see limit
       responses:
         200:
           description: Successful request
           schema:
             $ref: "#/definitions/experts_response"
-  /experts/{expert_uuid}:
+          examples:
+            Valid:
+              metadata: {"version": 1}
+              inputs: {}
+              errors: {}
+              resultset: {
+                "total": 141,
+                "count": 25,
+                "number": 0,
+                "pages": 6,
+                "result": [
+                {
+                "uuid": "a86f59b3-f23c-4c4f-94bb-386cdfea7ce5",
+                "first_name": "joel w.",
+                "last_name": "ager",
+                "avatar": "https://www.labpartnering.org/files/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5",
+                "links": {"self": "https://developer.nrel.gov/api/lps/v1/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5"},
+                "lab": "lawrence berkeley national laboratory",
+                "bio": "as a materials sciences division staff scientist and joint center for artificial photosynthesis (jcap) principal investigator (pi), he leads research into the fundamental electronic and transport characteristics of photovoltaic materials, develops new photoanodes and photocathodes based on abundant elements for solar fuels production, and discovers new oxide and sulfide-based transparent conductors. as the pi of cooperative research and development agreements (cradas) with companies, such as intel, applied materials, and seagate, he has extensive experience in tech transfer and collaborations with industry. he is frequently invited to speak at international conferences and has published over 270 papers in refereed journals.",
+                "specialties": [
+                  "electrocatalysts",
+                  "artificial photosynthesis",
+                  "semiconductors/pv"
+                ],
+                "technologies": [
+                  "solar",
+                  "advanced materials"
+                ]
+                },
+                {
+                "uuid": "f74c6dae-8c5a-4d3b-aa99-e90038d6434e",
+                "first_name": "frances",
+                "last_name": "houle",
+                "avatar": "https://www.labpartnering.org/files/experts/f74c6dae-8c5a-4d3b-aa99-e90038d6434e",
+                "links": {"self": "https://developer.nrel.gov/api/lps/v1/experts/f74c6dae-8c5a-4d3b-aa99-e90038d6434e"},
+                "lab": "lawrence berkeley national laboratory",
+                "bio": "as the chemical sciences division director of strategic initiatives and joint center for artificial photosynthesis (jcap) deputy director, she leads technical research and development program design and management, both foundational and applied, in semiconductor and energy science and technology arenas. she is broadly experienced in characterization of complex materials systems using solid state and gas phase methods and modeling of materials transformations, as well as process innovation, development, and root cause analysis, particularly for nanoscale modifications. prior to joining lawrence berkeley national laboratory, she managed materials development for the startup invisage technologies and handled materials research, business planning, and research alliances at ibm's almaden research center.",
+                "specialties": [
+                  "artificial photosynthesis",
+                  "thin films",
+                  "nanomaterials",
+                  "semiconductors/pv",
+                  "sensors"
+                ],
+                "technologies": [
+                  "solar",
+                  "advanced materials"
+                ]
+                }
+                ]
+                }
+            Invalid:
+              metadata: {"version": 1}
+              inputs: {"version": 2}
+              errors: {"status": 400, "detail": "unsupported version"}
+              resultset: []
+  /api/lps/v{version}/experts/{expert_uuid}:
     get:
-      summary: Returns detailed information about a national laboratory expert
+      summary: Returns detailed information about one national laboratory expert
       parameters:
-      - in: path
-        name: expert_uuid
-        type: string
-        required: true
-        description: UUID of the national laboratory expert to get
+        - in: path
+          name: version
+          type: integer
+          required: true
+          description: API version, only current option is 1
+        - in: path
+          name: expert_uuid
+          type: string
+          required: true
+          description: uuid of the national laboratory expert requested
       responses:
         200:
           description: Successful request
           schema:
-            $ref: "#/definitions/expert_response"
+            $ref: "#/definitions/experts_response"
+          examples:
+            Valid:
+              metadata: {"version": 1}
+              inputs: {"uuid":"a86f59b3-f23c-4c4f-94bb-386cdfea7ce5"}
+              errors: {}
+              resultset: {
+                "total": 1,
+                "count": 1,
+                "number": 0,
+                "pages": 1,
+                "result": [
+                {
+                "uuid": "a86f59b3-f23c-4c4f-94bb-386cdfea7ce5",
+                "first_name": "joel w.",
+                "last_name": "ager",
+                "avatar": "https://www.labpartnering.org/files/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5",
+                "links": {"self": "https://developer.nrel.gov/api/lps/v1/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5"},
+                "lab": "lawrence berkeley national laboratory",
+                "bio": "as a materials sciences division staff scientist and joint center for artificial photosynthesis (jcap) principal investigator (pi), he leads research into the fundamental electronic and transport characteristics of photovoltaic materials, develops new photoanodes and photocathodes based on abundant elements for solar fuels production, and discovers new oxide and sulfide-based transparent conductors. as the pi of cooperative research and development agreements (cradas) with companies, such as intel, applied materials, and seagate, he has extensive experience in tech transfer and collaborations with industry. he is frequently invited to speak at international conferences and has published over 270 papers in refereed journals.",
+                "specialties": [
+                  "electrocatalysts",
+                  "artificial photosynthesis",
+                  "semiconductors/pv"
+                ],
+                "technologies": [
+                  "solar",
+                  "advanced materials"
+                ]
+                }
+                ]
+                }
+            Invalid:
+              metadata: {"version": 1}
+              inputs: {"version": 2}
+              errors: {"status": 400, "detail": "unsupported version"}
+              resultset: []
 definitions:
   metadata:
     type: object
     properties:
       version:
+        type: integer
+        example: 1
+  inputs:
+    type: object
+    properties:
+      input_name:
         type: string
-        example: 1.0
   errors:
-    type: array
-    items:
-      type: string
+    type: object
+    properties:
+      status:
+        type: integer
+      detail:
+        type: string
   expert:
     type: object
     properties:
       uuid:
         type: string
+        description: uuid (unique) for this expert
         example: dc56d205-4ddf-46d4-bcd6-93ddc7fea84a
       first_name:
         type: string
@@ -87,31 +181,31 @@ definitions:
       last_name:
         type: string
         example: Abraham
-      lab:
-        type: string
-        example: Argonne National Laboratory
       avatar:
         type: string
-        example: https://www.labpartnering.org/experts/dc56d205-4ddf-46d4-bcd6-93ddc7fea84a/avatar
+        description: URL for expert's avatar
+        example: https://www.labpartnering.org/files/experts/dc56d205-4ddf-46d4-bcd6-93ddc7fea84a
       links:
         type: object
         properties:
           self:
             type: string
             example: https://developer.nrel.gov/api/lps/v1/experts/dc56d205-4ddf-46d4-bcd6-93ddc7fea84a
+      lab:
+        type: string
+        description: Laboratory expert is associated with
+        example: Argonne National Laboratory
       bio:
         type: string
         example: He is well known for his expertise in the field of lithium batteries at Argonne National Laboratory. Since graduating with a doctorate in metallurgical engineering from the University of Illinois at Urbana-Champaign
-    #    specialties:
-    #      type: array
-    #    technologies:
-    #      type: array
-    required:
-    - uuid
-    - first_name
-    - last_name
-    - lab
-    - bio
+      specialties:
+        type: array
+        items:
+          type: string
+      technologies:
+        type: array
+        items:
+          type: string
   experts:
     type: array
     items:
@@ -122,27 +216,33 @@ definitions:
       metadata:
         type: object
         $ref: "#/definitions/metadata"
+      inputs:
+        type: object
+        $ref: "#/definitions/inputs"
       errors:
         type: object
         $ref: "#/definitions/errors"
       resultset:
         type: object
         properties:
+          total:
+            type: integer
+            description: Total number of matching results (this number will be >= count)
+            example: 141
           count:
             type: integer
-            example: 20
+            description: Number of results returned (this number will be <= total)
+            example: 25
+          number:
+            type: integer
+            description: Page number of this result set, zero-indexed
+            example: 0
+          pages:
+            type: integer
+            description: Total number of pages for all matching results
+            example: 6
           result:
-            type: object
-            $ref: "#/definitions/experts"
-  expert_response:
-    type: object
-    properties:
-      metadata:
-        type: object
-        $ref: "#/definitions/metadata"
-      errors:
-        type: object
-        $ref: "#/definitions/errors"
-      resultset:
-        type: object
-        $ref: "#/definitions/expert"
+            type: array
+            items:
+              type: object
+              $ref: "#/definitions/expert"

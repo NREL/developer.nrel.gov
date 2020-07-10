@@ -1,0 +1,1545 @@
+swagger: '2.0'
+basePath: "/api/vehicles"
+schemes:
+- https
+info:
+  version: 0.1.0
+  title: Alternative Fuel Vehicles
+  description: Query our database of alternative fuel vehicles, manufacturers, fuels, engines, and hybrid/conversion systems
+paths:
+  "/v1/fuels.{output_format}":
+    get:
+      summary: Return a full list of fuels
+      operationId: getFuels
+      parameters:
+        - "$ref": "#/parameters/OutputFormat"
+        - "$ref": "#/parameters/ApiKey"
+        - in: query
+          description: Return only fuels associated with current light-duty automobiles
+          name: current_light_duty
+          required: false
+          type: boolean
+        - in: query
+          description: Return only fuels associated with current heavy-duty vehicles
+          name: current_heavy_duty
+          required: false
+          type: boolean
+        - in: query
+          description: Return all fuels associated with current light-duty automobiles and
+            current heavy-duty vehicles
+          name: current
+          required: false
+          type: boolean
+        - in: query
+          description: Include associated vehicle categories for each fuel returned
+          name: with_categories
+          required: false
+          type: boolean
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            type: object
+            properties:
+              metadata:
+                "$ref": "#/definitions/MetadataWithCount"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                type: array
+                description: The array of fuels returned
+                items:
+                  "$ref": "#/definitions/FuelResponseWithCurrentVehicleCategories"
+  "/v1/fuels/{id}.{output_format}":
+    get:
+      summary: Return a single fuel given the fuel's ID
+      operationId: getFuelsById
+      parameters:
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                "$ref": "#/definitions/FuelResponse"
+        '404':
+          description: Not found
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              errors:
+                "$ref": "#/definitions/Error"
+  "/v1/heavy_duty_engines.{output_format}":
+    get:
+      summary: Return a full list of heavy-duty engines
+      operationId: getHeavyDutyEngines
+      parameters:
+        - "$ref": "#/parameters/OutputFormat"
+        - "$ref": "#/parameters/ApiKey"
+        - in: query
+          name: fuel_id
+          description: Return only heavy-duty engines associated with the fuel ID(s) provided.  A single ID or
+            a comma-separated list of multiple IDs may be given.
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+        - in: query
+          name: manufacturer_id
+          description: Return only heavy-duty engines associated with the manufacturer ID(s) provided.  A single
+            ID or a comma-separated list of multiple IDs may be given.
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            type: object
+            properties:
+              metadata:
+                "$ref": "#/definitions/MetadataWithCount"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                type: array
+                description: The array of heavy-duty engines returned
+                items:
+                  "$ref": "#/definitions/HeavyDutyEngineResponse"
+  "/v1/heavy_duty_engines/{id}.{output_format}":
+    get:
+      summary: Return a single heavy-duty engine given the heavy-duty engine's ID
+      operationId: getHeavyDutyEngine
+      parameters:
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                "$ref": "#/definitions/HeavyDutyEngineResponse"
+        '404':
+          description: Not found
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              errors:
+                "$ref": "#/definitions/Error"
+  "/v1/heavy_duty_hybrids.{output_format}":
+    get:
+      summary: Return a full list of heavy-duty hybrid/conversion systems
+      operationId: getHybrids
+      parameters:
+        - "$ref": "#/parameters/OutputFormat"
+        - "$ref": "#/parameters/ApiKey"
+        - in: query
+          name: fuel_id
+          description: Return only heavy-duty hybrid/conversion systems associated with the fuel ID(s) provided.  A single ID or
+            a comma-separated list of multiple IDs may be given.
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+        - in: query
+          name: manufacturer_id
+          description: Return only heavy-duty hybrid/conversion systems  associated with the manufacturer ID(s) provided.  A single
+            ID or a comma-separated list of multiple IDs may be given.
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            type: object
+            properties:
+              metadata:
+                "$ref": "#/definitions/MetadataWithCount"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                type: array
+                description: The array of heavy-duty hybrid/conversion systems returned
+                items:
+                  "$ref": "#/definitions/HeavyDutyHybridResponse"
+  "/v1/heavy_duty_hybrids/{id}.{output_format}":
+    get:
+      summary:  Return a single heavy-duty hybrid/conversion system given the heavy-duty hybrid/conversion system's ID
+      parameters:
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                "$ref": "#/definitions/HeavyDutyHybridResponse"
+        '404':
+          description: Not found
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              errors:
+                "$ref": "#/definitions/Error"
+  "/v1/heavy_duty_manufacturers.{output_format}":
+    get:
+      summary: Return a full list of heavy-duty manufacturers
+      operationId: getHeavyDutyManufacturers
+      parameters:
+        - "$ref": "#/parameters/OutputFormat"
+        - "$ref": "#/parameters/ApiKey"
+        - in: query
+          name: has_vehicles
+          description: Return only heavy-duty manufacturers that have associated heavy-duty vehicles
+          required: false
+          type: boolean
+        - in: query
+          name: has_engines
+          description: Return only heavy-duty manufacturers that have associated heavy-duty engines
+          required: false
+          type: boolean
+        - in: query
+          name: has_hybrids
+          description: Return only heavy-duty manufacturers that have associated heavy-duty hybrid/conversion systems
+          required: false
+          type: boolean
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/MetadataWithCount"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                type: array
+                description: The array of heavy-duty manufacturers returned
+                items:
+                  "$ref": "#/definitions/HdLdManufacturerResponse"
+  "/v1/heavy_duty_manufacturers/{id}.{output_format}":
+    get:
+      summary: Return a single heavy-duty manufacturer given the heavy-duty manufacturer's ID
+      operationId: getHeavyDutyManufacturerById
+      parameters:
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                "$ref": "#/definitions/HdLdManufacturerResponse"
+        '404':
+          description: Not found
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              errors:
+                "$ref": "#/definitions/Error"
+  "/v1/heavy_duty_vehicles.{output_format}":
+    get:
+      summary: Return a full list of heavy-duty vehicles
+      operationId: getHeavyDutyVehicles
+      parameters:
+        - "$ref": "#/parameters/OutputFormat"
+        - "$ref": "#/parameters/ApiKey"
+        - in: query
+          name: manufacturer_id
+          description: Return only heavy-duty vehicles associated with the manufacturer ID(s) provided.  A single
+            ID or a comma-separated list of multiple IDs may be given
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+        - in: query
+          name: category_id
+          description: Return only heavy-duty vehicles associated with the vehicle category ID(s) provided.  A single
+            ID or a comma-separated list of multiple IDs may be given
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+        - in: query
+          name: fuel_id
+          description:  Return only heavy-duty vehicles associated with the fuel ID(s) provided.  A single ID or
+            a comma-separated list of multiple IDs may be given
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/MetadataWithCount"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                type: array
+                items:
+                  "$ref": "#/definitions/HeavyDutyVehicleResponse"
+  "/v1/heavy_duty_vehicles/{id}.{output_format}":
+    get:
+      summary: Return a single heavy-duty vehicle given the heavy-duty vehicle's ID
+      operationId: getHeavyDutyVehiclesById
+      parameters:
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                "$ref": "#/definitions/HeavyDutyVehicleResponse"
+        '404':
+          description: Not found
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              errors:
+                "$ref": "#/definitions/Error"
+  "/v1/light_duty_automobiles.{output_format}":
+    get:
+      summary: Return a full list of light-duty automobiles
+      operationId: getLightDutyAutomobiles
+      parameters:
+        - "$ref": "#/parameters/OutputFormat"
+        - "$ref": "#/parameters/ApiKey"
+        - in: query
+          name: current
+          description: Return only light-duty automobiles with a model year of the current or previous calendar year
+          required: false
+          type: boolean
+        - in: query
+          name: category_id
+          description: Return only light-duty automobiles associated with the vehicle category ID(s) provided.  A single
+            ID or a comma-separated list of multiple IDs may be given
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+        - in: query
+          name: fuel_id
+          description:  Return only light-duty automobiles associated with the fuel ID(s) provided.  A single ID or
+            a comma-separated list of multiple IDs may be given
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+        - in: query
+          name: model_year
+          description: Return only light-duty automobiles with the model year(s) provided.  A single model year or a
+            comma-separated list of multiple model years may be given
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+        - in: query
+          name: manufacturer_id
+          description: Return only light-duty automobiles associated with the manufacturer ID(s) provided.  A single
+            ID or a comma-separated list of multiple IDs may be given
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            type: object
+            properties:
+              metadata:
+                "$ref": "#/definitions/MetadataWithCount"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                type: array
+                description: The array of light-duty automobiles returned
+                items:
+                  "$ref": "#/definitions/LightDutyAutomobileResponse"
+  "/v1/light_duty_automobiles/{id}.{output_format}":
+    get:
+      summary: Return a single light-duty automobile given the light-duty automobile's ID
+      operationId: getLightDutyAutomobilesById
+      parameters:
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                "$ref": "#/definitions/LightDutyAutomobileResponse"
+        '404':
+          description: Not found
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              errors:
+                "$ref": "#/definitions/Error"
+  "/v1/light_duty_manufacturers.{output_format}":
+    get:
+      summary: Return a full list of light-duty manufacturers
+      operationId: getLightDutyManufacturers
+      parameters:
+        - "$ref": "#/parameters/OutputFormat"
+        - "$ref": "#/parameters/ApiKey"
+        - in: query
+          name: has_vehicles
+          description: Return only light-duty manufacturers that have associated light-duty vehicles
+          required: false
+          type: boolean
+        - in: query
+          name: current
+          description: Return only light-duty manufacturers that have associated light-duty automobiles with a model
+            year of the current or previous calendar year
+          required: false
+          type: boolean
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/MetadataWithCount"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                type: array
+                description: The array of light-duty manufacturers returned
+                items:
+                  "$ref": "#/definitions/HdLdManufacturerResponse"
+  "/v1/light_duty_manufacturers/{id}.{output_format}":
+    get:
+      summary: Return a single light-duty manufacturer given the light-duty manufacturer's ID
+      operationId: getLightDutyManufacturerById
+      parameters:
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                "$ref": "#/definitions/HdLdManufacturerResponse"
+        '404':
+          description: Not found
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              errors:
+                "$ref": "#/definitions/Error"
+  "/v1/manufacturers.{output_format}":
+    get:
+      summary: Return a full list of manufacturers
+      operationId: getManufacturers
+      parameters:
+        - "$ref": "#/parameters/OutputFormat"
+        - "$ref": "#/parameters/ApiKey"
+        - in: query
+          name: has_vehicles
+          description: Return only manufacturers that have associated light-duty automobiles
+          required: false
+          type: boolean
+        - in: query
+          name: current
+          description: Return only manufacturers that have associated light-duty automobiles with a model
+            year of the current or previous calendar year
+          required: false
+          type: boolean
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/MetadataWithCount"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                type: array
+                description: The array of manufacturers returned
+                items:
+                  "$ref": "#/definitions/ManufacturerResponse"
+  "/v1/manufacturers/{id}.{output_format}":
+    get:
+      summary: Return a single manufacturer given the manufacturer's ID
+      operationId: getManufacturerById
+      parameters:
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                "$ref": "#/definitions/ManufacturerResponse"
+        '404':
+          description: Not found
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              errors:
+                "$ref": "#/definitions/Error"
+  "/v1/vehicles.{output_format}":
+    get:
+      summary: Return a full list of light-duty automobiles and heavy-duty vehicles
+      operationId: getVehicles
+      parameters:
+        - "$ref": "#/parameters/OutputFormat"
+        - "$ref": "#/parameters/ApiKey"
+        - in: query
+          name: current
+          description: Only applies to light-duty automobiles - Return light-duty automobiles with a model year
+            of the current or previous calendar year
+          required: false
+          type: boolean
+        - in: query
+          name: category_id
+          description: Return only vehicles associated with the vehicle category ID(s) provided.  A single
+            ID or a comma-separated list of multiple IDs may be given
+          required: false
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+        - in: query
+          name: fuel_id
+          description: Return only vehicles associated with the fuel ID(s) provided.  A single ID or
+            a comma-separated list of multiple IDs may be given
+          required: false
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+        - in: query
+          name: manufacturer_id
+          description: Return only vehicles associated with the manufacturer ID(s) provided.  A single
+            ID or a comma-separated list of multiple IDs may be given
+          required: false
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+        - in: query
+          name: model_year
+          description:  Only applies to light-duty automobiles - Return light-duty automobiles with the
+            model year(s) provided.  A single model year or a comma-separated list of multiple model years may be given
+          required: false
+          type: array
+          collectionFormat: csv
+          items:
+            type: integer
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/MetadataWithCount"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                "$ref": "#/definitions/VehiclesResponse"
+  "/v1/vehicle_categories.{output_format}":
+    get:
+      summary: Return a full list of vehicle categories
+      operationId: getVehicleCategories
+      parameters:
+        - "$ref": "#/parameters/OutputFormat"
+        - "$ref": "#/parameters/ApiKey"
+        - in: query
+          name: light_duty
+          description: Return only vehicle categories that have associated light-duty automobiles
+          required: false
+          type: boolean
+        - in: query
+          name: heavy_duty
+          description: Return only vehicle categories that have associated heavy-duty vehicles
+          required: false
+          type: boolean
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/MetadataWithCount"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                type: array
+                description: The array of vehicle categories returned
+                items:
+                  "$ref": "#/definitions/VehicleCategoryResponse"
+  "/v1/vehicle_categories/{id}.{output_format}":
+    get:
+      summary: Return a single vehicle category given the vehicle category's ID
+      operationId: getVehicleCategoryById
+      parameters:
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        '200':
+          description: Successful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              result:
+                "$ref": "#/definitions/VehicleCategoryResponse"
+        '404':
+          description: Not found
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              inputs:
+                "$ref": "#/definitions/Inputs"
+              status:
+                "$ref": "#/definitions/Status"
+              errors:
+                "$ref": "#/definitions/Error"
+parameters:
+  OutputFormat:
+    in: path
+    name: output_format
+    description: Response format
+    required: true
+    type: string
+    enum:
+      - json
+      - xml
+      - csv
+  OutputFormatNoCSV:
+    in: path
+    name: output_format
+    description: Response format
+    required: true
+    type: string
+    enum:
+      - json
+      - xml
+  ApiKey:
+    in: query
+    description: API key
+    name: api_key
+    required: true
+    type: string
+    default: DEMO_KEY
+  Id:
+    in: path
+    description: The ID being searched
+    name: id
+    required: true
+    type: integer
+
+definitions:
+  Metadata:
+    description: The identifying metadata
+    properties:
+      version:
+        type: string
+        description: The version of the API
+  MetadataWithCount:
+    description: The identifying metadata
+    properties:
+      version:
+        type: string
+        description: The version of the API
+      resultset:
+        type: object
+        properties:
+          count:
+            type: integer
+            description: If the request returns an array of results, this is the number of results returned in the array
+  Inputs:
+    type: object
+    description: The parameters that were passed to the API
+  Status:
+    type: integer
+    description: HTTP Status Code
+  Error:
+    type: array
+    description: Error messages
+    items:
+      properties:
+        developer_message:
+          type: string
+        code:
+          type: string
+  Fuel:
+    description: This is an alternative fuel
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for the fuel
+      name:
+        type: string
+        description: The name of the fuel
+      code:
+        type: string
+        description: A code used to identify the fuel
+  FuelResponse:
+    description: This is an alternative fuel
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for the fuel
+      name:
+        type: string
+        description: The name of the fuel
+      code:
+        type: string
+        description: The code used to identify the fuel
+      has_vehicles?:
+        type: boolean
+        description: A true or false value to show if the fuel has associated heavy-duty vehicles
+      has_engines?:
+        type: boolean
+        description: A true or false value to show if the fuel has associated engines
+      has_hybrids?:
+        type: boolean
+        description: A true or false value to show if the fuel has associated conversion or hybrid systems
+      has_light_duty_automobiles?:
+        type: boolean
+        description: A true or false values to show if the fuel has associated light-duty automobiles
+      sort:
+        type: integer
+        description: Sort order for the fuel
+  FuelResponseWithCurrentVehicleCategories:
+    description: This is an alternative fuel
+    properties:
+      id:
+        type: integer
+        description:  A unique identifier for the fuel
+      name:
+        type: string
+        description: The name of the fuel
+      code:
+        type: string
+        description: The code used to identify the fuel
+      has_vehicles?:
+        type: boolean
+        description: A true or false value to show if the fuel has associated heavy-duty vehicles
+      has_engines?:
+        type: boolean
+        description: A true or false value to show if the fuel has associated engines
+      has_hybrids?:
+        type: boolean
+        description: A true or false value to show if the fuel has associated conversion or hybrid systems
+      has_light_duty_automobiles?:
+        type: boolean
+        description: A true or false value to show if the fuel has associated light-duty automobiles
+      sort:
+        type: integer
+        description: Sort order for the fuel
+      current_vehicle_categories:
+        type: array
+        description: A list of vehicle categories associated with the fuel
+        items:
+          "$ref": "#/definitions/VehicleCategoryResponse"
+  HeavyDutyEngineResponse:
+    description: This is a heavy-duty engine
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for the heavy-duty engine
+      model:
+        type: string
+        description: The model of the heavy-duty engine
+      heavy_duty_manufacturer_id:
+        type: integer
+        description: A unique identifier for the heavy-duty engine's manufacturer
+      heavy_duty_manufacturer_name:
+        type: string
+        description: The name of the heavy-duty engine's manufacturer
+      heavy_duty_chassis_ids:
+        type: array
+        items:
+          type: integer
+        description: An array of unique identifiers for associated heavy-duty chassis
+      heavy_duty_engine_origin_name:
+        type: string
+        description: The heavy-duty engine origin (e.g., original equipment manufacturer or conversion).
+      heay_duty_engine_origin_id:
+        type: integer
+        description: A unique identifier for the associated heavy-duty engine origin
+      heavy_duty_engine_power_source_name:
+        type: string
+        description: The name of the power source for the heavy-duty engine
+      heavy_duty_engine_power_source_id:
+        type: integer
+        description: A unique identifier for the associated heavy-duty engine power source
+      heavy_duty_engine_fuel_configuration_name:
+        type: string
+        description: Fuel configuration type for the heavy-duty engine
+      heavy_duty_engine_fuel_configuration_id:
+        type: integer
+        description: A unique identifier for the associated heavy-duty engine fuel configuration
+      fuels:
+        type: array
+        description: A list of fuels associated with the heavy-duty engine
+        items:
+          "$ref": "#/definitions/Fuel"
+      heavy_duty_emission_certifications:
+        type: array
+        description: A list of emission certifications for the heavy-duty engine
+        items:
+          "$ref": "#/definitions/HeavyDutyEmissionCertification"
+      heavy_duty_vehicles:
+        type: array
+        description: A list of heavy-duty vehicles associated with the heavy-duty engine
+        items:
+          "$ref": "#/definitions/HeavyDutyVehicleForEnginesAndHybrids"
+  HeavyDutyHybridResponse:
+    description: This is a heavy-duty hybrid/conversion system
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for the heavy-duty hybrid/conversion system
+      model:
+        type: string
+        description: The model of the heavy-duty hybrid/conversion system
+      heavy_duty_manufacturer_id:
+        type: integer
+        description: A unique identifier for the heavy-duty hybrid/conversion system's manufacturer
+      heavy_duty_manufacturer_name:
+        type: string
+        description: The name of the heavy-duty hybrid/conversion system's manufacturer
+      heavy_duty_hybrid_configuration_id:
+        type: integer
+        description: A unique identifier for the fuel configuration of the heavy-duty hybrid/conversion system
+      heavy_duty_hybrid_configuration_name:
+        type: string
+        description: The name of the heavy-duty hybrid/conversion system fuel configuration
+      heavy_duty_hybrid_storage_id:
+        type: integer
+        description: A unique identifer for the storage system of the heavy-duty hybrid/conversion system
+      heavy_duty_hybrid_type_name:
+        type: string
+        description: The type of heavy-duty hybrid/conversion system
+      heavy_duty_hybrid_storage_name:
+        type: string
+        description: The name of the storage system for the heavy-duy hybrid/conversion system
+      heavy_duty_hybrid_type_id:
+        type: integer
+        description: A unique identifier for the type of heavy-duty hybrid/conversion system
+      heavy_duty_chassis_ids:
+        type: array
+        items:
+          type: integer
+        description: An array of unique identifiers for associated heavy-duty chassis
+      fuels:
+        type: array
+        items:
+          "$ref": "#/definitions/Fuel"
+      heavy_duty_vehicles:
+        type: array
+        items:
+          "$ref": "#/definitions/HeavyDutyVehicleForEnginesAndHybrids"
+  HeavyDutyVehicleForEnginesAndHybrids:
+    description: This is a heavy-duty vehicle
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for the heavy-duty vehicle
+      model:
+        type: string
+        description: The model of the heavy-duty vehicle
+      heavy_duty_manufacturer_name:
+        type: string
+        description: The name of the manufacturer of the heavy-duty vehicle
+      num_passengers:
+        type: string
+        description: The maximum number of passengers that a bus can accommodate
+      fuels:
+        type: array
+        description: A list of fuels associated with the heavy-duty vehicle
+        items:
+          "$ref": "#/definitions/Fuel"
+      heavy_duty_power_systems:
+        type: array
+        description: A list of heavy-duty power systems associated with the heavy-duty vehicle
+        items:
+          "$ref": "#/definitions/HeavyDutyPowerSystem"
+      vehicle_categories:
+        type: array
+        description: A list of vehicle categories associated with the heavy-duty vehicle
+        items:
+          "$ref": "#/definitions/VehicleCategoryResponse"
+  HeavyDutyVehicleResponse:
+    description: This is a heavy-duty vehicle
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for the heavy-duty vehicle
+      model:
+        type: string
+        description: The model of the heavy-duty vehicle
+      heavy_duty_manufacturer_name:
+        type: string
+        description: The name of the manufacturer of the heavy-duty vehicle
+      transmission_make:
+        type: string
+        description: The manufacturer of the transmission for the heavy-duty vehicle
+      num_passengers:
+        type: string
+        description: The maximum number of passengers that a bus can accommodate
+      photo_url:
+        type: string
+        description: The URL for the image file of the heavy-duty vehicle
+      notes:
+        type: string
+        description: Additional information
+      heavy_duty_manufacturer_id:
+        type: integer
+        description:  A unique identifier for the heavy-duty vehicle's manufacturer
+      heavy_duty_chassi_ids:
+        type: array
+        items:
+          type: integer
+          description: An array of unique identifiers for associated heavy-duty chassis
+      heavy_duty_power_system_ids:
+        type: array
+        items:
+          type:  integer
+          description: An array of unique identifiers for associated heavy-duty power systems
+      fuels:
+        type: array
+        description: A list of fuels associated with the heavy-duty vehicle
+        items:
+          "$ref": "#/definitions/Fuel"
+      vehicle_categories:
+        type: array
+        description: A list of vehicle categories associated with the heavy-duty vehicle
+        items:
+          properties:
+            id:
+              type: integer
+              description: A unique identifier for the vehicle category
+            name:
+              type: string
+              description: The name of the vehicle category
+      heavy_duty_transmission_types:
+        type: array
+        description: A list of transmission types associated with the heavy-duty vehicle
+        items:
+          properties:
+            id:
+              type: integer
+              description: A unique identifier for the heavy-duty transmission type
+            name:
+              type: string
+              description: The name of the heavy-duty transmission type
+      heavy_duty_weight_class:
+        description: The weight class associated with the heavy-duty vehicle
+        properties:
+          id:
+            type: integer
+            description: A unique identifier for the heavy-duty weight class
+          name:
+            type: string
+            description: The name of the heavy-duty weight class
+          type:
+            type: string
+            description: The type of the heavy-duty weight class
+      heavy_duty_engines:
+        type: array
+        description: A list of heavy-duty engines associated with the heavy-duty vehicle
+        items:
+          properties:
+            id:
+              type: integer
+              description: A unique identifier for the heavy-duty engine
+            model:
+              type: string
+              description: The model of the heavy-duty engine
+            heavy_duty_manufacturer_name:
+              type: string
+              description: The name of the heavy-duty engine's manufacturer
+      heavy_duty_hybrids:
+        type: array
+        description: A list of heavy-duty hybrid/conversion systems associated with the heavy-duty vehicle
+        items:
+          properties:
+            id:
+              type: integer
+              description: A unique identifier for the heavy-duty hybrid/conversion system
+            model:
+              type: string
+              description: The model of the heavy-duty hybrid/conversion system
+            heavy_duty_manufacturer_name:
+              type: string
+              description: The name of the heavy-duty hybrid/conversion system's manufacturer
+  HeavyDutyEmissionCertification:
+    description: This is a heavy-duty emission certification
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for the emission certification
+      name:
+        type: string
+        description: The name of the emission certification
+  VehicleCategoryResponse:
+    description: This is a vehicle category
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for the vehicle category
+      name:
+        type: string
+        description: The name of the vehicle category
+      sort:
+        type: integer
+        description: The sort order for the vehicle category
+  HeavyDutyPowerSystem:
+    description: This is a heavy-duty power system
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for the heavy-duty power system
+      heavy_duty_manufacturer_id:
+        type: integer
+        description: A unique identifier for the heavy-duty power system's manufacturer
+      heavy_duty_engine_origin_id:
+        type: integer
+        description: A unique identifier for the heavy-duty engine origin associated with the
+          heavy-duty power system
+      heavy_duty_engine_power_source_id:
+        type: integer
+        description: A unique identifier for the heavy-duty engine power source associated with
+          the heavy-duty power system
+      heavy_duty_engine_fuel_configuration_id:
+        type: integer
+        description: A unique identifier for the heavy-duty engine fuel configuration associated
+          with the heavy-duty power system
+      heavy_duty_hybrid_type_id:
+        type: integer
+        description: A unique identifier for the heavy-duty hybrid type associated with the
+          heavy-duty power system
+      heavy_duty_hybrid_storage_id:
+        type: integer
+        description:  A unique identifier for the heavy-duty hybrid storage associated with the
+          heavy-duty power system
+      heavy_duty_hybrid_configuration_id:
+        type: integer
+        description: A unique identifier for the heavy-duty hybrid configuration associated with the
+          heavy-duty power system
+      model:
+        type: string
+        description: The model name of the heavy-duty power system
+      displacement:
+        type: string
+        description: Engine displacement for the heavy-duty power system
+      displacement_units:
+        type: string
+        description: Units for the engine displacement measurement for the heavy-duty power system
+  HdLdManufacturerResponse:
+    description: This is a manufacturer
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for the manufacturer
+      name:
+        type: string
+        description: The name of the manufacturer
+      url:
+        type: string
+        description: The URL for the manufacturer's website
+      phone:
+        type: string
+        description: The phone number for the manufacturer
+      comments:
+        type: string
+        description: Additional information
+  ManufacturerResponse:
+    description: This is a manufacturer
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for the manufacturer
+      name:
+        type: string
+        description: The name of the manufacturer
+      url:
+        type: string
+        description: The URL for the manufacturer's website
+      phone:
+        type: string
+        description: The phone number for the manufacturer
+      comments:
+        type: string
+        description: Additional information
+      type:
+        type: string
+        description: The type of the manufacturer
+  LightDutyAutomobileResponse:
+    description: This is a light-duty automobile
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for the light-duty automobile
+      fuel_id:
+        type: integer
+        description: A unique identifier for the fuel associated with the light-duty automobile
+      phev_type:
+        type: string
+        description: The PHEV type of the light-duty automobile
+      light_duty_fuel_configuration_id:
+        type: integer
+        description: A unique identifier for the light-duty fuel configuration associated
+          with the light-duty automobile
+      light_duty_manufacturer_id:
+        type: integer
+        description: A unique identifier for the light-duty automobile's manufacturer
+      light_duty_category_id:
+        type: integer
+        description: A unique identifier for the light-duty vehicle category associated with the
+          light-duty automobile
+      model:
+        type: string
+        description: The model of the light-duty automobile
+      model_year:
+        type: string
+        description: The model year of the light-duty automobile
+      photo_url:
+        type: string
+        description: The URL for the image file of the light-duty automobile
+      electric_range:
+        type: integer
+        description: The electric-only driving range for the light-duty automobile
+      transmission_type:
+        type: string
+        description: The transmission type of the light-duty automobile
+      engine_type:
+        type: string
+        description: The engine type of the light-duty automobile
+      engine_size:
+        type: string
+        description: The engine size of the light-duty automobile
+      engine_cylinder_count:
+        type: integer
+        description: The engine cylinder count of the light-duty automobile
+      engine_description:
+        type: string
+        description: Additional information about the engine of the light-duty automobile
+      notes:
+        type: string
+        description: Additional information
+      manufacturer_name:
+        type: string
+        description: The name of the light-duty automobile's manufacturer
+      manufacturer_url:
+        type: string
+        description: The URL for the light-duty automobile's website
+      fuel_code:
+        type: string
+        description: A code used to identify the fuel associated with the light-duty automobile
+      fuel_name:
+        type: string
+        description: The name of the fuel associated with the light-duty automobile
+      light_duty_fuel_configuration_name:
+        type: string
+        description: The name of the light-duty fuel configuration associated with the light-duty automobile
+      category_name:
+        type: string
+        description: The name of the light-duty vehicle category associated with the light-duty automobile
+      alternative_fuel_economy_combined:
+        type: number
+        format: float
+        description: The combined alternative fuel economy for the light-duty automobile
+      conventional_fuel_economy_combined:
+        type: number
+        format: float
+        description: The combined conventional fuel economy for the light-duty automobile
+      fuel_economy_estimated_by_manufacturer:
+        type: boolean
+        description: The fuel economy data are estimates from the manufacturer
+      alternative_fuel_economy_city:
+        type: number
+        format: float
+        description: The city driving alternative fuel economy for the light-duty automobile
+      alternative_fuel_economy_highway:
+        type: number
+        format: float
+        description: The highway driving alternative fuel economy for the light-duty automobile
+      conventional_fuel_economy_city:
+        type: number
+        format: float
+        description: The city driving conventional fuel economy for the light-duty automobile
+      conventional_fuel_economy_highway:
+        type: number
+        format: float
+        description: The highway driving conventional fuel economy for the light-duty automobile
+      light_duty_emission_certifications:
+        type: array
+        description: A list of light-duty emission certifications associated with the light-duty automobile
+        items:
+          description: This is a light-duty emission certification
+          properties:
+            id:
+              type: integer
+              description: A unique identifier for the light-duty emission certification
+            name:
+              type: string
+              description: The name of the light-duty emission certification
+  VehiclesResponse:
+    type: object
+    description: Includes both light-duty automobiles and heavy-duty vehicles
+    properties:
+      0:
+        type: object
+        description: This is a light-duty automobile
+        properties:
+          id:
+            type: integer
+            description: A unique identifier for the light-duty automobile
+          fuel_id:
+            type: integer
+            description: A unique identifier for the fuel associated with the light-duty automobile
+          phev_type:
+            type: string
+            description: The PHEV type of the light-duty automobile
+          light_duty_fuel_configuration_id:
+            type: integer
+            description: A unique identifier for the light-duty fuel configuration associated
+              with the light-duty automobile
+          light_duty_manufacturer_id:
+            type: integer
+            description: A unique identifier for the light-duty automobile's manufacturer
+          light_duty_category_id:
+            type: integer
+            description: A unique identifier for the light-duty vehicle category associated with the
+              light-duty automobile
+          model:
+            type: string
+            description: The model of the light-duty automobile
+          model_year:
+            type: string
+            description: The model year of the light-duty automobile
+          photo_url:
+            type: string
+            description: The URL for the image file of the light-duty automobile
+          electric_range:
+            type: integer
+            description: The electric-only driving range for the light-duty automobile
+          transmission_type:
+            type: string
+            description: The transmission type of the light-duty automobile
+          engine_type:
+            type: string
+            description: The engine type of the light-duty automobile
+          engine_size:
+            type: string
+            description: The engine size of the light-duty automobile
+          engine_cylinder_count:
+            type: integer
+            description: The engine cylinder count of the light-duty automobile
+          engine_description:
+            type: string
+            description: Additional information about the engine of the light-duty automobile
+          notes:
+            type: string
+            description: Additional information
+          manufacturer_name:
+            type: string
+            description: The name of the light-duty automobile's manufacturer
+          manufacturer_url:
+            type: string
+            description: The URL for the light-duty automobile's website
+          fuel_code:
+            type: string
+            description: A code used to identify the fuel associated with the light-duty automobile
+          fuel_name:
+            type: string
+            description: The name of the fuel associated with the light-duty automobile
+          light_duty_fuel_configuration_name:
+            type: string
+            description: The name of the light-duty fuel configuration associated with the light-duty automobile
+          category_name:
+            type: string
+            description: The name of the light-duty vehicle category associated with the light-duty automobile
+          alternative_fuel_economy_combined:
+            type: number
+            format: float
+            description: The combined alternative fuel economy for the light-duty automobile
+          conventional_fuel_economy_combined:
+            type: number
+            format: float
+            description: The combined conventional fuel economy for the light-duty automobile
+          alternative_fuel_economy_city:
+            type: number
+            format: float
+            description: The city driving alternative fuel economy for the light-duty automobile
+          alternative_fuel_economy_highway:
+            type: number
+            format: float
+            description: The highway driving alternative fuel economy for the light-duty automobile
+          conventional_fuel_economy_city:
+            type: number
+            format: float
+            description: The city driving conventional fuel economy for the light-duty automobile
+          conventional_fuel_economy_highway:
+            type: number
+            format: float
+            description: The highway driving conventional fuel economy for the light-duty automobile
+          light_duty_emission_certifications:
+            type: array
+            description: A list of light-duty emission certifications associated with the light-duty automobile
+            items:
+              description: This is a light-duty emission certification
+              properties:
+                id:
+                  type: integer
+                  description: A unique identifier for the light-duty emission certification
+                name:
+                  type: string
+                  description: The name of the light-duty emission certification
+          class:
+            type: string
+            description: The type of the vehicle
+      1:
+        type: object
+        description: This is a heavy-duty vehicle
+        properties:
+          id:
+            type: integer
+            description: A unique identifier for the heavy-duty vehicle
+          model:
+            type: string
+            description: The model of the heavy-duty vehicle
+          heavy_duty_manufacturer_name:
+            type: string
+            description: The name of the manufacturer of the heavy-duty vehicle
+          transmission_make:
+            type: string
+            description: The manufacturer of the transmission for the heavy-duty vehicle
+          num_passengers:
+            type: string
+            description: The maximum number of passengers that a bus can accommodate
+          photo_url:
+            type: string
+            description: The URL for the image file of the heavy-duty vehicle
+          notes:
+            type: string
+            description: Additional information
+          heavy_duty_manufacturer_id:
+            type: integer
+            description:  A unique identifier for the heavy-duty vehicle's manufacturer
+          heavy_duty_chassi_ids:
+            type: array
+            items:
+              type: integer
+              description: An array of unique identifiers for associated heavy-duty chassis
+          heavy_duty_power_system_ids:
+            type: array
+            items:
+              type:  integer
+              description: An array of unique identifiers for associated heavy-duty power systems
+          fuels:
+            type: array
+            description: A list of fuels associated with the heavy-duty vehicle
+            items:
+              "$ref": "#/definitions/Fuel"
+          vehicle_categories:
+            type: array
+            description: A list of vehicle categories associated with the heavy-duty vehicle
+            items:
+              properties:
+                id:
+                  type: integer
+                  description: A unique identifier for the vehicle category
+                name:
+                  type: string
+                  description: The name of the vehicle category
+          heavy_duty_transmission_types:
+            type: array
+            description: A list of transmission types associated with the heavy-duty vehicle
+            items:
+              properties:
+                id:
+                  type: integer
+                  description: A unique identifier for the heavy-duty transmission type
+                name:
+                  type: string
+                  description: The name of the heavy-duty transmission type
+          heavy_duty_weight_class:
+            description: The weight class associated with the heavy-duty vehicle
+            properties:
+              id:
+                type: integer
+                description: A unique identifier for the heavy-duty weight class
+              name:
+                type: string
+                description: The name of the heavy-duty weight class
+              type:
+                type: string
+                description: The type of the heavy-duty weight class
+          heavy_duty_engines:
+            type: array
+            description: A list of heavy-duty engines associated with the heavy-duty vehicle
+            items:
+              properties:
+                id:
+                  type: integer
+                  description: A unique identifier for the heavy-duty engine
+                model:
+                  type: string
+                  description: The model of the heavy-duty engine
+                heavy_duty_manufacturer_name:
+                  type: string
+                  description: The name of the heavy-duty engine's manufacturer
+          heavy_duty_hybrids:
+            type: array
+            description: A list of heavy-duty hybrid/conversion systems associated with the heavy-duty vehicle
+            items:
+              properties:
+                id:
+                  type: integer
+                  description: A unique identifier for the heavy-duty hybrid/conversion system
+                model:
+                  type: string
+                  description: The model of the heavy-duty hybrid/conversion system
+                heavy_duty_manufacturer_name:
+                  type: string
+                  description: The name of the heavy-duty hybrid/conversion system's manufacturer
+          class:
+            type: string
+            description: The type of the vehicle

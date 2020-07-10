@@ -1,0 +1,340 @@
+info:
+  version: 1
+  title: Technology Summaries APIs
+  description: |-
+    A collection of APIs providing data related to energy technologies, experts, and patents associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
+schemes:
+  - https
+basePath: /
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: query
+security:
+  - api_key: []
+paths:
+  /api/lps/v{version}/tech_summaries:
+    get:
+      summary: Returns a list of technology summaries
+      parameters:
+        - in: path
+          name: version
+          type: integer
+          required: true
+          description: API version, only current option is 1
+        - in: query
+          name: limit
+          type: integer
+          required: false
+          description: Number of results to return, default is 25, max is 200; to receive more than <i>limit</i> number of results, increment page param in subsequent request.
+        - in: query
+          name: page
+          type: integer
+          required: false
+          description: Page number of results, default is 0; see limit
+      responses:
+        200:
+          description: Successful request
+          schema:
+            $ref: "#/definitions/tech_summaries_response"
+          examples:
+            Valid:
+              metadata: {"version": 1}
+              inputs: {}
+              errors: {}
+              resultset: {
+                "total": 1520,
+                "count": 25,
+                "number": 0,
+                "pages": 61,
+                "result": [
+                {
+                "uuid": "7e7ad8c0-3396-4c00-bd3d-36d3541d6c2e",
+                "technologies": ["Biomass and Biofuels"],
+                "title": "Clean Fractionation",
+                "summary": "<p> Biorefinery production costs are driven by efficient pretreatment processes. To help lower production costs, researchers at the National Renewable Energy Laboratory (NREL) have developed an efficient and economically favorable biomass pretreatment process for upgrading feedstocks for biorefining and other end uses. Using a single-phase mixture digestion process followed by a phase separation, Clean Fractionation segregates cellulose, hemicellulose, and lignin into three high-purity streams for conversion into value-added products, including ethanol biofuel.</p>",
+                "description": "<p> Pulping processes have previously been used for separating cellulose from lignin and other components of lignocellulosic materials; however, most present technical or economic challenges. For example, processes using either inorganic chemicals or organic solvents face difficulties in the low-cost recovery or destruction of those chemicals. The solution provided by NREL&rsquo;s Clean Fractionation Technology utilizes a single-phase mixture of alcohol, water and a water-immiscible organic solvent (e.g, a ketone) to digest biomass at elevated temperatures. Following digestion, water or solvent levels are adjusted to cause a phase separation wherein each phase contains a highly-purified portion of the segregated biomass. Cellulose is amassed in a solid pulp cake; hemicellulose and dissolved sugars are present in an aqueous phase; and lignin remains present in the organic solvent. The lignin is subsequently isolated (and the organic solvent recovered) through simple evaporation.<br /> The improved extraction efficiencies provided by this solvent fractionation technique lead to reduced conversion times and increased yields, allowing biomass to be processed more economically. Recovery rates for each of the three resulting product streams approach 95 percent, with additional removal of noncellulosic materials possible through post-treatment bleaching. NREL has tested the method on numerous woody and herbaceous biomass feedstocks (including several mixed feedstocks), indicating high potential for a variety of biomass feedstocks to be used to produce a wide range of chemical products.</p>",
+                "benefits": "<ul> <li> Provides high recovery and purity levels for segregated biomass components</li> <li> Enables cost effective recovery of organic solvents used in pretreatment process</li> <li> Lowers ethanol production costs by significantly reducing fermentation times and increasing yields</li> <li> Enables hemicellulose and lignin to be used for production of other value-added chemicals (i.e., Xylitol from hemicellulose)</li> </ul>",
+                "applications_and_industries": "<ul> <li> Ethanol</li> <li> Pulp and paper</li> <li> Chemical</li> <li> Food processing</li> <li> Packaging</li> <li> Fuels</li> </ul>",
+                "visibility": "Published",
+                "development_stage": "Prototype",
+                "publication_link": null,
+                "created_at": "2010-01-14 16:43:47",
+                "updated_at": "2017-08-15 15:42:07",
+                "patents": {},
+                "lab": {
+                  "uuid": "b9bb03a5-2c32-4cba-a2e3-024938bcba78",
+                  "name": "Brookhaven National Laboratory",
+                  "tto_url": "https://www.bnl.gov/techtransfer/ ",
+                  "contact_us_email": "tech@bnl.gov",
+                  "avatar": "https//www.labpartnering.org/files/labs/1",
+                  "links": {"self": "https://developer.nrel.gov/api/lps/v1/labs/b9bb03a5-2c32-4cba-a2e3-024938bcba78"}
+                },
+                "expert": {
+                  "uuid": "a86f59b3-f23c-4c4f-94bb-386cdfea7ce5",
+                  "first_name": "Joel W.",
+                  "last_name": "Ager",
+                  "avatar": "https://www.labpartnering.org/files/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5",
+                  "links": {"self": "https://developer.nrel.gov/api/lps/v1/experts/a86f59b3-f23c-4c4f-94bb-386cdfea7ce5"}
+                }
+                },
+                {
+                "uuid": "9e708bcc-9613-467c-b339-6278446ba236",
+                "technologies": ["Biomass and Biofuels"],
+                "title": "Pretreatment Methods for Biomass Conversion into Biofuels and Biopolymers",
+                "summary": "<p> Hydrolysis of lignocellulosic biomass using an acid catalyst to produce sugars has been known for decades but can be costly and requires special equipment. The hydrolyzed sugars themselves are somewhat labile to the harsh hydrolysis conditions and may be degraded to unwanted or toxic byproducts. If exposed to acid for too long, the glucose derived from cellulose degrades into hydroxymethlylfurfural, which can be further degraded into levulinic acid and formic acid. Xylose, a hemicellulose sugar, can be degraded into furfural and further to tars and other degradation products.<br /> <br /> After a century of research and development, the dilute acid hydrolysis process has evolved into a highly efficient process of converting biomass into ethanol. Hydrolysis occurs in two stages to maximize sugar yields from the hemicellulose and cellulose fractions of biomass. The first stage is operated under milder conditions to hydrolyze hemicellulose, while the second stage is optimized to hydrolyze the more resistant cellulose fraction. Liquid hydrolyzates are recovered from each stage, neutralized, and fermented to ethanol.</p>",
+                "description": "<p> Patents: 6,660,506, 6,423,145<br /> This technology is a set of processes to convert lignocellulosic biomass to ethanol, comprising hydrolyzing lignocellulosic materials by subjecting dried lignocellulosic material in a reactor to a catalyst composed of a dilute solution of a strong acid and a metal salt to lower the activation energy (i.e., the temperature) of cellulose hydrolysis and ultimately obtain higher sugar yields. The lower temperatures achieved reduces the need for costly steam and specialized equipment and enables the hydrolysis of both hemicellulose and cellulose, when used with hydrolyzer feeders that do not compact the biomass feedstock to achieve higher sugar yields. The liquid hydrolyzates are recovered from each stage and fermented to alcohol. Residual cellulose and lignin left over in the solids from the hydrolysis reactors serve as boiler fuel for electricity or steam production.</p>",
+                "benefits": "<p> NREL&rsquo;s intellectual property in the area of pretreatment, can be beneficial to your company&rsquo;s pretreatment steps in a number of ways, including the following:</p> <p> &nbsp;</p> <ul> <li> Lower required activation temperature for hydrolysis of both hemicelluloses and cellulose can reduce the cost of steam and equipment</li> <li> Increase fermentable sugar yields</li> <li> Recover water soluble sugars</li> <li> Requires less sever pH, temperature, and time than conventional prehydrolysis.</li> <li> Greater extraction of cellulose and hemicelluloses</li> <li> Reduced nutrient requirements</li> <li> Fermentation method in 00-52 eliminates the need for washing the second-stage hydrolysate to recover soluble sugars.</li> <li> Requires a less severe combination of pH, temperature, and time than conventional prehydrolysis.</li> </ul>",
+                "applications_and_industries": "<ul> <li> Bio-fuels</li> <li> Pulp &amp; paper</li> <li> Food &amp; feed processing</li> <li> Textile processes</li> </ul>",
+                "visibility": "Published",
+                "development_stage": "Development",
+                "publication_link": null,
+                "created_at": "2010-01-14 16:48:55",
+                "updated_at": "2017-08-09 09:26:58",
+                "patents": {},
+                "lab": {
+                  "uuid": "02bfeac1-ea4d-4356-8c61-b1e0259658d7",
+                  "name": "Lawrence Berkeley National Laboratory",
+                  "tto_url": "http://ipo.lbl.gov/ ",
+                  "contact_us_email": "ipo@lbl.gov",
+                  "avatar": "https//www.labpartnering.org/files/labs/2",
+                  "links": {"self": "https://developer.nrel.gov/api/lps/v1/labs/02bfeac1-ea4d-4356-8c61-b1e0259658d7"}
+                },
+                "expert": {
+                  "uuid": "f74c6dae-8c5a-4d3b-aa99-e90038d6434e",
+                  "first_name": "Frances",
+                  "last_name": "Houle",
+                  "avatar": "https://www.labpartnering.org/files/experts/f74c6dae-8c5a-4d3b-aa99-e90038d6434e",
+                  "links": {"self": "https://developer.nrel.gov/api/lps/v1/experts/f74c6dae-8c5a-4d3b-aa99-e90038d6434e"}
+                }
+                }
+                ]
+                }
+            Invalid:
+              metadata: {"version": 1}
+              inputs: {"version": 2}
+              errors: {"status": 400, "detail": "unsupported version"}
+              resultset: []
+  /api/lps/v{version}/tech_summaries/{tech_summary_uuid}:
+    get:
+      summary: Returns detailed information about one national laboratory technology summary
+      parameters:
+        - in: path
+          name: version
+          type: integer
+          required: true
+          description: API version, only current option is 1
+        - in: path
+          name: tech_summary_uuid
+          type: string
+          required: true
+          description: uuid of the national laboratory technology summary requested
+      responses:
+        200:
+          description: Successful request
+          schema:
+            $ref: "#/definitions/tech_summaries_response"
+          examples:
+            Valid:
+              metadata: {"version": 1}
+              inputs: {"uuid": "35a53992-22f3-4e50-a17c-39d1f246e1fd"}
+              errors: {}
+              resultset: {
+                "total": 1,
+                "count": 1,
+                "number": 0,
+                "pages": 1,
+                "result": [
+                {
+                "uuid": "35a53992-22f3-4e50-a17c-39d1f246e1fd",
+                "technologies": ["Biomass and Biofuels"],
+                "title": "Gene Coding E1 Endoglucanase for Biofuel Production",
+                "summary": "The fermentable fractions of biomass include cellulose and hemicelluloses. The development of an economic process for the conversion of low-value biomass to ethanol via fermentation requires the optimization of several key steps, especially that of cellulase production. Practical utilization of cellulose by hydrolysis with cellulase to produce glucose requires large amounts of cellulase to fully depolymerize cellulose. Economical production of cellulase is compounded by the relatively slow growth rates of cellulase producing fungi and the long times required for cellulase induction. Therefore, improvements in or alternative cellulase production systems capable of greater productivities, higher specific activities of cellulase or faster growth rates than may be possible with natural fungi would significantly reduce the cost of cellulose hydrolysis and make the large-scale bioconversion of cellulosic biomass to ethanol more economical.",
+                "description": "It has been proposed to use recombinant cellulase enzymes to either augment or replace costly fungal enzymes for cellulose degradation. Highly thermostable cellulase enzymes are secreted by the cellulolytic thermophile Acidothermus cellulolyticus, which was originally isolated from decaying wood in an acidic, thermal pool at Yellowstone National Park. This endoglucanase demonstrates a temperature optimum of 83 degrees C and a specific activity of 40 micro-mole glucose release from carboxymethylcellulose/min/mg protein. This E1 endoglucanase was further identified as having an isoelectric pH of 6.7 and a molecular weight of 81,000 daltons by SDS-PAGE. The genes coding for Acidothermus cellulolyticus cellulases cloned into other microbial host organisms could provide an abundant, inexpensive source of highly active enzymes.",
+                "benefits": "<ul> <li>Highly thermostable and resistant to inhibition from cellobiose.</li> <li>High specific activity towards cellulose.</li> <li>Gene can be cloned into various microorganisms to produce enzyme.</li> </ul>",
+                "applications_and_industries": "<ul> <li>Conversion of biomass to fermentable sugars for biofuel production</li> <li>Ethanol Production from renewable resources</li> </ul>",
+                "visibility": "Published",
+                "development_stage": "Prototype",
+                "publication_link": null,
+                "created_at": "2010-01-14 17:23:11",
+                "updated_at": "2012-12-17 15:43:46",
+                "patents": {},
+                "lab": {
+                  "uuid": "e2af34a8-8b90-4726-9edf-fa75fede52e8",
+                  "name": "National Renewable Energy Laboratory",
+                  "tto_url": "https://www.nrel.gov/workingwithus/technology-transfer.html",
+                  "contact_us_email": "Anne.Miller@nrel.gov",
+                  "avatar": "https//www.labpartnering.org/files/labs/4",
+                  "links": {"self": "https://developer.nrel.gov/api/lps/v1/labs/e2af34a8-8b90-4726-9edf-fa75fede52e8"}
+                },
+                "expert": {
+                  "uuid": "ebeceabc-af74-4674-8ac2-a84bdb08806d",
+                  "first_name": "Mary Ann",
+                  "last_name": "Piette",
+                  "avatar": "https://www.labpartnering.org/files/experts/ebeceabc-af74-4674-8ac2-a84bdb08806d",
+                  "links": {"self": "https://developer.nrel.gov/api/lps/v1/experts/ebeceabc-af74-4674-8ac2-a84bdb08806d"}
+                }
+                }
+                ]
+                }
+            Invalid:
+              metadata: {"version": 1}
+              inputs: {"version": 2}
+              errors: {"status": 400, "details": "unsupported version"}
+              resultset: []
+definitions:
+  metadata:
+    type: object
+    properties:
+      version:
+        type: integer
+        example: 1
+  inputs:
+    type: object
+    properties:
+      input_name:
+        type: string
+  errors:
+    type: object
+    properties:
+      status:
+        type: integer
+      detail:
+        type: string
+  tech_summary:
+    type: object
+    properties:
+      uuid:
+        type: string
+        example: 35a53992-22f3-4e50-a17c-39d1f246e1fd
+      technologies:
+        type: array
+        items:
+          type: string
+      title:
+        type: string
+        example: Gene Coding E1 Endoglucanase for Biofuel Production
+      summary:
+        type: string
+        example: "The fermentable fractions of biomass include cellulose and hemicelluloses. The development of an economic process for the conversion of low-value biomass to ethanol via fermentation requires the optimization of several key steps, especially that of cellulase production. Practical utilization of cellulose by hydrolysis with cellulase to produce glucose requires large amounts of cellulase to fully depolymerize cellulose. Economical production of cellulase is compounded by the relatively slow growth rates of cellulase producing fungi and the long times required for cellulase induction. Therefore, improvements in or alternative cellulase production systems capable of greater productivities, higher specific activities of cellulase or faster growth rates than may be possible with natural fungi would significantly reduce the cost of cellulose hydrolysis and make the large-scale bioconversion of cellulosic biomass to ethanol more economical."
+      description:
+        type: string
+        example: "It has been proposed to use recombinant cellulase enzymes to either augment or replace costly fungal enzymes for cellulose degradation. Highly thermostable cellulase enzymes are secreted by the cellulolytic thermophile Acidothermus cellulolyticus, which was originally isolated from decaying wood in an acidic, thermal pool at Yellowstone National Park. This endoglucanase demonstrates a temperature optimum of 83 degrees C and a specific activity of 40 micro-mole glucose release from carboxymethylcellulose/min/mg protein. This E1 endoglucanase was further identified as having an isoelectric pH of 6.7 and a molecular weight of 81,000 daltons by SDS-PAGE. The genes coding for Acidothermus cellulolyticus cellulases cloned into other microbial host organisms could provide an abundant, inexpensive source of highly active enzymes."
+      benefits:
+        type: string
+        example: "<ul> <li>Highly thermostable and resistant to inhibition from cellobiose.</li> <li>High specific activity towards cellulose.</li> <li>Gene can be cloned into various microorganisms to produce enzyme.</li> </ul>"
+      applications_and_industries:
+        type: string
+        example: "<ul> <li>Conversion of biomass to fermentable sugars for biofuel production</li> <li>Ethanol Production from renewable resources</li> </ul>"
+      visibility:
+        type: string
+        enum:
+          - Published
+          - Archived
+          - Draft
+      development_stage:
+        type: string
+        enum:
+          - Proposed
+          - Exclusively Licensed
+          - Production
+          - Prototype
+          - Licensed
+          - Development
+      publication_link:
+        type: string
+        example: https://doi.org/10.1103/PhysRevB.93.045103
+      created_at:
+        type: string
+        format: date
+        example: "2010-01-14 17:23:11"
+      updated_at:
+        type: string
+        format: date
+        example: "2012-12-17 15:43:46"
+      lab:
+        type: object
+        properties:
+          uuid:
+            type: string
+            example: "e2af34a8-8b90-4726-9edf-fa75fede52e8"
+          name:
+            type: string
+            example: "National Renewable Energy Laboratory"
+          tto_url:
+            type: string
+            example: "https://www.nrel.gov/workingwithus/technology-transfer.html"
+          contact_us_email:
+            type: string
+            example: "Anne.Miller@nrel.gov"
+          avatar:
+            type: string
+            example: "https//www.labpartnering.org/files/labs/4"
+          links:
+            type: object
+            properties:
+              self:
+                type: string
+                example: "https://developer.nrel.gov/api/lps/v1/labs/e2af34a8-8b90-4726-9edf-fa75fede52e8"
+      expert:
+        type: object
+        properties:
+          uuid:
+            type: string
+            example: "ebeceabc-af74-4674-8ac2-a84bdb08806d"
+          first_name:
+            type: string
+            example: "Mary Ann"
+          last_name:
+            type: string
+            example: Piette
+          avatar:
+            type: string
+            example: "https://www.labpartnering.org/files/experts/ebeceabc-af74-4674-8ac2-a84bdb08806d"
+          links:
+            type: object
+            properties:
+              self:
+                type: string
+                example: "https://developer.nrel.gov/api/lps/v1/experts/ebeceabc-af74-4674-8ac2-a84bdb08806d"
+  tech_summaries:
+    type: array
+    items:
+      $ref: "#/definitions/tech_summary"
+  tech_summaries_response:
+    type: object
+    properties:
+      metadata:
+        type: object
+        $ref: "#/definitions/metadata"
+      inputs:
+        type: object
+        $ref: "#/definitions/inputs"
+      errors:
+        type: object
+        $ref: "#/definitions/errors"
+      resultset:
+        type: object
+        properties:
+          total:
+            type: integer
+            description: Total number of matching results (this number will be >= count)
+            example: 1520
+          count:
+            type: integer
+            description: Number of results returned (this number will be <= total)
+            example: 25
+          number:
+            type: integer
+            description: Page number of this result set, zero-indexed
+            example: 0
+          pages:
+            type: integer
+            description: Total number of pages for all matching results
+            example: 61
+          result:
+            type: array
+            items:
+              type: object
+              $ref: "#/definitions/tech_summary"

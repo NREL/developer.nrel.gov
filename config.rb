@@ -20,10 +20,11 @@ page "/404.html", :directory_index => false
 
 # General configuration
 
-activate :sprockets do |c|
-  c.imported_asset_path = "assets"
-  c.expose_middleman_helpers = true
-end
+activate :external_pipeline,
+  name: :webpack,
+  command: build? ? "yarn run build" : "yarn run start",
+  source: "tmp/webpack-dist",
+  latency: 1
 activate :directory_indexes
 activate :syntax
 
@@ -81,5 +82,7 @@ configure :build do
     %r{throbber.gif},
   ]
 end
+
+ENV["DOCS_API_KEY"] ||= "Rr247zstse9kbndOttzlhKIKnS04mW7UUXIplAqd"
 
 activate :alias
