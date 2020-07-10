@@ -116,13 +116,7 @@ jobs:
           # Sync all cache-busted assets with long cache-control expirations.
           pipenv run aws s3 sync ./build/ "s3://${BUCKET_NAME}/" \
             --exclude '*' \
-            --include 'static/fonts/*' \
-            --include 'static/img/*' \
-            --include 'static/javascripts/all-*' \
-            --include 'static/javascripts/ie_lt_9-*' \
-            --include 'static/stylesheets/*' \
-            --include 'metrics/css/*' \
-            --include 'metrics/js/*' \
+            --include 'assets/*' \
             --cache-control 'public, max-age=31536000, immutable'
           # Sync the remaining files, disallowing caching on those.
           pipenv run aws s3 sync ./build/ "s3://${BUCKET_NAME}/" --cache-control 'max-age=0, no-cache, must-revalidate'
