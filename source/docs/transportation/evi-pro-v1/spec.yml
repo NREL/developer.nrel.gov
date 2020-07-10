@@ -219,7 +219,7 @@ definitions:
             type: string
             example: 0.0.0
           inputs:
-            type: hash
+            type: object
             example:
               temp_c: -20
               fleet_size: 1000
@@ -270,7 +270,7 @@ definitions:
             type: string
             example: 0.0.0
           inputs:
-            type: hash
+            type: object
             example:
               temp_c: -20
               fleet_size: 1000
