@@ -10,11 +10,6 @@ gem "dotenv", "~> 2.7.2"
 # Syntax highlighting
 gem "middleman-syntax", "~> 3.2.0"
 
-# Assets
-gem "middleman-sprockets", "~> 4.1.0"
-#gem "sprockets", "< 4"
-#gem "sass", "~> 3.7.4"
-
 # Redirects
 gem "middleman-alias", "~> 0.0.17"
 

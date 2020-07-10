@@ -27,7 +27,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
       - name: Bundle Install
-        run: bundle install
+        run: bundle install --frozen
 
       # Yarn dependencies
       - name: Yarn Cache Path
@@ -86,7 +86,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pipenv-
       - name: Pipenv Install
-        run: pipenv install
+        run: pipenv install --deploy
 
       # Deploy to S3 bucket.
       - uses: actions/download-artifact@v1
