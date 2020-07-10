@@ -55,8 +55,8 @@ paths:
           in: query
           type: string
           required: true
-          enum: [HOME60, HOME80, HOME100]
-          description: Preference for charging at home (versus at work).  Must be one of `[HOME60, HOME80, HOME100]` where 60% perfer home charging, 80% prefer home charging, and 100% prefer home charging.
+          enum: [Home60, Home80, Home100]
+          description: Preference for charging at home (versus at work).  Must be one of `[Home60, Home80, Home100]` where 60% perfer home charging, 80% prefer home charging, and 100% prefer home charging.
         - name: home_access_dist
           in: query
           type: string
@@ -118,8 +118,8 @@ paths:
           in: query
           type: string
           required: true
-          enum: [HOME60, HOME80, HOME100]
-          description: Preference for charging at home (versus at work).  Must be one of `[HOME60, HOME80, HOME100]` where 60% perfer home charging, 80% prefer home charging, and 100% prefer home charging.
+          enum: [Home60, Home80, Home100]
+          description: Preference for charging at home (versus at work).  Must be one of `[Home60, Home80, Home100]` where 60% perfer home charging, 80% prefer home charging, and 100% prefer home charging.
         - name: home_access_dist
           in: query
           type: string
@@ -155,36 +155,6 @@ definitions:
         type: string
         description: A human readable description of the error message.
         example: No data was found for the gisjoin provided
-  loadProfileInputs:
-    type: object
-    properties:
-      temp_c:
-        type: string
-        example: -20
-      fleet_size:
-        type: string
-        example: 1000
-      mean_dvmt:
-        type: string
-        example: 45
-      pev_dist:
-        type: string
-        example: PHEV
-      class_dist:
-        type: string
-        example: SUV
-      pref_dist:
-        type: string
-        example: Home60
-      home_access_dist:
-        type: string
-        example: HA50
-      home_power_dist:
-        type: string
-        example: MostL2
-      work_power_dist:
-        type: string
-        example: MostL2
   loadProfileExample:
     type: array
     items:
