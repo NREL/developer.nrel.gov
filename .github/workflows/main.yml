@@ -69,7 +69,7 @@ jobs:
       # Push production builds to "build-history" branch to maintain history of
       # built and deployed versions.
       - name: Commit Build History
-        if: success() && github.ref == 'refs/heads/production'
+        if: success() && github.ref == 'refs/heads/master'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn run gh-pages --dist ./build/ --branch build-history --user "$GITHUB_ACTOR <$GITHUB_ACTOR@users.noreply.github.com>" --repo "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
