@@ -5,16 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        India Wind Data Download 
+        Wind Toolkit Data - SAM format (srw) 
           API
         |
       NREL: Developer Network
     </title>
 
-    <link rel="canonical" href="https://developer.nrel.gov/docs/wind/wind-toolkit/india-wind-download/" />
+    <link rel="canonical" href="https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-srw-download/" />
     <script>
       if(window.location.href.indexOf('nrel.github.io') !== -1) {
-        window.location.href = 'https://developer.nrel.gov/docs/wind/wind-toolkit/india-wind-download/';
+        window.location.href = 'https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-srw-download/';
       }
     </script>
 
@@ -33,7 +33,7 @@
 </script>
 
   </head>
-  <body class="docs docs_wind docs_wind_wind-toolkit docs_wind_wind-toolkit_india-wind-download docs_wind_wind-toolkit_india-wind-download_index">
+  <body class="docs docs_wind docs_wind_wind-toolkit docs_wind_wind-toolkit_wtk-srw-download docs_wind_wind-toolkit_wtk-srw-download_index">
     <div class="container">
   <header>
     <map name="header_map">
@@ -59,20 +59,18 @@
             <li class="breadcrumb-item"><a href="/docs/">Documentation</a></li>
             <li class="breadcrumb-item"><a href="/docs/wind/">Wind</a></li>
             <li class="breadcrumb-item"><a href="/docs/wind/wind-toolkit/">Wind Toolkit Data Downloads</a></li>
-            <li class="breadcrumb-item active">India Wind Data Download</li>
+            <li class="breadcrumb-item active">Wind Toolkit Data - SAM format (srw)</li>
     </ol>
 
 
-    <h1 id="india-wind-data-download-apiwind-toolkitv2windindia-wind-download">India Wind Data Download <span class="url">(/api/wind-toolkit/v2/wind/india-wind-download)</span></h1>
-<p>Collect and download, as CSV, a configurable set of data fields from a national collection of wind stations. The India Wind Dataset, developed in part through the India Renewable Integration Study, contains simulated windspeed, direction, temperate and pressure values at 40m, 80m, 100m and 120m heights above the ground where available. The spatial resolution of the data is 3 km and the temporal resolution is 5 minutes.</p>
-
-<p>This API is capabale of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.</p>
+    <h1 id="wind-toolkit-data---sam-format-srw-apiwind-toolkitv2windwtk-srw-download">Wind Toolkit Data - SAM format (srw) <span class="url">(/api/wind-toolkit/v2/wind/wtk-srw-download)</span></h1>
+<p>Collect and download in <a href="https://sam.nrel.gov/">SAM (System Advisor Model)</a> format a configurable set of data fields from a national collection of wind stations. The Wind Integration National Dataset (WIND) Toolkit is an update and expansion of the Eastern and Western Wind Datasets, and is intended to support the next generation of integration studies. The WIND Toolkit includes meteorological conditions at multiple hub heights for more than 2,488,136 sites in the continental United States for the years 2007–2014.</p>
 
 <ul id="toc"></ul>
 
 <h2 id="request-url">Request URL</h2>
 
-<pre>GET /api/wind-toolkit/v2/wind/india-wind-download<em>.format?parameters</em></pre>
+<pre>GET /api/wind-toolkit/v2/wind/wtk-srw-download<em>?parameters</em></pre>
 
 <h2 id="request-parameters">Request Parameters</h2>
 
@@ -99,71 +97,56 @@
 			</td>
 		</tr>
 		<tr>
-			<th class="doc-parameter-name" scope="row">wkt</th>
+			<th class="doc-parameter-name" scope="row">lat</th>
 			<td class="doc-parameter-required">Yes</td>
 			<td class="doc-parameter-value">
-			<div class="doc-parameter-value-field"><strong>Type:</strong> well-known text point string</div>
+			<div class="doc-parameter-value-field"><strong>Type:</strong> point coordinate in wgs84 </div>
 
 			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
 			</td>
-			<td class="doc-parameter-description">A well-known text (WKT) representation of the geometry for which to extract data. May be a point or polygon geometry.</td>
+			<td class="doc-parameter-description">The latitude of the geometry for which to extract data.</td>
 		</tr>
 		<tr>
-			<th class="doc-parameter-name" scope="row">attributes</th>
+			<th class="doc-parameter-name" scope="row">lon</th>
 			<td class="doc-parameter-required">Yes</td>
 			<td class="doc-parameter-value">
-			<div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
+			<div class="doc-parameter-value-field"><strong>Type:</strong> point coordinate in wgs84 </div>
 
 			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-
-			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>pressure_40m, temperature_100m, temperature_120m, temperature_40m, temperature_80m, winddirection_100m, winddirection_120m, winddirection_40m, winddirection_80m, windspeed_100m, windspeed_120m, windspeed_40m, windspeed_80m, pressure_100m</em></div>
 			</td>
-			<td class="doc-parameter-description">Each specified attribute will be returned as a column in the resultant CSV download.</td>
+			<td class="doc-parameter-description">The longitude of the geometry for which to extract data.</td>
 		</tr>
 		<tr>
-			<th class="doc-parameter-name" scope="row">names</th>
+			<th class="doc-parameter-name" scope="row">hubheight</th>
+			<td class="doc-parameter-required">No</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> Integer </div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> 100</div>
+
+			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>10, 40, 60, 80, 100, 120, 140, 160, 200</em></div>
+			</td>
+			<td class="doc-parameter-description">The response data will be at the requested height in meters</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">year</th>
 			<td class="doc-parameter-required">Yes</td>
 			<td class="doc-parameter-value">
-			<div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited integer array</div>
-
+			<div class="doc-parameter-value-field"><strong>Type:</strong> integer </div>
 			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-
-			<div class="doc-parameter-value-field">&nbsp;</div>
+			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014</em></div>
 			</td>
-			<td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
+			<td class="doc-parameter-description">The year for which data should be extracted.</td>
 		</tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">interval</th>
-      <td class="doc-parameter-required">No</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> integer</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> 60</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>15, 60</em></div>
-      </td>
-      <td class="doc-parameter-description">
-        Desired data timestep resolution in minutes.
-      </td>
-    </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">utc</th>
-      <td class="doc-parameter-required">No</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> true</div>
-      </td>
-      <td class="doc-parameter-description">
-        Pass true to retrieve data with timestamps in UTC. Pass false to retrieve data with timestamps converted to local time of data point (without daylight savings time).
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">leap_day</th>
       <td class="doc-parameter-required">No</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> false</div>
       </td>
       <td class="doc-parameter-description">
-        Pass true to retrieve data including leap day (where appropriate). Pass false to retrieve data excluding leap day.
+        Pass true to retrieve data with timestamps in UTC. Pass false to retrieve data with timestamps converted to local time of data point.
       </td>
     </tr>
 		<tr>
@@ -217,96 +200,27 @@
 	</tbody>
 </table>
 
-<h2 id="response-fields">Response Fields</h2>
+<h2>Example</h2>
 
-<p>The response is composed of service-related informational fields and the results of the data query.</p>
+<h3 id="srw-format">SRW Format</h3>
+<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/wtk-srw-download?api_key={{API_KEY}}&amp;lat=41.23&amp;lon=-81.32&amp;year=2014&amp;email=user@nrel.gov</code></div>
 
-<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
-	<thead>
-		<tr>
-			<th class="doc-parameters-name" scope="col">Field</th>
-			<th class="doc-parameters-value" scope="col">Value</th>
-			<th class="doc-parameters-description" scope="col">Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<th class="doc-parameter-name" scope="row">errors</th>
-			<td class="doc-parameter-value">
-			<div class="doc-parameter-value-field"><strong>Type:</strong> string array</div>
-			</td>
-			<td class="doc-parameter-description">
-			<p>A list of error messages</p>
-			</td>
-		</tr>
-		<tr>
-			<th class="doc-parameter-name" scope="row">inputs</th>
-			<td class="doc-parameter-value">
-			<div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
-			</td>
-			<td class="doc-parameter-description">Key: Value pairs representing all input parameters</td>
-		</tr>
-		<tr>
-			<th class="doc-parameter-name" scope="row">outputs</th>
-			<td class="doc-parameter-value">
-			<div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
-			</td>
-			<td class="doc-parameter-description">Upon successful completion a message will be returned informing the user that file generation is in progress and an email will be sent to the address provided in the <code>email</code> input field when the download is ready</td>
-		</tr>
-	</tbody>
-</table>
-
-<h2>Examples</h2>
-
-<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/india-wind-download.json?wkt=POINT(75.36621%2024.726874)&amp;attributes=pressure_40m%2Ctemperature_100m%2Ctemperature_120m%2Ctemperature_40m%2Ctemperature_80m%2Cwinddirection_100m%2Cwinddirection_120m%2Cwinddirection_40m%2Cwinddirection_80m%2Cwindspeed_100m%2Cwindspeed_120m%2Cwindspeed_40m%2Cwindspeed_80m%2Cpressure_100m&amp;names=2014&amp;full_name=Data%20Lover&amp;email=data.lover%40gmail.com&amp;affiliation=NREL&amp;mailing_list=false&amp;reason=test&amp;leap_day=true&amp;utc=false&amp;interval=60</code></div>
-
-<div class="highlight"><pre class="highlight plaintext"><code>{
-  "errors": [],
-  "inputs": {
-    "wkt": "POINT(75.36621 24.72687)",
-    "attributes": [
-      "pressure_40m",
-      "temperature_100m",
-      "temperature_120m",
-      "temperature_40m",
-      "temperature_80m",
-      "winddirection_100m",
-      "winddirection_120m",
-      "winddirection_40m",
-      "winddirection_80m",
-      "windspeed_100m",
-      "windspeed_120m",
-      "windspeed_40m",
-      "windspeed_80m",
-      "pressure_100m"
-    ],
-    "names": [
-      2014
-    ],
-    "site_url": "wind-toolkit/wind/india_wind_download.json",
-    "full_name": "Data Lover",
-    "email": "data.lover@gmail.com",
-    "affiliation": "NREL",
-    "mailing_list": false,
-    "reason": "test",
-    "leap_day": true,
-    "utc": false,
-    "interval": "60"
-  },
-  "outputs": {
-    "message": "File generation in progress. An email will be sent to data.lover@gmail.com when the download is ready."
-  }
-}
-</code></pre></div>
-<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/india-wind-download.csv?wkt=POINT(75.36621%2024.726874)&amp;attributes=pressure_40m%2Ctemperature_100m%2Ctemperature_120m%2Ctemperature_40m%2Ctemperature_80m%2Cwinddirection_100m%2Cwinddirection_120m%2Cwinddirection_40m%2Cwinddirection_80m%2Cwindspeed_100m%2Cwindspeed_120m%2Cwindspeed_40m%2Cwindspeed_80m%2Cpressure_100m&amp;names=2014&amp;full_name=Data%20Lover&amp;email=data.lover%40gmail.com&amp;affiliation=NREL&amp;mailing_list=false&amp;reason=test&amp;leap_day=true&amp;utc=false&amp;interval=60</code></div>
-
-<div class="highlight"><pre class="highlight plaintext"><code>Site Timezone,5.5,Elevation,358,Is Offshore,0,WRF Region,0
-Longitude,
-Latitude,
-Year,Month,Day,Hour,Minute,air pressure at 40m (Pa),temperature at 100m (C),temperature at 120m (C),temperature at 40m (C),temperature at 80m (C),wind direction at 100m (deg),wind direction at 120m (deg),wind direction at 40m (deg),wind direction at 80m (deg),wind speed at 100m (m/s),wind speed at 120m (m/s),wind speed at 40m (m/s),wind speed at 80m (m/s),air pressure at 100m (Pa)
-2014,1,1,0,0,96690.0,15.15,15.36,13.73,14.89,47.97,53.42,15.290000000000001,41.61,3.59,3.87,1.77,3.2600000000000002,96010.0
-2014,1,1,0,5,96690.0,15.14,15.35,13.69,14.870000000000001,47.14,52.51,14.63,40.910000000000004,3.68,3.97,1.82,3.34,96010.0
-2014,1,1,0,10,96700.0,15.120000000000001,15.34,13.65,14.84,46.29,51.54,13.99,40.2,3.7800000000000002,4.07,1.87,3.43,96010.0
+<div class="highlight"><pre class="highlight plaintext"><code>1985361, city??, OH, country??, 2014, 41.23547745, -81.30780029, Not Available, 1, 8760
+WIND Toolkit data from NREL downloaded on 2020-6-14
+Temperature, Pressure, Speed, Direction
+C, atm, m/s, Degrees
+100, 100, 100, 100
+-7.9, 0.96, 5.64, 275.1
+-8.1, 0.96, 5.78, 282.4
+-8.2, 0.96, 6.02, 278.5
+-8.3, 0.96, 4.03, 282.4
+-8.3, 0.96, 3.12, 288.6
+-8.4, 0.96, 1.66, 304.2
+-8.4, 0.96, 0.96, 3.3
+-8.4, 0.96, 0.92, 65.3
+-8.4, 0.96, 1.57, 61.1
+-8.4, 0.96, 2.22, 69.3
+...
 </code></pre></div>
 <h2 id="rate-limits">Rate Limits</h2>
 
@@ -338,7 +252,7 @@ Year,Month,Day,Hour,Minute,air pressure at 40m (Pa),temperature at 100m (C),temp
 </table>
 
     <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
-  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/wind/wind-toolkit/india-wind-download.html.md.erb">Help Improve this Content</a>
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/wind/wind-toolkit/wtk-srw-download.html.md.erb">Help Improve this Content</a>
 </div>
 
       <footer class="container-fluid">

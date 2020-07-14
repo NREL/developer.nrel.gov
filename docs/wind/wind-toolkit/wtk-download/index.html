@@ -125,10 +125,8 @@
 			<td class="doc-parameter-required">Yes</td>
 			<td class="doc-parameter-value">
 			<div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited integer array</div>
-
 			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-
-			<div class="doc-parameter-value-field">&nbsp;</div>
+			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014</em></div>
 			</td>
 			<td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
 		</tr>
@@ -310,7 +308,7 @@ Year,Month,Day,Hour,Minute,surface air pressure (Pa),air pressure at 100m (Pa),a
 
 <p>Rate limits for this application are significantly less than the <a href="/docs/rate-limits" target="_blank">standard rate limits</a> for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.</p>
 
-<p>There are two levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 2000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 300 requests per day at a frequency of no more than 1 every 2 seconds.</p>
+<p>There are two levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.</p>
 
 <p>In addition to this limit, the service has a secondary fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.</p>
 
