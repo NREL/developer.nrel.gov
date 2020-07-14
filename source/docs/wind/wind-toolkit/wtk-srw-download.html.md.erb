@@ -1,0 +1,197 @@
+---
+title: Wind Toolkit Data - SAM format (srw)
+summary: Collect and download in [SAM (System Advisor Model)](https://sam.nrel.gov/) format a configurable set of data fields from a national collection of wind stations. The Wind Integration National Dataset (WIND) Toolkit is an update and expansion of the Eastern and Western Wind Datasets, and is intended to support the next generation of integration studies. The WIND Toolkit includes meteorological conditions at multiple hub heights for more than 2,488,136 sites in the continental United States for the years 2007–2014.
+url: /api/wind-toolkit/v2/wind/wtk-srw-download
+---
+
+# <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
+<%= current_page.data.summary %>
+
+<%= current_page.data.detail %>
+
+<ul id="toc"></ul>
+
+## Request URL
+
+<pre>GET <%= current_page.data.url %><em>?parameters</em></pre>
+
+## Request Parameters
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+    <thead>
+		<tr>
+			<th class="doc-parameters-name" scope="col">Parameter</th>
+			<th class="doc-parameters-required" scope="col">Required</th>
+			<th class="doc-parameters-value" scope="col">Value</th>
+			<th class="doc-parameters-description" scope="col">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th class="doc-parameter-name" scope="row">api_key</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+			</td>
+			<td class="doc-parameter-description">
+			<p>Your developer API key. See <a href="/docs/api-key/">API keys</a> for more information.</p>
+			</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">lat</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> point coordinate in wgs84 </div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+			</td>
+			<td class="doc-parameter-description">The latitude of the geometry for which to extract data.</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">lon</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> point coordinate in wgs84 </div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+			</td>
+			<td class="doc-parameter-description">The longitude of the geometry for which to extract data.</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">hubheight</th>
+			<td class="doc-parameter-required">No</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> Integer </div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> 100</div>
+
+			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>10, 40, 60, 80, 100, 120, 140, 160, 200</em></div>
+			</td>
+			<td class="doc-parameter-description">The response data will be at the requested height in meters</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">year</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> integer </div>
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014</em></div>
+			</td>
+			<td class="doc-parameter-description">The year for which data should be extracted.</td>
+		</tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">utc</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> false</div>
+      </td>
+      <td class="doc-parameter-description">
+        Pass true to retrieve data with timestamps in UTC. Pass false to retrieve data with timestamps converted to local time of data point.
+      </td>
+    </tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">full_name</th>
+			<td class="doc-parameter-required">No</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field">&nbsp;</div>
+			</td>
+			<td class="doc-parameter-description">The full name of the user requesting data.</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">email</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> email string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field">&nbsp;</div>
+			</td>
+			<td class="doc-parameter-description">An active email for the user requesting data. This email will be used to deliver the extracted data.</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">affiliation</th>
+			<td class="doc-parameter-required">No</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field">&nbsp;</div>
+			</td>
+			<td class="doc-parameter-description">The organization with which the user requesting the data is affiliated.</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">reason</th>
+			<td class="doc-parameter-required">No</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field">&nbsp;</div>
+			</td>
+			<td class="doc-parameter-description">The reason that the user is requesting the data.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Example</h2>
+
+### SRW Format
+<div class="doc-example-url"><code>GET <%= current_page.data.url%>?api_key={{API_KEY}}&lat=41.23&lon=-81.32&year=2014&email=user@nrel.gov</code></div>
+
+```csv
+1985361, city??, OH, country??, 2014, 41.23547745, -81.30780029, Not Available, 1, 8760
+WIND Toolkit data from NREL downloaded on 2020-6-14
+Temperature, Pressure, Speed, Direction
+C, atm, m/s, Degrees
+100, 100, 100, 100
+-7.9, 0.96, 5.64, 275.1
+-8.1, 0.96, 5.78, 282.4
+-8.2, 0.96, 6.02, 278.5
+-8.3, 0.96, 4.03, 282.4
+-8.3, 0.96, 3.12, 288.6
+-8.4, 0.96, 1.66, 304.2
+-8.4, 0.96, 0.96, 3.3
+-8.4, 0.96, 0.92, 65.3
+-8.4, 0.96, 1.57, 61.1
+-8.4, 0.96, 2.22, 69.3
+...
+```
+
+<h2 id="rate-limits">Rate Limits</h2>
+
+Rate limits for this application are significantly less than the [standard rate limits](/docs/rate-limits){:target="_blank"} for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.
+
+There are two levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.
+
+In addition to this limit, the service has a secondary fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.
+
+For some tips and tricks to maximize data downloads please read the guide [here](/docs/wind/wind-toolkit/guide).
+
+<h2 id="errors">Errors</h2>
+
+<p><a href="/docs/errors/">Standard errors</a> may be returned. In addition, the following service-specific errors may be returned:</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+	<thead>
+		<tr>
+			<th class="doc-parameters-name" scope="col" style="width: 100px;">HTTP Status Code</th>
+			<th class="doc-parameters-required" scope="col">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th class="doc-parameter-name" scope="row">400</th>
+			<td class="doc-parameter-description">Bad Request: When required parameters are missing.</td>
+		</tr>
+	</tbody>
+</table>
