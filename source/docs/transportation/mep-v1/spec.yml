@@ -370,6 +370,9 @@ definitions:
               drive_shop_err:
                 type: number
                 example: 25.6772
+              jobs:
+                type: number
+                example: 16
               lat:
                 type: number
                 example: 25.6772
