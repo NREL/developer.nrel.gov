@@ -1,8 +1,8 @@
 ---
-title: Physical Solar Model (PSM) v3 TMY
+title: Philippines Solar
 summary: Collect and download, as CSV, a configurable set of solar and meteoroligical data fields from The NSRDB. The National Solar Radiation Database (NSRDB) is a serially complete collection of hourly and half-hourly values of the three most common measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. Read more about the datasets at [https://nsrdb.nrel.gov](https://nsrdb.nrel.gov)
 detail: This API is capabale of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.
-url: /api/nsrdb/v2/solar/psm3-tmy-download
+url: /api/nsrdb/v2/solar/philippines-download
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
@@ -57,10 +57,10 @@ _NOTE: when using POST to submit a request the api_key must still be inlcuded as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>dhi, dni, ghi, dew_point, air_temperature, surface_pressure, wind_direction, wind_speed, surface_albedo</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>air_temperature, dhi, dni, ghi, wind_speed</em></div>
       </td>
       <td class="doc-parameter-description">
-        Each specified attribute(*) will be returned as a column in the resultant CSV download.
+        Each specified attribute(*) will be returned as a column in the resultant CSV download.<br/><br/>
       </td>
     </tr>
     <tr>
@@ -69,9 +69,9 @@ _NOTE: when using POST to submit a request the api_key must still be inlcuded as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>tmy, tmy-2017, tdy-2017, tgy-2017. tmy-2018, tdy-2018, tgy-2018, tmy-2019, tdy-2019, tgy-2019</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2017</em></div>
       </td>
-      <td class="doc-parameter-description">The TMY dataset for which data should be extracted. 'tmy' will return the most recently generated TMY file.</td>
+      <td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">utc</th>
@@ -82,6 +82,28 @@ _NOTE: when using POST to submit a request the api_key must still be inlcuded as
       </td>
       <td class="doc-parameter-description">
         Pass true to retrieve data with timestamps in UTC. Pass false to retrieve data with timestamps converted to local time of data point (without daylight savings time).
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">leap_day</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> false</div>
+      </td>
+      <td class="doc-parameter-description">
+        Pass true to retrieve data including leap day (where appropriate). Pass false to retrieve data excluding leap day.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">interval</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong>60</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        This value determines data resolution. 60 minute intervals are available.
       </td>
     </tr>
     <tr>
@@ -185,39 +207,32 @@ Generated data files are formatted in accordance with the Standard Time Series D
 
 ### JSON Output Format
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?wkt=POINT(-99.49218%2043.83452)&attributes=dhi%2Cdni%2Cghi%2Cdew_point%2Cair_temperature%2Csurface_pressure%2Cwind_direction%2Cwind_speed%2Csurface_albedo%2C%2C%2C&names=tmy-2017%2Ctdy-2017%2Ctgy-2017&full_name=Louis%20Bourbon&email=sun.king@nrel.gov&affiliation=NREL&mailing_list=false&reason=test&utc=true</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&email=valued.user@gmail.com&wkt=POINT (121.083336 17.05)&attributes=air_temperature,wind_speed&names=2017&utc=false&leap_day=true&interval=60</code></div>
 
 ```json
 {
-  "errors": [],
-  "inputs": {
-    "wkt": "POINT(-99.49218 43.83452)",
-    "attributes": [
-      "dhi",
-      "dni",
-      "ghi",
-      "dew_point",
-      "air_temperature",
-      "surface_pressure",
-      "wind_direction",
-      "wind_speed",
-      "surface_albedo"
-    ],
-    "names": [
-      "tmy-2017",
-      "tdy-2017",
-      "tgy-2017"
-    ],
-    "full_name": "Louis Bourbon",
-    "email": "sun.king@nrel.gov",
-    "affiliation": "NREL",
-    "mailing_list": false,
-    "reason": "test",
-    "utc": true
-  },
-  "outputs": {
-    "message": "File generation in progress. An email will be sent to sun.king@nrel.gov when the download is ready."
-  }
+    "inputs": {
+        "api_key": "DEMO_KEY",
+        "wkt": "POINT (121.083336 17.05)",
+        "attributes": "air_temperature,wind_speed",
+        "names": "2017",
+        "utc": "false",
+        "leap_day": "true",
+        "interval": "60",
+        "email": "valued.user@gmail.com"
+    },
+    "metadata": {
+        "version": "2.0.0",
+        "resultset": {
+            "count": 1
+        }
+    },
+    "status": 200,
+    "outputs": {
+        "message": "File generation in progress. An email will be sent to valued.user@gmail.com when the download is ready.",
+        "downloadUrl": "https://mapfiles.nrel.gov/data/solar/011d452e5cf16a04821b03d8adb60e03.zip"
+    },
+    "errors": []
 }
 ```
 
@@ -225,21 +240,21 @@ Generated data files are formatted in accordance with the Standard Time Series D
 ### CSV Output Format
 Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?wkt=POINT(-99.49218%2043.83452)&attributes=dhi%2Cdni%2Cghi%2Cdew_point%2Cair_temperature%2Csurface_pressure%2Cwind_direction%2Cwind_speed%2Csurface_albedo%2C%2C%2C&names=tmy-2017%2Ctdy-2017%2Ctgy-2017&full_name=Louis%20Bourbon&email=sun.king@nrel.gov&affiliation=NREL&mailing_list=false&reason=test&utc=true</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?api_key=DEMO_KEY&email=valued.user@gmail.com&wkt=POINT (121.083336 17.05)&attributes=air_temperature,wind_speed&names=2017&utc=false&leap_day=true&interval=60</code></div>
 
 ```csv
-Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,Local Time Zone,Dew Point Units,DHI Units,DNI Units,GHI Units,Temperature Units,Pressure Units,Wind Direction Units,Wind Speed,Surface Albedo Units,Version
-NSRDB,629434,-,-,-,43.85,-99.5,0,507,-6,c,w/m2,w/m2,w/m2,c,mbar,Degrees,m/s,N/A,v3.0.0
-Year,Month,Day,Hour,Minute,DHI,DNI,GHI,Dew Point,Temperature,Pressure,Wind Direction,Wind Speed,Surface Albedo
-1998,1,1,0,0,0,0,0,0,1,950.0,43.2,3.3000000000000003,0.18508000671863556
-1998,1,1,1,0,0,0,0,-1,1,940.0,54.1,3.4000000000000004,0.18508000671863556
-1998,1,1,2,0,0,0,0,-1,1,940.0,58.0,3.5,0.18508000671863556
-1998,1,1,3,0,0,0,0,-1,1,940.0,59.1,3.7,0.18508000671863556
-1998,1,1,4,0,0,0,0,-1,1,940.0,60.1,3.8000000000000003,0.18508000671863556
-1998,1,1,5,0,0,0,0,-1,1,940.0,62.0,3.7,0.18508000671863556
-1998,1,1,6,0,0,0,0,-1,0,940.0,62.800000000000004,3.6,0.18508000671863556
+Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,Local Time Zone,DHI Units,DNI Units,GHI Units,Wind Speed,Cloud Type -15,Cloud Type 0,Cloud Type 1,Cloud Type 2,Cloud Type 3,Cloud Type 4,Cloud Type 5,Cloud Type 6,Cloud Type 7,Cloud Type 8,Cloud Type 9,Cloud Type 10,Cloud Type 11,Cloud Type 12,Fill Flag 0,Fill Flag 1,Fill Flag 2,Fill Flag 3,Fill Flag 4,Fill Flag 5,Surface Albedo Units,Version
+NSRDB,0,-,-,-,17.05,121.083336,8,1824,8,w/m2,w/m2,w/m2,m/s,N/A,Clear,Probably Clear,Fog,Water,Super-Cooled Water,Mixed,Opaque Ice,Cirrus,Overlapping,Overshooting,Unknown,Dust,Smoke,N/A,Missing Image,Low Irradiance,Exceeds Clearsky,Missing CLoud Properties,Rayleigh Violation,N/A,unknown
+Year,Month,Day,Hour,Minute,Temperature,Wind Speed
+2017,1,1,0,0,27,3.4000000000000004
+2017,1,1,1,0,27,3.7
+2017,1,1,2,0,27,4
+2017,1,1,3,0,27,4.5
+2017,1,1,4,0,27,4.9
+2017,1,1,5,0,27,5.300000000000001
+2017,1,1,6,0,27,5.4
 ```
-sd
+
 ### POST request example in Python
 
 ```python
@@ -247,7 +262,7 @@ import requests
 
 url = "http://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
 
-payload = "wkt=POINT(-99.49218%2043.83452)&attributes=dhi%2Cdni%2Cghi%2Cdew_point%2Cair_temperature%2Csurface_pressure%2Cwind_direction%2Cwind_speed%2Csurface_albedo%2C%2C%2C&names=tmy-2017%2Ctdy-2017%2Ctgy-2017&full_name=Louis%20Bourbon&email=sun.king@nrel.gov&affiliation=NREL&mailing_list=false&reason=test&utc=true"
+payload = "wkt=POINT (121.083336 17.05)&attributes=air_temperature,wind_speed&names=2017&utc=false&leap_day=true&interval=60&full_name=Valued%2BUser&email=valued.user%40gmail.com&affiliation=NREL&mailing_list=true&reason=Academic"
 
 headers = {
     'content-type': "application/x-www-form-urlencoded",
