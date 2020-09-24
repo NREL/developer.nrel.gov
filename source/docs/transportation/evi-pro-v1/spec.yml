@@ -74,6 +74,25 @@ paths:
           required: true
           enum: [MostL1, MostL2, Equal]
           description: Options for work power distribution scenarios where `MostL1` represents 80% L1 charging, 20% L2, `MostL2` represents 20% L1 charging, 80% L2, and `Equal` represents 50% L1 charging, 50% L2.  Must be one of `[MostL1, MostL2, Equal]`
+        - name: res_charging
+          in: query
+          type: string
+          required: true
+          enum: [min_delay, max_delay, midnight_charge]
+          description: |-
+            Home charging strategy where:
+              + `min_delay` means EVs begin charging immediately upon arriving at a charging location and charge at full power/speed until fully charged or the vehicle departs
+              + `max_delay` means EVs wait as long as possible to begin charging such that they can still receive the same amount of charge as the `min_delay` strategy
+              + `midnight_charge` means EV owners elect to program their vehicles to begin charging at a specific time overnight (often midnight local time)
+        - name: work_charging
+          in: query
+          type: string
+          required: true
+          enum: [min_delay, max_delay]
+          description: |-
+            Work charging strategy where:
+              + `min_delay` means EVs begin charging immediately upon arriving at a charging location and charge at full power/speed until fully charged or the vehicle departs
+              + `max_delay` means EVs wait as long as possible to begin charging such that they can still receive the same amount of charge as the `min_delay` strategy
       responses:
         "200":
           description: Successful request
@@ -136,6 +155,25 @@ paths:
           required: true
           enum: [MostL1, MostL2, Equal]
           description: Options for work power distribution scenarios where `MostL1` represents 80% L1 charging, 20% L2, `MostL2` represents 20% L1 charging, 80% L2, and `Equal` represents 50% L1 charging, 50% L2.  Must be one of `[MostL1, MostL2, Equal]`
+        - name: res_charging
+          in: query
+          type: string
+          required: true
+          enum: [min_delay, max_delay, midnight_charge]
+          description: |-
+            Home charging strategy where:
+              + `min_delay` means EVs begin charging immediately upon arriving at a charging location and charge at full power/speed until fully charged or the vehicle departs
+              + `max_delay` means EVs wait as long as possible to begin charging such that they can still receive the same amount of charge as the `min_delay` strategy
+              + `midnight_charge` means EV owners elect to program their vehicles to begin charging at a specific time overnight (often midnight local time)
+        - name: work_charging
+          in: query
+          type: string
+          required: true
+          enum: [min_delay, max_delay]
+          description: |-
+            Work charging strategy where:
+              + `min_delay` means EVs begin charging immediately upon arriving at a charging location and charge at full power/speed until fully charged or the vehicle departs
+              + `max_delay` means EVs wait as long as possible to begin charging such that they can still receive the same amount of charge as the `min_delay` strategy
       responses:
         "200":
           description: Successful request
@@ -198,6 +236,8 @@ definitions:
               home_access_dist: HA50
               home_power_dist: MostL2
               work_power_dist: MostL2
+              res_charging: min_delay
+              work_charging: max_delay
       results:
         type: object
         properties:
@@ -249,6 +289,8 @@ definitions:
               home_access_dist: HA50
               home_power_dist: MostL2
               work_power_dist: MostL2
+              res_charging: min_delay
+              work_charging: max_delay
       results:
         type: object
         properties:
