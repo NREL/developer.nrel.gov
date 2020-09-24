@@ -23,19 +23,18 @@ paths:
       parameters:
         - name: temp_c
           in: query
-          type: string
+          type: integer
           enum: [-20, -10, 0, 10, 20, 30, 40]
           required: true
           description: Degrees in Celsius for the day on which load profile shape is desired.  Must be one of `[-20, -10, 0, 10, 20, 30, 40]`.
         - name: fleet_size
           in: query
-          type: string
+          type: integer
           required: true
-          enum: [1000, 10000, 50000]
-          description: Fleet size.  Must be one of `[1000, 10000, 50000]`.
+          description: Fleet size.  Must be one of 1,000, 10,000, or any number greater than or equal to 30,000.
         - name: mean_dvmt
           in: query
-          type: string
+          type: integer
           required: true
           enum: [25, 35, 45]
           description: Average fleet daily vehicle miles traveled.  Must be one of `[25, 35, 45]`.
@@ -86,19 +85,18 @@ paths:
       parameters:
         - name: temp_c
           in: query
-          type: string
+          type: integer
           enum: [-20, -10, 0, 10, 20, 30, 40]
           required: true
           description: Degrees in Celsius for the day on which load profile shape is desired.  Must be one of `[-20, -10, 0, 10, 20, 30, 40]`.
         - name: fleet_size
           in: query
-          type: string
+          type: integer
           required: true
-          enum: [1000, 10000, 50000]
-          description: Fleet size.  Must be one of `[1000, 10000, 50000]`.
+          description: Fleet size.  Must be one of 1,000, 10,000, or any number greater than or equal to 30,000.
         - name: mean_dvmt
           in: query
-          type: string
+          type: integer
           required: true
           enum: [25, 35, 45]
           description: Average fleet daily vehicle miles traveled.  Must be one of `[25, 35, 45]`.
