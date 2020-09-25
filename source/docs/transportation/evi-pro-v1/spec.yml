@@ -19,7 +19,7 @@ security:
 paths:
   /daily-load-profile:
     get:
-      summary: Get the daily load profile for a given scenario
+      summary: Loads (kW) are returned in 15-min step intervals for 24 hours where the 15-min data point is the average of instantaneous load over that interval. The first element of the load profile covers 12:00 AM - 12:15 AM, the second 12:15 AM - 12:30 AM, and so on.
       parameters:
         - name: temp_c
           in: query
@@ -37,7 +37,7 @@ paths:
           type: integer
           required: true
           enum: [25, 35, 45]
-          description: Average fleet daily vehicle miles traveled.  Must be one of `[25, 35, 45]`.
+          description: Average fleet daily vehicle miles traveled (per vehicle).  Must be one of `[25, 35, 45]`.
         - name: pev_dist
           in: query
           type: string
@@ -55,13 +55,13 @@ paths:
           type: string
           required: true
           enum: [Home60, Home80, Home100]
-          description: Preference for charging at home (versus at work).  Must be one of `[Home60, Home80, Home100]` where 60% perfer home charging, 80% prefer home charging, and 100% prefer home charging.
+          description: Preference for primary charging location being at home (versus at work) assuming access to both.  Must be one of `[Home60, Home80, Home100]` where 60% prefer home charging, 80% prefer home charging, and 100% prefer home charging.
         - name: home_access_dist
           in: query
           type: string
           required: true
           enum: [HA50, HA75, HA100]
-          description: Access to home power where numbers represent access to home power.  Must be one of `[HA50, HA75, HA100]` where `HA100` reflects a region with a high fraction of single family homes.
+          description: Access to home charging where numbers represent percent of PEVs with access to home charging. Must be one of `[HA50, HA75, HA100]` where `HA100` reflects 100% of PEVs with access to home charging.
         - name: home_power_dist
           in: query
           type: string
@@ -100,7 +100,7 @@ paths:
             $ref: "#/definitions/loadProfile"
   /daily-load-profile/breakdown:
     get:
-      summary: Get the daily load profile for a given scenario broken down by pev_type (one of PHEV20, PHEV50, BEV100, BEV250) and class_type (Sedan or SUV)
+      summary: Loads (kW) are returned in 15-min step intervals for 24 hours but broken down by pev_type (one of PHEV20, PHEV50, BEV100, BEV250) and class_type (Sedan or SUV)
       parameters:
         - name: temp_c
           in: query
@@ -118,7 +118,7 @@ paths:
           type: integer
           required: true
           enum: [25, 35, 45]
-          description: Average fleet daily vehicle miles traveled.  Must be one of `[25, 35, 45]`.
+          description: Average fleet daily vehicle miles traveled (per vehicle).  Must be one of `[25, 35, 45]`.
         - name: pev_dist
           in: query
           type: string
@@ -136,13 +136,13 @@ paths:
           type: string
           required: true
           enum: [Home60, Home80, Home100]
-          description: Preference for charging at home (versus at work).  Must be one of `[Home60, Home80, Home100]` where 60% perfer home charging, 80% prefer home charging, and 100% prefer home charging.
+          description: Preference for primary charging location being at home (versus at work) assuming access to both.  Must be one of `[Home60, Home80, Home100]` where 60% prefer home charging, 80% prefer home charging, and 100% prefer home charging.
         - name: home_access_dist
           in: query
           type: string
           required: true
           enum: [HA50, HA75, HA100]
-          description: Access to home power where numbers represent access to home power.  Must be one of `[HA50, HA75, HA100]` where `HA100` reflects a region with a high fraction of single family homes.
+          description: Access to home charging where numbers represent percent of PEVs with access to home charging. Must be one of `[HA50, HA75, HA100]` where `HA100` reflects 100% of PEVs with access to home charging.
         - name: home_power_dist
           in: query
           type: string
