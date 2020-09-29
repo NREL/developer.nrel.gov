@@ -5,7 +5,7 @@ info:
   description: |-
     APIs providing output from NREL's EVI-Pro model. Used to power the EVI-Pro Lite tool at https://afdc.energy.gov/evi-pro-lite. These endpoints provide daily (24 hour) fleet-level charging load profiles for a variety of customizable scenarios.  
     
-    EVI-Pro Lite is a simplified version of the Electric Vehicle Infrastructure Projection Tool (EVI-Pro). EVI-Pro uses real-world travel data from mass market consumers to estimate future requirements for residential, workplace, and public charging under a variety of scenarios. For more information regarding EVI-Pro Lite, see the [methodology and assumptions page](https://evi-pro-vue.afdc-stage.nrel.gov/evi-pro-lite/load-profile/assumptions). 
+    EVI-Pro Lite is a simplified version of the Electric Vehicle Infrastructure Projection Tool (EVI-Pro). EVI-Pro uses real-world travel data from mass market consumers to estimate future requirements for residential, workplace, and public charging under a variety of scenarios. For more information regarding EVI-Pro Lite, see the [methodology and assumptions page](https://afdc.energy.gov/evi-pro-lite/load-profile/assumptions). 
 schemes:
   - https
 basePath: /api/evi-pro/v1
