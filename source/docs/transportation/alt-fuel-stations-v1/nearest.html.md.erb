@@ -142,7 +142,7 @@ The following query parameters may be passed in the request to control the outpu
 
 ## Response Fields
 
-The response is composed of the fuel stations matching the requested query. For JSON or XML formats, additional metadata is supplied in the following structure:
+The response is composed of the fuel stations matching the requested query. For JSON, GeoJSON, or XML formats, additional metadata is supplied in the following structure:
 
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
   <thead>
@@ -379,6 +379,151 @@ The individual fuel station records are returned in order of ascending distance 
 }
 ```
 
+### GeoJSON Output Format
+
+<pre>GET <a href="/api/alt-fuel-stations/v1/nearest.geojson?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.geojson?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1</a></pre>
+
+```json
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "latitude": 39.74311,
+    "longitude": -105.152332,
+    "location_country": "US",
+    "precision": {
+      "value": 9,
+      "name": "premise",
+      "types": [
+          "premise"
+      ]
+    },
+    "station_locator_url": "http://www.afdc.energy.gov/afdc/locator/stations/",
+    "total_results": 32,
+    "station_counts": {
+      "total": 186,
+      "fuels": {
+        "BD": {
+          "total": 0
+        },
+        "E85": {
+          "total": 0
+        },
+        "ELEC": {
+          "total": 186,
+          "stations": {
+              "total": 32
+          }
+        },
+        "HY": {
+          "total": 0
+        },
+        "LNG": {
+          "total": 0
+        },
+        "CNG": {
+          "total": 0
+        },
+        "LPG": {
+          "total": 0
+        }
+      }
+    },
+    "offset": 0
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.154583,
+          39.733102
+        ]
+      },
+      "properties": {
+        "access_code": "public",
+        "access_days_time": "24 hours daily",
+        "access_detail_code": null,
+        "cards_accepted": null,
+        "date_last_confirmed": "2020-02-04",
+        "expected_date": null,
+        "fuel_type_code": "ELEC",
+        "groups_with_access_code": "Public",
+        "id": 124975,
+        "open_date": null,
+        "owner_type_code": null,
+        "status_code": "E",
+        "station_name": "Colorado Mills Mall",
+        "station_phone": "833-632-2778",
+        "updated_at": "2020-02-04T11:06:07Z",
+        "facility_type": null,
+        "geocode_status": "GPS",
+        "city": "Lakewood",
+        "intersection_directions": null,
+        "plus4": null,
+        "state": "CO",
+        "street_address": "14500 W. Colfax Ave",
+        "zip": "80401",
+        "country": "US",
+        "bd_blends": null,
+        "cng_dispenser_num": null,
+        "cng_fill_type_code": null,
+        "cng_psi": null,
+        "cng_renewable_source": null,
+        "cng_total_compression": null,
+        "cng_total_storage": null,
+        "cng_vehicle_class": null,
+        "e85_blender_pump": null,
+        "e85_other_ethanol_blends": null,
+        "ev_connector_types": [
+          "CHADEMO",
+          "J1772COMBO"
+        ],
+        "ev_dc_fast_num": 6,
+        "ev_level1_evse_num": null,
+        "ev_level2_evse_num": null,
+        "ev_network": "Electrify America",
+        "ev_network_web": "https://www.electrifyamerica.com/",
+        "ev_other_evse": null,
+        "ev_pricing": null,
+        "ev_renewable_source": null,
+        "hy_is_retail": null,
+        "hy_pressures": null,
+        "hy_standards": null,
+        "hy_status_link": null,
+        "lng_renewable_source": null,
+        "lng_vehicle_class": null,
+        "lpg_primary": null,
+        "lpg_nozzle_types": null,
+        "ng_fill_type_code": null,
+        "ng_psi": null,
+        "ng_vehicle_class": null,
+        "access_days_time_fr": null,
+        "intersection_directions_fr": null,
+        "bd_blends_fr": null,
+        "groups_with_access_code_fr": "Public",
+        "ev_pricing_fr": null,
+        "ev_network_ids": {
+          "station": [
+            "67"
+          ],
+          "posts": [
+            "100125-01",
+            "100125-02",
+            "100125-03",
+            "100125-04",
+            "100125-05",
+            "100125-06"
+          ]
+        },
+        "distance": 0.70079,
+        "distance_km": 1.12781
+      }
+    }
+  ]
+}
+```
+
 ### XML Output Format
 
 <pre>GET <a href="/api/alt-fuel-stations/v1/nearest.xml?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.xml?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1</a></pre>
@@ -506,6 +651,94 @@ The individual fuel station records are returned in order of ascending distance 
     </fuel-station>
   </fuel-stations>
 </response>
+```
+
+### KML Output Format
+
+<pre>GET <a href="/api/alt-fuel-stations/v1/nearest.kml?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.kml?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1</a></pre>
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <Placemark>
+      <name>Colorado Mills Mall</name>
+      <address>14500 W. Colfax Ave</address>
+      <phoneNumber>833-632-2778</phoneNumber>
+      <Point>
+        <coordinates>-105.154583,39.733102</coordinates>
+      </Point>
+      <ExtendedData>
+        <Data name="access_code">
+          <Value>public</Value>
+        </Data>
+        <Data name="access_days_time">
+          <Value>24 hours daily</Value>
+        </Data>
+        <Data name="date_last_confirmed">
+          <Value>2020-02-04</Value>
+        </Data>
+        <Data name="fuel_type_code">
+          <Value>ELEC</Value>
+        </Data>
+        <Data name="groups_with_access_code">
+          <Value>Public</Value>
+        </Data>
+        <Data name="id">
+          <Value>124975</Value>
+        </Data>
+        <Data name="status_code">
+          <Value>E</Value>
+        </Data>
+        <Data name="updated_at">
+          <Value>2020-02-04 11:06:07 UTC</Value>
+        </Data>
+        <Data name="geocode_status">
+          <Value>GPS</Value>
+        </Data>
+        <Data name="city">
+          <Value>Lakewood</Value>
+        </Data>
+        <Data name="state">
+          <Value>CO</Value>
+        </Data>
+        <Data name="zip">
+          <Value>80401</Value>
+        </Data>
+        <Data name="country">
+          <Value>US</Value>
+        </Data>
+        <Data name="ev_connector_types">
+          <Value>["CHADEMO", "J1772COMBO"]</Value>
+        </Data>
+        <Data name="ev_dc_fast_num">
+          <Value>6</Value>
+        </Data>
+        <Data name="ev_network">
+          <Value>Electrify America</Value>
+        </Data>
+        <Data name="ev_network_web">
+          <Value>https://www.electrifyamerica.com/</Value>
+        </Data>
+        <Data name="groups_with_access_code_fr">
+          <Value>Public</Value>
+        </Data>
+        <Data name="ev_network_ids_station">
+          <Value>["67"]</Value>
+        </Data>
+        <Data name="ev_network_ids_posts">
+          <Value>["100125-01", "100125-02", "100125-03", "100125-04", "100125-05", "100125-06"]</Value>
+        </Data>
+        <Data name="distance">
+          <Value>0.70079</Value>
+        </Data>
+        <Data name="distance_km">
+          <Value>1.12781</Value>
+        </Data>
+      </ExtendedData>
+    </Placemark>
+  </Document>
+</kml>
 ```
 
 ### CSV Output Format
