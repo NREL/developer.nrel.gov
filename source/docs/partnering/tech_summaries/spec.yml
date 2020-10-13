@@ -1,3 +1,4 @@
+swagger: "2.0"
 info:
   version: 1
   title: Technology Summaries APIs
