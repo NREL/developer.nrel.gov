@@ -1,5 +1,6 @@
+swagger: "2.0"
 info:
-  version: 1
+  version: "1"
   title: Technology Summaries APIs
   description: |-
     A collection of APIs providing data related to energy technologies, experts, and patents associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
@@ -298,10 +299,6 @@ definitions:
               self:
                 type: string
                 example: "https://developer.nrel.gov/api/lps/v1/experts/ebeceabc-af74-4674-8ac2-a84bdb08806d"
-  tech_summaries:
-    type: array
-    items:
-      $ref: "#/definitions/tech_summary"
   tech_summaries_response:
     type: object
     properties:
