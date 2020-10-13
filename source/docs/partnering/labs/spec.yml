@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  version: 1
+  version: "1"
   title: Lab APIs
   description: |-
     A collection of APIs providing data about national laboratories associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
@@ -229,12 +229,12 @@ definitions:
         type: integer
         example: 1
   inputs:
-    type: Object
+    type: object
     properties:
       input_name:
         type: string
   errors:
-    type: Object
+    type: object
     properties:
       status:
         type: integer
@@ -304,10 +304,6 @@ definitions:
                 self:
                   type: string
                   example: https://developer.nrel.gov/api/lps/v1/experts/d78ce187-f5ed-4ddc-9e4e-063f6eaf11be
-  laboratories:
-    type: array
-    items:
-      $ref: "#/definitions/lab"
   labs_response:
     type: object
     properties:

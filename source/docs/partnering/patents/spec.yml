@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  version: 1
+  version: "1"
   title: Patent APIs
   description: |-
     A collection of APIs providing data about national laboratorty patents associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
@@ -192,7 +192,7 @@ definitions:
       input_name:
         type: string
   errors:
-    type: Object
+    type: object
     properties:
       status:
         type: integer

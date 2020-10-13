@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  version: 1
+  version: "1"
   title: Expert APIs
   description: |-
     A collection of APIs providing data about national laboratorty experts associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).
@@ -207,10 +207,6 @@ definitions:
         type: array
         items:
           type: string
-  experts:
-    type: array
-    items:
-      $ref: "#/definitions/expert"
   experts_response:
     type: object
     properties:
