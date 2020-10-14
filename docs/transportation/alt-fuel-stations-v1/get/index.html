@@ -97,7 +97,7 @@
           <strong>Default:</strong> None
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Options:</strong> <em>json</em>, <em>xml</em>, <em>csv</em>
+          <strong>Options:</strong> <em>json</em>, <em>xml</em>, <em>csv</em>, <em>geojson</em>, <em>kml</em>
         </div>
       </td>
       <td class="doc-parameter-description">
@@ -1920,6 +1920,89 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<h3 id="geojson-output-format">GeoJSON Output Format</h3>
+
+<pre>GET <a href="/api/alt-fuel-stations/v1/39534.geojson?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/39534.geojson?api_key=DEMO_KEY</a></pre>
+
+<div class="highlight"><pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Feature"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"geometry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Point"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mf">-105.181918</span><span class="p">,</span><span class="w">
+      </span><span class="mf">39.740236</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"access_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"access_days_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment accepted through PowerFlex app"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"access_detail_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cards_accepted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A D Debit M V"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date_last_confirmed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-11-08"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expected_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fuel_type_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ELEC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"groups_with_access_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Private"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39534</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"open_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-05-20"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"owner_type_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FG"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"National Renewable Energy Laboratory - Denver West"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"station_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-21T18:34:38Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"facility_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESEARCH_FACILITY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"geocode_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200-9"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Golden"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"intersection_directions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Parking garage on South Table Mountain Campus"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"plus4"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CO"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15013 Denver W Pkwy"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80401"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bd_blends"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cng_dispenser_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cng_fill_type_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cng_psi"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cng_renewable_source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cng_total_compression"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cng_total_storage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cng_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"e85_blender_pump"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"e85_other_ethanol_blends"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ev_connector_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"J1772"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"ev_dc_fast_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ev_level1_evse_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ev_level2_evse_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">108</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ev_network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Networked"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ev_network_web"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ev_other_evse"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ev_pricing"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Variable rate: $0.10kWh-$0.35/kWh"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ev_renewable_source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hy_is_retail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hy_pressures"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hy_standards"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hy_status_link"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lng_renewable_source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lng_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lpg_primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lpg_nozzle_types"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ng_fill_type_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ng_psi"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ng_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"access_days_time_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"intersection_directions_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bd_blends_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"groups_with_access_code_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Privé"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ev_pricing_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"federal_agency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOE"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"U.S. Department of Energy"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <h3 id="xml-output-format">XML Output Format</h3>
 
 <pre>GET <a href="/api/alt-fuel-stations/v1/39534.xml?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/39534.xml?api_key=DEMO_KEY</a></pre>
@@ -1994,6 +2077,104 @@
         <span class="nt">&lt;name&gt;</span>U.S. Department of Energy<span class="nt">&lt;/name&gt;</span>
     <span class="nt">&lt;/federal-agency&gt;</span>
 <span class="nt">&lt;/alt-fuel-station&gt;</span>
+</code></pre></div>
+<h3 id="kml-output-format">KML Output Format</h3>
+
+<pre>GET <a href="/api/alt-fuel-stations/v1/39534.kml?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/39534.kml?api_key=DEMO_KEY</a></pre>
+
+<div class="highlight"><pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;kml</span> <span class="na">xmlns=</span><span class="s">"http://www.opengis.net/kml/2.2"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Document&gt;</span>
+    <span class="nt">&lt;Placemark&gt;</span>
+      <span class="nt">&lt;name&gt;</span>National Renewable Energy Laboratory - Denver West<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;address&gt;</span>15013 Denver W Pkwy<span class="nt">&lt;/address&gt;</span>
+      <span class="nt">&lt;phoneNumber</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;Point&gt;</span>
+        <span class="nt">&lt;coordinates&gt;</span>-105.181918,39.740236<span class="nt">&lt;/coordinates&gt;</span>
+      <span class="nt">&lt;/Point&gt;</span>
+      <span class="nt">&lt;ExtendedData&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"access_code"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>private<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"access_days_time"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>Payment accepted through PowerFlex app<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"cards_accepted"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>A D Debit M V<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"date_last_confirmed"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>2019-11-08<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"fuel_type_code"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>ELEC<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"groups_with_access_code"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>Private<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>39534<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"open_date"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>2011-05-20<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"owner_type_code"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>FG<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"status_code"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>E<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"updated_at"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>2020-01-21 18:34:38 UTC<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"facility_type"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>RESEARCH_FACILITY<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"geocode_status"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>200-9<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"city"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>Golden<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"intersection_directions"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>Parking garage on South Table Mountain Campus<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"state"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>CO<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"zip"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>80401<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"country"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>US<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_connector_types"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>["J1772"]<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_level2_evse_num"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>108<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_network"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>Non-Networked<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_pricing"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>Variable rate: $0.10kWh-$0.35/kWh<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"groups_with_access_code_fr"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>Privé<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"federal_agency_id"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>8<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"federal_agency_code"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>DOE<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"federal_agency_name"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>U.S. Department of Energy<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+      <span class="nt">&lt;/ExtendedData&gt;</span>
+    <span class="nt">&lt;/Placemark&gt;</span>
+  <span class="nt">&lt;/Document&gt;</span>
+<span class="nt">&lt;/kml&gt;</span>
 </code></pre></div>
 <h3 id="csv-output-format">CSV Output Format</h3>
 

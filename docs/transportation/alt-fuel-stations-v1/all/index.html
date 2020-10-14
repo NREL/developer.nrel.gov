@@ -97,7 +97,7 @@
       <strong>Default:</strong> None
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>json</em>, <em>xml</em>, <em>csv</em>
+      <strong>Options:</strong> <em>json</em>, <em>xml</em>, <em>csv</em>, <em>geojson</em>, <em>kml</em>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -1616,7 +1616,7 @@
 
 <h2 id="response-fields">Response Fields</h2>
 
-<p>The response is composed of the fuel stations matching the requested query. For JSON or XML formats, additional metadata is supplied in the following structure:</p>
+<p>The response is composed of the fuel stations matching the requested query. For JSON, GeoJSON, or XML formats, additional metadata is supplied in the following structure:</p>
 
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
   <thead>
@@ -3585,6 +3585,195 @@
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<h3 id="geojson-output-format">GeoJSON Output Format</h3>
+
+<pre>GET <a href="/api/alt-fuel-stations/v1.geojson?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2">/api/alt-fuel-stations/v1.geojson?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2</a></pre>
+
+<div class="highlight"><pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FeatureCollection"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"station_locator_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.afdc.energy.gov/afdc/locator/stations/"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_results"</span><span class="p">:</span><span class="w"> </span><span class="mi">7033</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"station_counts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">28672</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fuels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"BD"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"E85"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">224</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"ELEC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">28448</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"stations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">6809</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"HY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"LNG"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"CNG"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"LPG"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Feature"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"geometry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Point"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mf">-121.4926</span><span class="p">,</span><span class="w">
+            </span><span class="mf">38.5783802</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"access_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"access_days_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Garage business hours; pay lot"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"access_detail_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cards_accepted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_last_confirmed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-09"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"expected_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fuel_type_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ELEC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"groups_with_access_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Public"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1498</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"open_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-20"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_type_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LG"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"City of Sacramento - Capitol Parking Garage"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"station_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"888-758-4389  916-264-5011"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-21T18:34:38Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"facility_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAY_GARAGE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"geocode_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GPS"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sacramento"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"intersection_directions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"At 10th and L, 2nd Level"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"plus4"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1015 L St"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"95814"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bd_blends"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cng_dispenser_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cng_fill_type_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cng_psi"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cng_renewable_source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cng_total_compression"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cng_total_storage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cng_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"e85_blender_pump"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"e85_other_ethanol_blends"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_connector_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"NEMA520"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"ev_dc_fast_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_level1_evse_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_level2_evse_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Networked"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_network_web"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_other_evse"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3 SP Inductive"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_pricing"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_renewable_source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hy_is_retail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hy_pressures"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hy_standards"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hy_status_link"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lng_renewable_source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lng_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lpg_primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lpg_nozzle_types"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ng_fill_type_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ng_psi"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ng_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"access_days_time_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"intersection_directions_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bd_blends_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"groups_with_access_code_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Public"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_pricing_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Feature"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"geometry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Point"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mf">-118.387971374344</span><span class="p">,</span><span class="w">
+            </span><span class="mf">34.2483191527193</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"access_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"access_days_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fleet use only"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"access_detail_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cards_accepted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_last_confirmed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"expected_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fuel_type_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ELEC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"groups_with_access_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Private"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1517</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"open_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1999-10-15"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_type_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LG"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LADWP - Truesdale Center"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"station_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-21T18:34:38Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"facility_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTILITY"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"geocode_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GPS"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sun Valley"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"intersection_directions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"plus4"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11797 Truesdale St"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91352"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bd_blends"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cng_dispenser_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cng_fill_type_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cng_psi"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cng_renewable_source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cng_total_compression"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cng_total_storage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cng_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"e85_blender_pump"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"e85_other_ethanol_blends"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_connector_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"J1772"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"ev_dc_fast_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_level1_evse_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_level2_evse_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Networked"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_network_web"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_other_evse"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_pricing"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_renewable_source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hy_is_retail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hy_pressures"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hy_standards"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hy_status_link"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lng_renewable_source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lng_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lpg_primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lpg_nozzle_types"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ng_fill_type_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ng_psi"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ng_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"access_days_time_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"intersection_directions_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bd_blends_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"groups_with_access_code_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Privé"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_pricing_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <h3 id="xml-output-format">XML Output Format</h3>
 
 <pre>GET <a href="/api/alt-fuel-stations/v1.xml?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2">/api/alt-fuel-stations/v1.xml?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2</a></pre>
@@ -3753,6 +3942,162 @@
     <span class="nt">&lt;/fuel-station&gt;</span>
   <span class="nt">&lt;/fuel-stations&gt;</span>
 <span class="nt">&lt;/response&gt;</span>
+</code></pre></div>
+<h3 id="kml-output-format">KML Output Format</h3>
+
+<pre>GET <a href="/api/alt-fuel-stations/v1.kml?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2">/api/alt-fuel-stations/v1.kml?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2</a></pre>
+
+<div class="highlight"><pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;kml</span> <span class="na">xmlns=</span><span class="s">"http://www.opengis.net/kml/2.2"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Document&gt;</span>
+    <span class="nt">&lt;Placemark&gt;</span>
+      <span class="nt">&lt;name&gt;</span>City of Sacramento - Capitol Parking Garage<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;address&gt;</span>1015 L St<span class="nt">&lt;/address&gt;</span>
+      <span class="nt">&lt;phoneNumber&gt;</span>888-758-4389  916-264-5011<span class="nt">&lt;/phoneNumber&gt;</span>
+      <span class="nt">&lt;Point&gt;</span>
+        <span class="nt">&lt;coordinates&gt;</span>-121.4926,38.5783802<span class="nt">&lt;/coordinates&gt;</span>
+      <span class="nt">&lt;/Point&gt;</span>
+      <span class="nt">&lt;ExtendedData&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"access_code"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>public<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"access_days_time"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>Garage business hours; pay lot<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"date_last_confirmed"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>2019-05-09<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"fuel_type_code"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>ELEC<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"groups_with_access_code"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>Public<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>1498<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"open_date"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>2018-08-20<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"owner_type_code"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>LG<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"status_code"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>E<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"updated_at"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>2020-01-21 18:34:38 UTC<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"facility_type"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>PAY_GARAGE<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"geocode_status"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>GPS<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"city"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>Sacramento<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"intersection_directions"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>At 10th and L, 2nd Level<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"state"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>CA<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"zip"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>95814<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"country"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>US<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_connector_types"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>["NEMA520"]<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_level1_evse_num"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>2<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_network"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>Non-Networked<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_other_evse"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>3 SP Inductive<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"groups_with_access_code_fr"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>Public<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+      <span class="nt">&lt;/ExtendedData&gt;</span>
+    <span class="nt">&lt;/Placemark&gt;</span>
+    <span class="nt">&lt;Placemark&gt;</span>
+      <span class="nt">&lt;name&gt;</span>LADWP - Truesdale Center<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;address&gt;</span>11797 Truesdale St<span class="nt">&lt;/address&gt;</span>
+      <span class="nt">&lt;phoneNumber</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;Point&gt;</span>
+        <span class="nt">&lt;coordinates&gt;</span>-118.387971374344,34.2483191527193<span class="nt">&lt;/coordinates&gt;</span>
+      <span class="nt">&lt;/Point&gt;</span>
+      <span class="nt">&lt;ExtendedData&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"access_code"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>private<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"access_days_time"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>Fleet use only<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"date_last_confirmed"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>2020-01-13<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"fuel_type_code"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>ELEC<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"groups_with_access_code"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>Private<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>1517<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"open_date"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>1999-10-15<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"owner_type_code"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>LG<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"status_code"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>E<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"updated_at"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>2020-01-21 18:34:38 UTC<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"facility_type"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>UTILITY<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"geocode_status"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>GPS<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"city"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>Sun Valley<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"state"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>CA<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"zip"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>91352<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"country"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>US<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_connector_types"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>["J1772"]<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_level2_evse_num"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>15<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_network"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>Non-Networked<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"groups_with_access_code_fr"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>Privé<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+      <span class="nt">&lt;/ExtendedData&gt;</span>
+    <span class="nt">&lt;/Placemark&gt;</span>
+  <span class="nt">&lt;/Document&gt;</span>
+<span class="nt">&lt;/kml&gt;</span>
 </code></pre></div>
 <h3 id="csv-output-format">CSV Output Format</h3>
 
