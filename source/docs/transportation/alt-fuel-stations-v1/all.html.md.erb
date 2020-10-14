@@ -51,7 +51,7 @@ The following query parameters may be passed in the request to control the outpu
 
 ## Response Fields
 
-The response is composed of the fuel stations matching the requested query. For JSON or XML formats, additional metadata is supplied in the following structure:
+The response is composed of the fuel stations matching the requested query. For JSON, GeoJSON, or XML formats, additional metadata is supplied in the following structure:
 
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
   <thead>
@@ -257,6 +257,197 @@ The individual fuel station records are returned in no specific order. Each stat
 }
 ```
 
+### GeoJSON Output Format
+
+<pre>GET <a href="/api/alt-fuel-stations/v1.geojson?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2">/api/alt-fuel-stations/v1.geojson?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2</a></pre>
+
+```json
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "station_locator_url": "http://www.afdc.energy.gov/afdc/locator/stations/",
+    "total_results": 7033,
+    "station_counts": {
+      "total": 28672,
+      "fuels": {
+        "BD": {
+          "total": 0
+        },
+        "E85": {
+          "total": 224
+        },
+        "ELEC": {
+          "total": 28448,
+          "stations": {
+              "total": 6809
+          }
+        },
+        "HY": {
+          "total": 0
+        },
+        "LNG": {
+          "total": 0
+        },
+        "CNG": {
+          "total": 0
+        },
+        "LPG": {
+          "total": 0
+        }
+      }
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+            -121.4926,
+            38.5783802
+        ]
+      },
+      "properties": {
+        "access_code": "public",
+        "access_days_time": "Garage business hours; pay lot",
+        "access_detail_code": null,
+        "cards_accepted": null,
+        "date_last_confirmed": "2019-05-09",
+        "expected_date": null,
+        "fuel_type_code": "ELEC",
+        "groups_with_access_code": "Public",
+        "id": 1498,
+        "open_date": "2018-08-20",
+        "owner_type_code": "LG",
+        "status_code": "E",
+        "station_name": "City of Sacramento - Capitol Parking Garage",
+        "station_phone": "888-758-4389  916-264-5011",
+        "updated_at": "2020-01-21T18:34:38Z",
+        "facility_type": "PAY_GARAGE",
+        "geocode_status": "GPS",
+        "city": "Sacramento",
+        "intersection_directions": "At 10th and L, 2nd Level",
+        "plus4": null,
+        "state": "CA",
+        "street_address": "1015 L St",
+        "zip": "95814",
+        "country": "US",
+        "bd_blends": null,
+        "cng_dispenser_num": null,
+        "cng_fill_type_code": null,
+        "cng_psi": null,
+        "cng_renewable_source": null,
+        "cng_total_compression": null,
+        "cng_total_storage": null,
+        "cng_vehicle_class": null,
+        "e85_blender_pump": null,
+        "e85_other_ethanol_blends": null,
+        "ev_connector_types": [
+            "NEMA520"
+        ],
+        "ev_dc_fast_num": null,
+        "ev_level1_evse_num": 2,
+        "ev_level2_evse_num": null,
+        "ev_network": "Non-Networked",
+        "ev_network_web": null,
+        "ev_other_evse": "3 SP Inductive",
+        "ev_pricing": null,
+        "ev_renewable_source": null,
+        "hy_is_retail": null,
+        "hy_pressures": null,
+        "hy_standards": null,
+        "hy_status_link": null,
+        "lng_renewable_source": null,
+        "lng_vehicle_class": null,
+        "lpg_primary": null,
+        "lpg_nozzle_types": null,
+        "ng_fill_type_code": null,
+        "ng_psi": null,
+        "ng_vehicle_class": null,
+        "access_days_time_fr": null,
+        "intersection_directions_fr": null,
+        "bd_blends_fr": null,
+        "groups_with_access_code_fr": "Public",
+        "ev_pricing_fr": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -118.387971374344,
+            34.2483191527193
+          ]
+      },
+      "properties": {
+        "access_code": "private",
+        "access_days_time": "Fleet use only",
+        "access_detail_code": null,
+        "cards_accepted": null,
+        "date_last_confirmed": "2020-01-13",
+        "expected_date": null,
+        "fuel_type_code": "ELEC",
+        "groups_with_access_code": "Private",
+        "id": 1517,
+        "open_date": "1999-10-15",
+        "owner_type_code": "LG",
+        "status_code": "E",
+        "station_name": "LADWP - Truesdale Center",
+        "station_phone": null,
+        "updated_at": "2020-01-21T18:34:38Z",
+        "facility_type": "UTILITY",
+        "geocode_status": "GPS",
+        "city": "Sun Valley",
+        "intersection_directions": null,
+        "plus4": null,
+        "state": "CA",
+        "street_address": "11797 Truesdale St",
+        "zip": "91352",
+        "country": "US",
+        "bd_blends": null,
+        "cng_dispenser_num": null,
+        "cng_fill_type_code": null,
+        "cng_psi": null,
+        "cng_renewable_source": null,
+        "cng_total_compression": null,
+        "cng_total_storage": null,
+        "cng_vehicle_class": null,
+        "e85_blender_pump": null,
+        "e85_other_ethanol_blends": null,
+        "ev_connector_types": [
+          "J1772"
+        ],
+        "ev_dc_fast_num": null,
+        "ev_level1_evse_num": null,
+        "ev_level2_evse_num": 15,
+        "ev_network": "Non-Networked",
+        "ev_network_web": null,
+        "ev_other_evse": null,
+        "ev_pricing": null,
+        "ev_renewable_source": null,
+        "hy_is_retail": null,
+        "hy_pressures": null,
+        "hy_standards": null,
+        "hy_status_link": null,
+        "lng_renewable_source": null,
+        "lng_vehicle_class": null,
+        "lpg_primary": null,
+        "lpg_nozzle_types": null,
+        "ng_fill_type_code": null,
+        "ng_psi": null,
+        "ng_vehicle_class": null,
+        "access_days_time_fr": null,
+        "intersection_directions_fr": null,
+        "bd_blends_fr": null,
+        "groups_with_access_code_fr": "Privé",
+        "ev_pricing_fr": null
+      }
+    }
+  ]
+}
+```
+
 ### XML Output Format
 
 <pre>GET <a href="/api/alt-fuel-stations/v1.xml?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2">/api/alt-fuel-stations/v1.xml?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2</a></pre>
@@ -426,6 +617,164 @@ The individual fuel station records are returned in no specific order. Each stat
     </fuel-station>
   </fuel-stations>
 </response>
+```
+
+### KML Output Format
+
+<pre>GET <a href="/api/alt-fuel-stations/v1.kml?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2">/api/alt-fuel-stations/v1.kml?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2</a></pre>
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <Placemark>
+      <name>City of Sacramento - Capitol Parking Garage</name>
+      <address>1015 L St</address>
+      <phoneNumber>888-758-4389  916-264-5011</phoneNumber>
+      <Point>
+        <coordinates>-121.4926,38.5783802</coordinates>
+      </Point>
+      <ExtendedData>
+        <Data name="access_code">
+          <Value>public</Value>
+        </Data>
+        <Data name="access_days_time">
+          <Value>Garage business hours; pay lot</Value>
+        </Data>
+        <Data name="date_last_confirmed">
+          <Value>2019-05-09</Value>
+        </Data>
+        <Data name="fuel_type_code">
+          <Value>ELEC</Value>
+        </Data>
+        <Data name="groups_with_access_code">
+          <Value>Public</Value>
+        </Data>
+        <Data name="id">
+          <Value>1498</Value>
+        </Data>
+        <Data name="open_date">
+          <Value>2018-08-20</Value>
+        </Data>
+        <Data name="owner_type_code">
+          <Value>LG</Value>
+        </Data>
+        <Data name="status_code">
+          <Value>E</Value>
+        </Data>
+        <Data name="updated_at">
+          <Value>2020-01-21 18:34:38 UTC</Value>
+        </Data>
+        <Data name="facility_type">
+          <Value>PAY_GARAGE</Value>
+        </Data>
+        <Data name="geocode_status">
+          <Value>GPS</Value>
+        </Data>
+        <Data name="city">
+          <Value>Sacramento</Value>
+        </Data>
+        <Data name="intersection_directions">
+          <Value>At 10th and L, 2nd Level</Value>
+        </Data>
+        <Data name="state">
+          <Value>CA</Value>
+        </Data>
+        <Data name="zip">
+          <Value>95814</Value>
+        </Data>
+        <Data name="country">
+          <Value>US</Value>
+        </Data>
+        <Data name="ev_connector_types">
+          <Value>["NEMA520"]</Value>
+        </Data>
+        <Data name="ev_level1_evse_num">
+          <Value>2</Value>
+        </Data>
+        <Data name="ev_network">
+          <Value>Non-Networked</Value>
+        </Data>
+        <Data name="ev_other_evse">
+          <Value>3 SP Inductive</Value>
+        </Data>
+        <Data name="groups_with_access_code_fr">
+          <Value>Public</Value>
+        </Data>
+      </ExtendedData>
+    </Placemark>
+    <Placemark>
+      <name>LADWP - Truesdale Center</name>
+      <address>11797 Truesdale St</address>
+      <phoneNumber nil="true"/>
+      <Point>
+        <coordinates>-118.387971374344,34.2483191527193</coordinates>
+      </Point>
+      <ExtendedData>
+        <Data name="access_code">
+          <Value>private</Value>
+        </Data>
+        <Data name="access_days_time">
+          <Value>Fleet use only</Value>
+        </Data>
+        <Data name="date_last_confirmed">
+          <Value>2020-01-13</Value>
+        </Data>
+        <Data name="fuel_type_code">
+          <Value>ELEC</Value>
+        </Data>
+        <Data name="groups_with_access_code">
+          <Value>Private</Value>
+        </Data>
+        <Data name="id">
+          <Value>1517</Value>
+        </Data>
+        <Data name="open_date">
+          <Value>1999-10-15</Value>
+        </Data>
+        <Data name="owner_type_code">
+          <Value>LG</Value>
+        </Data>
+        <Data name="status_code">
+          <Value>E</Value>
+        </Data>
+        <Data name="updated_at">
+          <Value>2020-01-21 18:34:38 UTC</Value>
+        </Data>
+        <Data name="facility_type">
+          <Value>UTILITY</Value>
+        </Data>
+        <Data name="geocode_status">
+          <Value>GPS</Value>
+        </Data>
+        <Data name="city">
+          <Value>Sun Valley</Value>
+        </Data>
+        <Data name="state">
+          <Value>CA</Value>
+        </Data>
+        <Data name="zip">
+          <Value>91352</Value>
+        </Data>
+        <Data name="country">
+          <Value>US</Value>
+        </Data>
+        <Data name="ev_connector_types">
+          <Value>["J1772"]</Value>
+        </Data>
+        <Data name="ev_level2_evse_num">
+          <Value>15</Value>
+        </Data>
+        <Data name="ev_network">
+          <Value>Non-Networked</Value>
+        </Data>
+        <Data name="groups_with_access_code_fr">
+          <Value>Privé</Value>
+        </Data>
+      </ExtendedData>
+    </Placemark>
+  </Document>
+</kml>
 ```
 
 ### CSV Output Format
