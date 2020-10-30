@@ -10,7 +10,7 @@ info:
     While the EVI-Pro Lite API generates 24-hr load profiles for representative weekdays and weekends, some users may find it helpful to concatenate daily profiles into an annual profile. To facilitate this process, considering leveraging this Python script available on <a href="https://github.com/NREL/EVI-Pro-Lite">GitHub</a>.
 schemes:
   - https
-basePath: /api/evi-pro/v1
+basePath: /api/evi-pro-lite/v1
 securityDefinitions:
   api_key:
     type: apiKey
