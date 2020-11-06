@@ -1,8 +1,8 @@
 ---
-title: Puerto Rico SHR (Simulated High Resolution)
-summary: Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database (NSRDB) is a serially complete collection of hourly and half-hourly values of the three most common measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. Read more about the datasets at [https://nsrdb.nrel.gov](https://nsrdb.nrel.gov)
-detail: This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.
-url: /api/nsrdb/v2/solar/puerto-rico-download
+title: "METEOSAT IODC Region: Physical Solar Model (PSM)"
+summary: "The National Solar Radiation Database (NSRDB) is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates."
+detail: "The Indian Ocean Data Coverage of the Meteosat satellite covers India and it’s surrounding regions. The Physical Solar Model Version 3 (PSM-v3) was used to develop these datasets. The 4km x 4km data is provided at a 15 minute resolution. This data was produced as part of the U.S.-India Energy Cooperation with support from the US Department of Energy Office of International Affairs."
+url: /api/nsrdb/v2/solar/msg-iodc-download
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
@@ -57,10 +57,10 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>air_temperature, clearsky_dhi, clearsky_dni, clearsky_ghi, dhi, dni, ghi, solar_zenith_angle, surface_albedo, surface_pressure, total_precipitable_water, wind_speed</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>air_temperature, alpha, aod, asymmetry, cld_opd_dcomp, cld_reff_dcomp, clearsky_dhi, clearsky_dni, clearsky_ghi, cloud_type, coordinates, dew_point, dhi, dni, fill_flag, ghi, ozone, relative_humidity, solar_zenith_angle, ssa, surface_albedo, surface_pressure, total_precipitable_water, wind_direction, wind_speed</em>.</div>
       </td>
       <td class="doc-parameter-description">
-        Each specified attribute(*) will be returned as a column in the resultant CSV download.<br/><br/>
+        Each specified attribute(*) will be returned as a column in the resultant CSV download.
       </td>
     </tr>
     <tr>
@@ -69,7 +69,7 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2017, 2018, 2019</em>.</div>
       </td>
       <td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
     </tr>
@@ -99,11 +99,11 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <th class="doc-parameter-name" scope="row">interval</th>
       <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> 5, 30 or 60</div>
+        <div class="doc-parameter-value-field"><strong>Type:</strong> 15, 30 or 60</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
       </td>
       <td class="doc-parameter-description">
-        This value determines data resolution. 5 minute, 30 minute, or 60 minute intervals are available.
+        This value determines data resolution. Either 15, 30 or 60 minute intervals are available.
       </td>
     </tr>
     <tr>
@@ -207,22 +207,32 @@ Generated data files are formatted in accordance with the Standard Time Series D
 
 ### JSON Output Format
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&names=2016&email=valued.user@gmail.com&interval=60&wkt=POINT(-66.1057 18.4655)</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&full_name=Sample+User&email=sample@email.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT(14.61 -24.26)&attributes=wind_speed&names=2017&utc=true&leap_day=true&interval=15</code></div>
 
 ```json
 {
-    "errors": [],
     "inputs": {
-        "names": [
-            2016
-        ],
-        "email": "valued.user@gmail.com",
-        "interval": 60,
-        "wkt": "POINT(-66.1057 18.4655)"
+        "wkt": "POINT(14.61 -24.26)",
+        "attributes": "wind_speed",
+        "names": "2017",
+        "utc": "true",
+        "leap_day": "true",
+        "interval": "15",
+        "email": "erik.wiffin@nrel.gov",
+        "no_cache": "true"
     },
+    "metadata": {
+        "version": "2.0.0",
+        "resultset": {
+            "count": 1
+        }
+    },
+    "status": 200,
     "outputs": {
-        "message": "File generation in progress. An email will be sent to valued.user@gmail.com when the download is ready."
-    }
+        "message": "File generation in progress. An email will be sent to erik.wiffin@nrel.gov when the download is ready.",
+        "downloadUrl": "https://mapfiles.nrel.gov/data/solar/e3e3b0fb24a646b8ae920f628ebdc62e.zip"
+    },
+    "errors": []
 }
 ```
 
@@ -230,23 +240,17 @@ Generated data files are formatted in accordance with the Standard Time Series D
 ### CSV Output Format
 Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?api_key=DEMO_KEY&names=2016&email=valued.user@gmail.com&interval=60&wkt=POINT(-66.1057 18.4655)</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?api_key=DEMO_KEY&full_name=Sample+User&email=sample@email.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT(14.61 -24.26)&attributes=wind_speed&names=2017&utc=true&leap_day=true&interval=15</code></div>
 
 ```csv
-Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,Local Time Zone,Clearsky DHI Units,Clearsky DNI Units,Clearsky GHI Units,DHI Units,DNI Units,GHI Units,Solar Zenith Angle Units,Pressure Units,Precipitable Water Units,Wind Speed,Version
-NSRDB,1601,-,PR,Puerto Rico,18.459999084472656,-66.11000061035156,-4,9,-4,w/m2,w/m2,w/m2,w/m2,w/m2,w/m2,Degree,mbar,mm,m/s,unknown
-Year,Month,Day,Hour,Minute,Air Temerature,Clearsky DHI,Clearsky DNI,Clearsky GHI,DHI,DNI,GHI,Solar Zenith Angle,Albedo,Pressure,Precipitable Water,Wind Speed
-2016,1,1,0,5,25,0,0,0,0,0,0,89.0,0.082,1020.0,3.286,5
-2016,1,1,1,5,25,0,0,0,0,0,0,89.0,0.082,1020.0,2.852,5
-2016,1,1,2,5,25,0,0,0,0,0,0,89.0,0.082,1020.0,2.5340000000000003,5
-2016,1,1,3,5,25,0,0,0,0,0,0,89.0,0.082,1020.0,2.316,5
-2016,1,1,4,5,25,0,0,0,0,0,0,89.0,0.082,1020.0,2.1350000000000002,4
-2016,1,1,5,5,24,0,0,0,0,0,0,89.0,0.082,1020.0,1.999,4
-2016,1,1,6,5,24,0,0,0,0,0,0,89.0,0.082,1020.0,1.926,4
-2016,1,1,7,5,25,16,78,18,16,78,18,88.26,0.082,1020.0,1.923,4
-2016,1,1,8,5,26,61,594,206,61,594,206,75.91,0.082,1021.7,1.973,4
-2016,1,1,9,5,27,79,788,423,79,788,423,64.15,0.082,1030.0,2.081,4
-2016,1,1,10,5,27,89,876,606,89,876,606,53.800000000000004,0.082,1030.0,2.248,5
+Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,Local Time Zone,Clearsky DHI Units,Clearsky DNI Units,Clearsky GHI Units,Dew Point Units,DHI Units,DNI Units,GHI Units,Solar Zenith Angle Units,Temperature Units,Pressure Units,Relative Humidity Units,Precipitable Water Units,Wind Direction Units,Wind Speed,Cloud Type -15,Cloud Type 0,Cloud Type 1,Cloud Type 2,Cloud Type 3,Cloud Type 4,Cloud Type 5,Cloud Type 6,Cloud Type 7,Cloud Type 8,Cloud Type 9,Cloud Type 10,Cloud Type 11,Cloud Type 12,Fill Flag 0,Fill Flag 1,Fill Flag 2,Fill Flag 3,Fill Flag 4,Fill Flag 5,Surface Albedo Units,Version
+NSRDB,815990,-,-,-,-24.27,14.62,0,27,1,w/m2,w/m2,w/m2,c,w/m2,w/m2,w/m2,Degree,c,mbar,%,cm,Degrees,m/s,N/A,Clear,Probably Clear,Fog,Water,Super-Cooled Water,Mixed,Opaque Ice,Cirrus,Overlapping,Overshooting,Unknown,Dust,Smoke,N/A,Missing Image,Low Irradiance,Exceeds Clearsky,Missing CLoud Properties,Rayleigh Violation,N/A,unknown
+Year,Month,Day,Hour,Minute,Wind Speed
+2017,1,1,0,0,2.6
+2017,1,1,0,15,2.5
+2017,1,1,0,30,2.4000000000000004
+2017,1,1,0,45,2.4000000000000004
+2017,1,1,1,0,2.3000000000000003
 ```
 
 ### POST request example in Python
@@ -256,7 +260,7 @@ import requests
 
 url = "http://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
 
-payload = "names=2012&leap_day=false&interval=60&utc=false&full_name=Valued%2BUser&email=valued.user%40gmail.com&affiliation=NREL&mailing_list=true&reason=Academic&attributes=dhi%2Cdni%2Cwind_speed%2Cair_temperature&wkt=MULTIPOINT(-66.1057%2018.4655%2C-66.2057%2018.3655%2C-66.1157%2018.4655)"
+payload = "names=2012&leap_day=false&interval=60&utc=false&full_name=Honored%2BUser&email=honored.user%40gmail.com&affiliation=NREL&mailing_list=true&reason=Academic&attributes=dhi%2Cdni%2Cwind_speed%2Cair_temperature&wkt=MULTIPOINT(-106.22%2032.9741%2C-106.18%2032.9741%2C-106.1%2032.9741)"
 
 headers = {
     'content-type': "application/x-www-form-urlencoded",

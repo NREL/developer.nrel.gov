@@ -1,7 +1,7 @@
 ---
 title: Spectral Data On-demand (PSM) v3
-summary: Collect and download, as CSV, a configurable set of solar, solar radiation spectrum, and meteoroligical data fields for a single point from The NSRDB. The National Solar Radiation Database (NSRDB) is a serially complete collection of hourly and half-hourly values of the three most common measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. Read more about the datasets at [https://nsrdb.nrel.gov](https://nsrdb.nrel.gov)
-detail: This API is capabale of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download.
+summary: Collect and download, as CSV, a configurable set of solar, solar radiation spectrum, and meteorological data fields for a single point from The NSRDB. The National Solar Radiation Database (NSRDB) is a serially complete collection of hourly and half-hourly values of the three most common measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. Read more about the datasets at [https://nsrdb.nrel.gov](https://nsrdb.nrel.gov)
+detail: This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download.
 url: /api/nsrdb_api/solar/spectral_ondemand_download
 ---
 
@@ -17,7 +17,7 @@ url: /api/nsrdb_api/solar/spectral_ondemand_download
 <pre>GET|POST <%= current_page.data.url %><em>.json?parameters</em></pre>
 
 ## Request Parameters
-_NOTE: when using POST to submit a request the api_key must still be inlcuded as a query parameter in the url. All other parameters may be included in a POST request as part of the payload._
+_NOTE: when using POST to submit a request the api_key must still be included as a query parameter in the url. All other parameters may be included in a POST request as part of the payload._
 
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
   <thead>
@@ -240,7 +240,7 @@ Year,Month,Day,Hour,Minute,Temperature,Clearsky DHI,Clearsky DNI,Clearsky GHI,Cl
 
 Rate limits for this application are significantly less than the [standard rate limits](/docs/rate-limits){:target="_blank"} for developer.nrel.gov. This decrease in the limit is required because the data provided through this service is very computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.
 
-There are two levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For all requests this limit is set at 300 requests per day at a frequency of no more than 1 every 2 seconds.
+There are two levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For all requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.
 
 In addition to this limit, the service has a secondary fail-safe mechanism designed to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.
 

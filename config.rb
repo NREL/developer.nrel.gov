@@ -83,6 +83,9 @@ configure :build do
   ]
 end
 
-ENV["DOCS_API_KEY"] ||= "Rr247zstse9kbndOttzlhKIKnS04mW7UUXIplAqd"
+# Set default API key for local development.
+if !ENV["DOCS_API_KEY"] || ENV["DOCS_API_KEY"].to_s.empty?
+  ENV["DOCS_API_KEY"] = "Rr247zstse9kbndOttzlhKIKnS04mW7UUXIplAqd"
+end
 
 activate :alias

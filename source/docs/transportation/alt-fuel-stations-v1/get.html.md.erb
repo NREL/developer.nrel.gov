@@ -40,7 +40,7 @@ The following query parameters may be passed in the request to control the outpu
           <strong>Default:</strong> None
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Options:</strong> <em>json</em>, <em>xml</em>, <em>csv</em>
+          <strong>Options:</strong> <em>json</em>, <em>xml</em>, <em>csv</em>, <em>geojson</em>, <em>kml</em>
         </div>
       </td>
       <td class="doc-parameter-description">
@@ -163,6 +163,91 @@ The response is composed of the fuel station matching the requested query. The s
 }
 ```
 
+### GeoJSON Output Format
+
+<pre>GET <a href="/api/alt-fuel-stations/v1/39534.geojson?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/39534.geojson?api_key=DEMO_KEY</a></pre>
+
+```json
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -105.181918,
+      39.740236
+    ]
+  },
+  "properties": {
+    "access_code": "private",
+    "access_days_time": "Payment accepted through PowerFlex app",
+    "access_detail_code": null,
+    "cards_accepted": "A D Debit M V",
+    "date_last_confirmed": "2019-11-08",
+    "expected_date": null,
+    "fuel_type_code": "ELEC",
+    "groups_with_access_code": "Private",
+    "id": 39534,
+    "open_date": "2011-05-20",
+    "owner_type_code": "FG",
+    "status_code": "E",
+    "station_name": "National Renewable Energy Laboratory - Denver West",
+    "station_phone": null,
+    "updated_at": "2020-01-21T18:34:38Z",
+    "facility_type": "RESEARCH_FACILITY",
+    "geocode_status": "200-9",
+    "city": "Golden",
+    "intersection_directions": "Parking garage on South Table Mountain Campus",
+    "plus4": null,
+    "state": "CO",
+    "street_address": "15013 Denver W Pkwy",
+    "zip": "80401",
+    "country": "US",
+    "bd_blends": null,
+    "cng_dispenser_num": null,
+    "cng_fill_type_code": null,
+    "cng_psi": null,
+    "cng_renewable_source": null,
+    "cng_total_compression": null,
+    "cng_total_storage": null,
+    "cng_vehicle_class": null,
+    "e85_blender_pump": null,
+    "e85_other_ethanol_blends": null,
+    "ev_connector_types": [
+      "J1772"
+    ],
+    "ev_dc_fast_num": null,
+    "ev_level1_evse_num": null,
+    "ev_level2_evse_num": 108,
+    "ev_network": "Non-Networked",
+    "ev_network_web": null,
+    "ev_other_evse": null,
+    "ev_pricing": "Variable rate: $0.10kWh-$0.35/kWh",
+    "ev_renewable_source": null,
+    "hy_is_retail": null,
+    "hy_pressures": null,
+    "hy_standards": null,
+    "hy_status_link": null,
+    "lng_renewable_source": null,
+    "lng_vehicle_class": null,
+    "lpg_primary": null,
+    "lpg_nozzle_types": null,
+    "ng_fill_type_code": null,
+    "ng_psi": null,
+    "ng_vehicle_class": null,
+    "access_days_time_fr": null,
+    "intersection_directions_fr": null,
+    "bd_blends_fr": null,
+    "groups_with_access_code_fr": "Privé",
+    "ev_pricing_fr": null,
+    "federal_agency": {
+      "id": 8,
+      "code": "DOE",
+      "name": "U.S. Department of Energy"
+    }
+  }
+}
+```
+
 ### XML Output Format
 
 <pre>GET <a href="/api/alt-fuel-stations/v1/39534.xml?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/39534.xml?api_key=DEMO_KEY</a></pre>
@@ -238,6 +323,106 @@ The response is composed of the fuel station matching the requested query. The s
         <name>U.S. Department of Energy</name>
     </federal-agency>
 </alt-fuel-station>
+```
+
+### KML Output Format
+
+<pre>GET <a href="/api/alt-fuel-stations/v1/39534.kml?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/39534.kml?api_key=DEMO_KEY</a></pre>
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <Placemark>
+      <name>National Renewable Energy Laboratory - Denver West</name>
+      <address>15013 Denver W Pkwy</address>
+      <phoneNumber nil="true"/>
+      <Point>
+        <coordinates>-105.181918,39.740236</coordinates>
+      </Point>
+      <ExtendedData>
+        <Data name="access_code">
+          <Value>private</Value>
+        </Data>
+        <Data name="access_days_time">
+          <Value>Payment accepted through PowerFlex app</Value>
+        </Data>
+        <Data name="cards_accepted">
+          <Value>A D Debit M V</Value>
+        </Data>
+        <Data name="date_last_confirmed">
+          <Value>2019-11-08</Value>
+        </Data>
+        <Data name="fuel_type_code">
+          <Value>ELEC</Value>
+        </Data>
+        <Data name="groups_with_access_code">
+          <Value>Private</Value>
+        </Data>
+        <Data name="id">
+          <Value>39534</Value>
+        </Data>
+        <Data name="open_date">
+          <Value>2011-05-20</Value>
+        </Data>
+        <Data name="owner_type_code">
+          <Value>FG</Value>
+        </Data>
+        <Data name="status_code">
+          <Value>E</Value>
+        </Data>
+        <Data name="updated_at">
+          <Value>2020-01-21 18:34:38 UTC</Value>
+        </Data>
+        <Data name="facility_type">
+          <Value>RESEARCH_FACILITY</Value>
+        </Data>
+        <Data name="geocode_status">
+          <Value>200-9</Value>
+        </Data>
+        <Data name="city">
+          <Value>Golden</Value>
+        </Data>
+        <Data name="intersection_directions">
+          <Value>Parking garage on South Table Mountain Campus</Value>
+        </Data>
+        <Data name="state">
+          <Value>CO</Value>
+        </Data>
+        <Data name="zip">
+          <Value>80401</Value>
+        </Data>
+        <Data name="country">
+          <Value>US</Value>
+        </Data>
+        <Data name="ev_connector_types">
+          <Value>["J1772"]</Value>
+        </Data>
+        <Data name="ev_level2_evse_num">
+          <Value>108</Value>
+        </Data>
+        <Data name="ev_network">
+          <Value>Non-Networked</Value>
+        </Data>
+        <Data name="ev_pricing">
+          <Value>Variable rate: $0.10kWh-$0.35/kWh</Value>
+        </Data>
+        <Data name="groups_with_access_code_fr">
+          <Value>Privé</Value>
+        </Data>
+        <Data name="federal_agency_id">
+          <Value>8</Value>
+        </Data>
+        <Data name="federal_agency_code">
+          <Value>DOE</Value>
+        </Data>
+        <Data name="federal_agency_name">
+          <Value>U.S. Department of Energy</Value>
+        </Data>
+      </ExtendedData>
+    </Placemark>
+  </Document>
+</kml>
 ```
 
 ### CSV Output Format
