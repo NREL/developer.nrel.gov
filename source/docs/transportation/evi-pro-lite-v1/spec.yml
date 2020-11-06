@@ -21,6 +21,8 @@ security:
 paths:
   /daily-load-profile:
     get:
+      tags:
+      - "Daily Load Profiles"
       summary: Loads (kW) are returned in 15-min step intervals for 24 hours where the 15-min data point is the average of instantaneous load over that interval. The first element of the load profile covers 12:00 AM - 12:15 AM, the second 12:15 AM - 12:30 AM, and so on.
       parameters:
         - name: temp_c
@@ -102,6 +104,8 @@ paths:
             $ref: "#/definitions/loadProfile"
   /daily-load-profile/breakdown:
     get:
+      tags:
+      - "Daily Load Profiles"
       summary: Loads (kW) are returned in 15-min step intervals for 24 hours but broken down by pev_type (one of PHEV20, PHEV50, BEV100, BEV250) and class_type (Sedan or SUV)
       parameters:
         - name: temp_c
