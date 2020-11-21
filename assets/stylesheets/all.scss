@@ -1,7 +1,5 @@
 @import "_variables";
-@import "bootstrap";
-@import "font-awesome-sprockets";
-@import "font-awesome";
+@import "bootstrap/scss/bootstrap";
 
 @import "_shared/scaffolding";
 @import "_shared/popup";
@@ -9,7 +7,7 @@
 @import "_shared/docs";
 
 .swagger-ui-wrapper {
-  @import "swagger-ui";
+  @import "swagger-ui-dist/swagger-ui";
 }
 @import "_swagger_overrides";
 

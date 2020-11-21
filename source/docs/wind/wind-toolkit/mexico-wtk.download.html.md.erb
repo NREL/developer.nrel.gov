@@ -1,0 +1,269 @@
+---
+title: Mexico WKT Data Download
+summary: Collect and download, as CSV, a configurable set of data fields from a multi-national collection of wind stations.
+detail: This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single year at a time.
+url: /api/wind-toolkit/v2/wind/mexico-wtk-download
+---
+
+# <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
+<%= current_page.data.summary %>
+
+<%= current_page.data.detail %>
+
+<ul id="toc"></ul>
+
+## Request URL
+
+<pre>GET <%= current_page.data.url %><em>.format?parameters</em></pre>
+
+## Request Parameters
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+    <thead>
+		<tr>
+			<th class="doc-parameters-name" scope="col">Parameter</th>
+			<th class="doc-parameters-required" scope="col">Required</th>
+			<th class="doc-parameters-value" scope="col">Value</th>
+			<th class="doc-parameters-description" scope="col">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th class="doc-parameter-name" scope="row">api_key</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+			</td>
+			<td class="doc-parameter-description">
+			<p>Your developer API key. See <a href="/docs/api-key/">API keys</a> for more information.</p>
+			</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">wkt</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> well-known text point string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+			</td>
+			<td class="doc-parameter-description">A well-known text (WKT) representation of the geometry for which to extract data. May be a point or polygon geometry.</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">attributes</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>inversemoninobukhovlength_2m, pressure_0m, pressure_100m, pressure_200m, relativehumidity_2m, precipitationrate_0m, windspeed_10m, windspeed_40m, windspeed_60m, windspeed_80m, windspeed_100m, windspeed_120m, windspeed_140m, windspeed_160m, windspeed_200m, winddirection_10m, winddirection_40m, winddirection_60m, winddirection_80m, winddirection_100m, winddirection_120m, winddirection_140m, winddirection_160m, winddirection_200m, temperature_2m, temperature_10m, temperature_40m, temperature_60m, temperature_80m, temperature_100m, temperature_120m, temperature_140m, temperature_160m, temperature_200m, wind_speed, wind_direction, pressure, temperature</em></div>
+			</td>
+			<td class="doc-parameter-description">Each specified attribute will be returned as a column in the resultant CSV download.</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">names</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited integer array</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014</em></div>
+			</td>
+			<td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
+		</tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">interval</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> integer</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> 60</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>60</em></div>
+      </td>
+      <td class="doc-parameter-description">
+        Desired data timestep resolution in minutes.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">utc</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> true</div>
+      </td>
+      <td class="doc-parameter-description">
+        Pass true to retrieve data with timestamps in UTC. Pass false to retrieve data with timestamps converted to local time of data point (without daylight savings time).
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">leap_day</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> false</div>
+      </td>
+      <td class="doc-parameter-description">
+        Pass true to retrieve data including leap day (where appropriate). Pass false to retrieve data excluding leap day.
+      </td>
+    </tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">full_name</th>
+			<td class="doc-parameter-required">No</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field">&nbsp;</div>
+			</td>
+			<td class="doc-parameter-description">The full name of the user requesting data.</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">email</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> email string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field">&nbsp;</div>
+			</td>
+			<td class="doc-parameter-description">An active email for the user requesting data. This email will be used to deliver the extracted data.</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">affiliation</th>
+			<td class="doc-parameter-required">No</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field">&nbsp;</div>
+			</td>
+			<td class="doc-parameter-description">The organization with which the user requesting the data is affiliated.</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">reason</th>
+			<td class="doc-parameter-required">No</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field">&nbsp;</div>
+			</td>
+			<td class="doc-parameter-description">The reason that the user is requesting the data.</td>
+		</tr>
+	</tbody>
+</table>
+
+## Response Fields
+
+The response is composed of service-related informational fields and the results of the data query.
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+	<thead>
+		<tr>
+			<th class="doc-parameters-name" scope="col">Field</th>
+			<th class="doc-parameters-value" scope="col">Value</th>
+			<th class="doc-parameters-description" scope="col">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th class="doc-parameter-name" scope="row">errors</th>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> string array</div>
+			</td>
+			<td class="doc-parameter-description">
+			<p>A list of error messages</p>
+			</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">inputs</th>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
+			</td>
+			<td class="doc-parameter-description">Key: Value pairs representing all input parameters</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">outputs</th>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
+			</td>
+			<td class="doc-parameter-description">Upon successful completion a message will be returned informing the user that file generation is in progress and an email will be sent to the address provided in the <code>email</code> input field when the download is ready</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Examples</h2>
+
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?wkt=POINT (97.11638 6.481514)&attributes=wind_speed,wind_direction&names=2016&utc=false&leap_day=true&full_name=Data%20Lover&email=data.lover%40gmail.com&affiliation=NREL</code></div>
+
+```JSON
+{
+    "inputs": {
+				"wkt": "POINT (-121.76375 27.53983)",
+				"attributes": "wind_speed,wind_direction",
+				"names": "2007",
+				"utc": "false",
+				"leap_day": "true",
+        "email": "data.lover@gmail.com"
+    },
+    "metadata": {
+        "version": "2.0.0",
+        "resultset": {
+            "count": 1
+        }
+    },
+    "status": 200,
+    "outputs": {
+        "message": "File generation in progress. An email will be sent to data.lover@gmail.com when the download is ready.",
+        "downloadUrl": "https://mapfiles.nrel.gov/data/wind/8f15cfd44948cb76e7cf9531d5fe9cde.zip"
+    },
+    "errors": []
+}
+```
+
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?wkt=POINT (-121.76375 27.53983&attributes=wind_speed,wind_direction&names=2007&utc=false&leap_day=true&full_name=Data%20Lover&email=data.lover%40gmail.com&affiliation=NREL</code></div>
+
+```csv
+SiteID,1,Site Timezone,-8,Data Timezone,-8,Longitude,-121.76375,Latitude,27.53983
+Year,Month,Day,Hour,Minute,wind speed at 100m (m/s),wind direction at 100m (deg)
+2007,1,1,0,0,9.9,13.4
+2007,1,1,1,0,9.6,7.17
+2007,1,1,2,0,10.96,358.06
+2007,1,1,3,0,11.38,0.02
+2007,1,1,4,0,10.88,2.85
+```
+
+<h2 id="rate-limits">Rate Limits</h2>
+
+Rate limits for this application are significantly less than the [standard rate limits](/docs/rate-limits){:target="_blank"} for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.
+
+There are two levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.
+
+In addition to this limit, the service has a secondary fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.
+
+For some tips and tricks to maximize data downloads please read the guide [here](/docs/wind/wind-toolkit/guide).
+
+<h2 id="errors">Errors</h2>
+
+<p><a href="/docs/errors/">Standard errors</a> may be returned. In addition, the following service-specific errors may be returned:</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+	<thead>
+		<tr>
+			<th class="doc-parameters-name" scope="col" style="width: 100px;">HTTP Status Code</th>
+			<th class="doc-parameters-required" scope="col">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th class="doc-parameter-name" scope="row">400</th>
+			<td class="doc-parameter-description">Bad Request: When required parameters are missing.</td>
+		</tr>
+	</tbody>
+</table>

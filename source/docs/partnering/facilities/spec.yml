@@ -1,5 +1,6 @@
+swagger: "2.0"
 info:
-  version: 1
+  version: "1"
   title: Facilities APIs
   description: |-
     A collection of APIs providing data about national laboratorty facilities associated with the Department of Energy's (DOE) Lab Partnering Service (LPS).

@@ -37,6 +37,9 @@
 }
 
 // Make the header text styles match the NREL theme.
+.swagger-ui {
+  font-family: inherit !important;
+}
 .swagger-ui .info .title {
   color: #cc6600 !important;
   font-size: 18px !important;

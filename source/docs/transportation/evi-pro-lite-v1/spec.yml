@@ -1,0 +1,332 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: EVI-Pro Lite API
+  description: |-
+    APIs providing output from NREL's EVI-Pro model. Used to power the EVI-Pro Lite tool at https://afdc.energy.gov/evi-pro-lite. These endpoints provide daily (24 hour) fleet-level charging load profiles for a variety of customizable scenarios.
+
+    EVI-Pro Lite is a simplified version of the Electric Vehicle Infrastructure Projection Tool (EVI-Pro). EVI-Pro uses real-world travel data from mass market consumers to estimate future requirements for residential, workplace, and public charging under a variety of scenarios. For more information regarding EVI-Pro Lite, see the [methodology and assumptions page](https://afdc.energy.gov/evi-pro-lite/load-profile/assumptions).
+
+    While the EVI-Pro Lite API generates 24-hr load profiles for representative weekdays and weekends, some users may find it helpful to concatenate daily profiles into an annual profile. To facilitate this process, considering leveraging this Python script available on <a href="https://github.com/NREL/EVI-Pro-Lite">GitHub</a>.
+schemes:
+  - https
+basePath: /api/evi-pro-lite/v1
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: query
+security:
+  - api_key: []
+paths:
+  /daily-load-profile:
+    get:
+      tags:
+      - "Daily Load Profiles"
+      summary: Loads (kW) are returned in 15-min step intervals for 24 hours where the 15-min data point is the average of instantaneous load over that interval. The first element of the load profile covers 12:00 AM - 12:15 AM, the second 12:15 AM - 12:30 AM, and so on.
+      parameters:
+        - name: temp_c
+          in: query
+          type: integer
+          enum: [-20, -10, 0, 10, 20, 30, 40]
+          required: true
+          description: Degrees in Celsius for the day on which load profile shape is desired.  Must be one of `[-20, -10, 0, 10, 20, 30, 40]`.
+        - name: fleet_size
+          in: query
+          type: integer
+          required: true
+          description: Fleet size.  Must be one of 1,000, 10,000, or any number greater than or equal to 30,000.
+        - name: mean_dvmt
+          in: query
+          type: integer
+          required: true
+          enum: [25, 35, 45]
+          description: Average fleet daily vehicle miles traveled (per vehicle).  Must be one of `[25, 35, 45]`.
+        - name: pev_dist
+          in: query
+          type: string
+          required: true
+          enum: [BEV, PHEV, EQUAL]
+          description: PEV distribution where numbers correlate to % of vehicle type `PHEV20, PHEV50, BEV100, BEV250`.  Must be one of `[BEV, PHEV, EQUAL]` where `BEV` represents BEV dominant scenario (10/15/25/50), `PHEV` represents PHEV dominant (25/50/10/15), and `EQUAL` represents PHEV/BEV equal shares (15/35/15/35).
+        - name: class_dist
+          in: query
+          type: string
+          required: true
+          enum: [Sedan, SUV, Equal]
+          description: Vehicle class distribution.  Must be one of `[Sedan, SUV, Equal]` where `Sedan` is sedan dominant scenario (80/20), `SUV` is SUV dominant (20/80), and `Equal` represents equal distribution (50/50).
+        - name: pref_dist
+          in: query
+          type: string
+          required: true
+          enum: [Home60, Home80, Home100]
+          description: Preference for primary charging location being at home (versus at work) assuming access to both.  Must be one of `[Home60, Home80, Home100]` where 60% prefer home charging, 80% prefer home charging, and 100% prefer home charging.
+        - name: home_access_dist
+          in: query
+          type: string
+          required: true
+          enum: [HA50, HA75, HA100]
+          description: Access to home charging where numbers represent percent of PEVs with access to home charging. Must be one of `[HA50, HA75, HA100]` where `HA100` reflects 100% of PEVs with access to home charging.
+        - name: home_power_dist
+          in: query
+          type: string
+          required: true
+          enum: [MostL1, MostL2, Equal]
+          description: Options for home power distribution scenarios where `MostL1` represents 80% L1 charging, 20% L2, `MostL2` represents 20% L1 charging, 80% L2, and `Equal` represents 50% L1 charging, 50% L2.  Must be one of `[MostL1, MostL2, Equal]`
+        - name: work_power_dist
+          in: query
+          type: string
+          required: true
+          enum: [MostL1, MostL2, Equal]
+          description: Options for work power distribution scenarios where `MostL1` represents 80% L1 charging, 20% L2, `MostL2` represents 20% L1 charging, 80% L2, and `Equal` represents 50% L1 charging, 50% L2.  Must be one of `[MostL1, MostL2, Equal]`
+        - name: res_charging
+          in: query
+          type: string
+          required: true
+          enum: [min_delay, max_delay, midnight_charge]
+          description: |-
+            Home charging strategy where:
+              + `min_delay` means EVs begin charging immediately upon arriving at a charging location and charge at full power/speed until fully charged or the vehicle departs
+              + `max_delay` means EVs wait as long as possible to begin charging such that they can still receive the same amount of charge as the `min_delay` strategy
+              + `midnight_charge` means EV owners elect to program their vehicles to begin charging at a specific time overnight (often midnight local time)
+        - name: work_charging
+          in: query
+          type: string
+          required: true
+          enum: [min_delay, max_delay]
+          description: |-
+            Work charging strategy where:
+              + `min_delay` means EVs begin charging immediately upon arriving at a charging location and charge at full power/speed until fully charged or the vehicle departs
+              + `max_delay` means EVs wait as long as possible to begin charging such that they can still receive the same amount of charge as the `min_delay` strategy
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/loadProfile"
+  /daily-load-profile/breakdown:
+    get:
+      tags:
+      - "Daily Load Profiles"
+      summary: Loads (kW) are returned in 15-min step intervals for 24 hours but broken down by pev_type (one of PHEV20, PHEV50, BEV100, BEV250) and class_type (Sedan or SUV)
+      parameters:
+        - name: temp_c
+          in: query
+          type: integer
+          enum: [-20, -10, 0, 10, 20, 30, 40]
+          required: true
+          description: Degrees in Celsius for the day on which load profile shape is desired.  Must be one of `[-20, -10, 0, 10, 20, 30, 40]`.
+        - name: fleet_size
+          in: query
+          type: integer
+          required: true
+          description: Fleet size.  Must be one of 1,000, 10,000, or any number greater than or equal to 30,000.
+        - name: mean_dvmt
+          in: query
+          type: integer
+          required: true
+          enum: [25, 35, 45]
+          description: Average fleet daily vehicle miles traveled (per vehicle).  Must be one of `[25, 35, 45]`.
+        - name: pev_dist
+          in: query
+          type: string
+          required: true
+          enum: [BEV, PHEV, EQUAL]
+          description: PEV distribution where numbers correlate to % of vehicle type `PHEV20, PHEV50, BEV100, BEV250`.  Must be one of `[BEV, PHEV, EQUAL]` where `BEV` represents BEV dominant scenario (10/15/25/50), `PHEV` represents PHEV dominant (25/50/10/15), and `EQUAL` represents PHEV/BEV equal shares (15/35/15/35).
+        - name: class_dist
+          in: query
+          type: string
+          required: true
+          enum: [Sedan, SUV, Equal]
+          description: Vehicle class distribution.  Must be one of `[Sedan, SUV, Equal]` where `Sedan` is sedan dominant scenario (80/20), `SUV` is SUV dominant (20/80), and `Equal` represents equal distribution (50/50).
+        - name: pref_dist
+          in: query
+          type: string
+          required: true
+          enum: [Home60, Home80, Home100]
+          description: Preference for primary charging location being at home (versus at work) assuming access to both.  Must be one of `[Home60, Home80, Home100]` where 60% prefer home charging, 80% prefer home charging, and 100% prefer home charging.
+        - name: home_access_dist
+          in: query
+          type: string
+          required: true
+          enum: [HA50, HA75, HA100]
+          description: Access to home charging where numbers represent percent of PEVs with access to home charging. Must be one of `[HA50, HA75, HA100]` where `HA100` reflects 100% of PEVs with access to home charging.
+        - name: home_power_dist
+          in: query
+          type: string
+          required: true
+          enum: [MostL1, MostL2, Equal]
+          description: Options for home power distribution scenarios where `MostL1` represents 80% L1 charging, 20% L2, `MostL2` represents 20% L1 charging, 80% L2, and `Equal` represents 50% L1 charging, 50% L2.  Must be one of `[MostL1, MostL2, Equal]`
+        - name: work_power_dist
+          in: query
+          type: string
+          required: true
+          enum: [MostL1, MostL2, Equal]
+          description: Options for work power distribution scenarios where `MostL1` represents 80% L1 charging, 20% L2, `MostL2` represents 20% L1 charging, 80% L2, and `Equal` represents 50% L1 charging, 50% L2.  Must be one of `[MostL1, MostL2, Equal]`
+        - name: res_charging
+          in: query
+          type: string
+          required: true
+          enum: [min_delay, max_delay, midnight_charge]
+          description: |-
+            Home charging strategy where:
+              + `min_delay` means EVs begin charging immediately upon arriving at a charging location and charge at full power/speed until fully charged or the vehicle departs
+              + `max_delay` means EVs wait as long as possible to begin charging such that they can still receive the same amount of charge as the `min_delay` strategy
+              + `midnight_charge` means EV owners elect to program their vehicles to begin charging at a specific time overnight (often midnight local time)
+        - name: work_charging
+          in: query
+          type: string
+          required: true
+          enum: [min_delay, max_delay]
+          description: |-
+            Work charging strategy where:
+              + `min_delay` means EVs begin charging immediately upon arriving at a charging location and charge at full power/speed until fully charged or the vehicle departs
+              + `max_delay` means EVs wait as long as possible to begin charging such that they can still receive the same amount of charge as the `min_delay` strategy
+      responses:
+        "200":
+          description: Successful request
+          schema:
+            $ref: "#/definitions/loadProfileBreakdown"
+definitions:
+  error:
+    type: object
+    properties:
+      code:
+        type: string
+        description: A static code value representing the type of error.
+        example: NOT_FOUND
+      developer_message:
+        type: string
+        description: A human readable description of the error message.
+        example: No data was found for the gisjoin provided
+  loadProfileExample:
+    type: array
+    items:
+      type: integer
+      example: 4.2, 4.2, 4.2, 4.2, 4.2, 4.2, 4.2, 4.2, 4.2, 3, 2.74, 1.4, 1.4, 1.4, 2.1, 1.87, 2.8, 2.8, 2.8, 3.27, 5.6, 5.6, 5.6, 5.6, 8.4, 9.8, 15.86, 21, 36.12, 41.44, 47.65, 56, 71.77, 80.74, 85.06, 90.16, 95.3, 97.63, 96.13, 96.89, 95.67, 95.43, 95.17, 94.36, 95.3, 97.82, 92.4, 92.4, 88.16, 89.68, 89.41, 88.11, 82.51, 83.03, 80.6, 81.37, 79.44, 79.92, 77.45, 72.24, 62.68, 55.92, 49.18, 50.4, 42.51, 37.51, 33.42, 30.8, 27.07, 25.38, 21.93, 19.6, 16.15, 13.44, 9.8, 8.4, 8.4, 8.4, 8.68, 8.4, 8.4, 7.11, 7, 7, 5.6, 5.6, 5.6, 6.72, 5.6, 5.6, 3.55, 2.8, 2.8, 2.8, 2.8, 3.27
+  weekdayLoadProfile:
+    type: object
+    properties:
+      home_l1:
+        $ref: "#/definitions/loadProfileExample"
+      home_l2:
+        $ref: "#/definitions/loadProfileExample"
+      work_l1:
+        $ref: "#/definitions/loadProfileExample"
+      work_l2:
+        $ref: "#/definitions/loadProfileExample"
+      public_l2:
+        $ref: "#/definitions/loadProfileExample"
+      public_l3:
+        $ref: "#/definitions/loadProfileExample"
+  loadProfile:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/error"
+        example: []
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 0.0.0
+          inputs:
+            type: object
+            example:
+              temp_c: -20
+              fleet_size: 1000
+              mean_dvmt: 45
+              pev_dist: PHEV
+              class_dist: SUV
+              pref_dist: Home60
+              home_access_dist: HA50
+              home_power_dist: MostL2
+              work_power_dist: MostL2
+              res_charging: min_delay
+              work_charging: max_delay
+      results:
+        type: object
+        properties:
+          weekday_load_profile:
+            $ref: "#/definitions/weekdayLoadProfile"
+          weekend_load_profile:
+            $ref: "#/definitions/weekdayLoadProfile"
+  breakdownByCharger:
+    type: object
+    properties:
+      bev100_sedan:
+        $ref: "#/definitions/loadProfileExample"
+      bev250_sedan:
+        $ref: "#/definitions/loadProfileExample"
+      bev100_suv:
+        $ref: "#/definitions/loadProfileExample"
+      bev250_suv:
+        $ref: "#/definitions/loadProfileExample"
+      phev20_sedan:
+        $ref: "#/definitions/loadProfileExample"
+      phev50_sedan:
+        $ref: "#/definitions/loadProfileExample"
+      phev20_suv:
+        $ref: "#/definitions/loadProfileExample"
+      phev50_suv:
+        $ref: "#/definitions/loadProfileExample"
+  loadProfileBreakdown:
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: "#/definitions/error"
+        example: []
+      metadata:
+        type: object
+        properties:
+          version:
+            type: string
+            example: 0.0.0
+          inputs:
+            type: object
+            example:
+              temp_c: -20
+              fleet_size: 1000
+              mean_dvmt: 45
+              pev_dist: PHEV
+              class_dist: SUV
+              pref_dist: Home60
+              home_access_dist: HA50
+              home_power_dist: MostL2
+              work_power_dist: MostL2
+              res_charging: min_delay
+              work_charging: max_delay
+      results:
+        type: object
+        properties:
+          weekday_load_profile:
+            type: object
+            properties:
+              home_l1:
+                $ref: "#/definitions/breakdownByCharger"
+              home_l2:
+                $ref: "#/definitions/breakdownByCharger"
+              work_l1:
+                $ref: "#/definitions/breakdownByCharger"
+              work_l2:
+                $ref: "#/definitions/breakdownByCharger"
+              public_l2:
+                $ref: "#/definitions/breakdownByCharger"
+              public_l3:
+                $ref: "#/definitions/breakdownByCharger"
+          weekend_load_profile:
+            type: object
+            properties:
+              home_l1:
+                $ref: "#/definitions/breakdownByCharger"
+              home_l2:
+                $ref: "#/definitions/breakdownByCharger"
+              work_l1:
+                $ref: "#/definitions/breakdownByCharger"
+              work_l2:
+                $ref: "#/definitions/breakdownByCharger"
+              public_l2:
+                $ref: "#/definitions/breakdownByCharger"
+              public_l3:
+                $ref: "#/definitions/breakdownByCharger"

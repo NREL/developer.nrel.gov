@@ -1,8 +1,8 @@
 ---
 title: Central Asia Wind Data Download
-summary: Collect and download, as CSV, a configurable set of data fields from a multi-national collection of wind stations. This data represents wind-speed, temperature, and direction values at 80m, 100m, and 120m above the surface and air pressure at the surface, 100m, and 200m above the surface for the year 2015 produced using WRF v3.7. The model time resolution used was 15 minutes with a nominal spatial resolution of 3 km2 over Kazakhstan and 9 km2 over the surrounding region. For the U and V components used to derive the wind speed, a total of 41 pressure levels were used. 
-detail: This API is capabale of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single year at a time.
-url: /api/wind-toolkit/wind/central_asia_wind_download
+summary: Collect and download, as CSV, a configurable set of data fields from a multi-national collection of wind stations. This data represents wind-speed, temperature, and direction values at 80m, 100m, and 120m above the surface and air pressure at the surface, 100m, and 200m above the surface for the year 2015 produced using WRF v3.7. The model time resolution used was 15 minutes with a nominal spatial resolution of 3 km2 over Kazakhstan and 9 km2 over the surrounding region. For the U and V components used to derive the wind speed, a total of 41 pressure levels were used.
+detail: This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single year at a time.
+url: /api/wind-toolkit/v2/wind/central-asia-wind-download
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
@@ -80,7 +80,7 @@ url: /api/wind-toolkit/wind/central_asia_wind_download
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> integer</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> 60</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>15, 60</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>15, 30, 60</em></div>
       </td>
       <td class="doc-parameter-description">
         Desired data timestep resolution in minutes.
@@ -243,7 +243,7 @@ The response is composed of service-related informational fields and the results
 
 <div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?wkt=POINT(55.81054%2046.01222)&attributes=temperature_100m%2Ctemperature_120m%2Ctemperature_80m%2Cwinddirection_100m%2Cwinddirection_120m%2Cwinddirection_80m%2Cwindspeed_100m%2Cwindspeed_120m%2Cwindspeed_80m%2Cpressure_200m%2Cpressure_100m%2Cpressure_0m&names=2015&full_name=Data%20Lover&email=data.lover%40gmail.com&affiliation=NREL&mailing_list=false&reason=test&leap_day=true&utc=false&interval=15&csv_format=csv</code></div>
 
-```csv 
+```csv
 SiteID, 189730.0
 Longitude, 55.792724609375
 Latitude, 46.02188491821289
@@ -260,7 +260,7 @@ Year,Month,Day,Hour,Minute,Temperature at 100m (C),Temperature at 120m (C),Tempe
 
 Rate limits for this application are significantly less than the [standard rate limits](/docs/rate-limits){:target="_blank"} for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.
 
-There are two levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 2000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 300 requests per day at a frequency of no more than 1 every 2 seconds.
+There are two levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.
 
 In addition to this limit, the service has a secondary fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.
 
