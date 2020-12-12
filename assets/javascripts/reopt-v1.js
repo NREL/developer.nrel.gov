@@ -136,7 +136,7 @@ var nested_input_definitions = {
             ["annual_kwh", "doe_reference_name"],
             ["doe_reference_name"]
           ],
-          "description": "Simulated load profile from DOE <a href='https://energy.gov/eere/buildings/commercial-reference-buildings' target='blank'>Commercial Reference Buildings</a>"
+          "description": "Simulated load profile from DOE <a href='https: //energy.gov/eere/buildings/commercial-reference-buildings' target='blank'>Commercial Reference Buildings</a>"
         },
         "annual_kwh": {
           "type": ["float", "list_of_float"],
@@ -214,6 +214,20 @@ var nested_input_definitions = {
           "depends_on": ["outage_start_hour"],
           "description": "Hour of year that grid outage ends. Must be greater than outage_start."
         },
+        "outage_start_time_step": {
+          "type": "int",
+          "min": 1,
+          "max": 35040,
+          "depends_on": ["outage_end_time_step"],
+          "description": "Time step that grid outage starts. Must be less than outage_end."
+        },
+        "outage_end_time_step": {
+          "type": "int",
+          "min": 1,
+          "max": 35040,
+          "depends_on": ["outage_start_time_step"],
+          "description": "Time step that grid outage ends. Must be greater than outage_start."
+        },
         "critical_load_pct": {
           "type": "float",
           "min": 0.0,
@@ -232,27 +246,27 @@ var nested_input_definitions = {
           "type": "str",
           "replacement_sets": [
             ["urdb_response"],
-            ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
-            ["blended_annual_demand_charges_us_dollars_per_kw", "blended_annual_rates_us_dollars_per_kwh"],
+            ["blended_monthly_rates_us_dollars_per_kwh", "blended_monthly_demand_charges_us_dollars_per_kw"],
+            ["blended_annual_rates_us_dollars_per_kwh", "blended_annual_demand_charges_us_dollars_per_kw"],
             ["urdb_label"],
             ["urdb_utility_name", "urdb_rate_name"],
             ["tou_energy_rates_us_dollars_per_kwh"]
           ],
           "depends_on": ["urdb_rate_name"],
-          "description": "Name of Utility from  <a href='https://openei.org/wiki/Utility_Rate_Database' target='blank'>Utility Rate Database</a>"
+          "description": "Name of Utility from  <a href='https: //openei.org/wiki/Utility_Rate_Database' target='blank'>Utility Rate Database</a>"
         },
         "urdb_rate_name": {
           "type": "str",
           "replacement_sets": [
             ["urdb_response"],
-            ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
-            ["blended_annual_demand_charges_us_dollars_per_kw", "blended_annual_rates_us_dollars_per_kwh"],
+            ["blended_monthly_rates_us_dollars_per_kwh", "blended_monthly_demand_charges_us_dollars_per_kw"],
+            ["blended_annual_rates_us_dollars_per_kwh", "blended_annual_demand_charges_us_dollars_per_kw"],
             ["urdb_label"],
             ["urdb_utility_name", "urdb_rate_name"],
             ["tou_energy_rates_us_dollars_per_kwh"]
           ],
           "depends_on": ["urdb_utility_name"],
-          "description": "Name of utility rate from  <a href='https://openei.org/wiki/Utility_Rate_Database' target='blank'>Utility Rate Database</a>"
+          "description": "Name of utility rate from  <a href='https: //openei.org/wiki/Utility_Rate_Database' target='blank'>Utility Rate Database</a>"
         },
         "add_blended_rates_to_urdb_rate": {
           "type": "bool",
@@ -263,8 +277,7 @@ var nested_input_definitions = {
           "type": "list_of_float",
           "replacement_sets": [
             ["urdb_response"],
-            ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
-            ["blended_annual_demand_charges_us_dollars_per_kw", "blended_annual_rates_us_dollars_per_kwh"],
+            ["blended_annual_rates_us_dollars_per_kwh", "blended_annual_demand_charges_us_dollars_per_kw"],
             ["urdb_label"],
             ["urdb_utility_name", "urdb_rate_name"],
             ["tou_energy_rates_us_dollars_per_kwh"]
@@ -276,8 +289,7 @@ var nested_input_definitions = {
           "type": "list_of_float",
           "replacement_sets": [
             ["urdb_response"],
-            ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
-            ["blended_annual_demand_charges_us_dollars_per_kw", "blended_annual_rates_us_dollars_per_kwh"],
+            ["blended_annual_rates_us_dollars_per_kwh", "blended_annual_demand_charges_us_dollars_per_kw"],
             ["urdb_label"],
             ["urdb_utility_name", "urdb_rate_name"],
             ["tou_energy_rates_us_dollars_per_kwh"]
@@ -289,8 +301,7 @@ var nested_input_definitions = {
           "type": "float",
           "replacement_sets": [
             ["urdb_response"],
-            ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
-            ["blended_annual_demand_charges_us_dollars_per_kw", "blended_annual_rates_us_dollars_per_kwh"],
+            ["blended_monthly_rates_us_dollars_per_kwh", "blended_monthly_demand_charges_us_dollars_per_kw"],
             ["urdb_label"],
             ["urdb_utility_name", "urdb_rate_name"],
             ["tou_energy_rates_us_dollars_per_kwh"]
@@ -302,8 +313,7 @@ var nested_input_definitions = {
           "type": "float",
           "replacement_sets": [
             ["urdb_response"],
-            ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
-            ["blended_annual_demand_charges_us_dollars_per_kw", "blended_annual_rates_us_dollars_per_kwh"],
+            ["blended_monthly_rates_us_dollars_per_kwh", "blended_monthly_demand_charges_us_dollars_per_kw"],
             ["urdb_label"],
             ["urdb_utility_name", "urdb_rate_name"],
             ["tou_energy_rates_us_dollars_per_kwh"]
@@ -320,8 +330,8 @@ var nested_input_definitions = {
           "type": "list_of_float",
           "replacement_sets": [
             ["urdb_response"],
-            ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
-            ["blended_annual_demand_charges_us_dollars_per_kw", "blended_annual_rates_us_dollars_per_kwh"],
+            ["blended_monthly_rates_us_dollars_per_kwh", "blended_monthly_demand_charges_us_dollars_per_kw"],
+            ["blended_annual_rates_us_dollars_per_kwh", "blended_annual_demand_charges_us_dollars_per_kw"],
             ["urdb_label"],
             ["urdb_utility_name", "urdb_rate_name"],
             ["tou_energy_rates_us_dollars_per_kwh"]
@@ -358,25 +368,25 @@ var nested_input_definitions = {
           "type": "dict",
           "replacement_sets": [
             ["urdb_response"],
-            ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
-            ["blended_annual_demand_charges_us_dollars_per_kw", "blended_annual_rates_us_dollars_per_kwh"],
+            ["blended_monthly_rates_us_dollars_per_kwh", "blended_monthly_demand_charges_us_dollars_per_kw"],
+            ["blended_annual_rates_us_dollars_per_kwh", "blended_annual_demand_charges_us_dollars_per_kw"],
             ["urdb_label"],
             ["urdb_utility_name", "urdb_rate_name"],
             ["tou_energy_rates_us_dollars_per_kwh"]
           ],
-          "description": "Utility rate structure from <a href='https://openei.org/services/doc/rest/util_rates/?version=3' target='blank'>Utility Rate Database API</a>"
+          "description": "Utility rate structure from <a href='https: //openei.org/services/doc/rest/util_rates/?version=3' target='blank'>Utility Rate Database API</a>"
         },
         "urdb_label": {
           "type": "str",
           "replacement_sets": [
             ["urdb_response"],
-            ["blended_monthly_demand_charges_us_dollars_per_kw", "blended_monthly_rates_us_dollars_per_kwh"],
-            ["blended_annual_demand_charges_us_dollars_per_kw", "blended_annual_rates_us_dollars_per_kwh"],
+            ["blended_monthly_rates_us_dollars_per_kwh", "blended_monthly_demand_charges_us_dollars_per_kw"],
+            ["blended_annual_rates_us_dollars_per_kwh", "blended_annual_demand_charges_us_dollars_per_kw"],
             ["urdb_label"],
             ["urdb_utility_name", "urdb_rate_name"],
             ["tou_energy_rates_us_dollars_per_kwh"]
           ],
-          "description": "Label attribute of utility rate structure from <a href='https://openei.org/services/doc/rest/util_rates/?version=3' target='blank'>Utility Rate Database API</a>"
+          "description": "Label attribute of utility rate structure from <a href='https: //openei.org/services/doc/rest/util_rates/?version=3' target='blank'>Utility Rate Database API</a>"
         },
         "emissions_factor_series_lb_CO2_per_kwh": {
           "type": "list_of_float",
@@ -1238,6 +1248,11 @@ var nested_output_definitions = {
           "type": "int",
           "description": "Number of hours the existing system can sustain with resilience check",
           "units": "hours"
+        },
+        "bau_sustained_time_steps": {
+          "type": "int",
+          "description": "Number of time steps the existing system can sustain the critical load",
+          "units": "time steps"
         }
       },
       "Financial": {
@@ -1268,7 +1283,7 @@ var nested_output_definitions = {
         },
         "avoided_outage_costs_us_dollars": {
           "type": "float",
-          "description": "Avoided outage costs are determined using the Value of Lost Load [$/kWh], multiplied by the average critical load in kW (determined using critical_load_pct), the average hours that the critical load is sustained (determined by simulating outages starting at every hour of the year), and a present worth factor that accounts for cost growth with escalation_pct over the analysis_years and discounts the avoided costs to present value using offtaker_discount_pct.  Note that the use of a present worth factor presumes that the outage period and the microgrid's ability to meet the critical load is the same each year in the analysis_years.If outage_is_major_event is set to True, then the present worth factor is set to 1, which assumes that only one outage occurs in the analysis_years.",
+          "description": "Avoided outage costs are determined using the Value of Lost Load [$/kWh], multiplied by the average critical load in kW (determined using critical_load_pct), the average hours that the critical load is sustained (determined by simulating outages starting at every hour of the year), and a present worth factor that accounts for cost growth with escalation_pct over the analysis_years and discounts the avoided costs to present value using offtaker_discount_pct.  Note that the use of a present worth factor presumes that the outage period and the microgrid's ability to meet the critical load is the same each year in the analysis_years. If outage_is_major_event is set to True, then the present worth factor is set to 1, which assumes that only one outage occurs in the analysis_years.",
           "units": "$"
         },
         "net_capital_costs": {
@@ -1774,11 +1789,71 @@ var nested_output_definitions = {
   }
 }
 
-var special_cases_inputs = {'PV': "<b>Note:</b> PV accepts a set of key value pairs or a list of key value pairs formatted accoring to this template to account for multiple roof aspects or siting considerations (i.e roof vs ground) each with their own costs and technoeconomic parameters.<br><br>"}
+var special_cases_inputs = {
+    'Scenario':'<b>Scenario</b> parameters controls high-level optimization settings, such as resolution and time out duration. These types of controls are useful because <b>REopt Lite</b> optimizations are computationally intensive and problem complexity increases exponentially with dimensionality. For example, particularly challenging problems are likely to include: sub-hourly time resolutions, a large number of candidate technologies, the use of tiered electric tariffs.<br><br>',
+    'Site':'<b>Site</b> parameters are used to localize and constrain the optimization problem spatially. Additionally, site coordinates are used to look up wind and solar resource, as well as grid emissions factors. Also note that aside from coordinates, <b>ElectricTariff</b> and <b>LoadProfile</b> parameters are required at a minimum to run an optimization.<br><br>',
+    'Financial':'<b>REopt Lite</b> optimizations use one year’s worth of load and electric tariff data along with these key financial parameters to optimize across the financial life of the project. Through these financial settings you can choose to differentiate between site host ownership or third-party project ownership (i.e., using a DER project developer). Third-party owners are expected to build and operate new and existing assets, but they are not responsible for the cost of generator fuel. Third-party owners recuperate a profit aligned with their discount rate, though they may deliver cheaper overall energy to the site if they can take advantage of certain tax benefits. Note, certain outputs are ownership-dependent (i.e., irr_pct is relevant to the third-party owner and not the host in third-party scenarios). The format of the proforma will also change based on ownership arrangement. <br><br>',
+    'ElectricTariff':'ElectricTariff parameters define the value of energy throughout the year. Tariffs can be defined simply as blended annual or monthly rates, or more precisely through linkage with the <a href="https://openei.org/wiki/Utility_Rate_Database" target="_blank"> Utility Rate Database</a> (URDB). Custom URDB-formatted tariffs at hourly or sub-hourly resolutions are accepted by the API. <br><br>',
+    'LoadProfile':'<b>LoadProfile</b> parameters define the site electric load and may reflect aggregations of independent loads behind a single meter. For resilience runs, an outage may also be specified during which the critical load (typically a fraction of total load) must be met. Defining an outage may result in ‘infeasible’ solutions if there are not sufficient candidate technologies (i.e., it may not be possible to meet a 24-hour outage with solar PV alone).<br><br>',
+    'PV': '<b>PV</b> parameters define the costs and performance of one or more solar photovoltaic systems. By default, <b>PV</b> is considered with <b>Storage</b> as candidate technologies. Solar resource data by default is sourced from the <a href="https://developer.nrel.gov/docs/solar/pvwatts/v6/" target="_blank">PVWatts API</a>. By default, production factors are sourced from PVWatts. However, custom production factors can be used in place of these PVWatts profiles by providing a <em>prod_factor_series_kw</em> timeseries (a powerflow array at the resolutions of the scenario\'s <em>time_steps_per_hour</em> setting). <b> Note:</b> PV accepts a set of key value pairs or a list of key value pairs formatted accoring to this template to account for multiple roof aspects or siting considerations (i.e roof vs ground) each with their own costs and technoeconomic parameters. Set max_kw to 0 to remove this technology from candidate technologies.<br><br>',
+    'Storage':'<b>Storage</b> parameters define the costs and performance of battery storage. By default, <b>Storage</b> is considered with <b>PV</b> as candidate technologies. Set max_kw to 0 to remove this technology from candidate technologies. <br><br>',
+    'Wind':'<b>Wind</b> parameters define the costs and performance of distributed wind generation. By default, <b>Wind</b> is not considered as a candidate technology. When activated, wind resource data is by default sourced from <a href="https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-srw-download/"" target="_blank">Wind Toolkit Data</a>. Set max_kw to a large number (1000000) to add this technology as a candidate technology.<br><br>',
+    'Generator':'<b>Generator</b> parameters define the costs and performance of diesel generation. By default, <b>Storage</b> is not considered in the optimization. When it is specified as a candidate, default settings would restrict it from running outside an outage as specified in <b>LoadProfile</b> parameters (though it can be configured otherwise). Set max_kw to a large number (1000000) to add this technology as a candidate technology.<br><br>'
+}
+
+var tableParameterCell = function(name, def) {
+  
+  
+  var rtext
+
+  if ( def.hasOwnProperty("required") ) {
+    if ( Boolean(def["required"]) ){
+      rtext="Required"
+    }
+
+  } else if (def.hasOwnProperty("depends_on") || def.hasOwnProperty("replacement_sets")) {
+      rtext="Required, replacement(s) available"
+  } else {
+      rtext = ""
+  }
+  
+  var required_text = $("<div style='color:red'>").append($('<small>').html($('<b>').html(rtext)))
+  
+  var value_text = $("<small>")
+  if ( def.hasOwnProperty("type") ) {
+    var type_string = $("<span>").html(" <strong class='doc-parameters-value-field'>Type: </strong>"+def["type"])
+    value_text.append(type_string).append($('<br>'))
+  }
+
+  if ( def.hasOwnProperty("min") ) {
+    var min_string = $("<span>").html("  <strong class='doc-parameters-value-field'>Min Value: </strong>"+def["min"])
+    value_text.append(min_string).append($('<br>'))
+  }
+  
+  if ( def.hasOwnProperty("max") ) {
+    var max_string = $("<span>").html(" <strong class='doc-parameters-value-field'>Max Value: </strong>"+def["max"])
+    value_text.append(max_string).append($('<br>'))
+  }
+
+  if ( def.hasOwnProperty("default") ) {
+    var default_string = $("<span>").html(" <strong class='doc-parameters-value-field'>Default: </strong>"+def["default"])
+    value_text.append(default_string).append($('<br>'))
+  }
+
+  if ( def.hasOwnProperty("restrict_to") ) {
+    var options_string = $("<span>").html(" <strong class='doc-parameters-value-field'>Options: </strong> <em>"+def["restrict_to"].join(', ')+"</em>")
+    value_text.append(options_string).append($('<br>'))
+  }
+
+  if ( def.hasOwnProperty("units") ) {
+    var options_string = $("<span>").html(" <strong class='doc-parameters-value-field'>Units: </strong> "+def["units"])
+    value_text.append(options_string).append($('<br>'))
+  }
 
 
-var tableParameterCell = function(name) {
-  return $("<td>").append($("<small>").html($('<b>').html(name)))
+  var pcell = $("<div>")
+  pcell = pcell.append($("<div>").html($('<b>').html(name))).append($('<br>')).append(required_text).append(value_text)
+  return $("<td>").append(pcell)
 }
 
 var tableRequiredCell = function(def) {
@@ -1850,9 +1925,9 @@ var replacementSetList = function(list, name) {
 var tableDescriptionCell = function(name, def) {
   var text
   if ( def.hasOwnProperty("description") ) {
-      text=def['description']
+      text='<br>' + def['description']
   } else {
-    text = ""
+    text = '<br>'
   }
 
   if ( def.hasOwnProperty("depends_on") ) {
@@ -1875,7 +1950,7 @@ var buildAttributeTableRow = function(name, def,tableColumns){
   
   for (var i=0;i<tableColumns.length;i++){
     if (tableColumns[i]==='Parameter') {
-      row.append(tableParameterCell(name))
+      row.append(tableParameterCell(name, def))
     }
     else if (tableColumns[i]==='Required') {
       row.append(tableRequiredCell(def))
@@ -1901,9 +1976,9 @@ var buildAttributeTableHeader = function(head, columns){
       if (columns[i]==='Value'){
         width = '4%'
       } else if (columns[i]==='Description'){
-        width ='8%'
+        width ='70%'
       } else {
-        width = '1%'
+        width = '30%'
       }
 
       var columnName = $("<th width='"+width+"'>").html(columns[i])
@@ -1965,9 +2040,9 @@ var buildAttributeTable = function(definition_dictionary, table_name) {
     attributeTable = $('<table>').prop({'class':'table table-striped doc-parameters'})
     
     if (table_name=='inputs') {
-      var tableColumns = ["Parameter","Required","Value","Description"]
+      var tableColumns = ["Parameter","Description"]
     } else {
-      var tableColumns = ["Parameter","Value","Description"]
+      var tableColumns = ["Parameter","Description"]
     }
     
     attributeTableHead = buildAttributeTableHeader(attributeTableHead,tableColumns)
@@ -2018,7 +2093,6 @@ var buildObjectRow = function(table_name, key_name, definition_dictionary, inden
   object_panel.append(objectTableNameRow)
 
   var collapse_container = $('<div id="'+key_name+table_name+'_collapsecontainer" class="card-body" role="tabpanel" aria-labelledby="'+key_name+'_collapsebutton">')
-  
   var objectSubTableAttributeRow = $('<div class="row">')
 
   var objectSubTableAttributeRow = $('<div class="row">')
@@ -2029,25 +2103,31 @@ var buildObjectRow = function(table_name, key_name, definition_dictionary, inden
     collapse_container.append(attributeRowSpecialCase)
   }
   
-  var attributeRowName = $('<div class="col col-12">').html('<b><span class="text-secondary">Attributes</span></b><br><br>')
+  var attributeRowName = $('<div class="col col-12">').html('<span><b>Expand Attributes Table:</b> <a class=" btn btn-secondary btn-sm" aria-expanded="false" aria-controls="collapseAttr_'+ key_name + '" href="#collapseAttr_'+ key_name + '" data-toggle="collapse">+/-</a><br><br></span>')
   objectSubTableAttributeRow.append(attributeRowName)
   collapse_container.append(objectSubTableAttributeRow)
   
   var attributeTable = buildAttributeTable(definition_dictionary,table_name)
   var attributeRowSpacer = $('<div class="col col-1">').attr('style','max-width:3%')
-  var attributeRowContent = $('<div class="col col-11">').html(attributeTable)
-  objectSubTableAttributeRow.append(attributeRowSpacer)
+  var attributeRowContent = $('<div style="width:100%;" class="collapse" id="collapseAttr_'+ key_name +'" class="col col-11">').html(attributeTable)
   objectSubTableAttributeRow.append(attributeRowContent)
+  objectSubTableAttributeRow.append(attributeRowSpacer)
+  
   collapse_container.append(objectSubTableAttributeRow)
 
+  var subdirectoryRowContent_result = subDirectoriesCell(definition_dictionary,table_name)
 
-  var objectSubTableSubdirectoryRow = $('<div class="row">')
-  var attributeRowName = $('<div class="col col-12">').html('<b><span class="text-secondary">Sub Directories</span></b><br><br>')
-  objectSubTableSubdirectoryRow.append(attributeRowName)
+  if (subdirectoryRowContent_result !== "None") {
+    var subdirectoryRowContent= $('<div class="col offset-1 col-10">').html(subdirectoryRowContent_result)  
+    var objectSubTableSubdirectoryRow = $('<div class="row">')
+    var attributeRowName = $('<div class="col col-12">').html('<b><span class="text-secondary">Sub Directories</span></b><br><br>')
+    objectSubTableSubdirectoryRow.append(attributeRowName)
+    objectSubTableSubdirectoryRow.append(subdirectoryRowContent)
+    collapse_container.append(objectSubTableSubdirectoryRow)
+
+  }
   
-  var subdirectoryRowContent= $('<div class="col offset-1 col-10">').html(subDirectoriesCell(definition_dictionary,table_name))
-  objectSubTableSubdirectoryRow.append(subdirectoryRowContent)
-  collapse_container.append(objectSubTableSubdirectoryRow)
+   
 
   object_panel.append(collapse_container)
   
