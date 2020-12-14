@@ -75,7 +75,7 @@ jobs:
         run: yarn run gh-pages --dist ./build/ --branch build-history --user "$GITHUB_ACTOR <$GITHUB_ACTOR@users.noreply.github.com>" --repo "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
   deploy:
-    if: success() && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/staging')
+    if: success() && github.repository_owner == 'NREL' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/staging')
     needs: build
     runs-on: ubuntu-latest
     steps:
