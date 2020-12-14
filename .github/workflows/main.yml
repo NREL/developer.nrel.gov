@@ -46,10 +46,10 @@ jobs:
       # Build
       - name: Set production DEPLOY_ENV
         if: github.ref == 'refs/heads/master'
-        run: echo "::set-env name=DEPLOY_ENV::production"
+        run: echo "DEPLOY_ENV=production" >> $GITHUB_ENV
       - name: Set staging DEPLOY_ENV
         if: github.ref != 'refs/heads/master'
-        run: echo "::set-env name=DEPLOY_ENV::staging"
+        run: echo "DEPLOY_ENV=staging" >> $GITHUB_ENV
       - name: Build
         env:
           DOCS_API_KEY: ${{ secrets.DOCS_API_KEY }}
@@ -103,10 +103,10 @@ jobs:
           path: ./build
       - name: Set production BUCKET_NAME
         if: github.ref == 'refs/heads/master'
-        run: echo "::set-env name=BUCKET_NAME::${{ secrets.PRODUCTION_BUCKET_NAME }}"
+        run: echo "BUCKET_NAME=${{ secrets.PRODUCTION_BUCKET_NAME }}" >> $GITHUB_ENV
       - name: Set staging BUCKET_NAME
         if: github.ref != 'refs/heads/master'
-        run: echo "::set-env name=BUCKET_NAME::${{ secrets.STAGING_BUCKET_NAME }}"
+        run: echo "BUCKET_NAME=${{ secrets.STAGING_BUCKET_NAME }}" >> $GITHUB_ENV
       - name: Deploy
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
