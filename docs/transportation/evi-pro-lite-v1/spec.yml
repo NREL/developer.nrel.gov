@@ -82,21 +82,23 @@ paths:
           in: query
           type: string
           required: true
-          enum: [min_delay, max_delay, timed_charging]
+          enum: [min_delay, max_delay, load_leveling, timed_charging]
           description: |-
             Home charging strategy where:
               + `min_delay` means EVs begin charging immediately upon arriving at a charging location and charge at full power/speed until fully charged or the vehicle departs
               + `max_delay` means EVs wait as long as possible to begin charging such that they can still receive the same amount of charge as the `min_delay` strategy
               + `timed_charging` means EV owners elect to program their vehicles to begin charging at a specific time overnight (often midnight local time)
+              + `load_leveling` means EVs wait as long as possible to begin charging so they can still receive a full charge. This strategy uses arrival and departure times from the travel data referenced in the assumptions to shift load during simulations
         - name: work_charging
           in: query
           type: string
           required: true
-          enum: [min_delay, max_delay]
+          enum: [min_delay, max_delay, load_leveling]
           description: |-
             Work charging strategy where:
               + `min_delay` means EVs begin charging immediately upon arriving at a charging location and charge at full power/speed until fully charged or the vehicle departs
               + `max_delay` means EVs wait as long as possible to begin charging such that they can still receive the same amount of charge as the `min_delay` strategy
+              + `load_leveling` means EVs wait as long as possible to begin charging so they can still receive a full charge. This strategy uses arrival and departure times from the travel data referenced in the assumptions to shift load during simulations
       responses:
         "200":
           description: Successful request
@@ -165,21 +167,23 @@ paths:
           in: query
           type: string
           required: true
-          enum: [min_delay, max_delay, timed_charging]
+          enum: [min_delay, max_delay, load_leveling, timed_charging]
           description: |-
             Home charging strategy where:
               + `min_delay` means EVs begin charging immediately upon arriving at a charging location and charge at full power/speed until fully charged or the vehicle departs
               + `max_delay` means EVs wait as long as possible to begin charging such that they can still receive the same amount of charge as the `min_delay` strategy
               + `timed_charging` means EV owners elect to program their vehicles to begin charging at a specific time overnight (often midnight local time)
+              + `load_leveling` means EVs wait as long as possible to begin charging so they can still receive a full charge. This strategy uses arrival and departure times from the travel data referenced in the assumptions to shift load during simulations
         - name: work_charging
           in: query
           type: string
           required: true
-          enum: [min_delay, max_delay]
+          enum: [min_delay, max_delay, load_leveling]
           description: |-
             Work charging strategy where:
               + `min_delay` means EVs begin charging immediately upon arriving at a charging location and charge at full power/speed until fully charged or the vehicle departs
               + `max_delay` means EVs wait as long as possible to begin charging such that they can still receive the same amount of charge as the `min_delay` strategy
+              + `load_leveling` means EVs wait as long as possible to begin charging so they can still receive a full charge. This strategy uses arrival and departure times from the travel data referenced in the assumptions to shift load during simulations
       responses:
         "200":
           description: Successful request
