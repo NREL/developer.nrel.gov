@@ -82,12 +82,12 @@ paths:
           in: query
           type: string
           required: true
-          enum: [min_delay, max_delay, midnight_charge]
+          enum: [min_delay, max_delay, timed_charging]
           description: |-
             Home charging strategy where:
               + `min_delay` means EVs begin charging immediately upon arriving at a charging location and charge at full power/speed until fully charged or the vehicle departs
               + `max_delay` means EVs wait as long as possible to begin charging such that they can still receive the same amount of charge as the `min_delay` strategy
-              + `midnight_charge` means EV owners elect to program their vehicles to begin charging at a specific time overnight (often midnight local time)
+              + `timed_charging` means EV owners elect to program their vehicles to begin charging at a specific time overnight (often midnight local time)
         - name: work_charging
           in: query
           type: string
