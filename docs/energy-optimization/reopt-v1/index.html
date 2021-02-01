@@ -61,7 +61,7 @@
     </ol>
 
 
-    <script src="/assets/javascripts/reopt-v1-4090c1a2.js"></script>
+    <script src="/assets/javascripts/reopt-v1-b4499be4.js"></script>
 
 <h1>REopt Lite™ API (Version 1)</h1>
 
@@ -79,6 +79,9 @@
     If you have any questions using the REopt Lite API, please contact: <a href="mailto: reopt@nrel.gov ">reopt@nrel.gov</a>
     </p>
 
+    <p>
+    Last updated: <em>02/01/2021</em>
+    </p>
 
 <div class="row">
     <div  class="col-4 ">
@@ -139,7 +142,7 @@
       </div>
       <div class="col-11 offset-2">
         <b>Rate Limit:</b> None <br><br>
-        Provides the annual kWh consumed by a Department of Energy <a href="https://energy.gov/eere/buildings/commercial-reference-buildings" target="_blank">Commercial Reference Building</a>. These values are useful if you need a starting point for an unknown site load.<br><br>
+        Provides the annual kWh consumed by a Department of Energy <a href="https://energy.gov/eere/buildings/commercial-reference-buildings" target="_blank">Commercial Reference Building</a> <button type="button" data-target="#LoadProfileinputs_panel" class="btn btn-secondary btn-sm scroll_button">LoadProfile</button>. These values are useful if you need a starting point for an unknown site load.<br><br>
 
         Query parameters include:
           <ul>
@@ -162,18 +165,86 @@
         </div>
       <div class="col-11 offset-2">
         <b>Rate Limit:</b> None <br><br>
-        Provides the annual energy timeseries for a Department of Energy <a href="https://energy.gov/eere/buildings/commercial-reference-buildings" target="_blank">Commercial Reference Building</a>. These values are useful if you need a starting point for an unknown site load.<br><br>
-
-        Query parameters include:
+        Provides the annual energy timeseries for a <button type="button" data-target="#LoadProfileinputs_panel" class="btn btn-secondary btn-sm scroll_button">LoadProfile</button>, <button type="button" data-target="#LoadProfileBoilerFuelinputs_panel" class="btn btn-secondary btn-sm scroll_button">LoadProfileBoilerFuel</button>, or <button type="button" data-target="#LoadProfileChillerThermalinputs_panel" class="btn btn-secondary btn-sm scroll_button">LoadProfileChillerThermal</button> based on the Department of Energy <a href="https://energy.gov/eere/buildings/commercial-reference-buildings" target="_blank">Commercial Reference Building (CRB)</a> dataset. Only one load profile type can be returned based on the <em>load_type</em> specified. By default, <em>load_type</em> is assumed to be 'electric'. <br><br>
+      
+        <h2>Electric</h2>
+        When <em>load_type</em> is 'electric' a <b>LoadProfile</b> is constructed. Query parameters include:
           <ul>
               <li>api_key</li>
+              <li>load_type</li>
               <li>doe_reference_name</li>
               <li>latitude</li>
               <li>longitude</li>
+              <li>annual_kwh</li>
+              <li>monthly_totals_kwh (alternative to <em>annual_kwh</em>)</li>
           </ul>
-          <br>
+          
+          <b>Note:</b> <em>monthly_totals_kwh</em> can be a list of 12 values (e.g. [100,200,350,400,600,900,1000,1200,600,500,400,300]) or broken out into 12 0-indexed parameters (i.e. monthly_totals_kwh[0]=100,monthly_totals_kwh[0]=200,monthly_totals_kwh[0]=350,...). Also, if neither <em>annual_kwh</em> or <em>monthly_totals_kwh</em> are  provided, a default annual energy consumption will be assumed based on the CRB dataset.
+          <br><br>
+          When <em>load_type</em> is 'electric' response attributes include: <em>loads_kw</em>, <em>annual_kwh</em>, <em>min_kw</em>, <em>mean_kw</em>, <em>max_kw</em>
+          <br><br>
           <b>Example:</b>
         <pre><code>GET <em> https://developer.nrel.gov/api/reopt/v1/simulated_load?api_key={key}&doe_reference_name=Hospital&latitude=40.123&longitude=-111.123</em></code></pre>
+
+        <br>
+        <h2>Heating</h2>
+        When <em>load_type</em> is 'heating', a <b>LoadProfileBoilerFuel</b> is constructed. Query parameters include:
+          <ul>
+              <li>api_key</li>
+              <li>load_type</li>
+              <li>doe_reference_name</li>
+              <li>latitude</li>
+              <li>longitude</li>
+              <li>annual_mmbtu</li>
+              <li>monthly_mmbtu (alternative to <em>annual_mmbtu</em>)</li>
+          </ul>
+          
+          <b>Note:</b> <em>monthly_mmbtu</em> can be a list of 12 values (e.g. [100,200,350,400,600,900,1000,1200,600,500,400,300]) or broken out into 12 0-indexed parameters (i.e. monthly_mmbtu[0]=100,monthly_mmbtu[0]=200,monthly_mmbtu[0]=350,...). Also, if neither <em>annual_mmbtu</em> or <em>monthly_mmbtu</em> are  provided, a default annual energy consumption will be assumed based on the CRB dataset.
+          <br><br>
+          When <em>load_type</em> is 'heating' response attributes include: <em>loads_mmbtu</em>, <em>annual_mmbtu</em>, <em>min_mmbtu</em>, <em>mean_mmbtu</em>, <em>max_mmbtu</em>
+          <br><br>
+          <b>Example:</b>
+        <pre><code>GET <em> https://developer.nrel.gov/api/reopt/v1/simulated_load?api_key={key}&doe_reference_name=Hospital&latitude=40.123&longitude=-111.123&load_type=heating&annual_mmbtu=123000</em></code></pre>
+
+        <br>
+        <h2>Cooling</h2>
+        When <em>load_type</em> is 'cooling',a <b>LoadProfileChillerThermal</b> is constructed. Query parameters include:
+          <ul>
+              <li>api_key</li>
+              <li>load_type</li>
+              <li>doe_reference_name</li>
+              <li>latitude</li>
+              <li>longitude</li>
+              <li>annual_tonhour</li>
+              <li>monthly_tonhour (alternative to <em>annual_tonhour</em>)</li>
+              <li>chiller_cop</li>
+              <li>max_thermal_factor_on_peak_load</li>
+          </ul>
+          
+          <b>Note:</b> <em>monthly_tonhour</em> can be a list of 12 values (e.g. [100,200,350,400,600,900,1000,1200,600,500,400,300]) or broken out into 12 0-indexed parameters (i.e. monthly_tonhour[0]=100,monthly_tonhour[0]=200,monthly_tonhour[0]=350,...). Also, if neither <em>annual_tonhour</em> or <em>monthly_tonhour</em> are  provided, a default annual energy consumption will be assumed based on the CRB dataset. Furthermore, if <em>max_thermal_factor_on_peak_load</em> is not provided, the default as specified in <button type="button" data-target="#LoadProfileChillerThermalinputs_panel" class="btn btn-secondary btn-sm scroll_button">LoadProfileChillerThermal</button> will be used. A default <em>chiller_cop</em> will also be calculated based on the load if one is not provided.
+          <br><br>
+          When <em>load_type</em> is 'heating' and the input parameters as described have been provided, response attributes include: <em>loads_ton</em>, <em>annual_tonhour</em>, <em>min_ton</em>, <em>mean_ton</em>, <em>max_ton</em>, <em>chiller_cop</em>
+          <br><br>
+          <b>Example:</b>
+        <pre><code>GET <em> https://developer.nrel.gov/api/reopt/v1/simulated_load?api_key={key}&doe_reference_name=Hospital&latitude=40.123&longitude=-111.123&load_type=cooling&monthly_tonhour=[100,200,350,400,600,900,1000,1200,600,500,400,300]</em></code></pre>
+        <br>
+        <h4>Cooling Alternate Format</h3>
+        When <em>load_type</em> is 'cooling', a <b>LoadProfileChillerThermal</b> load profile can be returned as a percentage of total load for a default CRB profile, using these alternative query parameters:
+          <ul>
+              <li>api_key</li>
+              <li>load_type</li>
+              <li>doe_reference_name</li>
+              <li>latitude</li>
+              <li>longitude</li>
+              <li>annual_fraction</li>
+              <li>monthly_fraction (alternative to <em>annual_fraction</em>)</li>
+          </ul>
+          <b>Note:</b> <em>monthly_fraction</em> can be a list of 12 values (e.g. [0.25,0.15,0.25,0.2,0.2,0.2,0.45,0.5,0.35,0.3,0.3,0.25,]) or broken out into 12 0-indexed parameters (i.e. monthly_fraction[0]=0.25,monthly_fraction[0]=0.15,monthly_fraction[0]=0.25,...).
+          When <em>load_type</em> is 'heating' and the input parameters as described have been provided, response attributes include: <em>loads_fraction</em>, <em>annual_fraction</em>, <em>min_fraction</em>, <em>mean_fraction</em>, <em>max_fraction</em>.
+          <br><br>
+          <b>Example:</b>
+          <pre><code>GET <em> https://developer.nrel.gov/api/reopt/v1/simulated_load?api_key={key}&doe_reference_name=Hospital&latitude=40.123&longitude=-111.123&load_type=cooling&annual_fraction=0.22</em></code></pre>
+
       </div>
       </div>
       <br>
@@ -185,7 +256,7 @@
       </div>
       <div class="col-11 offset-2">
         <b>Rate Limit:</b> None <br><br>
-        Provides the generator efficiency (<em>slope_gal_per_kwh</em> and <em>intercept_gal_per_hr</em>) for a given nameplate capacity.<br><br>
+        Provides the <button type="button" data-target="#Generatorinputs_panel" class="btn btn-secondary btn-sm scroll_button">Generator</button> efficiency (<em>slope_gal_per_kwh</em> and <em>intercept_gal_per_hr</em>) for a given nameplate capacity.<br><br>
 
         Query parameters include:
           <ul>
@@ -205,7 +276,7 @@
       </div>
       <div class="col-11 offset-2">
         <b>Rate Limit:</b> None <br><br>
-        Provides the hourly emissions profile in pounds of carbon dioxide per kilowatt for a given location.<br><br>
+        Provides the <button type="button" data-target="#ElectricTariffinputs_panel" class="btn btn-secondary btn-sm scroll_button">ElectricTariff</button> hourly emissions profile in pounds of carbon dioxide per kilowatt for a given location.<br><br>
 
         Query parameters include:
           <ul>
@@ -218,6 +289,108 @@
         <pre><code>GET <em> https://developer.nrel.gov/api/reopt/v1/emissions_profile?api_key={key}&latitude=40.123&longitude=-111.123</em></code></pre>
       </div>
       </div>
+
+      
+      <div class="row">
+      <div class="col-11 offset-1">
+      <small> GET </small><b><em>v1/chp_defaults</em></b><br>
+      </div>
+      <div class="col-11 offset-2">
+        <b>Rate Limit:</b> None <br><br>
+        This endpoint returns <button type="button" data-target="#CHPinputs_panel" class="btn btn-secondary btn-sm scroll_button">CHP</button> defaults including: <em>prime_mover</em>, <em>size_class</em>, <em>hw_or_steam</em>, <em>default_inputs</em>, <em>chp_size_based_on_avg_heating_load_kw</em>, <em>size_class_bounds</em>.
+        <br><br>
+        Query parameters include:
+          <ul>
+              <li>api_key</li>
+              <li>existing_boiler_production_type_steam_or_hw</li>
+              <li>avg_boiler_fuel_load_mmbtu_per_hr</li>
+              <li>prime_mover</li>
+              <li>size_class</li>
+          </ul>
+
+          Must provide <em>api_key</em> and either <em>existing_boiler_production_type_steam_or_hw</em> and <em>avg_boiler_fuel_load_mmbtu_per_hr</em> or <em>prime_mover</em>.
+          <br><br>
+          <b>Example:</b>
+        <pre><code>GET <em> https://developer.nrel.gov/api/reopt/v1/chp_defaults?api_key={key}&existing_boiler_production_type_steam_or_hw=steam&avg_boiler_fuel_load_mmbtu_per_hr=4.5</em></code></pre>
+      </div>
+      </div>
+      <br>
+
+      <div class="row">
+      <div class="col-11 offset-1">
+      <small> GET </small><b><em>v1/loadprofile_chillerthermal_chiller_cop</em></b><br>
+      </div>
+      <div class="col-11 offset-2">
+        <b>Rate Limit:</b> None <br><br>
+
+        This endpoint provides the COP of an <button type="button" data-target="#ElectricChillerinputs_panel" class="btn btn-secondary btn-sm scroll_button">ElectricChiller</button> subject to a maximum cooling load, as well as a tonhour to kilowatt-thermal conversion factor. 
+        <br><br>
+        Query parameters include:
+          <ul>
+              <li>api_key</li>
+              <li>max_kw</li>
+              <li>max_ton</li>
+              <li>max_thermal_factor_on_peak_load</li>
+          </ul>
+          Supply <em>api_key</em> and either <em>max_kw</em> or <em>max_ton</em>. By default, <em>max_thermal_factor_on_peak_load</em> is 1.25.
+          <br><br>
+          <b>Example:</b>
+        <pre><code>GET <em> https://developer.nrel.gov/api/reopt/v1/loadprofile_chillerthermal_chiller_cop?api_key={key}&max_kw=12&max_thermal_factor_on_peak_load=1.22</em></code></pre>
+      </div>
+      </div>
+      <br>
+
+      <div class="row">
+      <div class="col-11 offset-1">
+      <small> GET </small><b><em>v1/absorption_chiller_defaults</em></b><br>
+      </div>
+      <div class="col-11 offset-2">
+        <b>Rate Limit:</b> None <br><br>
+        This provides <button type="button" data-target="#AbsorptionChillerinputs_panel" class="btn btn-secondary btn-sm scroll_button">AbsorptionChiller</button> COP (and electric COP) subject to <em>hot_water_or_steam</em>  and/or <em>prime_mover</em> inputs, as well as the <em>installed_cost_us_dollars_per_ton</em> and <em>om_cost_us_dollars_per_ton</em> of a system based on the peak cooling thermal load.
+
+        <br><br>
+        Query parameters include:
+          <ul>
+              <li>api_key</li>
+              <li>max_cooling_load_tons</li>
+              <li>hot_water_or_steam</li>
+              <li>prime_mover</li>
+          </ul>
+          <br><br>
+          Note that <em>hot_water_or_steam</em> and <em>prime_mover</em> are optional. The default value for <em>hot_water_or_steam</em> is hot_water. If hot_water_or_steam is provided, <em>prime_mover</em> is not used. If hot_water_or_steam is NOT provided and prime_mover is, <em>prime_mover</em> will refer to Boiler prime mover defaults.
+          <br>
+          <b>Example:</b>
+        <pre><code>GET <em> https://developer.nrel.gov/api/reopt/v1/absorption_chiller_defaults?api_key={key}&max_cooling_load_tons=123&hot_water_or_steam=hot_water</em></code></pre>
+      </div>
+      </div>
+      <br>
+
+
+      <div class="row">
+      <div class="col-11 offset-1">
+      <small> GET </small><b><em>v1/schedule_stats</em></b><br>
+      </div>
+      <div class="col-11 offset-2">
+        <b>Rate Limit:</b> None <br><br>
+        Returns parameters for defining and summarizing <button type="button" data-target="#ElectricChillerinputs_panel" class="btn btn-secondary btn-sm scroll_button">ElectricChiller</button> unavailability periods, including <em>formatted_datetime_periods</em> (ISO 8601 YYYY-MM-DDThh format) and <em>weekday_weekend_total_hours_by_month</em>, a summary of a yearly profile that calculates weekday, weekend, and total hours by month.
+    
+        Query parameters include:
+          <ul>
+              <li>api_key</li>
+              <li>year</li>
+              <li>chp_prime_mover</li>
+              <li>chp_unavailability_periods</li>
+          </ul>
+          Note, <em>chp_prime_mover</em> is required if chp_unavailability_periods is not provided, otherwise not required or used. Also, </em>chp_unavailability_periods</em> is list of dictionaries, one dict per unavailability period (as defined in the CHP input attributes table below).
+    
+          <br>
+          <b>Example:</b>
+        <pre><code>GET <em> https://developer.nrel.gov/api/reopt/v1/schedule_stats?api_key={key}&chp_prime_mover=recip_engine&year=2019</em></code></pre>
+      </div>
+      </div>
+      <br>
+
+
       </div>
 
       <h3>Analysis</h3><br>
@@ -61999,6 +62172,8 @@
       <tr><td><small><b>present_worth_factor</b></small><br><br><div><small><span> <strong class="doc-parameters-value-field">Type: </strong>float</span><br><span> </span></small></div></td><td style="word-wrap: break-word;"><span>Present worth factor used in assessed avoided outage costs. Note that if the outage event is 'major', i.e. only occurs once, then the present_worth_factor is 1.</span></td></tr>
 
       <tr><td><small><b>avg_critical_load</b></small><br><br><div><small><span> <strong class="doc-parameters-value-field">Type: </strong>float</span><br><span><strong class="doc-parameters-value-field">Units: </strong> kWh</span></small></div></td><td style="word-wrap: break-word;"><span>Average critical load during an outage</span></td></tr>
+
+      <tr><td><small><b>avoided_outage_costs_us_dollars</b></small><br><br><div><small><span> <strong class="doc-parameters-value-field">Type: </strong>float</span><br><span><strong class="doc-parameters-value-field">Units: </strong> $</span></small></div></td><td style="word-wrap: break-word;"><span>Estimated value provided by the system in terms of costs that would have otherwise been incurred during an outage in the business-as-usual scenario.</span></td></tr>
 
 
     </tbody></table>
