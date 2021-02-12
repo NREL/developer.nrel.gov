@@ -1,8 +1,8 @@
 ---
-title: US Virtual Buoy Wave Data
-summary: Collect and download, as CSV, a configurable set of wave data fields from virtual buoys.
+title: US West Coast Hindcast Wave Data
+summary: Collect and download, as CSV, a configurable set of wave data fields from .
 detail: This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.
-url: /api/v2/wave/us-virtual-buoy-download
+url: /api/v2/wave/us-west-coast-hindcast-download
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
@@ -57,7 +57,7 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>direction, directional_wave_spectrum, directionality_coefficient, energy_period, frequency, frequency_bin_edges, maximum_energy_direction, mean_absolute_period, mean_wave_direction, mean_zero-crossing_period, omni-directional_wave_power, peak_period, significant_wave_height, spectral_width</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>directionality_coefficient, energy_period, maximum_energy_direction, mean_absolute_period, mean_wave_direction, mean_zero-crossing_period, omni-directional_wave_power, peak_period, significant_wave_height, spectral_width, time_index, water_depth</em></div>
       </td>
       <td class="doc-parameter-description">
         Each specified attribute(*) will be returned as a column in the resultant CSV download.
@@ -245,13 +245,13 @@ Direct streaming of CSV data is supported for single location, single year only.
 <div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?api_key=DEMO_KEY&full_name=Sample+User&email=sample@email.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-124.2 46.2)&names=2010&utc=true&leap_day=true</code></div>
 
 ```csv
-Source,Location ID,Jurisdiction,Latitude,Longitude,Time Zone,Local Time Zone,Distance to Shore,Direction,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth,Version
-NSRDB,0,b'Federal',46.2,-124.2,0,-8,10457.422,deg,-,s,deg,s,deg,s,W/m,s,m,-,m,v1.0.0
-Year,Month,Day,Hour,Minute,Direction,Coordinates,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth
-2010,1,1,0,0,,46.20000076293945,0.9143819808959961,8.48550033569336,25,7.408199787139893,29.615999221801758,6.652599811553955,53452,11.013500213623047,3.495500087738037,0.3121500015258789,
-2010,1,1,1,0,,34.95600128173828,0.9070789813995361,8.592399597167969,25,7.569699764251709,31.18400001525879,6.867199897766113,53113,11.013500213623047,3.4603700637817383,0.3053300082683563,
-2010,1,1,2,0,,37.362998962402344,0.9011200070381165,8.69279956817627,25,7.672100067138672,32.11899948120117,6.965400218963623,51439,11.013500213623047,3.382349967956543,0.30270999670028687,
-2010,1,1,3,0,,38.242000579833984,0.8960599899291992,8.732799530029297,25,7.677800178527832,33.20500183105469,6.9421000480651855,50786,11.013500213623047,3.3503499031066895,0.30594998598098755,
+Source,Location ID,Jurisdiction,Latitude,Longitude,Time Zone,Local Time Zone,Distance to Shore,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth,Version
+NSRDB,6,b'Canada',48.7261,-125.735,0,-8,25022.521,-,s,deg,s,deg,s,W/m,s,m,-,m,v1.0.0
+Year,Month,Day,Hour,Minute,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth
+2010,1,1,0,0,0.7430920004844666,7.980100154876709,45,6.493599891662598,69.25299835205078,5.601600170135498,30369,11.013500213623047,2.7738099098205566,0.38694000244140625,
+2010,1,1,3,0,0.820123016834259,8.767999649047852,45,7.562900066375732,58.25400161743164,6.708000183105469,28324,9.101699829101562,2.5543301105499268,0.3178200125694275,
+2010,1,1,6,0,0.87534499168396,9.151900291442871,45,8.133099555969238,49.43600082397461,7.355999946594238,26162,11.013500213623047,2.4019699096679688,0.2858000099658966,
+2010,1,1,9,0,0.8557509779930115,8.202699661254883,45,6.8653998374938965,57.36899948120117,5.986800193786621,29702,10.01200008392334,2.705440044403076,0.35593000054359436,
 ```
 
 ### POST request example in Python
