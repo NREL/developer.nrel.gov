@@ -375,7 +375,7 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
 
       <div class="row">
       <div class="col-11 offset-1">
-      <small> POST </small><b><em>v1/job/&lt;run_uuid&gt;/outagesimjob</em></b><br>
+      <small> POST </small><b><em>v1/outagesimjob</em></b><br>
       </div>
         <div class="col-11 offset-2">
           <b>Rate Limit:</b> 1,000 requests/hr <br><br>
@@ -62037,8 +62037,8 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
   <br>
 
   <div id = "ModelingResilience">
-  <h4>Modeling Resilience</h4>
-    Note the REopt™ API can make system size recommendations such that a user defined outage can be survived. Define an outage duration, start time and end time in the <span  class='btn btn-secondary btn-sm scroll_button' data-target="#LoadProfileinputs_panel">LoadProfile</span> directory to enable this capability. 
+  <h4>Resilience vs Financial Runs</h4>
+    By default, the REopt Lite API will seek cost-optimal DER solutions such that there are savings realized through system implementation (or there is no system sized and there are no savings). This is a <b>Financial</b> run. The REopt Lite API can also make system size recommendations such that a user-defined outage can be survived. In these <b>Resilience</b> runs, it is possible that the savings are negative such that implementing the system actually costs more than the business as usual scenario. Note, however, that in <b>Resilience</b> cases the costs incurred during the outage (i.e. damaged equiptment, lost productivity) are not considered by the optimization. The only difference between a <b>Financial</b> run and a <b>Resilience</b> run is that the latter defines an outage duration in the <span  class='btn btn-secondary btn-sm scroll_button' data-target="#LoadProfileinputs_panel">LoadProfile</span> input using the <code>outage_start_time_step</code> and <code>outage_end_time_step</code> inputs. By default a <code>critical_load_pct</code> of 50% is used, but this can be changed or overwritten by <code>critical_load_series_kw</code>. 
   </div>
   <br>
 
