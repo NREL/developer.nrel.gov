@@ -1,0 +1,319 @@
+---
+title: "NSRDB Full Disc"
+summary: "This data provides monthly average and annual average daily total solar resource averaged over surface cells of 0.02 degrees in both latitude and longitude, or nominally 2 km in size. The solar radiation values represent the resource available to solar energy systems. The data was created using cloud properties which are generated using the AVHRR Pathfinder Atmospheres-Extended (PATMOS-x) algorithms. Fast all-sky radiation model for solar applications (FARMS) in conjunction with the cloud properties, and aerosol optical depth (AOD) and precipitable water vapor (PWV) from ancillary source are used to estimate DNI and GHI. The direct normal irradiance (DNI) and GHI are computed for clear skies using the REST2 model. For cloud scenes identified by the cloud mask, the FARMS is used to compute the GHI. The DNI for cloud scenes is then computed using the DISC model."
+detail: "The PATMOS-X model uses 10 minute radiance images in visible and infrared channels from the GOES series of geostationary weather satellites, daily snow cover data from the NSIDC and mixing ratio, temperature and pressure profiles from the Modern Era-Retrospective Analysis (MERRA-2) dataset. The REST2 model uses hourly aerosol optical depth from MERRA-2 to calculate GHI and DNI; water vapor and other inputs for REST 2 are obtained from the MERRA-2."
+url: /api/nsrdb/v2/solar/full-disc-download
+---
+
+# <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
+<%= current_page.data.summary %>
+
+<%= current_page.data.detail %>
+
+<ul id="toc"></ul>
+
+## Request URL
+
+<pre>GET|POST <%= current_page.data.url %><em>.format?parameters</em></pre>
+
+## Request Parameters
+_NOTE: when using POST to submit a request the api_key must still be included as a query parameter in the url. All other parameters may be included in a POST request as part of the payload._
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Parameter</th>
+      <th class="doc-parameters-required" scope="col">Required</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">api_key</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Your developer API key. See <a href="/docs/api-key/">API keys</a> for more information.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">wkt</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> well-known text string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        A well-known text (WKT) representation of the geometry for which to extract data. May be a point, multipoint, or polygon geometry. When a point is passed the site nearest to that point is used. When a multipoint is passed the site nearest each point is used. This can be useful for downloading multiple sites in a single request when those sites are geographically distant from each other. When a polygon is passed all sites that intersect with the given polygon are used.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">attributes</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>air_temperature, alpha, aod, asymmetry, cld_opd_dcomp, cld_reff_dcomp, clearsky_dhi, clearsky_dni, clearsky_ghi, cloud_type, coordinates, dew_point, dhi, dni, fill_flag, ghi, ozone, relative_humidity, solar_zenith_angle, ssa, surface_albedo, surface_pressure, total_precipitable_water, wind_direction, wind_speed</em>.</div>
+      </td>
+      <td class="doc-parameter-description">
+        Each specified attribute(*) will be returned as a column in the resultant CSV download.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">names</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2017, 2018, 2019</em>.</div>
+      </td>
+      <td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">utc</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> true</div>
+      </td>
+      <td class="doc-parameter-description">
+        Pass true to retrieve data with timestamps in UTC. Pass false to retrieve data with timestamps converted to local time of data point (without daylight savings time).
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">leap_day</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> false</div>
+      </td>
+      <td class="doc-parameter-description">
+        Pass true to retrieve data including leap day (where appropriate). Pass false to retrieve data excluding leap day.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">interval</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> 15, 30 or 60</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        This value determines data resolution. Either 15, 30 or 60 minute intervals are available.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">full_name</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">The full name of the user requesting data.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">email</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> email string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        An active email for the user requesting data. This email will be used to deliver the extracted data.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">affiliation</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        The organization with which the user requesting the data is affiliated.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">reason</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">The reason that the user is requesting the data.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">mailing_list</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> false</div>
+      </td>
+      <td class="doc-parameter-description">
+        Pass true to add the email address to our list of recipients for the NSRDB mailing list.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Response Fields
+
+The response is composed of service-related informational fields and the results of the data query.
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">errors</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> string array</div>
+      </td>
+      <td class="doc-parameter-description">
+      <p>A list of error messages</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">inputs</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
+      </td>
+      <td class="doc-parameter-description">Key: Value pairs representing all input parameters</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">outputs</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
+      </td>
+      <td class="doc-parameter-description">Upon successful completion a message will be returned informing the user that file generation is in progress and an email will be sent to the address provided in the <code>email</code> input field when the download is ready</td>
+    </tr>
+  </tbody>
+</table>
+
+## Data File Format
+
+Generated data files are formatted in accordance with the Standard Time Series Data File Format. This file format has been developed to support [SAM](https://sam.nrel.gov/) and other NREL models and is documented fully in [this PDF](https://sam.nrel.gov/sites/default/files/content/documents/pdf/wfcsv.pdf). More information on SAM file formats available on [the SAM weather page](https://sam.nrel.gov/weather).
+
+## Examples
+
+### JSON Output Format
+
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&full_name=Sample+User&email=sample@email.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT(14.61 -24.26)&attributes=wind_speed&names=2017&utc=true&leap_day=true&interval=15</code></div>
+
+```json
+{
+    "inputs": {
+        "wkt": "POINT(179.9901 -16.96)",
+        "attributes": "alpha,aod,ghi,dni,dhi",
+        "names": "2018",
+        "utc": "true",
+        "leap_day": "true",
+        "interval": "15",
+        "email": "erik.wiffin@nrel.gov",
+        "no_cache": "true"
+    },
+    "metadata": {
+        "version": "2.0.0",
+        "resultset": {
+            "count": 1
+        }
+    },
+    "status": 200,
+    "outputs": {
+        "message": "File generation in progress. An email will be sent to erik.wiffin@nrel.gov when the download is ready.",
+        "downloadUrl": "https://mapfiles.nrel.gov/data/solar/e3e3b0fb24a646b8ae920f628ebdc62e.zip"
+    },
+    "errors": []
+}
+```
+
+
+### CSV Output Format
+Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.
+
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?api_key=DEMO_KEY&wkt=POINT(179.9901 -16.96)&attributes=alpha,aod,ghi,dni,dhi&names=2018&utc=true&leap_day=true&interval=30&email=paul.susmarski@nrel.gov</code></div>
+
+```csv
+Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,Local Time Zone,Clearsky DHI Units,Clearsky DNI Units,Clearsky GHI Units,Dew Point Units,DHI Units,DNI Units,GHI Units,Solar Zenith Angle Units,Temperature Units,Pressure Units,Relative Humidity Units,Precipitable Water Units,Wind Direction Units,Wind Speed,Cloud Type -15,Cloud Type 0,Cloud Type 1,Cloud Type 2,Cloud Type 3,Cloud Type 4,Cloud Type 5,Cloud Type 6,Cloud Type 7,Cloud Type 8,Cloud Type 9,Cloud Type 10,Cloud Type 11,Cloud Type 12,Fill Flag 0,Fill Flag 1,Fill Flag 2,Fill Flag 3,Fill Flag 4,Fill Flag 5,Surface Albedo Units,Version
+NSRDB,8683089,-,b'Northern',b'Fiji',-16.96,179.99,0,45,12,w/m2,w/m2,w/m2,c,w/m2,w/m2,w/m2,Degree,c,mbar,%,cm,Degrees,m/s,N/A,Clear,Probably Clear,Fog,Water,Super-Cooled Water,Mixed,Opaque Ice,Cirrus,Overlapping,Overshooting,Unknown,Dust,Smoke,N/A,Missing Image,Low Irradiance,Exceeds Clearsky,Missing CLoud Properties,Rayleigh Violation,N/A,unknown
+Year,Month,Day,Hour,Minute,Alpha,AOD,GHI,DNI,DHI
+2018,1,1,0,0,0.9,0.0687,219,9,210
+2018,1,1,0,30,0.9,0.0687,468,36,432
+2018,1,1,1,0,0.92,0.0679,383,22,362
+2018,1,1,1,30,0.92,0.0679,180,4,175
+2018,1,1,2,0,0.9400000000000001,0.0668,143,0,143
+2018,1,1,2,30,0.9400000000000001,0.0668,122,0,122
+2018,1,1,3,0,0.97,0.0671,56,0,56
+2018,1,1,3,30,0.97,0.0671,89,0,89
+2018,1,1,4,0,1,0.0668,54,0,54
+2018,1,1,4,30,1,0.0668,74,0,74
+2018,1,1,5,0,1.03,0.06520000000000001,64,0,64
+2018,1,1,5,30,1.03,0.06520000000000001,29,0,29
+2018,1,1,6,0,1.05,0.0636,15,0,15
+2018,1,1,6,30,1.05,0.0636,12,76,10
+2018,1,1,7,0,1.07,0.061700000000000005,0,0,0
+2018,1,1,7,30,1.07,0.061700000000000005,0,0,0
+2018,1,1,8,0,1.08,0.0606,0,0,0
+2018,1,1,8,30,1.08,0.0606,0,0,0
+2018,1,1,9,0,1.09,0.060000000000000005,0,0,0
+2018,1,1,9,30,1.09,0.060000000000000005,0,0,0
+2018,1,1,10,0,1.1,0.060200000000000004,0,0,0
+2018,1,1,10,30,1.1,0.060200000000000004,0,0,0
+```
+
+### POST request example in Python
+
+```python
+import requests
+
+url = "http://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
+
+payload = "wkt=POINT(179.9901 -16.96)&attributes=alpha,aod,ghi,dni,dhi&names=2018&utc=true&leap_day=true&interval=30&email=paul.susmarski@nrel.gov"
+
+headers = {
+    'content-type': "application/x-www-form-urlencoded",
+    'cache-control': "no-cache"
+}
+
+response = requests.request("POST", url, data=payload, headers=headers)
+
+print(response.text)
+```
+
+<h2 id="rate-limits">Rate Limits</h2>
+
+Rate limits for this application are significantly less than the [standard rate limits](/docs/rate-limits){:target="_blank"} for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.
+
+There are two levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.
+
+In addition to this limit, the service has a secondary fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.
+
+For some tips and tricks to maximize data downloads please read the guide [here](/docs/solar/nsrdb/guide).
+
+<h2 id="errors">Errors</h2>
+
+<p><a href="/docs/errors/">Standard errors</a> may be returned. In addition, the following service-specific errors may be returned:</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col" style="width: 100px;">HTTP Status Code</th>
+      <th class="doc-parameters-required" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">400</th>
+      <td class="doc-parameter-description">Bad Request: When required parameters are missing.</td>
+    </tr>
+  </tbody>
+</table>
