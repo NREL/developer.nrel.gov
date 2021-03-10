@@ -1,8 +1,8 @@
 ---
-title: Offshore Hawaii Wind Data Download
-summary: The Offshore Hawaii Dataset is a 20-year wind resource dataset for offshore Offshore Hawaii. Produced in 2020, this data set replaces NREL's Wind Integration National Dataset (WIND) Toolkit for offshore Offshore Hawaii, which was produced and released publicly in 2013 and is currently the principal data set used by stakeholders for wind resource assessment in the continental United States. Both the WIND Toolkit and this new data set are created using the Weather Research and Forecasting (WRF) numerical weather prediction model (NWP).
-detail: "The Offshore Hawaii shares many of the same attributes as the WIND Toolkit, including 5-minute time resolution and 2-kilometer horizontal spatial resolution. However, the new data set improves upon - the WIND Toolkit through:"
-url: /api/wind-toolkit/v2/wind/offshore-hawaii-download
+title: Offshore NW Pacific Wind Data Download
+summary: The Offshore NW Pacific Dataset is a 20-year wind resource dataset for offshore Offshore NW Pacific. Produced in 2020, this data set replaces NREL's Wind Integration National Dataset (WIND) Toolkit for offshore Offshore NW Pacific, which was produced and released publicly in 2013 and is currently the principal data set used by stakeholders for wind resource assessment in the continental United States. Both the WIND Toolkit and this new data set are created using the Weather Research and Forecasting (WRF) numerical weather prediction model (NWP).
+detail: "The Offshore NW Pacific shares many of the same attributes as the WIND Toolkit, including 5-minute time resolution and 2-kilometer horizontal spatial resolution. However, the new data set improves upon - the WIND Toolkit through:"
+url: /api/wind-toolkit/v2/wind/offshore-nw-pacific-download
 ---
 <%= current_page.data.summary %>
 
@@ -63,7 +63,7 @@ url: /api/wind-toolkit/v2/wind/offshore-hawaii-download
 
 			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
 
-			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>friction_velocity_2m, inversemoninobukhovlength_2m, roughness_length, surface_sea_temperature, pressure_0m, pressure_100m, pressure_200m, relativehumidity_2m, precipitationrate_0m, windspeed_10m, windspeed_40m, windspeed_60m, windspeed_80m, windspeed_100m, windspeed_120m, windspeed_140m, windspeed_160m, windspeed_180m, windspeed_200m, winddirection_10m, winddirection_20m, winddirection_40m, winddirection_60m, winddirection_80m, winddirection_100m, winddirection_120m, winddirection_140m, winddirection_160m, winddirection_180m, winddirection_200m, temperature_2m, temperature_10m, temperature_20m, temperature_40m, temperature_60m, temperature_80m, temperature_100m, temperature_120m, temperature_140m, temperature_160m, temperature_180m, temperature_200m, wind_speed, wind_direction, pressure, temperature</em></div>
+			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>friction_velocity_2m, inversemoninobukhovlength_2m, skin_temperature, roughness_length, surface_heat_flux, surface_sea_temperature, pressure_0m, pressure_100m, pressure_200m, pressure_300m, relativehumidity_2m, precipitationrate_0m, temperature_100m, turbulent_kinetic_energy_100m, winddirection_100m, windspeed_100m, temperature_10m, turbulent_kinetic_energy_10m, winddirection_10m, windspeed_10m, temperature_120m, turbulent_kinetic_energy_120m, winddirection_120m, windspeed_120m, temperature_140m, turbulent_kinetic_energy_140m, winddirection_140m, windspeed_140m, temperature_160m, turbulent_kinetic_energy_160m, winddirection_160m, windspeed_160m, temperature_180m, turbulent_kinetic_energy_180m, winddirection_180m, windspeed_180m, temperature_200m, turbulent_kinetic_energy_200m, winddirection_200m, windspeed_200m, temperature_20m, turbulent_kinetic_energy_20m, winddirection_20m, windspeed_20m, temperature_220m, turbulent_kinetic_energy_220m, winddirection_220m, windspeed_220m, temperature_240m, turbulent_kinetic_energy_240m, winddirection_240m, windspeed_240m, temperature_260m, turbulent_kinetic_energy_260m, winddirection_260m, windspeed_260m, temperature_280m, turbulent_kinetic_energy_280m, winddirection_280m, windspeed_280m, temperature_2m, temperature_300m, turbulent_kinetic_energy_300m, winddirection_300m, windspeed_300m, temperature_400m, turbulent_kinetic_energy_400m, winddirection_400m, windspeed_400m, temperature_40m, turbulent_kinetic_energy_40m, winddirection_40m, windspeed_40m, temperature_500m, turbulent_kinetic_energy_500m, winddirection_500m, windspeed_500m, temperature_60m, turbulent_kinetic_energy_60m, winddirection_60m, windspeed_60m, temperature_80m, turbulent_kinetic_energy_80m, winddirection_80m, windspeed_80m</em></div>
 			</td>
 			<td class="doc-parameter-description">Each specified attribute will be returned as a column in the resultant CSV download.</td>
 		</tr>
@@ -84,7 +84,7 @@ url: /api/wind-toolkit/v2/wind/offshore-hawaii-download
       <td class="doc-parameter-required">No</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> integer</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> 60</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> 5</div>
         <div class="doc-parameter-value-field"><strong>Options:</strong> <em>5, 15, 30, 60</em></div>
       </td>
       <td class="doc-parameter-description">
