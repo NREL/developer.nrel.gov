@@ -34,6 +34,15 @@ export default function ApiKeyFormPlugin() {
                       name: 'api_key',
                     },
                   },
+                  ApiKeyQueryAuth: {
+                    name: 'ApiKeyQueryAuth',
+                    value: apiKey,
+                    schema: {
+                      type: 'apiKey',
+                      in: 'query',
+                      name: 'api_key',
+                    },
+                  },
                 })
               }
 

@@ -28,7 +28,7 @@ paths:
                 $ref: "#/components/schemas/RouteResponse"
   /network:
     post:
-      summary: Network energy prediction
+      summary: Estimate energy consumption across a transportation network.
       requestBody:
         description: A JSON object with your real or predicted transportation network data.
         required: true
