@@ -1,0 +1,431 @@
+openapi: 3.0.0
+info:
+  title: RouteE API
+  description: The Route Energy Prediction Model (RouteE) predicts the energy consumption of a given vehicle over a proposed route. This is the API endpoint for the energy prediction side of RouteE, which can be used to get either single vehicle route energy estimate, or transportation network-wide energy consumption estimates. For more on RouteE, please visit <https://www.nrel.gov/transportation/route-energy-prediction-model.html>.
+  version: "1.0"
+security:
+  - ApiKeyQueryAuth: []
+  - ApiKeyHeaderAuth: []
+servers:
+  - url: https://developer.nrel.gov/api/routee/v1
+paths:
+  /route:
+    post:
+      summary: Estimate energy consumption for a single route.
+      requestBody:
+        description: A JSON object with your real or predicted vehicle route data.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RouteRequest"
+      responses:
+        "200":
+          description: A JSON object with the returned energy consumption estimates and metadata for the provided route.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RouteResponse"
+  /network:
+    post:
+      summary: Network energy prediction
+      requestBody:
+        description: A JSON object with your real or predicted transportation network data.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NetworkRequest"
+      responses:
+        "200":
+          description: A JSON object with the returned energy consumption estimates and metadata for the provided network.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NetworkResponse"
+components:
+  securitySchemes:
+    ApiKeyQueryAuth:
+      type: apiKey
+      in: query
+      name: api_key
+    ApiKeyHeaderAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+  schemas:
+    RouteRequest:
+      type: object
+      required: [route, model, field_mapper]
+      properties:
+        route:
+          type: object
+          description: Input object of arrays corresponding to your route segment data.
+          properties:
+            your_input_ids:
+              type: array
+              items:
+                type: string
+                description: Unique identifiers for each road segement of the route. (Such as TMC codes)
+                example: ["110N04615", "110N04616", "110N04617"]
+            your_input_miles:
+              type: array
+              items:
+                type: number
+                description: Distance (in miles) of the road segment.
+                example: [.12,.2,.13]
+            your_input_speed:
+              type: array
+              items:
+                type: number
+                description: Real or predicted speed of the for the road segment.
+                example: [50.3, 50.0, 47.6]
+            your_input_grade:
+              type: array
+              items:
+                type: number
+                description: Floating point value representing the gradient of the road segment.
+                example: [0.01, 0.02, 0.02]
+        model:
+          type: string
+          description: Vehicle fuel type (Conventional gasoline (CV), diesel vehicle (diesel), battery electric vehicle (BEV), hybrid electric vehicle (HEV), plug-in hybrid electric vehicle(PHEV)).
+          enum: [cv, bev, hev, diesel, phev]
+        field_mapper:
+          type: object
+          description: Object used to map your input field names with field names that RouteE uses for energy estimation.
+          properties:
+            id:
+              type: string
+              description: String representing what your input road segment ID field is named.
+              example: "your_id_field"
+            miles:
+              type: string
+              description: String representing what your input road segment length (in miles) field is named.
+              example: "your_miles_field"
+            gpsspeed:
+              type: string
+              description: String representing what your input road segment speed (in mph) field is named.
+              example: "your_speed_field"
+            grade:
+              type: string
+              description: String representing what your input road segment gradient field is named.
+              example: "your_grade_field"
+        omit_grade:
+          type: boolean
+          description: If no gradient information is available, this can be passed as True to assume 0% grade on all trip segments.
+          default: False
+    NetworkRequest:
+      type: object
+      required: [network, field_mapper]
+      properties:
+        network:
+          type: object
+          description: Input object of arrays corresponding to your network transportation data.
+          properties:
+            your_input_ids:
+              type: array
+              items:
+                type: string
+                description: Unique identifiers for each road segement of the route. (Such as TMC codes)
+                example: ["110N04615", "110N04616", "110N04617"]
+            your_input_miles:
+              type: array
+              items:
+                type: number
+                description: Distance (in miles) of the road segment.
+                example: [.12,.2,.13]
+            your_input_speed:
+              type: array
+              items:
+                type: number
+                description: Real or predicted speed of the for the road segment.
+                example: [50.3, 50.0, 47.6]
+            your_input_grade:
+              type: array
+              items:
+                type: number
+                description: Floating point value representing the gradient of the road segment.
+                example: [0.01, 0.02, 0.02]
+            your_input_volume:
+              type: array
+              items:
+                type: number
+                description: Integer values of segement-level traffic counts.
+                example: [12, 12, 11]
+        date:
+          type: string
+          description: Date for the driving data in YYYY-MM-DD format.
+          pattern: '^\d{4}-\d{2}-\d{2}$'
+          example: "2021-05-03"
+        fleet_composition:
+          oneOf:
+            - type: string
+              description: String identifying the area of interest for fleet composition values from the pre-calculated.
+              enum: [dc, columbus, national]
+            - type: object
+              description: Manual object specifying the proprotion each fuel type represents in the total volume.
+              properties:
+                cv_gas:
+                  type: number
+                  description: Proportion of the transportation network that is represented by conventional gasoline vehicles (between 0.0 and 1.0).
+                cv_diesel:
+                  type: number
+                  description: Proportion of the transportation network that is represented by conventional diesel vehicles (between 0.0 and 1.0).
+                phev:
+                  type: number
+                  description: Proportion of the transportation network that is represented by plug-in hybrid electric vehicles (between 0.0 and 1.0).
+                hev:
+                  type: number
+                  description: Proportion of the transportation network that is represented by hybrid electric vehicles (between 0.0 and 1.0).
+                bev:
+                  type: number
+                  description: Proportion of the transportation network that is represented by battery electric vehicles (between 0.0 and 1.0).
+        field_mapper:
+          type: object
+          description: Object used to map your input field names with field names that RouteE uses for energy estimation.
+          properties:
+            id:
+              type: string
+              description: String representing what your input road segment ID field is named.
+              example: "your_id_field"
+            miles:
+              type: string
+              description: String representing what your input road segment length (in miles) field is named.
+              example: "your_miles_field"
+            gpsspeed:
+              type: string
+              description: String representing what your input road segment speed (in mph) field is named.
+              example: "your_speed_field"
+            grade:
+              type: string
+              description: String representing what your input road segment gradient field is named.
+              example: "your_grade_field"
+            volume:
+              type: string
+              description: String representing what your input road segment volumen is named.
+              example: "your_volunme_field"
+        omit_grade:
+          type: boolean
+          description: If no gradient information is available, this can be passed as True to assume 0% grade on all trip segments.
+          default: False
+    RouteResponse:
+      type: object
+      properties:
+        route:
+          type: object
+          properties:
+            your_input_ids:
+              type: array
+              items:
+                type: string
+                description: Unique identifiers for each road segement of the route. (Such as TMC codes)
+                example: ["110N04615", "110N04616", "110N04617"]
+            energy_estimate:
+              type: array
+              items:
+                type: number
+                description: Energy consumption estimates for each road segment.
+                example: [0.00123, 0.000124, 0.000128]
+        output_metadata:
+          type: object
+          properties:
+            Total Energy:
+              type: number
+              description: Measure of total energy consumed during the trip.
+              example: 0.00375
+            Energy Unit:
+              type: string
+              description: Unit of energy measurement
+              example: "GGE"
+            RouteE version:
+              type: string
+              description: Version of RouteE Powertrain used in the API.
+              example: "v0.1.0"
+            Vehicle description:
+              type: string
+              description: Vehicle model used in the energy estimation.
+              example: "built_in_routee_gas_model"
+            Data Dictionary:
+              type: object
+              properties:
+                output_fields:
+                  type: object
+                  description: Explanation of the output fields in the resulting data.
+                  properties:
+                    energy_estimate:
+                      type: string
+                      description: Indication that this is the resulting segment-level energy estimation data.
+                      example: "Resulting energy estimate array"
+    NetworkResponse:
+      type: object
+      properties:
+        network:
+          type: object
+          properties:
+            your_input_ids:
+              type: array
+              items:
+                type: string
+                description: Unique identifiers for each road segement of the route. (Such as TMC codes)
+                example: ["110N04615", "110N04616", "110N04617"]
+            cv_g_tot:
+              type: array
+              items:
+                type: number
+                description: Conventional gasoline vehicle energy consumption estimates.
+                example: [0.00123, 0.000124, 0.000128]
+            cv_d_tot:
+              type: array
+              items:
+                type: number
+                description: Diesel vehicle energy consumption estimates.
+                example: [0.00123, 0.000124, 0.000128]
+            phev_cd_tot:
+              type: array
+              items:
+                type: number
+                description: PHEV (charge depleting mode) vehicle energy consumption estimates.
+                example: [0.00123, 0.000124, 0.000128]
+            phev_cs_tot:
+              type: array
+              items:
+                type: number
+                description: PHEV (charge sustaining mode) energy consumption estimates.
+                example: [0.00123, 0.000124, 0.000128]
+            hev_tot:
+              type: array
+              items:
+                type: number
+                description: Hybrid electric vehicle energy consumption estimates.
+                example: [0.00123, 0.000124, 0.000128]
+            bev_tot:
+              type: array
+              items:
+                type: number
+                description: Battery electric vehicle energy consumption estimates.
+                example: [0.00123, 0.000124, 0.000128]
+            total_e:
+              type: array
+              items:
+                type: number
+                description: Energy consumption estimates for each road segment.
+                example: [0.00738, 0.000744, 0.000768]
+        output_metadata:
+          type: object
+          properties:
+            Energy summary:
+              type: object
+              properties:
+                Total BEV energy:
+                  type: number
+                  description: Total bettery electric vehicle energy consumed.
+                  example: 0.00323
+                Total HEV energy:
+                  type: number
+                  description: Total hybrid electric vehicle energy consumed.
+                  example: 0.00654
+                Total PHEV energy:
+                  type: number
+                  description: Total plug-in hybrid electric energy consumed.
+                  example: 0.00478
+                Total diesel energy:
+                  type: number
+                  description: Total diesel vehicle energy consumed.
+                  example: 1.418
+                Total energy:
+                  type: number
+                  description: Total energy consumed.
+                  example: 13.54132
+                Total gasoline energy:
+                  type: number
+                  description: Total gasoline vehicle energy consumed.
+                  example: 10.694
+            Energy unit:
+              type: string
+              description: Unit of energy measurement
+              example: "GGE"
+            Fleet composition:
+              type: object
+              properties:
+                bev:
+                  type: number
+                  description: Proportion of the transportation network that is represented by battery electric vehicles (between 0.0 and 1.0).
+                  example: 0.01
+                cv_diesel:
+                  type: number
+                  description: Proportion of the transportation network that is represented by diesel vehicles (between 0.0 and 1.0).
+                  example: 0.07
+                cv_gas:
+                  type: number
+                  description: Proportion of the transportation network that is represented by gasoline vehicles (between 0.0 and 1.0).
+                  example: 0.9
+                hev:
+                  type: number
+                  description: Proportion of the transportation network that is represented by hybrid electric vehicles (between 0.0 and 1.0).
+                  example: 0.01
+                phev_cd:
+                  type: number
+                  description: Proportion of the transportation network that is represented by plug-in hybrid electric vehicles in charge depleting mode (between 0.0 and 1.0).
+                  example: 0.005
+                phev_cs:
+                  type: number
+                  description: Proportion of the transportation network that is represented by plug-in hybrid electric vehicles in charge sustainging mode (between 0.0 and 1.0).
+                  example: 0.005
+            Data dictionary:
+              type: object
+              properties:
+                output_fields:
+                  type: object
+                  description: Explanation of the output fields in the resulting data.
+                  properties:
+                    total_e:
+                      type: string
+                      description: Indication that this is the resulting segment-level total energy estimation data.
+                      example: "Total energy"
+                    bev_tot:
+                      type: string
+                      description: Indication that this is the resulting segment-level BEV energy estimation data.
+                      example: "Total BEV energy"
+                    cv_g_tot:
+                      type: string
+                      description: Indication that this is the resulting segment-level gasoline vehicle energy estimation data.
+                      example: "Total gasoline energy"
+                    hev_tot:
+                      type: string
+                      description: Indication that this is the resulting segment-level HEV energy estimation data.
+                      example: "Total HEV energy"
+                    phev_tot:
+                      type: string
+                      description: Indication that this is the resulting segment-level PHEV energy estimation data.
+                      example: "Total PHEV energy"
+                    cv_d_tot:
+                      type: string
+                      description: Indication that this is the resulting segment-level diesel vehicle energy estimation data.
+                      example: "Total diesel energy"
+            RouteE version:
+              type: string
+              description: Version of RouteE Powertrain used in the API.
+              example: "v0.1.0"
+            RouteE Models:
+              type: object
+              properties:
+                BEV:
+                  type: string
+                  description: Description of RouteE BEV model used in the calculation.
+                  example: "built_in_routee_bev_model"
+                HEV:
+                  type: string
+                  description: Description of RouteE HEV model used in the calculation.
+                  example: "built_in_routee_gev_model"
+                PHEV:
+                  type: string
+                  description: Description of RouteE PHEV model used in the calculation.
+                  example: "built_in_routee_phev_model"
+                Diesel:
+                  type: string
+                  description: Description of RouteE diesel vehicle model used in the calculation.
+                  example: "built_in_routee_diesel_model"
+                Conventional Gasoline:
+                  type: string
+                  description: Description of RouteE gasoline vehicle used in the calculation.
+                  example: "built_in_routee_gas_model"
