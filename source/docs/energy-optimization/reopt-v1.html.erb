@@ -24,7 +24,7 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
     </p>
 
     <p>
-    Last updated: <em>02/01/2021</em>
+    Last updated: <em>03/30/2021</em>
     </p>
 
 <div class="row">
@@ -111,7 +111,7 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
         <b>Rate Limit:</b> None <br><br>
         Provides the annual energy timeseries for a <button type="button" data-target="#LoadProfileinputs_panel" class="btn btn-secondary btn-sm scroll_button">LoadProfile</button>, <button type="button" data-target="#LoadProfileBoilerFuelinputs_panel" class="btn btn-secondary btn-sm scroll_button">LoadProfileBoilerFuel</button>, or <button type="button" data-target="#LoadProfileChillerThermalinputs_panel" class="btn btn-secondary btn-sm scroll_button">LoadProfileChillerThermal</button> based on the Department of Energy <a href="https://energy.gov/eere/buildings/commercial-reference-buildings" target="_blank">Commercial Reference Building (CRB)</a> dataset. Only one load profile type can be returned based on the <em>load_type</em> specified. By default, <em>load_type</em> is assumed to be 'electric'. <br><br>
       
-        <h2>Electric</h2>
+        <h4>Electric</h4>
         When <em>load_type</em> is 'electric' a <b>LoadProfile</b> is constructed. Query parameters include:
           <ul>
               <li>api_key</li>
@@ -131,7 +131,7 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
         <pre><code>GET <em> https://developer.nrel.gov/api/reopt/v1/simulated_load?api_key={key}&doe_reference_name=Hospital&latitude=40.123&longitude=-111.123</em></code></pre>
 
         <br>
-        <h2>Heating</h2>
+        <h4>Heating</h4>
         When <em>load_type</em> is 'heating', a <b>LoadProfileBoilerFuel</b> is constructed. Query parameters include:
           <ul>
               <li>api_key</li>
@@ -151,7 +151,7 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
         <pre><code>GET <em> https://developer.nrel.gov/api/reopt/v1/simulated_load?api_key={key}&doe_reference_name=Hospital&latitude=40.123&longitude=-111.123&load_type=heating&annual_mmbtu=123000</em></code></pre>
 
         <br>
-        <h2>Cooling</h2>
+        <h4>Cooling</h4>
         When <em>load_type</em> is 'cooling',a <b>LoadProfileChillerThermal</b> is constructed. Query parameters include:
           <ul>
               <li>api_key</li>
@@ -334,6 +334,40 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
       </div>
       <br>
 
+      <div id="summary_endpoint" class="row">
+      <div class="col-11 offset-1">
+      <small> GET </small><b><em>v1/user/&lt;user_uuid&gt;/summary</em></b><br>
+      </div>
+      <div class="col-11 offset-2">
+        <b>Rate Limit:</b> None <br><br>
+          Returns a summary of optimization jobs for a specific user. For each job, the follow attributes are reported:
+
+          <ul>
+          <li>run_uuid</li>
+          <li>status</li>
+          <li>created (date)</li>
+          <li>description</li>
+          <li>focus</li>
+          <li>address</li>
+          <li>urdb_rate_name</li>
+          <li>doe_reference_name</li>
+          <li>npv_us_dollars</li>
+          <li>net_capital_costs</li>
+          <li>year_one_savings_us_dollars</li>
+          <li>pv_kw</li>
+          <li>wind_kw</li>
+          <li>gen_kw</li>
+          <li>batt_kw</li>
+          <li>batt_kwh</li>
+          </ul>
+
+          <br>
+          <b>Example:</b>
+        <pre><code>GET <em> https://developer.nrel.gov/api/reopt/v1/user/9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d/summary?api_key={key}</em></code></pre>
+      </div>
+      </div>
+      <br>
+
 
       </div>
 
@@ -375,7 +409,7 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
 
       <div class="row">
       <div class="col-11 offset-1">
-      <small> POST </small><b><em>v1/job/&lt;run_uuid&gt;/outagesimjob</em></b><br>
+      <small> POST </small><b><em>v1/outagesimjob</em></b><br>
       </div>
         <div class="col-11 offset-2">
           <b>Rate Limit:</b> 1,000 requests/hr <br><br>
@@ -61992,6 +62026,8 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
       <p>After submitting a job, poll the resilience statistics endpoint until results are ready:</p>
       <pre>GET https://developer.nrel.gov/api/reopt/v1/job/667bf625-df6c-4fba-836c-a0165f247005/resilience_stats?api_key={key}&bau=true</pre>
       
+      The outage simulator from which resilience statistics are generated uses each timestep as the start of an outage and then tries to meet the load until the load (or critical load) cannot be sustained. Once the maximum duration sustained across all simulated outages is known, this number of hours becomes the length of the outage_durations array.
+
       Note, as shown in the URL above, the business-as-usual results can be generated when polling by including the 'bau' parameter (even if the job was not created with 'bau' set to 'true')
         </p>
     </div>
@@ -62037,8 +62073,8 @@ summary: The REopt™ API provides access to a web version of a techno-economic 
   <br>
 
   <div id = "ModelingResilience">
-  <h4>Modeling Resilience</h4>
-    Note the REopt™ API can make system size recommendations such that a user defined outage can be survived. Define an outage duration, start time and end time in the <span  class='btn btn-secondary btn-sm scroll_button' data-target="#LoadProfileinputs_panel">LoadProfile</span> directory to enable this capability. 
+  <h4>Resilience vs Financial Runs</h4>
+    By default, the REopt Lite API will seek cost-optimal DER solutions such that there are savings realized through system implementation (or there is no system sized and there are no savings). This is a <b>Financial</b> run. The REopt Lite API can also make system size recommendations such that a user-defined outage can be survived. In these <b>Resilience</b> runs, it is possible that the savings are negative such that implementing the system actually costs more than the business as usual scenario. Note, however, that in <b>Resilience</b> cases the costs incurred during the outage (i.e. damaged equiptment, lost productivity) are not considered by the optimization. The only difference between a <b>Financial</b> run and a <b>Resilience</b> run is that the latter defines an outage duration in the <span  class='btn btn-secondary btn-sm scroll_button' data-target="#LoadProfileinputs_panel">LoadProfile</span> input using the <code>outage_start_time_step</code> and <code>outage_end_time_step</code> inputs. By default a <code>critical_load_pct</code> of 50% is used, but this can be changed or overwritten by <code>critical_load_series_kw</code>. 
   </div>
   <br>
 
