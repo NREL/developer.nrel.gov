@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        Offshore Mid Atlantic Wind Data Download 
+          API
+        |
+      NREL: Developer Network
+    </title>
+
+    <link rel="canonical" href="https://developer.nrel.gov/docs/wind/wind-toolkit/offshore-mid-atlantic-download/" />
+    <script>
+      if(window.location.href.indexOf('nrel.github.io') !== -1) {
+        window.location.href = 'https://developer.nrel.gov/docs/wind/wind-toolkit/offshore-mid-atlantic-download/';
+      }
+    </script>
+
+    <link href="/assets/stylesheets/all-2b7f33b3.css" rel="stylesheet" />
+
+    <script src="/assets/javascripts/shared-8f31eae2.js"></script>
+    <script src="/assets/javascripts/all-172ea8d4.js"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body class="docs docs_wind docs_wind_wind-toolkit docs_wind_wind-toolkit_offshore-mid-atlantic-download docs_wind_wind-toolkit_offshore-mid-atlantic-download_index">
+    <div class="container">
+  <header>
+    <map name="header_map">
+        <area shape="rect" coords="0,0,840,58" href="/" alt="Developer Network" />
+      <area shape="rect" coords="840,0,1000,58" href="http://www.nrel.gov/" alt="NREL" />
+    </map>
+    <img src="/assets/images/nrel/header-1bfbcb1a.png" alt="NREL Developer Network" usemap="#header_map" width="1000" height="58" class="img-fluid" />
+  </header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_nav" aria-controls="navbar_nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar_nav">
+      <ul class="navbar-nav">
+        <li class="nav-item nav-home "><a href="/" class="nav-link">Home</a></li>
+        <li class="nav-item nav-documentation active"><a href="/docs" class="nav-link">Documentation</a></li>
+        <li class="nav-item nav-community "><a href="/community" class="nav-link">Community</a></li>
+      </ul>
+    </div>
+  </nav>
+
+      <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/docs/">Documentation</a></li>
+            <li class="breadcrumb-item"><a href="/docs/wind/">Wind</a></li>
+            <li class="breadcrumb-item"><a href="/docs/wind/wind-toolkit/">Wind Toolkit Data Downloads</a></li>
+            <li class="breadcrumb-item active">Offshore Mid Atlantic Wind Data Download</li>
+    </ol>
+
+
+    <p>The Offshore Mid Atlantic Dataset is a 20-year wind resource dataset for Offshore Mid Atlantic. Produced in 2020, this data set replaces NREL's Wind Integration National Dataset (WIND) Toolkit for Offshore Mid Atlantic, which was produced and released publicly in 2013 and is currently the principal data set used by stakeholders for wind resource assessment in the continental United States. Both the WIND Toolkit and this new data set are created using the Weather Research and Forecasting (WRF) numerical weather prediction model (NWP).</p>
+
+<p>The Offshore Mid Atlantic shares many of the same attributes as the WIND Toolkit, including 5-minute time resolution and 2-kilometer horizontal spatial resolution. However, the new data set improves upon - the WIND Toolkit through:</p>
+
+<ul>
+	<li>A 21-year modeling period from 2000 through 2020 (compared to the 7-year 2007-2013 modeling period in the WIND Toolkit)</li>
+	<li>Confidence metrics for the hub height wind resource, driven by an ensemble of 16 different WRF simulations run in the 2017 calendar year</li>
+	<li>An updated WRF version, from 3.4 used in the WIND Toolkit to version 4.1.2 used here, which incorporates significant R&amp;D advancements</li>
+	<li>The use of the state-of-the-art reanalysis product ERA5 to provide atmospheric forcing at the WRF domain boundaries. The ERA5 product is produced by the European Centre for Medium Range Weather Forecasts (ECMWF) and replaces its older ERA-interim product, which was used in the WIND Toolkit.</li>
+</ul>
+
+<ul id="toc"></ul>
+
+<h2 id="request-url">Request URL</h2>
+
+<pre>GET /api/wind-toolkit/v2/wind/offshore-mid-atlantic-download<em>.format?parameters</em></pre>
+
+<h2 id="request-parameters">Request Parameters</h2>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+    <thead>
+		<tr>
+			<th class="doc-parameters-name" scope="col">Parameter</th>
+			<th class="doc-parameters-required" scope="col">Required</th>
+			<th class="doc-parameters-value" scope="col">Value</th>
+			<th class="doc-parameters-description" scope="col">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th class="doc-parameter-name" scope="row">api_key</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+			</td>
+			<td class="doc-parameter-description">
+			<p>Your developer API key. See <a href="/docs/api-key/">API keys</a> for more information.</p>
+			</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">wkt</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> well-known text point string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+			</td>
+			<td class="doc-parameter-description">A well-known text (WKT) representation of the geometry for which to extract data. May be a point or polygon geometry.</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">attributes</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>friction_velocity_2m, inversemoninobukhovlength_2m, skin_temperature, roughness_length, surface_heat_flux, surface_sea_temperature, pressure_0m, pressure_100m, pressure_200m, pressure_300m, relativehumidity_2m, precipitationrate_0m, temperature_100m, turbulent_kinetic_energy_100m, winddirection_100m, windspeed_100m, temperature_10m, turbulent_kinetic_energy_10m, winddirection_10m, windspeed_10m, temperature_120m, turbulent_kinetic_energy_120m, winddirection_120m, windspeed_120m, temperature_140m, turbulent_kinetic_energy_140m, winddirection_140m, windspeed_140m, temperature_160m, turbulent_kinetic_energy_160m, winddirection_160m, windspeed_160m, temperature_180m, turbulent_kinetic_energy_180m, winddirection_180m, windspeed_180m, temperature_200m, turbulent_kinetic_energy_200m, winddirection_200m, windspeed_200m, temperature_20m, turbulent_kinetic_energy_20m, winddirection_20m, windspeed_20m, temperature_220m, turbulent_kinetic_energy_220m, winddirection_220m, windspeed_220m, temperature_240m, turbulent_kinetic_energy_240m, winddirection_240m, windspeed_240m, temperature_260m, turbulent_kinetic_energy_260m, winddirection_260m, windspeed_260m, temperature_280m, turbulent_kinetic_energy_280m, winddirection_280m, windspeed_280m, temperature_2m, temperature_300m, turbulent_kinetic_energy_300m, winddirection_300m, windspeed_300m, temperature_400m, turbulent_kinetic_energy_400m, winddirection_400m, windspeed_400m, temperature_40m, turbulent_kinetic_energy_40m, winddirection_40m, windspeed_40m, temperature_500m, turbulent_kinetic_energy_500m, winddirection_500m, windspeed_500m, temperature_60m, turbulent_kinetic_energy_60m, winddirection_60m, windspeed_60m, temperature_80m, turbulent_kinetic_energy_80m, winddirection_80m, windspeed_80m</em></div>
+			</td>
+			<td class="doc-parameter-description">Each specified attribute will be returned as a column in the resultant CSV download.</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">names</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited integer array</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020</em></div>
+			</td>
+			<td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
+		</tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">interval</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> integer</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> 5</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>5, 15, 30, 60</em></div>
+      </td>
+      <td class="doc-parameter-description">
+        Desired data timestep resolution in minutes.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">utc</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> true</div>
+      </td>
+      <td class="doc-parameter-description">
+        Pass true to retrieve data with timestamps in UTC. Pass false to retrieve data with timestamps converted to local time of data point (without daylight savings time).
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">leap_day</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> false</div>
+      </td>
+      <td class="doc-parameter-description">
+        Pass true to retrieve data including leap day (where appropriate). Pass false to retrieve data excluding leap day.
+      </td>
+    </tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">full_name</th>
+			<td class="doc-parameter-required">No</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field">&nbsp;</div>
+			</td>
+			<td class="doc-parameter-description">The full name of the user requesting data.</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">email</th>
+			<td class="doc-parameter-required">Yes</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> email string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field">&nbsp;</div>
+			</td>
+			<td class="doc-parameter-description">An active email for the user requesting data. This email will be used to deliver the extracted data.</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">affiliation</th>
+			<td class="doc-parameter-required">No</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field">&nbsp;</div>
+			</td>
+			<td class="doc-parameter-description">The organization with which the user requesting the data is affiliated.</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">reason</th>
+			<td class="doc-parameter-required">No</td>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+
+			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+
+			<div class="doc-parameter-value-field">&nbsp;</div>
+			</td>
+			<td class="doc-parameter-description">The reason that the user is requesting the data.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2 id="response-fields">Response Fields</h2>
+
+<p>The response is composed of service-related informational fields and the results of the data query.</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+	<thead>
+		<tr>
+			<th class="doc-parameters-name" scope="col">Field</th>
+			<th class="doc-parameters-value" scope="col">Value</th>
+			<th class="doc-parameters-description" scope="col">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th class="doc-parameter-name" scope="row">errors</th>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> string array</div>
+			</td>
+			<td class="doc-parameter-description">
+			<p>A list of error messages</p>
+			</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">inputs</th>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
+			</td>
+			<td class="doc-parameter-description">Key: Value pairs representing all input parameters</td>
+		</tr>
+		<tr>
+			<th class="doc-parameter-name" scope="row">outputs</th>
+			<td class="doc-parameter-value">
+			<div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
+			</td>
+			<td class="doc-parameter-description">Upon successful completion a message will be returned informing the user that file generation is in progress and an email will be sent to the address provided in the <code>email</code> input field when the download is ready</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Examples</h2>
+
+<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/offshore-mid-atlantic-download.json?wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=Erik.Wiffin@nrel.gov</code></div>
+
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "inputs": {
+        "body": {},
+        "params": {},
+        "query": {
+            "attributes": "winddirection_180m",
+            "names": "2017",
+            "utc": "false",
+            "leap_day": "true",
+            "email": "Erik.Wiffin@nrel.gov",
+            "wkt": "POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))"
+        }
+    },
+    "metadata": {
+        "version": "2.0.0",
+        "resultset": {
+            "count": 1
+        }
+    },
+    "status": 200,
+    "outputs": {
+        "message": "File generation in progress. An email will be sent to zephyr@nrel.gov when the download is ready.",
+        "downloadUrl": "https://mapfiles.nrel.gov/data/wind/ebc9bbbc34f91c65ac50707d43176c6c.zip"
+    },
+    "errors": []
+}
+</code></pre></div>
+<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/offshore-mid-atlantic-download.csv?wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=Erik.Wiffin@nrel.gov&amp;api_key=DEMO_KEY</code></div>
+
+<div class="highlight"><pre class="highlight plaintext"><code>SiteID,Site Timezone,Data Timezone,Longitude,Latitude,Country
+80,-9,-9,-130.756,48.75498,b'Canada'
+Year,Month,Day,Hour,Minute,wind direction at 180m (deg)
+2017,1,1,0,0,347.18
+2017,1,1,0,5,347.3
+2017,1,1,0,10,347.40000000000003
+2017,1,1,0,15,347.52
+2017,1,1,0,20,347.66
+2017,1,1,0,25,347.79
+2017,1,1,0,30,348
+2017,1,1,0,35,348.18
+2017,1,1,0,40,348.35
+</code></pre></div>
+<h2 id="rate-limits">Rate Limits</h2>
+
+<p>Rate limits for this application are significantly less than the <a href="/docs/rate-limits" target="_blank">standard rate limits</a> for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.</p>
+
+<p>There are two levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.</p>
+
+<p>In addition to this limit, the service has a secondary fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.</p>
+
+<p>For some tips and tricks to maximize data downloads please read the guide <a href="/docs/wind/wind-toolkit/guide">here</a>.</p>
+
+<h2 id="errors">Errors</h2>
+
+<p><a href="/docs/errors/">Standard errors</a> may be returned. In addition, the following service-specific errors may be returned:</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+	<thead>
+		<tr>
+			<th class="doc-parameters-name" scope="col" style="width: 100px;">HTTP Status Code</th>
+			<th class="doc-parameters-required" scope="col">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th class="doc-parameter-name" scope="row">400</th>
+			<td class="doc-parameter-description">Bad Request: When required parameters are missing.</td>
+		</tr>
+	</tbody>
+</table>
+
+    <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/wind/wind-toolkit/offshore-mid-atlantic-download.html.md.erb">Help Improve this Content</a>
+</div>
+
+      <footer class="container-fluid">
+    <div align="center"><img src="/assets/images/nrel/foot_nrelis-8e56f120.gif" alt="NREL is a national laboratory of the U.S. Department of Energy, Office of Energy Efficiency and Renewable Energy, operated by the Alliance for Sustainable Energy, LLC." usemap="#footer_map" class="img-fluid" /></div>
+
+    <map name="footer_map" id="footer_map">
+      <area shape="rect" coords="27,7,61,20" href="http://www.nrel.gov/" alt="NREL" />
+      <area shape="rect" coords="238,7,399,19" href="http://www.energy.gov/" alt="U.S. Department of Energy" />
+      <area shape="rect" coords="405,7,697,21" href="http://www.eere.energy.gov/" alt="Office of Energy Efficiency and Renewable Energy" />
+      <area shape="rect" coords="307,21,524,35" href="http://www.allianceforsustainableenergy.org/" alt="Alliance for Sustainable Energy, LLC" />
+    </map>
+
+    <p><a href="/contact">Need Help?</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.nrel.gov/security.html">Security &amp; Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.nrel.gov/disclaimer.html">Disclaimer</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.nrel.gov/">NREL Home</a></p>
+  </footer>
+</div>
+
+  </body>
+</html>
