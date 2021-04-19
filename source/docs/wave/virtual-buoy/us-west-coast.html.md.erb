@@ -57,7 +57,7 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>direction, directional_wave_spectrum, directionality_coefficient, energy_period, frequency, frequency_bin_edges, maximum_energy_direction, mean_absolute_period, mean_wave_direction, mean_zero-crossing_period, omni-directional_wave_power, peak_period, significant_wave_height, spectral_width</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>energy_period, maximum_energy_direction, mean_wave_direction, mean_zero, omni, peak_period, significant_wave_height, spectral_width</em></div>
       </td>
       <td class="doc-parameter-description">
         Each specified attribute(*) will be returned as a column in the resultant CSV download.
@@ -207,7 +207,7 @@ Generated data files are formatted in accordance with the Standard Time Series D
 
 ### JSON Output Format
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&full_name=Sample+User&email=sample@email.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-124.2 46.2)&names=2010&utc=true&leap_day=true</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&full_name=Sample+User&email=sample@email.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-124.728 48.494)&names=2010&utc=true&leap_day=true</code></div>
 
 ```json
 {
@@ -220,7 +220,7 @@ Generated data files are formatted in accordance with the Standard Time Series D
             "leap_day": "true",
             "interval": "180",
             "email": "sample@email.com",
-            "wkt": "POINT (-124.2 46.2)"
+            "wkt": "POINT (-124.728 48.494)"
         }
     },
     "metadata": {
@@ -242,16 +242,16 @@ Generated data files are formatted in accordance with the Standard Time Series D
 ### CSV Output Format
 Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?api_key=DEMO_KEY&full_name=Sample+User&email=sample@email.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-124.2 46.2)&names=2010&utc=true&leap_day=true</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?api_key=DEMO_KEY&full_name=Sample+User&email=sample@email.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-124.728 48.494)&names=1999&utc=true&leap_day=true</code></div>
 
 ```csv
-Source,Location ID,Jurisdiction,Latitude,Longitude,Time Zone,Local Time Zone,Distance to Shore,Direction,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth,Version
-NSRDB,0,b'Federal',46.2,-124.2,0,-8,10457.422,deg,-,s,deg,s,deg,s,W/m,s,m,-,m,v1.0.0
-Year,Month,Day,Hour,Minute,Direction,Coordinates,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth
-2010,1,1,0,0,,46.20000076293945,0.9143819808959961,8.48550033569336,25,7.408199787139893,29.615999221801758,6.652599811553955,53452,11.013500213623047,3.495500087738037,0.3121500015258789,
-2010,1,1,1,0,,34.95600128173828,0.9070789813995361,8.592399597167969,25,7.569699764251709,31.18400001525879,6.867199897766113,53113,11.013500213623047,3.4603700637817383,0.3053300082683563,
-2010,1,1,2,0,,37.362998962402344,0.9011200070381165,8.69279956817627,25,7.672100067138672,32.11899948120117,6.965400218963623,51439,11.013500213623047,3.382349967956543,0.30270999670028687,
-2010,1,1,3,0,,38.242000579833984,0.8960599899291992,8.732799530029297,25,7.677800178527832,33.20500183105469,6.9421000480651855,50786,11.013500213623047,3.3503499031066895,0.30594998598098755,
+Source,Location ID,Jurisdiction,Latitude,Longitude,Time Zone,Local Time Zone,Distance to Shore,Energy Period,Maximum Energy Direction,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth,Version
+NSRDB,0,b'Washington',48.494,-124.728,0,-8,10718.147,s,deg,deg,s,W/m,s,m,-,257,v1.0.0
+Year,Month,Day,Hour,Minute,Energy Period,Maximum Energy Direction,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width
+1999,1,1,1,0,9.62511920928955,7.5,15.7635498046875,8.485738754272461,32021.865234375,11.013216018676758,2.9901134967803955,0.333930641412735
+1999,1,1,2,0,9.606493949890137,7.5,15.34747314453125,8.467731475830078,31930.125,11.013216018676758,2.989302396774292,0.3332808315753937
+1999,1,1,3,0,9.575942039489746,7.5,14.9296875,8.431180000305176,30901.494140625,11.013216018676758,2.949445962905884,0.33471956849098206
+1999,1,1,4,0,9.545754432678223,7.5,14.41656494140625,8.402557373046875,29717.4140625,10.010009765625,2.898984909057617,0.33521780371665955
 ```
 
 ### POST request example in Python
@@ -261,7 +261,7 @@ import requests
 
 url = "http://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
 
-payload = "full_name=Sample+User&email=sample@email.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-124.2 46.2)&names=2010&utc=true&leap_day=true"
+payload = "full_name=Sample+User&email=sample@email.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-124.728 48.494)&names=2010&utc=true&leap_day=true"
 
 headers = {
     'content-type': "application/x-www-form-urlencoded",
