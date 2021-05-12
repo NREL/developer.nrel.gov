@@ -88,14 +88,14 @@ paths:
                 $ref: "#/components/schemas/CompassResponse"
 components:
   securitySchemes:
-     ApiKeyQueryAuth:
-       type: apiKey
-       in: query
-       name: api_key
-     ApiKeyHeaderAuth:
-       type: apiKey
-       in: header
-       name: X-Api-Key
+    ApiKeyQueryAuth:
+      type: apiKey
+      in: query
+      name: api_key
+    ApiKeyHeaderAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
   schemas: 
     RouteRequest:
       type: object
