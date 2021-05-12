@@ -4,8 +4,11 @@ info:
   description: 
     The Route Energy Prediction Model (RouteE) predicts the energy consumption of a given vehicle over a link or sequence of links (route) in a road network. These API endpoints can be used to get single vehicle link or route energy estimates (`/route`), energy consumption estimates for a variety of vehicles over all links in a transportation network (`/network`), and eco-routing between an origin and destination for a specific vehicle (`/compass`). For more on RouteE, please visit <https://www.nrel.gov/transportation/route-energy-prediction-model.html>.
   version: "1.0"
+security:
+  - ApiKeyQueryAuth: []
+  - ApiKeyHeaderAuth: []
 servers:
-  - url: https://routee-api-prod.its.nrel.gov/routee/api/v1
+  - url: https://developer.nrel.gov/api/routee/v1
 paths:
   /route:
     post:
