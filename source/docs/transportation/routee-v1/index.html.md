@@ -1,5 +1,5 @@
 ---
-title: RouteE API
+title: RouteE
 summary: The Route Energy Prediction Model (RouteE) predicts the energy consumption of a given vehicle over a proposed route.
 layout: swagger
 swagger_url: /docs/transportation/routee-v1/spec.yml

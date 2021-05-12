@@ -1,11 +1,9 @@
 openapi: 3.0.0
 info:
   title: RouteE API
-  description: The Route Energy Prediction Model (RouteE) predicts the energy consumption of a given vehicle over a proposed route. This is the API endpoint for the energy prediction side of RouteE, which can be used to get either single vehicle route energy estimate, or transportation network-wide energy consumption estimates. For more on RouteE, please visit <https://www.nrel.gov/transportation/route-energy-prediction-model.html>.
+  description: 
+    The Route Energy Prediction Model (RouteE) predicts the energy consumption of a given vehicle over a link or sequence of links (route) in a road network. These API endpoints can be used to get single vehicle link or route energy estimates (`/route`), energy consumption estimates for a variety of vehicles over all links in a transportation network (`/network`), and eco-routing between an origin and destination for a specific vehicle (`/compass`). For more on RouteE, please visit <https://www.nrel.gov/transportation/route-energy-prediction-model.html>.
   version: "1.0"
-security:
-  - ApiKeyQueryAuth: []
-  - ApiKeyHeaderAuth: []
 servers:
   - url: https://developer.nrel.gov/api/routee/v1
 paths:
@@ -28,21 +26,66 @@ paths:
                 $ref: "#/components/schemas/RouteResponse"
   /network:
     post:
-      summary: Estimate energy consumption across a transportation network.
+      summary: Network energy prediction
       requestBody:
         description: A JSON object with your real or predicted transportation network data.
         required: true
         content:
           application/json:
-            schema:
+            schema: 
               $ref: "#/components/schemas/NetworkRequest"
       responses:
         "200":
-          description: A JSON object with the returned energy consumption estimates and metadata for the provided network.
-          content:
+          description: A JSON object with the returned energy consumption estimates and metadata for the provided network. 
+          content: 
             application/json:
               schema:
                 $ref: "#/components/schemas/NetworkResponse"
+  /compass/beta:
+    get:
+      summary: Shortest energy path
+      parameters:
+        - in: query
+          name: origin_lat
+          required: true
+          schema:
+            type: number
+          description: The origin latitude for the route
+        - in: query
+          name: origin_lon
+          required: true
+          schema:
+            type: number
+          description: The origin longitude for the route
+        - in: query
+          name: destination_lat
+          required: true
+          schema:
+            type: number
+          description: The destination latitude for the route
+        - in: query
+          name: destination_lon
+          required: true
+          schema:
+            type: number
+          description: The destination longitude for the route
+        - in: query
+          name: number_of_waypoints
+          schema:
+            type: integer
+          description: Upper limit of waypoints to return. Default is 100
+        - in: query
+          name: routee_key
+          schema:
+            type: string
+          description: Which routee model to use for energy prediction. Default is "gasoline"
+      responses:
+        "200":
+          description: A JSON object with the waypoints for the shortest energy route
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CompassResponse"
 components:
   securitySchemes:
     ApiKeyQueryAuth:
@@ -53,11 +96,11 @@ components:
       type: apiKey
       in: header
       name: X-Api-Key
-  schemas:
+  schemas: 
     RouteRequest:
       type: object
       required: [route, model, field_mapper]
-      properties:
+      properties: 
         route:
           type: object
           description: Input object of arrays corresponding to your route segment data.
@@ -67,25 +110,25 @@ components:
               items:
                 type: string
                 description: Unique identifiers for each road segement of the route. (Such as TMC codes)
-                example: ["110N04615", "110N04616", "110N04617"]
+              example: ["110N04615", "110N04616", "110N04617"]
             your_input_miles:
               type: array
               items:
                 type: number
                 description: Distance (in miles) of the road segment.
-                example: [.12,.2,.13]
+              example: [.12,.2,.13]
             your_input_speed:
               type: array
-              items:
+              items: 
                 type: number
                 description: Real or predicted speed of the for the road segment.
-                example: [50.3, 50.0, 47.6]
+              example: [50.3, 50.0, 47.6]
             your_input_grade:
               type: array
               items:
                 type: number
                 description: Floating point value representing the gradient of the road segment.
-                example: [0.01, 0.02, 0.02]
+              example: [0.01, 0.02, 0.02]
         model:
           type: string
           description: Vehicle fuel type (Conventional gasoline (CV), diesel vehicle (diesel), battery electric vehicle (BEV), hybrid electric vehicle (HEV), plug-in hybrid electric vehicle(PHEV)).
@@ -127,36 +170,36 @@ components:
               items:
                 type: string
                 description: Unique identifiers for each road segement of the route. (Such as TMC codes)
-                example: ["110N04615", "110N04616", "110N04617"]
+              example: ["110N04615", "110N04616", "110N04617"]
             your_input_miles:
               type: array
               items:
                 type: number
                 description: Distance (in miles) of the road segment.
-                example: [.12,.2,.13]
+              example: [.12,.2,.13]
             your_input_speed:
               type: array
-              items:
+              items: 
                 type: number
                 description: Real or predicted speed of the for the road segment.
-                example: [50.3, 50.0, 47.6]
+              example: [50.3, 50.0, 47.6]
             your_input_grade:
               type: array
               items:
                 type: number
                 description: Floating point value representing the gradient of the road segment.
-                example: [0.01, 0.02, 0.02]
+              example: [0.01, 0.02, 0.02]
             your_input_volume:
               type: array
               items:
                 type: number
                 description: Integer values of segement-level traffic counts.
-                example: [12, 12, 11]
+              example: [12, 12, 11]
         date:
           type: string
           description: Date for the driving data in YYYY-MM-DD format.
           pattern: '^\d{4}-\d{2}-\d{2}$'
-          example: "2021-05-03"
+          example: "2021-05-03"  
         fleet_composition:
           oneOf:
             - type: string
@@ -219,13 +262,13 @@ components:
               items:
                 type: string
                 description: Unique identifiers for each road segement of the route. (Such as TMC codes)
-                example: ["110N04615", "110N04616", "110N04617"]
+              example: ["110N04615", "110N04616", "110N04617"]
             energy_estimate:
               type: array
               items:
                 type: number
                 description: Energy consumption estimates for each road segment.
-                example: [0.00123, 0.000124, 0.000128]
+              example: [0.00123, 0.000124, 0.000128]
         output_metadata:
           type: object
           properties:
@@ -267,49 +310,49 @@ components:
               items:
                 type: string
                 description: Unique identifiers for each road segement of the route. (Such as TMC codes)
-                example: ["110N04615", "110N04616", "110N04617"]
+              example: ["110N04615", "110N04616", "110N04617"]
             cv_g_tot:
               type: array
               items:
                 type: number
                 description: Conventional gasoline vehicle energy consumption estimates.
-                example: [0.00123, 0.000124, 0.000128]
+              example: [0.00123, 0.000124, 0.000128]
             cv_d_tot:
               type: array
               items:
                 type: number
                 description: Diesel vehicle energy consumption estimates.
-                example: [0.00123, 0.000124, 0.000128]
+              example: [0.00123, 0.000124, 0.000128]
             phev_cd_tot:
               type: array
               items:
                 type: number
                 description: PHEV (charge depleting mode) vehicle energy consumption estimates.
-                example: [0.00123, 0.000124, 0.000128]
+              example: [0.00123, 0.000124, 0.000128]
             phev_cs_tot:
               type: array
               items:
                 type: number
                 description: PHEV (charge sustaining mode) energy consumption estimates.
-                example: [0.00123, 0.000124, 0.000128]
+              example: [0.00123, 0.000124, 0.000128]
             hev_tot:
               type: array
               items:
                 type: number
                 description: Hybrid electric vehicle energy consumption estimates.
-                example: [0.00123, 0.000124, 0.000128]
+              example: [0.00123, 0.000124, 0.000128]
             bev_tot:
               type: array
               items:
                 type: number
                 description: Battery electric vehicle energy consumption estimates.
-                example: [0.00123, 0.000124, 0.000128]
+              example: [0.00123, 0.000124, 0.000128]
             total_e:
               type: array
               items:
                 type: number
                 description: Energy consumption estimates for each road segment.
-                example: [0.00738, 0.000744, 0.000768]
+              example: [0.00738, 0.000744, 0.000768]
         output_metadata:
           type: object
           properties:
@@ -324,7 +367,7 @@ components:
                   type: number
                   description: Total hybrid electric vehicle energy consumed.
                   example: 0.00654
-                Total PHEV energy:
+                Total PHEV energy: 
                   type: number
                   description: Total plug-in hybrid electric energy consumed.
                   example: 0.00478
@@ -332,7 +375,7 @@ components:
                   type: number
                   description: Total diesel vehicle energy consumed.
                   example: 1.418
-                Total energy:
+                Total energy: 
                   type: number
                   description: Total energy consumed.
                   example: 13.54132
@@ -429,3 +472,17 @@ components:
                   type: string
                   description: Description of RouteE gasoline vehicle used in the calculation.
                   example: "built_in_routee_gas_model"
+    CompassResponse:
+      type: object
+      properties:
+        route:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+            description: Individual waypoints for the shortest energy path in [lat, lon]
+          example: [[39.7540755, -104.9939502], [39.7540757, -104.9939507]]
+security:
+  - ApiKeyQueryAuth: []
+  - ApiKeyHeaderAuth: []
