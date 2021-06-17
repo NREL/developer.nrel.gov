@@ -5,16 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        Physical Solar Model (PSM) v3 
+        Himawari 2011-15: PSM v3 Download 
           API
         |
       NREL: Developer Network
     </title>
 
-    <link rel="canonical" href="https://developer.nrel.gov/docs/solar/nsrdb/psm3-download/" />
+    <link rel="canonical" href="https://developer.nrel.gov/docs/solar/nsrdb/himawari7-download/" />
     <script>
       if(window.location.href.indexOf('nrel.github.io') !== -1) {
-        window.location.href = 'https://developer.nrel.gov/docs/solar/nsrdb/psm3-download/';
+        window.location.href = 'https://developer.nrel.gov/docs/solar/nsrdb/himawari7-download/';
       }
     </script>
 
@@ -33,7 +33,7 @@
 </script>
 
   </head>
-  <body class="docs docs_solar docs_solar_nsrdb docs_solar_nsrdb_psm3-download docs_solar_nsrdb_psm3-download_index">
+  <body class="docs docs_solar docs_solar_nsrdb docs_solar_nsrdb_himawari7-download docs_solar_nsrdb_himawari7-download_index">
     <div class="container">
   <header>
     <map name="header_map">
@@ -59,20 +59,20 @@
             <li class="breadcrumb-item"><a href="/docs/">Documentation</a></li>
             <li class="breadcrumb-item"><a href="/docs/solar/">Solar</a></li>
             <li class="breadcrumb-item"><a href="/docs/solar/nsrdb/">NSRDB Data Downloads</a></li>
-            <li class="breadcrumb-item active">Physical Solar Model (PSM) v3</li>
+            <li class="breadcrumb-item active">Himawari 2011-15: PSM v3 Download</li>
     </ol>
 
 
-    <h1 id="physical-solar-model-psm-v3-apinsrdbv2solarpsm3-download">Physical Solar Model (PSM) v3 <span class="url">(/api/nsrdb/v2/solar/psm3-download)</span></h1>
-<p>Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database (NSRDB) is a serially complete collection of hourly and half-hourly values of the three most common measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
+    <h1 id="himawari-2011-15-psm-v3-download-apinsrdbv2solarhimawari7-download">Himawari 2011-15: PSM v3 Download <span class="url">(/api/nsrdb/v2/solar/himawari7-download)</span></h1>
+<p>The Himawari based solar resource data uses the Physical Solar Model version 3 (PSM v3) which is similar to the model used in the National Solar Radiation Database (NSRDB) The Himawari: PSM v3 provides a serially complete collection of 30 minute values of the three most common measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data at a 2 km resolution. The data is available for all locations covered by the Himawari satellite.</p>
 
-<p>This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.</p>
+<p>This production of this dataset was supported by USAID and used the latest research methods by a specialized team of scientists at the National Renewable Energy Laboratory (NREL).</p>
 
 <ul id="toc"></ul>
 
 <h2 id="request-url">Request URL</h2>
 
-<pre>GET|POST /api/nsrdb/v2/solar/psm3-download<em>.format?parameters</em></pre>
+<pre>GET|POST /api/nsrdb/v2/solar/himawari7-download<em>.format?parameters</em></pre>
 
 <h2 id="request-parameters">Request Parameters</h2>
 <p><em>NOTE: when using POST to submit a request the api_key must still be included as a query parameter in the url. All other parameters may be included in a POST request as part of the payload.</em></p>
@@ -115,7 +115,7 @@
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>air_temperature, clearsky_dhi, clearsky_dni, clearsky_ghi, cloud_type, dew_point, dhi, dni, fill_flag, ghi, ghuv-280-400, ghuv-285-385, relative_humidity, solar_zenith_angle, surface_albedo, surface_pressure, total_precipitable_water, wind_direction, wind_speed</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>air_temperature, alpha, aod, asymmetry, cld_opd_dcomp, cld_reff_dcomp, clearsky_dhi, clearsky_dni, clearsky_ghi, cloud_type, dew_point, dhi, dni, fill_flag, ghi, ozone, relative_humidity, solar_zenith_angle, ssa, surface_albedo, surface_pressure, total_precipitable_water, wind_direction, wind_speed</em>.</div>
       </td>
       <td class="doc-parameter-description">
         Each specified attribute(*) will be returned as a column in the resultant CSV download.
@@ -127,7 +127,7 @@
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2011, 2012, 2013, 2014, 2015</em>.</div>
       </td>
       <td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
     </tr>
@@ -158,10 +158,10 @@
       <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> 30 or 60</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong>30</div>
       </td>
       <td class="doc-parameter-description">
-        This value determines data resolution. Either 30 minute or 60 minute intervals are available.
+        This value determines data resolution. Either 30 or 60 minute intervals are available.
       </td>
     </tr>
     <tr>
@@ -265,76 +265,71 @@
 
 <h3 id="json-output-format">JSON Output Format</h3>
 
-<div class="doc-example-url"><code>GET /api/nsrdb/v2/solar/psm3-download.json?api_key=DEMO_KEY&amp;full_name=Sample+User&amp;email=sample@email.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT(-108.5449+40.5137)&amp;names=2010,2011,2012,2013,2014&amp;attributes=air_temperature,clearsky_dhi,clearsky_dni,clearsky_ghi,cloud_type,dew_point,dhi,dni,fill_flag,ghi,relative_humidity,solar_zenith_angle,surface_albedo,surface_pressure,total_precipitable_water,wind_direction,wind_speed&amp;leap_day=false&amp;utc=false&amp;interval=30</code></div>
+<div class="doc-example-url"><code>GET /api/nsrdb/v2/solar/himawari7-download.json?api_key=DEMO_KEY&amp;full_name=Sample+User&amp;email=sample@email.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT(14.61 -24.26)&amp;attributes=wind_speed&amp;names=2011&amp;utc=true&amp;leap_day=true&amp;interval=30</code></div>
 
 <div class="highlight"><pre class="highlight json"><code><span class="p">{</span><span class="w">
-   </span><span class="nl">"errors"</span><span class="p">:[],</span><span class="w">
-   </span><span class="nl">"inputs"</span><span class="p">:{</span><span class="w">
-      </span><span class="nl">"affiliation"</span><span class="p">:</span><span class="s2">"Test Organization"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"attributes"</span><span class="p">:[</span><span class="w">
-        </span><span class="s2">"air_temperature"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"clearsky_dhi"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"clearsky_dni"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"clearsky_ghi"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"cloud_type"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"dew_point"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"dhi"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"dni"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"fill_flag"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ghi"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"relative_humidity"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"solar_zenith_angle"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"surface_albedo"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"surface_pressure"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"total_precipitable_water"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"wind_direction"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"wind_speed"</span><span class="p">,</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"email"</span><span class="p">:</span><span class="s2">"sample@email.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"full_name"</span><span class="p">:</span><span class="s2">"Sample User"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"interval"</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"leap_day"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"mailing_list"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"names"</span><span class="p">:[</span><span class="w">
-         </span><span class="mi">2010</span><span class="p">,</span><span class="w">
-         </span><span class="mi">2011</span><span class="p">,</span><span class="w">
-         </span><span class="mi">2012</span><span class="p">,</span><span class="w">
-         </span><span class="mi">2013</span><span class="p">,</span><span class="w">
-         </span><span class="mi">2014</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"reason"</span><span class="p">:</span><span class="s2">"Example"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"utc"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"wkt"</span><span class="p">:</span><span class="s2">"POINT(-108.5449 40.5137)"</span><span class="w">
-   </span><span class="p">},</span><span class="w">
-   </span><span class="nl">"outputs"</span><span class="p">:{</span><span class="w">
-      </span><span class="nl">"message"</span><span class="p">:</span><span class="s2">"File generation in progress. An email will be sent to sample@email.com when the download is ready."</span><span class="w">
-   </span><span class="p">}</span><span class="w">
+    </span><span class="nl">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"wkt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POINT(179.9901 -16.96)"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alpha,aod,ghi,dni,dhi"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"names"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"utc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"leap_day"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@nrel.gov"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"no_cache"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"resultset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File generation in progress. An email will be sent to erik.wiffin@nrel.gov when the download is ready."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"downloadUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mapfiles.nrel.gov/data/solar/e3e3b0fb24a646b8ae920f628ebdc62e.zip"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="csv-output-format">CSV Output Format</h3>
 <p>Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.</p>
 
-<div class="doc-example-url"><code>GET /api/nsrdb/v2/solar/psm3-download.csv?api_key=DEMO_KEY&amp;full_name=Sample+User&amp;email=sample@email.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT(-108.5449+40.5137)&amp;names=2014&amp;attributes=dhi,dni,ghi,clearsky_dhi,clearsky_dni,clearsky_ghi,cloud_type,dew_point,air_temperature,surface_pressure,relative_humidity,solar_zenith_angle,total_precipitable_water,wind_direction,wind_speed,fill_flag&amp;leap_day=false&amp;utc=false&amp;interval=30</code></div>
+<div class="doc-example-url"><code>GET /api/nsrdb/v2/solar/himawari7-download.csv?api_key=DEMO_KEY&amp;wkt=POINT(179.9901 -16.96)&amp;attributes=alpha,aod,ghi,dni,dhi&amp;names=2011&amp;utc=true&amp;leap_day=true&amp;interval=30&amp;email=paul.susmarski@nrel.gov</code></div>
 
-<div class="highlight"><pre class="highlight plaintext"><code>Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,Local Time Zone,Clearsky DHI Units,Clearsky DNI Units,Clearsky GHI Units,Dew Point Units,DHI Units,DNI Units,GHI Units,Solar Zenith Angle Units,Temperature Units,Pressure Units,Relative Humidity Units,Precipitable Water Units,Wind Direction Units,Wind Speed,Snow Depth Units,Cloud Type -1,Cloud Type 0,Cloud Type 1,Cloud Type 2,Cloud Type 3,Cloud Type 4,Cloud Type 5,Cloud Type 6,Cloud Type 7,Cloud Type 8,Cloud Type 9,Cloud Type 10,Cloud Type 11,Cloud Type 12,Fill Flag 0,Fill Flag 1,Fill Flag 2,Fill Flag 3,Fill Flag 4,Fill Flag 5,Version
-NSRDB,388494,-,-,-,40.53,-108.54,-7,2133,-7,w/m2,w/m2,w/m2,c,w/m2,w/m2,w/m2,Degree,c,mbar,%,mm,Degrees,m/s,m,N/A,Clear,Probably Clear,Fog,Water,Super-Cooled Water,Mixed,Opaque Ice,Cirrus,Overlapping,Overshooting,Unknown,Dust,Smoke,N/A,Missing Image,Low Irradiance,Exceeds Clearsky,Missing CLoud Properties,Rayleigh Violation,v2.0.1
-Year,Month,Day,Hour,Minute,DHI,DNI,GHI,Clearsky DHI,Clearsky DNI,Clearsky GHI,Cloud Type,Dew Point,Temperature,Pressure,Relative Humidity,Solar Zenith Angle,Precipitable Water,Wind Direction,Wind Speed,Fill Flag
-2014,1,1,0,0,0,0,0,0,0,0,7,-4.682623291015602,-1.5901855468749773,796.4638061523438,79.43968200683594,162.08113349534256,7.908599376678467,262.7748718261719,3.268637180328369,0
-2014,1,1,0,30,0,0,0,0,0,0,7,-4.847418212890602,-1.7528137207031023,796.5355224609375,79.40192413330078,162.2755759320171,7.82346248626709,262.7748718261719,3.2899231910705566,0
-2014,1,1,1,0,0,0,0,0,0,0,7,-5.014105224609352,-1.9154113769531023,796.6072998046875,79.3525390625,160.32614640324147,7.738325595855713,277.832763671875,3.311208963394165,0
-2014,1,1,1,30,0,0,0,0,0,0,4,-5.344519042968727,-2.0364440917968523,796.7986450195312,78.08556365966797,156.77400276183897,7.407590866088867,277.832763671875,3.431668758392334,0
-2014,1,1,2,0,0,0,0,0,0,0,1,-5.682623291015602,-2.1574768066406023,796.989990234375,76.7892837524414,152.24111799118322,7.0768561363220215,294.47625732421875,3.552128791809082,0
-2014,1,1,2,30,0,0,0,0,0,0,4,-6.044805908203102,-2.3538574218749773,797.1622314453125,75.79216766357422,147.14884282433127,6.616491794586182,294.47625732421875,3.744844436645508,0
-2014,1,1,3,0,0,0,0,0,0,0,4,-6.416296386718727,-2.5502075195312273,797.3344116210938,74.75006866455078,141.7413977757821,6.156126976013184,307.29669189453125,3.9375598430633545,0
-2014,1,1,3,30,0,0,0,0,0,0,4,-6.676153564453102,-3.0090087890624773,797.4351196289062,75.81484985351562,136.16001651446615,5.669936180114746,307.29669189453125,4.078017234802246,0
+<div class="highlight"><pre class="highlight plaintext"><code>Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,Local Time Zone,Clearsky DHI Units,Clearsky DNI Units,Clearsky GHI Units,Dew Point Units,DHI Units,DNI Units,GHI Units,Solar Zenith Angle Units,Temperature Units,Pressure Units,Relative Humidity Units,Precipitable Water Units,Wind Direction Units,Wind Speed,Cloud Type -15,Cloud Type 0,Cloud Type 1,Cloud Type 2,Cloud Type 3,Cloud Type 4,Cloud Type 5,Cloud Type 6,Cloud Type 7,Cloud Type 8,Cloud Type 9,Cloud Type 10,Cloud Type 11,Cloud Type 12,Fill Flag 0,Fill Flag 1,Fill Flag 2,Fill Flag 3,Fill Flag 4,Fill Flag 5,Surface Albedo Units,Version
+NSRDB,8683089,-,b'Northern',b'Fiji',-16.96,179.99,0,45,12,w/m2,w/m2,w/m2,c,w/m2,w/m2,w/m2,Degree,c,mbar,%,cm,Degrees,m/s,N/A,Clear,Probably Clear,Fog,Water,Super-Cooled Water,Mixed,Opaque Ice,Cirrus,Overlapping,Overshooting,Unknown,Dust,Smoke,N/A,Missing Image,Low Irradiance,Exceeds Clearsky,Missing CLoud Properties,Rayleigh Violation,N/A,unknown
+Year,Month,Day,Hour,Minute,Alpha,AOD,GHI,DNI,DHI
+2011,1,1,0,0,0.9,0.0687,219,9,210
+2011,1,1,0,30,0.9,0.0687,468,36,432
+2011,1,1,1,0,0.92,0.0679,383,22,362
+2011,1,1,1,30,0.92,0.0679,180,4,175
+2011,1,1,2,0,0.9400000000000001,0.0668,143,0,143
+2011,1,1,2,30,0.9400000000000001,0.0668,122,0,122
+2011,1,1,3,0,0.97,0.0671,56,0,56
+2011,1,1,3,30,0.97,0.0671,89,0,89
+2011,1,1,4,0,1,0.0668,54,0,54
+2011,1,1,4,30,1,0.0668,74,0,74
+2011,1,1,5,0,1.03,0.06520000000000001,64,0,64
+2011,1,1,5,30,1.03,0.06520000000000001,29,0,29
+2011,1,1,6,0,1.05,0.0636,15,0,15
+2011,1,1,6,30,1.05,0.0636,12,76,10
+2011,1,1,7,0,1.07,0.061700000000000005,0,0,0
+2011,1,1,7,30,1.07,0.061700000000000005,0,0,0
+2011,1,1,8,0,1.08,0.0606,0,0,0
+2011,1,1,8,30,1.08,0.0606,0,0,0
+2011,1,1,9,0,1.09,0.060000000000000005,0,0,0
+2011,1,1,9,30,1.09,0.060000000000000005,0,0,0
+2011,1,1,10,0,1.1,0.060200000000000004,0,0,0
+2011,1,1,10,30,1.1,0.060200000000000004,0,0,0
 </code></pre></div>
 <h3 id="post-request-example-in-python">POST request example in Python</h3>
 
 <div class="highlight"><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/nsrdb/v2/solar/psm3-download.json?api_key=yourapikeygoeshere"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/nsrdb/v2/solar/himawari7-download.json?api_key=yourapikeygoeshere"</span>
 
-<span class="n">payload</span> <span class="o">=</span> <span class="s">"names=2012&amp;leap_day=false&amp;interval=60&amp;utc=false&amp;full_name=Honored%2BUser&amp;email=honored.user%40gmail.com&amp;affiliation=NREL&amp;mailing_list=true&amp;reason=Academic&amp;attributes=dhi%2Cdni%2Cwind_speed%2Cair_temperature&amp;wkt=MULTIPOINT(-106.22%2032.9741%2C-106.18%2032.9741%2C-106.1%2032.9741)"</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"wkt=POINT(179.9901 -16.96)&amp;attributes=alpha,aod,ghi,dni,dhi&amp;names=2011&amp;utc=true&amp;leap_day=true&amp;interval=30&amp;email=paul.susmarski@nrel.gov"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'content-type'</span><span class="p">:</span> <span class="s">"application/x-www-form-urlencoded"</span><span class="p">,</span>
@@ -375,7 +370,7 @@ Year,Month,Day,Hour,Minute,DHI,DNI,GHI,Clearsky DHI,Clearsky DNI,Clearsky GHI,Cl
 </table>
 
     <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
-  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/solar/nsrdb/psm3-download.html.md.erb">Help Improve this Content</a>
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/solar/nsrdb/himawari7-download.html.md.erb">Help Improve this Content</a>
 </div>
 
       <footer class="container-fluid">

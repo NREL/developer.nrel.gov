@@ -68,6 +68,10 @@
 
 <p>This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.</p>
 
+<div class="alert alert-danger" style="margin-top: 10px;">
+  <p>2017 data will be removed on September 30, 2021</p>
+</div>
+
 <ul id="toc"></ul>
 
 <h2 id="request-url">Request URL</h2>
@@ -127,7 +131,7 @@
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>tmy-2017, tdy-2017, tgy-2017. tmy-2018, tdy-2018, tgy-2018, tmy-2019, tdy-2019, tgy-2019</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>tmy-2017, tdy-2017, tgy-2017. tmy-2018, tdy-2018, tgy-2018, tmy-2019, tdy-2019, tgy-2019, tmy-2020, tdy-2020, tgy-2020</em></div>
       </td>
       <td class="doc-parameter-description">The TMY dataset for which data should be extracted.</td>
     </tr>
