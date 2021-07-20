@@ -1,8 +1,8 @@
 ---
-title: Offshore CA Data Download
-summary: The Offshore CA Dataset is a 21-year wind resource dataset for offshore California. Produced in 2020, this data set replaces NREL's Wind Integration National Dataset (WIND) Toolkit for offshore California, which was produced and released publicly in 2013 and is currently the principal data set used by stakeholders for wind resource assessment in the continental United States. Both the WIND Toolkit and this new data set are created using the Weather Research and Forecasting (WRF) numerical weather prediction model (NWP).
-detail: "The Offshore CA shares many of the same attributes as the WIND Toolkit, including 5-minute time resolution and 2-kilometer horizontal spatial resolution. However, the new data set improves upon - the WIND Toolkit through:"
-url: /api/wind-toolkit/v2/wind/offshore-ca-download
+title: Offshore Great Lakes Data Download
+summary: The Offshore Great Lakes Dataset is a 21-year wind resource dataset for the Great Lakes. Produced in 2021, this data set replaces NREL's Wind Integration National Dataset (WIND) Toolkit for the Great Lakes, which was produced and released publicly in 2013 and is currently the principal data set used by stakeholders for wind resource assessment in the continental United States. Both the WIND Toolkit and this new data set are created using the Weather Research and Forecasting (WRF) numerical weather prediction model (NWP).
+detail: "The Offshore Great Lakes shares many of the same attributes as the WIND Toolkit, including 5-minute time resolution and 2-kilometer horizontal spatial resolution. However, the new data set improves upon - the WIND Toolkit through:"
+url: /api/wind-toolkit/v2/wind/offshore-great-lakes-download
 ---
 <%= current_page.data.summary %>
 
@@ -205,12 +205,12 @@ The response is composed of service-related informational fields and the results
 
 <h2>Examples</h2>
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?wkt=POINT (-128.77481 39.970406)&attributes=wind_speed,wind_direction&names=2017&utc=false&leap_day=true&full_name=Data%20Lover&email=data.lover%40gmail.com&affiliation=NREL</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?wkt=POINT(-92.4228 39.7053)&attributes=wind_speed,wind_direction&names=2017&utc=false&leap_day=true&full_name=Data%20Lover&email=data.lover%40gmail.com&affiliation=NREL</code></div>
 
 ```JSON
 {
     "inputs": {
-				"wkt": "POINT (-128.77481 39.970406)",
+				"wkt": "POINT(-92.4228 39.7053)",
 				"attributes": "wind_speed,wind_direction",
 				"names": "2017",
 				"utc": "false",
@@ -232,7 +232,7 @@ The response is composed of service-related informational fields and the results
 }
 ```
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?wkt=POINT (-128.77481 39.970406)&attributes=wind_speed,wind_direction&names=2017&utc=false&leap_day=true&full_name=Data%20Lover&email=data.lover%40gmail.com&affiliation=NREL</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?wkt=POINT(-92.4228 39.7053)&attributes=wind_speed,wind_direction&names=2017&utc=false&leap_day=true&full_name=Data%20Lover&email=data.lover%40gmail.com&affiliation=NREL</code></div>
 
 ```csv
 SiteID,1,Site Timezone,-9,Data Timezone,,Longitude,-128.77481,Latitude,39.970406
