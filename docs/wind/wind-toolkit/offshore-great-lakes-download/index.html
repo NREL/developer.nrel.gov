@@ -5,16 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        Offshore NW Pacific Wind Data Download 
+        Offshore Great Lakes Data Download 
           API
         |
       NREL: Developer Network
     </title>
 
-    <link rel="canonical" href="https://developer.nrel.gov/docs/wind/wind-toolkit/offshore-nw-pacific-download/" />
+    <link rel="canonical" href="https://developer.nrel.gov/docs/wind/wind-toolkit/offshore-great-lakes-download/" />
     <script>
       if(window.location.href.indexOf('nrel.github.io') !== -1) {
-        window.location.href = 'https://developer.nrel.gov/docs/wind/wind-toolkit/offshore-nw-pacific-download/';
+        window.location.href = 'https://developer.nrel.gov/docs/wind/wind-toolkit/offshore-great-lakes-download/';
       }
     </script>
 
@@ -33,7 +33,7 @@
 </script>
 
   </head>
-  <body class="docs docs_wind docs_wind_wind-toolkit docs_wind_wind-toolkit_offshore-nw-pacific-download docs_wind_wind-toolkit_offshore-nw-pacific-download_index">
+  <body class="docs docs_wind docs_wind_wind-toolkit docs_wind_wind-toolkit_offshore-great-lakes-download docs_wind_wind-toolkit_offshore-great-lakes-download_index">
     <div class="container">
   <header>
     <map name="header_map">
@@ -59,13 +59,13 @@
             <li class="breadcrumb-item"><a href="/docs/">Documentation</a></li>
             <li class="breadcrumb-item"><a href="/docs/wind/">Wind</a></li>
             <li class="breadcrumb-item"><a href="/docs/wind/wind-toolkit/">Wind Toolkit Data Downloads</a></li>
-            <li class="breadcrumb-item active">Offshore NW Pacific Wind Data Download</li>
+            <li class="breadcrumb-item active">Offshore Great Lakes Data Download</li>
     </ol>
 
 
-    <p>The Offshore NW Pacific Dataset is a 21-year wind resource dataset for offshore Offshore NW Pacific. Produced in 2020, this data set replaces NREL's Wind Integration National Dataset (WIND) Toolkit for offshore Offshore NW Pacific, which was produced and released publicly in 2013 and is currently the principal data set used by stakeholders for wind resource assessment in the continental United States. Both the WIND Toolkit and this new data set are created using the Weather Research and Forecasting (WRF) numerical weather prediction model (NWP).</p>
+    <p>The Offshore Great Lakes Dataset is a 21-year wind resource dataset for the Great Lakes. Produced in 2021, this data set replaces NREL's Wind Integration National Dataset (WIND) Toolkit for the Great Lakes, which was produced and released publicly in 2013 and is currently the principal data set used by stakeholders for wind resource assessment in the continental United States. Both the WIND Toolkit and this new data set are created using the Weather Research and Forecasting (WRF) numerical weather prediction model (NWP).</p>
 
-<p>The Offshore NW Pacific shares many of the same attributes as the WIND Toolkit, including 5-minute time resolution and 2-kilometer horizontal spatial resolution. However, the new data set improves upon - the WIND Toolkit through:</p>
+<p>The Offshore Great Lakes shares many of the same attributes as the WIND Toolkit, including 5-minute time resolution and 2-kilometer horizontal spatial resolution. However, the new data set improves upon - the WIND Toolkit through:</p>
 
 <ul>
 	<li>A 21-year modeling period from 2000 through 2020 (compared to the 7-year 2007-2013 modeling period in the WIND Toolkit)</li>
@@ -78,7 +78,7 @@
 
 <h2 id="request-url">Request URL</h2>
 
-<pre>GET /api/wind-toolkit/v2/wind/offshore-nw-pacific-download<em>.format?parameters</em></pre>
+<pre>GET /api/wind-toolkit/v2/wind/offshore-great-lakes-download<em>.format?parameters</em></pre>
 
 <h2 id="request-parameters">Request Parameters</h2>
 
@@ -122,7 +122,7 @@
 
 			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
 
-			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>friction_velocity_2m, inversemoninobukhovlength_2m, skin_temperature, roughness_length, surface_heat_flux, surface_sea_temperature, pressure_0m, pressure_100m, pressure_200m, pressure_300m, relativehumidity_2m, precipitationrate_0m, temperature_100m, turbulent_kinetic_energy_100m, winddirection_100m, windspeed_100m, temperature_10m, turbulent_kinetic_energy_10m, winddirection_10m, windspeed_10m, temperature_120m, turbulent_kinetic_energy_120m, winddirection_120m, windspeed_120m, temperature_140m, turbulent_kinetic_energy_140m, winddirection_140m, windspeed_140m, temperature_160m, turbulent_kinetic_energy_160m, winddirection_160m, windspeed_160m, temperature_180m, turbulent_kinetic_energy_180m, winddirection_180m, windspeed_180m, temperature_200m, turbulent_kinetic_energy_200m, winddirection_200m, windspeed_200m, temperature_20m, turbulent_kinetic_energy_20m, winddirection_20m, windspeed_20m, temperature_220m, turbulent_kinetic_energy_220m, winddirection_220m, windspeed_220m, temperature_240m, turbulent_kinetic_energy_240m, winddirection_240m, windspeed_240m, temperature_260m, turbulent_kinetic_energy_260m, winddirection_260m, windspeed_260m, temperature_280m, turbulent_kinetic_energy_280m, winddirection_280m, windspeed_280m, temperature_2m, temperature_300m, turbulent_kinetic_energy_300m, winddirection_300m, windspeed_300m, temperature_400m, turbulent_kinetic_energy_400m, winddirection_400m, windspeed_400m, temperature_40m, turbulent_kinetic_energy_40m, winddirection_40m, windspeed_40m, temperature_500m, turbulent_kinetic_energy_500m, winddirection_500m, windspeed_500m, temperature_60m, turbulent_kinetic_energy_60m, winddirection_60m, windspeed_60m, temperature_80m, turbulent_kinetic_energy_80m, winddirection_80m, windspeed_80m</em></div>
+			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>friction_velocity_2m, inversemoninobukhovlength_2m, roughness_length, surface_sea_temperature, pressure_0m, pressure_100m, pressure_200m, relativehumidity_2m, precipitationrate_0m, windspeed_10m, windspeed_40m, windspeed_60m, windspeed_80m, windspeed_100m, windspeed_120m, windspeed_140m, windspeed_160m, windspeed_180m, windspeed_200m, winddirection_10m, winddirection_20m, winddirection_40m, winddirection_60m, winddirection_80m, winddirection_100m, winddirection_120m, winddirection_140m, winddirection_160m, winddirection_180m, winddirection_200m, temperature_2m, temperature_10m, temperature_20m, temperature_40m, temperature_60m, temperature_80m, temperature_100m, temperature_120m, temperature_140m, temperature_160m, temperature_180m, temperature_200m, wind_speed, wind_direction, pressure, temperature</em></div>
 			</td>
 			<td class="doc-parameter-description">Each specified attribute will be returned as a column in the resultant CSV download.</td>
 		</tr>
@@ -264,20 +264,16 @@
 
 <h2>Examples</h2>
 
-<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/offshore-nw-pacific-download.json?wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=Erik.Wiffin@nrel.gov</code></div>
+<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/offshore-great-lakes-download.json?wkt=POINT(-92.4228 39.7053)&amp;attributes=wind_speed,wind_direction&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;full_name=Data%20Lover&amp;email=data.lover%40gmail.com&amp;affiliation=NREL</code></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>{
     "inputs": {
-        "body": {},
-        "params": {},
-        "query": {
-            "attributes": "winddirection_180m",
-            "names": "2017",
-            "utc": "false",
-            "leap_day": "true",
-            "email": "Erik.Wiffin@nrel.gov",
-            "wkt": "POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))"
-        }
+				"wkt": "POINT(-92.4228 39.7053)",
+				"attributes": "wind_speed,wind_direction",
+				"names": "2017",
+				"utc": "false",
+				"leap_day": "true",
+        "email": "data.lover@gmail.com"
     },
     "metadata": {
         "version": "2.0.0",
@@ -287,26 +283,24 @@
     },
     "status": 200,
     "outputs": {
-        "message": "File generation in progress. An email will be sent to Erik.Wiffin@nrel.gov when the download is ready.",
-        "downloadUrl": "https://mapfiles.nrel.gov/data/wind/ebc9bbbc34f91c65ac50707d43176c6c.zip"
+        "message": "File generation in progress. An email will be sent to data.lover@gmail.com when the download is ready.",
+        "downloadUrl": "https://mapfiles.nrel.gov/data/wind/8f15cfd44948cb76e7cf9531d5fe9cde.zip"
     },
     "errors": []
 }
 </code></pre></div>
-<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/offshore-nw-pacific-download.csv?wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=Erik.Wiffin@nrel.gov&amp;api_key=DEMO_KEY</code></div>
+<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/offshore-great-lakes-download.csv?wkt=POINT(-92.4228 39.7053)&amp;attributes=wind_speed,wind_direction&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;full_name=Data%20Lover&amp;email=data.lover%40gmail.com&amp;affiliation=NREL</code></div>
 
-<div class="highlight"><pre class="highlight plaintext"><code>SiteID,Site Timezone,Data Timezone,Longitude,Latitude,Country
-80,-9,-9,-130.756,48.75498,b'Canada'
-Year,Month,Day,Hour,Minute,wind direction at 180m (deg)
-2017,1,1,0,0,347.18
-2017,1,1,0,5,347.3
-2017,1,1,0,10,347.40000000000003
-2017,1,1,0,15,347.52
-2017,1,1,0,20,347.66
-2017,1,1,0,25,347.79
-2017,1,1,0,30,348
-2017,1,1,0,35,348.18
-2017,1,1,0,40,348.35
+<div class="highlight"><pre class="highlight plaintext"><code>SiteID,1,Site Timezone,-9,Data Timezone,,Longitude,-128.77481,Latitude,39.970406
+Year,Month,Day,Hour,Minute,wind speed at 100m (m/s),wind direction at 100m (deg)
+2017,1,1,0,30,13.35,6.41
+2017,1,1,1,30,13.13,3.59
+2017,1,1,2,30,13.290000000000001,358.89
+2017,1,1,3,30,12.13,359.18
+2017,1,1,4,30,12.81,357.96
+2017,1,1,5,30,11.78,355.59000000000003
+2017,1,1,6,30,11.57,350.11
+2017,1,1,7,30,12.71,358.08
 </code></pre></div>
 <h2 id="rate-limits">Rate Limits</h2>
 
@@ -338,7 +332,7 @@ Year,Month,Day,Hour,Minute,wind direction at 180m (deg)
 </table>
 
     <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
-  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/wind/wind-toolkit/offshore-nw-pacific-download.html.md.erb">Help Improve this Content</a>
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/wind/wind-toolkit/offshore-great-lakes-download.html.md.erb">Help Improve this Content</a>
 </div>
 
       <footer class="container-fluid">
