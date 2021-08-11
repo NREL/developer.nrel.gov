@@ -197,7 +197,7 @@
           <strong>Type:</strong> date
         </div>
       </td>
-      <td class="doc-parameter-description">For planned stations, the date the station is expected to open or start carrying alternative fuel. For temporarily unavailable stations, the expected date is the date the station is expected to reopen. This date is estimated but not guaranteed.</td>
+      <td class="doc-parameter-description">For planned stations, the date the station is expected to open or start carrying alternative fuel. For temporarily unavailable stations, the date the station is expected to reopen. This date is estimated.</td>
     </tr>
     <tr id="response-access-code">
       <th class="doc-parameter-name" scope="row">access_code</th>
@@ -945,7 +945,7 @@
           <strong>Type:</strong> integer
         </div>
       </td>
-      <td class="doc-parameter-description">For electric stations, the number of Level 1 EVSE (standard 110V outlet).</td>
+      <td class="doc-parameter-description">For electric stations, the number of Level 1 EVSE ports.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">ev_level2_evse_num</th>
@@ -954,7 +954,7 @@
           <strong>Type:</strong> integer
         </div>
       </td>
-      <td class="doc-parameter-description">For electric stations, the number of Level 2 EVSE (J1772 connector).</td>
+      <td class="doc-parameter-description">For electric stations, the number of Level 2 EVSE ports.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">ev_dc_fast_num</th>
@@ -963,7 +963,7 @@
           <strong>Type:</strong> integer
         </div>
       </td>
-      <td class="doc-parameter-description">For electric stations, the number of DC Fast Chargers.</td>
+      <td class="doc-parameter-description">For electric stations, the number of DC Fast EVSE ports.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">ev_other_evse</th>
@@ -973,7 +973,7 @@
         </div>
       </td>
       <td class="doc-parameter-description">
-        For electric stations, the number and type of additional EVSE, such as:
+        For electric stations, the number and type of additional EVSE ports, such as:
 
         <ul>
           <li>SP Inductive - Small paddle inductive</li>
@@ -1038,7 +1038,7 @@
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">For electric stations, the name of the EVSE network, if applicable.</td>
+      <td class="doc-parameter-description">For electric stations, the name of the EV charging network, if applicable.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">ev_network_ids</th>
@@ -1048,7 +1048,7 @@
         </div>
       </td>
       <td class="doc-parameter-description">
-        For electric stations, if the station belongs to an EVSE network, a record describing the network-specific IDs for this station. See <a href="#ev-network-id-record-fields">EV network ID record fields</a> for response details.
+        For electric stations, if the station belongs to an EV charging network, a record describing the network-specific IDs for this station. See <a href="#ev-network-id-record-fields">EV network ID record fields</a> for response details.
       </td>
     </tr>
     <tr>
@@ -1058,7 +1058,7 @@
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">For electric stations, the EVSE network Web site, if applicable.</td>
+      <td class="doc-parameter-description">For electric stations, the EV charging network Web site, if applicable.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">ev_pricing</th>
@@ -1067,7 +1067,7 @@
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">For EVSE stations, information about whether and how much users must pay to use the EVSE.</td>
+      <td class="doc-parameter-description">For electric stations, information about whether and how much users must pay to use the EVSE port.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">ev_renewable_source</th>
@@ -1077,7 +1077,7 @@
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>For EVSE stations, the type of renewable energy used to generate electricity on-site, given as code values as described below:</p>
+        <p>For electric stations, the type of renewable energy used to generate electricity on-site, given as code values as described below:</p>
         <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
@@ -1322,7 +1322,12 @@
           <strong>Type:</strong> date
         </div>
       </td>
-      <td class="doc-parameter-description">The date that the station began offering the fuel. Please note that most LPG (propane) stations do not have open dates. Some open dates are approximate. Also note that electric station records that are imported to the Station Locator on a daily basis through a network API do not have open dates. See the <a href="http://www.afdc.energy.gov/fuels/data_methods_stations.html">About the Alternative Fueling Station Data</a> page for more information.</td>
+      <td class="doc-parameter-description">
+        The date that the station began offering the fuel. Note that most propane (LPG) stations do not have open dates. Some open dates are approximate. For electric stations added to the Station Locator through automated data feeds from EV charging networks, this is the date provided by the EV charging network or the date the station appeared in the Station Locator if the EV charging network does not provide an open date. See the <a href="http://www.afdc.energy.gov/fuels/data_methods_stations.html">About the Alternative Fueling Station Data page</a> for more information.
+        <br />
+        <br />
+        For planned and temporarily unavailable stations, see expected_date for the date when the station is expected to open or reopen.
+      </td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">date_last_confirmed</th>
@@ -1676,7 +1681,7 @@
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">For EVSE stations, information about whether and how much users must pay to use the EVSE, in French, if available.</td>
+      <td class="doc-parameter-description">For electric stations, information about whether and how much users must pay to use the EVSE port, in French, if available.</td>
     </tr>
   </tbody>
 </table>
@@ -1709,47 +1714,6 @@
         </div>
       </td>
       <td class="doc-parameter-description">The name of the federal agency.</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="ev-network-id-record-fields">EV Network ID Record Fields</h3>
-
-<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
-  <thead>
-    <tr>
-      <th class="doc-parameters-name" scope="col">Field</th>
-      <th class="doc-parameters-value" scope="col">Value</th>
-      <th class="doc-parameters-description" scope="col">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th class="doc-parameter-name" scope="row">station</th>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> string
-        </div>
-      </td>
-      <td class="doc-parameter-description">The identifier for the station provided by the EV network, if available.</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">posts</th>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> array
-        </div>
-      </td>
-      <td class="doc-parameter-description">An array of strings containing the identifier(s) for the post(s) provided by the EV network, if available.</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">ports</th>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> array
-        </div>
-      </td>
-      <td class="doc-parameter-description">An array of strings containing the identifier(s) for the port(s) provided by EV network, if available.</td>
     </tr>
   </tbody>
 </table>
