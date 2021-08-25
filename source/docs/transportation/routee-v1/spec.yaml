@@ -140,19 +140,19 @@ components:
             id:
               type: string
               description: String representing what your input road segment ID field is named.
-              example: "your_id_field"
+              example: "your_input_ids"
             miles:
               type: string
               description: String representing what your input road segment length (in miles) field is named.
-              example: "your_miles_field"
+              example: "your_input_miles"
             gpsspeed:
               type: string
               description: String representing what your input road segment speed (in mph) field is named.
-              example: "your_speed_field"
+              example: "your_input_speed"
             grade:
               type: string
               description: String representing what your input road segment gradient field is named.
-              example: "your_grade_field"
+              example: "your_input_grade"
         omit_grade:
           type: boolean
           description: If no gradient information is available, this can be passed as True to assume 0% grade on all trip segments.
@@ -230,23 +230,23 @@ components:
             id:
               type: string
               description: String representing what your input road segment ID field is named.
-              example: "your_id_field"
+              example: "your_input_ids"
             miles:
               type: string
               description: String representing what your input road segment length (in miles) field is named.
-              example: "your_miles_field"
+              example: "your_input_miles"
             gpsspeed:
               type: string
               description: String representing what your input road segment speed (in mph) field is named.
-              example: "your_speed_field"
+              example: "your_input_speed"
             grade:
               type: string
               description: String representing what your input road segment gradient field is named.
-              example: "your_grade_field"
+              example: "your_input_grade"
             volume:
               type: string
               description: String representing what your input road segment volumen is named.
-              example: "your_volunme_field"
+              example: "your_input_volume"
         omit_grade:
           type: boolean
           description: If no gradient information is available, this can be passed as True to assume 0% grade on all trip segments.
