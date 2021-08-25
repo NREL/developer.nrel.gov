@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: RouteE API
   description: 
-    The Route Energy Prediction Model (RouteE) predicts the energy consumption of a given vehicle over a link or sequence of links (route) in a road network. These API endpoints can be used to get single vehicle link or route energy estimates (`/route`), energy consumption estimates for a variety of vehicles over all links in a transportation network (`/network`), and eco-routing between an origin and destination for a specific vehicle (`/compass`). For more on RouteE, please visit <https://www.nrel.gov/transportation/route-energy-prediction-model.html>.
+     The Route Energy Prediction Model (RouteE) predicts the energy consumption of a given vehicle over a link or sequence of links (route) in a road network. These API endpoints can be used to get single vehicle link or route energy estimates (`/route`), energy consumption estimates for a variety of vehicles over all links in a transportation network (`/network`), and eco-routing between an origin and destination for a specific vehicle (`/compass`). For more on RouteE, please visit <https://www.nrel.gov/transportation/route-energy-prediction-model.html>.
   version: "1.0"
 servers:
   - url: https://developer.nrel.gov/api/routee/v1
@@ -140,19 +140,19 @@ components:
             id:
               type: string
               description: String representing what your input road segment ID field is named.
-              example: "your_id_field"
+              example: "your_input_ids"
             miles:
               type: string
               description: String representing what your input road segment length (in miles) field is named.
-              example: "your_miles_field"
+              example: "your_input_miles"
             gpsspeed:
               type: string
               description: String representing what your input road segment speed (in mph) field is named.
-              example: "your_speed_field"
+              example: "your_input_speed"
             grade:
               type: string
               description: String representing what your input road segment gradient field is named.
-              example: "your_grade_field"
+              example: "your_input_grade"
         omit_grade:
           type: boolean
           description: If no gradient information is available, this can be passed as True to assume 0% grade on all trip segments.
@@ -230,23 +230,23 @@ components:
             id:
               type: string
               description: String representing what your input road segment ID field is named.
-              example: "your_id_field"
+              example: "your_input_ids"
             miles:
               type: string
               description: String representing what your input road segment length (in miles) field is named.
-              example: "your_miles_field"
+              example: "your_input_miles"
             gpsspeed:
               type: string
               description: String representing what your input road segment speed (in mph) field is named.
-              example: "your_speed_field"
+              example: "your_input_speed"
             grade:
               type: string
               description: String representing what your input road segment gradient field is named.
-              example: "your_grade_field"
+              example: "your_input_grade"
             volume:
               type: string
               description: String representing what your input road segment volumen is named.
-              example: "your_volunme_field"
+              example: "your_input_volume"
         omit_grade:
           type: boolean
           description: If no gradient information is available, this can be passed as True to assume 0% grade on all trip segments.
