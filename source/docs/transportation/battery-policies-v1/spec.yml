@@ -184,6 +184,33 @@ paths:
                 description: The array of policies/incentives returned
                 items:
                   "$ref": "#/definitions/Policy"
+  "/v1/policies/{id}.{output_format}":
+    get:
+      summary: Return a single policy/incentive given the policy/incentive's ID
+      produces:
+        - application/json
+      operationId: getPoliciesById
+      parameters:
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        "200":
+          description: Succesful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              result:
+                description: This is a policy/incentive
+                "$ref": "#/definitions/Policy"
+        "404":
+          description: Not found
+          schema:
+            properties:
+              errors:
+                "$ref": "#/definitions/404Error"
+
 parameters:
   OutputFormat:
     in: path
@@ -194,6 +221,14 @@ parameters:
     enum:
       - json
       - csv
+  OutputFormatNoCSV:
+    in: path
+    name: output_format
+    description: Response format
+    required: true
+    type: string
+    enum:
+      - json
   ApiKey:
     in: query
     description: API key
@@ -201,6 +236,12 @@ parameters:
     required: true
     type: string
     default: DEMO_KEY
+  Id:
+    in: path
+    description: The ID being searched
+    name: id
+    required: true
+    type: integer
 
 definitions:
   Metadata:
@@ -216,6 +257,15 @@ definitions:
             type: integer
             description: If the request returns an array of results, this is
               the number of results returned in the array
+  404Error:
+    type: array
+    description: Error messages
+    items:
+      properties:
+        code:
+          type: string
+        developer_message:
+          type: string
   Policy:
     description: This is a battery policy or incentive
     properties:
@@ -344,13 +394,13 @@ definitions:
               description: The job title of the contact
             phone:
               type: string
-              description: The contacts phone number
+              description: The contact's phone number
             email:
               type: string
-              description: The contacts email address
+              description: The contact's email address
             url:
               type: string
-              description: The contacts webpage
+              description: The contact's webpage
             state:
               type: string
               description: The state in which the contact is based
