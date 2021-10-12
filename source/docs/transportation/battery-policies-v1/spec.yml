@@ -351,6 +351,53 @@ paths:
             properties:
               errors:
                 "$ref": "#/definitions/404"
+  "/v1/topics.{output_format}":
+    get:
+      summary: Return a full list of topics
+      produces:
+        - application/json
+      operationId: topicsIndex
+      parameters:
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        "200":
+          description: Succesful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              result:
+                type: array
+                description: The array of topics returned
+                items:
+                  "$ref": "#/definitions/Topic"
+  "/v1/topics/{id}.{output_format}":
+    get:
+      summary: Return a single topic given the topic's ID
+      produces:
+        - application/json
+      operationId: topicsShow
+      parameters:
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        "200":
+          description: Succesful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              result:
+                description: This is a topic
+                "$ref": "#/definitions/Topic"
+        "404":
+          description: Not found
+          schema:
+            properties:
+              errors:
+                "$ref": "#/definitions/404"
 
 parameters:
   OutputFormat:
@@ -602,3 +649,20 @@ definitions:
       agency:
         type: string
         description: The agency that the contact represents
+  Topic:
+    description: This is a topic
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for the topic
+      name:
+        type: string
+        description: The name of the topic
+      code:
+        type: string
+        description: A code used to identify the topic
+      help:
+        type: string
+        description: Additional information for this topic in
+          <a href="https://guides.github.com/features/mastering-markdown/">
+          markdown formatting</a>
