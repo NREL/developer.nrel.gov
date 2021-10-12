@@ -257,6 +257,53 @@ paths:
             properties:
               errors:
                 "$ref": "#/definitions/404"
+  "/v1/batteries.{output_format}":
+    get:
+      summary: Return a full list of batteries
+      produces:
+        - application/json
+      operationId: batteriesIndex
+      parameters:
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        "200":
+          description: Succesful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              result:
+                type: array
+                description: The array of batteries returned
+                items:
+                  "$ref": "#/definitions/Battery"
+  "/v1/batteries/{id}.{output_format}":
+    get:
+      summary: Return a single battery given the battery's ID
+      produces:
+        - application/json
+      operationId: batteriesShow
+      parameters:
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        "200":
+          description: Succesful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              result:
+                description: This is a battery
+                "$ref": "#/definitions/Battery"
+        "404":
+          description: Not found
+          schema:
+            properties:
+              errors:
+                "$ref": "#/definitions/404"
 
 parameters:
   OutputFormat:
@@ -466,3 +513,15 @@ definitions:
       code:
         type: string
         description: A code used to identify the agency
+  Battery:
+    description: This is a battery
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for the battery
+      name:
+        type: string
+        description: The name of the battery
+      code:
+        type: string
+        description: A code used to identify the battery
