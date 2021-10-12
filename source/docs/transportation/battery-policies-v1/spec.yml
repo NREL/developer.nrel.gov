@@ -9,6 +9,147 @@ info:
     batteries
     for electric vehicle and stationary energy storage applications
 paths:
+  "/v1/agencies.{output_format}":
+    get:
+      summary: Return a full list of agencies
+      produces:
+        - application/json
+      operationId: agenciesIndex
+      parameters:
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        "200":
+          description: Succesful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              result:
+                type: array
+                description: The array of agencies returned
+                items:
+                  "$ref": "#/definitions/Agency"
+  "/v1/agencies/{id}.{output_format}":
+    get:
+      summary: Return a single agency given the agency's ID
+      produces:
+        - application/json
+      operationId: agenciesShow
+      parameters:
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        "200":
+          description: Succesful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              result:
+                description: This is an agency
+                "$ref": "#/definitions/Agency"
+        "404":
+          description: Not found
+          schema:
+            properties:
+              errors:
+                "$ref": "#/definitions/404"
+  "/v1/batteries.{output_format}":
+    get:
+      summary: Return a full list of batteries
+      produces:
+        - application/json
+      operationId: batteriesIndex
+      parameters:
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        "200":
+          description: Succesful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              result:
+                type: array
+                description: The array of batteries returned
+                items:
+                  "$ref": "#/definitions/Battery"
+  "/v1/batteries/{id}.{output_format}":
+    get:
+      summary: Return a single battery given the battery's ID
+      produces:
+        - application/json
+      operationId: batteriesShow
+      parameters:
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        "200":
+          description: Succesful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              result:
+                description: This is a battery
+                "$ref": "#/definitions/Battery"
+        "404":
+          description: Not found
+          schema:
+            properties:
+              errors:
+                "$ref": "#/definitions/404"
+  "/v1/contacts.{output_format}":
+    get:
+      summary: Return a full list of contacts
+      produces:
+        - application/json
+      operationId: contactsIndex
+      parameters:
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        "200":
+          description: Succesful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              result:
+                type: array
+                description: The array of contacts returned
+                items:
+                  "$ref": "#/definitions/Contact"
+  "/v1/contacts/{id}.{output_format}":
+    get:
+      summary: Return a single contact given the contact's ID
+      produces:
+        - application/json
+      operationId: contactsShow
+      parameters:
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        "200":
+          description: Succesful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              result:
+                description: This is a contact
+                "$ref": "#/definitions/Contact"
+        "404":
+          description: Not found
+          schema:
+            properties:
+              errors:
+                "$ref": "#/definitions/404"
   "/v1/policies.{output_format}":
     get:
       summary: Return a full list of policies and incentives 
@@ -204,100 +345,6 @@ paths:
               result:
                 description: This is a policy/incentive
                 "$ref": "#/definitions/Policy"
-        "404":
-          description: Not found
-          schema:
-            properties:
-              errors:
-                "$ref": "#/definitions/404"
-  "/v1/agencies.{output_format}":
-    get:
-      summary: Return a full list of agencies
-      produces:
-        - application/json
-      operationId: agenciesIndex
-      parameters:
-        - "$ref": "#/parameters/OutputFormatNoCSV"
-        - "$ref": "#/parameters/ApiKey"
-      responses:
-        "200":
-          description: Succesful request
-          schema:
-            properties:
-              metadata:
-                "$ref": "#/definitions/Metadata"
-              result:
-                type: array
-                description: The array of agencies returned
-                items:
-                  "$ref": "#/definitions/Agency"
-  "/v1/agencies/{id}.{output_format}":
-    get:
-      summary: Return a single agency given the agency's ID
-      produces:
-        - application/json
-      operationId: agenciesShow
-      parameters:
-        - "$ref": "#/parameters/Id"
-        - "$ref": "#/parameters/OutputFormatNoCSV"
-        - "$ref": "#/parameters/ApiKey"
-      responses:
-        "200":
-          description: Succesful request
-          schema:
-            properties:
-              metadata:
-                "$ref": "#/definitions/Metadata"
-              result:
-                description: This is an agency
-                "$ref": "#/definitions/Agency"
-        "404":
-          description: Not found
-          schema:
-            properties:
-              errors:
-                "$ref": "#/definitions/404"
-  "/v1/batteries.{output_format}":
-    get:
-      summary: Return a full list of batteries
-      produces:
-        - application/json
-      operationId: batteriesIndex
-      parameters:
-        - "$ref": "#/parameters/OutputFormatNoCSV"
-        - "$ref": "#/parameters/ApiKey"
-      responses:
-        "200":
-          description: Succesful request
-          schema:
-            properties:
-              metadata:
-                "$ref": "#/definitions/Metadata"
-              result:
-                type: array
-                description: The array of batteries returned
-                items:
-                  "$ref": "#/definitions/Battery"
-  "/v1/batteries/{id}.{output_format}":
-    get:
-      summary: Return a single battery given the battery's ID
-      produces:
-        - application/json
-      operationId: batteriesShow
-      parameters:
-        - "$ref": "#/parameters/Id"
-        - "$ref": "#/parameters/OutputFormatNoCSV"
-        - "$ref": "#/parameters/ApiKey"
-      responses:
-        "200":
-          description: Succesful request
-          schema:
-            properties:
-              metadata:
-                "$ref": "#/definitions/Metadata"
-              result:
-                description: This is a battery
-                "$ref": "#/definitions/Battery"
         "404":
           description: Not found
           schema:
@@ -525,3 +572,33 @@ definitions:
       code:
         type: string
         description: A code used to identify the battery
+  Contact:
+    description: This is a contact
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for the contact
+      contact_type:
+        type: string
+        description: The contact type - State or Federal
+      name:
+        type: string
+        description: The name of the contact
+      state:
+        type: string
+        description: The state in which the contact is based
+      phone:
+        type: string
+        description: The contact's phone number
+      title:
+        type: string
+        description: The job title of the contact
+      email:
+        type: string
+        description: The contact's email address
+      url:
+        type: string
+        description: The contact's webpage
+      agency:
+        type: string
+        description: The agency that the contact represents
