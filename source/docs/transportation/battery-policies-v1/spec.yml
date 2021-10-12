@@ -15,7 +15,7 @@ paths:
       produces:
         - application/json
         - text/csv
-      operationId: getPolicies
+      operationId: policiesIndex
       parameters:
         - "$ref": "#/parameters/OutputFormat"
         - "$ref": "#/parameters/ApiKey"
@@ -189,7 +189,7 @@ paths:
       summary: Return a single policy/incentive given the policy/incentive's ID
       produces:
         - application/json
-      operationId: getPoliciesById
+      operationId: policiesShow
       parameters:
         - "$ref": "#/parameters/Id"
         - "$ref": "#/parameters/OutputFormatNoCSV"
@@ -209,7 +209,54 @@ paths:
           schema:
             properties:
               errors:
-                "$ref": "#/definitions/404Error"
+                "$ref": "#/definitions/404"
+  "/v1/agencies.{output_format}":
+    get:
+      summary: Return a full list of agencies
+      produces:
+        - application/json
+      operationId: agenciesIndex
+      parameters:
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        "200":
+          description: Succesful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              result:
+                type: array
+                description: The array of agencies returned
+                items:
+                  "$ref": "#/definitions/Agency"
+  "/v1/agencies/{id}.{output_format}":
+    get:
+      summary: Return a single agency given the agency's ID
+      produces:
+        - application/json
+      operationId: agenciesShow
+      parameters:
+        - "$ref": "#/parameters/Id"
+        - "$ref": "#/parameters/OutputFormatNoCSV"
+        - "$ref": "#/parameters/ApiKey"
+      responses:
+        "200":
+          description: Succesful request
+          schema:
+            properties:
+              metadata:
+                "$ref": "#/definitions/Metadata"
+              result:
+                description: This is an agency
+                "$ref": "#/definitions/Agency"
+        "404":
+          description: Not found
+          schema:
+            properties:
+              errors:
+                "$ref": "#/definitions/404"
 
 parameters:
   OutputFormat:
@@ -257,7 +304,7 @@ definitions:
             type: integer
             description: If the request returns an array of results, this is
               the number of results returned in the array
-  404Error:
+  404:
     type: array
     description: Error messages
     items:
@@ -407,3 +454,15 @@ definitions:
             agency:
               type: string
               description: The agency that the contact represents
+  Agency:
+    description: This is an agency
+    properties:
+      id:
+        type: integer
+        description: A unique identifier for the agency
+      name:
+        type: string
+        description: The name of the agency
+      code:
+        type: string
+        description: A code used to identify the agency
