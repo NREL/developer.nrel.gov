@@ -54,8 +54,15 @@ paths:
           description: Not found
           schema:
             properties:
-              errors:
-                "$ref": "#/definitions/404"
+              errors: &errors
+                type: array
+                description: Error messages
+                items:
+                  properties:
+                    code:
+                      type: string
+                    developer_message:
+                      type: string
   "/v1/batteries.{output_format}":
     get:
       summary: Return a full list of batteries
@@ -101,8 +108,7 @@ paths:
           description: Not found
           schema:
             properties:
-              errors:
-                "$ref": "#/definitions/404"
+              errors: *errors
   "/v1/contacts.{output_format}":
     get:
       summary: Return a full list of contacts
@@ -148,8 +154,7 @@ paths:
           description: Not found
           schema:
             properties:
-              errors:
-                "$ref": "#/definitions/404"
+              errors: *errors
   "/v1/policies.{output_format}":
     get:
       summary: Return a full list of policies and incentives 
@@ -325,6 +330,11 @@ paths:
                 description: The array of policies/incentives returned
                 items:
                   "$ref": "#/definitions/Policy"
+        "422":
+          description: Unprocessable Entity
+          schema:
+            properties:
+              errors: *errors
   "/v1/policies/{id}.{output_format}":
     get:
       summary: Return a single policy/incentive given the policy/incentive's ID
@@ -349,8 +359,7 @@ paths:
           description: Not found
           schema:
             properties:
-              errors:
-                "$ref": "#/definitions/404"
+              errors: *errors
   "/v1/topics.{output_format}":
     get:
       summary: Return a full list of topics
@@ -396,8 +405,7 @@ paths:
           description: Not found
           schema:
             properties:
-              errors:
-                "$ref": "#/definitions/404"
+              errors: *errors
 
 parameters:
   OutputFormat:
@@ -445,15 +453,6 @@ definitions:
             type: integer
             description: If the request returns an array of results, this is
               the number of results returned in the array
-  404:
-    type: array
-    description: Error messages
-    items:
-      properties:
-        code:
-          type: string
-        developer_message:
-          type: string
   Policy:
     description: This is a battery policy or incentive
     properties:
