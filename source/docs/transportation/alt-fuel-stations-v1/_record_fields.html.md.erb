@@ -165,7 +165,7 @@
         </table>
       </td>
     </tr>
-    <tr>
+    <tr id="expected-date">
       <th class="doc-parameter-name" scope="row">expected_date</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -978,12 +978,8 @@
           <strong>Type:</strong> date
         </div>
       </td>
-      <td class="doc-parameter-description">
-        The date that the station began offering the fuel. Note that most propane (LPG) stations do not have open dates. Some open dates are approximate. For electric stations added to the Station Locator through automated data feeds from EV charging networks, this is the date provided by the EV charging network or the date the station appeared in the Station Locator if the EV charging network does not provide an open date. See the <a href="http://www.afdc.energy.gov/fuels/data_methods_stations.html">About the Alternative Fueling Station Data page</a> for more information.
-        <br>
-        <br>
-        For planned and temporarily unavailable stations, see expected_date for the date when the station is expected to open or reopen.
-      </td>
+      <td class="doc-parameter-description"><p>The date that the station began offering the fuel. Note that most propane (LPG) stations do not have open dates. Some open dates are approximate. For electric vehicle charging stations added to the Station Locator through automated data feeds from charging networks, this is either the date provided by the charging network or the date it appeared in the Station Locator if the charging network does not provide an open date. See the <a href="https://afdc.energy.gov/stations/#/find/nearest?show_about=true">About the Alternative Fueling Station Data</a> page for more information.</p>
+      <p>For planned and temporarily unavailable stations, see <a href="#expected-date"><code>expected_date</code></a>  for the date when the station is expected to open or reopen</p></td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">date_last_confirmed</th>
