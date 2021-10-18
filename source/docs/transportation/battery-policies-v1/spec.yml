@@ -48,7 +48,6 @@ paths:
               metadata:
                 "$ref": "#/definitions/Metadata"
               result:
-                description: This is an agency
                 "$ref": "#/definitions/Agency"
         "404":
           description: Not found
@@ -102,7 +101,6 @@ paths:
               metadata:
                 "$ref": "#/definitions/Metadata"
               result:
-                description: This is a battery
                 "$ref": "#/definitions/Battery"
         "404":
           description: Not found
@@ -148,7 +146,6 @@ paths:
               metadata:
                 "$ref": "#/definitions/Metadata"
               result:
-                description: This is a contact
                 "$ref": "#/definitions/Contact"
         "404":
           description: Not found
@@ -353,7 +350,6 @@ paths:
               metadata:
                 "$ref": "#/definitions/Metadata"
               result:
-                description: This is a policy/incentive
                 "$ref": "#/definitions/Policy"
         "404":
           description: Not found
@@ -399,7 +395,6 @@ paths:
               metadata:
                 "$ref": "#/definitions/Metadata"
               result:
-                description: This is a topic
                 "$ref": "#/definitions/Topic"
         "404":
           description: Not found
