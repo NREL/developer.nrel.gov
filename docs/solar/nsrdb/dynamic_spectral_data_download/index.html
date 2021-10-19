@@ -243,6 +243,20 @@
       </td>
       <td class="doc-parameter-description">Upon successful completion a message will be returned informing the user that file generation is in progress and an email will be sent to the address provided in the <code>email</code> input field when the download is ready</td>
     </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">metadata</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
+      </td>
+      <td class="doc-parameter-description">Key: Value pairs representing result version and file count</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">status</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> integer</div>
+      </td>
+      <td class="doc-parameter-description">HTTP response status code</td>
+    </tr>
   </tbody>
 </table>
 
@@ -254,23 +268,21 @@
 
 <h3 id="json-output-format">JSON Output Format</h3>
 
-<div class="doc-example-url"><code>GET /api/nsrdb_api/solar/spectral_ondemand_download.json?wkt=POINT(-103.0078125%2043.068887774169625)&amp;full_name=Nikola%20Tesla&amp;email=noreply@nrel.gov&amp;affiliation=NREL&amp;mailing_list=false&amp;reason=test&amp;equipment=fixed_tilt&amp;tilt=40&amp;angle=130</code></div>
+<div class="doc-example-url"><code>GET /api/nsrdb_api/solar/spectral_ondemand_download.json?api_key=DEMO_KEY&amp;wkt=POINT(-103.0078125%2043.068887774169625)&amp;names=2017&amp;full_name=Nikola%20Tesla&amp;email=noreply@nrel.gov&amp;affiliation=NREL&amp;mailing_list=false&amp;reason=test&amp;equipment=fixed_tilt&amp;tilt=40&amp;angle=130</code></div>
 
 <div class="highlight"><pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nl">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"wkt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POINT(-103.0078125 43.068887774169625)"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"names"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="mi">2017</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"names"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nikola Tesla"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noreply@nrel.gov"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"affiliation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NREL"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"mailing_list"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"equipment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed_tilt"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tilt"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"angle"</span><span class="p">:</span><span class="w"> </span><span class="mi">130</span><span class="w">
+    </span><span class="nl">"tilt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"angle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"130"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File generation in progress. An email will be sent to noreply@nrel.gov when the download is ready."</span><span class="w">
@@ -280,7 +292,7 @@
 <h3 id="csv-data-format">CSV Data Format</h3>
 <p>The following download example is truncated after the first few rows of data.</p>
 
-<div class="doc-example-url"><code>GET /api/nsrdb_api/solar/spectral_ondemand_download.json?wkt=POINT(-103.0078125%2043.068887774169625)&amp;full_name=Nikola%20Tesla&amp;email=noreply@nrel.gov&amp;affiliation=NREL&amp;mailing_list=false&amp;reason=test&amp;equipment=fixed_tilt&amp;tilt=40&amp;angle=130</code></div>
+<div class="doc-example-url"><code>GET /api/nsrdb_api/solar/spectral_ondemand_download.json?api_key=DEMO_KEY&amp;wkt=POINT(-103.0078125%2043.068887774169625)&amp;names=2017&amp;full_name=Nikola%20Tesla&amp;email=noreply@nrel.gov&amp;affiliation=NREL&amp;mailing_list=false&amp;reason=test&amp;equipment=fixed_tilt&amp;tilt=40&amp;angle=130</code></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,Local Time Zone,Clearsky DHI Units,Clearsky DNI Units,Clearsky GHI Units,Dew Point Units,DHI Units,DNI Units,GHI Units,Solar Zenith Angle Units,Temperature Units,Pressure Units,Relative Humidity Units,Precipitable Water Units,Wind Direction Units,Wind Speed,Cloud Type -15,Cloud Type 0,Cloud Type 1,Cloud Type 2,Cloud Type 3,Cloud Type 4,Cloud Type 5,Cloud Type 6,Cloud Type 7,Cloud Type 8,Cloud Type 9,Cloud Type 10,Cloud Type 11,Cloud Type 12,Fill Flag 0,Fill Flag 1,Fill Flag 2,Fill Flag 3,Fill Flag 4,Fill Flag 5,Surface Albedo Units,Solar Azimuth Units,Panel Tilt Units,Panel Azimuth Units,Spectral Data Units,Version
 NSRDB,535998,-,-,-,43.05,-103.02,0,1009,-7,w/m2,w/m2,w/m2,c,w/m2,w/m2,w/m2,Degree,c,mbar,%,cm,Degrees,m/s,N/A,Clear,Probably Clear,Fog,Water,Super-Cooled Water,Mixed,Opaque Ice,Cirrus,Overlapping,Overshooting,Unknown,Dust,Smoke,N/A,Missing Image,Low Irradiance,Exceeds Clearsky,Missing CLoud Properties,Rayleigh Violation,N/A,degrees,degrees,degrees,W/m^2/um,v3.0.1
