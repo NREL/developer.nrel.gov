@@ -7,11 +7,11 @@ info:
   title: Battery Policies and Incentives
   description: Query our database of policies and incentives related to
     batteries
-    for electric vehicle and stationary energy storage applications
+    for electric vehicle and stationary energy storage applications.
 paths:
   "/v1/agencies.{output_format}":
     get:
-      summary: Return a full list of agencies
+      summary: Return a full list of agencies.
       produces:
         - application/json
       operationId: agenciesIndex
@@ -20,19 +20,19 @@ paths:
         - "$ref": "#/parameters/ApiKey"
       responses:
         "200":
-          description: Succesful request
+          description: Successful request
           schema:
             properties:
               metadata:
                 "$ref": "#/definitions/Metadata"
               result:
                 type: array
-                description: The array of agencies returned
+                description: The array of agencies returned.
                 items:
                   "$ref": "#/definitions/Agency"
   "/v1/agencies/{id}.{output_format}":
     get:
-      summary: Return a single agency given the agency's ID
+      summary: Return a single agency given the agency's ID.
       produces:
         - application/json
       operationId: agenciesShow
@@ -42,13 +42,13 @@ paths:
         - "$ref": "#/parameters/ApiKey"
       responses:
         "200":
-          description: Succesful request
+          description: Successful request
           schema:
             properties:
               metadata:
                 "$ref": "#/definitions/Metadata"
               result:
-                description: This is an agency
+                description: This is an agency.
                 "$ref": "#/definitions/Agency"
         "404":
           description: Not found
@@ -65,7 +65,7 @@ paths:
                       type: string
   "/v1/batteries.{output_format}":
     get:
-      summary: Return a full list of batteries
+      summary: Return a full list of batteries.
       produces:
         - application/json
       operationId: batteriesIndex
@@ -74,19 +74,19 @@ paths:
         - "$ref": "#/parameters/ApiKey"
       responses:
         "200":
-          description: Succesful request
+          description: Successful request
           schema:
             properties:
               metadata:
                 "$ref": "#/definitions/Metadata"
               result:
                 type: array
-                description: The array of batteries returned
+                description: The array of batteries returned.
                 items:
                   "$ref": "#/definitions/Battery"
   "/v1/batteries/{id}.{output_format}":
     get:
-      summary: Return a single battery given the battery's ID
+      summary: Return a single battery given the battery's ID.
       produces:
         - application/json
       operationId: batteriesShow
@@ -96,13 +96,13 @@ paths:
         - "$ref": "#/parameters/ApiKey"
       responses:
         "200":
-          description: Succesful request
+          description: Successful request
           schema:
             properties:
               metadata:
                 "$ref": "#/definitions/Metadata"
               result:
-                description: This is a battery
+                description: This is a battery.
                 "$ref": "#/definitions/Battery"
         "404":
           description: Not found
@@ -111,7 +111,7 @@ paths:
               errors: *errors
   "/v1/contacts.{output_format}":
     get:
-      summary: Return a full list of contacts
+      summary: Return a full list of contacts.
       produces:
         - application/json
       operationId: contactsIndex
@@ -120,19 +120,19 @@ paths:
         - "$ref": "#/parameters/ApiKey"
       responses:
         "200":
-          description: Succesful request
+          description: Successful request
           schema:
             properties:
               metadata:
                 "$ref": "#/definitions/Metadata"
               result:
                 type: array
-                description: The array of contacts returned
+                description: The array of contacts returned.
                 items:
                   "$ref": "#/definitions/Contact"
   "/v1/contacts/{id}.{output_format}":
     get:
-      summary: Return a single contact given the contact's ID
+      summary: Return a single contact given the contact's ID.
       produces:
         - application/json
       operationId: contactsShow
@@ -142,13 +142,13 @@ paths:
         - "$ref": "#/parameters/ApiKey"
       responses:
         "200":
-          description: Succesful request
+          description: Successful request
           schema:
             properties:
               metadata:
                 "$ref": "#/definitions/Metadata"
               result:
-                description: This is a contact
+                description: This is a contact.
                 "$ref": "#/definitions/Contact"
         "404":
           description: Not found
@@ -157,7 +157,7 @@ paths:
               errors: *errors
   "/v1/policies.{output_format}":
     get:
-      summary: Return a full list of policies and incentives 
+      summary: Return a full list of policies and incentives.
       produces:
         - application/json
         - text/csv
@@ -176,7 +176,7 @@ paths:
             or a comma-separated list of multiple battery type codes, may be
             given. Values and what they stand for are as follows:
             "LEA" for Lead Acid, "LIB" for Lithium Based,
-            "NMH" for Nickel-Metal Hydride,  "OTH" Other, "SOL" Solid State'
+            "NMH" for Nickel-Metal Hydride, "OTH" for Other, and "SOL" for Solid State.'
           name: battery
           required: false
           type: string
@@ -196,7 +196,7 @@ paths:
             "MIN" for Mineral Extraction, "REC" for Recycling & Disposal,
             "RND" for Research & Development, "SAF" for Safety & Transport,
             "STA" for Stationary Storage, "SUP" for Supply Chain Incentives,
-            "ULT" for Ultracapacitors, "USM" for USMCA'
+            "ULT" for Ultracapacitors, and "USM" for USMCA.'
           name: topic
           required: false
           type: string
@@ -217,7 +217,7 @@ paths:
             - ULT
             - USM
         - in: query
-          description: Search by jurisdiction type
+          description: Search by jurisdiction type.
           name: jurisdiction_type
           required: false
           type: string
@@ -227,17 +227,17 @@ paths:
         - in: query
           description: Return policies and incentives for the given
             jurisdiction. Jurisdiction must be given as a two character state
-            code (eg, 'CO' for Colorado). A single jurisdiction, or a
-            comma-separated list of multiple jurisdiction, may be given. Use
-            the code 'US' for federal laws and the code 'DC' for Washington D.C.
+            code (e.g., 'CO' for Colorado). A single jurisdiction, or a
+            comma-separated list of multiple jurisdictions, may be given. Use
+            the code 'US' for federal and the code 'DC' for Washington, D.C.
           name: jurisdiction
           required: false
           type: string
         - in: query
           description: Return policies and incentives for the given state.
-            State must be given as a two character state code (eg, 'CO' for
+            State must be given as a two-character state code (e.g., 'CO' for
             Colorado). A single state, or a comma-separated list of multiple
-            states, may be given. Use the code 'DC' for Washington D.C.
+            states, may be given. Use the code 'DC' for Washington, D.C.
           name: state
           required: false
           type: string
@@ -251,14 +251,19 @@ paths:
               "DOJ" for Department of Justice, "DOL" for Department of Labor,
               "DOS" for Department of State, "DOT" for Department of Transportation,
               "ED" for Department of Education, "EPA" for Environmental Protection Agency,
+              "FTC" for Federal Trade Commission,
               "HHS" for Department of Health and Human Services (HHS),
-              "HUD" for Department of Housing and Urban Development, "OTH" for Other,
+              "HUD" for Department of Housing and Urban Development,
+              "NASA" for National Aeronautics and Space Administration,
+              "NSF" for National Science Foundation,
+              "OTH" for Other,
+              "SBA" for Small Business Administration,
               "TREAS" for Department of the Treasury,
-              "USDA" for Department of Agriculture, "VA" for Department of Veterans Affairs'
+              "USDA" for Department of Agriculture, and "VA" for Department of Veterans Affairs.'
           name: agency
           required: false
           type: string
-          enum: 
+          enum:
             - DHS
             - DOC
             - DOD
@@ -270,9 +275,13 @@ paths:
             - DOT
             - ED
             - EPA
+            - FTC
             - HHS
             - HUD
+            - NASA
+            - NSF
             - OTH
+            - SBA
             - TREAS
             - USDA
             - VA
@@ -319,7 +328,7 @@ paths:
           type: integer
       responses:
         "200":
-          description: Succesful request
+          description: Successful request
           schema:
             type: object
             properties:
@@ -327,7 +336,7 @@ paths:
                 "$ref": "#/definitions/Metadata"
               result:
                 type: array
-                description: The array of policies/incentives returned
+                description: The array of policies or incentives returned.
                 items:
                   "$ref": "#/definitions/Policy"
         "422":
@@ -337,7 +346,7 @@ paths:
               errors: *errors
   "/v1/policies/{id}.{output_format}":
     get:
-      summary: Return a single policy/incentive given the policy/incentive's ID
+      summary: Return a single policy or incentive given the policy or incentive's ID.
       produces:
         - application/json
       operationId: policiesShow
@@ -347,13 +356,13 @@ paths:
         - "$ref": "#/parameters/ApiKey"
       responses:
         "200":
-          description: Succesful request
+          description: Successful request
           schema:
             properties:
               metadata:
                 "$ref": "#/definitions/Metadata"
               result:
-                description: This is a policy/incentive
+                description: This is a policy or incentive.
                 "$ref": "#/definitions/Policy"
         "404":
           description: Not found
@@ -362,7 +371,7 @@ paths:
               errors: *errors
   "/v1/topics.{output_format}":
     get:
-      summary: Return a full list of topics
+      summary: Return a full list of topics.
       produces:
         - application/json
       operationId: topicsIndex
@@ -371,19 +380,19 @@ paths:
         - "$ref": "#/parameters/ApiKey"
       responses:
         "200":
-          description: Succesful request
+          description: Successful request
           schema:
             properties:
               metadata:
                 "$ref": "#/definitions/Metadata"
               result:
                 type: array
-                description: The array of topics returned
+                description: The array of topics returned.
                 items:
                   "$ref": "#/definitions/Topic"
   "/v1/topics/{id}.{output_format}":
     get:
-      summary: Return a single topic given the topic's ID
+      summary: Return a single topic given the topic's ID.
       produces:
         - application/json
       operationId: topicsShow
@@ -393,13 +402,13 @@ paths:
         - "$ref": "#/parameters/ApiKey"
       responses:
         "200":
-          description: Succesful request
+          description: Successful request
           schema:
             properties:
               metadata:
                 "$ref": "#/definitions/Metadata"
               result:
-                description: This is a topic
+                description: This is a topic.
                 "$ref": "#/definitions/Topic"
         "404":
           description: Not found
@@ -434,53 +443,52 @@ parameters:
     default: DEMO_KEY
   Id:
     in: path
-    description: The ID being searched
+    description: The ID being searched.
     name: id
     required: true
     type: integer
 
 definitions:
   Metadata:
-    description: The identifying metadata
+    description: The identifying metadata.
     properties:
       version:
         type: string
-        description: The version of the API
+        description: The version of the API.
       resultset:
         type: object
         properties:
           count:
             type: integer
             description: If the request returns an array of results, this is
-              the number of results returned in the array
+              the number of results returned in the array.
   Policy:
-    description: This is a battery policy or incentive
+    description: This is a battery policy or incentive.
     properties:
       id:
         type: integer
-        description: A unique identifier for the policy/incentive
+        description: A unique identifier for the policy or incentive.
       jurisdiction_type:
         type: string
-        description: The category that the policy/incentive falls under,
-          state or federal.
+        description: The category that the policy or incentive falls under (state or federal).
       record_type:
         type: string
-        description: The record type - policy or incentive.
+        description: The record type (policy or incentive).
       title:
         type: string
-        description: The title of the policy/incentive.
+        description: The title of the policy or incentive.
       status:
         type: string
-        description: The status of the policy/incentive.
+        description: The status of the policy or incentive.
       status_date:
         type: string
-        description: The status effective date. 
+        description: The status effective date.
       description:
         type: string
-        description: Description of the policy/incentive, including applicable
+        description: Description of the policy or incentive, including applicable
           legislative references,
           in <a href="https://guides.github.com/features/mastering-markdown/">
-          markdown formatting</a>
+          markdown formatting</a>.
       date_enacted:
         type: string
         format: date
@@ -489,16 +497,16 @@ definitions:
       date_amended:
         type: string
         format: date
-        description: The date the policy/incentive was updated through new
+        description: The date the policy or incentive was updated through new
           legislation or rulemaking.
       date_expired:
         type: string
         format: date
-        description: The date the policy/incentive is set to end.
+        description: The date the policy or incentive is set to end.
       date_archived:
         type: string
         format: date
-        description: The date that the policy/incentive is no longer relevant
+        description: The date that the policy or incentive is no longer relevant
           to the database. This may include longstanding Executive Orders or
           laws requiring legislative studies that have been completed.
       date_repealed:
@@ -506,162 +514,162 @@ definitions:
         format: date
         description: The date legislation is enacted or a rulemaking is
           finalized
-          to repeal the policy/incentive.
+          to repeal the policy or incentive.
       significant_update:
         type: string
         format: date
-        description: When the last significant update to the policy/incentive
+        description: When the last significant update to the policy or incentive
           was made.
       batteries:
         type: array
         items:
           description: A list of battery techonologies associated with the
-            policy/incentive
+            policy or incentive.
           properties:
             name:
               type: string
-              description: The name of the battery technology
+              description: The name of the battery technology.
             code:
               type: string
-              description: A code used to identify the battery technology
+              description: A code used to identify the battery technology.
       topics:
         type: array
         items:
-          description: A list of topics associated with the policy/incentive
+          description: A list of topics associated with the policy or incentive.
           properties:
             name:
               type: string
-              description: The name of the topic
+              description: The name of the topic.
             code:
               type: string
-              description: A code used to identify the topic
+              description: A code used to identify the topic.
       references:
         type: array
         items:
-          description: A list of references associated with the policy/incentive
+          description: A list of references associated with the policy or incentive.
           properties:
             url:
               type: string
-              description: The url linking to the reference
+              description: The URL linking to the reference.
             description:
               type: string
-              description: The context of the reference
+              description: The context of the reference.
       agencies:
         type: array
         items:
-          description: A list of agencies associated with the policy/incentive
+          description: A list of agencies associated with the policy or incentive.
           properties:
             name:
               type: string
-              description: The name of the agency
+              description: The name of the agency.
             code:
               type: string
-              description: A code used to identify the agency
+              description: A code used to identify the agency.
       states:
         type: array
         items:
-          description: A list of states associated with the policy/incentive
+          description: A list of states associated with the policy or incentive.
           properties:
             name:
               type: string
-              description: The name of the state
+              description: The name of the state.
             abbreviation:
               type: string
-              description: A code used to identify the state
+              description: A code used to identify the state.
       contacts:
         type: array
         items:
-          description: A list of contacts associated with the policy/incentive
+          description: A list of contacts associated with the policy or incentive.
           properties:
             name:
               type: string
-              description: The name of the contact
+              description: The name of the contact.
             title:
               type: string
-              description: The job title of the contact
+              description: The job title of the contact.
             phone:
               type: string
-              description: The contact's phone number
+              description: The contact's phone number.
             email:
               type: string
-              description: The contact's email address
+              description: The contact's email address.
             url:
               type: string
-              description: The contact's webpage
+              description: The contact's website.
             state:
               type: string
-              description: The state in which the contact is based
+              description: The state in which the contact is based.
             agency:
               type: string
-              description: The agency that the contact represents
+              description: The agency that the contact represents.
   Agency:
-    description: This is an agency
+    description: This is an agency.
     properties:
       id:
         type: integer
-        description: A unique identifier for the agency
+        description: A unique identifier for the agency.
       name:
         type: string
-        description: The name of the agency
+        description: The name of the agency.
       code:
         type: string
-        description: A code used to identify the agency
+        description: A code used to identify the agency.
   Battery:
-    description: This is a battery
+    description: This is a battery.
     properties:
       id:
         type: integer
-        description: A unique identifier for the battery
+        description: A unique identifier for the battery.
       name:
         type: string
-        description: The name of the battery
+        description: The name of the battery.
       code:
         type: string
-        description: A code used to identify the battery
+        description: A code used to identify the battery.
   Contact:
-    description: This is a contact
+    description: This is a contact.
     properties:
       id:
         type: integer
-        description: A unique identifier for the contact
+        description: A unique identifier for the contact.
       contact_type:
         type: string
-        description: The contact type - State or Federal
+        description: The contact type (state or federal).
       name:
         type: string
-        description: The name of the contact
+        description: The name of the contact.
       state:
         type: string
-        description: The state in which the contact is based
+        description: The state in which the contact is based.
       phone:
         type: string
-        description: The contact's phone number
+        description: The contact's phone number.
       title:
         type: string
-        description: The job title of the contact
+        description: The contact's job title.
       email:
         type: string
-        description: The contact's email address
+        description: The contact's email address.
       url:
         type: string
-        description: The contact's webpage
+        description: The contact's wesite.
       agency:
         type: string
-        description: The agency that the contact represents
+        description: The agency that the contact represents.
   Topic:
-    description: This is a topic
+    description: This is a topic.
     properties:
       id:
         type: integer
-        description: A unique identifier for the topic
+        description: A unique identifier for the topic.
       name:
         type: string
-        description: The name of the topic
+        description: The name of the topic.
       code:
         type: string
-        description: A code used to identify the topic
+        description: A code used to identify the topic.
       help:
         type: string
         description: Additional information for this topic in
           <a href="https://guides.github.com/features/mastering-markdown/">
-          markdown formatting</a>
+          markdown formatting</a>.
