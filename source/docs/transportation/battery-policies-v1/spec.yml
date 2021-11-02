@@ -53,15 +53,8 @@ paths:
           description: Not found
           schema:
             properties:
-              errors: &errors
-                type: array
-                description: Error messages
-                items:
-                  properties:
-                    code:
-                      type: string
-                    developer_message:
-                      type: string
+              errors:
+                "$ref": "#/definitions/Error"
   "/v1/batteries.{output_format}":
     get:
       summary: Return a full list of batteries.
@@ -106,7 +99,8 @@ paths:
           description: Not found
           schema:
             properties:
-              errors: *errors
+              errors:
+                "$ref": "#/definitions/Error"
   "/v1/contacts.{output_format}":
     get:
       summary: Return a full list of contacts.
@@ -151,7 +145,8 @@ paths:
           description: Not found
           schema:
             properties:
-              errors: *errors
+              errors:
+                "$ref": "#/definitions/Error"
   "/v1/policies.{output_format}":
     get:
       summary: Return a full list of policies and incentives.
@@ -340,7 +335,8 @@ paths:
           description: Unprocessable Entity
           schema:
             properties:
-              errors: *errors
+              errors:
+                "$ref": "#/definitions/Error"
   "/v1/policies/{id}.{output_format}":
     get:
       summary: Return a single policy or incentive given the policy or incentive's ID.
@@ -364,7 +360,8 @@ paths:
           description: Not found
           schema:
             properties:
-              errors: *errors
+              errors:
+                "$ref": "#/definitions/Error"
   "/v1/topics.{output_format}":
     get:
       summary: Return a full list of topics.
@@ -409,7 +406,8 @@ paths:
           description: Not found
           schema:
             properties:
-              errors: *errors
+              errors:
+                "$ref": "#/definitions/Error"
 
 parameters:
   OutputFormat:
@@ -457,6 +455,17 @@ definitions:
             type: integer
             description: If the request returns an array of results, this is
               the number of results returned in the array.
+
+  Error:
+    type: array
+    description: Error messages
+    items:
+      properties:
+        code:
+          type: string
+        developer_message:
+          type: string
+
   Policy:
     description: This is a battery policy or incentive.
     properties:
