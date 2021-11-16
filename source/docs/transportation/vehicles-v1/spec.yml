@@ -5,7 +5,7 @@ schemes:
 info:
   version: 0.1.0
   title: Alternative Fuel Vehicles
-  description: Query our database of alternative fuel vehicles, manufacturers, fuels, engines, and hybrid/conversion systems
+  description: Query our database of alternative fuel vehicles, manufacturers, fuels, engines, and hybrid/conversion systems. This dataset powers the <a href="https://afdc.energy.gov/vehicles/search/">Alternative Fuel and Advanced Vehicle Search</a> on the Alternative Fuels Data Center.
 paths:
   "/v1/fuels.{output_format}":
     get:
@@ -1292,6 +1292,9 @@ definitions:
       fuel_economy_estimated_by_manufacturer:
         type: boolean
         description: The fuel economy data are estimates from the manufacturer
+      drivetrain:
+        type: string
+        description: The drivetrain of the light-duty automobile
       alternative_fuel_economy_city:
         type: number
         format: float
@@ -1404,6 +1407,12 @@ definitions:
             type: number
             format: float
             description: The combined conventional fuel economy for the light-duty automobile
+          fuel_economy_estimated_by_manufacturer:
+            type: boolean
+            description: The fuel economy data are estimates from the manufacturer
+          drivetrain:
+            type: string
+            description: The drivetrain of the light-duty automobile
           alternative_fuel_economy_city:
             type: number
             format: float

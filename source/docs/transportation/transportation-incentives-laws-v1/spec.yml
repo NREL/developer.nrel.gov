@@ -6,8 +6,7 @@ schemes:
 info:
   version: 0.1.0
   title: Transportation Laws and Incentives
-  description: Query our database of State and Federal Laws and Incentives for Alternative
-    Fuels
+  description: Query our database of federal and state laws and incentives for alternative fuels and vehicles, air quality, fuel efficiency, and other transportation-related topics. This dataset powers the <a href="https://afdc.energy.gov/laws">Federal and State Laws and Incentives</a> on the Alternative Fuels Data Center.
 paths:
   "/v1.{output_format}":
     get:
