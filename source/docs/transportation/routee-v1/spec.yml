@@ -1,15 +1,24 @@
 openapi: 3.0.0
 info:
   title: RouteE API
-  description: 
-    The Route Energy Prediction Model (RouteE) predicts the energy consumption of a given vehicle over a link or sequence of links (route) in a road network. These API endpoints can be used to get single vehicle link or route energy estimates (`/route`), energy consumption estimates for a variety of vehicles over all links in a transportation network (`/network`), and eco-routing between an origin and destination for a specific vehicle (`/compass`). For more on RouteE, please visit <https://www.nrel.gov/transportation/route-energy-prediction-model.html>.
-  version: "2.0"
+  version: "2.0" 
+  description: |
+    The Route Energy Prediction Model (RouteE) predicts the energy consumption of a given vehicle over a link or sequence of links in a road network. For more on RouteE, please visit <https://www.nrel.gov/transportation/route-energy-prediction-model.html>. Example code can be found at <https://github.com/NREL/routee-api-demo>.
+    
+    **URL**: `https://developer.nrel.gov/api/routee/v2`
+    
+    **Endpoints**:
+    - `/route`: single vehicle route energy consumption estimate.
+    - `/network`: energy consumption estimates for a variety of vehicles over all links in a transportation network.
+    - `/compass`: eco-routing between an origin and destination for a specific vehicle.
+
 servers:
   - url: https://developer.nrel.gov/api/routee/v2
 paths:
   /route:
     post:
       summary: Estimate energy consumption for a single route.
+      description: Single vehicle route energy consumption estimate.
       requestBody:
         description: A JSON object with your real or predicted vehicle route data.
         required: true
@@ -27,6 +36,7 @@ paths:
   /network:
     post:
       summary: Network energy prediction
+      description: Energy consumption estimates for a variety of vehicles over all links in a transportation network.
       requestBody:
         description: A JSON object with your real or predicted transportation network data.
         required: true
@@ -44,6 +54,7 @@ paths:
   /compass/beta:
     get:
       summary: Shortest energy path
+      description: Eco-routing between an origin and destination for a specific vehicle.
       parameters:
         - in: query
           name: origin_lat
@@ -128,7 +139,7 @@ components:
         model:
           type: string
           description: Vehicle fuel type (Conventional gasoline, diesel, battery electric, and hybrid electric).
-          enum: [conventional, diesel, hybrid, electric]
+          enum: [gasoline, diesel, hybrid, electric]
     NetworkRequest:
       type: object
       required: [segment_ids, lengths_miles, speeds_mph, grades_percent, volumes]
