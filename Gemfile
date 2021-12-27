@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Middleman Gems
-gem "middleman", "~> 4.3.3"
+gem "middleman", "~> 4.4.2"
 gem "middleman-livereload", "~> 3.4.6"
 
 # GitHub-flavored markdown.
