@@ -55,8 +55,9 @@ paths:
           as follows: ''BIOD'' for Biodiesel, ''ETH'' for Ethanol, ''NG'' for Natural
           Gas, ''LPG'' for Propane (LPG), ''HY'' for Hydrogen Fuel Cells, ''EFFEC''
           for Fuel Economy / Efficiency, ''IR'' for Idle Reduction, ''ELEC'' for EVs,
-          ''HEV'' for HEVs, ''PHEV'' for PHEVs, ''OTHER'' for Other, ''AFTMKTCONV''
-          for Aftermarket Conversions, and ''NEVS'' for NEVs'
+          ''HEV'' for HEVs, ''PHEV'' for PHEVs, ''AFTMKTCONV'' for Aftermarket Conversions,
+          ''NEVS'' for NEVs, ''AUTONOMOUS'' for Connected and Autonomous Vehicles, and
+          ''OTHER'' for Other.'
         name: technology
         required: false
         type: string
@@ -64,8 +65,8 @@ paths:
         description: 'Search by the incentive type. A single type, or a comma-separate
           list of multiple types, may be given. Values and what they stand for are
           as follows: ''GNT'' for Grants, ''TAX'' for Tax Incentives, ''LOANS'' for
-          Loans and Leases, ''RBATE'' for Rebates, ''EXEM'' for Exemptions, and ''OTHER''
-          for Other.'
+          Loans and Leases, ''RBATE'' for Rebates, ''EXEM'' for Exemptions, ''TOU''
+          for Time-of-Use Rate, and ''OTHER'' for Other.'
         name: incentive_type
         required: false
         type: string
@@ -75,19 +76,21 @@ paths:
           as follows: ''REGIS'' for Registration / Licensing, ''STD'' for Fuel Production
           / Quality, ''DREST'' for Driving / Idling, ''REQ'' for Acquisition / Fuel
           Use, ''FUEL'' for Fuel Taxes, ''RFS'' for Renewable Fuel Standard / Mandate,
-          ''OTHER'' for Other, ''AIRQEMISSIONS'' for Air Quality / Emissions, and
-          ''CCEINIT'' for Climate Change / Energy Initiatives'
+          ''AIRQEMISSIONS'' for Air Quality / Emissions, ''CCEINIT'' for Climate Change /
+          Energy Initiatives, ''UTILITY'' for Utility Definition, ''BUILD'' for Building
+          Codes, ''RTC'' for Right-to-Charge, and ''OTHER'' for Other.'
         name: regulation_type
         required: false
         type: string
       - in: query
         description: 'Search by the user type. A single type, or a comma-separate
           list of multiple types, may be given. Values and what they stand for are
-          as follows: ''FLEET'' for Private Business, ''GOV'' for Government Entity,
+          as follows: ''FLEET'' for Commercial, ''GOV'' for Government Entity,
           ''IND'' for Personal Vehicle Owner or Driver, ''STATION'' for Alternative
           Fuel Infrastructure Operator, ''AFP'' for Alternative Fuel Producer,
           ''PURCH'' for Alternative Fuel Purchaser, ''MAN'' for Alternative Fuel
-          Vehicle (AFV) Manufacturer or Retrofitter, and ''OTHER'' for Other'
+          Vehicle (AFV) Manufacturer or Retrofitter, ''MUD'' for Multi-Unit Dwelling,
+          ''TRANS'' for Transit, and ''OTHER'' for Other.'
         name: user_type
         required: false
         type: string
@@ -114,7 +117,7 @@ paths:
           of multiple types, may be given. Values are as follows: ''STATEINC'' for
           State Incentives, ''UPINC '' for Utility/Private Incentives, ''LAWREG''
           for Laws and Regulations, ''INC'' for Incentives, ''PROG'' for Programs,
-          ''LUP'' for Last Updated, ''OVIEW'' for Overview, and ''HILITE'' for Highlights'
+          ''LUP'' for Last Updated, ''OVIEW'' for Overview, and ''HILITE'' for Highlights.'
         name: law_type
         required: false
         type: string
