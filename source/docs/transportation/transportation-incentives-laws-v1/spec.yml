@@ -17,7 +17,7 @@ paths:
             "$ref": "#/definitions/LawsResponse"
       description: ''
       summary: Return a full list of laws and incentives that match your query.
-      operationId: transportation_incentives_laws
+      operationId: transportation_incentives_laws_all
       parameters:
       - in: path
         description: Response format
@@ -138,7 +138,7 @@ paths:
             "$ref": "#/definitions/LawResult"
       description: ''
       summary: Fetch the details of a specific law given the law's ID.
-      operationId: transportation_incentives_laws
+      operationId: transportation_incentives_laws_id
       parameters:
       - in: path
         description: Response format
@@ -181,7 +181,7 @@ paths:
             "$ref": "#/definitions/PocResults"
       description: ''
       summary: Get the points of contact for a given jurisdiction.
-      operationId: transportation_incentives_laws
+      operationId: transportation_incentives_laws_pocs
       parameters:
       - in: path
         description: Response format
@@ -216,7 +216,7 @@ paths:
             "$ref": "#/definitions/CategoryResults"
       description: ''
       summary: Return the law categories for a given category type.
-      operationId: transportation_incentives_laws
+      operationId: transportation_incentives_laws_categories
       parameters:
       - in: path
         description: Response format
