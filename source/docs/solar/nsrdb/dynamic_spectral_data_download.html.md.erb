@@ -210,7 +210,7 @@ Generated data files are formatted in accordance with the Standard Time Series D
 
 ### JSON Output Format
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&wkt=POINT(-103.0078125%2043.068887774169625)&names=2017&full_name=Nikola%20Tesla&email=noreply@nrel.gov&affiliation=NREL&mailing_list=false&reason=test&equipment=fixed_tilt&tilt=40&angle=130</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&wkt=POINT(-103.0078125%2043.068887774169625)&names=2017&full_name=Nikola%20Tesla&email=user@company.com&affiliation=NREL&mailing_list=false&reason=test&equipment=fixed_tilt&tilt=40&angle=130</code></div>
 
 ```json
 {
@@ -219,7 +219,7 @@ Generated data files are formatted in accordance with the Standard Time Series D
     "wkt": "POINT(-103.0078125 43.068887774169625)",
     "names": "2017",
     "full_name": "Nikola Tesla",
-    "email": "noreply@nrel.gov",
+    "email": "user@company.com",
     "affiliation": "NREL",
     "mailing_list": false,
     "reason": "test",
@@ -228,7 +228,7 @@ Generated data files are formatted in accordance with the Standard Time Series D
     "angle": "130"
   },
   "outputs": {
-    "message": "File generation in progress. An email will be sent to noreply@nrel.gov when the download is ready."
+    "message": "File generation in progress. An email will be sent to user@company.com when the download is ready."
   }
 }
 ```
@@ -237,7 +237,7 @@ Generated data files are formatted in accordance with the Standard Time Series D
 ### CSV Data Format
 The following download example is truncated after the first few rows of data.
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&wkt=POINT(-103.0078125%2043.068887774169625)&names=2017&full_name=Nikola%20Tesla&email=noreply@nrel.gov&affiliation=NREL&mailing_list=false&reason=test&equipment=fixed_tilt&tilt=40&angle=130</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&wkt=POINT(-103.0078125%2043.068887774169625)&names=2017&full_name=Nikola%20Tesla&email=user@company.com&affiliation=NREL&mailing_list=false&reason=test&equipment=fixed_tilt&tilt=40&angle=130</code></div>
 
 ```csv
 Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,Local Time Zone,Clearsky DHI Units,Clearsky DNI Units,Clearsky GHI Units,Dew Point Units,DHI Units,DNI Units,GHI Units,Solar Zenith Angle Units,Temperature Units,Pressure Units,Relative Humidity Units,Precipitable Water Units,Wind Direction Units,Wind Speed,Cloud Type -15,Cloud Type 0,Cloud Type 1,Cloud Type 2,Cloud Type 3,Cloud Type 4,Cloud Type 5,Cloud Type 6,Cloud Type 7,Cloud Type 8,Cloud Type 9,Cloud Type 10,Cloud Type 11,Cloud Type 12,Fill Flag 0,Fill Flag 1,Fill Flag 2,Fill Flag 3,Fill Flag 4,Fill Flag 5,Surface Albedo Units,Solar Azimuth Units,Panel Tilt Units,Panel Azimuth Units,Spectral Data Units,Version
@@ -252,7 +252,9 @@ Year,Month,Day,Hour,Minute,Temperature,Clearsky DHI,Clearsky DNI,Clearsky GHI,Cl
 
 Rate limits for this application are significantly less than the [standard rate limits](/docs/rate-limits){:target="_blank"} for developer.nrel.gov. This decrease in the limit is required because the data provided through this service is very computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.
 
-There are two levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For all requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.
+There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For all requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.
+
+Secondly each user is limited to 20 in-flight requests at any given time.
 
 In addition to this limit, the service has a secondary fail-safe mechanism designed to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.
 

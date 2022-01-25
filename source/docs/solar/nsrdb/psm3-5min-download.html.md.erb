@@ -1,7 +1,7 @@
 ---
 title: Physical Solar Model (PSM) v3 - Five Minute Temporal Resolution
-summary: Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database (NSRDB) is a serially complete collection of hourly and half-hourly values of the three most common measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. Read more about the datasets at [https://nsrdb.nrel.gov](https://nsrdb.nrel.gov)
-detail: This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.
+summary: Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database [(NSRDB)](https://nsrdb.nrel.gov/) is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed [here](https://nsrdb.nrel.gov/data-sets/download-instructions.html) Read more about the datasets at [https://nsrdb.nrel.gov](https://nsrdb.nrel.gov)
+detail: This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.
 url: /api/nsrdb/v2/solar/psm3-5min-download
 ---
 
@@ -207,7 +207,7 @@ Generated data files are formatted in accordance with the Standard Time Series D
 
 ### JSON Output Format
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&full_name=Sample+User&email=sample@email.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT(-108.5449+40.5137)&names=2018&attributes=air_temperature,clearsky_dhi,clearsky_dni,clearsky_ghi,cloud_type,dew_point,dhi,dni,fill_flag,ghi,relative_humidity,solar_zenith_angle,surface_albedo,surface_pressure,total_precipitable_water,wind_direction,wind_speed&leap_day=false&utc=false&interval=5</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&full_name=Sample+User&email=user@company.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT(-108.5449+40.5137)&names=2018&attributes=air_temperature,clearsky_dhi,clearsky_dni,clearsky_ghi,cloud_type,dew_point,dhi,dni,fill_flag,ghi,relative_humidity,solar_zenith_angle,surface_albedo,surface_pressure,total_precipitable_water,wind_direction,wind_speed&leap_day=false&utc=false&interval=5</code></div>
 
 ```json
 {
@@ -233,7 +233,7 @@ Generated data files are formatted in accordance with the Standard Time Series D
         "wind_direction",
         "wind_speed",
       ],
-      "email":"sample@email.com",
+      "email":"user@company.com",
       "full_name":"Sample User",
       "interval":5,
       "leap_day":false,
@@ -246,7 +246,7 @@ Generated data files are formatted in accordance with the Standard Time Series D
       "wkt":"POINT(-108.5449 40.5137)"
    },
    "outputs":{
-      "message":"File generation in progress. An email will be sent to sample@email.com when the download is ready."
+      "message":"File generation in progress. An email will be sent to user@company.com when the download is ready."
    }
 }
 ```
@@ -255,7 +255,7 @@ Generated data files are formatted in accordance with the Standard Time Series D
 ### CSV Output Format
 Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?api_key=DEMO_KEY&full_name=Sample+User&email=sample@email.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT(-108.5449+40.5137)&names=2018&attributes=dhi,dni,ghi,clearsky_dhi,clearsky_dni,clearsky_ghi,cloud_type,dew_point,air_temperature,surface_pressure,relative_humidity,solar_zenith_angle,total_precipitable_water,wind_direction,wind_speed,fill_flag&leap_day=false&utc=false&interval=5</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?api_key=DEMO_KEY&full_name=Sample+User&email=user@company.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT(-108.5449+40.5137)&names=2018&attributes=dhi,dni,ghi,clearsky_dhi,clearsky_dni,clearsky_ghi,cloud_type,dew_point,air_temperature,surface_pressure,relative_humidity,solar_zenith_angle,total_precipitable_water,wind_direction,wind_speed,fill_flag&leap_day=false&utc=false&interval=5</code></div>
 
 ```csv
 ```
@@ -283,9 +283,11 @@ print(response.text)
 
 Rate limits for this application are significantly less than the [standard rate limits](/docs/rate-limits){:target="_blank"} for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.
 
-There are two levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.
+There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.
 
-In addition to this limit, the service has a secondary fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.
+Secondly each user is limited to 20 in-flight requests at any given time.
+
+In addition, the service has a fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.
 
 For some tips and tricks to maximize data downloads please read the guide [here](/docs/solar/nsrdb/guide).
 
