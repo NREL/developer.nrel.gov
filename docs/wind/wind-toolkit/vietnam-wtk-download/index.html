@@ -66,7 +66,7 @@
     <h1 id="vietnam-wkt-data-download-apiwind-toolkitv2windvietnam-wtk-download">Vietnam WKT Data Download <span class="url">(/api/wind-toolkit/v2/wind/vietnam-wtk-download)</span></h1>
 <p>Collect and download, as CSV, a configurable set of data fields from a multi-national collection of wind stations. This data represents wind-speed, temperature, and direction values at 80m, 100m, and 120m above the surface and air pressure at the surface, 100m, and 200m above the surface for the year 2015 produced using WRF v3.7. The model time resolution used was 15 minutes with a nominal spatial resolution of 3 km2 over Kazakhstan and 9 km2 over the surrounding region. For the U and V components used to derive the wind speed, a total of 41 pressure levels were used.</p>
 
-<p>This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single year at a time.</p>
+<p>This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single year at a time.</p>
 
 <ul id="toc"></ul>
 
@@ -267,7 +267,7 @@
 				"names": "2016",
 				"utc": "false",
 				"leap_day": "true",
-        "email": "data.lover@gmail.com"
+        "email": "user@company.com"
     },
     "metadata": {
         "version": "2.0.0",
@@ -277,7 +277,7 @@
     },
     "status": 200,
     "outputs": {
-        "message": "File generation in progress. An email will be sent to data.lover@gmail.com when the download is ready.",
+        "message": "File generation in progress. An email will be sent to user@company.com when the download is ready.",
         "downloadUrl": "https://mapfiles.nrel.gov/data/wind/8f15cfd44948cb76e7cf9531d5fe9cde.zip"
     },
     "errors": []
@@ -300,11 +300,17 @@ Year,Month,Day,Hour,Minute,wind speed at 100m (m/s),wind direction at 100m (deg)
 
 <p>Rate limits for this application are significantly less than the <a href="/docs/rate-limits" target="_blank">standard rate limits</a> for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.</p>
 
-<p>There are two levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.</p>
+<p>There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.</p>
 
-<p>In addition to this limit, the service has a secondary fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.</p>
+<p>Secondly each user is limited to 20 in-flight requests at any given time.</p>
+
+<p>In addition, the service has a fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.</p>
 
 <p>For some tips and tricks to maximize data downloads please read the guide <a href="/docs/wind/wind-toolkit/guide">here</a>.</p>
+
+<h2 id="contacts">Contact</h2>
+
+<p>For questions about the API or the data models please contact <a href="mailto:WindToolkit@nrel.gov">WindToolkit@nrel.gov</a></p>
 
 <h2 id="errors">Errors</h2>
 

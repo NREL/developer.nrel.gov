@@ -65,7 +65,7 @@
 
     <p>The Offshore NW Pacific Dataset is a 21-year wind resource dataset for offshore Offshore NW Pacific. Produced in 2020, this data set replaces NREL's Wind Integration National Dataset (WIND) Toolkit for offshore Offshore NW Pacific, which was produced and released publicly in 2013 and is currently the principal data set used by stakeholders for wind resource assessment in the continental United States. Both the WIND Toolkit and this new data set are created using the Weather Research and Forecasting (WRF) numerical weather prediction model (NWP).</p>
 
-<p>The Offshore NW Pacific shares many of the same attributes as the WIND Toolkit, including 5-minute time resolution and 2-kilometer horizontal spatial resolution. However, the new data set improves upon - the WIND Toolkit through:</p>
+<p>This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.<br /><br />The Offshore NW Pacific shares many of the same attributes as the WIND Toolkit, including 5-minute time resolution and 2-kilometer horizontal spatial resolution. However, the new data set improves upon - the WIND Toolkit through:</p>
 
 <ul>
 	<li>A 21-year modeling period from 2000 through 2020 (compared to the 7-year 2007-2013 modeling period in the WIND Toolkit)</li>
@@ -134,7 +134,7 @@
 
 			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
 
-			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020</em></div>
+			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019</em></div>
 			</td>
 			<td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
 		</tr>
@@ -264,7 +264,7 @@
 
 <h2>Examples</h2>
 
-<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/offshore-nw-pacific-download.json?wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=Erik.Wiffin@nrel.gov</code></div>
+<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/offshore-nw-pacific-download.json?wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=user@company.com</code></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>{
     "inputs": {
@@ -275,7 +275,7 @@
             "names": "2017",
             "utc": "false",
             "leap_day": "true",
-            "email": "Erik.Wiffin@nrel.gov",
+            "email": "user@company.com",
             "wkt": "POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))"
         }
     },
@@ -287,13 +287,13 @@
     },
     "status": 200,
     "outputs": {
-        "message": "File generation in progress. An email will be sent to Erik.Wiffin@nrel.gov when the download is ready.",
+        "message": "File generation in progress. An email will be sent to user@company.com when the download is ready.",
         "downloadUrl": "https://mapfiles.nrel.gov/data/wind/ebc9bbbc34f91c65ac50707d43176c6c.zip"
     },
     "errors": []
 }
 </code></pre></div>
-<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/offshore-nw-pacific-download.csv?wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=Erik.Wiffin@nrel.gov&amp;api_key=DEMO_KEY</code></div>
+<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/offshore-nw-pacific-download.csv?wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=user@company.com&amp;api_key=DEMO_KEY</code></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>SiteID,Site Timezone,Data Timezone,Longitude,Latitude,Country
 80,-9,-9,-130.756,48.75498,b'Canada'
@@ -312,11 +312,17 @@ Year,Month,Day,Hour,Minute,wind direction at 180m (deg)
 
 <p>Rate limits for this application are significantly less than the <a href="/docs/rate-limits" target="_blank">standard rate limits</a> for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.</p>
 
-<p>There are two levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.</p>
+<p>There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.</p>
 
-<p>In addition to this limit, the service has a secondary fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.</p>
+<p>Secondly each user is limited to 20 in-flight requests at any given time.</p>
+
+<p>In addition, the service has a fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.</p>
 
 <p>For some tips and tricks to maximize data downloads please read the guide <a href="/docs/wind/wind-toolkit/guide">here</a>.</p>
+
+<h2 id="contacts">Contact</h2>
+
+<p>For questions about the API or the data models please contact <a href="mailto:WindToolkit@nrel.gov">WindToolkit@nrel.gov</a></p>
 
 <h2 id="errors">Errors</h2>
 

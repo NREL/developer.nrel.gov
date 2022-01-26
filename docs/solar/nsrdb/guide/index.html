@@ -65,20 +65,22 @@
 
     <h2 id="data-download-usage-guide">Data Download Usage Guide</h2>
 
-<p>We often receive requests from users interested in downloading larger segments of the data than are supported by the API. NREL has no means of sharing the data other than via these API endpoints. It is important to understand that these datasets are large. Currently our storage archive contains in excess of 40 terabytes of data, and the data is growing regularly! That number would be much larger if all of the data were extracted into CSV format. In order to reliably serve dynamic segments of a dataset of this size to a growing community of users we have calculated the maximum capacity our server hardware can sustain. We use this physical capacity to determine our API rate limits.</p>
+<p>We often receive requests from users interested in downloading larger segments of the data than are supported by the API. It is important to understand that these datasets are large. Currently our storage archive contains hundreds of terabytes of data and is constantly growing! In order to reliably serve dynamic segments of a dataset of this size to a growing community of users we have calculated the maximum capacity our server hardware can sustain. We use this physical capacity to determine our API rate limits. For users insterested in accessing bulk data the full datasets are available via the Registry of Open Data on AWS at <a href="https://registry.opendata.aws/nrel-pds-nsrdb/">https://registry.opendata.aws/nrel-pds-nsrdb/</a>.</p>
 
-<p>The API is restricted in both the number of requests a single user can make in a 24 hour period, as well as in the maximum size of a single request. The API rate limits are set at:</p>
+<p>The API is restricted in several ways including the number of simultaneous requests a single user can make, the number of requests a single user can make in a 24 hour period, as well as in the maximum size of a single request. The API rate limits are set at:</p>
 
 <blockquote>
   <p>1000 requests per day<br />
-1 request every 2 seconds</p>
+1 request every 2 seconds<br />
+20 requests in process at once</p>
 </blockquote>
 
 <p>For downloading directly via CSV there are separate rate limits. This is due to the fact that it is only possible to download a single site for a single year via the CSV endpoint, therefor these requests are always quite small by comparison:</p>
 
 <blockquote>
   <p>5000 requests per day<br />
-1 request per second</p>
+1 request per second<br />
+20 requests in process at once</p>
 </blockquote>
 
 <p>The size limit per each single request is determined by the number of total attributes in each request. The maximum weight of each request is <strong>175000000</strong>. The calculation for determining the weight of each request is:</p>
@@ -96,13 +98,13 @@
 
 <p>To maximize a single request simply minimize the variables wherever possible. For example by requesting half as many attributes one can request twice as many years (or sites) worth of data.</p>
 
-<p>Imagine a use case where one wanted to download all PSM data for the state of Texas. The first step would be to refine the request down to the least number of attributes, years, and intervals possible. From that one could determine the number of sites that could be requested in a single request. By experimenting with the site_count endpoint a polygon size could be identified that intersects close to that many sites. Using that polygon size create a grid that covers all of Texas. The final step would be to write a script that invokes the API once for every required grid cell at a rate of no more than 1 every 2 seconds. If more than 1000 requests are required the script will have to be continued across multiple days.</p>
+<p>Imagine a use case where one wanted to download all PSM data for the state of Texas. The first step would be to refine the request down to the least number of attributes, years, and intervals possible. From that one could determine the number of sites that could be requested in a single request. By experimenting with the site_count endpoint a polygon size could be identified that intersects close to that many sites. Using that polygon size create a grid that covers all of Texas. The final step would be to write a script that invokes the API once for every required grid cell at a rate of no more than 1 every 2 seconds and no more than 20 in process at a time. If more than 1000 requests are required the script will have to be continued across multiple days.</p>
 
 <p>In cases where a very large WKT value is required, e.g. downloading the maximum number of broadly spaced points at a time using a MULTIPOINT wkt, it is possible to POST a request to the API providing the WKT params in the payload. Here is an example of a Python script that uses this variation:</p>
 
 <div class="highlight"><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/solar/nsrdb_0512_download.json?api_key=yourapikeygoeshere"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/solar/psm3-5min-download.json?api_key=yourapikeygoeshere"</span>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="s">"names=2012&amp;leap_day=false&amp;interval=60&amp;utc=false&amp;full_name=Honored%2BUser&amp;email=honored.user%40gmail.com&amp;affiliation=NREL&amp;mailing_list=true&amp;reason=Academic&amp;attributes=dhi%2Cdni%2Cwind_speed_10m_nwp%2Csurface_air_temperature_nwp&amp;wkt=MULTIPOINT(-106.22%2032.9741%2C-106.18%2032.9741%2C-106.1%2032.9741)"</span>
 
@@ -117,8 +119,12 @@
 </code></pre></div>
 <p>And a CURL example of the same</p>
 
-<div class="highlight"><pre class="highlight shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"Content-Type: application/x-www-form-urlencoded"</span> <span class="nt">-H</span> <span class="s2">"Cache-Control: no-cache"</span> <span class="nt">-d</span> <span class="s1">'names=2009&amp;leap_day=false&amp;interval=60&amp;utc=false&amp;full_name=Honored%2BUser&amp;email=honored.user@gmail.com&amp;affiliation=NREL&amp;mailing_list=true&amp;reason=Academic&amp;attributes=dhi%2Cdni%2Cwind_speed_10m_nwp%2Csurface_air_temperature_nwp&amp;wkt=MULTIPOINT(-106.22 32.9741%2C-106.18 32.9741%2C-106.1 32.9741%2C-106.06 32.9741)'</span> <span class="s2">"http://developer.nrel.gov/api/solar/nsrdb_0512_download.json?api_key=yourapikeygoeshere"</span>
+<div class="highlight"><pre class="highlight shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"Content-Type: application/x-www-form-urlencoded"</span> <span class="nt">-H</span> <span class="s2">"Cache-Control: no-cache"</span> <span class="nt">-d</span> <span class="s1">'names=2009&amp;leap_day=false&amp;interval=60&amp;utc=false&amp;full_name=Honored%2BUser&amp;email=user@company.com&amp;affiliation=NREL&amp;mailing_list=true&amp;reason=Academic&amp;attributes=dhi%2Cdni%2Cwind_speed_10m_nwp%2Csurface_air_temperature_nwp&amp;wkt=MULTIPOINT(-106.22 32.9741%2C-106.18 32.9741%2C-106.1 32.9741%2C-106.06 32.9741)'</span> <span class="s2">"http://developer.nrel.gov/api/solar/psm3-5min-download.json?api_key=yourapikeygoeshere"</span>
 </code></pre></div>
+<h2 id="contacts">Contact</h2>
+
+<p>For questions about the API or the data models please contact <a href="mailto:nsrdb@nrel.gov">nsrdb@nrel.gov</a></p>
+
     <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
   <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/solar/nsrdb/guide.html.md.erb">Help Improve this Content</a>
 </div>

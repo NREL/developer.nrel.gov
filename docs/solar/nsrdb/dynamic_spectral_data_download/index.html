@@ -268,7 +268,7 @@
 
 <h3 id="json-output-format">JSON Output Format</h3>
 
-<div class="doc-example-url"><code>GET /api/nsrdb_api/solar/spectral_ondemand_download.json?api_key=DEMO_KEY&amp;wkt=POINT(-103.0078125%2043.068887774169625)&amp;names=2017&amp;full_name=Nikola%20Tesla&amp;email=noreply@nrel.gov&amp;affiliation=NREL&amp;mailing_list=false&amp;reason=test&amp;equipment=fixed_tilt&amp;tilt=40&amp;angle=130</code></div>
+<div class="doc-example-url"><code>GET /api/nsrdb_api/solar/spectral_ondemand_download.json?api_key=DEMO_KEY&amp;wkt=POINT(-103.0078125%2043.068887774169625)&amp;names=2017&amp;full_name=Nikola%20Tesla&amp;email=user@company.com&amp;affiliation=NREL&amp;mailing_list=false&amp;reason=test&amp;equipment=fixed_tilt&amp;tilt=40&amp;angle=130</code></div>
 
 <div class="highlight"><pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
@@ -276,7 +276,7 @@
     </span><span class="nl">"wkt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POINT(-103.0078125 43.068887774169625)"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"names"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nikola Tesla"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noreply@nrel.gov"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@company.com"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"affiliation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NREL"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"mailing_list"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
@@ -285,14 +285,14 @@
     </span><span class="nl">"angle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"130"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File generation in progress. An email will be sent to noreply@nrel.gov when the download is ready."</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File generation in progress. An email will be sent to user@company.com when the download is ready."</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="csv-data-format">CSV Data Format</h3>
 <p>The following download example is truncated after the first few rows of data.</p>
 
-<div class="doc-example-url"><code>GET /api/nsrdb_api/solar/spectral_ondemand_download.json?api_key=DEMO_KEY&amp;wkt=POINT(-103.0078125%2043.068887774169625)&amp;names=2017&amp;full_name=Nikola%20Tesla&amp;email=noreply@nrel.gov&amp;affiliation=NREL&amp;mailing_list=false&amp;reason=test&amp;equipment=fixed_tilt&amp;tilt=40&amp;angle=130</code></div>
+<div class="doc-example-url"><code>GET /api/nsrdb_api/solar/spectral_ondemand_download.json?api_key=DEMO_KEY&amp;wkt=POINT(-103.0078125%2043.068887774169625)&amp;names=2017&amp;full_name=Nikola%20Tesla&amp;email=user@company.com&amp;affiliation=NREL&amp;mailing_list=false&amp;reason=test&amp;equipment=fixed_tilt&amp;tilt=40&amp;angle=130</code></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,Local Time Zone,Clearsky DHI Units,Clearsky DNI Units,Clearsky GHI Units,Dew Point Units,DHI Units,DNI Units,GHI Units,Solar Zenith Angle Units,Temperature Units,Pressure Units,Relative Humidity Units,Precipitable Water Units,Wind Direction Units,Wind Speed,Cloud Type -15,Cloud Type 0,Cloud Type 1,Cloud Type 2,Cloud Type 3,Cloud Type 4,Cloud Type 5,Cloud Type 6,Cloud Type 7,Cloud Type 8,Cloud Type 9,Cloud Type 10,Cloud Type 11,Cloud Type 12,Fill Flag 0,Fill Flag 1,Fill Flag 2,Fill Flag 3,Fill Flag 4,Fill Flag 5,Surface Albedo Units,Solar Azimuth Units,Panel Tilt Units,Panel Azimuth Units,Spectral Data Units,Version
 NSRDB,535998,-,-,-,43.05,-103.02,0,1009,-7,w/m2,w/m2,w/m2,c,w/m2,w/m2,w/m2,Degree,c,mbar,%,cm,Degrees,m/s,N/A,Clear,Probably Clear,Fog,Water,Super-Cooled Water,Mixed,Opaque Ice,Cirrus,Overlapping,Overshooting,Unknown,Dust,Smoke,N/A,Missing Image,Low Irradiance,Exceeds Clearsky,Missing CLoud Properties,Rayleigh Violation,N/A,degrees,degrees,degrees,W/m^2/um,v3.0.1
@@ -305,9 +305,15 @@ Year,Month,Day,Hour,Minute,Temperature,Clearsky DHI,Clearsky DNI,Clearsky GHI,Cl
 
 <p>Rate limits for this application are significantly less than the <a href="/docs/rate-limits" target="_blank">standard rate limits</a> for developer.nrel.gov. This decrease in the limit is required because the data provided through this service is very computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.</p>
 
-<p>There are two levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For all requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.</p>
+<p>There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For all requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.</p>
+
+<p>Secondly each user is limited to 20 in-flight requests at any given time.</p>
 
 <p>In addition to this limit, the service has a secondary fail-safe mechanism designed to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.</p>
+
+<h2 id="contacts">Contact</h2>
+
+<p>For questions about the API or the data models please contact <a href="mailto:nsrdb@nrel.gov">nsrdb@nrel.gov</a></p>
 
 <h2 id="errors">Errors</h2>
 

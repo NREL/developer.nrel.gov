@@ -11,10 +11,10 @@
       NREL: Developer Network
     </title>
 
-    <link rel="canonical" href="https://developer.nrel.gov/docs/wind/wind-toolkit/guide/" />
+    <link rel="canonical" href="https://developer.nrel.gov/docs/wave/guide/" />
     <script>
       if(window.location.href.indexOf('nrel.github.io') !== -1) {
-        window.location.href = 'https://developer.nrel.gov/docs/wind/wind-toolkit/guide/';
+        window.location.href = 'https://developer.nrel.gov/docs/wave/guide/';
       }
     </script>
 
@@ -33,7 +33,7 @@
 </script>
 
   </head>
-  <body class="docs docs_wind docs_wind_wind-toolkit docs_wind_wind-toolkit_guide docs_wind_wind-toolkit_guide_index">
+  <body class="docs docs_wave docs_wave_guide docs_wave_guide_index">
     <div class="container">
   <header>
     <map name="header_map">
@@ -57,15 +57,14 @@
 
       <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/docs/">Documentation</a></li>
-            <li class="breadcrumb-item"><a href="/docs/wind/">Wind</a></li>
-            <li class="breadcrumb-item"><a href="/docs/wind/wind-toolkit/">Wind Toolkit Data Downloads</a></li>
+            <li class="breadcrumb-item"><a href="/docs/wave/">Wave</a></li>
             <li class="breadcrumb-item active">Data Download Guide</li>
     </ol>
 
 
     <h2 id="data-download-usage-guide">Data Download Usage Guide</h2>
 
-<p>We often receive requests from users interested in downloading larger segments of the data than are supported by the API. It is important to understand that these datasets are large. Currently our storage archive contains hundreds of terabytes of data and is constantly growing! In order to reliably serve dynamic segments of a dataset of this size to a growing community of users we have calculated the maximum capacity our server hardware can sustain. We use this physical capacity to determine our API rate limits. For users insterested in accessing bulk data the full datasets are available via the Registry of Open Data on AWS at <a href="https://registry.opendata.aws/nrel-pds-wtk/">https://registry.opendata.aws/nrel-pds-wtk/</a>.</p>
+<p>We often receive requests from users interested in downloading larger segments of the data than are supported by the API. It is important to understand that these datasets are large. Currently our storage archive contains hundreds of terabytes of data and is constantly growing! In order to reliably serve dynamic segments of a dataset of this size to a growing community of users we have calculated the maximum capacity our server hardware can sustain. We use this physical capacity to determine our API rate limits.</p>
 
 <p>The API is restricted in several ways including the number of simultaneous requests a single user can make, the number of requests a single user can make in a 24 hour period, as well as in the maximum size of a single request. The API rate limits are set at:</p>
 
@@ -90,7 +89,7 @@
 </blockquote>
 
 <ul>
-  <li><strong>site-count</strong> is derived from the WKT value submitted and can be retrieved using the <a href="/docs/wind/wind-toolkit/site-count/">site_count</a> API endpoint.</li>
+  <li><strong>site-count</strong> is derived from the WKT value submitted and can be retrieved using the <a href="/docs/solar/nsrdb/site-count">site_count</a> API endpoint.</li>
   <li><strong>attribute-count</strong> is equal to the number of attributes requested</li>
   <li><strong>year-count</strong> is equal to the number of years requested</li>
   <li><strong>data-intervals-per-year</strong> is <em>((60/interval)*24*365)</em> where interval is the interval requested</li>
@@ -98,15 +97,15 @@
 
 <p>To maximize a single request simply minimize the variables wherever possible. For example by requesting half as many attributes one can request twice as many years (or sites) worth of data.</p>
 
-<p>Imagine a use case where one wanted to download all Wind Toolkit data for the state of Texas. The first step would be to refine the request down to the least number of attributes, years, and intervals possible. From that one could determine the number of sites that could be requested in a single request. By experimenting with the <a href="/docs/wind/wind-toolkit/site-count/">site-count</a> endpoint a polygon size could be identified that intersects close to that many sites. Using that polygon size create a grid that covers all of Texas. The final step would be to write a script that invokes the API once for every required grid cell at a rate of no more than 1 every 2 seconds and no more than 20 in process at a time. If more than 1000 requests are required the script will have to be continued across multiple days.</p>
+<p>Imagine a use case where one wanted to download all wave data on the coast of Hawaii. The first step would be to refine the request down to the least number of attributes, years, and intervals possible. From that one could determine the number of sites that could be requested in a single request. By experimenting with the <a href="/docs/solar/nsrdb/site-count">site_count</a> endpoint a polygon size could be identified that intersects close to that many sites. Using that polygon size create a grid that covers all of the coastline of Hawaii. The final step would be to write a script that invokes the API once for every required grid cell at a rate of no more than 1 every 2 seconds and no more than 20 in process at a time. If more than 1000 requests are required the script will have to be continued across multiple days.</p>
 
 <p>In cases where a very large WKT value is required, e.g. downloading the maximum number of broadly spaced points at a time using a MULTIPOINT wkt, it is possible to POST a request to the API providing the WKT params in the payload. Here is an example of a Python script that uses this variation:</p>
 
 <div class="highlight"><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/wind/offshore-nw-pacific-download.json?api_key=yourapikeygoeshere"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://developer.nrel.gov/api/wave/hawaii-hindcast-download.json?api_key=yourapikeygoeshere"</span>
 
-<span class="n">payload</span> <span class="o">=</span> <span class="s">"attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=user@company.com&amp;wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))"</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"utc=true&amp;leap_day=true&amp;interval=180&amp;email=user@company.com&amp;wkt=POINT(-164 15)&amp;names=2010"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'content-type'</span><span class="p">:</span> <span class="s">"application/x-www-form-urlencoded"</span><span class="p">,</span>
@@ -119,14 +118,10 @@
 </code></pre></div>
 <p>And a CURL example of the same</p>
 
-<div class="highlight"><pre class="highlight shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"Content-Type: application/x-www-form-urlencoded"</span> <span class="nt">-H</span> <span class="s2">"Cache-Control: no-cache"</span> <span class="nt">-d</span> <span class="s1">'attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=user@company.com&amp;wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))'</span> <span class="s2">"http://developer.nrel.gov/api/wind/offshore-nw-pacific-download.json?api_key=yourapikeygoeshere"</span>
+<div class="highlight"><pre class="highlight shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"Content-Type: application/x-www-form-urlencoded"</span> <span class="nt">-H</span> <span class="s2">"Cache-Control: no-cache"</span> <span class="nt">-d</span> <span class="s1">'utc=true&amp;leap_day=true&amp;interval=180&amp;email=user@company.com&amp;wkt=POINT(-164 15)&amp;names=2010'</span> <span class="s2">"http://developer.nrel.gov/api/wave/hawaii-hindcast-download.json?api_key=yourapikeygoeshere"</span>
 </code></pre></div>
-<h2 id="contact">Contact</h2>
-
-<p>For questions about the API or the data models please contact <a href="mailto:WindToolkit@nrel.gov">WindToolkit@nrel.gov</a></p>
-
     <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
-  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/wind/wind-toolkit/guide.html.md.erb">Help Improve this Content</a>
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/wave/guide.html.md.erb">Help Improve this Content</a>
 </div>
 
       <footer class="container-fluid">

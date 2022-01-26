@@ -66,7 +66,7 @@
     <h1 id="us-west-coast-virtual-buoy-wave-data-apiv2waveus-west-coast-virtual-buoy-download">US West Coast Virtual Buoy Wave Data <span class="url">(/api/v2/wave/us-west-coast-virtual-buoy-download)</span></h1>
 <p>Collect and download, as CSV, a configurable set of wave data fields from virtual buoys.</p>
 
-<p>This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.</p>
+<p>This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.</p>
 
 <ul id="toc"></ul>
 
@@ -265,7 +265,7 @@
 
 <h3 id="json-output-format">JSON Output Format</h3>
 
-<div class="doc-example-url"><code>GET /api/v2/wave/us-west-coast-virtual-buoy-download.json?api_key=DEMO_KEY&amp;full_name=Sample+User&amp;email=sample@email.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT (-124.728 48.494)&amp;names=2010&amp;utc=true&amp;leap_day=true</code></div>
+<div class="doc-example-url"><code>GET /api/v2/wave/us-west-coast-virtual-buoy-download.json?api_key=DEMO_KEY&amp;full_name=Sample+User&amp;email=user@company.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT (-124.728 48.494)&amp;names=2010&amp;utc=true&amp;leap_day=true</code></div>
 
 <div class="highlight"><pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -276,7 +276,7 @@
             </span><span class="nl">"utc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"leap_day"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"180"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sample@email.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@company.com"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"wkt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POINT (-124.728 48.494)"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -288,7 +288,7 @@
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
     </span><span class="nl">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File generation in progress. An email will be sent to sample@email.com when the download is ready."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File generation in progress. An email will be sent to user@company.com when the download is ready."</span><span class="p">,</span><span class="w">
         </span><span class="nl">"downloadUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mapfiles.nrel.gov/data/wave/f3a8731d7d677f56ebb174e278f6e53e.zip"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
@@ -297,7 +297,7 @@
 <h3 id="csv-output-format">CSV Output Format</h3>
 <p>Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.</p>
 
-<div class="doc-example-url"><code>GET /api/v2/wave/us-west-coast-virtual-buoy-download.csv?api_key=DEMO_KEY&amp;full_name=Sample+User&amp;email=sample@email.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT (-124.728 48.494)&amp;names=1999&amp;utc=true&amp;leap_day=true</code></div>
+<div class="doc-example-url"><code>GET /api/v2/wave/us-west-coast-virtual-buoy-download.csv?api_key=DEMO_KEY&amp;full_name=Sample+User&amp;email=user@company.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT (-124.728 48.494)&amp;names=1999&amp;utc=true&amp;leap_day=true</code></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>Source,Location ID,Jurisdiction,Latitude,Longitude,Time Zone,Local Time Zone,Distance to Shore,Energy Period,Maximum Energy Direction,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth,Version
 NSRDB,0,b'Washington',48.494,-124.728,0,-8,10718.147,s,deg,deg,s,W/m,s,m,-,257,v1.0.0
@@ -313,7 +313,7 @@ Year,Month,Day,Hour,Minute,Energy Period,Maximum Energy Direction,Mean Wave Dire
 
 <span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/v2/wave/us-west-coast-virtual-buoy-download.json?api_key=yourapikeygoeshere"</span>
 
-<span class="n">payload</span> <span class="o">=</span> <span class="s">"full_name=Sample+User&amp;email=sample@email.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT (-124.728 48.494)&amp;names=2010&amp;utc=true&amp;leap_day=true"</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"full_name=Sample+User&amp;email=user@company.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT (-124.728 48.494)&amp;names=2010&amp;utc=true&amp;leap_day=true"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'content-type'</span><span class="p">:</span> <span class="s">"application/x-www-form-urlencoded"</span><span class="p">,</span>
@@ -328,9 +328,11 @@ Year,Month,Day,Hour,Minute,Energy Period,Maximum Energy Direction,Mean Wave Dire
 
 <p>Rate limits for this application are significantly less than the <a href="/docs/rate-limits" target="_blank">standard rate limits</a> for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.</p>
 
-<p>There are two levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.</p>
+<p>There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.</p>
 
-<p>In addition to this limit, the service has a secondary fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.</p>
+<p>Secondly each user is limited to 20 in-flight requests at any given time.</p>
+
+<p>In addition, the service has a fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.</p>
 
 <p>For some tips and tricks to maximize data downloads please read the guide <a href="/docs/solar/nsrdb/guide">here</a>.</p>
 
