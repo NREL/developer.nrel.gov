@@ -1,8 +1,8 @@
 ---
-title: US West Coast Hindcast Wave Data
+title: Alaska Hindcast Wave Data
 summary: Collect and download, as CSV, a configurable set of wave data fields from the DOE-WPTO.
 detail: This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.
-url: /api/v2/wave/us-west-coast-hindcast-download
+url: /api/v2/wave/alaska-hindcast-download
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
@@ -207,7 +207,7 @@ Generated data files are formatted in accordance with the Standard Time Series D
 
 ### JSON Output Format
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&full_name=Sample+User&email=user@company.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-124.2 46.2)&names=2010&utc=true&leap_day=true</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&full_name=Sample+User&email=user@company.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-160.491356 54.040203)&names=2010&utc=true&leap_day=true</code></div>
 
 ```json
 {
@@ -215,12 +215,12 @@ Generated data files are formatted in accordance with the Standard Time Series D
         "body": {},
         "params": {},
         "query": {
-            "names": "2010",
             "utc": "true",
             "leap_day": "true",
             "interval": "180",
             "email": "user@company.com",
-            "wkt": "POINT (-124.2 46.2)"
+            "wkt": "POINT (-160.491356 54.040203)",
+            "names": "1979"
         }
     },
     "metadata": {
@@ -232,7 +232,7 @@ Generated data files are formatted in accordance with the Standard Time Series D
     "status": 200,
     "outputs": {
         "message": "File generation in progress. An email will be sent to user@company.com when the download is ready.",
-        "downloadUrl": "https://mapfiles.nrel.gov/data/wave/f3a8731d7d677f56ebb174e278f6e53e.zip"
+        "downloadUrl": "https://mapfiles.nrel.gov/data/wave/f725f109a565fb482c4a99cdac70c6a8.zip"
     },
     "errors": []
 }
@@ -242,16 +242,15 @@ Generated data files are formatted in accordance with the Standard Time Series D
 ### CSV Output Format
 Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?api_key=DEMO_KEY&full_name=Sample+User&email=user@company.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-124.2 46.2)&names=2010&utc=true&leap_day=true</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?api_key=DEMO_KEY&full_name=Sample+User&email=user@company.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-160.491356 54.040203)&names=1979&utc=true&leap_day=true</code></div>
 
 ```csv
 Source,Location ID,Jurisdiction,Latitude,Longitude,Time Zone,Local Time Zone,Distance to Shore,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth,Version
-NSRDB,6,b'Canada',48.7261,-125.735,0,-8,25022.521,-,s,deg,s,deg,s,W/m,s,m,-,m,v1.0.0
-Year,Month,Day,Hour,Minute,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth
-2010,1,1,0,0,0.7430920004844666,7.980100154876709,45,6.493599891662598,69.25299835205078,5.601600170135498,30369,11.013500213623047,2.7738099098205566,0.38694000244140625,
-2010,1,1,3,0,0.820123016834259,8.767999649047852,45,7.562900066375732,58.25400161743164,6.708000183105469,28324,9.101699829101562,2.5543301105499268,0.3178200125694275,
-2010,1,1,6,0,0.87534499168396,9.151900291442871,45,8.133099555969238,49.43600082397461,7.355999946594238,26162,11.013500213623047,2.4019699096679688,0.2858000099658966,
-2010,1,1,9,0,0.8557509779930115,8.202699661254883,45,6.8653998374938965,57.36899948120117,5.986800193786621,29702,10.01200008392334,2.705440044403076,0.35593000054359436,
+DOE-WPTO US Wave dataset,622416,b'Federal',54.040188,-160.49251,0,-10,93273.016,-,s,deg,s,deg,s,W/m,s,m,-,2182,v1.0.0
+Year,Month,Day,Hour,Minute,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width
+1979,1,7,0,0,0.8358079791069031,7.4664998054504395,172.5,8.162799835205078,9.088500022888184,89305,10.01200008392334,4.475830078125,0.2716299891471863
+1979,1,7,3,0,0.833549976348877,7.552000045776367,172.5,8.247599601745605,9.172200202941895,84087,10.01200008392334,4.323190212249756,0.26954999566078186
+1979,1,7,6,0,0.8325499892234802,7.384900093078613,172.5,8.099699974060059,9.053199768066406,77718,10.01200008392334,4.183579921722412,0.2759400010108948
 ```
 
 ### POST request example in Python
@@ -261,7 +260,7 @@ import requests
 
 url = "http://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
 
-payload = "full_name=Sample+User&email=user@company.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-124.2 46.2)&names=2010&utc=true&leap_day=true"
+payload = "full_name=Sample+User&email=user@company.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-160.491356 54.040203)&names=2010&utc=true&leap_day=true"
 
 headers = {
     'content-type': "application/x-www-form-urlencoded",
