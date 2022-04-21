@@ -5,16 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        US West Coast Hindcast Wave Data 
+        Alaska Hindcast Wave Data 
           API
         |
       NREL: Developer Network
     </title>
 
-    <link rel="canonical" href="https://developer.nrel.gov/docs/wave/hindcast/us-west-coast/" />
+    <link rel="canonical" href="https://developer.nrel.gov/docs/wave/hindcast/alaska/" />
     <script>
       if(window.location.href.indexOf('nrel.github.io') !== -1) {
-        window.location.href = 'https://developer.nrel.gov/docs/wave/hindcast/us-west-coast/';
+        window.location.href = 'https://developer.nrel.gov/docs/wave/hindcast/alaska/';
       }
     </script>
 
@@ -33,7 +33,7 @@
 </script>
 
   </head>
-  <body class="docs docs_wave docs_wave_hindcast docs_wave_hindcast_us-west-coast docs_wave_hindcast_us-west-coast_index">
+  <body class="docs docs_wave docs_wave_hindcast docs_wave_hindcast_alaska docs_wave_hindcast_alaska_index">
     <div class="container">
   <header>
     <map name="header_map">
@@ -59,11 +59,11 @@
             <li class="breadcrumb-item"><a href="/docs/">Documentation</a></li>
             <li class="breadcrumb-item"><a href="/docs/wave/">Wave</a></li>
             <li class="breadcrumb-item"><a href="/docs/wave/hindcast/">Hindcast Data Downloads</a></li>
-            <li class="breadcrumb-item active">US West Coast Hindcast Wave Data</li>
+            <li class="breadcrumb-item active">Alaska Hindcast Wave Data</li>
     </ol>
 
 
-    <h1 id="us-west-coast-hindcast-wave-data-apiv2waveus-west-coast-hindcast-download">US West Coast Hindcast Wave Data <span class="url">(/api/v2/wave/us-west-coast-hindcast-download)</span></h1>
+    <h1 id="alaska-hindcast-wave-data-apiv2wavealaska-hindcast-download">Alaska Hindcast Wave Data <span class="url">(/api/v2/wave/alaska-hindcast-download)</span></h1>
 <p>Collect and download, as CSV, a configurable set of wave data fields from the DOE-WPTO.</p>
 
 <p>This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.</p>
@@ -72,7 +72,7 @@
 
 <h2 id="request-url">Request URL</h2>
 
-<pre>GET|POST /api/v2/wave/us-west-coast-hindcast-download<em>.format?parameters</em></pre>
+<pre>GET|POST /api/v2/wave/alaska-hindcast-download<em>.format?parameters</em></pre>
 
 <h2 id="request-parameters">Request Parameters</h2>
 <p><em>NOTE: when using POST to submit a request the api_key must still be included as a query parameter in the url. All other parameters may be included in a POST request as part of the payload.</em></p>
@@ -265,19 +265,19 @@
 
 <h3 id="json-output-format">JSON Output Format</h3>
 
-<div class="doc-example-url"><code>GET /api/v2/wave/us-west-coast-hindcast-download.json?api_key=DEMO_KEY&amp;full_name=Sample+User&amp;email=user@company.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT (-124.2 46.2)&amp;names=2010&amp;utc=true&amp;leap_day=true</code></div>
+<div class="doc-example-url"><code>GET /api/v2/wave/alaska-hindcast-download.json?api_key=DEMO_KEY&amp;full_name=Sample+User&amp;email=user@company.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT (-160.491356 54.040203)&amp;names=2010&amp;utc=true&amp;leap_day=true</code></div>
 
 <div class="highlight"><pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
         </span><span class="nl">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
         </span><span class="nl">"query"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"names"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2010"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"utc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"leap_day"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"180"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@company.com"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"wkt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POINT (-124.2 46.2)"</span><span class="w">
+            </span><span class="nl">"wkt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POINT (-160.491356 54.040203)"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"names"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1979"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -289,7 +289,7 @@
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
     </span><span class="nl">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File generation in progress. An email will be sent to user@company.com when the download is ready."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"downloadUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mapfiles.nrel.gov/data/wave/f3a8731d7d677f56ebb174e278f6e53e.zip"</span><span class="w">
+        </span><span class="nl">"downloadUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mapfiles.nrel.gov/data/wave/f725f109a565fb482c4a99cdac70c6a8.zip"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -297,23 +297,22 @@
 <h3 id="csv-output-format">CSV Output Format</h3>
 <p>Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.</p>
 
-<div class="doc-example-url"><code>GET /api/v2/wave/us-west-coast-hindcast-download.csv?api_key=DEMO_KEY&amp;full_name=Sample+User&amp;email=user@company.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT (-124.2 46.2)&amp;names=2010&amp;utc=true&amp;leap_day=true</code></div>
+<div class="doc-example-url"><code>GET /api/v2/wave/alaska-hindcast-download.csv?api_key=DEMO_KEY&amp;full_name=Sample+User&amp;email=user@company.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT (-160.491356 54.040203)&amp;names=1979&amp;utc=true&amp;leap_day=true</code></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>Source,Location ID,Jurisdiction,Latitude,Longitude,Time Zone,Local Time Zone,Distance to Shore,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth,Version
-NSRDB,6,b'Canada',48.7261,-125.735,0,-8,25022.521,-,s,deg,s,deg,s,W/m,s,m,-,m,v1.0.0
-Year,Month,Day,Hour,Minute,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth
-2010,1,1,0,0,0.7430920004844666,7.980100154876709,45,6.493599891662598,69.25299835205078,5.601600170135498,30369,11.013500213623047,2.7738099098205566,0.38694000244140625,
-2010,1,1,3,0,0.820123016834259,8.767999649047852,45,7.562900066375732,58.25400161743164,6.708000183105469,28324,9.101699829101562,2.5543301105499268,0.3178200125694275,
-2010,1,1,6,0,0.87534499168396,9.151900291442871,45,8.133099555969238,49.43600082397461,7.355999946594238,26162,11.013500213623047,2.4019699096679688,0.2858000099658966,
-2010,1,1,9,0,0.8557509779930115,8.202699661254883,45,6.8653998374938965,57.36899948120117,5.986800193786621,29702,10.01200008392334,2.705440044403076,0.35593000054359436,
+DOE-WPTO US Wave dataset,622416,b'Federal',54.040188,-160.49251,0,-10,93273.016,-,s,deg,s,deg,s,W/m,s,m,-,2182,v1.0.0
+Year,Month,Day,Hour,Minute,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width
+1979,1,7,0,0,0.8358079791069031,7.4664998054504395,172.5,8.162799835205078,9.088500022888184,89305,10.01200008392334,4.475830078125,0.2716299891471863
+1979,1,7,3,0,0.833549976348877,7.552000045776367,172.5,8.247599601745605,9.172200202941895,84087,10.01200008392334,4.323190212249756,0.26954999566078186
+1979,1,7,6,0,0.8325499892234802,7.384900093078613,172.5,8.099699974060059,9.053199768066406,77718,10.01200008392334,4.183579921722412,0.2759400010108948
 </code></pre></div>
 <h3 id="post-request-example-in-python">POST request example in Python</h3>
 
 <div class="highlight"><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/v2/wave/us-west-coast-hindcast-download.json?api_key=yourapikeygoeshere"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/v2/wave/alaska-hindcast-download.json?api_key=yourapikeygoeshere"</span>
 
-<span class="n">payload</span> <span class="o">=</span> <span class="s">"full_name=Sample+User&amp;email=user@company.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT (-124.2 46.2)&amp;names=2010&amp;utc=true&amp;leap_day=true"</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"full_name=Sample+User&amp;email=user@company.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT (-160.491356 54.040203)&amp;names=2010&amp;utc=true&amp;leap_day=true"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'content-type'</span><span class="p">:</span> <span class="s">"application/x-www-form-urlencoded"</span><span class="p">,</span>
@@ -356,7 +355,7 @@ Year,Month,Day,Hour,Minute,Directionality Coefficient,Energy Period,Maximum Ener
 </table>
 
     <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
-  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/wave/hindcast/us-west-coast.html.md.erb">Help Improve this Content</a>
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/wave/hindcast/alaska.html.md.erb">Help Improve this Content</a>
 </div>
 
       <footer class="container-fluid">
