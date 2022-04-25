@@ -63,7 +63,7 @@
     </ol>
 
 
-    <h1 id="us-west-coast-virtual-buoy-wave-data-apiv2waveus-west-coast-virtual-buoy-download">US West Coast Virtual Buoy Wave Data <span class="url">(/api/v2/wave/us-west-coast-virtual-buoy-download)</span></h1>
+    <h1 id="us-west-coast-virtual-buoy-wave-data-apiwavev2waveus-west-coast-virtual-buoy-download">US West Coast Virtual Buoy Wave Data <span class="url">(/api/wave/v2/wave/us-west-coast-virtual-buoy-download)</span></h1>
 <p>Collect and download, as CSV, a configurable set of wave data fields from virtual buoys.</p>
 
 <p>This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.</p>
@@ -72,7 +72,7 @@
 
 <h2 id="request-url">Request URL</h2>
 
-<pre>GET|POST /api/v2/wave/us-west-coast-virtual-buoy-download<em>.format?parameters</em></pre>
+<pre>GET|POST /api/wave/v2/wave/us-west-coast-virtual-buoy-download<em>.format?parameters</em></pre>
 
 <h2 id="request-parameters">Request Parameters</h2>
 <p><em>NOTE: when using POST to submit a request the api_key must still be included as a query parameter in the url. All other parameters may be included in a POST request as part of the payload.</em></p>
@@ -265,7 +265,7 @@
 
 <h3 id="json-output-format">JSON Output Format</h3>
 
-<div class="doc-example-url"><code>GET /api/v2/wave/us-west-coast-virtual-buoy-download.json?api_key=DEMO_KEY&amp;full_name=Sample+User&amp;email=user@company.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT (-124.728 48.494)&amp;names=2010&amp;utc=true&amp;leap_day=true</code></div>
+<div class="doc-example-url"><code>GET /api/wave/v2/wave/us-west-coast-virtual-buoy-download.json?api_key=DEMO_KEY&amp;full_name=Sample+User&amp;email=user@company.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT (-124.728 48.494)&amp;names=2010&amp;utc=true&amp;leap_day=true</code></div>
 
 <div class="highlight"><pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -297,7 +297,7 @@
 <h3 id="csv-output-format">CSV Output Format</h3>
 <p>Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.</p>
 
-<div class="doc-example-url"><code>GET /api/v2/wave/us-west-coast-virtual-buoy-download.csv?api_key=DEMO_KEY&amp;full_name=Sample+User&amp;email=user@company.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT (-124.728 48.494)&amp;names=1999&amp;utc=true&amp;leap_day=true</code></div>
+<div class="doc-example-url"><code>GET /api/wave/v2/wave/us-west-coast-virtual-buoy-download.csv?api_key=DEMO_KEY&amp;full_name=Sample+User&amp;email=user@company.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT (-124.728 48.494)&amp;names=1999&amp;utc=true&amp;leap_day=true</code></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>Source,Location ID,Jurisdiction,Latitude,Longitude,Time Zone,Local Time Zone,Distance to Shore,Energy Period,Maximum Energy Direction,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth,Version
 NSRDB,0,b'Washington',48.494,-124.728,0,-8,10718.147,s,deg,deg,s,W/m,s,m,-,257,v1.0.0
@@ -311,7 +311,7 @@ Year,Month,Day,Hour,Minute,Energy Period,Maximum Energy Direction,Mean Wave Dire
 
 <div class="highlight"><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/v2/wave/us-west-coast-virtual-buoy-download.json?api_key=yourapikeygoeshere"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/wave/v2/wave/us-west-coast-virtual-buoy-download.json?api_key=yourapikeygoeshere"</span>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="s">"full_name=Sample+User&amp;email=user@company.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT (-124.728 48.494)&amp;names=2010&amp;utc=true&amp;leap_day=true"</span>
 

@@ -103,7 +103,7 @@
 
 <div class="highlight"><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://developer.nrel.gov/api/wave/hawaii-hindcast-download.json?api_key=yourapikeygoeshere"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://developer.nrel.gov/api/wave/v2/wave/hawaii-hindcast-download.json?api_key=yourapikeygoeshere"</span>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="s">"utc=true&amp;leap_day=true&amp;interval=180&amp;email=user@company.com&amp;wkt=POINT(-164 15)&amp;names=2010"</span>
 
@@ -118,7 +118,7 @@
 </code></pre></div>
 <p>And a CURL example of the same</p>
 
-<div class="highlight"><pre class="highlight shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"Content-Type: application/x-www-form-urlencoded"</span> <span class="nt">-H</span> <span class="s2">"Cache-Control: no-cache"</span> <span class="nt">-d</span> <span class="s1">'utc=true&amp;leap_day=true&amp;interval=180&amp;email=user@company.com&amp;wkt=POINT(-164 15)&amp;names=2010'</span> <span class="s2">"http://developer.nrel.gov/api/wave/hawaii-hindcast-download.json?api_key=yourapikeygoeshere"</span>
+<div class="highlight"><pre class="highlight shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"Content-Type: application/x-www-form-urlencoded"</span> <span class="nt">-H</span> <span class="s2">"Cache-Control: no-cache"</span> <span class="nt">-d</span> <span class="s1">'utc=true&amp;leap_day=true&amp;interval=180&amp;email=user@company.com&amp;wkt=POINT(-164 15)&amp;names=2010'</span> <span class="s2">"http://developer.nrel.gov/api/wave/v2/wave/hawaii-hindcast-download.json?api_key=yourapikeygoeshere"</span>
 </code></pre></div>
     <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
   <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/wave/guide.html.md.erb">Help Improve this Content</a>
