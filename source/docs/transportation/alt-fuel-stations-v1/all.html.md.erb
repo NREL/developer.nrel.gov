@@ -94,20 +94,20 @@ The individual fuel station records are returned in no specific order. Each stat
 ```json
 {
   "station_locator_url": "https://afdc.energy.gov/stations/",
-  "total_results": 5980,
+  "total_results": 15251,
   "station_counts": {
-    "total": 22729,
+    "total": 42977,
     "fuels": {
       "BD": {
         "total": 0
       },
       "E85": {
-        "total": 220
+        "total": 304
       },
       "ELEC": {
-        "total": 22509,
+        "total": 42673,
         "stations": {
-          "total": 5760
+          "total": 14947
         }
       },
       "HY": {
@@ -126,31 +126,32 @@ The individual fuel station records are returned in no specific order. Each stat
   },
   "fuel_stations": [
     {
-      "access_code": "public",
-      "access_days_time": "Garage business hours; pay lot",
+      "access_code": "private",
+      "access_days_time": "Fleet use only",
       "access_detail_code": null,
       "cards_accepted": null,
-      "date_last_confirmed": "2018-09-10",
+      "date_last_confirmed": "2021-07-14",
       "expected_date": null,
       "fuel_type_code": "ELEC",
-      "groups_with_access_code": "Public",
-      "id": 1498,
-      "open_date": "2018-08-20",
+      "groups_with_access_code": "Private",
+      "id": 1517,
+      "open_date": "1999-10-15",
       "owner_type_code": "LG",
       "status_code": "E",
-      "station_name": "City of Sacramento - Capitol Parking Garage",
-      "station_phone": "888-758-4389  916-264-5011",
-      "updated_at": "2019-01-17T00:33:46Z",
-      "facility_type": "PAY_GARAGE",
+      "restricted_access": null,
+      "station_name": "LADWP - Truesdale Center",
+      "station_phone": null,
+      "updated_at": "2022-02-10T19:42:29Z",
+      "facility_type": "UTILITY",
       "geocode_status": "GPS",
-      "latitude": 38.5783802,
-      "longitude": -121.4926,
-      "city": "Sacramento",
-      "intersection_directions": "At 10th and L, 2nd Level",
+      "latitude": 34.2483191527193,
+      "longitude": -118.3879713743439,
+      "city": "Sun Valley",
+      "intersection_directions": null,
       "plus4": null,
       "state": "CA",
-      "street_address": "1015 L St",
-      "zip": "95814",
+      "street_address": "11797 Truesdale St",
+      "zip": "91352",
       "country": "US",
       "bd_blends": null,
       "cng_dispenser_num": null,
@@ -163,15 +164,18 @@ The individual fuel station records are returned in no specific order. Each stat
       "e85_blender_pump": null,
       "e85_other_ethanol_blends": null,
       "ev_connector_types": [
-        "NEMA520"
+          "CHADEMO",
+          "J1772",
+          "J1772COMBO"
       ],
-      "ev_dc_fast_num": null,
-      "ev_level1_evse_num": 2,
-      "ev_level2_evse_num": null,
-      "ev_network": null,
+      "ev_dc_fast_num": 3,
+      "ev_level1_evse_num": null,
+      "ev_level2_evse_num": 39,
+      "ev_network": "Non-Networked",
       "ev_network_web": null,
-      "ev_other_evse": "3 SP Inductive",
+      "ev_other_evse": null,
       "ev_pricing": null,
+      "ev_renewable_source": null,
       "hy_is_retail": null,
       "hy_pressures": null,
       "hy_standards": null,
@@ -186,35 +190,36 @@ The individual fuel station records are returned in no specific order. Each stat
       "access_days_time_fr": null,
       "intersection_directions_fr": null,
       "bd_blends_fr": null,
-      "groups_with_access_code_fr": "Public",
+      "groups_with_access_code_fr": "Privé",
       "ev_pricing_fr": null
     },
     {
       "access_code": "private",
       "access_days_time": null,
-      "access_detail_code": "GOVERNMENT",
+      "access_detail_code": null,
       "cards_accepted": null,
-      "date_last_confirmed": "2018-10-04",
+      "date_last_confirmed": "2021-07-14",
       "expected_date": null,
       "fuel_type_code": "ELEC",
-      "groups_with_access_code": "Private - Government only",
-      "id": 1517,
-      "open_date": "1999-10-15",
+      "groups_with_access_code": "Private",
+      "id": 1519,
+      "open_date": "2020-02-28",
       "owner_type_code": "LG",
       "status_code": "E",
-      "station_name": "LADWP - Truesdale Center",
+      "restricted_access": null,
+      "station_name": "LADWP - West LA District Office",
       "station_phone": null,
-      "updated_at": "2019-01-17T00:33:46Z",
+      "updated_at": "2022-02-10T19:42:29Z",
       "facility_type": "UTILITY",
       "geocode_status": "200-8",
-      "latitude": 34.249396,
-      "longitude": -118.387136,
-      "city": "Sun Valley",
+      "latitude": 34.052542,
+      "longitude": -118.448504,
+      "city": "Los Angeles",
       "intersection_directions": null,
       "plus4": null,
       "state": "CA",
-      "street_address": "11791 Truesdale St",
-      "zip": "91352",
+      "street_address": "1394 S Sepulveda Blvd",
+      "zip": "90024",
       "country": "US",
       "bd_blends": null,
       "cng_dispenser_num": null,
@@ -231,11 +236,12 @@ The individual fuel station records are returned in no specific order. Each stat
       ],
       "ev_dc_fast_num": null,
       "ev_level1_evse_num": null,
-      "ev_level2_evse_num": 12,
-      "ev_network": null,
+      "ev_level2_evse_num": 4,
+      "ev_network": "Non-Networked",
       "ev_network_web": null,
       "ev_other_evse": null,
-      "ev_pricing": null,
+      "ev_pricing": "Free",
+      "ev_renewable_source": null,
       "hy_is_retail": null,
       "hy_pressures": null,
       "hy_standards": null,
@@ -250,7 +256,7 @@ The individual fuel station records are returned in no specific order. Each stat
       "access_days_time_fr": null,
       "intersection_directions_fr": null,
       "bd_blends_fr": null,
-      "groups_with_access_code_fr": "Privé - Réservé au gouvernement",
+      "groups_with_access_code_fr": "Privé",
       "ev_pricing_fr": null
     }
   ]
@@ -266,20 +272,20 @@ The individual fuel station records are returned in no specific order. Each stat
   "type": "FeatureCollection",
   "metadata": {
     "station_locator_url": "https://afdc.energy.gov/stations/",
-    "total_results": 7033,
+    "total_results": 15250,
     "station_counts": {
-      "total": 28672,
+      "total": 42975,
       "fuels": {
         "BD": {
           "total": 0
         },
         "E85": {
-          "total": 224
+          "total": 304
         },
         "ELEC": {
-          "total": 28448,
+          "total": 42671,
           "stations": {
-              "total": 6809
+            "total": 14946
           }
         },
         "HY": {
@@ -303,89 +309,16 @@ The individual fuel station records are returned in no specific order. Each stat
       "geometry": {
         "type": "Point",
         "coordinates": [
-            -121.4926,
-            38.5783802
+          -118.3879713743439,
+          34.2483191527193
         ]
-      },
-      "properties": {
-        "access_code": "public",
-        "access_days_time": "Garage business hours; pay lot",
-        "access_detail_code": null,
-        "cards_accepted": null,
-        "date_last_confirmed": "2019-05-09",
-        "expected_date": null,
-        "fuel_type_code": "ELEC",
-        "groups_with_access_code": "Public",
-        "id": 1498,
-        "open_date": "2018-08-20",
-        "owner_type_code": "LG",
-        "status_code": "E",
-        "station_name": "City of Sacramento - Capitol Parking Garage",
-        "station_phone": "888-758-4389  916-264-5011",
-        "updated_at": "2020-01-21T18:34:38Z",
-        "facility_type": "PAY_GARAGE",
-        "geocode_status": "GPS",
-        "city": "Sacramento",
-        "intersection_directions": "At 10th and L, 2nd Level",
-        "plus4": null,
-        "state": "CA",
-        "street_address": "1015 L St",
-        "zip": "95814",
-        "country": "US",
-        "bd_blends": null,
-        "cng_dispenser_num": null,
-        "cng_fill_type_code": null,
-        "cng_psi": null,
-        "cng_renewable_source": null,
-        "cng_total_compression": null,
-        "cng_total_storage": null,
-        "cng_vehicle_class": null,
-        "e85_blender_pump": null,
-        "e85_other_ethanol_blends": null,
-        "ev_connector_types": [
-            "NEMA520"
-        ],
-        "ev_dc_fast_num": null,
-        "ev_level1_evse_num": 2,
-        "ev_level2_evse_num": null,
-        "ev_network": "Non-Networked",
-        "ev_network_web": null,
-        "ev_other_evse": "3 SP Inductive",
-        "ev_pricing": null,
-        "ev_renewable_source": null,
-        "hy_is_retail": null,
-        "hy_pressures": null,
-        "hy_standards": null,
-        "hy_status_link": null,
-        "lng_renewable_source": null,
-        "lng_vehicle_class": null,
-        "lpg_primary": null,
-        "lpg_nozzle_types": null,
-        "ng_fill_type_code": null,
-        "ng_psi": null,
-        "ng_vehicle_class": null,
-        "access_days_time_fr": null,
-        "intersection_directions_fr": null,
-        "bd_blends_fr": null,
-        "groups_with_access_code_fr": "Public",
-        "ev_pricing_fr": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-          "type": "Point",
-          "coordinates": [
-            -118.387971374344,
-            34.2483191527193
-          ]
       },
       "properties": {
         "access_code": "private",
         "access_days_time": "Fleet use only",
         "access_detail_code": null,
         "cards_accepted": null,
-        "date_last_confirmed": "2020-01-13",
+        "date_last_confirmed": "2021-07-14",
         "expected_date": null,
         "fuel_type_code": "ELEC",
         "groups_with_access_code": "Private",
@@ -393,9 +326,10 @@ The individual fuel station records are returned in no specific order. Each stat
         "open_date": "1999-10-15",
         "owner_type_code": "LG",
         "status_code": "E",
+        "restricted_access": null,
         "station_name": "LADWP - Truesdale Center",
         "station_phone": null,
-        "updated_at": "2020-01-21T18:34:38Z",
+        "updated_at": "2022-02-10T19:42:29Z",
         "facility_type": "UTILITY",
         "geocode_status": "GPS",
         "city": "Sun Valley",
@@ -416,15 +350,91 @@ The individual fuel station records are returned in no specific order. Each stat
         "e85_blender_pump": null,
         "e85_other_ethanol_blends": null,
         "ev_connector_types": [
-          "J1772"
+          "CHADEMO",
+          "J1772",
+          "J1772COMBO"
         ],
-        "ev_dc_fast_num": null,
+        "ev_dc_fast_num": 3,
         "ev_level1_evse_num": null,
-        "ev_level2_evse_num": 15,
+        "ev_level2_evse_num": 39,
         "ev_network": "Non-Networked",
         "ev_network_web": null,
         "ev_other_evse": null,
         "ev_pricing": null,
+        "ev_renewable_source": null,
+        "hy_is_retail": null,
+        "hy_pressures": null,
+        "hy_standards": null,
+        "hy_status_link": null,
+        "lng_renewable_source": null,
+        "lng_vehicle_class": null,
+        "lpg_primary": null,
+        "lpg_nozzle_types": null,
+        "ng_fill_type_code": null,
+        "ng_psi": null,
+        "ng_vehicle_class": null,
+        "access_days_time_fr": null,
+        "intersection_directions_fr": null,
+        "bd_blends_fr": null,
+        "groups_with_access_code_fr": "Privé",
+        "ev_pricing_fr": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.448504,
+          34.052542
+        ]
+      },
+      "properties": {
+        "access_code": "private",
+        "access_days_time": null,
+        "access_detail_code": null,
+        "cards_accepted": null,
+        "date_last_confirmed": "2021-07-14",
+        "expected_date": null,
+        "fuel_type_code": "ELEC",
+        "groups_with_access_code": "Private",
+        "id": 1519,
+        "open_date": "2020-02-28",
+        "owner_type_code": "LG",
+        "status_code": "E",
+        "restricted_access": null,
+        "station_name": "LADWP - West LA District Office",
+        "station_phone": null,
+        "updated_at": "2022-02-10T19:42:29Z",
+        "facility_type": "UTILITY",
+        "geocode_status": "200-8",
+        "city": "Los Angeles",
+        "intersection_directions": null,
+        "plus4": null,
+        "state": "CA",
+        "street_address": "1394 S Sepulveda Blvd",
+        "zip": "90024",
+        "country": "US",
+        "bd_blends": null,
+        "cng_dispenser_num": null,
+        "cng_fill_type_code": null,
+        "cng_psi": null,
+        "cng_renewable_source": null,
+        "cng_total_compression": null,
+        "cng_total_storage": null,
+        "cng_vehicle_class": null,
+        "e85_blender_pump": null,
+        "e85_other_ethanol_blends": null,
+        "ev_connector_types": [
+          "J1772"
+        ],
+        "ev_dc_fast_num": null,
+        "ev_level1_evse_num": null,
+        "ev_level2_evse_num": 4,
+        "ev_network": "Non-Networked",
+        "ev_network_web": null,
+        "ev_other_evse": null,
+        "ev_pricing": "Free",
         "ev_renewable_source": null,
         "hy_is_retail": null,
         "hy_pressures": null,
@@ -456,20 +466,20 @@ The individual fuel station records are returned in no specific order. Each stat
 <?xml version="1.0" encoding="UTF-8"?>
 <response>
   <station-locator-url>https://afdc.energy.gov/stations/</station-locator-url>
-  <total-results>5980</total-results>
+  <total-results>15250</total-results>
   <station-counts>
-    <total>22729</total>
+    <total>42975</total>
     <fuels>
       <BD>
         <total>0</total>
       </BD>
       <E85>
-        <total>220</total>
+        <total>304</total>
       </E85>
       <ELEC>
-        <total>22509</total>
+        <total>42671</total>
         <stations>
-          <total>5760</total>
+          <total>14946</total>
         </stations>
       </ELEC>
       <HY>
@@ -488,31 +498,32 @@ The individual fuel station records are returned in no specific order. Each stat
   </station-counts>
   <fuel-stations type="array">
     <fuel-station>
-      <access-code>public</access-code>
-      <access-days-time>Garage business hours; pay lot</access-days-time>
+      <access-code>private</access-code>
+      <access-days-time>Fleet use only</access-days-time>
       <access-detail-code nil="true"/>
       <cards-accepted nil="true"/>
-      <date-last-confirmed>2018-09-10</date-last-confirmed>
+      <date-last-confirmed>2021-07-14</date-last-confirmed>
       <expected-date nil="true"/>
       <fuel-type-code>ELEC</fuel-type-code>
-      <groups-with-access-code>Public</groups-with-access-code>
-      <id>1498</id>
-      <open-date>2018-08-20</open-date>
+      <groups-with-access-code>Private</groups-with-access-code>
+      <id>1517</id>
+      <open-date>1999-10-15</open-date>
       <owner-type-code>LG</owner-type-code>
       <status-code>E</status-code>
-      <station-name>City of Sacramento - Capitol Parking Garage</station-name>
-      <station-phone>888-758-4389  916-264-5011</station-phone>
-      <updated-at>2019-01-17 00:33:46 UTC</updated-at>
-      <facility-type>PAY_GARAGE</facility-type>
+      <restricted-access nil="true"/>
+      <station-name>LADWP - Truesdale Center</station-name>
+      <station-phone nil="true"/>
+      <updated-at>2022-02-10 19:42:29 UTC</updated-at>
+      <facility-type>UTILITY</facility-type>
       <geocode-status>GPS</geocode-status>
-      <latitude>38.5783802</latitude>
-      <longitude>-121.4926</longitude>
-      <city>Sacramento</city>
-      <intersection-directions>At 10th and L, 2nd Level</intersection-directions>
+      <latitude>34.2483191527193</latitude>
+      <longitude>-118.3879713743439</longitude>
+      <city>Sun Valley</city>
+      <intersection-directions nil="true"/>
       <plus4 nil="true"/>
       <state>CA</state>
-      <street-address>1015 L St</street-address>
-      <zip>95814</zip>
+      <street-address>11797 Truesdale St</street-address>
+      <zip>91352</zip>
       <country>US</country>
       <bd-blends nil="true"/>
       <cng-dispenser-num nil="true"/>
@@ -525,15 +536,18 @@ The individual fuel station records are returned in no specific order. Each stat
       <e85-blender-pump nil="true"/>
       <e85-other-ethanol-blends nil="true"/>
       <ev-connector-types>
-        <ev-connector-type>NEMA520</ev-connector-type>
+        <ev-connector-type>CHADEMO</ev-connector-type>
+        <ev-connector-type>J1772</ev-connector-type>
+        <ev-connector-type>J1772COMBO</ev-connector-type>
       </ev-connector-types>
-      <ev-dc-fast-num nil="true"/>
-      <ev-level1-evse-num>2</ev-level1-evse-num>
-      <ev-level2-evse-num nil="true"/>
-      <ev-network nil="true"/>
+      <ev-dc-fast-num>3</ev-dc-fast-num>
+      <ev-level1-evse-num nil="true"/>
+      <ev-level2-evse-num>39</ev-level2-evse-num>
+      <ev-network>Non-Networked</ev-network>
       <ev-network-web nil="true"/>
-      <ev-other-evse>3 SP Inductive</ev-other-evse>
+      <ev-other-evse nil="true"/>
       <ev-pricing nil="true"/>
+      <ev-renewable-source nil="true"/>
       <hy-is-retail nil="true"/>
       <hy-pressures nil="true"/>
       <hy-standards nil="true"/>
@@ -548,35 +562,36 @@ The individual fuel station records are returned in no specific order. Each stat
       <access-days-time-fr nil="true"/>
       <intersection-directions-fr nil="true"/>
       <bd-blends-fr nil="true"/>
-      <groups-with-access-code-fr>Public</groups-with-access-code-fr>
+      <groups-with-access-code-fr>Privé</groups-with-access-code-fr>
       <ev-pricing-fr nil="true"/>
     </fuel-station>
     <fuel-station>
       <access-code>private</access-code>
       <access-days-time nil="true"/>
-      <access-detail-code>GOVERNMENT</access-detail-code>
+      <access-detail-code nil="true"/>
       <cards-accepted nil="true"/>
-      <date-last-confirmed>2018-10-04</date-last-confirmed>
+      <date-last-confirmed>2021-07-14</date-last-confirmed>
       <expected-date nil="true"/>
       <fuel-type-code>ELEC</fuel-type-code>
-      <groups-with-access-code>Private - Government only</groups-with-access-code>
-      <id>1517</id>
-      <open-date>1999-10-15</open-date>
+      <groups-with-access-code>Private</groups-with-access-code>
+      <id>1519</id>
+      <open-date>2020-02-28</open-date>
       <owner-type-code>LG</owner-type-code>
       <status-code>E</status-code>
-      <station-name>LADWP - Truesdale Center</station-name>
+      <restricted-access nil="true"/>
+      <station-name>LADWP - West LA District Office</station-name>
       <station-phone nil="true"/>
-      <updated-at>2019-01-17 00:33:46 UTC</updated-at>
+      <updated-at>2022-02-10 19:42:29 UTC</updated-at>
       <facility-type>UTILITY</facility-type>
       <geocode-status>200-8</geocode-status>
-      <latitude>34.249396</latitude>
-      <longitude>-118.387136</longitude>
-      <city>Sun Valley</city>
+      <latitude>34.052542</latitude>
+      <longitude>-118.448504</longitude>
+      <city>Los Angeles</city>
       <intersection-directions nil="true"/>
       <plus4 nil="true"/>
       <state>CA</state>
-      <street-address>11791 Truesdale St</street-address>
-      <zip>91352</zip>
+      <street-address>1394 S Sepulveda Blvd</street-address>
+      <zip>90024</zip>
       <country>US</country>
       <bd-blends nil="true"/>
       <cng-dispenser-num nil="true"/>
@@ -593,11 +608,12 @@ The individual fuel station records are returned in no specific order. Each stat
       </ev-connector-types>
       <ev-dc-fast-num nil="true"/>
       <ev-level1-evse-num nil="true"/>
-      <ev-level2-evse-num>12</ev-level2-evse-num>
-      <ev-network nil="true"/>
+      <ev-level2-evse-num>4</ev-level2-evse-num>
+      <ev-network>Non-Networked</ev-network>
       <ev-network-web nil="true"/>
       <ev-other-evse nil="true"/>
-      <ev-pricing nil="true"/>
+      <ev-pricing>Free</ev-pricing>
+      <ev-renewable-source nil="true"/>
       <hy-is-retail nil="true"/>
       <hy-pressures nil="true"/>
       <hy-standards nil="true"/>
@@ -612,7 +628,7 @@ The individual fuel station records are returned in no specific order. Each stat
       <access-days-time-fr nil="true"/>
       <intersection-directions-fr nil="true"/>
       <bd-blends-fr nil="true"/>
-      <groups-with-access-code-fr>Privé - Réservé au gouvernement</groups-with-access-code-fr>
+      <groups-with-access-code-fr>Privé</groups-with-access-code-fr>
       <ev-pricing-fr nil="true"/>
     </fuel-station>
   </fuel-stations>
@@ -628,87 +644,11 @@ The individual fuel station records are returned in no specific order. Each stat
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
     <Placemark>
-      <name>City of Sacramento - Capitol Parking Garage</name>
-      <address>1015 L St</address>
-      <phoneNumber>888-758-4389  916-264-5011</phoneNumber>
-      <Point>
-        <coordinates>-121.4926,38.5783802</coordinates>
-      </Point>
-      <ExtendedData>
-        <Data name="access_code">
-          <Value>public</Value>
-        </Data>
-        <Data name="access_days_time">
-          <Value>Garage business hours; pay lot</Value>
-        </Data>
-        <Data name="date_last_confirmed">
-          <Value>2019-05-09</Value>
-        </Data>
-        <Data name="fuel_type_code">
-          <Value>ELEC</Value>
-        </Data>
-        <Data name="groups_with_access_code">
-          <Value>Public</Value>
-        </Data>
-        <Data name="id">
-          <Value>1498</Value>
-        </Data>
-        <Data name="open_date">
-          <Value>2018-08-20</Value>
-        </Data>
-        <Data name="owner_type_code">
-          <Value>LG</Value>
-        </Data>
-        <Data name="status_code">
-          <Value>E</Value>
-        </Data>
-        <Data name="updated_at">
-          <Value>2020-01-21 18:34:38 UTC</Value>
-        </Data>
-        <Data name="facility_type">
-          <Value>PAY_GARAGE</Value>
-        </Data>
-        <Data name="geocode_status">
-          <Value>GPS</Value>
-        </Data>
-        <Data name="city">
-          <Value>Sacramento</Value>
-        </Data>
-        <Data name="intersection_directions">
-          <Value>At 10th and L, 2nd Level</Value>
-        </Data>
-        <Data name="state">
-          <Value>CA</Value>
-        </Data>
-        <Data name="zip">
-          <Value>95814</Value>
-        </Data>
-        <Data name="country">
-          <Value>US</Value>
-        </Data>
-        <Data name="ev_connector_types">
-          <Value>["NEMA520"]</Value>
-        </Data>
-        <Data name="ev_level1_evse_num">
-          <Value>2</Value>
-        </Data>
-        <Data name="ev_network">
-          <Value>Non-Networked</Value>
-        </Data>
-        <Data name="ev_other_evse">
-          <Value>3 SP Inductive</Value>
-        </Data>
-        <Data name="groups_with_access_code_fr">
-          <Value>Public</Value>
-        </Data>
-      </ExtendedData>
-    </Placemark>
-    <Placemark>
       <name>LADWP - Truesdale Center</name>
       <address>11797 Truesdale St</address>
       <phoneNumber nil="true"/>
       <Point>
-        <coordinates>-118.387971374344,34.2483191527193</coordinates>
+        <coordinates>-118.3879713743439,34.2483191527193</coordinates>
       </Point>
       <ExtendedData>
         <Data name="access_code">
@@ -718,7 +658,7 @@ The individual fuel station records are returned in no specific order. Each stat
           <Value>Fleet use only</Value>
         </Data>
         <Data name="date_last_confirmed">
-          <Value>2020-01-13</Value>
+          <Value>2021-07-14</Value>
         </Data>
         <Data name="fuel_type_code">
           <Value>ELEC</Value>
@@ -739,7 +679,7 @@ The individual fuel station records are returned in no specific order. Each stat
           <Value>E</Value>
         </Data>
         <Data name="updated_at">
-          <Value>2020-01-21 18:34:38 UTC</Value>
+          <Value>2022-02-10 19:42:29 UTC</Value>
         </Data>
         <Data name="facility_type">
           <Value>UTILITY</Value>
@@ -760,13 +700,86 @@ The individual fuel station records are returned in no specific order. Each stat
           <Value>US</Value>
         </Data>
         <Data name="ev_connector_types">
-          <Value>["J1772"]</Value>
+          <Value>["CHADEMO", "J1772", "J1772COMBO"]</Value>
+        </Data>
+        <Data name="ev_dc_fast_num">
+          <Value>3</Value>
         </Data>
         <Data name="ev_level2_evse_num">
-          <Value>15</Value>
+          <Value>39</Value>
         </Data>
         <Data name="ev_network">
           <Value>Non-Networked</Value>
+        </Data>
+        <Data name="groups_with_access_code_fr">
+          <Value>Privé</Value>
+        </Data>
+      </ExtendedData>
+    </Placemark>
+    <Placemark>
+      <name>LADWP - West LA District Office</name>
+      <address>1394 S Sepulveda Blvd</address>
+      <phoneNumber nil="true"/>
+      <Point>
+        <coordinates>-118.448504,34.052542</coordinates>
+      </Point>
+      <ExtendedData>
+        <Data name="access_code">
+          <Value>private</Value>
+        </Data>
+        <Data name="date_last_confirmed">
+          <Value>2021-07-14</Value>
+        </Data>
+        <Data name="fuel_type_code">
+          <Value>ELEC</Value>
+        </Data>
+        <Data name="groups_with_access_code">
+          <Value>Private</Value>
+        </Data>
+        <Data name="id">
+          <Value>1519</Value>
+        </Data>
+        <Data name="open_date">
+          <Value>2020-02-28</Value>
+        </Data>
+        <Data name="owner_type_code">
+          <Value>LG</Value>
+        </Data>
+        <Data name="status_code">
+          <Value>E</Value>
+        </Data>
+        <Data name="updated_at">
+          <Value>2022-02-10 19:42:29 UTC</Value>
+        </Data>
+        <Data name="facility_type">
+          <Value>UTILITY</Value>
+        </Data>
+        <Data name="geocode_status">
+          <Value>200-8</Value>
+        </Data>
+        <Data name="city">
+          <Value>Los Angeles</Value>
+        </Data>
+        <Data name="state">
+          <Value>CA</Value>
+        </Data>
+        <Data name="zip">
+          <Value>90024</Value>
+        </Data>
+        <Data name="country">
+          <Value>US</Value>
+        </Data>
+        <Data name="ev_connector_types">
+          <Value>["J1772"]</Value>
+        </Data>
+        <Data name="ev_level2_evse_num">
+          <Value>4</Value>
+        </Data>
+        <Data name="ev_network">
+          <Value>Non-Networked</Value>
+        </Data>
+        <Data name="ev_pricing">
+          <Value>Free</Value>
         </Data>
         <Data name="groups_with_access_code_fr">
           <Value>Privé</Value>
@@ -782,9 +795,9 @@ The individual fuel station records are returned in no specific order. Each stat
 <pre>GET <a href="/api/alt-fuel-stations/v1.csv?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2">/api/alt-fuel-stations/v1.csv?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2</a></pre>
 
 ```
-Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump,EV Connector Types,Country,Intersection Directions (French),Access Days Time (French),BD Blends (French),Groups With Access Code (French),Hydrogen Is Retail,Access Code,Access Detail Code,Federal Agency Code,Facility Type,CNG Dispenser Num,CNG On-Site Renewable Source,CNG Total Compression Capacity,CNG Storage Capacity,LNG On-Site Renewable Source,E85 Other Ethanol Blends,EV Pricing,EV Pricing (French),LPG Nozzle Types,Hydrogen Pressures,Hydrogen Standards,CNG Fill Type Code,CNG PSI,CNG Vehicle Class,LNG Vehicle Class
-ELEC,City of Sacramento - Capitol Parking Garage,1015 L St,"At 10th and L, 2nd Level",Sacramento,CA,95814,,888-758-4389  916-264-5011,E,,Public,Garage business hours; pay lot,,,,,2,,,3 SP Inductive,,,GPS,38.5783802,-121.4926,2018-09-10,1498,2019-04-25 16:09:19 UTC,LG,,,2018-08-20,,,,,NEMA520,US,,,,Public,,public,,,PAY_GARAGE,,,,,,,,,,,,,,,
-ELEC,LADWP - Truesdale Center,11791 Truesdale St,,Sun Valley,CA,91352,,,E,,Private - Government only,,,,,,,12,,,,,200-8,34.249396,-118.387136,2018-10-04,1517,2019-04-25 16:09:19 UTC,LG,,,1999-10-15,,,,,J1772,US,,,,Privé - Réservé au gouvernement,,private,GOVERNMENT,,UTILITY,,,,,,,,,,,,,,,
+Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump,EV Connector Types,Country,Intersection Directions (French),Access Days Time (French),BD Blends (French),Groups With Access Code (French),Hydrogen Is Retail,Access Code,Access Detail Code,Federal Agency Code,Facility Type,CNG Dispenser Num,CNG On-Site Renewable Source,CNG Total Compression Capacity,CNG Storage Capacity,LNG On-Site Renewable Source,E85 Other Ethanol Blends,EV Pricing,EV Pricing (French),LPG Nozzle Types,Hydrogen Pressures,Hydrogen Standards,CNG Fill Type Code,CNG PSI,CNG Vehicle Class,LNG Vehicle Class,EV On-Site Renewable Source,Restricted Access
+ELEC,LADWP - Truesdale Center,11797 Truesdale St,,Sun Valley,CA,91352,,,E,,Private,Fleet use only,,,,,,39,3,,Non-Networked,,GPS,34.2483191527193,-118.3879713743439,2021-07-14,1517,2022-02-10 19:42:29 UTC,LG,,,1999-10-15,,,,,CHADEMO J1772 J1772COMBO,US,,,,Privé,,private,,,UTILITY,,,,,,,,,,,,,,,,,
+ELEC,LADWP - West LA District Office,1394 S Sepulveda Blvd,,Los Angeles,CA,90024,,,E,,Private,,,,,,,4,,,Non-Networked,,200-8,34.052542,-118.448504,2021-07-14,1519,2022-02-10 19:42:29 UTC,LG,,,2020-02-28,,,,,J1772,US,,,,Privé,,private,,,UTILITY,,,,,,,Free,,,,,,,,,,
 ```
 
 ## Rate Limits
