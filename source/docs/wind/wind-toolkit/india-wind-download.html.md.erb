@@ -1,7 +1,7 @@
 ---
 title: India Wind Data Download
 summary: Collect and download, as CSV, a configurable set of data fields from a national collection of wind stations. The India Wind Dataset, developed in part through the India Renewable Integration Study, contains simulated windspeed, direction, temperate and pressure values at 40m, 80m, 100m and 120m heights above the ground where available. The spatial resolution of the data is 3 km and the temporal resolution is 5 minutes.
-detail: This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with either a link to a file to download, or in the case of a very, very large archive, a link to more detailed instructions for using Globus to complete the download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.
+detail: This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.
 url: /api/wind-toolkit/v2/wind/india-wind-download
 ---
 
@@ -67,10 +67,8 @@ url: /api/wind-toolkit/v2/wind/india-wind-download
 			<td class="doc-parameter-required">Yes</td>
 			<td class="doc-parameter-value">
 			<div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited integer array</div>
-
-			<div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-
-			<div class="doc-parameter-value-field">&nbsp;</div>
+			<div class="doc-parameter-value-field"><strong>Default:</strong> 2014</div>
+			<div class="doc-parameter-value-field"><strong>Options:</strong> <em>2014</em></div>
 			</td>
 			<td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
 		</tr>
@@ -228,7 +226,7 @@ The response is composed of service-related informational fields and the results
     ],
     "site_url": "wind-toolkit/wind/india_wind_download.json",
     "full_name": "Data Lover",
-    "email": "data.lover@gmail.com",
+    "email": "user@company.com",
     "affiliation": "NREL",
     "mailing_list": false,
     "reason": "test",
@@ -237,7 +235,7 @@ The response is composed of service-related informational fields and the results
     "interval": "60"
   },
   "outputs": {
-    "message": "File generation in progress. An email will be sent to data.lover@gmail.com when the download is ready."
+    "message": "File generation in progress. An email will be sent to user@company.com when the download is ready."
   }
 }
 ```
@@ -258,11 +256,17 @@ Year,Month,Day,Hour,Minute,air pressure at 40m (Pa),temperature at 100m (C),temp
 
 Rate limits for this application are significantly less than the [standard rate limits](/docs/rate-limits){:target="_blank"} for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.
 
-There are two levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.
+There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.
 
-In addition to this limit, the service has a secondary fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.
+Secondly each user is limited to 20 in-flight requests at any given time.
+
+In addition, the service has a fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.
 
 For some tips and tricks to maximize data downloads please read the guide [here](/docs/wind/wind-toolkit/guide).
+
+<h2 id="contacts">Contact</h2>
+
+<p>For questions about the API or the data models please contact <a href="mailto:WindToolkit@nrel.gov">WindToolkit@nrel.gov</a></p>
 
 <h2 id="errors">Errors</h2>
 
