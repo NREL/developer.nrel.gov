@@ -2877,7 +2877,151 @@
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">For electric stations, the name of the EV charging network, if applicable.</td>
+      <td class="doc-parameter-description">
+        <p>For electric stations, the name of the EV charging network, if applicable.</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <th scope="row">AddÉnergie Technologies</th>
+                <td>AddÉnergie</td>
+              </tr>
+              <tr>
+                <th scope="row">AMPUP</th>
+                <td>AmpUp</td>
+              </tr>
+              <tr>
+                <th scope="row">BCHYDRO</th>
+                <td>BC Hydro</td>
+              </tr>
+              <tr>
+                <th scope="row">Blink Network</th>
+                <td>Blink</td>
+              </tr>
+              <tr>
+                <th scope="row">CHARGELAB</th>
+                <td>ChargeLab</td>
+              </tr>
+              <tr>
+                <th scope="row">ChargePoint Network</th>
+                <td>ChargePoint</td>
+              </tr>
+              <tr>
+                <th scope="row">Circuit électrique</th>
+                <td>Circuit électrique</td>
+              </tr>
+              <tr>
+                <th scope="row">eCharge Network</th>
+                <td>eCharge Network</td>
+              </tr>
+              <tr>
+                <th scope="row">Electrify America</th>
+                <td>Electrify America</td>
+              </tr>
+              <tr>
+                <th scope="row">Electrify Canada</th>
+                <td>Electrify Canada</td>
+              </tr>
+              <tr>
+                <th scope="row">EVCS</th>
+                <td>EV Charging Solutions</td>
+              </tr>
+              <tr>
+                <th scope="row">EV Connect</th>
+                <td>EV Connect</td>
+              </tr>
+              <tr>
+                <th scope="row">EVGATEWAY</th>
+                <td>evGateway</td>
+              </tr>
+              <tr>
+                <th scope="row">eVgo Network</th>
+                <td>EVgo</td>
+              </tr>
+              <tr>
+                <th scope="row">FLO</th>
+                <td>FLO</td>
+              </tr>
+              <tr>
+                <th scope="row">FPLEV</th>
+                <td>FPL EVolution</td>
+              </tr>
+              <tr>
+                <th scope="row">FCN</th>
+                <td>Francis</td>
+              </tr>
+              <tr>
+                <th scope="row">Greenlots</th>
+                <td>Greenlots</td>
+              </tr>
+              <tr>
+                <th scope="row">IVY</th>
+                <td>Ivy</td>
+              </tr>
+              <tr>
+                <th scope="row">LIVINGSTON</th>
+                <td>Livingston Energy Group</td>
+              </tr>
+              <tr>
+                <th scope="row">Non-Networked</th>
+                <td>Non-Networked</td>
+              </tr>
+              <tr>
+                <th scope="row">OpConnect</th>
+                <td>OpConnect</td>
+              </tr>
+              <tr>
+                <th scope="row">PETROCAN</th>
+                <td>Petro-Canada</td>
+              </tr>
+              <tr>
+                <th scope="row">POWERFLEX</th>
+                <td>PowerFlex</td>
+              </tr>
+              <tr>
+                <th scope="row">RIVIAN_WAYPOINTS</th>
+                <td>Rivian Waypoints</td>
+              </tr>
+              <tr>
+                <th scope="row">SemaCharge Network</th>
+                <td>SemaConnect</td>
+              </tr>
+              <tr>
+                <th scope="row">Sun Country Highway</th>
+                <td>Sun Country Highway</td>
+              </tr>
+              <tr>
+                <th scope="row">SWTCH</th>
+                <td>Swtch Energy</td>
+              </tr>
+              <tr>
+                <th scope="row">Tesla Destination</th>
+                <td>Tesla Destination</td>
+              </tr>
+              <tr>
+                <th scope="row">Tesla</th>
+                <td>Tesla Supercharger</td>
+              </tr>
+              <tr>
+                <th scope="row">Volta</th>
+                <td>Volta</td>
+              </tr>
+              <tr>
+                <th scope="row">Webasto</th>
+                <td>Webasto</td>
+              </tr>
+              <tr>
+                <th scope="row">ZEFNET</th>
+                <td>ZEF Network</td>
+              </tr>
+          </tbody>
+        </table>
+      </td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">ev_network_ids</th>
@@ -3527,6 +3671,38 @@
       </td>
       <td class="doc-parameter-description">For electric stations, information about whether and how much users must pay to use the EVSE port, in French, if available.</td>
     </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">restricted_access</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> boolean
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For public stations, an indication of whether the station has restricted access, given as a boolean:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">true</th>
+              <td>
+                <p>The station is reserved for patrons of a business, such as guests of a hotel, visitors of a museum, or customers of a retail store.</p>
+                <p>These stations differ from private stations. Private stations are those that are strictly reserved for fleets, workplaces, and multi-family housing, and may include stations that are physically inaccessible to the public, such as behind a gate.</p>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">false</th>
+              <td>The station is open to any driver.</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -3687,8 +3863,8 @@
 <pre>GET <a href="/api/alt-fuel-stations/v1/nearest.json?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.json?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1</a></pre>
 
 <div class="highlight"><pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.74311</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-105.152332</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.743078</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-105.152278</span><span class="p">,</span><span class="w">
   </span><span class="nl">"location_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"precision"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
@@ -3698,9 +3874,9 @@
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"station_locator_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://afdc.energy.gov/stations/"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"total_results"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"total_results"</span><span class="p">:</span><span class="w"> </span><span class="mi">82</span><span class="p">,</span><span class="w">
   </span><span class="nl">"station_counts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">106</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">320</span><span class="p">,</span><span class="w">
     </span><span class="nl">"fuels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"BD"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
@@ -3709,9 +3885,9 @@
         </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"ELEC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">106</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">320</span><span class="p">,</span><span class="w">
         </span><span class="nl">"stations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="w">
+          </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">82</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"HY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3732,29 +3908,30 @@
   </span><span class="nl">"fuel_stations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"access_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"access_days_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MO: 12:00am-12:00am; TU: 12:00am-12:00am; WE: 12:00am-12:00am; TH: 12:00am-12:00am; FR: 12:00am-12:00am; SA: 12:00am-12:00am; SU: 12:00am-12:00am"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"access_days_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24 hours daily"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"access_detail_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"cards_accepted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"date_last_confirmed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-02"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date_last_confirmed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-13"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"expected_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"fuel_type_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ELEC"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"groups_with_access_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Public"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118375</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"open_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">194116</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"open_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-19"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"owner_type_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Denver West Bldg 17"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"station_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"800-663-5633"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-02T09:03:50Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"restricted_access"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1687 COLE BLVD EAST STATION 1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"station_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"888-758-4389"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-13T01:40:48Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"facility_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"geocode_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GPS"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.744703073211</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-105.15229735145</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.740932</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-105.156235</span><span class="p">,</span><span class="w">
       </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lakewood"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"intersection_directions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The stations are located in the back of the building on the I-70 side."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"intersection_directions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"plus4"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CO"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1626 Cole Boulevard"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1687 Cole Blvd"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80401"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"bd_blends"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -3773,10 +3950,11 @@
       </span><span class="nl">"ev_dc_fast_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"ev_level1_evse_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"ev_level2_evse_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ev_network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SemaCharge Network"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ev_network_web"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.semacharge.com/"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ev_network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChargePoint Network"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ev_network_web"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.chargepoint.com/"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"ev_other_evse"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ev_pricing"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FREE"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ev_pricing"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ev_renewable_source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"hy_is_retail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"hy_pressures"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"hy_standards"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -3795,15 +3973,15 @@
       </span><span class="nl">"ev_pricing_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"ev_network_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"station"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"1309"</span><span class="w">
+          </span><span class="s2">"USCPIL9075981"</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="nl">"posts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"2976"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"3633"</span><span class="w">
+          </span><span class="s2">"16005951"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"16005961"</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.10992</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"distance_km"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1769</span><span class="w">
+      </span><span class="nl">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.25756</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"distance_km"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4145</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3815,20 +3993,20 @@
 <div class="highlight"><pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FeatureCollection"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.74311</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-105.152332</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.743078</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-105.152278</span><span class="p">,</span><span class="w">
     </span><span class="nl">"location_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"precision"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"premise"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"premise"</span><span class="w">
+        </span><span class="s2">"premise"</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"station_locator_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://afdc.energy.gov/stations/"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"total_results"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_results"</span><span class="p">:</span><span class="w"> </span><span class="mi">82</span><span class="p">,</span><span class="w">
     </span><span class="nl">"station_counts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">186</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">320</span><span class="p">,</span><span class="w">
       </span><span class="nl">"fuels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"BD"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
@@ -3837,9 +4015,9 @@
           </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"ELEC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">186</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">320</span><span class="p">,</span><span class="w">
           </span><span class="nl">"stations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="w">
+            </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">82</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"HY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3864,8 +4042,8 @@
       </span><span class="nl">"geometry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Point"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="mf">-105.154583</span><span class="p">,</span><span class="w">
-          </span><span class="mf">39.733102</span><span class="w">
+          </span><span class="mf">-105.156235</span><span class="p">,</span><span class="w">
+          </span><span class="mf">39.740932</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3873,24 +4051,25 @@
         </span><span class="nl">"access_days_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24 hours daily"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"access_detail_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"cards_accepted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"date_last_confirmed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-04"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_last_confirmed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-13"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"expected_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"fuel_type_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ELEC"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"groups_with_access_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Public"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">124975</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"open_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">194116</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"open_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-19"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"owner_type_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Colorado Mills Mall"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"station_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"833-632-2778"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-04T11:06:07Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"restricted_access"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1687 COLE BLVD EAST STATION 1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"station_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"888-758-4389"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-13T01:40:48Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"facility_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"geocode_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GPS"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lakewood"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"intersection_directions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"plus4"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CO"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14500 W. Colfax Ave"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1687 Cole Blvd"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80401"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"bd_blends"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -3904,14 +4083,13 @@
         </span><span class="nl">"e85_blender_pump"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"e85_other_ethanol_blends"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"ev_connector_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"CHADEMO"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"J1772COMBO"</span><span class="w">
+          </span><span class="s2">"J1772"</span><span class="w">
         </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"ev_dc_fast_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_dc_fast_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"ev_level1_evse_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ev_level2_evse_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ev_network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Electrify America"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ev_network_web"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.electrifyamerica.com/"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_level2_evse_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChargePoint Network"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_network_web"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.chargepoint.com/"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"ev_other_evse"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"ev_pricing"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"ev_renewable_source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -3933,19 +4111,15 @@
         </span><span class="nl">"ev_pricing_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"ev_network_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"station"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"67"</span><span class="w">
+            </span><span class="s2">"USCPIL9075981"</span><span class="w">
           </span><span class="p">],</span><span class="w">
           </span><span class="nl">"posts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"100125-01"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"100125-02"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"100125-03"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"100125-04"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"100125-05"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"100125-06"</span><span class="w">
+            </span><span class="s2">"16005951"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"16005961"</span><span class="w">
           </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.70079</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"distance_km"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.12781</span><span class="w">
+        </span><span class="nl">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.25756</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"distance_km"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4145</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -3957,8 +4131,8 @@
 
 <div class="highlight"><pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;response&gt;</span>
-  <span class="nt">&lt;latitude&gt;</span>39.74311<span class="nt">&lt;/latitude&gt;</span>
-  <span class="nt">&lt;longitude&gt;</span>-105.152332<span class="nt">&lt;/longitude&gt;</span>
+  <span class="nt">&lt;latitude&gt;</span>39.743078<span class="nt">&lt;/latitude&gt;</span>
+  <span class="nt">&lt;longitude&gt;</span>-105.152278<span class="nt">&lt;/longitude&gt;</span>
   <span class="nt">&lt;location-country&gt;</span>US<span class="nt">&lt;/location-country&gt;</span>
   <span class="nt">&lt;precision&gt;</span>
     <span class="nt">&lt;value</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>9<span class="nt">&lt;/value&gt;</span>
@@ -3968,9 +4142,9 @@
     <span class="nt">&lt;/types&gt;</span>
   <span class="nt">&lt;/precision&gt;</span>
   <span class="nt">&lt;station-locator-url&gt;</span>https://afdc.energy.gov/stations/<span class="nt">&lt;/station-locator-url&gt;</span>
-  <span class="nt">&lt;total-results&gt;</span>34<span class="nt">&lt;/total-results&gt;</span>
+  <span class="nt">&lt;total-results&gt;</span>82<span class="nt">&lt;/total-results&gt;</span>
   <span class="nt">&lt;station-counts&gt;</span>
-    <span class="nt">&lt;total&gt;</span>106<span class="nt">&lt;/total&gt;</span>
+    <span class="nt">&lt;total&gt;</span>320<span class="nt">&lt;/total&gt;</span>
     <span class="nt">&lt;fuels&gt;</span>
       <span class="nt">&lt;BD&gt;</span>
         <span class="nt">&lt;total&gt;</span>0<span class="nt">&lt;/total&gt;</span>
@@ -3979,9 +4153,9 @@
         <span class="nt">&lt;total&gt;</span>0<span class="nt">&lt;/total&gt;</span>
       <span class="nt">&lt;/E85&gt;</span>
       <span class="nt">&lt;ELEC&gt;</span>
-        <span class="nt">&lt;total&gt;</span>106<span class="nt">&lt;/total&gt;</span>
+        <span class="nt">&lt;total&gt;</span>320<span class="nt">&lt;/total&gt;</span>
         <span class="nt">&lt;stations&gt;</span>
-          <span class="nt">&lt;total&gt;</span>34<span class="nt">&lt;/total&gt;</span>
+          <span class="nt">&lt;total&gt;</span>82<span class="nt">&lt;/total&gt;</span>
         <span class="nt">&lt;/stations&gt;</span>
       <span class="nt">&lt;/ELEC&gt;</span>
       <span class="nt">&lt;HY&gt;</span>
@@ -4002,29 +4176,30 @@
   <span class="nt">&lt;fuel-stations</span> <span class="na">type=</span><span class="s">"array"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;fuel-station&gt;</span>
       <span class="nt">&lt;access-code&gt;</span>public<span class="nt">&lt;/access-code&gt;</span>
-      <span class="nt">&lt;access-days-time&gt;</span>MO: 12:00am-12:00am; TU: 12:00am-12:00am; WE: 12:00am-12:00am; TH: 12:00am-12:00am; FR: 12:00am-12:00am; SA: 12:00am-12:00am; SU: 12:00am-12:00am<span class="nt">&lt;/access-days-time&gt;</span>
+      <span class="nt">&lt;access-days-time&gt;</span>24 hours daily<span class="nt">&lt;/access-days-time&gt;</span>
       <span class="nt">&lt;access-detail-code</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;cards-accepted</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;date-last-confirmed&gt;</span>2019-04-02<span class="nt">&lt;/date-last-confirmed&gt;</span>
+      <span class="nt">&lt;date-last-confirmed&gt;</span>2022-06-13<span class="nt">&lt;/date-last-confirmed&gt;</span>
       <span class="nt">&lt;expected-date</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;fuel-type-code&gt;</span>ELEC<span class="nt">&lt;/fuel-type-code&gt;</span>
       <span class="nt">&lt;groups-with-access-code&gt;</span>Public<span class="nt">&lt;/groups-with-access-code&gt;</span>
-      <span class="nt">&lt;id&gt;</span>118375<span class="nt">&lt;/id&gt;</span>
-      <span class="nt">&lt;open-date</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;id&gt;</span>194116<span class="nt">&lt;/id&gt;</span>
+      <span class="nt">&lt;open-date&gt;</span>2021-08-19<span class="nt">&lt;/open-date&gt;</span>
       <span class="nt">&lt;owner-type-code</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;status-code&gt;</span>E<span class="nt">&lt;/status-code&gt;</span>
-      <span class="nt">&lt;station-name&gt;</span>Denver West Bldg 17<span class="nt">&lt;/station-name&gt;</span>
-      <span class="nt">&lt;station-phone&gt;</span>800-663-5633<span class="nt">&lt;/station-phone&gt;</span>
-      <span class="nt">&lt;updated-at&gt;</span>2019-04-02 09:03:50 UTC<span class="nt">&lt;/updated-at&gt;</span>
+      <span class="nt">&lt;restricted-access</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;station-name&gt;</span>1687 COLE BLVD EAST STATION 1<span class="nt">&lt;/station-name&gt;</span>
+      <span class="nt">&lt;station-phone&gt;</span>888-758-4389<span class="nt">&lt;/station-phone&gt;</span>
+      <span class="nt">&lt;updated-at&gt;</span>2022-06-13 01:40:48 UTC<span class="nt">&lt;/updated-at&gt;</span>
       <span class="nt">&lt;facility-type</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;geocode-status&gt;</span>GPS<span class="nt">&lt;/geocode-status&gt;</span>
-      <span class="nt">&lt;latitude&gt;</span>39.744703073211<span class="nt">&lt;/latitude&gt;</span>
-      <span class="nt">&lt;longitude&gt;</span>-105.15229735145<span class="nt">&lt;/longitude&gt;</span>
+      <span class="nt">&lt;latitude&gt;</span>39.740932<span class="nt">&lt;/latitude&gt;</span>
+      <span class="nt">&lt;longitude&gt;</span>-105.156235<span class="nt">&lt;/longitude&gt;</span>
       <span class="nt">&lt;city&gt;</span>Lakewood<span class="nt">&lt;/city&gt;</span>
-      <span class="nt">&lt;intersection-directions&gt;</span>The stations are located in the back of the building on the I-70 side.<span class="nt">&lt;/intersection-directions&gt;</span>
+      <span class="nt">&lt;intersection-directions</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;plus4</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;state&gt;</span>CO<span class="nt">&lt;/state&gt;</span>
-      <span class="nt">&lt;street-address&gt;</span>1626 Cole Boulevard<span class="nt">&lt;/street-address&gt;</span>
+      <span class="nt">&lt;street-address&gt;</span>1687 Cole Blvd<span class="nt">&lt;/street-address&gt;</span>
       <span class="nt">&lt;zip&gt;</span>80401<span class="nt">&lt;/zip&gt;</span>
       <span class="nt">&lt;country&gt;</span>US<span class="nt">&lt;/country&gt;</span>
       <span class="nt">&lt;bd-blends</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
@@ -4043,10 +4218,11 @@
       <span class="nt">&lt;ev-dc-fast-num</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;ev-level1-evse-num</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;ev-level2-evse-num&gt;</span>2<span class="nt">&lt;/ev-level2-evse-num&gt;</span>
-      <span class="nt">&lt;ev-network&gt;</span>SemaCharge Network<span class="nt">&lt;/ev-network&gt;</span>
-      <span class="nt">&lt;ev-network-web&gt;</span>http://www.semacharge.com/<span class="nt">&lt;/ev-network-web&gt;</span>
+      <span class="nt">&lt;ev-network&gt;</span>ChargePoint Network<span class="nt">&lt;/ev-network&gt;</span>
+      <span class="nt">&lt;ev-network-web&gt;</span>http://www.chargepoint.com/<span class="nt">&lt;/ev-network-web&gt;</span>
       <span class="nt">&lt;ev-other-evse</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;ev-pricing&gt;</span>FREE<span class="nt">&lt;/ev-pricing&gt;</span>
+      <span class="nt">&lt;ev-pricing</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;ev-renewable-source</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;hy-is-retail</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;hy-pressures</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;hy-standards</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
@@ -4065,15 +4241,15 @@
       <span class="nt">&lt;ev-pricing-fr</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;ev-network-ids&gt;</span>
         <span class="nt">&lt;station&gt;</span>
-          <span class="nt">&lt;station&gt;</span>1309<span class="nt">&lt;/station&gt;</span>
+          <span class="nt">&lt;station&gt;</span>USCPIL9075981<span class="nt">&lt;/station&gt;</span>
         <span class="nt">&lt;/station&gt;</span>
         <span class="nt">&lt;posts&gt;</span>
-          <span class="nt">&lt;post&gt;</span>2976<span class="nt">&lt;/post&gt;</span>
-          <span class="nt">&lt;post&gt;</span>3633<span class="nt">&lt;/post&gt;</span>
+          <span class="nt">&lt;post&gt;</span>16005951<span class="nt">&lt;/post&gt;</span>
+          <span class="nt">&lt;post&gt;</span>16005961<span class="nt">&lt;/post&gt;</span>
         <span class="nt">&lt;/posts&gt;</span>
       <span class="nt">&lt;/ev-network-ids&gt;</span>
-      <span class="nt">&lt;distance&gt;</span>0.10992<span class="nt">&lt;/distance&gt;</span>
-      <span class="nt">&lt;distance-km&gt;</span>0.1769<span class="nt">&lt;/distance-km&gt;</span>
+      <span class="nt">&lt;distance&gt;</span>0.25756<span class="nt">&lt;/distance&gt;</span>
+      <span class="nt">&lt;distance-km&gt;</span>0.4145<span class="nt">&lt;/distance-km&gt;</span>
     <span class="nt">&lt;/fuel-station&gt;</span>
   <span class="nt">&lt;/fuel-stations&gt;</span>
 <span class="nt">&lt;/response&gt;</span>
@@ -4086,11 +4262,11 @@
 <span class="nt">&lt;kml</span> <span class="na">xmlns=</span><span class="s">"http://www.opengis.net/kml/2.2"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;Document&gt;</span>
     <span class="nt">&lt;Placemark&gt;</span>
-      <span class="nt">&lt;name&gt;</span>Colorado Mills Mall<span class="nt">&lt;/name&gt;</span>
-      <span class="nt">&lt;address&gt;</span>14500 W. Colfax Ave<span class="nt">&lt;/address&gt;</span>
-      <span class="nt">&lt;phoneNumber&gt;</span>833-632-2778<span class="nt">&lt;/phoneNumber&gt;</span>
+      <span class="nt">&lt;name&gt;</span>1687 COLE BLVD EAST STATION 1<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;address&gt;</span>1687 Cole Blvd<span class="nt">&lt;/address&gt;</span>
+      <span class="nt">&lt;phoneNumber&gt;</span>888-758-4389<span class="nt">&lt;/phoneNumber&gt;</span>
       <span class="nt">&lt;Point&gt;</span>
-        <span class="nt">&lt;coordinates&gt;</span>-105.154583,39.733102<span class="nt">&lt;/coordinates&gt;</span>
+        <span class="nt">&lt;coordinates&gt;</span>-105.156235,39.740932<span class="nt">&lt;/coordinates&gt;</span>
       <span class="nt">&lt;/Point&gt;</span>
       <span class="nt">&lt;ExtendedData&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"access_code"</span><span class="nt">&gt;</span>
@@ -4100,7 +4276,7 @@
           <span class="nt">&lt;Value&gt;</span>24 hours daily<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"date_last_confirmed"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Value&gt;</span>2020-02-04<span class="nt">&lt;/Value&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>2022-06-13<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"fuel_type_code"</span><span class="nt">&gt;</span>
           <span class="nt">&lt;Value&gt;</span>ELEC<span class="nt">&lt;/Value&gt;</span>
@@ -4109,13 +4285,16 @@
           <span class="nt">&lt;Value&gt;</span>Public<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Value&gt;</span>124975<span class="nt">&lt;/Value&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>194116<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"open_date"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>2021-08-19<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"status_code"</span><span class="nt">&gt;</span>
           <span class="nt">&lt;Value&gt;</span>E<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"updated_at"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Value&gt;</span>2020-02-04 11:06:07 UTC<span class="nt">&lt;/Value&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>2022-06-13 01:40:48 UTC<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"geocode_status"</span><span class="nt">&gt;</span>
           <span class="nt">&lt;Value&gt;</span>GPS<span class="nt">&lt;/Value&gt;</span>
@@ -4133,31 +4312,31 @@
           <span class="nt">&lt;Value&gt;</span>US<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_connector_types"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Value&gt;</span>["CHADEMO", "J1772COMBO"]<span class="nt">&lt;/Value&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>["J1772"]<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
-        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_dc_fast_num"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Value&gt;</span>6<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_level2_evse_num"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>2<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_network"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Value&gt;</span>Electrify America<span class="nt">&lt;/Value&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>ChargePoint Network<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_network_web"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Value&gt;</span>https://www.electrifyamerica.com/<span class="nt">&lt;/Value&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>http://www.chargepoint.com/<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"groups_with_access_code_fr"</span><span class="nt">&gt;</span>
           <span class="nt">&lt;Value&gt;</span>Public<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_network_ids_station"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Value&gt;</span>["67"]<span class="nt">&lt;/Value&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>["USCPIL9075981"]<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_network_ids_posts"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Value&gt;</span>["100125-01", "100125-02", "100125-03", "100125-04", "100125-05", "100125-06"]<span class="nt">&lt;/Value&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>["16005951", "16005961"]<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"distance"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Value&gt;</span>0.70079<span class="nt">&lt;/Value&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>0.25756<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"distance_km"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Value&gt;</span>1.12781<span class="nt">&lt;/Value&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>0.4145<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
       <span class="nt">&lt;/ExtendedData&gt;</span>
     <span class="nt">&lt;/Placemark&gt;</span>
@@ -4168,8 +4347,8 @@
 
 <pre>GET <a href="/api/alt-fuel-stations/v1/nearest.csv?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.csv?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1</a></pre>
 
-<div class="highlight"><pre class="highlight plaintext"><code>Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Distance,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump,EV Connector Types,Country,Distance (km),Intersection Directions (French),Access Days Time (French),BD Blends (French),Groups With Access Code (French),Hydrogen Is Retail,Access Code,Access Detail Code,Federal Agency Code,Facility Type,CNG Dispenser Num,CNG On-Site Renewable Source,CNG Total Compression Capacity,CNG Storage Capacity,LNG On-Site Renewable Source,E85 Other Ethanol Blends,EV Pricing,EV Pricing (French),LPG Nozzle Types,Hydrogen Pressures,Hydrogen Standards,CNG Fill Type Code,CNG PSI,CNG Vehicle Class,LNG Vehicle Class
-ELEC,Denver West Bldg 17,1626 Cole Boulevard,The stations are located in the back of the building on the I-70 side.,Lakewood,CO,80401,,800-663-5633,E,,Public,MO: 12:00am-12:00am; TU: 12:00am-12:00am; WE: 12:00am-12:00am; TH: 12:00am-12:00am; FR: 12:00am-12:00am; SA: 12:00am-12:00am; SU: 12:00am-12:00am,,,,,,2,,,SemaCharge Network,http://www.semacharge.com/,GPS,39.744703073211,-105.15229735145,2019-04-02,118375,0.10992,2019-04-02 09:03:50 UTC,,,,,,,,,J1772,US,0.1769,,,,Public,,public,,,,,,,,,,FREE,,,,,,,,
+<div class="highlight"><pre class="highlight plaintext"><code>Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Distance,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump,EV Connector Types,Country,Distance (km),Intersection Directions (French),Access Days Time (French),BD Blends (French),Groups With Access Code (French),Hydrogen Is Retail,Access Code,Access Detail Code,Federal Agency Code,Facility Type,CNG Dispenser Num,CNG On-Site Renewable Source,CNG Total Compression Capacity,CNG Storage Capacity,LNG On-Site Renewable Source,E85 Other Ethanol Blends,EV Pricing,EV Pricing (French),LPG Nozzle Types,Hydrogen Pressures,Hydrogen Standards,CNG Fill Type Code,CNG PSI,CNG Vehicle Class,LNG Vehicle Class,EV On-Site Renewable Source,Restricted Access
+ELEC,1687 COLE BLVD EAST STATION 1,1687 Cole Blvd,,Lakewood,CO,80401,,888-758-4389,E,,Public,24 hours daily,,,,,,2,,,ChargePoint Network,http://www.chargepoint.com/,GPS,39.740932,-105.156235,2022-06-13,194116,0.25756,2022-06-13 01:40:48 UTC,,,,2021-08-19,,,,,J1772,US,0.4145,,,,Public,,public,,,,,,,,,,,,,,,,,,,,
 </code></pre></div>
 <h2 id="rate-limits">Rate Limits</h2>
 

@@ -2879,7 +2879,151 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">For electric stations, the name of the EV charging network, if applicable.</td>
+      <td class="doc-parameter-description">
+        <p>For electric stations, the name of the EV charging network, if applicable.</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <th scope="row">AddÉnergie Technologies</th>
+                <td>AddÉnergie</td>
+              </tr>
+              <tr>
+                <th scope="row">AMPUP</th>
+                <td>AmpUp</td>
+              </tr>
+              <tr>
+                <th scope="row">BCHYDRO</th>
+                <td>BC Hydro</td>
+              </tr>
+              <tr>
+                <th scope="row">Blink Network</th>
+                <td>Blink</td>
+              </tr>
+              <tr>
+                <th scope="row">CHARGELAB</th>
+                <td>ChargeLab</td>
+              </tr>
+              <tr>
+                <th scope="row">ChargePoint Network</th>
+                <td>ChargePoint</td>
+              </tr>
+              <tr>
+                <th scope="row">Circuit électrique</th>
+                <td>Circuit électrique</td>
+              </tr>
+              <tr>
+                <th scope="row">eCharge Network</th>
+                <td>eCharge Network</td>
+              </tr>
+              <tr>
+                <th scope="row">Electrify America</th>
+                <td>Electrify America</td>
+              </tr>
+              <tr>
+                <th scope="row">Electrify Canada</th>
+                <td>Electrify Canada</td>
+              </tr>
+              <tr>
+                <th scope="row">EVCS</th>
+                <td>EV Charging Solutions</td>
+              </tr>
+              <tr>
+                <th scope="row">EV Connect</th>
+                <td>EV Connect</td>
+              </tr>
+              <tr>
+                <th scope="row">EVGATEWAY</th>
+                <td>evGateway</td>
+              </tr>
+              <tr>
+                <th scope="row">eVgo Network</th>
+                <td>EVgo</td>
+              </tr>
+              <tr>
+                <th scope="row">FLO</th>
+                <td>FLO</td>
+              </tr>
+              <tr>
+                <th scope="row">FPLEV</th>
+                <td>FPL EVolution</td>
+              </tr>
+              <tr>
+                <th scope="row">FCN</th>
+                <td>Francis</td>
+              </tr>
+              <tr>
+                <th scope="row">Greenlots</th>
+                <td>Greenlots</td>
+              </tr>
+              <tr>
+                <th scope="row">IVY</th>
+                <td>Ivy</td>
+              </tr>
+              <tr>
+                <th scope="row">LIVINGSTON</th>
+                <td>Livingston Energy Group</td>
+              </tr>
+              <tr>
+                <th scope="row">Non-Networked</th>
+                <td>Non-Networked</td>
+              </tr>
+              <tr>
+                <th scope="row">OpConnect</th>
+                <td>OpConnect</td>
+              </tr>
+              <tr>
+                <th scope="row">PETROCAN</th>
+                <td>Petro-Canada</td>
+              </tr>
+              <tr>
+                <th scope="row">POWERFLEX</th>
+                <td>PowerFlex</td>
+              </tr>
+              <tr>
+                <th scope="row">RIVIAN_WAYPOINTS</th>
+                <td>Rivian Waypoints</td>
+              </tr>
+              <tr>
+                <th scope="row">SemaCharge Network</th>
+                <td>SemaConnect</td>
+              </tr>
+              <tr>
+                <th scope="row">Sun Country Highway</th>
+                <td>Sun Country Highway</td>
+              </tr>
+              <tr>
+                <th scope="row">SWTCH</th>
+                <td>Swtch Energy</td>
+              </tr>
+              <tr>
+                <th scope="row">Tesla Destination</th>
+                <td>Tesla Destination</td>
+              </tr>
+              <tr>
+                <th scope="row">Tesla</th>
+                <td>Tesla Supercharger</td>
+              </tr>
+              <tr>
+                <th scope="row">Volta</th>
+                <td>Volta</td>
+              </tr>
+              <tr>
+                <th scope="row">Webasto</th>
+                <td>Webasto</td>
+              </tr>
+              <tr>
+                <th scope="row">ZEFNET</th>
+                <td>ZEF Network</td>
+              </tr>
+          </tbody>
+        </table>
+      </td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">ev_network_ids</th>
@@ -3529,6 +3673,38 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       </td>
       <td class="doc-parameter-description">For electric stations, information about whether and how much users must pay to use the EVSE port, in French, if available.</td>
     </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">restricted_access</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> boolean
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For public stations, an indication of whether the station has restricted access, given as a boolean:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">true</th>
+              <td>
+                <p>The station is reserved for patrons of a business, such as guests of a hotel, visitors of a museum, or customers of a retail store.</p>
+                <p>These stations differ from private stations. Private stations are those that are strictly reserved for fleets, workplaces, and multi-family housing, and may include stations that are physically inaccessible to the public, such as behind a gate.</p>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">false</th>
+              <td>The station is open to any driver.</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -3690,20 +3866,20 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
 
 <div class="highlight"><pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"station_locator_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://afdc.energy.gov/stations/"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"total_results"</span><span class="p">:</span><span class="w"> </span><span class="mi">113</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"total_results"</span><span class="p">:</span><span class="w"> </span><span class="mi">251</span><span class="p">,</span><span class="w">
   </span><span class="nl">"station_counts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">329</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">683</span><span class="p">,</span><span class="w">
     </span><span class="nl">"fuels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"BD"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"E85"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"ELEC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">319</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">673</span><span class="p">,</span><span class="w">
         </span><span class="nl">"stations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">103</span><span class="w">
+          </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">241</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"HY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3716,85 +3892,87 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"LPG"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
+        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"fuel_stations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"access_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"access_days_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24 hours daily"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"access_detail_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"cards_accepted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"date_last_confirmed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-02"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"expected_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"fuel_type_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ELEC"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"groups_with_access_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Public"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">66777</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"open_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"owner_type_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOLDEN STATIONS"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"station_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"888-758-4389"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-02T09:07:07Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"facility_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"geocode_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GPS"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.7562931</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-105.2207777</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Golden"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"intersection_directions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12TH ST GARAGE; Enter garage and turn right. Immediately on the right. "</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"plus4"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CO"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"702 12th St."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80401"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"bd_blends"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"cng_dispenser_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"cng_fill_type_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"cng_psi"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"cng_renewable_source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"cng_total_compression"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"cng_total_storage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"cng_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"e85_blender_pump"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"e85_other_ethanol_blends"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ev_connector_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"J1772"</span><span class="w">
+      </span><span class="nl">"access_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"access_days_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24 hours daily"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"access_detail_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cards_accepted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date_last_confirmed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-13"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"expected_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fuel_type_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ELEC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"groups_with_access_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Public"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">143538</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"open_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-15"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"owner_type_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"restricted_access"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EPOQUE GOLDEN STATION 1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"station_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"888-758-4389"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-13T01:12:15Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"facility_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"geocode_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GPS"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.775615</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-105.234677</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Golden"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"intersection_directions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"plus4"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CO"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"820 Spyderco Way"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80403"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bd_blends"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cng_dispenser_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cng_fill_type_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cng_psi"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cng_renewable_source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cng_total_compression"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cng_total_storage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cng_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"e85_blender_pump"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"e85_other_ethanol_blends"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ev_connector_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"J1772"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"ev_dc_fast_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ev_level1_evse_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ev_level2_evse_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ev_network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChargePoint Network"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ev_network_web"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.chargepoint.com/"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ev_other_evse"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ev_pricing"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ev_renewable_source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"hy_is_retail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"hy_pressures"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"hy_standards"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"hy_status_link"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lng_renewable_source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lng_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lpg_primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lpg_nozzle_types"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ng_fill_type_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ng_psi"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ng_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"access_days_time_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"intersection_directions_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bd_blends_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"groups_with_access_code_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Public"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ev_pricing_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ev_network_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"station"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"USCPIL1773831"</span><span class="w">
         </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"ev_dc_fast_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ev_level1_evse_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ev_level2_evse_num"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ev_network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChargePoint Network"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ev_network_web"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.chargepoint.com/"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ev_other_evse"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ev_pricing"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Free"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"hy_is_retail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"hy_pressures"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"hy_standards"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"hy_status_link"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"lng_renewable_source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"lng_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"lpg_primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"lpg_nozzle_types"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ng_fill_type_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ng_psi"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ng_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"access_days_time_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"intersection_directions_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"bd_blends_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"groups_with_access_code_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Public"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ev_pricing_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ev_network_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"posts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"1:113245"</span><span class="w">
-          </span><span class="p">],</span><span class="w">
-          </span><span class="nl">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"2"</span><span class="w">
-          </span><span class="p">]</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05563</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"distance_km"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.08953</span><span class="w">
+        </span><span class="nl">"posts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"2076841"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"2076851"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.57149</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"distance_km"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.52907</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3807,20 +3985,20 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FeatureCollection"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"station_locator_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://afdc.energy.gov/stations/"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"total_results"</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_results"</span><span class="p">:</span><span class="w"> </span><span class="mi">251</span><span class="p">,</span><span class="w">
     </span><span class="nl">"station_counts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">471</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">683</span><span class="p">,</span><span class="w">
       </span><span class="nl">"fuels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"BD"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"E85"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+          </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"ELEC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">462</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">673</span><span class="p">,</span><span class="w">
           </span><span class="nl">"stations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">119</span><span class="w">
+            </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">241</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"HY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3844,8 +4022,8 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       </span><span class="nl">"geometry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Point"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="mf">-105.2207777</span><span class="p">,</span><span class="w">
-          </span><span class="mf">39.7562931</span><span class="w">
+          </span><span class="mf">-105.234677</span><span class="p">,</span><span class="w">
+          </span><span class="mf">39.775615</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3853,25 +4031,26 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </span><span class="nl">"access_days_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24 hours daily"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"access_detail_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"cards_accepted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"date_last_confirmed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-26"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_last_confirmed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-13"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"expected_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"fuel_type_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ELEC"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"groups_with_access_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Public"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">66777</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"open_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">143538</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"open_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-15"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"owner_type_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOLDEN STATIONS"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"restricted_access"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EPOQUE GOLDEN STATION 1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"station_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"888-758-4389"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-26T15:57:12Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-13T01:12:15Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"facility_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"geocode_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GPS"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Golden"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"intersection_directions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12TH ST GARAGE; Enter garage and turn right. Immediately on the right. "</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"intersection_directions"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"plus4"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CO"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"702 12th St."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80401"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"820 Spyderco Way"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80403"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"bd_blends"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"cng_dispenser_num"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -3892,7 +4071,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </span><span class="nl">"ev_network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChargePoint Network"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"ev_network_web"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.chargepoint.com/"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"ev_other_evse"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ev_pricing"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Free"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ev_pricing"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"ev_renewable_source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"hy_is_retail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"hy_pressures"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -3911,16 +4090,16 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </span><span class="nl">"groups_with_access_code_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Public"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"ev_pricing_fr"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"ev_network_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"posts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"1:113245"</span><span class="w">
+          </span><span class="nl">"station"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"USCPIL1773831"</span><span class="w">
           </span><span class="p">],</span><span class="w">
-          </span><span class="nl">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"2"</span><span class="w">
+          </span><span class="nl">"posts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"2076841"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"2076851"</span><span class="w">
           </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05563</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"distance_km"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.08953</span><span class="w">
+        </span><span class="nl">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.57149</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"distance_km"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.52907</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -3933,20 +4112,20 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
 <div class="highlight"><pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;response&gt;</span>
   <span class="nt">&lt;station-locator-url&gt;</span>https://afdc.energy.gov/stations/<span class="nt">&lt;/station-locator-url&gt;</span>
-  <span class="nt">&lt;total-results&gt;</span>113<span class="nt">&lt;/total-results&gt;</span>
+  <span class="nt">&lt;total-results&gt;</span>251<span class="nt">&lt;/total-results&gt;</span>
   <span class="nt">&lt;station-counts&gt;</span>
-    <span class="nt">&lt;total&gt;</span>329<span class="nt">&lt;/total&gt;</span>
+    <span class="nt">&lt;total&gt;</span>683<span class="nt">&lt;/total&gt;</span>
     <span class="nt">&lt;fuels&gt;</span>
       <span class="nt">&lt;BD&gt;</span>
         <span class="nt">&lt;total&gt;</span>0<span class="nt">&lt;/total&gt;</span>
       <span class="nt">&lt;/BD&gt;</span>
       <span class="nt">&lt;E85&gt;</span>
-        <span class="nt">&lt;total&gt;</span>3<span class="nt">&lt;/total&gt;</span>
+        <span class="nt">&lt;total&gt;</span>4<span class="nt">&lt;/total&gt;</span>
       <span class="nt">&lt;/E85&gt;</span>
       <span class="nt">&lt;ELEC&gt;</span>
-        <span class="nt">&lt;total&gt;</span>319<span class="nt">&lt;/total&gt;</span>
+        <span class="nt">&lt;total&gt;</span>673<span class="nt">&lt;/total&gt;</span>
         <span class="nt">&lt;stations&gt;</span>
-          <span class="nt">&lt;total&gt;</span>103<span class="nt">&lt;/total&gt;</span>
+          <span class="nt">&lt;total&gt;</span>241<span class="nt">&lt;/total&gt;</span>
         <span class="nt">&lt;/stations&gt;</span>
       <span class="nt">&lt;/ELEC&gt;</span>
       <span class="nt">&lt;HY&gt;</span>
@@ -3959,7 +4138,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         <span class="nt">&lt;total&gt;</span>0<span class="nt">&lt;/total&gt;</span>
       <span class="nt">&lt;/CNG&gt;</span>
       <span class="nt">&lt;LPG&gt;</span>
-        <span class="nt">&lt;total&gt;</span>6<span class="nt">&lt;/total&gt;</span>
+        <span class="nt">&lt;total&gt;</span>5<span class="nt">&lt;/total&gt;</span>
       <span class="nt">&lt;/LPG&gt;</span>
     <span class="nt">&lt;/fuels&gt;</span>
   <span class="nt">&lt;/station-counts&gt;</span>
@@ -3969,27 +4148,28 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <span class="nt">&lt;access-days-time&gt;</span>24 hours daily<span class="nt">&lt;/access-days-time&gt;</span>
       <span class="nt">&lt;access-detail-code</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;cards-accepted</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;date-last-confirmed&gt;</span>2019-04-02<span class="nt">&lt;/date-last-confirmed&gt;</span>
+      <span class="nt">&lt;date-last-confirmed&gt;</span>2022-06-13<span class="nt">&lt;/date-last-confirmed&gt;</span>
       <span class="nt">&lt;expected-date</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;fuel-type-code&gt;</span>ELEC<span class="nt">&lt;/fuel-type-code&gt;</span>
       <span class="nt">&lt;groups-with-access-code&gt;</span>Public<span class="nt">&lt;/groups-with-access-code&gt;</span>
-      <span class="nt">&lt;id&gt;</span>66777<span class="nt">&lt;/id&gt;</span>
-      <span class="nt">&lt;open-date</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;id&gt;</span>143538<span class="nt">&lt;/id&gt;</span>
+      <span class="nt">&lt;open-date&gt;</span>2019-08-15<span class="nt">&lt;/open-date&gt;</span>
       <span class="nt">&lt;owner-type-code</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;status-code&gt;</span>E<span class="nt">&lt;/status-code&gt;</span>
-      <span class="nt">&lt;station-name&gt;</span>GOLDEN STATIONS<span class="nt">&lt;/station-name&gt;</span>
+      <span class="nt">&lt;restricted-access&gt;</span>false<span class="nt">&lt;/restricted-access&gt;</span>
+      <span class="nt">&lt;station-name&gt;</span>EPOQUE GOLDEN STATION 1<span class="nt">&lt;/station-name&gt;</span>
       <span class="nt">&lt;station-phone&gt;</span>888-758-4389<span class="nt">&lt;/station-phone&gt;</span>
-      <span class="nt">&lt;updated-at&gt;</span>2019-04-02 09:07:07 UTC<span class="nt">&lt;/updated-at&gt;</span>
+      <span class="nt">&lt;updated-at&gt;</span>2022-06-13 01:12:15 UTC<span class="nt">&lt;/updated-at&gt;</span>
       <span class="nt">&lt;facility-type</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;geocode-status&gt;</span>GPS<span class="nt">&lt;/geocode-status&gt;</span>
-      <span class="nt">&lt;latitude&gt;</span>39.7562931<span class="nt">&lt;/latitude&gt;</span>
-      <span class="nt">&lt;longitude&gt;</span>-105.2207777<span class="nt">&lt;/longitude&gt;</span>
+      <span class="nt">&lt;latitude&gt;</span>39.775615<span class="nt">&lt;/latitude&gt;</span>
+      <span class="nt">&lt;longitude&gt;</span>-105.234677<span class="nt">&lt;/longitude&gt;</span>
       <span class="nt">&lt;city&gt;</span>Golden<span class="nt">&lt;/city&gt;</span>
-      <span class="nt">&lt;intersection-directions&gt;</span>12TH ST GARAGE; Enter garage and turn right. Immediately on the right. <span class="nt">&lt;/intersection-directions&gt;</span>
+      <span class="nt">&lt;intersection-directions</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;plus4</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;state&gt;</span>CO<span class="nt">&lt;/state&gt;</span>
-      <span class="nt">&lt;street-address&gt;</span>702 12th St.<span class="nt">&lt;/street-address&gt;</span>
-      <span class="nt">&lt;zip&gt;</span>80401<span class="nt">&lt;/zip&gt;</span>
+      <span class="nt">&lt;street-address&gt;</span>820 Spyderco Way<span class="nt">&lt;/street-address&gt;</span>
+      <span class="nt">&lt;zip&gt;</span>80403<span class="nt">&lt;/zip&gt;</span>
       <span class="nt">&lt;country&gt;</span>US<span class="nt">&lt;/country&gt;</span>
       <span class="nt">&lt;bd-blends</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;cng-dispenser-num</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
@@ -4010,7 +4190,8 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <span class="nt">&lt;ev-network&gt;</span>ChargePoint Network<span class="nt">&lt;/ev-network&gt;</span>
       <span class="nt">&lt;ev-network-web&gt;</span>http://www.chargepoint.com/<span class="nt">&lt;/ev-network-web&gt;</span>
       <span class="nt">&lt;ev-other-evse</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;ev-pricing&gt;</span>Free<span class="nt">&lt;/ev-pricing&gt;</span>
+      <span class="nt">&lt;ev-pricing</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;ev-renewable-source</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;hy-is-retail</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;hy-pressures</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;hy-standards</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
@@ -4028,16 +4209,16 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <span class="nt">&lt;groups-with-access-code-fr&gt;</span>Public<span class="nt">&lt;/groups-with-access-code-fr&gt;</span>
       <span class="nt">&lt;ev-pricing-fr</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;ev-network-ids&gt;</span>
+        <span class="nt">&lt;station&gt;</span>
+          <span class="nt">&lt;station&gt;</span>USCPIL1773831<span class="nt">&lt;/station&gt;</span>
+        <span class="nt">&lt;/station&gt;</span>
         <span class="nt">&lt;posts&gt;</span>
-          <span class="nt">&lt;post&gt;</span>1:113245<span class="nt">&lt;/post&gt;</span>
+          <span class="nt">&lt;post&gt;</span>2076841<span class="nt">&lt;/post&gt;</span>
+          <span class="nt">&lt;post&gt;</span>2076851<span class="nt">&lt;/post&gt;</span>
         <span class="nt">&lt;/posts&gt;</span>
-        <span class="nt">&lt;ports&gt;</span>
-          <span class="nt">&lt;port&gt;</span>1<span class="nt">&lt;/port&gt;</span>
-          <span class="nt">&lt;port&gt;</span>2<span class="nt">&lt;/port&gt;</span>
-        <span class="nt">&lt;/ports&gt;</span>
       <span class="nt">&lt;/ev-network-ids&gt;</span>
-      <span class="nt">&lt;distance&gt;</span>0.05563<span class="nt">&lt;/distance&gt;</span>
-      <span class="nt">&lt;distance-km&gt;</span>0.08953<span class="nt">&lt;/distance-km&gt;</span>
+      <span class="nt">&lt;distance&gt;</span>1.57149<span class="nt">&lt;/distance&gt;</span>
+      <span class="nt">&lt;distance-km&gt;</span>2.52907<span class="nt">&lt;/distance-km&gt;</span>
     <span class="nt">&lt;/fuel-station&gt;</span>
   <span class="nt">&lt;/fuel-stations&gt;</span>
 <span class="nt">&lt;/response&gt;</span>
@@ -4050,11 +4231,11 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
 <span class="nt">&lt;kml</span> <span class="na">xmlns=</span><span class="s">"http://www.opengis.net/kml/2.2"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;Document&gt;</span>
     <span class="nt">&lt;Placemark&gt;</span>
-      <span class="nt">&lt;name&gt;</span>GOLDEN STATIONS<span class="nt">&lt;/name&gt;</span>
-      <span class="nt">&lt;address&gt;</span>702 12th St.<span class="nt">&lt;/address&gt;</span>
+      <span class="nt">&lt;name&gt;</span>EPOQUE GOLDEN STATION 1<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;address&gt;</span>820 Spyderco Way<span class="nt">&lt;/address&gt;</span>
       <span class="nt">&lt;phoneNumber&gt;</span>888-758-4389<span class="nt">&lt;/phoneNumber&gt;</span>
       <span class="nt">&lt;Point&gt;</span>
-        <span class="nt">&lt;coordinates&gt;</span>-105.2207777,39.7562931<span class="nt">&lt;/coordinates&gt;</span>
+        <span class="nt">&lt;coordinates&gt;</span>-105.234677,39.775615<span class="nt">&lt;/coordinates&gt;</span>
       <span class="nt">&lt;/Point&gt;</span>
       <span class="nt">&lt;ExtendedData&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"access_code"</span><span class="nt">&gt;</span>
@@ -4064,7 +4245,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
           <span class="nt">&lt;Value&gt;</span>24 hours daily<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"date_last_confirmed"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Value&gt;</span>2020-02-26<span class="nt">&lt;/Value&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>2022-06-13<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"fuel_type_code"</span><span class="nt">&gt;</span>
           <span class="nt">&lt;Value&gt;</span>ELEC<span class="nt">&lt;/Value&gt;</span>
@@ -4073,13 +4254,19 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
           <span class="nt">&lt;Value&gt;</span>Public<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"id"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Value&gt;</span>66777<span class="nt">&lt;/Value&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>143538<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"open_date"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>2019-08-15<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"status_code"</span><span class="nt">&gt;</span>
           <span class="nt">&lt;Value&gt;</span>E<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"restricted_access"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>false<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"updated_at"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Value&gt;</span>2020-02-26 15:57:12 UTC<span class="nt">&lt;/Value&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>2022-06-13 01:12:15 UTC<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"geocode_status"</span><span class="nt">&gt;</span>
           <span class="nt">&lt;Value&gt;</span>GPS<span class="nt">&lt;/Value&gt;</span>
@@ -4087,14 +4274,11 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"city"</span><span class="nt">&gt;</span>
           <span class="nt">&lt;Value&gt;</span>Golden<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
-        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"intersection_directions"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Value&gt;</span>12TH ST GARAGE; Enter garage and turn right. Immediately on the right. <span class="nt">&lt;/Value&gt;</span>
-        <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"state"</span><span class="nt">&gt;</span>
           <span class="nt">&lt;Value&gt;</span>CO<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"zip"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Value&gt;</span>80401<span class="nt">&lt;/Value&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>80403<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"country"</span><span class="nt">&gt;</span>
           <span class="nt">&lt;Value&gt;</span>US<span class="nt">&lt;/Value&gt;</span>
@@ -4111,23 +4295,20 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_network_web"</span><span class="nt">&gt;</span>
           <span class="nt">&lt;Value&gt;</span>http://www.chargepoint.com/<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
-        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_pricing"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Value&gt;</span>Free<span class="nt">&lt;/Value&gt;</span>
-        <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"groups_with_access_code_fr"</span><span class="nt">&gt;</span>
           <span class="nt">&lt;Value&gt;</span>Public<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
-        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_network_ids_posts"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Value&gt;</span>["1:113245"]<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_network_ids_station"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>["USCPIL1773831"]<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
-        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_network_ids_ports"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Value&gt;</span>["1", "2"]<span class="nt">&lt;/Value&gt;</span>
+        <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"ev_network_ids_posts"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>["2076841", "2076851"]<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"distance"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Value&gt;</span>0.05563<span class="nt">&lt;/Value&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>1.57149<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
         <span class="nt">&lt;Data</span> <span class="na">name=</span><span class="s">"distance_km"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Value&gt;</span>0.08953<span class="nt">&lt;/Value&gt;</span>
+          <span class="nt">&lt;Value&gt;</span>2.52907<span class="nt">&lt;/Value&gt;</span>
         <span class="nt">&lt;/Data&gt;</span>
       <span class="nt">&lt;/ExtendedData&gt;</span>
     <span class="nt">&lt;/Placemark&gt;</span>
@@ -4138,8 +4319,8 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
 
 <pre>GET <a href="/api/alt-fuel-stations/v1/nearby-route.csv?api_key=DEMO_KEY&amp;distance=2&amp;limit=1&amp;route=LINESTRING(-105.22109+39.75553,-105.22133+39.7554,-105.22059+39.75459,-105.21959+39.75351,-105.2183+39.75214,-105.21685+39.75057,-105.21603+39.74968,-105.21634+39.7495,-105.21647+39.74949,-105.21711+39.74914,-105.21851+39.74834,-105.21904+39.74805,-105.22002+39.74756,-105.22201+39.74644,-105.22282+39.746,-105.22286+39.74592,-105.22361+39.74552,-105.22377+39.74544,-105.22369+39.74536,-105.22347+39.74511,-105.223+39.74456,-105.22229+39.74371,-105.22127+39.74253,-105.22003+39.74108,-105.21818+39.73897,-105.2169+39.73751,-105.21523+39.73556,-105.21481+39.73506,-105.21472+39.73497,-105.21412+39.73429,-105.21236+39.73224,-105.21171+39.73153,-105.21133+39.73116,-105.21095+39.73087,-105.21063+39.73067,-105.21035+39.73048,-105.21002+39.7303,-105.20967+39.73014,-105.20924+39.72999,-105.20868+39.72983,-105.20728+39.7295,-105.20646+39.72935,-105.20591+39.7292,-105.20536+39.72898,-105.20492+39.72875,-105.20449+39.72848,-105.20415+39.72822,-105.20337+39.72738,-105.20251+39.72645,-105.20231+39.72628,-105.2019+39.72595,-105.20161+39.72575,-105.20104+39.72549,-105.20058+39.72531,-105.20008+39.72517,-105.19955+39.72505,-105.19898+39.72497,-105.19864+39.72497,-105.19373+39.72506,-105.19236+39.72511,-105.1892+39.72517,-105.18344+39.72525,-105.17917+39.72527,-105.17557+39.72528,-105.17489+39.72526,-105.17161+39.72526,-105.16583+39.72529,-105.16535+39.72528,-105.15957+39.72526,-105.15825+39.72527,-105.15786+39.72524,-105.15646+39.72527,-105.1539+39.72527,-105.15125+39.72529,-105.14747+39.72528,-105.14119+39.72529,-105.13785+39.72528,-105.13519+39.72529,-105.13472+39.72527,-105.13402+39.72529,-105.13082+39.7253,-105.13047+39.7253,-105.12306+39.72531,-105.12198+39.72535,-105.12104+39.72535,-105.11306+39.72536,-105.11022+39.72537,-105.10935+39.72537,-105.10807+39.72538,-105.10368+39.72541,-105.1+39.72542,-105.08879+39.72547,-105.08174+39.72549,-105.07608+39.72552,-105.06001+39.72558,-105.05718+39.72563,-105.05633+39.72565,-105.05315+39.72565,-105.04604+39.72561,-105.03945+39.72559,-105.03493+39.72557,-105.03294+39.72552,-105.03223+39.72544,-105.03127+39.72542,-105.02645+39.72543,-105.02381+39.72542,-105.02259+39.7254,-105.02224+39.72538,-105.02072+39.72531,-105.01867+39.72519,-105.01803+39.72521,-105.01685+39.72529,-105.01566+39.72536,-105.01508+39.72539,-105.01297+39.72553,-105.01136+39.72562,-105.01095+39.72563,-105.01077+39.72562,-105.01051+39.72561,-105.01019+39.72562,-105.00873+39.72569,-105.00811+39.72573,-105.00712+39.72569,-105.00578+39.72567,-105.00545+39.72564,-105.00399+39.72563,-105.00194+39.72564,-105.0016+39.72564,-105.00095+39.72564,-104.99988+39.7257,-104.99755+39.7257,-104.99282+39.72567,-104.99047+39.72566,-104.98918+39.72564,-104.98837+39.72565,-104.98745+39.72564,-104.98624+39.72564,-104.98622+39.72592,-104.9862+39.72633,-104.98616+39.72726,-104.98617+39.72814,-104.98616+39.72876,-104.98612+39.73205,-104.98612+39.73385,-104.98614+39.73528,-104.98612+39.73685,-104.98611+39.73845,-104.98486+39.73844,-104.98486+39.73757)">/api/alt-fuel-stations/v1/nearby-route.csv?api_key=DEMO_KEY&amp;distance=2&amp;route=LINESTRING(-105.22109+39.75553,-105.22133+39.7554,-105.22059+39.75459,-105.21959+39.75351,-105.2183+39.75214,-105.21685+39.75057,-105.21603+39.74968,-105.21634+39.7495,-105.21647+39.74949,-105.21711+39.74914,-105.21851+39.74834,-105.21904+39.74805,-105.22002+39.74756,-105.22201+39.74644,-105.22282+39.746,-105.22286+39.74592,-105.22361+39.74552,-105.22377+39.74544,-105.22369+39.74536,-105.22347+39.74511,-105.223+39.74456,-105.22229+39.74371,-105.22127+39.74253,-105.22003+39.74108,-105.21818+39.73897,-105.2169+39.73751,-105.21523+39.73556,-105.21481+39.73506,-105.21472+39.73497,-105.21412+39.73429,-105.21236+39.73224,-105.21171+39.73153,-105.21133+39.73116,-105.21095+39.73087,-105.21063+39.73067,-105.21035+39.73048,-105.21002+39.7303,-105.20967+39.73014,-105.20924+39.72999,-105.20868+39.72983,-105.20728+39.7295,-105.20646+39.72935,-105.20591+39.7292,-105.20536+39.72898,-105.20492+39.72875,-105.20449+39.72848,-105.20415+39.72822,-105.20337+39.72738,-105.20251+39.72645,-105.20231+39.72628,-105.2019+39.72595,-105.20161+39.72575,-105.20104+39.72549,-105.20058+39.72531,-105.20008+39.72517,-105.19955+39.72505,-105.19898+39.72497,-105.19864+39.72497,-105.19373+39.72506,-105.19236+39.72511,-105.1892+39.72517,-105.18344+39.72525,-105.17917+39.72527,-105.17557+39.72528,-105.17489+39.72526,-105.17161+39.72526,-105.16583+39.72529,-105.16535+39.72528,-105.15957+39.72526,-105.15825+39.72527,-105.15786+39.72524,-105.15646+39.72527,-105.1539+39.72527,-105.15125+39.72529,-105.14747+39.72528,-105.14119+39.72529,-105.13785+39.72528,-105.13519+39.72529,-105.13472+39.72527,-105.13402+39.72529,-105.13082+39.7253,-105.13047+39.7253,-105.12306+39.72531,-105.12198+39.72535,-105.12104+39.72535,-105.11306+39.72536,-105.11022+39.72537,-105.10935+39.72537,-105.10807+39.72538,-105.10368+39.72541,-105.1+39.72542,-105.08879+39.72547,-105.08174+39.72549,-105.07608+39.72552,-105.06001+39.72558,-105.05718+39.72563,-105.05633+39.72565,-105.05315+39.72565,-105.04604+39.72561,-105.03945+39.72559,-105.03493+39.72557,-105.03294+39.72552,-105.03223+39.72544,-105.03127+39.72542,-105.02645+39.72543,-105.02381+39.72542,-105.02259+39.7254,-105.02224+39.72538,-105.02072+39.72531,-105.01867+39.72519,-105.01803+39.72521,-105.01685+39.72529,-105.01566+39.72536,-105.01508+39.72539,-105.01297+39.72553,-105.01136+39.72562,-105.01095+39.72563,-105.01077+39.72562,-105.01051+39.72561,-105.01019+39.72562,-105.00873+39.72569,-105.00811+39.72573,-105.00712+39.72569,-105.00578+39.72567,-105.00545+39.72564,-105.00399+39.72563,-105.00194+39.72564,-105.0016+39.72564,-105.00095+39.72564,-104.99988+39.7257,-104.99755+39.7257,-104.99282+39.72567,-104.99047+39.72566,-104.98918+39.72564,-104.98837+39.72565,-104.98745+39.72564,-104.98624+39.72564,-104.98622+39.72592,-104.9862+39.72633,-104.98616+39.72726,-104.98617+39.72814,-104.98616+39.72876,-104.98612+39.73205,-104.98612+39.73385,-104.98614+39.73528,-104.98612+39.73685,-104.98611+39.73845,-104.98486+39.73844,-104.98486+39.73757)</a></pre>
 
-<div class="highlight"><pre class="highlight plaintext"><code>Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Distance,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump,EV Connector Types,Country,Distance (km),Intersection Directions (French),Access Days Time (French),BD Blends (French),Groups With Access Code (French),Hydrogen Is Retail,Access Code,Access Detail Code,Federal Agency Code,Facility Type,CNG Dispenser Num,CNG On-Site Renewable Source,CNG Total Compression Capacity,CNG Storage Capacity,LNG On-Site Renewable Source,E85 Other Ethanol Blends,EV Pricing,EV Pricing (French),LPG Nozzle Types,Hydrogen Pressures,Hydrogen Standards,CNG Fill Type Code,CNG PSI,CNG Vehicle Class,LNG Vehicle Class
-ELEC,GOLDEN STATIONS,702 12th St.,12TH ST GARAGE; Enter garage and turn right. Immediately on the right. ,Golden,CO,80401,,888-758-4389,E,,Public,24 hours daily,,,,,,2,,,ChargePoint Network,http://www.chargepoint.com/,GPS,39.7562931,-105.2207777,2019-04-02,66777,0.05563,2019-04-02 09:07:07 UTC,,,,,,,,,J1772,US,0.08953,,,,Public,,public,,,,,,,,,,Free,,,,,,,,
+<div class="highlight"><pre class="highlight plaintext"><code>Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Distance,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump,EV Connector Types,Country,Distance (km),Intersection Directions (French),Access Days Time (French),BD Blends (French),Groups With Access Code (French),Hydrogen Is Retail,Access Code,Access Detail Code,Federal Agency Code,Facility Type,CNG Dispenser Num,CNG On-Site Renewable Source,CNG Total Compression Capacity,CNG Storage Capacity,LNG On-Site Renewable Source,E85 Other Ethanol Blends,EV Pricing,EV Pricing (French),LPG Nozzle Types,Hydrogen Pressures,Hydrogen Standards,CNG Fill Type Code,CNG PSI,CNG Vehicle Class,LNG Vehicle Class,EV On-Site Renewable Source,Restricted Access
+ELEC,EPOQUE GOLDEN STATION 1,820 Spyderco Way,,Golden,CO,80403,,888-758-4389,E,,Public,24 hours daily,,,,,,2,,,ChargePoint Network,http://www.chargepoint.com/,GPS,39.775615,-105.234677,2022-06-13,143538,1.57149,2022-06-13 01:12:15 UTC,,,,2019-08-15,,,,,J1772,US,2.52907,,,,Public,,public,,,,,,,,,,,,,,,,,,,,false
 </code></pre></div>
 <h2 id="rate-limits">Rate Limits</h2>
 
