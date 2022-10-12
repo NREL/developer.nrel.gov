@@ -1,12 +1,14 @@
 ---
 title: Solar Dataset Query
-summary: Returns information on the closest climate data for a location.
+summary: Returns information about data available for a given location for the solar resource database used by the <a href="https://pvwatts.nrel.gov">PVWatts® Calculator</a> and <a href="/docs/solar/pvwatts/">PVWatts API</a>.
 url: GET /api/solar/data_query/v1
 
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
 <%= current_page.data.summary %>
+
+<b>NOTICE:</b> We are preparing to update the PVWatts Calculator and web API to Version 8 later this Fall (see the <a href="/docs/solar/pvwatts/">PVWatts docs</a> for more details). PVWatts V8 also updates the weather data to 2020 TMY data from the NREL National Solar Radiation Database (NSRDB) for locations covered by the database. (The current NSRDB weather data is from around 2015.) When PVWatts V8 goes live, this API will only return results referencing the 2020 TMY data for the `nsrdb` dataset (results for the other datasets will still be returned), and the `id` returned for the `nsrdb` dataset will only work with PVWatts V8. Contact <a href="mailto:pvwatts@nrel.gov">pvwatts@nrel.gov</a> if you have any questions.
 
 <ul id="toc"></ul>
 
@@ -206,28 +208,26 @@ The response is composed of service-related informational fields and information
             <tr>
               <th scope="row">nsrdb</th>
               <td>
-                <p>NREL Physical Solar Model (PSM) TMY from the NREL National Solar Radiation Database (NSRDB) (see <a href="https://nsrdb.nrel.gov/about" target="_blank">nsrdb.nrel.gov/about</a>)</p>
+                <p>NREL Physical Solar Model (PSM) TMY from the NREL National Solar Radiation Database (NSRDB) (see <a href="https://nsrdb.nrel.gov/about/what-is-the-nsrdb.html" target="_blank">What is the NSRDB</a>)</p>
               </td>
             </tr>
             <tr>
               <th scope="row">tmy2</th>
               <td>
-                TMY2 station data (see <a href="http://rredc.nrel.gov/solar/old_data/nsrdb/1961-1990/tmy2/State.html" target="_blank">Typical Meteorological Year, version 2</a>)
+                <p>TMY2 station data (see <a href="https://nsrdb.nrel.gov/data-sets/archives.html" target="_blank">National Solar Radiation Database 1961-1990</a>)</p>
               </td>
             </tr>
             <tr>
               <th scope="row">tmy3</th>
               <td>
-                TMY3 station data (see <a href="http://rredc.nrel.gov/solar/old_data/nsrdb/1991-2005/tmy3/by_USAFN.html">Typical Meteorological Year version 3</a>)
+                <p>TMY3 station data (see <a href="https://nsrdb.nrel.gov/data-sets/archives.html">National Solar Radiation Database 1991-2005</a>)</p>
               </td>
             </tr>
             <tr>
               <th scope="row">intl</th>
-              <td>International station data</td>
-            </tr>
-            <tr>
-              <th scope="row">IN</th>
-              <td>India 10km gridded solar resource data (see <a href="http://www.nrel.gov/international/ra_india.html">India Solar Resource Maps</a>)</td>
+              <td>
+                <p>International station data</p>
+              </td>
             </tr>
             <tr>
               <th scope="row">all_stations</th>
@@ -256,7 +256,7 @@ The output fields contain the following information regarding climate data files
     <tr>
       <th class="doc-parameter-name" scope="row">id</th>
       <td class="doc-parameter-value"><strong>Type:</strong> string</td>
-      <td class="doc-parameter-description">An identifier for that climate data within the dataset.</td>
+      <td class="doc-parameter-description">An identifier for the climate data within the dataset.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">lat</th>
