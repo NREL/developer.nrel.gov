@@ -8,7 +8,7 @@ url: GET /api/solar/data_query/v1
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
 <%= current_page.data.summary %>
 
-<b>NOTICE:</b> We are preparing to update the PVWatts Calculator and web API to Version 8 later this Fall (see the <a href="/docs/solar/pvwatts/">PVWatts docs</a> for more details). PVWatts V8 also updates the weather data to 2020 TMY data from the NREL National Solar Radiation Database (NSRDB) for locations covered by the database. (The current NSRDB weather data is from around 2015.) When PVWatts V8 goes live, this API will only return results referencing the 2020 TMY data for the `nsrdb` dataset (results for the other datasets will still be returned), and the `id` returned for the `nsrdb` dataset will only work with PVWatts V8. Contact <a href="mailto:pvwatts@nrel.gov">pvwatts@nrel.gov</a> if you have any questions.
+<b>NOTICE:</b> We have updated the PVWatts Calculator and web API to Version 8 (see the <a href="/docs/solar/pvwatts/v8">PVWatts documentation</a> for more details). PVWatts V8 also updates the weather data to 2020 TMY data from the NREL National Solar Radiation Database (NSRDB) for locations covered by the database. This API now only returns results referencing the 2020 TMY data for the `nsrdb` dataset, and the `id` returned for the `nsrdb` dataset will only work with PVWatts V8. Results for the other datasets will still be returned, and the `id` for them has not changed. Contact <a href="mailto:pvwatts@nrel.gov">pvwatts@nrel.gov</a> if you have any questions.
 
 <ul id="toc"></ul>
 
@@ -196,11 +196,11 @@ The response is composed of service-related informational fields and information
       <th class="doc-parameter-name" scope="row">outputs</th>
       <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
       <td class="doc-parameter-description">
-        <p>Information about the climate data files for each supported dataset. (see <a href="#output-fields">output fields</a> for more detail)</p>
+        <p>Information about the climate data files for each supported dataset. Keys represent the dataset code. (see <a href="#output-fields">output fields</a> for more detail)</p>
         <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
           <thead>
             <tr>
-              <th scope="col">Dataset</th>
+              <th scope="col">Key</th>
               <th scope="col">Description</th>
             </tr>
           </thead>
@@ -208,30 +208,26 @@ The response is composed of service-related informational fields and information
             <tr>
               <th scope="row">nsrdb</th>
               <td>
-                <p>NREL Physical Solar Model (PSM) TMY from the NREL National Solar Radiation Database (NSRDB) (see <a href="https://nsrdb.nrel.gov/about/what-is-the-nsrdb.html" target="_blank">What is the NSRDB</a>)</p>
+                <p>Gridded TMY data from the NREL National Solar Radiation Database (<a href="https://nsrdb.nrel.gov/about/what-is-the-nsrdb" target="_blank">NSRDB</a>). Datasets include: <em>NSRDB PSM V3 GOES tmy-2020 3.2.0</em>, <em>NSRDB PSM V3 Himawari tmy-2020 3.2.0</em>, and <em>SUNY METEOSAT IODC tmy</em></p>
               </td>
             </tr>
             <tr>
               <th scope="row">tmy2</th>
               <td>
-                <p>TMY2 station data (see <a href="https://nsrdb.nrel.gov/data-sets/archives.html" target="_blank">National Solar Radiation Database 1961-1990</a>)</p>
+                <p>TMY2 station data (see <a href="https://nsrdb.nrel.gov/data-sets/archives.html" target="_blank">NSRDB 1961-1990 Archive</a>)</p>
               </td>
             </tr>
             <tr>
               <th scope="row">tmy3</th>
               <td>
-                <p>TMY3 station data (see <a href="https://nsrdb.nrel.gov/data-sets/archives.html">National Solar Radiation Database 1991-2005</a>)</p>
+                <p>TMY3 station data (see <a href="https://nsrdb.nrel.gov/data-sets/archives.html">NSRDB 1991-2005 Archive</a>)</p>
               </td>
             </tr>
             <tr>
               <th scope="row">intl</th>
               <td>
-                <p>International station data</p>
+                <p>PVWatts International station data</p>
               </td>
-            </tr>
-            <tr>
-              <th scope="row">all_stations</th>
-              <td>Information for all stations within the radius (only if all=1 is specified)</td>
             </tr>
           </tbody>
         </table>
@@ -292,6 +288,11 @@ The output fields contain the following information regarding climate data files
       <th class="doc-parameter-name" scope="row">distance</th>
       <td class="doc-parameter-value"><strong>Type:</strong> integer</td>
       <td class="doc-parameter-description">The distance in meters from the input location to the station.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">weather_data_source</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> string</td>
+      <td class="doc-parameter-description">Source of the weather data used in the simulation.</td>
     </tr>
   </tbody>
 </table>
