@@ -1297,20 +1297,20 @@ definitions:
         type: string
         description: The drivetrain of the light-duty automobile
       charging_rate_level_2:
-        type: integer
-        description: The level 2 charging rate of the light-duty automobile
+        type: string
+        description: The Level 2 charging rate of the light-duty automobile (kW)
       charging_rate_dc_fast:
-        type: integer
-        description: The DC fast charging rate of the light-duty automobile
+        type: string
+        description: The DC fast charging rate of the light-duty automobile (kW)
       charging_speed_level_1:
-        type: integer
-        description: The level 1 charging speed of the light-duty automobile
+        type: string
+        description: The Level 1 charging speed of the light-duty automobile (miles per hour of charging)
       charging_speed_level_2:
-        type: integer
-        description: The level 2 charging speed of the light-duty automobile
+        type: string
+        description: The Level 2 charging speed of the light-duty automobile (miles per hour of charging)
       charging_speed_dc_fast:
-        type: integer
-        description: The DC fast charging speed of the light-duty automobile
+        type: string
+        description: The DC fast charging speed of the light-duty automobile (miles per hour of charging)
       battery_voltage:
         type: integer
         description: The battery voltage of the light-duty automobile
@@ -1442,20 +1442,20 @@ definitions:
             type: string
             description: The drivetrain of the light-duty automobile
           charging_rate_level_2:
-            type: integer
-            description: The level 2 charging rate of the light-duty automobile
+            type: string
+            description: The Level 2 charging rate of the light-duty automobile (kW)
           charging_rate_dc_fast:
-            type: integer
-            description: The DC fast charging rate of the light-duty automobile
+            type: string
+            description: The DC fast charging rate of the light-duty automobile (kW)
           charging_speed_level_1:
-            type: integer
-            description: The level 1 charging speed of the light-duty automobile
+            type: string
+            description: The Level 1 charging speed of the light-duty automobile (miles per hour of charging)
           charging_speed_level_2:
-            type: integer
-            description: The level 2 charging speed of the light-duty automobile
+            type: string
+            description: The Level 2 charging speed of the light-duty automobile (miles per hour of charging)
           charging_speed_dc_fast:
-            type: integer
-            description: The DC fast charging speed of the light-duty automobile
+            type: string
+            description: The DC fast charging speed of the light-duty automobile (miles per hour of charging)
           battery_voltage:
             type: integer
             description: The battery voltage of the light-duty automobile
