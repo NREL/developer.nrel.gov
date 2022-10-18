@@ -1285,12 +1285,10 @@ definitions:
         type: string
         description: The name of the light-duty vehicle category associated with the light-duty automobile
       alternative_fuel_economy_combined:
-        type: number
-        format: float
+        type: string
         description: The combined alternative fuel economy for the light-duty automobile
       conventional_fuel_economy_combined:
-        type: number
-        format: float
+        type: string
         description: The combined conventional fuel economy for the light-duty automobile
       fuel_economy_estimated_by_manufacturer:
         type: boolean
@@ -1298,21 +1296,44 @@ definitions:
       drivetrain:
         type: string
         description: The drivetrain of the light-duty automobile
+      charging_rate_level_2:
+        type: string
+        description: The Level 2 charging rate of the light-duty automobile (kW)
+      charging_rate_dc_fast:
+        type: string
+        description: The DC fast charging rate of the light-duty automobile (kW)
+      charging_speed_level_1:
+        type: string
+        description: The Level 1 charging speed of the light-duty automobile (miles added per hour of charging)
+      charging_speed_level_2:
+        type: string
+        description: The Level 2 charging speed of the light-duty automobile (miles added per hour of charging)
+      charging_speed_dc_fast:
+        type: string
+        description: The DC fast charging speed of the light-duty automobile (miles added per hour of charging)
+      battery_voltage:
+        type: integer
+        description: The battery voltage of the light-duty automobile
+      battery_capacity_amp_hours:
+        type: integer
+        description: The battery capacity in amp hours of the light-duty automobile
+      battery_capacity_kwh:
+        type: integer
+        description: The battery capacity in kilowatt-hours of the light-duty automobile
+      seating_capacity:
+        type: string
+        description: The seating capacity of the light-duty automobile
       alternative_fuel_economy_city:
-        type: number
-        format: float
+        type: string
         description: The city driving alternative fuel economy for the light-duty automobile
       alternative_fuel_economy_highway:
-        type: number
-        format: float
+        type: string
         description: The highway driving alternative fuel economy for the light-duty automobile
       conventional_fuel_economy_city:
-        type: number
-        format: float
+        type: string
         description: The city driving conventional fuel economy for the light-duty automobile
       conventional_fuel_economy_highway:
-        type: number
-        format: float
+        type: string
         description: The highway driving conventional fuel economy for the light-duty automobile
       light_duty_emission_certifications:
         type: array
@@ -1406,12 +1427,10 @@ definitions:
             type: string
             description: The name of the light-duty vehicle category associated with the light-duty automobile
           alternative_fuel_economy_combined:
-            type: number
-            format: float
+            type: string
             description: The combined alternative fuel economy for the light-duty automobile
           conventional_fuel_economy_combined:
-            type: number
-            format: float
+            type: string
             description: The combined conventional fuel economy for the light-duty automobile
           fuel_economy_estimated_by_manufacturer:
             type: boolean
@@ -1419,21 +1438,44 @@ definitions:
           drivetrain:
             type: string
             description: The drivetrain of the light-duty automobile
+          charging_rate_level_2:
+            type: string
+            description: The Level 2 charging rate of the light-duty automobile (kW)
+          charging_rate_dc_fast:
+            type: string
+            description: The DC fast charging rate of the light-duty automobile (kW)
+          charging_speed_level_1:
+            type: string
+            description: The Level 1 charging speed of the light-duty automobile (miles added per hour of charging)
+          charging_speed_level_2:
+            type: string
+            description: The Level 2 charging speed of the light-duty automobile (miles added per hour of charging)
+          charging_speed_dc_fast:
+            type: string
+            description: The DC fast charging speed of the light-duty automobile (miles added per hour of charging)
+          battery_voltage:
+            type: integer
+            description: The battery voltage of the light-duty automobile
+          battery_capacity_amp_hours:
+            type: integer
+            description: The battery capacity in amp hours of the light-duty automobile
+          battery_capacity_kwh:
+            type: integer
+            description: The battery capacity in kilowatt-hours of the light-duty automobile
+          seating_capacity:
+            type: string
+            description: The seating capacity of the light-duty automobile
           alternative_fuel_economy_city:
-            type: number
-            format: float
+            type: string
             description: The city driving alternative fuel economy for the light-duty automobile
           alternative_fuel_economy_highway:
-            type: number
-            format: float
+            type: string
             description: The highway driving alternative fuel economy for the light-duty automobile
           conventional_fuel_economy_city:
-            type: number
-            format: float
+            type: string
             description: The city driving conventional fuel economy for the light-duty automobile
           conventional_fuel_economy_highway:
-            type: number
-            format: float
+            type: string
             description: The highway driving conventional fuel economy for the light-duty automobile
           light_duty_emission_certifications:
             type: array
