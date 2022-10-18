@@ -1304,13 +1304,13 @@ definitions:
         description: The DC fast charging rate of the light-duty automobile (kW)
       charging_speed_level_1:
         type: string
-        description: The Level 1 charging speed of the light-duty automobile (miles per hour of charging)
+        description: The Level 1 charging speed of the light-duty automobile (miles added per hour of charging)
       charging_speed_level_2:
         type: string
-        description: The Level 2 charging speed of the light-duty automobile (miles per hour of charging)
+        description: The Level 2 charging speed of the light-duty automobile (miles added per hour of charging)
       charging_speed_dc_fast:
         type: string
-        description: The DC fast charging speed of the light-duty automobile (miles per hour of charging)
+        description: The DC fast charging speed of the light-duty automobile (miles added per hour of charging)
       battery_voltage:
         type: integer
         description: The battery voltage of the light-duty automobile
@@ -1320,9 +1320,6 @@ definitions:
       battery_capacity_kwh:
         type: integer
         description: The battery capacity in kilowatt-hours of the light-duty automobile
-      base_msrp:
-        type: integer
-        description: The base MSRP of the light-duty automobile
       seating_capacity:
         type: string
         description: The seating capacity of the light-duty automobile
@@ -1449,13 +1446,13 @@ definitions:
             description: The DC fast charging rate of the light-duty automobile (kW)
           charging_speed_level_1:
             type: string
-            description: The Level 1 charging speed of the light-duty automobile (miles per hour of charging)
+            description: The Level 1 charging speed of the light-duty automobile (miles added per hour of charging)
           charging_speed_level_2:
             type: string
-            description: The Level 2 charging speed of the light-duty automobile (miles per hour of charging)
+            description: The Level 2 charging speed of the light-duty automobile (miles added per hour of charging)
           charging_speed_dc_fast:
             type: string
-            description: The DC fast charging speed of the light-duty automobile (miles per hour of charging)
+            description: The DC fast charging speed of the light-duty automobile (miles added per hour of charging)
           battery_voltage:
             type: integer
             description: The battery voltage of the light-duty automobile
@@ -1465,9 +1462,6 @@ definitions:
           battery_capacity_kwh:
             type: integer
             description: The battery capacity in kilowatt-hours of the light-duty automobile
-          base_msrp:
-            type: integer
-            description: The base MSRP of the light-duty automobile
           seating_capacity:
             type: string
             description: The seating capacity of the light-duty automobile
