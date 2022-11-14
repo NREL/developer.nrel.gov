@@ -1,23 +1,24 @@
 ---
-title: PVWatts V6
-summary: Version 6 has been replaced by [version 8](/docs/solar/pvwatts/pvwatts/v8/). It is recommended that people switch to version 8 to use the most up-to-date models and weather data available. V6 will be decommissioned sometime in the second half of 2023.
-url: GET /api/pvwatts/v6
+title: PVWatts V8
+summary: Version 8 is the current version of the PVWatts API, and is the version used by <a href="https://pvwatts.nrel.gov/">NREL's PVWatts Calculator</a>. Updates from Version 6 include using the latest NREL National Solar Radiation Database (NSRDB). V8 also adds a bifacial module option, a new input for monthly irradiance losses, and updates the photovoltaic module, inverter, and thermal effects models to use more detailed and industry-accepted algorithms.
+url: GET /api/pvwatts/v8
 sort_value: "0"
-deprecated: true
 
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
 
-PVWatts<sup>&reg;</sup> Version 6 has been replaced by [version 8](/docs/solar/pvwatts/pvwatts/v8/). We will continue to make the V6 API available until 2023-05-01, but it is recommended that people switch to version 8 to use the most up-to-date models and weather data available.
+PVWatts<sup>&reg;</sup> Version 8 is is the current version of the PVWatts API. Updates from Version 6 include a bifacial module option, a new input for monthly irradiance losses, new inputs for specifying albedo, and updates to the photovoltaic module, inverter, and thermal effects models to use more detailed and industry-accepted algorithms. PVWatts V8 also updates the weather data to 2020 TMY data from the NREL National Solar Radiation Database (NSRDB) for locations covered by the database. (The NSRDB weather data used in PVWatts V6 is from around 2015.) This update provides production estimates based on the latest, state-of-the art models from NREL that may differ from the V6 estimates, depending on the location and inputs. From a coding perspective, PVWatts V8 replaces the pvwattsv5 compute module with pvwattsv8 so that the PVWatts Calculator, web API, and implementation of PVWatts in the System Advisor Model (SAM) all use the same underlying model. For a complete description of PVWatts V8, see the [description on the PVWatts website](https://pvwatts.nrel.gov/version_8.php).
 
-The algorithms used to calculate energy output are the same as in Version 5. For a technical description of the model, see Dobos, A. P. <a href="http://www.nrel.gov/docs/fy14osti/62641.pdf" target="_blank">PVWatts<sup>&reg;</sup> Version 5 Manual</a>. NREL/TP-6A20-62641, 2014.
+NREL anticipates that the V8 API will run slightly slower than the V6 API due to upgraded models. Please contact [pvwatts@nrel.gov](mailto:pvwatts@nrel.gov) if you find V8 is significantly slower or that the performance is impacting your product.
+
+There is a forthcoming report containing a technical description of the model.
 
 <ul id="toc"></ul>
 
 ## Request URL
 
-<pre>GET /api/pvwatts/v6<em>.format?parameters</em></pre>
+<pre>GET /api/pvwatts/v8<em>.format?parameters</em></pre>
 
 ## Request Parameters
 
@@ -284,7 +285,7 @@ The algorithms used to calculate energy output are the same as in Version 5. For
         </div>
       </td>
       <td class="doc-parameter-description">
-        Reference to a specific climate data file to use. Must be a valid <code>id</code> returned by the <a href="/docs/solar/data-query/v1/">Solar Dataset Query V1 API</a>. Required if lat/lon or address not specified.
+        Reference to a specific climate data file to use. Must be a valid <code>id</code> returned by the <a href="/docs/solar/data-query/v2/">Solar Dataset Query V2 API</a>. Required if lat/lon or address not specified.
       </td>
     </tr>
     <tr>
@@ -314,25 +315,25 @@ The algorithms used to calculate energy output are the same as in Version 5. For
             <tr>
               <th scope="row">nsrdb</th>
               <td>
-                <p>NREL Physical Solar Model (PSM) TMY from the NREL National Solar Radiation Database (NSRDB) (see <a href="https://nsrdb.nrel.gov/about/what-is-the-nsrdb" target="_blank">What is the NSRDB</a>)</p>
+                <p>Gridded TMY data from the NREL National Solar Radiation Database (<a href="https://nsrdb.nrel.gov/about/what-is-the-nsrdb" target="_blank">NSRDB</a>). Datasets include: <em>NSRDB PSM V3 GOES tmy-2020 3.2.0</em>, <em>NSRDB PSM V3 Himawari tmy-2020 3.2.0</em>, and <em>SUNY METEOSAT IODC tmy</em></p>
               </td>
             </tr>
             <tr>
               <th scope="row">tmy2</th>
               <td>
-                <p>TMY2 station data (see <a href="https://nsrdb.nrel.gov/data-sets/archives.html" target="_blank">National Solar Radiation Database 1961-1990</a>)</p>
+                <p>TMY2 station data (see <a href="https://nsrdb.nrel.gov/data-sets/archives.html" target="_blank">NSRDB 1961-1990 Archive</a>)</p>
               </td>
             </tr>
             <tr>
               <th scope="row">tmy3</th>
               <td>
-                <p>TMY3 station data (see <a href="https://nsrdb.nrel.gov/data-sets/archives.html">National Solar Radiation Database 1991-2005</a>)</p>
+                <p>TMY3 station data (see <a href="https://nsrdb.nrel.gov/data-sets/archives.html">NSRDB 1991-2005 Archive</a>)</p>
               </td>
             </tr>
             <tr>
               <th scope="row">intl</th>
               <td>
-                <p>International station data</p>
+                <p>PVWatts International station data</p>
               </td>
             </tr>
           </tbody>
@@ -399,7 +400,7 @@ The algorithms used to calculate energy output are the same as in Version 5. For
           <strong>Default:</strong> 0.4
         </div>
         <div class="doc-parameter-value-field">
-          <strong>Range:</strong> <span style="font-style: italic">0 - 3</span>
+          <strong>Range:</strong> <span style="font-style: italic">0.01 - 0.99</span>
         </div>
       </td>
       <td class="doc-parameter-description">
@@ -422,6 +423,78 @@ The algorithms used to calculate energy output are the same as in Version 5. For
       </td>
       <td class="doc-parameter-description">
         <p>Inverter efficiency at rated power.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">bifaciality</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> decimal
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Range:</strong> <span style="font-style: italic">0 - 1</span>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The ratio of rear-side efficiency to front-side efficiency. Typically a value between 0.65 and 0.9 provided on the bifacial module datasheeet. This is to account for the fact that photovoltaic cells on the rear of the module are usually less efficient than the cells on the front of the module. The bifaciality does not affect the solar irradiance on the rear of the module.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">albedo</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> decimal or array of decimal
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Range:</strong> <span style="font-style: italic">&gt;0 and &lt;1</span>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Ground reflectance. A value of 0 would mean that the ground is completely non-reflective, and a value of 1 would mean that it is completely reflective. Specify either a pipe-delimited array of 12 monthly values or a single value to be used for all months.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">use_wf_albedo</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Options:</strong> <span style="font-style: italic">0, 1</span>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Use hourly or subhourly albedo data from the weather file instead of the monthly albedo values, if available. 0 means do not use weather file albedo values, 1 means use weather file albedo values.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">soiling</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array of decimal
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Range:</strong> <span style="font-style: italic">0 - 100</span>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Reduction in incident solar irradiance caused by dust or other seasonal soiling of the module surface that reduce the radiation incident on the subarray. Soiling losses cause a uniform reduction in the total irradiance incident on each subarray. Specify a pipe-delimited array of 12 monthly values.</p>
       </td>
     </tr>
     <tr>
@@ -483,11 +556,11 @@ The response is composed of service-related informational fields and the results
     <tr>
       <th class="doc-parameter-name" scope="row">station_info</th>
       <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
-      <td class="doc-parameter-description">Information about the climate data used in the simulation. (see <a href="#station-info-fields">station info fields</a> for more detail)</td>
+      <td class="doc-parameter-description">Information about the weather data used in the simulation. (see <a href="#station-info-fields">station info fields</a> for more detail)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">outputs</th>
-      <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
+      <td class="doc-parameter-value"><strong>Type:</strong> string</td>
       <td class="doc-parameter-description">
         The data outputs from the simulation. (see <a href="#output-fields">output fields</a> for more detail)
       </td>
@@ -551,6 +624,11 @@ The response is composed of service-related informational fields and the results
       <th class="doc-parameter-name" scope="row">distance</th>
       <td class="doc-parameter-value"><strong>Type:</strong> integer</td>
       <td class="doc-parameter-description">Distance between the input location and the climate station. (meters)</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">weather_data_source</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> string</td>
+      <td class="doc-parameter-description">Source of the weather data used in the simulation.</td>
     </tr>
   </tbody>
 </table>
@@ -642,6 +720,11 @@ The response is composed of service-related informational fields and the results
       <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
       <td class="doc-parameter-description">Hourly windspeed (only when timeframe=hourly). (m/s)</td>
     </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">alb</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
+      <td class="doc-parameter-description">Hourly albedo values (only when timeframe=hourly).</td>
+    </tr>
   </tbody>
 </table>
 
@@ -649,198 +732,242 @@ The response is composed of service-related informational fields and the results
 
 ### JSON Output Format
 
-<pre>GET <a href="/api/pvwatts/v6.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;system_capacity=4&amp;azimuth=180&amp;tilt=40&amp;array_type=1&amp;module_type=1&amp;losses=10">/api/pvwatts/v6.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;system_capacity=4&amp;azimuth=180&amp;tilt=40&amp;array_type=1&amp;module_type=1&amp;losses=10</a></pre>
+<pre>GET <a href="/api/pvwatts/v8.json?api_key=DEMO_KEY&azimuth=180&system_capacity=4&losses=14&array_type=1&module_type=0&gcr=0.4&dc_ac_ratio=1.2&inv_eff=96.0&radius=0&dataset=nsrdb&tilt=10&address=boulder, co&soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&albedo=0.3&bifaciality=0.7">/api/pvwatts/v8.json?api_key=DEMO_KEY&amp;azimuth=180&amp;system_capacity=4&amp;losses=14&amp;array_type=1&amp;module_type=0&amp;gcr=0.4&amp;dc_ac_ratio=1.2&amp;inv_eff=96.0&amp;radius=0&amp;dataset=nsrdb&amp;tilt=10&amp;address=boulder, co&amp;soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&amp;albedo=0.3&amp;bifaciality=0.7</a></pre>
 
 ```json
 {
-    "inputs": {
-        "system_capacity": "4",
-        "lat": "40",
-        "lon": "-105",
-        "azimuth": "180",
-        "tilt": "40",
-        "array_type": "1",
-        "module_type": "1",
-        "losses": "10"
-    },
-    "errors": [],
-    "warnings": [],
-    "version": "1.4.0",
-    "ssc_info": {
-        "version": 45,
-        "build": "Linux 64 bit GNU/C++ Jul  7 2015 14:24:09"
-    },
-    "station_info": {
-        "lat": 40.0099983215332,
-        "lon": -105.0199966430664,
-        "elev": 1581.8399658203125,
-        "tz": -7,
-        "location": "None",
-        "city": "",
-        "state": "Colorado",
-        "solar_resource_file": "W10502N4001.csv",
-        "distance": 2029
-    },
-    "outputs": {
-        "ac_monthly": [
-            474.4326171875,
-            484.3903503417969,
-            595.7704467773438,
-            592.0599365234375,
-            591.2662353515625,
-            589.3538208007812,
-            583.2352905273438,
-            586.4593505859375,
-            584.8131713867188,
-            561.72314453125,
-            486.12603759765625,
-            445.68817138671875
-        ],
-        "poa_monthly": [
-            141.48094177246094,
-            145.57119750976562,
-            184.7876434326172,
-            181.55137634277344,
-            186.42808532714844,
-            190.51329040527344,
-            188.74996948242188,
-            190.53981018066406,
-            188.2213134765625,
-            175.4444122314453,
-            146.31704711914062,
-            131.15682983398438
-        ],
-        "solrad_monthly": [
-            4.563901424407959,
-            5.198971271514893,
-            5.9608917236328125,
-            6.051712512969971,
-            6.0138092041015625,
-            6.350442886352539,
-            6.088708877563477,
-            6.146445274353027,
-            6.274043560028076,
-            5.659497261047363,
-            4.877234935760498,
-            4.230865478515625
-        ],
-        "dc_monthly": [
-            497.9421081542969,
-            511.1524963378906,
-            634.3223266601562,
-            623.7313842773438,
-            617.8812866210938,
-            615.4278564453125,
-            609.3965454101562,
-            612.7506713867188,
-            610.5584106445312,
-            588.6157836914062,
-            508.07476806640625,
-            465.4272155761719
-        ],
-        "ac_annual": 6575.31884765625,
-        "solrad_annual": 5.618043899536133,
-        "capacity_factor": 18.765178680419922
-    }
+  "inputs": {
+    "api_key": "DEMO_KEY",
+    "azimuth": "180",
+    "system_capacity": "4",
+    "losses": "14",
+    "array_type": "1",
+    "module_type": "0",
+    "gcr": "0.4",
+    "dc_ac_ratio": "1.2",
+    "inv_eff": "96.0",
+    "radius": "0",
+    "dataset": "nsrdb",
+    "tilt": "10",
+    "address": "boulder, co",
+    "soiling": [
+      12.0,
+      4.0,
+      45.0,
+      23.0,
+      9.0,
+      99.0,
+      67.0,
+      12.54,
+      54.0,
+      9.0,
+      0.0,
+      7.6
+    ],
+    "albedo": "0.3",
+    "bifaciality": "0.7"
+  },
+  "errors": [],
+  "warnings": [],
+  "version": "8.0.0",
+  "ssc_info": {
+    "version": 275,
+    "build": "Linux 64 bit GNU/C++ Oct  4 2022 03:10:07",
+    "module": "pvwattsv8"
+  },
+  "station_info": {
+    "lat": 40.0099983215332,
+    "lon": -105.2600021362305,
+    "elev": 1635.640014648438,
+    "tz": -7.0,
+    "location": "149190",
+    "city": "",
+    "state": "Colorado",
+    "solar_resource_file": "149190.csv",
+    "weather_data_source": "NSRDB PSM V3 GOES tmy-2020 3.2.0"
+  },
+  "outputs": {
+    "ac_monthly": [
+      320.4228876642905,
+      384.8616364666353,
+      321.3271515621691,
+      461.0094975545317,
+      554.600835450473,
+      40.44452828685269,
+      226.7508104582373,
+      511.2267102793363,
+      256.8889494651126,
+      399.0896267699792,
+      360.6690887453739,
+      294.0619118014161
+    ],
+    "poa_monthly": [
+      96.24926945531107,
+      116.1349407270755,
+      98.51940622925228,
+      144.41773091741,
+      183.8794484222849,
+      15.66165708215378,
+      77.02556424264554,
+      173.1452731392307,
+      84.65672810465938,
+      127.5225461326769,
+      111.2069066909127,
+      88.32854384099618
+    ],
+    "solrad_monthly": [
+      3.104815143719712,
+      4.147676454538409,
+      3.178045362233945,
+      4.813924363913667,
+      5.931595110396287,
+      0.5220552360717927,
+      2.484695620730502,
+      5.585331391588086,
+      2.821890936821979,
+      4.113630520408932,
+      3.706896889697091,
+      2.849307865838586
+    ],
+    "dc_monthly": [
+      336.9419000259236,
+      403.7478814828723,
+      339.0451574758127,
+      484.2180320849528,
+      582.0288887329309,
+      48.66263077401924,
+      242.1187483732162,
+      536.8888804277215,
+      272.1669926053272,
+      419.1849677039804,
+      378.8226598116249,
+      309.3147603281601
+    ],
+    "ac_annual": 4131.353634504403,
+    "solrad_annual": 3.604988741329917,
+    "capacity_factor": 11.79039279253541
+  }
 }
 ```
 
 ### XML Output Format
 
-<pre>GET <a href="/api/pvwatts/v6.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;system_capacity=4&amp;azimuth=180&amp;tilt=40&amp;array_type=1&amp;module_type=1&amp;losses=10">/api/pvwatts/v6.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;system_capacity=4&amp;azimuth=180&amp;tilt=40&amp;array_type=1&amp;module_type=1&amp;losses=10</a></pre>
+<pre>GET <a href="/api/pvwatts/v8.xml?api_key=DEMO_KEY&azimuth=180&system_capacity=4&losses=14&array_type=1&module_type=0&gcr=0.4&dc_ac_ratio=1.2&inv_eff=96.0&radius=0&dataset=nsrdb&tilt=10&address=boulder, co&soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&albedo=0.3&bifaciality=0.7">/api/pvwatts/v8.xml?api_key=DEMO_KEY&amp;azimuth=180&amp;system_capacity=4&amp;losses=14&amp;array_type=1&amp;module_type=0&amp;gcr=0.4&amp;dc_ac_ratio=1.2&amp;inv_eff=96.0&amp;radius=0&amp;dataset=nsrdb&amp;tilt=10&amp;address=boulder, co&amp;soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&amp;albedo=0.3&amp;bifaciality=0.7</a></pre>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <response>
-    <inputs>
-        <system-capacity>4</system-capacity>
-        <lat>40</lat>
-        <lon>-105</lon>
-        <azimuth>180</azimuth>
-        <tilt>40</tilt>
-        <array-type>1</array-type>
-        <module-type>1</module-type>
-        <losses>10</losses>
-    </inputs>
-    <errors type="array"/>
-    <warnings type="array"/>
-    <version>1.4.0</version>
-    <ssc-info>
-        <version type="integer">45</version>
-        <build>Linux 64 bit GNU/C++ Jul  7 2015 14:24:09</build>
-    </ssc-info>
-    <station-info>
-        <lat type="float">40.0099983215332</lat>
-        <lon type="float">-105.0199966430664</lon>
-        <elev type="float">1581.8399658203125</elev>
-        <tz type="float">-7.0</tz>
-        <location>None</location>
-        <city></city>
-        <state>Colorado</state>
-        <solar-resource-file>W10502N4001.csv</solar-resource-file>
-        <distance type="integer">2029</distance>
-    </station-info>
-    <outputs>
-        <ac-monthly type="array">
-            <ac-monthly type="float">474.4326171875</ac-monthly>
-            <ac-monthly type="float">484.3903503417969</ac-monthly>
-            <ac-monthly type="float">595.7704467773438</ac-monthly>
-            <ac-monthly type="float">592.0599365234375</ac-monthly>
-            <ac-monthly type="float">591.2662353515625</ac-monthly>
-            <ac-monthly type="float">589.3538208007812</ac-monthly>
-            <ac-monthly type="float">583.2352905273438</ac-monthly>
-            <ac-monthly type="float">586.4593505859375</ac-monthly>
-            <ac-monthly type="float">584.8131713867188</ac-monthly>
-            <ac-monthly type="float">561.72314453125</ac-monthly>
-            <ac-monthly type="float">486.12603759765625</ac-monthly>
-            <ac-monthly type="float">445.68817138671875</ac-monthly>
-        </ac-monthly>
-        <poa-monthly type="array">
-            <poa-monthly type="float">141.48094177246094</poa-monthly>
-            <poa-monthly type="float">145.57119750976562</poa-monthly>
-            <poa-monthly type="float">184.7876434326172</poa-monthly>
-            <poa-monthly type="float">181.55137634277344</poa-monthly>
-            <poa-monthly type="float">186.42808532714844</poa-monthly>
-            <poa-monthly type="float">190.51329040527344</poa-monthly>
-            <poa-monthly type="float">188.74996948242188</poa-monthly>
-            <poa-monthly type="float">190.53981018066406</poa-monthly>
-            <poa-monthly type="float">188.2213134765625</poa-monthly>
-            <poa-monthly type="float">175.4444122314453</poa-monthly>
-            <poa-monthly type="float">146.31704711914062</poa-monthly>
-            <poa-monthly type="float">131.15682983398438</poa-monthly>
-        </poa-monthly>
-        <solrad-monthly type="array">
-            <solrad-monthly type="float">4.563901424407959</solrad-monthly>
-            <solrad-monthly type="float">5.198971271514893</solrad-monthly>
-            <solrad-monthly type="float">5.9608917236328125</solrad-monthly>
-            <solrad-monthly type="float">6.051712512969971</solrad-monthly>
-            <solrad-monthly type="float">6.0138092041015625</solrad-monthly>
-            <solrad-monthly type="float">6.350442886352539</solrad-monthly>
-            <solrad-monthly type="float">6.088708877563477</solrad-monthly>
-            <solrad-monthly type="float">6.146445274353027</solrad-monthly>
-            <solrad-monthly type="float">6.274043560028076</solrad-monthly>
-            <solrad-monthly type="float">5.659497261047363</solrad-monthly>
-            <solrad-monthly type="float">4.877234935760498</solrad-monthly>
-            <solrad-monthly type="float">4.230865478515625</solrad-monthly>
-        </solrad-monthly>
-        <dc-monthly type="array">
-            <dc-monthly type="float">497.9421081542969</dc-monthly>
-            <dc-monthly type="float">511.1524963378906</dc-monthly>
-            <dc-monthly type="float">634.3223266601562</dc-monthly>
-            <dc-monthly type="float">623.7313842773438</dc-monthly>
-            <dc-monthly type="float">617.8812866210938</dc-monthly>
-            <dc-monthly type="float">615.4278564453125</dc-monthly>
-            <dc-monthly type="float">609.3965454101562</dc-monthly>
-            <dc-monthly type="float">612.7506713867188</dc-monthly>
-            <dc-monthly type="float">610.5584106445312</dc-monthly>
-            <dc-monthly type="float">588.6157836914062</dc-monthly>
-            <dc-monthly type="float">508.07476806640625</dc-monthly>
-            <dc-monthly type="float">465.4272155761719</dc-monthly>
-        </dc-monthly>
-        <ac-annual type="float">6575.31884765625</ac-annual>
-        <solrad-annual type="float">5.618043899536133</solrad-annual>
-        <capacity-factor type="float">18.765178680419922</capacity-factor>
-    </outputs>
+  <inputs>
+    <api-key>DEMO_KEY</api-key>
+    <azimuth>180</azimuth>
+    <system-capacity>4</system-capacity>
+    <losses>14</losses>
+    <array-type>1</array-type>
+    <module-type>0</module-type>
+    <gcr>0.4</gcr>
+    <dc-ac-ratio>1.2</dc-ac-ratio>
+    <inv-eff>96.0</inv-eff>
+    <radius>0</radius>
+    <dataset>nsrdb</dataset>
+    <tilt>10</tilt>
+    <address>boulder, co</address>
+    <soiling type="array">
+      <soiling type="float">12.0</soiling>
+      <soiling type="float">4.0</soiling>
+      <soiling type="float">45.0</soiling>
+      <soiling type="float">23.0</soiling>
+      <soiling type="float">9.0</soiling>
+      <soiling type="float">99.0</soiling>
+      <soiling type="float">67.0</soiling>
+      <soiling type="float">12.54</soiling>
+      <soiling type="float">54.0</soiling>
+      <soiling type="float">9.0</soiling>
+      <soiling type="float">0.0</soiling>
+      <soiling type="float">7.6</soiling>
+    </soiling>
+    <albedo>0.3</albedo>
+    <bifaciality>0.7</bifaciality>
+  </inputs>
+  <errors type="array"/>
+  <warnings type="array"/>
+  <version>8.0.0</version>
+  <ssc-info>
+    <version type="integer">275</version>
+    <build>Linux 64 bit GNU/C++ Oct  4 2022 03:10:07</build>
+    <module>pvwattsv8</module>
+  </ssc-info>
+  <station-info>
+    <lat type="float">40.0099983215332</lat>
+    <lon type="float">-105.26000213623047</lon>
+    <elev type="float">1635.6400146484375</elev>
+    <tz type="float">-7.0</tz>
+    <location>149190</location>
+    <city></city>
+    <state>Colorado</state>
+    <solar-resource-file>149190.csv</solar-resource-file>
+    <weather-data-source>NSRDB PSM V3 GOES tmy-2020 3.2.0</weather-data-source>
+  </station-info>
+  <outputs>
+    <ac-monthly type="array">
+      <ac-monthly type="float">320.4228876642905</ac-monthly>
+      <ac-monthly type="float">384.8616364666353</ac-monthly>
+      <ac-monthly type="float">321.32715156216915</ac-monthly>
+      <ac-monthly type="float">461.00949755453166</ac-monthly>
+      <ac-monthly type="float">554.600835450473</ac-monthly>
+      <ac-monthly type="float">40.444528286852695</ac-monthly>
+      <ac-monthly type="float">226.75081045823728</ac-monthly>
+      <ac-monthly type="float">511.2267102793363</ac-monthly>
+      <ac-monthly type="float">256.8889494651126</ac-monthly>
+      <ac-monthly type="float">399.0896267699792</ac-monthly>
+      <ac-monthly type="float">360.66908874537387</ac-monthly>
+      <ac-monthly type="float">294.0619118014161</ac-monthly>
+    </ac-monthly>
+    <poa-monthly type="array">
+      <poa-monthly type="float">96.24926945531107</poa-monthly>
+      <poa-monthly type="float">116.13494072707546</poa-monthly>
+      <poa-monthly type="float">98.51940622925228</poa-monthly>
+      <poa-monthly type="float">144.41773091741</poa-monthly>
+      <poa-monthly type="float">183.8794484222849</poa-monthly>
+      <poa-monthly type="float">15.661657082153782</poa-monthly>
+      <poa-monthly type="float">77.02556424264554</poa-monthly>
+      <poa-monthly type="float">173.14527313923068</poa-monthly>
+      <poa-monthly type="float">84.65672810465938</poa-monthly>
+      <poa-monthly type="float">127.5225461326769</poa-monthly>
+      <poa-monthly type="float">111.20690669091273</poa-monthly>
+      <poa-monthly type="float">88.32854384099618</poa-monthly>
+    </poa-monthly>
+    <solrad-monthly type="array">
+      <solrad-monthly type="float">3.1048151437197116</solrad-monthly>
+      <solrad-monthly type="float">4.147676454538409</solrad-monthly>
+      <solrad-monthly type="float">3.1780453622339446</solrad-monthly>
+      <solrad-monthly type="float">4.813924363913667</solrad-monthly>
+      <solrad-monthly type="float">5.9315951103962865</solrad-monthly>
+      <solrad-monthly type="float">0.5220552360717927</solrad-monthly>
+      <solrad-monthly type="float">2.4846956207305015</solrad-monthly>
+      <solrad-monthly type="float">5.5853313915880864</solrad-monthly>
+      <solrad-monthly type="float">2.8218909368219793</solrad-monthly>
+      <solrad-monthly type="float">4.113630520408932</solrad-monthly>
+      <solrad-monthly type="float">3.706896889697091</solrad-monthly>
+      <solrad-monthly type="float">2.849307865838586</solrad-monthly>
+    </solrad-monthly>
+    <dc-monthly type="array">
+      <dc-monthly type="float">336.9419000259236</dc-monthly>
+      <dc-monthly type="float">403.7478814828723</dc-monthly>
+      <dc-monthly type="float">339.04515747581274</dc-monthly>
+      <dc-monthly type="float">484.21803208495277</dc-monthly>
+      <dc-monthly type="float">582.0288887329309</dc-monthly>
+      <dc-monthly type="float">48.66263077401924</dc-monthly>
+      <dc-monthly type="float">242.1187483732162</dc-monthly>
+      <dc-monthly type="float">536.8888804277215</dc-monthly>
+      <dc-monthly type="float">272.16699260532715</dc-monthly>
+      <dc-monthly type="float">419.1849677039804</dc-monthly>
+      <dc-monthly type="float">378.82265981162493</dc-monthly>
+      <dc-monthly type="float">309.3147603281601</dc-monthly>
+    </dc-monthly>
+    <ac-annual type="float">4131.353634504403</ac-annual>
+    <solrad-annual type="float">3.6049887413299166</solrad-annual>
+    <capacity-factor type="float">11.79039279253541</capacity-factor>
+  </outputs>
 </response>
 ```
 
