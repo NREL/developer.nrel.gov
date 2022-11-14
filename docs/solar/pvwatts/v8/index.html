@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        PVWatts V8 
+          API
+        |
+      NREL: Developer Network
+    </title>
+
+    <link rel="canonical" href="https://developer.nrel.gov/docs/solar/pvwatts/v8/" />
+    <script>
+      if(window.location.href.indexOf('nrel.github.io') !== -1) {
+        window.location.href = 'https://developer.nrel.gov/docs/solar/pvwatts/v8/';
+      }
+    </script>
+
+    <link href="/assets/stylesheets/all-050578d9.css" rel="stylesheet" />
+
+    <script src="/assets/javascripts/shared-8f31eae2.js"></script>
+    <script src="/assets/javascripts/all-172ea8d4.js"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body class="docs docs_solar docs_solar_pvwatts docs_solar_pvwatts_v8 docs_solar_pvwatts_v8_index">
+    <div class="container">
+  <header>
+    <map name="header_map">
+        <area shape="rect" coords="0,0,840,58" href="/" alt="Developer Network" />
+      <area shape="rect" coords="840,0,1000,58" href="http://www.nrel.gov/" alt="NREL" />
+    </map>
+    <img src="/assets/images/nrel/header-1bfbcb1a.png" alt="NREL Developer Network" usemap="#header_map" width="1000" height="58" class="img-fluid" />
+  </header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_nav" aria-controls="navbar_nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar_nav">
+      <ul class="navbar-nav">
+        <li class="nav-item nav-home "><a href="/" class="nav-link">Home</a></li>
+        <li class="nav-item nav-documentation active"><a href="/docs" class="nav-link">Documentation</a></li>
+        <li class="nav-item nav-community "><a href="/community" class="nav-link">Community</a></li>
+      </ul>
+    </div>
+  </nav>
+
+      <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/docs/">Documentation</a></li>
+            <li class="breadcrumb-item"><a href="/docs/solar/">Solar</a></li>
+            <li class="breadcrumb-item"><a href="/docs/solar/pvwatts/">PVWatts</a></li>
+            <li class="breadcrumb-item active">PVWatts V8</li>
+    </ol>
+
+
+    <h1 id="pvwatts-v8-get-apipvwattsv8">PVWatts V8 <span class="url">(GET /api/pvwatts/v8)</span></h1>
+
+<p>PVWatts<sup>®</sup> Version 8 is is the current version of the PVWatts API. Updates from Version 6 include a bifacial module option, a new input for monthly irradiance losses, new inputs for specifying albedo, and updates to the photovoltaic module, inverter, and thermal effects models to use more detailed and industry-accepted algorithms. PVWatts V8 also updates the weather data to 2020 TMY data from the NREL National Solar Radiation Database (NSRDB) for locations covered by the database. (The NSRDB weather data used in PVWatts V6 is from around 2015.) This update provides production estimates based on the latest, state-of-the art models from NREL that may differ from the V6 estimates, depending on the location and inputs. From a coding perspective, PVWatts V8 replaces the pvwattsv5 compute module with pvwattsv8 so that the PVWatts Calculator, web API, and implementation of PVWatts in the System Advisor Model (SAM) all use the same underlying model. For a complete description of PVWatts V8, see the <a href="https://pvwatts.nrel.gov/version_8.php">description on the PVWatts website</a>.</p>
+
+<p>NREL anticipates that the V8 API will run slightly slower than the V6 API due to upgraded models. Please contact <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#112;&#118;&#119;&#097;&#116;&#116;&#115;&#064;&#110;&#114;&#101;&#108;&#046;&#103;&#111;&#118;">&#112;&#118;&#119;&#097;&#116;&#116;&#115;&#064;&#110;&#114;&#101;&#108;&#046;&#103;&#111;&#118;</a> if you find V8 is significantly slower or that the performance is impacting your product.</p>
+
+<p>There is a forthcoming report containing a technical description of the model.</p>
+
+<ul id="toc"></ul>
+
+<h2 id="request-url">Request URL</h2>
+
+<pre>GET /api/pvwatts/v8<em>.format?parameters</em></pre>
+
+<h2 id="request-parameters">Request Parameters</h2>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Parameter</th>
+      <th class="doc-parameters-required" scope="col">Required</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">format</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Options:</strong> <em>json</em>, <em>xml</em>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The output response format.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">api_key</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Your developer API key. See <a href="/docs/api-key/">API keys</a> for more information.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">system_capacity</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> decimal
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Range:</strong> <i>0.05</i> to <em>500000</em>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Nameplate capacity (kW).</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">module_type</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Options:</strong> <i>0, 1, 2</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Module type.</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+          <thead>
+            <tr>
+              <th scope="col">Option</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">0</th>
+              <td>Standard</td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>Premium</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Thin film</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">losses</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> decimal
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Range:</strong> <i>-5 to 99</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">System losses (percent).</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">array_type</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Options:</strong> <i>0, 1, 2, 3, 4</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Array type.</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+          <thead>
+            <tr>
+              <th scope="col">Option</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">0</th>
+              <td>Fixed - Open Rack</td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>Fixed - Roof Mounted</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>1-Axis</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>1-Axis Backtracking</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>2-Axis</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">tilt</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> decimal
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Range:</strong> <i>0 to 90</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">Tilt angle (degrees).</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">azimuth</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> decimal
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Min:</strong> <i>0</i>
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Max:</strong> <i>&lt; 360</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">Azimuth angle (degrees).</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">address</th>
+      <td class="doc-parameter-required">Depends</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The address to use. Required if lat/lon or file_id not specified.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">lat</th>
+      <td class="doc-parameter-required">Depends</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> decimal
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Range:</strong> <i>-90 to 90</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The latitude for the location to use. Required if address or file_id not specified.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">lon</th>
+      <td class="doc-parameter-required">Depends</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> decimal
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Range:</strong> <i>-180 to 180</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The longitude for the location to use. Required if address or file_id not specified.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">file_id</th>
+      <td class="doc-parameter-required">Depends</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> none
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        Reference to a specific climate data file to use. Must be a valid <code>id</code> returned by the <a href="/docs/solar/data-query/v2/">Solar Dataset Query V2 API</a>. Required if lat/lon or address not specified.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">dataset</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> nsrdb
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Options:</strong> <i>nsrdb, tmy2, tmy3, intl</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The climate dataset to use. Should not be passed in if using file_id to specify the climate data file.</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="doc-parameter-options">
+          <thead>
+            <tr>
+              <th scope="col">Option</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">nsrdb</th>
+              <td>
+                <p>Gridded TMY data from the NREL National Solar Radiation Database (<a href="https://nsrdb.nrel.gov/about/what-is-the-nsrdb" target="_blank">NSRDB</a>). Datasets include: <em>NSRDB PSM V3 GOES tmy-2020 3.2.0</em>, <em>NSRDB PSM V3 Himawari tmy-2020 3.2.0</em>, and <em>SUNY METEOSAT IODC tmy</em></p>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">tmy2</th>
+              <td>
+                <p>TMY2 station data (see <a href="https://nsrdb.nrel.gov/data-sets/archives.html" target="_blank">NSRDB 1961-1990 Archive</a>)</p>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">tmy3</th>
+              <td>
+                <p>TMY3 station data (see <a href="https://nsrdb.nrel.gov/data-sets/archives.html">NSRDB 1991-2005 Archive</a>)</p>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">intl</th>
+              <td>
+                <p>PVWatts International station data</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">radius</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> 100
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The search radius to use when searching for the closest climate data station (miles). Pass in radius=0 to use the closest station regardless of the distance.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">timeframe</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> monthly
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Options:</strong> <i>monthly, hourly</i>
+        </div>
+      </td>
+      <td class="doc-parameter-description">Granularity of the output response.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">dc_ac_ratio</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> decimal
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> 1.2
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Range:</strong> <span style="font-style: italic">must be positive</span>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>DC to AC ratio.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">gcr</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> decimal
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> 0.4
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Range:</strong> <span style="font-style: italic">0.01 - 0.99</span>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Ground coverage ratio.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">inv_eff</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> decimal
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> 96
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Range:</strong> <span style="font-style: italic">90 - 99.5</span>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Inverter efficiency at rated power.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">bifaciality</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> decimal
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Range:</strong> <span style="font-style: italic">0 - 1</span>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The ratio of rear-side efficiency to front-side efficiency. Typically a value between 0.65 and 0.9 provided on the bifacial module datasheeet. This is to account for the fact that photovoltaic cells on the rear of the module are usually less efficient than the cells on the front of the module. The bifaciality does not affect the solar irradiance on the rear of the module.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">albedo</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> decimal or array of decimal
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Range:</strong> <span style="font-style: italic">&gt;0 and &lt;1</span>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Ground reflectance. A value of 0 would mean that the ground is completely non-reflective, and a value of 1 would mean that it is completely reflective. Specify either a pipe-delimited array of 12 monthly values or a single value to be used for all months.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">use_wf_albedo</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Options:</strong> <span style="font-style: italic">0, 1</span>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Use hourly or subhourly albedo data from the weather file instead of the monthly albedo values, if available. 0 means do not use weather file albedo values, 1 means use weather file albedo values.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">soiling</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array of decimal
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Range:</strong> <span style="font-style: italic">0 - 100</span>
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Reduction in incident solar irradiance caused by dust or other seasonal soiling of the module surface that reduce the radiation incident on the subarray. Soiling losses cause a uniform reduction in the total irradiance incident on each subarray. Specify a pipe-delimited array of 12 monthly values.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">callback</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+        <div class="doc-parameter-value-field">
+          <strong>Default:</strong> None
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Return the data using <a href="http://en.wikipedia.org/wiki/JSONP">JSONP</a> and the given callback function (only applicable when using the <em>json</em> format).</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="response-fields">Response Fields</h2>
+
+<p>The response is composed of service-related informational fields and the results of the PVWatts simulation.</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">inputs</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
+      <td class="doc-parameter-description">The input parameters received in the request.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">errors</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> array of strings</td>
+      <td class="doc-parameter-description">Any error messages resulting from the request.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">warnings</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> array of strings</td>
+      <td class="doc-parameter-description">Any warning messages resulting from the request.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">version</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> string</td>
+      <td class="doc-parameter-description">The current version of the web service.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">ssc_info</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
+      <td class="doc-parameter-description">Information about the SSC library.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">station_info</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> collection</td>
+      <td class="doc-parameter-description">Information about the weather data used in the simulation. (see <a href="#station-info-fields">station info fields</a> for more detail)</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">outputs</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> string</td>
+      <td class="doc-parameter-description">
+        The data outputs from the simulation. (see <a href="#output-fields">output fields</a> for more detail)
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p><br /></p>
+
+<h3 id="station-info-fields">Station Info Fields</h3>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">lat</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
+      <td class="doc-parameter-description">Latitude of the climate station.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">lon</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
+      <td class="doc-parameter-description">Longitude of the climate station.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">elev</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
+      <td class="doc-parameter-description">Elevation of the climate station. (meters)</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">tz</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
+      <td class="doc-parameter-description">Timezone offset from GMT.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">location</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> string</td>
+      <td class="doc-parameter-description">ID of the climate station.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">city</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> string</td>
+      <td class="doc-parameter-description">City where climate station is located.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">state</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> string</td>
+      <td class="doc-parameter-description">State where climate station is located.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">solar_resource_file</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> string</td>
+      <td class="doc-parameter-description">Solar resource filename.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">distance</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> integer</td>
+      <td class="doc-parameter-description">Distance between the input location and the climate station. (meters)</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">weather_data_source</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> string</td>
+      <td class="doc-parameter-description">Source of the weather data used in the simulation.</td>
+    </tr>
+  </tbody>
+</table>
+<p><br /></p>
+
+<h3 id="output-fields">Output Fields</h3>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">poa_monthly</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
+      <td class="doc-parameter-description">Monthly plane of array irradiance values. (kWh/m2)<br /><br />The array of values represents the value for each month, with the first element being for January and the last element being for December.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">dc_monthly</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
+      <td class="doc-parameter-description">Monthly DC array output. (kWhdc)<br /><br />The array of values represents the value for each month, with the first element being for January and the last element being for December.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">ac_monthly</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
+      <td class="doc-parameter-description">Monthly AC system output. (kWhac)<br /><br />The array of values represents the value for each month, with the first element being for January and the last element being for December.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">ac_annual</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
+      <td class="doc-parameter-description">Annual AC system output. (kWhac)</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">solrad_monthly</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
+      <td class="doc-parameter-description">Monthly solar radiation values. (kWh/m2/day) The array of values represents the value for each month, with the first element being for January and the last element being for December.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">solrad_annual</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
+      <td class="doc-parameter-description">Annual solar radiation values. (kWh/m2/day)</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">capacity_factor</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
+      <td class="doc-parameter-description">The ratio of the system's predicted electrical output in the first year of operation to the nameplate output, which is equivalent to the quantity of energy the system would generate if it operated at its nameplate capacity for every hour of the year. (AC-to-DC)</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">ac</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
+      <td class="doc-parameter-description">Hourly AC system output (only when timeframe=hourly). (Wac)</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">poa</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
+      <td class="doc-parameter-description">Hourly plane of array irradiance (only when timeframe=hourly). (W/m2)</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">dn</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
+      <td class="doc-parameter-description">Hourly beam normal irradiance (only when timeframe=hourly). (W/m2)</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">dc</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
+      <td class="doc-parameter-description">Hourly DC array output (only when timeframe=hourly). (Wdc)</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">df</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
+      <td class="doc-parameter-description">Hourly diffuse irradiance (only when timeframe=hourly). (W/m2)</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">tamb</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
+      <td class="doc-parameter-description">Hourly ambient temperature (only when timeframe=hourly). (C)</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">tcell</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
+      <td class="doc-parameter-description">Hourly module temperature (only when timeframe=hourly) (C)</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">wspd</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
+      <td class="doc-parameter-description">Hourly windspeed (only when timeframe=hourly). (m/s)</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">alb</th>
+      <td class="doc-parameter-value"><strong>Type:</strong> array of decimal</td>
+      <td class="doc-parameter-description">Hourly albedo values (only when timeframe=hourly).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="examples">Examples</h2>
+
+<h3 id="json-output-format">JSON Output Format</h3>
+
+<pre>GET <a href="/api/pvwatts/v8.json?api_key=DEMO_KEY&amp;azimuth=180&amp;system_capacity=4&amp;losses=14&amp;array_type=1&amp;module_type=0&amp;gcr=0.4&amp;dc_ac_ratio=1.2&amp;inv_eff=96.0&amp;radius=0&amp;dataset=nsrdb&amp;tilt=10&amp;address=boulder, co&amp;soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&amp;albedo=0.3&amp;bifaciality=0.7">/api/pvwatts/v8.json?api_key=DEMO_KEY&amp;azimuth=180&amp;system_capacity=4&amp;losses=14&amp;array_type=1&amp;module_type=0&amp;gcr=0.4&amp;dc_ac_ratio=1.2&amp;inv_eff=96.0&amp;radius=0&amp;dataset=nsrdb&amp;tilt=10&amp;address=boulder, co&amp;soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&amp;albedo=0.3&amp;bifaciality=0.7</a></pre>
+
+<div class="highlight"><pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEMO_KEY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"azimuth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"180"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"system_capacity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"losses"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"array_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"module_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gcr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.4"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dc_ac_ratio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"inv_eff"</span><span class="p">:</span><span class="w"> </span><span class="s2">"96.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"radius"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dataset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nsrdb"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tilt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boulder, co"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"soiling"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mf">12.0</span><span class="p">,</span><span class="w">
+      </span><span class="mf">4.0</span><span class="p">,</span><span class="w">
+      </span><span class="mf">45.0</span><span class="p">,</span><span class="w">
+      </span><span class="mf">23.0</span><span class="p">,</span><span class="w">
+      </span><span class="mf">9.0</span><span class="p">,</span><span class="w">
+      </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
+      </span><span class="mf">67.0</span><span class="p">,</span><span class="w">
+      </span><span class="mf">12.54</span><span class="p">,</span><span class="w">
+      </span><span class="mf">54.0</span><span class="p">,</span><span class="w">
+      </span><span class="mf">9.0</span><span class="p">,</span><span class="w">
+      </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+      </span><span class="mf">7.6</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"albedo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bifaciality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.7"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"warnings"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ssc_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">275</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Linux 64 bit GNU/C++ Oct  4 2022 03:10:07"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pvwattsv8"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"station_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.0099983215332</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">-105.2600021362305</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"elev"</span><span class="p">:</span><span class="w"> </span><span class="mf">1635.640014648438</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tz"</span><span class="p">:</span><span class="w"> </span><span class="mf">-7.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"149190"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Colorado"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solar_resource_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"149190.csv"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"weather_data_source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NSRDB PSM V3 GOES tmy-2020 3.2.0"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ac_monthly"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mf">320.4228876642905</span><span class="p">,</span><span class="w">
+      </span><span class="mf">384.8616364666353</span><span class="p">,</span><span class="w">
+      </span><span class="mf">321.3271515621691</span><span class="p">,</span><span class="w">
+      </span><span class="mf">461.0094975545317</span><span class="p">,</span><span class="w">
+      </span><span class="mf">554.600835450473</span><span class="p">,</span><span class="w">
+      </span><span class="mf">40.44452828685269</span><span class="p">,</span><span class="w">
+      </span><span class="mf">226.7508104582373</span><span class="p">,</span><span class="w">
+      </span><span class="mf">511.2267102793363</span><span class="p">,</span><span class="w">
+      </span><span class="mf">256.8889494651126</span><span class="p">,</span><span class="w">
+      </span><span class="mf">399.0896267699792</span><span class="p">,</span><span class="w">
+      </span><span class="mf">360.6690887453739</span><span class="p">,</span><span class="w">
+      </span><span class="mf">294.0619118014161</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"poa_monthly"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mf">96.24926945531107</span><span class="p">,</span><span class="w">
+      </span><span class="mf">116.1349407270755</span><span class="p">,</span><span class="w">
+      </span><span class="mf">98.51940622925228</span><span class="p">,</span><span class="w">
+      </span><span class="mf">144.41773091741</span><span class="p">,</span><span class="w">
+      </span><span class="mf">183.8794484222849</span><span class="p">,</span><span class="w">
+      </span><span class="mf">15.66165708215378</span><span class="p">,</span><span class="w">
+      </span><span class="mf">77.02556424264554</span><span class="p">,</span><span class="w">
+      </span><span class="mf">173.1452731392307</span><span class="p">,</span><span class="w">
+      </span><span class="mf">84.65672810465938</span><span class="p">,</span><span class="w">
+      </span><span class="mf">127.5225461326769</span><span class="p">,</span><span class="w">
+      </span><span class="mf">111.2069066909127</span><span class="p">,</span><span class="w">
+      </span><span class="mf">88.32854384099618</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"solrad_monthly"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mf">3.104815143719712</span><span class="p">,</span><span class="w">
+      </span><span class="mf">4.147676454538409</span><span class="p">,</span><span class="w">
+      </span><span class="mf">3.178045362233945</span><span class="p">,</span><span class="w">
+      </span><span class="mf">4.813924363913667</span><span class="p">,</span><span class="w">
+      </span><span class="mf">5.931595110396287</span><span class="p">,</span><span class="w">
+      </span><span class="mf">0.5220552360717927</span><span class="p">,</span><span class="w">
+      </span><span class="mf">2.484695620730502</span><span class="p">,</span><span class="w">
+      </span><span class="mf">5.585331391588086</span><span class="p">,</span><span class="w">
+      </span><span class="mf">2.821890936821979</span><span class="p">,</span><span class="w">
+      </span><span class="mf">4.113630520408932</span><span class="p">,</span><span class="w">
+      </span><span class="mf">3.706896889697091</span><span class="p">,</span><span class="w">
+      </span><span class="mf">2.849307865838586</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"dc_monthly"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mf">336.9419000259236</span><span class="p">,</span><span class="w">
+      </span><span class="mf">403.7478814828723</span><span class="p">,</span><span class="w">
+      </span><span class="mf">339.0451574758127</span><span class="p">,</span><span class="w">
+      </span><span class="mf">484.2180320849528</span><span class="p">,</span><span class="w">
+      </span><span class="mf">582.0288887329309</span><span class="p">,</span><span class="w">
+      </span><span class="mf">48.66263077401924</span><span class="p">,</span><span class="w">
+      </span><span class="mf">242.1187483732162</span><span class="p">,</span><span class="w">
+      </span><span class="mf">536.8888804277215</span><span class="p">,</span><span class="w">
+      </span><span class="mf">272.1669926053272</span><span class="p">,</span><span class="w">
+      </span><span class="mf">419.1849677039804</span><span class="p">,</span><span class="w">
+      </span><span class="mf">378.8226598116249</span><span class="p">,</span><span class="w">
+      </span><span class="mf">309.3147603281601</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"ac_annual"</span><span class="p">:</span><span class="w"> </span><span class="mf">4131.353634504403</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solrad_annual"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.604988741329917</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"capacity_factor"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.79039279253541</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="xml-output-format">XML Output Format</h3>
+
+<pre>GET <a href="/api/pvwatts/v8.xml?api_key=DEMO_KEY&amp;azimuth=180&amp;system_capacity=4&amp;losses=14&amp;array_type=1&amp;module_type=0&amp;gcr=0.4&amp;dc_ac_ratio=1.2&amp;inv_eff=96.0&amp;radius=0&amp;dataset=nsrdb&amp;tilt=10&amp;address=boulder, co&amp;soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&amp;albedo=0.3&amp;bifaciality=0.7">/api/pvwatts/v8.xml?api_key=DEMO_KEY&amp;azimuth=180&amp;system_capacity=4&amp;losses=14&amp;array_type=1&amp;module_type=0&amp;gcr=0.4&amp;dc_ac_ratio=1.2&amp;inv_eff=96.0&amp;radius=0&amp;dataset=nsrdb&amp;tilt=10&amp;address=boulder, co&amp;soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&amp;albedo=0.3&amp;bifaciality=0.7</a></pre>
+
+<div class="highlight"><pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;response&gt;</span>
+  <span class="nt">&lt;inputs&gt;</span>
+    <span class="nt">&lt;api-key&gt;</span>DEMO_KEY<span class="nt">&lt;/api-key&gt;</span>
+    <span class="nt">&lt;azimuth&gt;</span>180<span class="nt">&lt;/azimuth&gt;</span>
+    <span class="nt">&lt;system-capacity&gt;</span>4<span class="nt">&lt;/system-capacity&gt;</span>
+    <span class="nt">&lt;losses&gt;</span>14<span class="nt">&lt;/losses&gt;</span>
+    <span class="nt">&lt;array-type&gt;</span>1<span class="nt">&lt;/array-type&gt;</span>
+    <span class="nt">&lt;module-type&gt;</span>0<span class="nt">&lt;/module-type&gt;</span>
+    <span class="nt">&lt;gcr&gt;</span>0.4<span class="nt">&lt;/gcr&gt;</span>
+    <span class="nt">&lt;dc-ac-ratio&gt;</span>1.2<span class="nt">&lt;/dc-ac-ratio&gt;</span>
+    <span class="nt">&lt;inv-eff&gt;</span>96.0<span class="nt">&lt;/inv-eff&gt;</span>
+    <span class="nt">&lt;radius&gt;</span>0<span class="nt">&lt;/radius&gt;</span>
+    <span class="nt">&lt;dataset&gt;</span>nsrdb<span class="nt">&lt;/dataset&gt;</span>
+    <span class="nt">&lt;tilt&gt;</span>10<span class="nt">&lt;/tilt&gt;</span>
+    <span class="nt">&lt;address&gt;</span>boulder, co<span class="nt">&lt;/address&gt;</span>
+    <span class="nt">&lt;soiling</span> <span class="na">type=</span><span class="s">"array"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;soiling</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>12.0<span class="nt">&lt;/soiling&gt;</span>
+      <span class="nt">&lt;soiling</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>4.0<span class="nt">&lt;/soiling&gt;</span>
+      <span class="nt">&lt;soiling</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>45.0<span class="nt">&lt;/soiling&gt;</span>
+      <span class="nt">&lt;soiling</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>23.0<span class="nt">&lt;/soiling&gt;</span>
+      <span class="nt">&lt;soiling</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>9.0<span class="nt">&lt;/soiling&gt;</span>
+      <span class="nt">&lt;soiling</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>99.0<span class="nt">&lt;/soiling&gt;</span>
+      <span class="nt">&lt;soiling</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>67.0<span class="nt">&lt;/soiling&gt;</span>
+      <span class="nt">&lt;soiling</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>12.54<span class="nt">&lt;/soiling&gt;</span>
+      <span class="nt">&lt;soiling</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>54.0<span class="nt">&lt;/soiling&gt;</span>
+      <span class="nt">&lt;soiling</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>9.0<span class="nt">&lt;/soiling&gt;</span>
+      <span class="nt">&lt;soiling</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>0.0<span class="nt">&lt;/soiling&gt;</span>
+      <span class="nt">&lt;soiling</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>7.6<span class="nt">&lt;/soiling&gt;</span>
+    <span class="nt">&lt;/soiling&gt;</span>
+    <span class="nt">&lt;albedo&gt;</span>0.3<span class="nt">&lt;/albedo&gt;</span>
+    <span class="nt">&lt;bifaciality&gt;</span>0.7<span class="nt">&lt;/bifaciality&gt;</span>
+  <span class="nt">&lt;/inputs&gt;</span>
+  <span class="nt">&lt;errors</span> <span class="na">type=</span><span class="s">"array"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;warnings</span> <span class="na">type=</span><span class="s">"array"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;version&gt;</span>8.0.0<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;ssc-info&gt;</span>
+    <span class="nt">&lt;version</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>275<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;build&gt;</span>Linux 64 bit GNU/C++ Oct  4 2022 03:10:07<span class="nt">&lt;/build&gt;</span>
+    <span class="nt">&lt;module&gt;</span>pvwattsv8<span class="nt">&lt;/module&gt;</span>
+  <span class="nt">&lt;/ssc-info&gt;</span>
+  <span class="nt">&lt;station-info&gt;</span>
+    <span class="nt">&lt;lat</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>40.0099983215332<span class="nt">&lt;/lat&gt;</span>
+    <span class="nt">&lt;lon</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>-105.26000213623047<span class="nt">&lt;/lon&gt;</span>
+    <span class="nt">&lt;elev</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>1635.6400146484375<span class="nt">&lt;/elev&gt;</span>
+    <span class="nt">&lt;tz</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>-7.0<span class="nt">&lt;/tz&gt;</span>
+    <span class="nt">&lt;location&gt;</span>149190<span class="nt">&lt;/location&gt;</span>
+    <span class="nt">&lt;city&gt;&lt;/city&gt;</span>
+    <span class="nt">&lt;state&gt;</span>Colorado<span class="nt">&lt;/state&gt;</span>
+    <span class="nt">&lt;solar-resource-file&gt;</span>149190.csv<span class="nt">&lt;/solar-resource-file&gt;</span>
+    <span class="nt">&lt;weather-data-source&gt;</span>NSRDB PSM V3 GOES tmy-2020 3.2.0<span class="nt">&lt;/weather-data-source&gt;</span>
+  <span class="nt">&lt;/station-info&gt;</span>
+  <span class="nt">&lt;outputs&gt;</span>
+    <span class="nt">&lt;ac-monthly</span> <span class="na">type=</span><span class="s">"array"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ac-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>320.4228876642905<span class="nt">&lt;/ac-monthly&gt;</span>
+      <span class="nt">&lt;ac-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>384.8616364666353<span class="nt">&lt;/ac-monthly&gt;</span>
+      <span class="nt">&lt;ac-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>321.32715156216915<span class="nt">&lt;/ac-monthly&gt;</span>
+      <span class="nt">&lt;ac-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>461.00949755453166<span class="nt">&lt;/ac-monthly&gt;</span>
+      <span class="nt">&lt;ac-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>554.600835450473<span class="nt">&lt;/ac-monthly&gt;</span>
+      <span class="nt">&lt;ac-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>40.444528286852695<span class="nt">&lt;/ac-monthly&gt;</span>
+      <span class="nt">&lt;ac-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>226.75081045823728<span class="nt">&lt;/ac-monthly&gt;</span>
+      <span class="nt">&lt;ac-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>511.2267102793363<span class="nt">&lt;/ac-monthly&gt;</span>
+      <span class="nt">&lt;ac-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>256.8889494651126<span class="nt">&lt;/ac-monthly&gt;</span>
+      <span class="nt">&lt;ac-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>399.0896267699792<span class="nt">&lt;/ac-monthly&gt;</span>
+      <span class="nt">&lt;ac-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>360.66908874537387<span class="nt">&lt;/ac-monthly&gt;</span>
+      <span class="nt">&lt;ac-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>294.0619118014161<span class="nt">&lt;/ac-monthly&gt;</span>
+    <span class="nt">&lt;/ac-monthly&gt;</span>
+    <span class="nt">&lt;poa-monthly</span> <span class="na">type=</span><span class="s">"array"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;poa-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>96.24926945531107<span class="nt">&lt;/poa-monthly&gt;</span>
+      <span class="nt">&lt;poa-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>116.13494072707546<span class="nt">&lt;/poa-monthly&gt;</span>
+      <span class="nt">&lt;poa-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>98.51940622925228<span class="nt">&lt;/poa-monthly&gt;</span>
+      <span class="nt">&lt;poa-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>144.41773091741<span class="nt">&lt;/poa-monthly&gt;</span>
+      <span class="nt">&lt;poa-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>183.8794484222849<span class="nt">&lt;/poa-monthly&gt;</span>
+      <span class="nt">&lt;poa-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>15.661657082153782<span class="nt">&lt;/poa-monthly&gt;</span>
+      <span class="nt">&lt;poa-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>77.02556424264554<span class="nt">&lt;/poa-monthly&gt;</span>
+      <span class="nt">&lt;poa-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>173.14527313923068<span class="nt">&lt;/poa-monthly&gt;</span>
+      <span class="nt">&lt;poa-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>84.65672810465938<span class="nt">&lt;/poa-monthly&gt;</span>
+      <span class="nt">&lt;poa-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>127.5225461326769<span class="nt">&lt;/poa-monthly&gt;</span>
+      <span class="nt">&lt;poa-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>111.20690669091273<span class="nt">&lt;/poa-monthly&gt;</span>
+      <span class="nt">&lt;poa-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>88.32854384099618<span class="nt">&lt;/poa-monthly&gt;</span>
+    <span class="nt">&lt;/poa-monthly&gt;</span>
+    <span class="nt">&lt;solrad-monthly</span> <span class="na">type=</span><span class="s">"array"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;solrad-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>3.1048151437197116<span class="nt">&lt;/solrad-monthly&gt;</span>
+      <span class="nt">&lt;solrad-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>4.147676454538409<span class="nt">&lt;/solrad-monthly&gt;</span>
+      <span class="nt">&lt;solrad-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>3.1780453622339446<span class="nt">&lt;/solrad-monthly&gt;</span>
+      <span class="nt">&lt;solrad-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>4.813924363913667<span class="nt">&lt;/solrad-monthly&gt;</span>
+      <span class="nt">&lt;solrad-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>5.9315951103962865<span class="nt">&lt;/solrad-monthly&gt;</span>
+      <span class="nt">&lt;solrad-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>0.5220552360717927<span class="nt">&lt;/solrad-monthly&gt;</span>
+      <span class="nt">&lt;solrad-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>2.4846956207305015<span class="nt">&lt;/solrad-monthly&gt;</span>
+      <span class="nt">&lt;solrad-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>5.5853313915880864<span class="nt">&lt;/solrad-monthly&gt;</span>
+      <span class="nt">&lt;solrad-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>2.8218909368219793<span class="nt">&lt;/solrad-monthly&gt;</span>
+      <span class="nt">&lt;solrad-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>4.113630520408932<span class="nt">&lt;/solrad-monthly&gt;</span>
+      <span class="nt">&lt;solrad-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>3.706896889697091<span class="nt">&lt;/solrad-monthly&gt;</span>
+      <span class="nt">&lt;solrad-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>2.849307865838586<span class="nt">&lt;/solrad-monthly&gt;</span>
+    <span class="nt">&lt;/solrad-monthly&gt;</span>
+    <span class="nt">&lt;dc-monthly</span> <span class="na">type=</span><span class="s">"array"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;dc-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>336.9419000259236<span class="nt">&lt;/dc-monthly&gt;</span>
+      <span class="nt">&lt;dc-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>403.7478814828723<span class="nt">&lt;/dc-monthly&gt;</span>
+      <span class="nt">&lt;dc-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>339.04515747581274<span class="nt">&lt;/dc-monthly&gt;</span>
+      <span class="nt">&lt;dc-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>484.21803208495277<span class="nt">&lt;/dc-monthly&gt;</span>
+      <span class="nt">&lt;dc-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>582.0288887329309<span class="nt">&lt;/dc-monthly&gt;</span>
+      <span class="nt">&lt;dc-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>48.66263077401924<span class="nt">&lt;/dc-monthly&gt;</span>
+      <span class="nt">&lt;dc-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>242.1187483732162<span class="nt">&lt;/dc-monthly&gt;</span>
+      <span class="nt">&lt;dc-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>536.8888804277215<span class="nt">&lt;/dc-monthly&gt;</span>
+      <span class="nt">&lt;dc-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>272.16699260532715<span class="nt">&lt;/dc-monthly&gt;</span>
+      <span class="nt">&lt;dc-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>419.1849677039804<span class="nt">&lt;/dc-monthly&gt;</span>
+      <span class="nt">&lt;dc-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>378.82265981162493<span class="nt">&lt;/dc-monthly&gt;</span>
+      <span class="nt">&lt;dc-monthly</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>309.3147603281601<span class="nt">&lt;/dc-monthly&gt;</span>
+    <span class="nt">&lt;/dc-monthly&gt;</span>
+    <span class="nt">&lt;ac-annual</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>4131.353634504403<span class="nt">&lt;/ac-annual&gt;</span>
+    <span class="nt">&lt;solrad-annual</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>3.6049887413299166<span class="nt">&lt;/solrad-annual&gt;</span>
+    <span class="nt">&lt;capacity-factor</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>11.79039279253541<span class="nt">&lt;/capacity-factor&gt;</span>
+  <span class="nt">&lt;/outputs&gt;</span>
+<span class="nt">&lt;/response&gt;</span>
+</code></pre></div>
+<h2 id="rate-limits">Rate Limits</h2>
+
+<p><a href="/docs/rate-limits">Standard rate limits</a> apply. No more than 1,000 requests may be made in any hour.</p>
+
+<h2 id="errors">Errors</h2>
+
+<p><a href="/docs/errors">Standard errors</a> may be returned. In addition, the following service-specific errors may be returned:</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">HTTP Status Code</th>
+      <th class="doc-parameters-required" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">422</th>
+      <td class="doc-parameter-description">Unprocessable Entity - One or more parameters did not pass validation, or a parameter may be missing. Check the errors section of the response to see how the request should be modified to address the error.</td>
+    </tr>
+  </tbody>
+</table>
+
+    <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/solar/pvwatts/v8.html.md.erb">Help Improve this Content</a>
+</div>
+
+      <footer class="container-fluid">
+    <div align="center"><img src="/assets/images/nrel/foot_nrelis-8e56f120.gif" alt="NREL is a national laboratory of the U.S. Department of Energy, Office of Energy Efficiency and Renewable Energy, operated by the Alliance for Sustainable Energy, LLC." usemap="#footer_map" class="img-fluid" /></div>
+
+    <map name="footer_map" id="footer_map">
+      <area shape="rect" coords="27,7,61,20" href="http://www.nrel.gov/" alt="NREL" />
+      <area shape="rect" coords="238,7,399,19" href="http://www.energy.gov/" alt="U.S. Department of Energy" />
+      <area shape="rect" coords="405,7,697,21" href="http://www.eere.energy.gov/" alt="Office of Energy Efficiency and Renewable Energy" />
+      <area shape="rect" coords="307,21,524,35" href="http://www.allianceforsustainableenergy.org/" alt="Alliance for Sustainable Energy, LLC" />
+    </map>
+
+    <p><a href="/contact">Need Help?</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.nrel.gov/security.html">Security &amp; Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.nrel.gov/disclaimer.html">Disclaimer</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.nrel.gov/">NREL Home</a></p>
+  </footer>
+</div>
+
+  </body>
+</html>

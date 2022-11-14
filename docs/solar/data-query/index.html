@@ -5,16 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        Solar 
-          APIs
+        Solar Dataset Query 
+          API
         |
       NREL: Developer Network
     </title>
 
-    <link rel="canonical" href="https://developer.nrel.gov/docs/solar/" />
+    <link rel="canonical" href="https://developer.nrel.gov/docs/solar/data-query/" />
     <script>
       if(window.location.href.indexOf('nrel.github.io') !== -1) {
-        window.location.href = 'https://developer.nrel.gov/docs/solar/';
+        window.location.href = 'https://developer.nrel.gov/docs/solar/data-query/';
       }
     </script>
 
@@ -33,7 +33,7 @@
 </script>
 
   </head>
-  <body class="docs docs_solar docs_solar_index">
+  <body class="docs docs_solar docs_solar_data-query docs_solar_data-query_index">
     <div class="container">
   <header>
     <map name="header_map">
@@ -57,59 +57,41 @@
 
       <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/docs/">Documentation</a></li>
-            <li class="breadcrumb-item active">Solar</li>
+            <li class="breadcrumb-item"><a href="/docs/solar/">Solar</a></li>
+            <li class="breadcrumb-item active">Solar Dataset Query</li>
     </ol>
 
 
-    <h1 id="solar">Solar</h1>
-<p>Access data and analysis services that provide access to solar resource data and NREL models.</p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/">NSRDB Data Downloads</a>
-
-</h3>
-
-<p>Freely available downloads of The National Solar Radiation Database.</p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/pvdaq-v3/">PVDAQ (PV Data Acquisition)</a>
-
-</h3>
-
-<p>Provides access to photovoltaic performance data collected by NREL for systems throughout the country.</p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/pvwatts/">PVWatts</a>
-
-</h3>
-
-<p>NREL's PVWatts<sup>®</sup> API estimates the energy production of grid-connected photovoltaic (PV) energy systems based on a few simple inputs.</p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/data-query/">Solar Dataset Query</a>
-
-</h3>
-
+    <h1 id="solar-dataset-query">Solar Dataset Query</h1>
 <p>Returns information about data available for a given location for the solar resource database used by the <a href="https://pvwatts.nrel.gov">PVWatts® Calculator</a> and <a href="/docs/solar/pvwatts/">PVWatts APIs</a>.</p>
 
+<hr />
+
 <h3 class="doc">
 
-<a href="/docs/solar/solar-resource-v1/">Solar Resource Data</a>
+<a href="/docs/solar/data-query/v1/">Solar Dataset Query V1</a>
 
-<span class="url">(GET /api/solar/solar_resource/v1)</span>
+<span class="url">(GET /api/solar/data_query/v1)</span>
 
 
 </h3>
 
-<p>Returns various types of solar data for US locations. The service currently returns data for average Direct Normal Irradiance, average Global Horizontal Irradiance, and average Tilt at Latitude.</p>
+<p>Returns information about data available for a given location for the solar resource database used by the <a href="https://pvwatts.nrel.gov">PVWatts® Calculator</a> and <a href="/docs/solar/pvwatts/v6/">PVWatts v6 API</a>.</p>
+
+<h3 class="doc">
+
+<a href="/docs/solar/data-query/v2/">Solar Dataset Query V2</a>
+
+<span class="url">(GET /api/solar/data_query/v1)</span>
+
+
+</h3>
+
+<p>Returns information about data available for a given location for the solar resource database used by the <a href="https://pvwatts.nrel.gov">PVWatts® Calculator</a> and <a href="/docs/solar/pvwatts/v8/">PVWatts v8 API</a>.</p>
 
 
     <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
-  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/solar/index.html.md.erb">Help Improve this Content</a>
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/solar/data-query/index.html.md.erb">Help Improve this Content</a>
 </div>
 
       <footer class="container-fluid">
