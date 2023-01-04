@@ -1,7 +1,7 @@
 ---
 title: Solar Dataset Query V2
 summary: Returns information about data available for a given location for the solar resource database used by the <a href="https://pvwatts.nrel.gov">PVWatts® Calculator</a> and <a href="/docs/solar/pvwatts/v8/">PVWatts v8 API</a>.
-url: GET /api/solar/data_query/v1
+url: GET /api/solar/data_query/v2
 
 ---
 
@@ -12,7 +12,7 @@ url: GET /api/solar/data_query/v1
 
 ## Request URL
 
-<pre>GET /api/solar/data_query/v1<em>.format?parameters</em></pre>
+<pre>GET /api/solar/data_query/v2<em>.format?parameters</em></pre>
 
 ## Request Parameters
 
@@ -299,7 +299,7 @@ The output fields contain the following information regarding climate data files
 
 ### JSON Output Format
 
-<pre>GET <a href="/api/solar/data_query/v1.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;radius=0&amp;all=1">/api/solar/data_query/v1.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;radius=0&amp;all=1</a></pre>
+<pre>GET <a href="/api/solar/data_query/v2.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;radius=0&amp;all=1">/api/solar/data_query/v2.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;radius=0&amp;all=1</a></pre>
 
 ```json
 {
@@ -365,7 +365,7 @@ The output fields contain the following information regarding climate data files
 
 ### XML Output Format
 
-<pre>GET <a href="/api/solar/data_query/v1.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;radius=0&amp;all=1">/api/solar/data_query/v1.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;radius=0&amp;all=1</a></pre>
+<pre>GET <a href="/api/solar/data_query/v2.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;radius=0&amp;all=1">/api/solar/data_query/v2.xml?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;radius=0&amp;all=1</a></pre>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
