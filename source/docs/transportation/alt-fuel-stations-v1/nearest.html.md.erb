@@ -360,6 +360,10 @@ The individual fuel station records are returned in order of ascending distance 
       "ng_fill_type_code": null,
       "ng_psi": null,
       "ng_vehicle_class": null,
+      "rd_blends": null,
+      "rd_blends_fr": null,
+      "rd_blended_with_biodiesel": null,
+      "rd_max_biodiesel_level": null,
       "access_days_time_fr": null,
       "intersection_directions_fr": null,
       "bd_blends_fr": null,
@@ -500,6 +504,10 @@ The individual fuel station records are returned in order of ascending distance 
         "ng_fill_type_code": null,
         "ng_psi": null,
         "ng_vehicle_class": null,
+        "rd_blends": null,
+        "rd_blends_fr": null,
+        "rd_blended_with_biodiesel": null,
+        "rd_max_biodiesel_level": null,
         "access_days_time_fr": null,
         "intersection_directions_fr": null,
         "bd_blends_fr": null,
@@ -632,6 +640,10 @@ The individual fuel station records are returned in order of ascending distance 
       <ng-fill-type-code nil="true"/>
       <ng-psi nil="true"/>
       <ng-vehicle-class nil="true"/>
+      <rd-blends-en nil="true"/>
+      <rd-blends-fr nil="true"/>
+      <rd-blended-with-biodiesel nil="true"/>
+      <rd-max-biodiesel-level nil="true"/>
       <access-days-time-fr nil="true"/>
       <intersection-directions-fr nil="true"/>
       <bd-blends-fr nil="true"/>
@@ -749,8 +761,8 @@ The individual fuel station records are returned in order of ascending distance 
 <pre>GET <a href="/api/alt-fuel-stations/v1/nearest.csv?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.csv?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1</a></pre>
 
 ```
-Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Distance,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump,EV Connector Types,Country,Distance (km),Intersection Directions (French),Access Days Time (French),BD Blends (French),Groups With Access Code (French),Hydrogen Is Retail,Access Code,Access Detail Code,Federal Agency Code,Facility Type,CNG Dispenser Num,CNG On-Site Renewable Source,CNG Total Compression Capacity,CNG Storage Capacity,LNG On-Site Renewable Source,E85 Other Ethanol Blends,EV Pricing,EV Pricing (French),LPG Nozzle Types,Hydrogen Pressures,Hydrogen Standards,CNG Fill Type Code,CNG PSI,CNG Vehicle Class,LNG Vehicle Class,EV On-Site Renewable Source,Restricted Access
-ELEC,1687 COLE BLVD EAST STATION 1,1687 Cole Blvd,,Lakewood,CO,80401,,888-758-4389,E,,Public,24 hours daily,,,,,,2,,,ChargePoint Network,http://www.chargepoint.com/,GPS,39.740932,-105.156235,2022-06-13,194116,0.25756,2022-06-13 01:40:48 UTC,,,,2021-08-19,,,,,J1772,US,0.4145,,,,Public,,public,,,,,,,,,,,,,,,,,,,,
+Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump,EV Connector Types,Country,Intersection Directions (French),Access Days Time (French),BD Blends (French),Groups With Access Code (French),Hydrogen Is Retail,Access Code,Access Detail Code,Federal Agency Code,Facility Type,CNG Dispenser Num,CNG On-Site Renewable Source,CNG Total Compression Capacity,CNG Storage Capacity,LNG On-Site Renewable Source,E85 Other Ethanol Blends,EV Pricing,EV Pricing (French),LPG Nozzle Types,Hydrogen Pressures,Hydrogen Standards,CNG Fill Type Code,CNG PSI,CNG Vehicle Class,LNG Vehicle Class,EV On-Site Renewable Source,Restricted Access,RD Blends,RD Blends (French),RD Blended with Biodiesel,RD Maximum Biodiesel Level
+ELEC,1687 COLE BLVD EAST STATION 1,1687 Cole Blvd,,Lakewood,CO,80401,,888-758-4389,E,,Public,24 hours daily,,,,,,2,,,ChargePoint Network,http://www.chargepoint.com/,GPS,39.740932,-105.156235,2023-01-02,194116,2023-01-02 23:31:30 UTC,,,,2021-08-19,,,,,J1772,US,,,,Public,,public,,,,,,,,,,,,,,,,,,,,,,,,
 ```
 
 ## Rate Limits
