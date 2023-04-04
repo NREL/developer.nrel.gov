@@ -277,6 +277,46 @@
     </table>
   </td>
 </tr>
+<tr>
+  <th class="doc-parameter-name" scope="row">cng_has_rng</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all, true, false</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return compressed natural gas (CNG) stations based on whether they sell renewable natural gas (RNG).</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th scope="row">all</th>
+            <td>All CNG stations</td>
+          </tr>
+          <tr>
+            <th scope="row">true</th>
+            <td>Only CNG stations that sell RNG</td>
+          </tr>
+          <tr>
+            <th scope="row">false</th>
+            <td>Only CNG stations that don't sell RNG</td>
+          </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
 <% cng_psis = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/cng-psis.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
 <tr>
   <th class="doc-parameter-name" scope="row">cng_psi</th>
@@ -529,6 +569,64 @@
     </table>
   </td>
 </tr>
+<tr>
+  <th class="doc-parameter-name" scope="row">lpg_include_secondary</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all, false</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>If <code>false</code>, then exclude LPG stations that do not meet the <a href="#response-lpg-primary">criteria</a> to be considered primary.</p>
+  </td>
+</tr>
+<tr>
+  <th class="doc-parameter-name" scope="row">lng_has_rng</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all, true, false</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return liquefied natural gas (LNG) stations based on whether they sell renewable natural gas (RNG).</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th scope="row">all</th>
+            <td>All LNG stations</td>
+          </tr>
+          <tr>
+            <th scope="row">true</th>
+            <td>Only LNG stations that sell RNG</td>
+          </tr>
+          <tr>
+            <th scope="row">false</th>
+            <td>Only LNG stations that don't sell RNG</td>
+          </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
 <% lng_vehicle_classes = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/lng-vehicle-classes.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
 <tr>
   <th class="doc-parameter-name" scope="row">lng_vehicle_class</th>
@@ -562,24 +660,6 @@
         <% end %>
       </tbody>
     </table>
-  </td>
-</tr>
-<tr>
-  <th class="doc-parameter-name" scope="row">lpg_include_secondary</th>
-  <td class="doc-parameter-required">No</td>
-  <td class="doc-parameter-value">
-    <div class="doc-parameter-value-field">
-      <strong>Type:</strong> string
-    </div>
-    <div class="doc-parameter-value-field">
-      <strong>Default:</strong> <em>all</em>
-    </div>
-    <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <em>all, false</em>
-    </div>
-  </td>
-  <td class="doc-parameter-description">
-    <p>If <code>false</code>, then exclude LPG stations that do not meet the <a href="#response-lpg-primary">criteria</a> to be considered primary.</p>
   </td>
 </tr>
 <tr>
