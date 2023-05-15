@@ -709,6 +709,7 @@
         </table>
         <p>Note: This field does not take into account station capacity or other considerations.</p>
       </td>
+      <td class="doc-parameter-description">Deprecated: See <a href="#maximum-vehicle-class"><code>maximum_vehicle_class</code></a>. (Note: this field will remain for legacy application support)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">lng_renewable_source</th>
@@ -767,6 +768,7 @@
         </table>
         <p>Note: This field does not take into account station capacity or other considerations.</p>
       </td>
+      <td class="doc-parameter-description">Deprecated: See <a href="#maximum-vehicle-class"><code>maximum_vehicle_class</code></a>. (Note: this field will remain for legacy application support)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">lng_has_rng</th>
@@ -1262,6 +1264,37 @@
             </tr>
           </tbody>
         </table>
+      </td>
+    </tr>
+    <!-- ###### NOTE: DON'T DEPLOY UNTIL PR 484 IS DEPLOYED TO PRODUCTION ###### -->
+    <% vehicle_classes = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/vehicle-classes.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
+    <tr id="maximum-vehicle-class">
+      <th class="doc-parameter-name" scope="row">maximum_vehicle_class</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The maximum vehicle size that can physically access the fueling infrastructure, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% vehicle_classes.each do |vehicle_class| %>
+              <% next if vehicle_class.fetch("key") == "all" %>
+              <tr>
+                <th scope="row"><%= vehicle_class.fetch("key") %></th>
+                <td><%= vehicle_class.fetch("name") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <p>Note: This field does not take into account station capacity or other considerations.</p>
       </td>
     </tr>
   </tbody>
