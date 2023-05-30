@@ -2530,7 +2530,7 @@
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">Deprecated: For CNG stations, see <a href="#cng-vehicle-class"><code>cng_vehicle_class</code></a>. For LNG stations, see <a href="#lng-vehicle-class"><code>lng_vehicle_class</code></a>. (Note: this field will remain for legacy application support)</td>
+      <td class="doc-parameter-description">Deprecated: See <a href="#maximum-vehicle-class"><code>maximum_vehicle_class</code></a>. (Note: this field will remain for legacy application support)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">rd_blends</th>
@@ -2796,6 +2796,7 @@
         </table>
         <p>Note: This field does not take into account station capacity or other considerations.</p>
       </td>
+      <td class="doc-parameter-description">Deprecated: See <a href="#maximum-vehicle-class"><code>maximum_vehicle_class</code></a>. (Note: this field will remain for legacy application support)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">lng_renewable_source</th>
@@ -2883,6 +2884,7 @@
         </table>
         <p>Note: This field does not take into account station capacity or other considerations.</p>
       </td>
+      <td class="doc-parameter-description">Deprecated: See <a href="#maximum-vehicle-class"><code>maximum_vehicle_class</code></a>. (Note: this field will remain for legacy application support)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">lng_has_rng</th>
@@ -3874,6 +3876,41 @@
         </table>
       </td>
     </tr>
+    <!-- ###### NOTE: CHANGE THIS TO NON-CNG ENDPOINT ONCE PR 484 IS DEPLOYED TO PRODUCTION ###### -->
+    <tr id="maximum-vehicle-class">
+      <th class="doc-parameter-name" scope="row">maximum_vehicle_class</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The maximum vehicle size that can physically access the fueling infrastructure, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <th scope="row">LD</th>
+                <td>Passenger vehicles (class 1-2)</td>
+              </tr>
+              <tr>
+                <th scope="row">MD</th>
+                <td>Medium-duty (class 3-5)</td>
+              </tr>
+              <tr>
+                <th scope="row">HD</th>
+                <td>Heavy-duty (class 6-8)</td>
+              </tr>
+          </tbody>
+        </table>
+        <p>Note: This field does not take into account station capacity or other considerations.</p>
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -4035,6 +4072,7 @@
       </span><span class="nl">"owner_type_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LG"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"restricted_access"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"maximum_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LADWP - Truesdale Center"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"station_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-10T19:42:29Z"</span><span class="p">,</span><span class="w">
@@ -4107,6 +4145,7 @@
       </span><span class="nl">"owner_type_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LG"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"restricted_access"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"maximum_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LADWP - West LA District Office"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"station_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-10T19:42:29Z"</span><span class="p">,</span><span class="w">
@@ -4229,6 +4268,7 @@
         </span><span class="nl">"owner_type_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LG"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"restricted_access"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"maximum_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LADWP - Truesdale Center"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"station_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-10T19:42:29Z"</span><span class="p">,</span><span class="w">
@@ -4309,6 +4349,7 @@
         </span><span class="nl">"owner_type_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LG"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"restricted_access"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"maximum_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LADWP - West LA District Office"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"station_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-10T19:42:29Z"</span><span class="p">,</span><span class="w">
@@ -4419,6 +4460,7 @@
       <span class="nt">&lt;owner-type-code&gt;</span>LG<span class="nt">&lt;/owner-type-code&gt;</span>
       <span class="nt">&lt;status-code&gt;</span>E<span class="nt">&lt;/status-code&gt;</span>
       <span class="nt">&lt;restricted-access</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;maximum-vehicle-class</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;station-name&gt;</span>LADWP - Truesdale Center<span class="nt">&lt;/station-name&gt;</span>
       <span class="nt">&lt;station-phone</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;updated-at&gt;</span>2022-02-10 19:42:29 UTC<span class="nt">&lt;/updated-at&gt;</span>
@@ -4491,6 +4533,7 @@
       <span class="nt">&lt;owner-type-code&gt;</span>LG<span class="nt">&lt;/owner-type-code&gt;</span>
       <span class="nt">&lt;status-code&gt;</span>E<span class="nt">&lt;/status-code&gt;</span>
       <span class="nt">&lt;restricted-access</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;maximum-vehicle-class</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;station-name&gt;</span>LADWP - West LA District Office<span class="nt">&lt;/station-name&gt;</span>
       <span class="nt">&lt;station-phone</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;updated-at&gt;</span>2022-02-10 19:42:29 UTC<span class="nt">&lt;/updated-at&gt;</span>
@@ -4707,9 +4750,9 @@
 
 <pre>GET <a href="/api/alt-fuel-stations/v1.csv?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2">/api/alt-fuel-stations/v1.csv?api_key=DEMO_KEY&amp;fuel_type=E85,ELEC&amp;state=CA&amp;limit=2</a></pre>
 
-<div class="highlight"><pre class="highlight plaintext"><code>Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump,EV Connector Types,Country,Intersection Directions (French),Access Days Time (French),BD Blends (French),Groups With Access Code (French),Hydrogen Is Retail,Access Code,Access Detail Code,Federal Agency Code,Facility Type,CNG Dispenser Num,CNG On-Site Renewable Source,CNG Total Compression Capacity,CNG Storage Capacity,LNG On-Site Renewable Source,E85 Other Ethanol Blends,EV Pricing,EV Pricing (French),LPG Nozzle Types,Hydrogen Pressures,Hydrogen Standards,CNG Fill Type Code,CNG PSI,CNG Vehicle Class,LNG Vehicle Class,EV On-Site Renewable Source,Restricted Access,RD Blends,RD Blends (French),RD Blended with Biodiesel,RD Maximum Biodiesel Level
-ELEC,LADWP - Truesdale Center,11797 Truesdale St,,Sun Valley,CA,91352,,,E,,Private,Fleet use only,,,,,,39,3,,Non-Networked,,GPS,34.2483191527193,-118.3879713743439,2021-07-14,1517,2022-07-18 11:36:50 UTC,LG,,,1999-10-15,,,,,CHADEMO J1772 J1772COMBO,US,,,,Privé,,private,,,UTILITY,,,,,,,,,,,,,,,,,,,,,
-ELEC,LADWP - West LA District Office,1394 S Sepulveda Blvd,,Los Angeles,CA,90024,,,E,,Private,,,,,,,4,,,Non-Networked,,200-8,34.052542,-118.448504,2021-07-14,1519,2022-07-18 11:36:50 UTC,LG,,,2020-02-28,,,,,J1772,US,,,,Privé,,private,,,UTILITY,,,,,,,Free,,,,,,,,,,,,,,
+<div class="highlight"><pre class="highlight plaintext"><code>Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump,EV Connector Types,Country,Intersection Directions (French),Access Days Time (French),BD Blends (French),Groups With Access Code (French),Hydrogen Is Retail,Access Code,Access Detail Code,Federal Agency Code,Facility Type,CNG Dispenser Num,CNG On-Site Renewable Source,CNG Total Compression Capacity,CNG Storage Capacity,LNG On-Site Renewable Source,E85 Other Ethanol Blends,EV Pricing,EV Pricing (French),LPG Nozzle Types,Hydrogen Pressures,Hydrogen Standards,CNG Fill Type Code,CNG PSI,CNG Vehicle Class,LNG Vehicle Class,EV On-Site Renewable Source,Restricted Access,RD Blends,RD Blends (French),RD Blended with Biodiesel,RD Maximum Biodiesel Level,Maximum Vehicle Class
+ELEC,LADWP - Truesdale Center,11797 Truesdale St,,Sun Valley,CA,91352,,,E,,Private,Fleet use only,,,,,,39,3,,Non-Networked,,GPS,34.2483191527193,-118.3879713743439,2021-07-14,1517,2022-07-18 11:36:50 UTC,LG,,,1999-10-15,,,,,CHADEMO J1772 J1772COMBO,US,,,,Privé,,private,,,UTILITY,,,,,,,,,,,,,,,,,,,,,,
+ELEC,LADWP - West LA District Office,1394 S Sepulveda Blvd,,Los Angeles,CA,90024,,,E,,Private,,,,,,,4,,,Non-Networked,,200-8,34.052542,-118.448504,2021-07-14,1519,2022-07-18 11:36:50 UTC,LG,,,2020-02-28,,,,,J1772,US,,,,Privé,,private,,,UTILITY,,,,,,,Free,,,,,,,,,,,,,,,
 </code></pre></div>
 <h2 id="rate-limits">Rate Limits</h2>
 

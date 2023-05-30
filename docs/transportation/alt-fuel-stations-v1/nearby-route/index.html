@@ -2650,7 +2650,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
           <strong>Type:</strong> string
         </div>
       </td>
-      <td class="doc-parameter-description">Deprecated: For CNG stations, see <a href="#cng-vehicle-class"><code>cng_vehicle_class</code></a>. For LNG stations, see <a href="#lng-vehicle-class"><code>lng_vehicle_class</code></a>. (Note: this field will remain for legacy application support)</td>
+      <td class="doc-parameter-description">Deprecated: See <a href="#maximum-vehicle-class"><code>maximum_vehicle_class</code></a>. (Note: this field will remain for legacy application support)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">rd_blends</th>
@@ -2916,6 +2916,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </table>
         <p>Note: This field does not take into account station capacity or other considerations.</p>
       </td>
+      <td class="doc-parameter-description">Deprecated: See <a href="#maximum-vehicle-class"><code>maximum_vehicle_class</code></a>. (Note: this field will remain for legacy application support)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">lng_renewable_source</th>
@@ -3003,6 +3004,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </table>
         <p>Note: This field does not take into account station capacity or other considerations.</p>
       </td>
+      <td class="doc-parameter-description">Deprecated: See <a href="#maximum-vehicle-class"><code>maximum_vehicle_class</code></a>. (Note: this field will remain for legacy application support)</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">lng_has_rng</th>
@@ -4003,6 +4005,41 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </table>
       </td>
     </tr>
+    <!-- ###### NOTE: CHANGE THIS TO NON-CNG ENDPOINT ONCE PR 484 IS DEPLOYED TO PRODUCTION ###### -->
+    <tr id="maximum-vehicle-class">
+      <th class="doc-parameter-name" scope="row">maximum_vehicle_class</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The maximum vehicle size that can physically access the fueling infrastructure, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <th scope="row">LD</th>
+                <td>Passenger vehicles (class 1-2)</td>
+              </tr>
+              <tr>
+                <th scope="row">MD</th>
+                <td>Medium-duty (class 3-5)</td>
+              </tr>
+              <tr>
+                <th scope="row">HD</th>
+                <td>Heavy-duty (class 6-8)</td>
+              </tr>
+          </tbody>
+        </table>
+        <p>Note: This field does not take into account station capacity or other considerations.</p>
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -4209,6 +4246,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       </span><span class="nl">"owner_type_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"restricted_access"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"maximum_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EPOQUE GOLDEN STATION 1"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"station_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"888-758-4389"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-13T01:12:15Z"</span><span class="p">,</span><span class="w">
@@ -4342,6 +4380,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </span><span class="nl">"owner_type_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"restricted_access"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"maximum_vehicle_class"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"station_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EPOQUE GOLDEN STATION 1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"station_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"888-758-4389"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-13T01:12:15Z"</span><span class="p">,</span><span class="w">
@@ -4463,6 +4502,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <span class="nt">&lt;owner-type-code</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;status-code&gt;</span>E<span class="nt">&lt;/status-code&gt;</span>
       <span class="nt">&lt;restricted-access&gt;</span>false<span class="nt">&lt;/restricted-access&gt;</span>
+      <span class="nt">&lt;maximum-vehicle-class</span> <span class="na">nil=</span><span class="s">"true"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;station-name&gt;</span>EPOQUE GOLDEN STATION 1<span class="nt">&lt;/station-name&gt;</span>
       <span class="nt">&lt;station-phone&gt;</span>888-758-4389<span class="nt">&lt;/station-phone&gt;</span>
       <span class="nt">&lt;updated-at&gt;</span>2022-06-13 01:12:15 UTC<span class="nt">&lt;/updated-at&gt;</span>
@@ -4629,8 +4669,8 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
 
 <pre>GET <a href="/api/alt-fuel-stations/v1/nearby-route.csv?api_key=DEMO_KEY&amp;distance=2&amp;limit=1&amp;route=LINESTRING(-105.22109+39.75553,-105.22133+39.7554,-105.22059+39.75459,-105.21959+39.75351,-105.2183+39.75214,-105.21685+39.75057,-105.21603+39.74968,-105.21634+39.7495,-105.21647+39.74949,-105.21711+39.74914,-105.21851+39.74834,-105.21904+39.74805,-105.22002+39.74756,-105.22201+39.74644,-105.22282+39.746,-105.22286+39.74592,-105.22361+39.74552,-105.22377+39.74544,-105.22369+39.74536,-105.22347+39.74511,-105.223+39.74456,-105.22229+39.74371,-105.22127+39.74253,-105.22003+39.74108,-105.21818+39.73897,-105.2169+39.73751,-105.21523+39.73556,-105.21481+39.73506,-105.21472+39.73497,-105.21412+39.73429,-105.21236+39.73224,-105.21171+39.73153,-105.21133+39.73116,-105.21095+39.73087,-105.21063+39.73067,-105.21035+39.73048,-105.21002+39.7303,-105.20967+39.73014,-105.20924+39.72999,-105.20868+39.72983,-105.20728+39.7295,-105.20646+39.72935,-105.20591+39.7292,-105.20536+39.72898,-105.20492+39.72875,-105.20449+39.72848,-105.20415+39.72822,-105.20337+39.72738,-105.20251+39.72645,-105.20231+39.72628,-105.2019+39.72595,-105.20161+39.72575,-105.20104+39.72549,-105.20058+39.72531,-105.20008+39.72517,-105.19955+39.72505,-105.19898+39.72497,-105.19864+39.72497,-105.19373+39.72506,-105.19236+39.72511,-105.1892+39.72517,-105.18344+39.72525,-105.17917+39.72527,-105.17557+39.72528,-105.17489+39.72526,-105.17161+39.72526,-105.16583+39.72529,-105.16535+39.72528,-105.15957+39.72526,-105.15825+39.72527,-105.15786+39.72524,-105.15646+39.72527,-105.1539+39.72527,-105.15125+39.72529,-105.14747+39.72528,-105.14119+39.72529,-105.13785+39.72528,-105.13519+39.72529,-105.13472+39.72527,-105.13402+39.72529,-105.13082+39.7253,-105.13047+39.7253,-105.12306+39.72531,-105.12198+39.72535,-105.12104+39.72535,-105.11306+39.72536,-105.11022+39.72537,-105.10935+39.72537,-105.10807+39.72538,-105.10368+39.72541,-105.1+39.72542,-105.08879+39.72547,-105.08174+39.72549,-105.07608+39.72552,-105.06001+39.72558,-105.05718+39.72563,-105.05633+39.72565,-105.05315+39.72565,-105.04604+39.72561,-105.03945+39.72559,-105.03493+39.72557,-105.03294+39.72552,-105.03223+39.72544,-105.03127+39.72542,-105.02645+39.72543,-105.02381+39.72542,-105.02259+39.7254,-105.02224+39.72538,-105.02072+39.72531,-105.01867+39.72519,-105.01803+39.72521,-105.01685+39.72529,-105.01566+39.72536,-105.01508+39.72539,-105.01297+39.72553,-105.01136+39.72562,-105.01095+39.72563,-105.01077+39.72562,-105.01051+39.72561,-105.01019+39.72562,-105.00873+39.72569,-105.00811+39.72573,-105.00712+39.72569,-105.00578+39.72567,-105.00545+39.72564,-105.00399+39.72563,-105.00194+39.72564,-105.0016+39.72564,-105.00095+39.72564,-104.99988+39.7257,-104.99755+39.7257,-104.99282+39.72567,-104.99047+39.72566,-104.98918+39.72564,-104.98837+39.72565,-104.98745+39.72564,-104.98624+39.72564,-104.98622+39.72592,-104.9862+39.72633,-104.98616+39.72726,-104.98617+39.72814,-104.98616+39.72876,-104.98612+39.73205,-104.98612+39.73385,-104.98614+39.73528,-104.98612+39.73685,-104.98611+39.73845,-104.98486+39.73844,-104.98486+39.73757)">/api/alt-fuel-stations/v1/nearby-route.csv?api_key=DEMO_KEY&amp;distance=2&amp;route=LINESTRING(-105.22109+39.75553,-105.22133+39.7554,-105.22059+39.75459,-105.21959+39.75351,-105.2183+39.75214,-105.21685+39.75057,-105.21603+39.74968,-105.21634+39.7495,-105.21647+39.74949,-105.21711+39.74914,-105.21851+39.74834,-105.21904+39.74805,-105.22002+39.74756,-105.22201+39.74644,-105.22282+39.746,-105.22286+39.74592,-105.22361+39.74552,-105.22377+39.74544,-105.22369+39.74536,-105.22347+39.74511,-105.223+39.74456,-105.22229+39.74371,-105.22127+39.74253,-105.22003+39.74108,-105.21818+39.73897,-105.2169+39.73751,-105.21523+39.73556,-105.21481+39.73506,-105.21472+39.73497,-105.21412+39.73429,-105.21236+39.73224,-105.21171+39.73153,-105.21133+39.73116,-105.21095+39.73087,-105.21063+39.73067,-105.21035+39.73048,-105.21002+39.7303,-105.20967+39.73014,-105.20924+39.72999,-105.20868+39.72983,-105.20728+39.7295,-105.20646+39.72935,-105.20591+39.7292,-105.20536+39.72898,-105.20492+39.72875,-105.20449+39.72848,-105.20415+39.72822,-105.20337+39.72738,-105.20251+39.72645,-105.20231+39.72628,-105.2019+39.72595,-105.20161+39.72575,-105.20104+39.72549,-105.20058+39.72531,-105.20008+39.72517,-105.19955+39.72505,-105.19898+39.72497,-105.19864+39.72497,-105.19373+39.72506,-105.19236+39.72511,-105.1892+39.72517,-105.18344+39.72525,-105.17917+39.72527,-105.17557+39.72528,-105.17489+39.72526,-105.17161+39.72526,-105.16583+39.72529,-105.16535+39.72528,-105.15957+39.72526,-105.15825+39.72527,-105.15786+39.72524,-105.15646+39.72527,-105.1539+39.72527,-105.15125+39.72529,-105.14747+39.72528,-105.14119+39.72529,-105.13785+39.72528,-105.13519+39.72529,-105.13472+39.72527,-105.13402+39.72529,-105.13082+39.7253,-105.13047+39.7253,-105.12306+39.72531,-105.12198+39.72535,-105.12104+39.72535,-105.11306+39.72536,-105.11022+39.72537,-105.10935+39.72537,-105.10807+39.72538,-105.10368+39.72541,-105.1+39.72542,-105.08879+39.72547,-105.08174+39.72549,-105.07608+39.72552,-105.06001+39.72558,-105.05718+39.72563,-105.05633+39.72565,-105.05315+39.72565,-105.04604+39.72561,-105.03945+39.72559,-105.03493+39.72557,-105.03294+39.72552,-105.03223+39.72544,-105.03127+39.72542,-105.02645+39.72543,-105.02381+39.72542,-105.02259+39.7254,-105.02224+39.72538,-105.02072+39.72531,-105.01867+39.72519,-105.01803+39.72521,-105.01685+39.72529,-105.01566+39.72536,-105.01508+39.72539,-105.01297+39.72553,-105.01136+39.72562,-105.01095+39.72563,-105.01077+39.72562,-105.01051+39.72561,-105.01019+39.72562,-105.00873+39.72569,-105.00811+39.72573,-105.00712+39.72569,-105.00578+39.72567,-105.00545+39.72564,-105.00399+39.72563,-105.00194+39.72564,-105.0016+39.72564,-105.00095+39.72564,-104.99988+39.7257,-104.99755+39.7257,-104.99282+39.72567,-104.99047+39.72566,-104.98918+39.72564,-104.98837+39.72565,-104.98745+39.72564,-104.98624+39.72564,-104.98622+39.72592,-104.9862+39.72633,-104.98616+39.72726,-104.98617+39.72814,-104.98616+39.72876,-104.98612+39.73205,-104.98612+39.73385,-104.98614+39.73528,-104.98612+39.73685,-104.98611+39.73845,-104.98486+39.73844,-104.98486+39.73757)</a></pre>
 
-<div class="highlight"><pre class="highlight plaintext"><code>Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Distance,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump,EV Connector Types,Country,Distance (km),Intersection Directions (French),Access Days Time (French),BD Blends (French),Groups With Access Code (French),Hydrogen Is Retail,Access Code,Access Detail Code,Federal Agency Code,Facility Type,CNG Dispenser Num,CNG On-Site Renewable Source,CNG Total Compression Capacity,CNG Storage Capacity,LNG On-Site Renewable Source,E85 Other Ethanol Blends,EV Pricing,EV Pricing (French),LPG Nozzle Types,Hydrogen Pressures,Hydrogen Standards,CNG Fill Type Code,CNG PSI,CNG Vehicle Class,LNG Vehicle Class,EV On-Site Renewable Source,Restricted Access,RD Blends,RD Blends (French),RD Blended with Biodiesel,RD Maximum Biodiesel Level
-ELEC,EPOQUE GOLDEN STATION 1,820 Spyderco Way,,Golden,CO,80403,,888-758-4389,T,2022-09-09,TEMPORARILY UNAVAILABLE (Public),24 hours daily,,,,,,2,,,ChargePoint Network,http://www.chargepoint.com/,GPS,39.775615,-105.234677,2023-01-02,143538,1.57149,2023-01-02 23:17:26 UTC,,,,2019-08-15,,,,,J1772,US,2.52907,,,,TEMPORAIREMENT SUSPENDU (Public),,public,,,,,,,,,,,,,,,,,,,,,,,,
+<div class="highlight"><pre class="highlight plaintext"><code>Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Distance,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump,EV Connector Types,Country,Distance (km),Intersection Directions (French),Access Days Time (French),BD Blends (French),Groups With Access Code (French),Hydrogen Is Retail,Access Code,Access Detail Code,Federal Agency Code,Facility Type,CNG Dispenser Num,CNG On-Site Renewable Source,CNG Total Compression Capacity,CNG Storage Capacity,LNG On-Site Renewable Source,E85 Other Ethanol Blends,EV Pricing,EV Pricing (French),LPG Nozzle Types,Hydrogen Pressures,Hydrogen Standards,CNG Fill Type Code,CNG PSI,CNG Vehicle Class,LNG Vehicle Class,EV On-Site Renewable Source,Restricted Access,RD Blends,RD Blends (French),RD Blended with Biodiesel,RD Maximum Biodiesel Level,Maximum Vehicle Class
+ELEC,EPOQUE GOLDEN STATION 1,820 Spyderco Way,,Golden,CO,80403,,888-758-4389,T,2022-09-09,TEMPORARILY UNAVAILABLE (Public),24 hours daily,,,,,,2,,,ChargePoint Network,http://www.chargepoint.com/,GPS,39.775615,-105.234677,2023-01-02,143538,1.57149,2023-01-02 23:17:26 UTC,,,,2019-08-15,,,,,J1772,US,2.52907,,,,TEMPORAIREMENT SUSPENDU (Public),,public,,,,,,,,,,,,,,,,,,,,,,,,,
 </code></pre></div>
 <h2 id="rate-limits">Rate Limits</h2>
 
