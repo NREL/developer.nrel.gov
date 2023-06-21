@@ -1,6 +1,6 @@
 ---
 title: Solar Dataset Query V1
-summary: Returns information about data available for a given location for the solar resource database used by the <a href="https://pvwatts.nrel.gov">PVWatts® Calculator</a> and <a href="/docs/solar/pvwatts/v6/">PVWatts v6 API</a>.
+summary: Returns information about data available for a given location for the solar resource database used by the <a href="/docs/solar/pvwatts/v6/">PVWatts v6 API</a>. 
 url: GET /api/solar/data_query/v1
 alias: docs/solar/data-query-v1/
 
@@ -255,7 +255,7 @@ The output fields contain the following information regarding climate data files
     <tr>
       <th class="doc-parameter-name" scope="row">id</th>
       <td class="doc-parameter-value"><strong>Type:</strong> string</td>
-      <td class="doc-parameter-description">An identifier for the climate data within the dataset.</td>
+      <td class="doc-parameter-description">An identifier for the climate data within the dataset. NOTE: this file ID can only be used with the PVWatts V6 API, and will not work with the PVWatts V8 API.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">lat</th>
