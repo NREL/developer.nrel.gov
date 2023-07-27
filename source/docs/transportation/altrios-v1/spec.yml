@@ -1,0 +1,126 @@
+openapi: 3.0.0
+info:
+  title: ALTRIOS API
+  version: "1.0"
+  description: |
+    The Advanced Locomotive Technology and Rail Infrastructure Optimization System (ALTRIOS) is the first fully integrated, open-source software to simulate and optimize the rollout of cost-effective locomotive technologies for de-carbonization.
+    For more information, see: <https://www.nrel.gov/transportation/altrios.html>. 
+
+    This API showcases a limited set of features from the full ALTRIOS model.
+    For more complicated analyses, we recommend you utilize the core model at <https://github.com/NREL/altrios>. 
+
+    **Endpoints**:
+    - `/rollout`: Explore a rollout strategy for incorporating battery electric locomotives (BELs) into a fleet of existing diesel locomotives.
+    - `/train_simulation`: Simulate a train running over a single route..
+
+servers:
+  - url: https://developer.nrel.gov/api/altrios
+paths:
+  /rollout:
+    post:
+      summary: Battery Electric Locomotive Rollout
+      description: Explore a rollout strategy for incorporating battery electric locomotives (BELs) into a fleet of existing diesel locomotives.
+      requestBody:
+        description: A JSON object with the number of years and the target BEL ratio.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RolloutRequest"
+      responses:
+        "200":
+          description: A JSON object with the metrics that include energy usage, fuel cost, locomotive costs.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RolloutResponse"
+    get:
+      summary: Battery Electric Locomotive Rollout
+      description: Explore a rollout strategy for incorporating battery electric locomotives (BELs) into a fleet of existing diesel locomotives.
+      parameters:
+        - in: query
+          name: rollout_years
+          required: true
+          schema:
+            type: number
+          description: How many years to compute the rollout simulation for
+        - in: query
+          name: target_bel_ratio
+          required: true
+          schema:
+            type: number
+          description: The makeup (in percentage) of battery electric locomotives relative to an existing diesel fleet.
+      responses:
+        "200":
+          description: A JSON object with the metrics that include energy usage, fuel cost, locomotive costs.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RolloutResponse"
+components:
+  securitySchemes:
+    ApiKeyQueryAuth:
+      type: apiKey
+      in: query
+      name: api_key
+    ApiKeyHeaderAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+  schemas:
+    RolloutRequest:
+      type: object
+      required: [rollout_years, target_bel_ratio]
+      properties:
+        rollout_years:
+          type: number
+          description: How many years to compute the rollout simulation for
+          example: 20
+        target_bel_ratio:
+          type: number
+          description: The makeup (in percentage) of battery electric locomotives relative to an existing diesel fleet.
+          example: 50
+    RolloutResponse:
+      type: object
+      properties:
+        all_metrics:
+          type: array
+          items:
+            type: object
+            description: For a given year, a record representing a given metric
+            properties:
+              Metric:
+                type: string
+                description: What metric this record represnets
+              Year:
+                type: number
+                description: What year this record represnets
+              Value:
+                type: number
+                description: The value of this metric for this year
+          example:
+            [
+              {
+                "Metric": "Diesel_Usage_gallons",
+                "Value": 2828660.6036960264,
+                "Year": "2020",
+              },
+              {
+                "Metric": "Cost_Diesel_USD",
+                "Value": 11778542.753790254,
+                "Year": "2020",
+              },
+              {
+                "Metric": "Electricity_Usage_kWh",
+                "Value": 0.0,
+                "Year": "2020",
+              },
+              {
+                "Metric": "Cost_Electricity_USD",
+                "Value": 0.0,
+                "Year": "2020",
+              },
+            ]
+security:
+  - ApiKeyQueryAuth: []
+  - ApiKeyHeaderAuth: []
