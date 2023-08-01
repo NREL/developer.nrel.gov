@@ -1,0 +1,281 @@
+openapi: 3.0.0
+info:
+  title: ALTRIOS API
+  version: "1.0"
+  description: |
+    The Advanced Locomotive Technology and Rail Infrastructure Optimization System (ALTRIOS) is the first fully integrated, open-source software to simulate and optimize the rollout of cost-effective locomotive technologies for de-carbonization.
+    For more information, see: <https://www.nrel.gov/transportation/altrios.html>. 
+
+    This API showcases a limited set of features from the full ALTRIOS model.
+    For more complicated analyses, we recommend you utilize the core model at <https://github.com/NREL/altrios>. 
+
+    **Endpoints**:
+    - `/rollout`: Explore a rollout strategy for incorporating battery electric locomotives (BELs) into a fleet of existing diesel locomotives.
+    - `/train_simulation`: Simulate a train running over a single route..
+
+servers:
+  - url: https://developer.nrel.gov/api/altrios
+paths:
+  /train_simulation:
+    post:
+      summary: Train Simulation
+      description: Simulate a train running over a fixed route varying the number of Diesel and Battery Electric locomotives.
+      requestBody:
+        description: A JSON object with the paramters for the train simulation
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TrainSimRequest"
+      responses:
+        "200":
+          description: A JSON object with the results from the simulation that include energy usage, emissions, consists powers, etc.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TrainSimResponse"
+
+  /rollout:
+    post:
+      summary: Battery Electric Locomotive Rollout
+      description: Explore a rollout strategy for incorporating battery electric locomotives (BELs) into a fleet of existing diesel locomotives.
+      requestBody:
+        description: A JSON object with the number of years and the target BEL ratio.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RolloutRequest"
+      responses:
+        "200":
+          description: A JSON object with the metrics that include energy usage, fuel cost, locomotive costs.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RolloutResponse"
+    get:
+      summary: Battery Electric Locomotive Rollout
+      description: Explore a rollout strategy for incorporating battery electric locomotives (BELs) into a fleet of existing diesel locomotives.
+      parameters:
+        - in: query
+          name: rollout_years
+          required: true
+          schema:
+            type: number
+          description: How many years to compute the rollout simulation for
+        - in: query
+          name: target_bel_ratio
+          required: true
+          schema:
+            type: number
+          description: The makeup (in percentage) of battery electric locomotives relative to an existing diesel fleet.
+      responses:
+        "200":
+          description: A JSON object with the metrics that include energy usage, fuel cost, locomotive costs.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RolloutResponse"
+components:
+  securitySchemes:
+    ApiKeyQueryAuth:
+      type: apiKey
+      in: query
+      name: api_key
+    ApiKeyHeaderAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+  schemas:
+    TrainSimRequest:
+      type: object
+      required:
+        [
+          n_conventional,
+          n_battery_electric,
+          bel_battery_size_kwh,
+          bel_battery_soc,
+          n_empty_cars,
+          n_full_cars,
+        ]
+      properties:
+        n_conventional:
+          type: number
+          description: How many conventional diesel locomotives are in the train consist?
+          example: 2
+        n_battery_electric:
+          type: number
+          description: How many battery electric locomotives are in the train consist?
+          example: 2
+        bel_battery_size_kwh:
+          type: number
+          description: What is the energy capacity, in kwh, of the battery electric locomotives?
+          example: 2400
+        bel_battery_soc:
+          type: number
+          description: What is the starting state of charge, in percentage, for the battery electric locomotives?
+          example: 100
+        n_empty_cars:
+          type: number
+          description: How many empty rail cars are part of the train (28500 kg each)?
+          example: 20
+        n_full_cars:
+          type: number
+          description: How many full rail cars are part of the train (130000 kg each)?
+          example: 20
+    TrainSimResponse:
+      type: object
+      properties:
+        total_diesel_usage_kwh:
+          type: number
+          description: The total diesel usage, in kwh, for the entire train consist over the whole route
+        total_diesel_ghg_tonne_co2eq:
+          type: number
+          description: The total greenhouse gas emissions, in tonne CO2 equivalent, from the diesel fuel for the entire train consist over the whole route
+        total_elec_usage_kwh:
+          type: number
+          description: The total electricity usage, in kwh, for the entire train consist over the whole route
+        total_elec_ghg_tonne_co2eq:
+          type: number
+          description: The total greenhouse gas emissions, in tonne CO2 equivalent, from the electricity for the entire train consist over the whole route
+        plot_results:
+          type: array
+          items:
+            type: object
+            description: For each simulation time step, a record holding all of the simulation metrics
+            properties:
+              speed_limit_mph:
+                type: number
+                description: The track speed limit, in mph, at time _t_.
+              actual_speed_mph:
+                type: number
+                description: The actual train speed, in mph, at time _t_.
+              target_speed_mph:
+                type: number
+                description: The target train speed, in mph, at time _t_.
+              conv_pwr_hp:
+                type: number
+                description: The sum of power, in hp, for all diesel locomotives at time _t_.
+              bel_pwr_hp:
+                type: number
+                description: The sum of power, in hp, for all battery electric locomotives at time _t_.
+              diesel_energy_kwh:
+                type: number
+                description: The sum of cumulative energy consumption, in kwh, for all diesel locomotives at time _t_.
+              electrical_energy_kwh:
+                type: number
+                description: The sum of cumulative energy consumption, in kwh, for all battery electric locomotives at time _t_.
+              mean_bel_soc:
+                type: number
+                description: The average battery state of charge, as a ratio, for all battery electric locomotives at time _t_.
+              dist_miles:
+                type: number
+                description: The cumulative distance traveled, in miles, at time _t_.
+              elevation_feet:
+                type: number
+                description: The track elevation, in feet, at time _t_.
+              grade:
+                type: number
+                description: The track grade, as a ratio, at time _t_.
+              time_hours:
+                type: number
+                description: The time _t_, in hours, since starting the trip.
+          example:
+            [
+              {
+                "actual_speed_mph": 0,
+                "bel_pwr_hp": 0,
+                "conv_pwr_hp": 0,
+                "diesel_energy_kwh": 0,
+                "dist_miles": 0.44738725841088045,
+                "electrical_energy_kwh": 0,
+                "elevation_feet": 540.3733176895197,
+                "grade": 0,
+                "mean_bel_soc": 1,
+                "speed_limit_mph": 0,
+                "target_speed_mph": 0,
+                "time_hours": 0,
+              },
+              {
+                "actual_speed_mph": 2.438981399285931,
+                "bel_pwr_hp": 4448.326561602731,
+                "conv_pwr_hp": 3644.9736666289086,
+                "diesel_energy_kwh": 0.7550157157561149,
+                "dist_miles": 0.44772600582744104,
+                "electrical_energy_kwh": 0.9214213242675136,
+                "elevation_feet": 540.3821099496164,
+                "grade": 0.005375939849624058,
+                "mean_bel_soc": 0.9995392893378663,
+                "speed_limit_mph": 44.738725841999994,
+                "target_speed_mph": 44.738725841999994,
+                "time_hours": 0.0002777777777777778,
+              },
+            ]
+    RolloutRequest:
+      type: object
+      required: [rollout_years, target_bel_ratio]
+      properties:
+        rollout_years:
+          type: number
+          description: How many years to compute the rollout simulation for
+          example: 20
+        target_bel_ratio:
+          type: number
+          description: The makeup (in percentage) of battery electric locomotives relative to an existing diesel fleet.
+          example: 50
+    RolloutResponse:
+      type: object
+      properties:
+        diesel_diff:
+          type: number
+          description: The difference, as a percent, between the diesel consumption in the rollout case and the baseline case.
+          example: 20
+        fuel_cost_diff:
+          type: number
+          description: The difference, as a percent, between the fuel costs in the rollout case and the baseline case.
+          example: 20
+        green_house_diff:
+          type: number
+          description: The difference, as a percent, between the greenhouse gas emissions in the rollout case and the baseline case.
+          example: 30 
+        all_metrics:
+          type: array
+          items:
+            type: object
+            description: For a given year, a record representing a given metric
+            properties:
+              Metric:
+                type: string
+                description: What metric this record represnets
+              Year:
+                type: number
+                description: What year this record represnets
+              Value:
+                type: number
+                description: The value of this metric for this year
+          example:
+            [
+              {
+                "Metric": "Diesel_Usage_gallons",
+                "Value": 2828660.6036960264,
+                "Year": "2020",
+              },
+              {
+                "Metric": "Cost_Diesel_USD",
+                "Value": 11778542.753790254,
+                "Year": "2020",
+              },
+              {
+                "Metric": "Electricity_Usage_kWh",
+                "Value": 0.0,
+                "Year": "2020",
+              },
+              {
+                "Metric": "Cost_Electricity_USD",
+                "Value": 0.0,
+                "Year": "2020",
+              },
+            ]
+security:
+  - ApiKeyQueryAuth: []
+  - ApiKeyHeaderAuth: []
