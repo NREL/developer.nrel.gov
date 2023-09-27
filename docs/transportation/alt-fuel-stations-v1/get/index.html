@@ -1285,7 +1285,7 @@
               </tr>
               <tr>
                 <th scope="row">TESLA</th>
-                <td>Tesla</td>
+                <td>NACS</td>
               </tr>
           </tbody>
         </table>
@@ -1385,6 +1385,10 @@
                 <td>EVgo</td>
               </tr>
               <tr>
+                <th scope="row">EVMATCH</th>
+                <td>EVmatch</td>
+              </tr>
+              <tr>
                 <th scope="row">EVRANGE</th>
                 <td>EV Range</td>
               </tr>
@@ -1409,12 +1413,24 @@
                 <td>Graviti Energy</td>
               </tr>
               <tr>
+                <th scope="row">HONEY_BADGER</th>
+                <td>HoneyBadger Charging</td>
+              </tr>
+              <tr>
                 <th scope="row">IVY</th>
                 <td>Ivy</td>
               </tr>
               <tr>
+                <th scope="row">JULE</th>
+                <td>Jule</td>
+              </tr>
+              <tr>
                 <th scope="row">LIVINGSTON</th>
                 <td>Livingston Energy Group</td>
+              </tr>
+              <tr>
+                <th scope="row">LOOP</th>
+                <td>Loop</td>
               </tr>
               <tr>
                 <th scope="row">Non-Networked</th>
@@ -1441,16 +1457,16 @@
                 <td>Red E Charging</td>
               </tr>
               <tr>
+                <th scope="row">REVEL</th>
+                <td>Revel</td>
+              </tr>
+              <tr>
                 <th scope="row">RIVIAN_ADVENTURE</th>
                 <td>Rivian Adventure Network</td>
               </tr>
               <tr>
                 <th scope="row">RIVIAN_WAYPOINTS</th>
                 <td>Rivian Waypoints</td>
-              </tr>
-              <tr>
-                <th scope="row">SemaCharge Network</th>
-                <td>SemaConnect</td>
               </tr>
               <tr>
                 <th scope="row">SHELL_RECHARGE</th>
@@ -1578,7 +1594,7 @@
       <th class="doc-parameter-name" scope="row">hy_is_retail</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
-          <strong>Type:</strong> array
+          <strong>Type:</strong> boolean
         </div>
       </td>
       <td class="doc-parameter-description">
@@ -2196,6 +2212,35 @@
           </tbody>
         </table>
         <p>Note: This field does not take into account station capacity or other considerations.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">ev_workplace_charging</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> boolean
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>For electric stations, an indication of whether the station is available for employees at a workplace, given as a boolean:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">true</th>
+              <td>The station is at a workplace and primarily used for employee charging.</td>
+            </tr>
+            <tr>
+              <th scope="row">false</th>
+              <td>The station is not used for employee charging.</td>
+            </tr>
+          </tbody>
+        </table>
       </td>
     </tr>
   </tbody>
