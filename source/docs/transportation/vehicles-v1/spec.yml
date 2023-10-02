@@ -1245,9 +1245,9 @@ definitions:
       electric_range:
         type: integer
         description: The electric-only driving range for the light-duty automobile
-      phev_total_range:
+      total_range:
         type: integer
-        description: The PHEV total driving range for the light-duty automobile
+        description: The total driving range for the light-duty automobile
       transmission_type:
         type: string
         description: The transmission type of the light-duty automobile
@@ -1387,9 +1387,9 @@ definitions:
           electric_range:
             type: integer
             description: The electric-only driving range for the light-duty automobile
-          phev_total_range:
+          total_range:
             type: integer
-            description: The PHEV total driving range for the light-duty automobile
+            description: The total driving range for the light-duty automobile
           transmission_type:
             type: string
             description: The transmission type of the light-duty automobile
