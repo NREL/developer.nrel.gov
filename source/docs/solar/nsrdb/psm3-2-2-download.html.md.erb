@@ -1,6 +1,6 @@
 ---
 title: Physical Solar Model (PSM) v3.2.2
-summary: Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database [(NSRDB)](https://nsrdb.nrel.gov/) is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed [here](https://nsrdb.nrel.gov/data-sets/download-instructions.html). Read more about the datasets at [https://nsrdb.nrel.gov](https://nsrdb.nrel.gov)
+summary: Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database [(NSRDB)](https://nsrdb.nrel.gov/) is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed [here](https://nsrdb.nrel.gov/data-sets/how-to-access-data). Read more about the datasets at [https://nsrdb.nrel.gov](https://nsrdb.nrel.gov)
 detail: This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.
 url: /api/nsrdb/v2/solar/psm3-2-2-download
 ---
@@ -69,7 +69,7 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2021</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022</em></div>
       </td>
       <td class="doc-parameter-description">The year(s) for which data should be extracted. (more years coming soon)</td>
     </tr>
