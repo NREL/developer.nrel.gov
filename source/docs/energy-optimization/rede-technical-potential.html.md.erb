@@ -1,12 +1,19 @@
 ---
-title: RE Data Explorer Technical Potential
+title: RE Data Explorer Technical Potential (deprecated)
 
-summary: Technical Potential analysis tool for [The Renewable Energy Explorer](https://www.re-explorer.org/) which estimates the technical potential of specific renewable electricity generation technologies taking into account a variety of user supplied filters and other inputs.
+summary: This tool is deprecated in favor of the state of the art <a href="https://www.nrel.gov/gis/renewable-energy-potential.html">reV Technical Potential analysis tool</a>. reV installation and usage documentation can be found at <a href="https://nrel.github.io/reV/index.html">https://nrel.github.io/reV/index.html.</a> This documentation is preserved here for historical purposes only.
+
+deprecated: true
 ---
 
-<h1>RE Data Explorer Technical Potential</h1>
+<h1><%= current_page.data.title %></h1>
+
+<div class="alert alert-danger" style="margin-top: 10px;">
+  <%= current_page.data.summary %>
+</div>
+
 <p>
-    This API provides access to a Technical Potential analyses model developed at NREL in conjunction with USAID. The tool estimates the technical potential of specific renewable electricity generation technologies taking into account a variety of user supplied filters and other inputs. These are technology-specific estimates of energy generation potential based on renewable resource availability and quality, technical system performance, topographic limitations, environmental, and land-use constraints only. The estimates do not consider economic or market constraints, and therefore do not represent a level of renewable generation that might actually be deployed. Details on the application and use of this tool, as well as the methodology employed can be found at <a href="https://www.re-explorer.org/training.html">REexplorer Training</a> and <a href="https://www.nrel.gov/docs/fy12osti/51946.pdf">Renewable Energy Technical Potentials: A GIS-Based Analysis</a>. 
+    This API is no longer functioning. Previously it provided access to a Technical Potential analyses model developed at NREL in conjunction with USAID. The tool estimates the technical potential of specific renewable electricity generation technologies taking into account a variety of user supplied filters and other inputs. These are technology-specific estimates of energy generation potential based on renewable resource availability and quality, technical system performance, topographic limitations, environmental, and land-use constraints only. The estimates do not consider economic or market constraints, and therefore do not represent a level of renewable generation that might actually be deployed. Details on the application and use of this tool, as well as the methodology employed can be found at <a href="https://www.re-explorer.org/training.html">REexplorer Training</a> and <a href="https://www.nrel.gov/docs/fy12osti/51946.pdf">Renewable Energy Technical Potentials: A GIS-Based Analysis</a>.
 </p>
 
 <div class="row">
@@ -1672,7 +1679,7 @@ summary: Technical Potential analysis tool for [The Renewable Energy Explorer](h
     <h2>POST request example</h2>
     <br>
     <p>
-        An example of a valid POST request made using the cUrl command line tool. 
+        An example of a valid POST request made using the cUrl command line tool.
     </p>
     <pre>
         <code>
