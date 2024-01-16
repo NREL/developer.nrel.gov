@@ -4,6 +4,8 @@ Have questions, feedback, or issues with the APIs available at [developer.nrel.g
 
 This repository stores the website content and documentation for [developer.nrel.gov](https://developer.nrel.gov). Contributions are welcome. To submit a change, fork this repo, commit your changes, and send us a [pull request](https://help.github.com/articles/using-pull-requests).
 
+If you have questions about the data for the Alternative Fueling Station Locator, please see [About the Alternative Fueling Station Data](https://afdc.energy.gov/stations/#/find/nearest?show_about=true). If you would like to update data for an existing station or add a new station, please follow the links at the [Alternative Fueling Station Locator](https://afdc.energy.gov/stations/#/find/nearest).
+
 ## Development
 
 The content files to edit are in [`./source`](https://github.com/NREL/developer.nrel.gov/tree/master/source). To preview your changes you can use the [Middleman](https://middlemanapp.com) preview server. To run Middleman:
