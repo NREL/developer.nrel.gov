@@ -380,6 +380,12 @@ definitions:
           and Standards'
         items:
           "$ref": "#/definitions/LawTopics"
+      status:
+        type: string
+        description: The status of the law or incentive.
+      status_date:
+        type: string
+        description: The status effective date.
   Poc:
     required:
     - name
