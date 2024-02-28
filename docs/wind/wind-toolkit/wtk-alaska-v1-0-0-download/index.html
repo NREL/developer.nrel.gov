@@ -5,16 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        Kazakhstan 
+        Alaska V1.0.0 
           API
         |
       NREL: Developer Network
     </title>
 
-    <link rel="canonical" href="https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-kazakhstan-download/" />
+    <link rel="canonical" href="https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-alaska-v1-0-0-download/" />
     <script>
       if(window.location.href.indexOf('nrel.github.io') !== -1) {
-        window.location.href = 'https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-kazakhstan-download/';
+        window.location.href = 'https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-alaska-v1-0-0-download/';
       }
     </script>
 
@@ -33,7 +33,7 @@
 </script>
 
   </head>
-  <body class="docs docs_wind docs_wind_wind-toolkit docs_wind_wind-toolkit_wtk-kazakhstan-download docs_wind_wind-toolkit_wtk-kazakhstan-download_index">
+  <body class="docs docs_wind docs_wind_wind-toolkit docs_wind_wind-toolkit_wtk-alaska-v1-0-0-download docs_wind_wind-toolkit_wtk-alaska-v1-0-0-download_index">
     <div class="container">
   <header>
     <map name="header_map">
@@ -59,18 +59,18 @@
             <li class="breadcrumb-item"><a href="/docs/">Documentation</a></li>
             <li class="breadcrumb-item"><a href="/docs/wind/">Wind</a></li>
             <li class="breadcrumb-item"><a href="/docs/wind/wind-toolkit/">Wind Toolkit Data Downloads</a></li>
-            <li class="breadcrumb-item active">Kazakhstan</li>
+            <li class="breadcrumb-item active">Alaska V1.0.0</li>
     </ol>
 
 
-    <h1 id="kazakhstan-apiwind-toolkitv2windwtk-kazakhstan-download">Kazakhstan <span class="url">(/api/wind-toolkit/v2/wind/wtk-kazakhstan-download)</span></h1>
-<p>Collect and download, as CSV, a configurable set of data fields from a multi-national collection of wind stations. This data represents wind-speed, temperature, direction, and air pressure values at multiple heights above the surface for the year 2015.</p>
+    <h1 id="alaska-v100-apiwind-toolkitv2windwtk-alaska-v1-0-0-download">Alaska V1.0.0 <span class="url">(/api/wind-toolkit/v2/wind/wtk-alaska-v1-0-0-download)</span></h1>
+<p>Collect and download, as CSV, a configurable set of data fields from a national collection of wind stations. This data represents wind-speed, temperature, direction, and air pressure values at multiple heights above the surface for the years 2018 to 2020.</p>
 
 <ul id="toc"></ul>
 
 <h2 id="request-url">Request URL</h2>
 
-<pre>GET|POST /api/wind-toolkit/v2/wind/wtk-kazakhstan-download<em>.format?parameters</em></pre>
+<pre>GET|POST /api/wind-toolkit/v2/wind/wtk-alaska-v1-0-0-download<em>.format?parameters</em></pre>
 
 <h2 id="request-parameters">Request Parameters</h2>
 <p><em>NOTE: when using POST to submit a request the api_key must still be included as a query parameter in the url. All other parameters may be included in a POST request as part of the payload.</em></p>
@@ -113,7 +113,7 @@
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>pressure_0m, pressure_100m, pressure_200m, temperature_100m, temperature_120m, temperature_80m, winddirection_100m, winddirection_120m, winddirection_80m, windspeed_100m, windspeed_120m, windspeed_80m.</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>boundary_layer_height, friction_velocity_2m, inversemoninobukhovlength_2m, latent_heat_flux, precipitation_0m, pressure_0m, pressure_100m, pressure_200m, pressure_500m, relativehumidity_2m, sensible_heat_flux, skin_temperature, temperature_1000m, temperature_100m, temperature_200m, temperature_20m, temperature_2m, temperature_300m, temperature_40m, temperature_500m, temperature_60m, temperature_80m, vertical_windspeed_120m, vertical_windspeed_200m, vertical_windspeed_20m, vertical_windspeed_40m, vertical_windspeed_500m, vertical_windspeed_80m, virtual_potential_temperature_1000m, virtual_potential_temperature_100m, virtual_potential_temperature_200m, virtual_potential_temperature_20m, virtual_potential_temperature_2m, virtual_potential_temperature_300m, virtual_potential_temperature_40m, virtual_potential_temperature_500m, virtual_potential_temperature_60m, virtual_potential_temperature_80m, winddirection_1000m, winddirection_100m, winddirection_10m, winddirection_120m, winddirection_140m, winddirection_160m, winddirection_180m, winddirection_200m, winddirection_20m, winddirection_250m, winddirection_300m, winddirection_40m, winddirection_500m, winddirection_60m, winddirection_80m, windspeed_1000m, windspeed_100m, windspeed_10m, windspeed_120m, windspeed_140m, windspeed_160m, windspeed_180m, windspeed_200m, windspeed_20m, windspeed_250m, windspeed_300m, windspeed_40m, windspeed_500m, windspeed_60m, windspeed_80m.</em></div>
       </td>
       <td class="doc-parameter-description">
         Each specified attribute(*) will be returned as a column in the resultant CSV download.
@@ -125,7 +125,7 @@
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2015</em>.</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2018, 2019, 2020</em>.</div>
       </td>
       <td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
     </tr>
@@ -155,11 +155,11 @@
       <th class="doc-parameter-name" scope="row">interval</th>
       <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong>15, 30, 60</div>
+        <div class="doc-parameter-value-field"><strong>Type:</strong>60</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
       </td>
       <td class="doc-parameter-description">
-        This value determines data resolution. Either 15, 30, 60 minute intervals are available.
+        This value determines data resolution. Either 60 minute intervals are available.
       </td>
     </tr>
     <tr>
@@ -264,7 +264,7 @@
 
 <h3 id="json-output-format">JSON Output Format</h3>
 
-<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/wtk-kazakhstan-download.json?wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=user@company.com</code></div>
+<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/wtk-alaska-v1-0-0-download.json?wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=user@company.com</code></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>{
     "inputs": {
@@ -294,7 +294,7 @@
 <h3 id="csv-output-format">CSV Output Format</h3>
 <p>Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.</p>
 
-<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/wtk-kazakhstan-download.csv?wkt=POINT(-179.99 -15.94)&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=user@company.com&amp;api_key=DEMO_KEY</code></div>
+<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/wtk-alaska-v1-0-0-download.csv?wkt=POINT(-179.99 -15.94)&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=user@company.com&amp;api_key=DEMO_KEY</code></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>SiteID,Site Timezone,Data Timezone,Longitude,Latitude,Country
 80,-9,-9,-130.756,48.75498,b'Canada'
@@ -313,7 +313,7 @@ Year,Month,Day,Hour,Minute,wind direction at 180m (deg)
 
 <div class="highlight"><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/wind-toolkit/v2/wind/wtk-kazakhstan-download.json?api_key=yourapikeygoeshere"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/wind-toolkit/v2/wind/wtk-alaska-v1-0-0-download.json?api_key=yourapikeygoeshere"</span>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="s">"api_key={{API_KEY}}&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=true&amp;leap_day=true&amp;interval=60&amp;email=user@company.com&amp;wkt=POINT(-179.99 -15.94)"</span>
 
@@ -362,7 +362,7 @@ Year,Month,Day,Hour,Minute,wind direction at 180m (deg)
 </table>
 
     <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
-  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/wind/wind-toolkit/wtk-kazakhstan-download.html.md.erb">Help Improve this Content</a>
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/wind/wind-toolkit/wtk-alaska-v1-0-0-download.html.md.erb">Help Improve this Content</a>
 </div>
 
       <footer class="container-fluid">
