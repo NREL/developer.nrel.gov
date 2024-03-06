@@ -119,8 +119,7 @@ paths:
       - in: query
         description: 'Search by the law type. A single type, or a comma-separate list
           of multiple types, may be given. Values are as follows: ''STATEINC'' for
-          State Incentives, ''LAWREG''
-          for Laws and Regulations, ''INC'' for Incentives, ''PROG'' for Programs,
+          State Incentives, ''LAWREG'' for Laws and Regulations, ''INC'' for Incentives, ''PROG'' for Programs,
           ''LUP'' for Last Updated, ''OVIEW'' for Overview, and ''HILITE'' for Highlights.'
         name: law_type
         required: false
