@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
   <head>
+    <%= partial("layouts/analytics") %>
     <title>
       <%= current_page.data.title %> | Your API Site Name
     </title>
@@ -9,9 +10,9 @@
     <meta content="en" name="language">
 
     <%= stylesheet_link_tag("all") %>
-    <%= partial("layouts/analytics") %>
   </head>
   <body class="blank <%= page_classes %>">
+    <%= partial("layouts/noscript_analytics") %>
     <%= yield %>
   </body>
 </html>

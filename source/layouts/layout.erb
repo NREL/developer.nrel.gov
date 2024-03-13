@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <%= partial("layouts/analytics") %>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,9 +29,9 @@
 
     <%= javascript_include_tag("shared") %>
     <%= javascript_include_tag("all") %>
-    <%= partial("layouts/analytics") %>
   </head>
   <body class="<%= page_classes %>">
+    <%= partial("layouts/noscript_analytics") %>
     <%= partial("layouts/header") %>
     <%= yield %>
     <%= partial("layouts/edit_me") %>
