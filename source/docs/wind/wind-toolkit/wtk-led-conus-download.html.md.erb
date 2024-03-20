@@ -1,7 +1,7 @@
 ---
-title: "LED Conus High Resolution"
-summary: "Collect and download, as CSV, a configurable set of data fields from a national collection of wind stations. This data represents wind-speed, temperature, direction, and air pressure values at multiple heights above the surface for the years 2017 and 2018."
-url: /api/wind-toolkit/v2/wind/wtk-led-conus-hr-download
+title: "WTK-LED CONUS"
+summary: "Collect and download, as CSV, a configurable set of data fields from a national collection of wind stations. This data represents wind-speed, temperature, direction, and air pressure values at multiple heights above the surface for the years 2019 and 2020."
+url: /api/wind-toolkit/v2/wind/wtk-led-conus-download
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
@@ -56,7 +56,7 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>boundary_layer_height, friction_velocity_2m, inversemoninobukhovlength_2m, latent_heat_flux, pressure_0m, pressure_100m, pressure_200m, relativehumidity_2m, skin_temperature, temperature_100m, temperature_10m, temperature_120m, temperature_140m, temperature_160m, temperature_180m, temperature_200m, temperature_20m, temperature_2m, temperature_40m, temperature_60m, temperature_80m, turbulent_kinetic_energy_100m, turbulent_kinetic_energy_120m, turbulent_kinetic_energy_140m, turbulent_kinetic_energy_160m, turbulent_kinetic_energy_180m, turbulent_kinetic_energy_20m, turbulent_kinetic_energy_40m, turbulent_kinetic_energy_60m, turbulent_kinetic_energy_80m, winddirection_100m, winddirection_10m, winddirection_120m, winddirection_140m, winddirection_160m, winddirection_180m, winddirection_200m, winddirection_20m, winddirection_40m, winddirection_60m, winddirection_80m, windspeed_100m, windspeed_10m, windspeed_120m, windspeed_140m, windspeed_160m, windspeed_180m, windspeed_200m, windspeed_20m, windspeed_40m, windspeed_60m, windspeed_80m.</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>boundary_layer_height, friction_velocity_2m, inversemoninobukhovlength_2m, latent_heat_flux, precipitation_0m, pressure_0m, pressure_100m, pressure_200m, pressure_500m, relativehumidity_2m, sensible_heat_flux, skin_temperature, temperature_1000m, temperature_100m, temperature_200m, temperature_20m, temperature_2m, temperature_300m, temperature_40m, temperature_500m, temperature_60m, temperature_80m, vertical_windspeed_120m, vertical_windspeed_200m, vertical_windspeed_20m, vertical_windspeed_40m, vertical_windspeed_500m, vertical_windspeed_80m, virtual_potential_temperature_1000m, virtual_potential_temperature_100m, virtual_potential_temperature_200m, virtual_potential_temperature_20m, virtual_potential_temperature_2m, virtual_potential_temperature_300m, virtual_potential_temperature_40m, virtual_potential_temperature_500m, virtual_potential_temperature_60m, virtual_potential_temperature_80m, winddirection_1000m, winddirection_100m, winddirection_10m, winddirection_120m, winddirection_140m, winddirection_160m, winddirection_180m, winddirection_200m, winddirection_20m, winddirection_250m, winddirection_300m, winddirection_40m, winddirection_500m, winddirection_60m, winddirection_80m, windspeed_1000m, windspeed_100m, windspeed_10m, windspeed_120m, windspeed_140m, windspeed_160m, windspeed_180m, windspeed_200m, windspeed_20m, windspeed_250m, windspeed_300m, windspeed_40m, windspeed_500m, windspeed_60m, windspeed_80m.</em></div>
       </td>
       <td class="doc-parameter-description">
         Each specified attribute(*) will be returned as a column in the resultant CSV download.
@@ -68,7 +68,7 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2017, 2018</em>.</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2019, 2020</em>.</div>
       </td>
       <td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
     </tr>
@@ -102,7 +102,7 @@ _NOTE: when using POST to submit a request the api_key must still be included as
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
       </td>
       <td class="doc-parameter-description">
-        This value determines data resolution. Either 60 minute intervals are available.
+        This value determines data resolution. 60 minute intervals are available.
       </td>
     </tr>
     <tr>
@@ -153,7 +153,7 @@ _NOTE: when using POST to submit a request the api_key must still be included as
         <div class="doc-parameter-value-field"><strong>Default:</strong> false</div>
       </td>
       <td class="doc-parameter-description">
-        Pass true to add the email address to our list of recipients for the Wind Toolkit mailing list.
+        Pass true to add the email address to our list of recipients for the NSRDB mailing list.
       </td>
     </tr>
   </tbody>
@@ -274,7 +274,6 @@ response = requests.request("POST", url, data=payload, headers=headers)
 
 print(response.text)
 ```
-
 
 <h2 id="rate-limits">Rate Limits</h2>
 
