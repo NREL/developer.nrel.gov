@@ -13,16 +13,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        LED Conus High Resolution 
+        WTK-LED CONUS 
           API
         |
       NREL: Developer Network
     </title>
 
-    <link rel="canonical" href="https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-led-conus-hr-download/" />
+    <link rel="canonical" href="https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-led-conus-download/" />
     <script>
       if(window.location.href.indexOf('nrel.github.io') !== -1) {
-        window.location.href = 'https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-led-conus-hr-download/';
+        window.location.href = 'https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-led-conus-download/';
       }
     </script>
 
@@ -31,7 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <script src="/assets/javascripts/shared-8f31eae2.js"></script>
     <script src="/assets/javascripts/all-172ea8d4.js"></script>
   </head>
-  <body class="docs docs_wind docs_wind_wind-toolkit docs_wind_wind-toolkit_wtk-led-conus-hr-download docs_wind_wind-toolkit_wtk-led-conus-hr-download_index">
+  <body class="docs docs_wind docs_wind_wind-toolkit docs_wind_wind-toolkit_wtk-led-conus-download docs_wind_wind-toolkit_wtk-led-conus-download_index">
     <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src=https://www.googletagmanager.com/ns.html?id=GTM-KG7PVKB
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -62,18 +62,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li class="breadcrumb-item"><a href="/docs/">Documentation</a></li>
             <li class="breadcrumb-item"><a href="/docs/wind/">Wind</a></li>
             <li class="breadcrumb-item"><a href="/docs/wind/wind-toolkit/">Wind Toolkit Data Downloads</a></li>
-            <li class="breadcrumb-item active">LED Conus High Resolution</li>
+            <li class="breadcrumb-item active">WTK-LED CONUS</li>
     </ol>
 
 
-    <h1 id="led-conus-high-resolution-apiwind-toolkitv2windwtk-led-conus-hr-download">LED Conus High Resolution <span class="url">(/api/wind-toolkit/v2/wind/wtk-led-conus-hr-download)</span></h1>
-<p>Collect and download, as CSV, a configurable set of data fields from a national collection of wind stations. This data represents wind-speed, temperature, direction, and air pressure values at multiple heights above the surface for the years 2017 and 2018.</p>
+    <h1 id="wtk-led-conus-apiwind-toolkitv2windwtk-led-conus-download">WTK-LED CONUS <span class="url">(/api/wind-toolkit/v2/wind/wtk-led-conus-download)</span></h1>
+<p>Collect and download, as CSV, a configurable set of data fields from a national collection of wind stations. This data represents wind-speed, temperature, direction, and air pressure values at multiple heights above the surface for the years 2019 and 2020.</p>
 
 <ul id="toc"></ul>
 
 <h2 id="request-url">Request URL</h2>
 
-<pre>GET|POST /api/wind-toolkit/v2/wind/wtk-led-conus-hr-download<em>.format?parameters</em></pre>
+<pre>GET|POST /api/wind-toolkit/v2/wind/wtk-led-conus-download<em>.format?parameters</em></pre>
 
 <h2 id="request-parameters">Request Parameters</h2>
 <p><em>NOTE: when using POST to submit a request the api_key must still be included as a query parameter in the url. All other parameters may be included in a POST request as part of the payload.</em></p>
@@ -116,7 +116,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>boundary_layer_height, friction_velocity_2m, inversemoninobukhovlength_2m, latent_heat_flux, pressure_0m, pressure_100m, pressure_200m, relativehumidity_2m, skin_temperature, temperature_100m, temperature_10m, temperature_120m, temperature_140m, temperature_160m, temperature_180m, temperature_200m, temperature_20m, temperature_2m, temperature_40m, temperature_60m, temperature_80m, turbulent_kinetic_energy_100m, turbulent_kinetic_energy_120m, turbulent_kinetic_energy_140m, turbulent_kinetic_energy_160m, turbulent_kinetic_energy_180m, turbulent_kinetic_energy_20m, turbulent_kinetic_energy_40m, turbulent_kinetic_energy_60m, turbulent_kinetic_energy_80m, winddirection_100m, winddirection_10m, winddirection_120m, winddirection_140m, winddirection_160m, winddirection_180m, winddirection_200m, winddirection_20m, winddirection_40m, winddirection_60m, winddirection_80m, windspeed_100m, windspeed_10m, windspeed_120m, windspeed_140m, windspeed_160m, windspeed_180m, windspeed_200m, windspeed_20m, windspeed_40m, windspeed_60m, windspeed_80m.</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>boundary_layer_height, friction_velocity_2m, inversemoninobukhovlength_2m, latent_heat_flux, precipitation_0m, pressure_0m, pressure_100m, pressure_200m, pressure_500m, relativehumidity_2m, sensible_heat_flux, skin_temperature, temperature_1000m, temperature_100m, temperature_200m, temperature_20m, temperature_2m, temperature_300m, temperature_40m, temperature_500m, temperature_60m, temperature_80m, vertical_windspeed_120m, vertical_windspeed_200m, vertical_windspeed_20m, vertical_windspeed_40m, vertical_windspeed_500m, vertical_windspeed_80m, virtual_potential_temperature_1000m, virtual_potential_temperature_100m, virtual_potential_temperature_200m, virtual_potential_temperature_20m, virtual_potential_temperature_2m, virtual_potential_temperature_300m, virtual_potential_temperature_40m, virtual_potential_temperature_500m, virtual_potential_temperature_60m, virtual_potential_temperature_80m, winddirection_1000m, winddirection_100m, winddirection_10m, winddirection_120m, winddirection_140m, winddirection_160m, winddirection_180m, winddirection_200m, winddirection_20m, winddirection_250m, winddirection_300m, winddirection_40m, winddirection_500m, winddirection_60m, winddirection_80m, windspeed_1000m, windspeed_100m, windspeed_10m, windspeed_120m, windspeed_140m, windspeed_160m, windspeed_180m, windspeed_200m, windspeed_20m, windspeed_250m, windspeed_300m, windspeed_40m, windspeed_500m, windspeed_60m, windspeed_80m.</em></div>
       </td>
       <td class="doc-parameter-description">
         Each specified attribute(*) will be returned as a column in the resultant CSV download.
@@ -128,7 +128,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2017, 2018</em>.</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2019, 2020</em>.</div>
       </td>
       <td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
     </tr>
@@ -162,7 +162,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
       </td>
       <td class="doc-parameter-description">
-        This value determines data resolution. Either 60 minute intervals are available.
+        This value determines data resolution. 60 minute intervals are available.
       </td>
     </tr>
     <tr>
@@ -213,7 +213,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="doc-parameter-value-field"><strong>Default:</strong> false</div>
       </td>
       <td class="doc-parameter-description">
-        Pass true to add the email address to our list of recipients for the Wind Toolkit mailing list.
+        Pass true to add the email address to our list of recipients for the NSRDB mailing list.
       </td>
     </tr>
   </tbody>
@@ -267,7 +267,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h3 id="json-output-format">JSON Output Format</h3>
 
-<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/wtk-led-conus-hr-download.json?wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=user@company.com</code></div>
+<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/wtk-led-conus-download.json?wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=user@company.com</code></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>{
     "inputs": {
@@ -297,7 +297,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h3 id="csv-output-format">CSV Output Format</h3>
 <p>Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.</p>
 
-<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/wtk-led-conus-hr-download.csv?wkt=POINT(-179.99 -15.94)&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=user@company.com&amp;api_key=DEMO_KEY</code></div>
+<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/wtk-led-conus-download.csv?wkt=POINT(-179.99 -15.94)&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=user@company.com&amp;api_key=DEMO_KEY</code></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>SiteID,Site Timezone,Data Timezone,Longitude,Latitude,Country
 80,-9,-9,-130.756,48.75498,b'Canada'
@@ -316,7 +316,7 @@ Year,Month,Day,Hour,Minute,wind direction at 180m (deg)
 
 <div class="highlight"><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/wind-toolkit/v2/wind/wtk-led-conus-hr-download.json?api_key=yourapikeygoeshere"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/wind-toolkit/v2/wind/wtk-led-conus-download.json?api_key=yourapikeygoeshere"</span>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="s">"api_key={{API_KEY}}&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=true&amp;leap_day=true&amp;interval=60&amp;email=user@company.com&amp;wkt=POINT(-179.99 -15.94)"</span>
 
@@ -365,7 +365,7 @@ Year,Month,Day,Hour,Minute,wind direction at 180m (deg)
 </table>
 
     <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
-  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/wind/wind-toolkit/wtk-led-conus-hr-download.html.md.erb">Help Improve this Content</a>
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/wind/wind-toolkit/wtk-led-conus-download.html.md.erb">Help Improve this Content</a>
 </div>
 
       <footer class="container-fluid">
