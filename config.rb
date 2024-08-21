@@ -22,7 +22,7 @@ page "/404.html", :directory_index => false
 
 activate :external_pipeline,
   name: :webpack,
-  command: build? ? "yarn run build" : "yarn run start",
+  command: build? ? "pnpm run build" : "pnpm run start",
   source: "tmp/webpack-dist",
   latency: 1
 activate :directory_indexes

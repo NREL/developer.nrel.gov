@@ -8,10 +8,20 @@ This repository stores the website content and documentation for [developer.nrel
 
 The content files to edit are in [`./source`](https://github.com/NREL/developer.nrel.gov/tree/master/source). To preview your changes you can use the [Middleman](https://middlemanapp.com) preview server. To run Middleman:
 
-1. Install [Docker](https://www.docker.com/community-edition) on your computer.
+1. Install [Docker](https://www.docker.com/products/docker-desktop/) on your computer.
 2. Checkout the `developer.nrel.gov` repository on your computer (`git clone https://github.com/NREL/developer.nrel.gov.git`).
-3. Inside the `developer.nrel.gov` directory, run `docker-compose up`.
-4. View your changes at: http://localhost:4480/
+3. For NREL employees on the NREL network: Add a `docker-compose.override.yml`, with the following contents, but substituting `REPLACE_ME` with the appropriate URL (reach out to a maintainer for this value):
+
+    ```yaml
+    services:
+      web:
+        build:
+          args:
+            NREL_ROOT_CERT_URL_ROOT: "REPLACE_ME"
+    ```
+
+4. Inside the `developer.nrel.gov` directory, run `docker compose up`.
+5. View your changes at: http://localhost:4480/
 
 ### Linting
 

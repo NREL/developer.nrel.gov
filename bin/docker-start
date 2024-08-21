@@ -7,8 +7,8 @@ bundle install
 
 # Install NPM dependencies.
 rm -rf ./node_modules
-mkdir -p /usr/local/node_modules
-ln -s /usr/local/node_modules ./node_modules
-yarn install
+mkdir -p "$NODE_MODULES_DIR"
+ln -s "$NODE_MODULES_DIR" ./node_modules
+pnpm install
 
 bundle exec middleman server --port 4480
