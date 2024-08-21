@@ -1,11 +1,15 @@
-version: "2"
 services:
   web:
-    build: .
+    build:
+      context: .
+      args:
+        BUNDLE_INSTALL_ARGS: ""
+        PNPM_INSTALL_ARGS: ""
     volumes:
       - .:/app
       - bundle_cache:/usr/local/bundle
-      - yarn_cache:/usr/local/node_modules
+      - pnpm_cache:/usr/local/pnpm
+      - node_modules_cache:/usr/local/node_modules
     environment:
       MIDDLEMAN_LIVERELOAD_PORT: 4481
       MIDDLEMAN_LIVERELOAD_JS_HOST: 127.0.0.1
@@ -14,4 +18,5 @@ services:
       - "4481:4481"
 volumes:
   bundle_cache:
-  yarn_cache:
+  pnpm_cache:
+  node_modules_cache:

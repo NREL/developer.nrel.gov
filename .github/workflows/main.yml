@@ -6,24 +6,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
 
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "2.7"
+          ruby-version: "3.3"
           bundler-cache: true
 
-      - uses: actions/setup-node@v2
+      - uses: pnpm/action-setup@v4
         with:
-          node-version: "14"
-          cache: yarn
-          cache-dependency-path: "**/yarn.lock"
+          version: 8
 
-      # Yarn dependencies
-      - name: Yarn Install
-        run: yarn install
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: pnpm
+
+      # NPM dependencies
+      - name: pnpm Install
+        run: pnpm install
 
       # Build
       - name: Set production DEPLOY_ENV
@@ -42,7 +45,7 @@ jobs:
         run: bundle exec rake lint
 
       # Artifact
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         if: success() && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging')
         with:
           name: build
@@ -64,7 +67,7 @@ jobs:
       image: rclone/rclone:1.57.0
     steps:
       # Deploy to S3 bucket.
-      - uses: actions/download-artifact@v1
+      - uses: actions/download-artifact@v4
         with:
           name: build
           path: ./build
