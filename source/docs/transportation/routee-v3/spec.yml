@@ -42,7 +42,7 @@ paths:
     post:
       summary: Energy aware routing
       requestBody:
-        description: A JSON object with your route request.
+        description: A JSON object with your route request. Note, this currently only provides routes for the state of Colorado.
         required: true
         content:
           application/json:
