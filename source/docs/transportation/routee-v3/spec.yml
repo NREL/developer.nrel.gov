@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: RouteE API
-  description: The Route Energy Prediction Model (RouteE) predicts the energy consumption of a given vehicle over a link or sequence of links (route) in a road network. These API endpoints can be used to get single vehicle link or route energy estimates (`/powertrain/route`) and eco-routing between an origin and destination for a specific vehicle (`/compass/route`). For more on RouteE, please visit <https://www.nrel.gov/transportation/route-energy-prediction-model.html>.
+  description: The Route Energy Prediction Model (RouteE) predicts the energy consumption of a given vehicle over a link or sequence of links (route) in a road network. These API endpoints can be used to get single vehicle link or route energy estimates (`/powertrain/route`) and energy aware routes between an origin and destination for a specific vehicle (`/compass/route`). For more on RouteE, please visit <https://www.nrel.gov/transportation/route-energy-prediction-model.html>.
   version: "3.0"
 servers:
   - url: https://developer.nrel.gov/routee/api/v3
@@ -111,7 +111,7 @@ components:
           format: float
           description: The exit angle of the link in degrees
           nullable: true
-    RouteRequest:
+    PowertrainRequest:
       type: object
       required: [powertrain_model, links]
       properties:
@@ -123,7 +123,7 @@ components:
           description: A list of links that make up the route
           items:
             $ref: "#/components/schemas/PowertrainLink"
-    RouteResponse:
+    PowertrainResponse:
       type: object
       properties:
         route:
