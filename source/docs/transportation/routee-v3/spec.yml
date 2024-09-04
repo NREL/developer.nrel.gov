@@ -88,29 +88,23 @@ components:
         id:
           type: string
           description: The unique identifier for the link
+          example: 1
         miles:
           type: number
           format: float
           description: The length of the link in miles
+          example: 0.1
         speed_mph:
           type: number
           format: float
           description: The speed of the link in miles per hour
-        grade_dec:
+          example: 30
+        grade_percent:
           type: number
           format: float
-          description: The grade of the link in decimal form (i.e. 0.05 for 5% grade)
+          description: The grade of the link in percent form (i.e. 5% grade)
           nullable: true
-        entry_angle:
-          type: number
-          format: float
-          description: The entry angle of the link in degrees
-          nullable: true
-        exit_angle:
-          type: number
-          format: float
-          description: The exit angle of the link in degrees
-          nullable: true
+          example: 5 
     PowertrainRequest:
       type: object
       required: [powertrain_model, links]
@@ -118,6 +112,7 @@ components:
         powertrain_model:
           type: string
           description: The powertrain model to use for the energy estimate
+          example: 2016_TOYOTA_Corolla_4cyl_2WD
         links:
           type: array
           description: A list of links that make up the route
@@ -160,35 +155,41 @@ components:
           type: number
           format: float
           description: The latitude of the origin
+          example: 39.740434
         origin_lon:
           type: number
           format: float
           description: The longitude of the origin
+          example: -105.167987 
         destination_lat:
           type: number
           format: float
           description: The latitude of the destination
+          example: 40.018901
         destination_lon:
           type: number
           format: float
           description: The longitude of the destination
+          example: -105.280362 
         model_name:
           type: string
           description: The name of the RouteE Powertrain vehicle model to use for the energy estimate
+          example: "2016_TOYOTA_Corolla_4cyl_2WD"
         start_time:
           type: string
-          default: "09:00:00"
           description: The start time for the route (in 24-hour format)
+          example: "09:00:00"
         start_weekday:
           type: string
-          default: "monday"
           description: The start weekday for the route
+          example: "monday"
         vehicle_rates:
           type: object
           description: The vehicle rates for the route
         weights:
           type: object
           description: The weights for the state model
+          example: {"distance": 1, "energy_liquid": 1, "energy_electric": 1, "time": 1}
     CompassResponse:
       type: object
       properties:
