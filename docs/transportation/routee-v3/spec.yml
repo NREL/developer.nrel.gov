@@ -1,0 +1,229 @@
+openapi: 3.0.0
+info:
+  title: RouteE API
+  description: The Route Energy Prediction Model (RouteE) predicts the energy consumption of a given vehicle over a link or sequence of links (route) in a road network. These API endpoints can be used to get single vehicle link or route energy estimates (`/powertrain/route`) and energy aware routes between an origin and destination for a specific vehicle (`/compass/route`). For more on RouteE, please visit <https://www.nrel.gov/transportation/route-energy-prediction-model.html>.
+  version: "3.0"
+servers:
+  - url: https://developer.nrel.gov/api/routee/v3
+paths:
+  /powertrain/route:
+    post:
+      summary: Estimate energy consumption for a single route.
+      requestBody:
+        description: A JSON object with your real or predicted vehicle route data.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PowertrainRequest"
+      responses:
+        "200":
+          description: A JSON object with the returned energy consumption estimates and metadata for the provided route.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PowertrainResponse"
+  /powertrain/models:
+    get:
+      summary: Get a list of available powertrain models.
+      responses:
+        "200":
+          description: A JSON object with the available powertrain models.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  available_models:
+                    type: array
+                    items:
+                      type: string
+  /compass/route:
+    post:
+      summary: Energy aware routing
+      requestBody:
+        description: A JSON object with your route request. Note, this currently only provides routes for the state of Colorado.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CompassRequest"
+      responses:
+        "200":
+          description: A JSON object with the energy aware route
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CompassResponse"
+  /compass/models:
+    get:
+      summary: Get a list of available powertrain models.
+      responses:
+        "200":
+          description: A JSON object with the available powertrain models.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  available_models:
+                    type: array
+                    items:
+                      type: string
+components:
+  securitySchemes:
+    ApiKeyQueryAuth:
+      type: apiKey
+      in: query
+      name: api_key
+    ApiKeyHeaderAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+  schemas:
+    PowertrainLink:
+      type: object
+      required: [id, miles, speed_mph]
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the link
+          example: 1
+        miles:
+          type: number
+          format: float
+          description: The length of the link in miles
+          example: 0.1
+        speed_mph:
+          type: number
+          format: float
+          description: The speed of the link in miles per hour
+          example: 30
+        grade_percent:
+          type: number
+          format: float
+          description: The grade of the link in percent form (i.e. 5% grade)
+          nullable: true
+          example: 5 
+    PowertrainRequest:
+      type: object
+      required: [powertrain_model, links]
+      properties:
+        powertrain_model:
+          type: string
+          description: The powertrain model to use for the energy estimate
+          example: 2016_TOYOTA_Corolla_4cyl_2WD
+        links:
+          type: array
+          description: A list of links that make up the route
+          items:
+            $ref: "#/components/schemas/PowertrainLink"
+    PowertrainResponse:
+      type: object
+      properties:
+        route:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              energy_estimate:
+                type: float
+                description: The energy estimate for the link
+        output_metadata:
+          type: object
+          properties:
+            total_energy:
+              type: string
+              description: The total energy estimate for the route
+            energy_unit:
+              type: string
+              description: The unit of the energy estimate
+            routee_version:
+              type: string
+              description: The version of the RouteE model used for the estimate
+            vehicle_description:
+              type: string
+              description: The description of the vehicle used for the estimate
+    CompassRequest:
+      type: object
+      required:
+        [origin_lat, origin_lon, destination_lat, destination_lon, model_name]
+      properties:
+        origin_lat:
+          type: number
+          format: float
+          description: The latitude of the origin
+          example: 39.740434
+        origin_lon:
+          type: number
+          format: float
+          description: The longitude of the origin
+          example: -105.167987 
+        destination_lat:
+          type: number
+          format: float
+          description: The latitude of the destination
+          example: 40.018901
+        destination_lon:
+          type: number
+          format: float
+          description: The longitude of the destination
+          example: -105.280362 
+        model_name:
+          type: string
+          description: The name of the RouteE Powertrain vehicle model to use for the energy estimate
+          example: "2016_TOYOTA_Corolla_4cyl_2WD"
+        start_time:
+          type: string
+          description: The start time for the route (in 24-hour format)
+          example: "09:00:00"
+        start_weekday:
+          type: string
+          description: The start weekday for the route
+          example: "monday"
+        vehicle_rates:
+          type: object
+          description: The vehicle rates for the route
+        weights:
+          type: object
+          description: The weights for the state model
+          example: {"distance": 1, "energy_liquid": 1, "energy_electric": 1, "time": 1}
+    CompassResponse:
+      type: object
+      properties:
+        route:
+          type: object
+          description: The route in GeoJSON format
+        request:
+          $ref: "#/components/schemas/CompassRequest"
+          description: The original request that was made
+        iterations:
+          type: integer
+          description: The number of iterations that the algorithm ran
+        traversal_summary:
+          type: object
+          description: A summary of the traversal (e.g. total distance, total energy)
+        state_model:
+          type: object
+          description: The state model used for the routing (e.g. initial conditions, units, etc.)
+        route_edges:
+          type: integer
+          description: The number of edges in the route
+        search_executed_time:
+          type: string
+          description: The time that the search was executed
+        search_result_size_mib:
+          type: number
+          format: float
+          description: The size of the search result in MiB
+        search_runtime:
+          type: string
+          description: The runtime of the search
+        tree_size_count:
+          type: integer
+          description: The size of the search tree
+security:
+  - ApiKeyQueryAuth: []
+  - ApiKeyHeaderAuth: []
