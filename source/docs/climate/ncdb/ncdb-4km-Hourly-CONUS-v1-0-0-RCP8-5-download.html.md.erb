@@ -1,7 +1,8 @@
 ---
 title: "CONUS 2006-2100 60-minute, 4km, RCP8.5"
-summary: ""
-url: /api/nsrdb/v2/solar/ncdb-4km-Hourly-CONUS-v1-0-0-RCP8-5-download
+summary: "The National Climate Database (NCDB) is a high-resolution, bias-corrected climate dataset including global horizontal irradiance, direct normal irradiance, and diffuse horizontal irradiance, as well as other meteorological data."
+detail: "The NCDB is developed using a statistical downscaling approach with Regional Climate Model (RCM)-based climate projections obtained from the North American Coordinated Regional Climate Downscaling Experiment (NA-CORDEX; https://na-cordex.org/). 0.22⁰ daily climate projections simulated by the Canadian Regional Climate Model 4 (CanRCM4) forced by the second-generation Canadian Earth System Model (CanESM2) for two Representative Concentration Pathways (RCP4.5 or moderate emissions scenario and RCP8.5 or highest baseline emission scenario) are selected as inputs to the statistical downscaling models. The National Solar Radiation Database (NSRDB) (Sengupta et al. 2018) is used to build and calibrate the statistical model. For more details please visit [the NCDB](https://climate.nrel.gov)."
+url: /api/climate/ncdb/v2/climate/ncdb-4km-Hourly-CONUS-v1-0-0-RCP8-5-download
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
@@ -56,7 +57,7 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>air_temperature, air_temperature_percent_change, air_temperature_raw_change, dhi, dhi_percent_change, dhi_raw_change, dni, dni_percent_change, dni_raw_change, ghi, ghi_percent_change, ghi_raw_change, solar_zenith_angle, wind_speed, wind_speed_percent_change, wind_speed_raw_change.</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>air_temperature, dhi, dni, ghi, solar_zenith_angle, wind_speed.</em></div>
       </td>
       <td class="doc-parameter-description">
         Each specified attribute(*) will be returned as a column in the resultant CSV download.
@@ -213,7 +214,6 @@ Examples may not reflect this specific dataset.
 {
     "inputs": {
         "query": {
-            "attributes": "winddirection_180m",
             "names": "2017",
             "utc": "false",
             "leap_day": "true",
@@ -285,7 +285,7 @@ Secondly each user is limited to 20 in-flight requests at any given time.
 
 In addition, the service has a fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.
 
-For some tips and tricks to maximize data downloads please read the guide [here](/docs/solar/nsrdb/guide/).
+For some tips and tricks to maximize data downloads please read the guide [here](/docs/climate/ncdb/guide/).
 
 <h2 id="contacts">Contact</h2>
 
