@@ -1,0 +1,64 @@
+---
+title: Data Download Guide
+summary: Tips and tricks for getting the most out of the API
+
+---
+
+## Data Download Usage Guide
+
+We often receive requests from users interested in downloading larger segments of the data than are supported by the API. It is important to understand that these datasets are large. Currently our storage archive contains hundreds of terabytes of data and is constantly growing! In order to reliably serve dynamic segments of a dataset of this size to a growing community of users we have calculated the maximum capacity our server hardware can sustain. We use this physical capacity to determine our API rate limits. For users insterested in accessing bulk data the full datasets are available via the Registry of Open Data on AWS at [https://registry.opendata.aws/nrel-pds-ncdb/](https://registry.opendata.aws/nrel-pds-ncdb/).
+
+The API is restricted in several ways including the number of simultaneous requests a single user can make, the number of requests a single user can make in a 24 hour period, as well as in the maximum size of a single request. The API rate limits are set at:
+
+> 1000 requests per day
+> 1 request every 2 seconds
+> 20 requests in process at once
+
+For downloading directly via CSV there are separate rate limits. This is due to the fact that it is only possible to download a single site for a single year via the CSV endpoint, therefor these requests are always quite small by comparison:
+
+> 5000 requests per day
+> 1 request per second
+> 20 requests in process at once
+
+The size limit per each single request is determined by the number of total attributes in each request. The maximum weight of each request is **5000000**. The calculation for determining the weight of each request is:
+
+> <em>site-count\*attribute-count\*year-count\*data-intervals-per-year</em>
+
+ * **site-count** is derived from the WKT value submitted and can be retrieved using the [site_count](/docs/solar/nsrdb/site_count) API endpoint.
+ * **attribute-count** is equal to the number of attributes requested
+ * **year-count** is equal to the number of years requested
+ * **data-intervals-per-year** is *((60/interval)\*24\*365)* where interval is the interval requested
+
+To maximize a single request simply minimize the variables wherever possible. For example by requesting half as many attributes one can request twice as many years (or sites) worth of data.
+
+Imagine a use case where one wanted to download all Climate data for the state of Texas. The first step would be to refine the request down to the least number of attributes, years, and intervals possible. From that one could determine the number of sites that could be requested in a single request. By experimenting with the site_count endpoint a polygon size could be identified that intersects close to that many sites. Using that polygon size create a grid that covers all of Texas. The final step would be to write a script that invokes the API once for every required grid cell at a rate of no more than 1 every 2 seconds and no more than 20 in process at a time. If more than 1000 requests are required the script will have to be continued across multiple days.
+
+
+In cases where a very large WKT value is required, e.g. downloading the maximum number of broadly spaced points at a time using a MULTIPOINT wkt, it is possible to POST a request to the API providing the WKT params in the payload. Here is an example of a Python script that uses this variation:
+
+```python
+import requests
+
+url = "http://developer.nrel.gov/api/climate/ncdb/v2/climate/ncdb-4km-Hourly-CONUS-v1-0-0-RCP8-5-download.json?api_key=yourapikeygoeshere"
+
+payload = "names=2012&leap_day=false&interval=60&utc=false&full_name=Honored%2BUser&email=honored.user%40gmail.com&affiliation=NREL&mailing_list=true&reason=Academic&attributes=dhi%2Cdni%2Cwind_speed&wkt=MULTIPOINT(-106.22%2032.9741%2C-106.18%2032.9741%2C-106.1%2032.9741)"
+
+headers = {
+    'content-type': "application/x-www-form-urlencoded",
+    'cache-control': "no-cache"
+}
+
+response = requests.request("POST", url, data=payload, headers=headers)
+
+print(response.text)
+```
+
+And a CURL example of the same
+
+```shell
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -H "Cache-Control: no-cache" -d 'names=2009&leap_day=false&interval=60&utc=false&full_name=Honored%2BUser&email=user@company.com&affiliation=NREL&mailing_list=true&reason=Academic&attributes=dhi%2Cdni%2Cwind_speed&wkt=MULTIPOINT(-106.22 32.9741%2C-106.18 32.9741%2C-106.1 32.9741%2C-106.06 32.9741)' "http://developer.nrel.gov/api/solar/psm3-5min-download.json?api_key=yourapikeygoeshere"
+```
+
+<h2 id="contacts">Contact</h2>
+
+<p>For questions about the API or the data models please contact <a href="mailto:nsrdb@nrel.gov">nsrdb@nrel.gov</a></p>
