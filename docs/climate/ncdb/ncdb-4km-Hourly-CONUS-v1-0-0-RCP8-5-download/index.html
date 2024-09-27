@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KG7PVKB');</script>
+<!-- End Google Tag Manager -->
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        CONUS 2006-2100 60-minute, 4km, RCP8.5 
+          API
+        |
+      NREL: Developer Network
+    </title>
+
+    <link rel="canonical" href="https://developer.nrel.gov/docs/climate/ncdb/ncdb-4km-Hourly-CONUS-v1-0-0-RCP8-5-download/" />
+    <script>
+      if(window.location.href.indexOf('nrel.github.io') !== -1) {
+        window.location.href = 'https://developer.nrel.gov/docs/climate/ncdb/ncdb-4km-Hourly-CONUS-v1-0-0-RCP8-5-download/';
+      }
+    </script>
+
+    <link href="/assets/stylesheets/all-8a394523.css" rel="stylesheet" />
+
+    <script src="/assets/javascripts/shared-63e84763.js"></script>
+    <script src="/assets/javascripts/all-172ea8d4.js"></script>
+  </head>
+  <body class="docs docs_climate docs_climate_ncdb docs_climate_ncdb_ncdb-4km-Hourly-CONUS-v1-0-0-RCP8-5-download docs_climate_ncdb_ncdb-4km-Hourly-CONUS-v1-0-0-RCP8-5-download_index">
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src=https://www.googletagmanager.com/ns.html?id=GTM-KG7PVKB
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div class="container">
+  <header>
+    <map name="header_map">
+        <area shape="rect" coords="0,0,840,58" href="/" alt="Developer Network" />
+      <area shape="rect" coords="840,0,1000,58" href="http://www.nrel.gov/" alt="NREL" />
+    </map>
+    <img src="/assets/images/nrel/header-1bfbcb1a.png" alt="NREL Developer Network" usemap="#header_map" width="1000" height="58" class="img-fluid" />
+  </header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_nav" aria-controls="navbar_nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar_nav">
+      <ul class="navbar-nav">
+        <li class="nav-item nav-home "><a href="/" class="nav-link">Home</a></li>
+        <li class="nav-item nav-documentation active"><a href="/docs" class="nav-link">Documentation</a></li>
+        <li class="nav-item nav-community "><a href="/community" class="nav-link">Community</a></li>
+      </ul>
+    </div>
+  </nav>
+
+      <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/docs/">Documentation</a></li>
+            <li class="breadcrumb-item"><a href="/docs/climate/">Climate</a></li>
+            <li class="breadcrumb-item"><a href="/docs/climate/ncdb/">National Climate Database Downloads</a></li>
+            <li class="breadcrumb-item active">CONUS 2006-2100 60-minute, 4km, RCP8.5</li>
+    </ol>
+
+
+    <h1 id="conus-2006-2100-60-minute-4km-rcp85-apiclimatencdbv2climatencdb-4km-hourly-conus-v1-0-0-rcp8-5-download">CONUS 2006-2100 60-minute, 4km, RCP8.5 <span class="url">(/api/climate/ncdb/v2/climate/ncdb-4km-Hourly-CONUS-v1-0-0-RCP8-5-download)</span></h1>
+<p>The National Climate Database (NCDB) is a high-resolution, bias-corrected climate dataset including global horizontal irradiance, direct normal irradiance, and diffuse horizontal irradiance, as well as other meteorological data.</p>
+
+<p>The NCDB is developed using a statistical downscaling approach with Regional Climate Model (RCM)-based climate projections obtained from the North American Coordinated Regional Climate Downscaling Experiment (NA-CORDEX; https://na-cordex.org/). 0.22⁰ daily climate projections simulated by the Canadian Regional Climate Model 4 (CanRCM4) forced by the second-generation Canadian Earth System Model (CanESM2) for two Representative Concentration Pathways (RCP4.5 or moderate emissions scenario and RCP8.5 or highest baseline emission scenario) are selected as inputs to the statistical downscaling models. The National Solar Radiation Database (NSRDB) (Sengupta et al. 2018) is used to build and calibrate the statistical model. For more details please visit <a href="https://climate.nrel.gov">the NCDB</a>.</p>
+
+<ul id="toc"></ul>
+
+<h2 id="request-url">Request URL</h2>
+
+<pre>GET|POST /api/climate/ncdb/v2/climate/ncdb-4km-Hourly-CONUS-v1-0-0-RCP8-5-download<em>.format?parameters</em></pre>
+
+<h2 id="request-parameters">Request Parameters</h2>
+<p><em>NOTE: when using POST to submit a request the api_key must still be included as a query parameter in the url. All other parameters may be included in a POST request as part of the payload.</em></p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Parameter</th>
+      <th class="doc-parameters-required" scope="col">Required</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">api_key</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Your developer API key. See <a href="/docs/api-key/">API keys</a> for more information.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">wkt</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> well-known text string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        A well-known text (WKT) representation of the geometry for which to extract data. May be a point, multipoint, or polygon geometry. When a point is passed the site nearest to that point is used. When a multipoint is passed the site nearest each point is used. This can be useful for downloading multiple sites in a single request when those sites are geographically distant from each other. When a polygon is passed all sites that intersect with the given polygon are used.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">attributes</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>air_temperature, dhi, dni, ghi, solar_zenith_angle, wind_speed.</em></div>
+      </td>
+      <td class="doc-parameter-description">
+        Each specified attribute(*) will be returned as a column in the resultant CSV download.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">names</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036, 2037, 2038, 2039, 2040, 2041, 2042, 2043, 2044, 2045, 2046, 2047, 2048, 2049, 2050, 2051, 2052, 2053, 2054, 2055, 2056, 2057, 2058, 2059, 2060, 2061, 2062, 2063, 2064, 2065, 2066, 2067, 2068, 2069, 2070, 2071, 2072, 2073, 2074, 2075, 2076, 2077, 2078, 2079, 2080, 2081, 2082, 2083, 2084, 2085, 2086, 2087, 2088, 2089, 2090, 2091, 2092, 2093, 2094, 2095, 2096, 2097, 2098, 2099, 2100</em>.</div>
+      </td>
+      <td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">utc</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> true</div>
+      </td>
+      <td class="doc-parameter-description">
+        Pass true to retrieve data with timestamps in UTC. Pass false to retrieve data with timestamps converted to local time of data point (without daylight savings time).
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">leap_day</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> false</div>
+      </td>
+      <td class="doc-parameter-description">
+        Pass true to retrieve data including leap day (where appropriate). Pass false to retrieve data excluding leap day.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">interval</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong>60</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        This value determines data resolution. Either 60 minute intervals are available.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">full_name</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">The full name of the user requesting data.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">email</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> email string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        An active email for the user requesting data. This email will be used to deliver the extracted data.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">affiliation</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        The organization with which the user requesting the data is affiliated.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">reason</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">The reason that the user is requesting the data.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">mailing_list</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> false</div>
+      </td>
+      <td class="doc-parameter-description">
+        Pass true to add the email address to our list of recipients for the NSRDB mailing list.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="response-fields">Response Fields</h2>
+
+<p>The response is composed of service-related informational fields and the results of the data query.</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">errors</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> string array</div>
+      </td>
+      <td class="doc-parameter-description">
+      <p>A list of error messages</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">inputs</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
+      </td>
+      <td class="doc-parameter-description">Key: Value pairs representing all input parameters</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">outputs</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
+      </td>
+      <td class="doc-parameter-description">Upon successful completion a message will be returned informing the user that file generation is in progress and an email will be sent to the address provided in the <code>email</code> input field when the download is ready</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="data-file-format">Data File Format</h2>
+
+<p>Generated data files are formatted in accordance with the Standard Time Series Data File Format. This file format has been developed to support <a href="https://sam.nrel.gov/">SAM</a> and other NREL models and is documented fully in <a href="https://sam.nrel.gov/sites/default/files/content/documents/pdf/wfcsv.pdf">this PDF</a>. More information on SAM file formats available on <a href="https://sam.nrel.gov/weather">the SAM weather page</a>.</p>
+
+<h2 id="examples">Examples</h2>
+<p>Examples may not reflect this specific dataset.</p>
+
+<h3 id="json-output-format">JSON Output Format</h3>
+
+<div class="doc-example-url"><code>GET /api/climate/ncdb/v2/climate/ncdb-4km-Hourly-CONUS-v1-0-0-RCP8-5-download.json?wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=user@company.com</code></div>
+
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "inputs": {
+        "query": {
+            "names": "2017",
+            "utc": "false",
+            "leap_day": "true",
+            "email": "user@company.com",
+            "wkt": "POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))"
+        }
+    },
+    "metadata": {
+        "version": "2.0.0",
+        "resultset": {
+          "count": 1
+        }
+    },
+    "status": 200,
+    "outputs": {
+        "message": "File generation in progress. An email will be sent to user@company.com when the download is ready.",
+        "downloadUrl": "https://mapfiles.nrel.gov/data/wind/ebc9bbbc34f91c65ac50707d43176c6c.zip"
+    },
+    "errors": []
+}
+</code></pre></div>
+<h3 id="csv-output-format">CSV Output Format</h3>
+<p>Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.</p>
+
+<div class="doc-example-url"><code>GET /api/climate/ncdb/v2/climate/ncdb-4km-Hourly-CONUS-v1-0-0-RCP8-5-download.csv?wkt=POINT(-179.99 -15.94)&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=user@company.com&amp;api_key=DEMO_KEY</code></div>
+
+<div class="highlight"><pre class="highlight plaintext"><code>SiteID,Site Timezone,Data Timezone,Longitude,Latitude,Country
+80,-9,-9,-130.756,48.75498,b'Canada'
+Year,Month,Day,Hour,Minute,wind direction at 180m (deg)
+2017,1,1,0,0,347.18
+2017,1,1,0,5,347.3
+2017,1,1,0,10,347.40000000000003
+2017,1,1,0,15,347.52
+2017,1,1,0,20,347.66
+2017,1,1,0,25,347.79
+2017,1,1,0,30,348
+2017,1,1,0,35,348.18
+2017,1,1,0,40,348.35
+</code></pre></div>
+<h3 id="post-request-example-in-python">POST request example in Python</h3>
+
+<div class="highlight"><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/climate/ncdb/v2/climate/ncdb-4km-Hourly-CONUS-v1-0-0-RCP8-5-download.json?api_key=yourapikeygoeshere"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"api_key={{API_KEY}}&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=true&amp;leap_day=true&amp;interval=60&amp;email=user@company.com&amp;wkt=POINT(-179.99 -15.94)"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'content-type'</span><span class="p">:</span> <span class="s">"application/x-www-form-urlencoded"</span><span class="p">,</span>
+    <span class="s">'cache-control'</span><span class="p">:</span> <span class="s">"no-cache"</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="rate-limits">Rate Limits</h2>
+
+<p>Rate limits for this application are significantly less than the <a href="/docs/rate-limits" target="_blank">standard rate limits</a> for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.</p>
+
+<p>There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.</p>
+
+<p>Secondly each user is limited to 20 in-flight requests at any given time.</p>
+
+<p>In addition, the service has a fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.</p>
+
+<p>For some tips and tricks to maximize data downloads please read the guide <a href="/docs/climate/ncdb/guide/">here</a>.</p>
+
+<h2 id="contacts">Contact</h2>
+
+<p>For questions about the API or the data models please contact <a href="mailto:nsrdb@nrel.gov">nsrdb@nrel.gov</a></p>
+
+<h2 id="errors">Errors</h2>
+
+<p><a href="/docs/errors/">Standard errors</a> may be returned. In addition, the following service-specific errors may be returned:</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col" style="width: 100px;">HTTP Status Code</th>
+      <th class="doc-parameters-required" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">400</th>
+      <td class="doc-parameter-description">Bad Request: When required parameters are missing.</td>
+    </tr>
+  </tbody>
+</table>
+
+    <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/climate/ncdb/ncdb-4km-Hourly-CONUS-v1-0-0-RCP8-5-download.html.md.erb">Help Improve this Content</a>
+</div>
+
+      <footer class="container-fluid">
+    <div align="center"><img src="/assets/images/nrel/foot_nrelis-8e56f120.gif" alt="NREL is a national laboratory of the U.S. Department of Energy, Office of Energy Efficiency and Renewable Energy, operated by the Alliance for Sustainable Energy, LLC." usemap="#footer_map" class="img-fluid" /></div>
+
+    <map name="footer_map" id="footer_map">
+      <area shape="rect" coords="27,7,61,20" href="http://www.nrel.gov/" alt="NREL" />
+      <area shape="rect" coords="238,7,399,19" href="http://www.energy.gov/" alt="U.S. Department of Energy" />
+      <area shape="rect" coords="405,7,697,21" href="http://www.eere.energy.gov/" alt="Office of Energy Efficiency and Renewable Energy" />
+      <area shape="rect" coords="307,21,524,35" href="http://www.allianceforsustainableenergy.org/" alt="Alliance for Sustainable Energy, LLC" />
+    </map>
+
+    <p><a href="/contact">Need Help?</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.nrel.gov/security.html">Security &amp; Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.nrel.gov/disclaimer.html">Disclaimer</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.nrel.gov/">NREL Home</a></p>
+  </footer>
+</div>
+
+  </body>
+</html>

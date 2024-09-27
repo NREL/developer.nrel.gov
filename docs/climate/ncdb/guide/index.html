@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KG7PVKB');</script>
+<!-- End Google Tag Manager -->
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        Data Download Guide 
+          API
+        |
+      NREL: Developer Network
+    </title>
+
+    <link rel="canonical" href="https://developer.nrel.gov/docs/climate/ncdb/guide/" />
+    <script>
+      if(window.location.href.indexOf('nrel.github.io') !== -1) {
+        window.location.href = 'https://developer.nrel.gov/docs/climate/ncdb/guide/';
+      }
+    </script>
+
+    <link href="/assets/stylesheets/all-8a394523.css" rel="stylesheet" />
+
+    <script src="/assets/javascripts/shared-63e84763.js"></script>
+    <script src="/assets/javascripts/all-172ea8d4.js"></script>
+  </head>
+  <body class="docs docs_climate docs_climate_ncdb docs_climate_ncdb_guide docs_climate_ncdb_guide_index">
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src=https://www.googletagmanager.com/ns.html?id=GTM-KG7PVKB
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div class="container">
+  <header>
+    <map name="header_map">
+        <area shape="rect" coords="0,0,840,58" href="/" alt="Developer Network" />
+      <area shape="rect" coords="840,0,1000,58" href="http://www.nrel.gov/" alt="NREL" />
+    </map>
+    <img src="/assets/images/nrel/header-1bfbcb1a.png" alt="NREL Developer Network" usemap="#header_map" width="1000" height="58" class="img-fluid" />
+  </header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_nav" aria-controls="navbar_nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar_nav">
+      <ul class="navbar-nav">
+        <li class="nav-item nav-home "><a href="/" class="nav-link">Home</a></li>
+        <li class="nav-item nav-documentation active"><a href="/docs" class="nav-link">Documentation</a></li>
+        <li class="nav-item nav-community "><a href="/community" class="nav-link">Community</a></li>
+      </ul>
+    </div>
+  </nav>
+
+      <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/docs/">Documentation</a></li>
+            <li class="breadcrumb-item"><a href="/docs/climate/">Climate</a></li>
+            <li class="breadcrumb-item"><a href="/docs/climate/ncdb/">National Climate Database Downloads</a></li>
+            <li class="breadcrumb-item active">Data Download Guide</li>
+    </ol>
+
+
+    <h2 id="data-download-usage-guide">Data Download Usage Guide</h2>
+
+<p>We often receive requests from users interested in downloading larger segments of the data than are supported by the API. It is important to understand that these datasets are large. Currently our storage archive contains hundreds of terabytes of data and is constantly growing! In order to reliably serve dynamic segments of a dataset of this size to a growing community of users we have calculated the maximum capacity our server hardware can sustain. We use this physical capacity to determine our API rate limits. For users insterested in accessing bulk data the full datasets are available via the Registry of Open Data on AWS at <a href="https://registry.opendata.aws/nrel-pds-ncdb/">https://registry.opendata.aws/nrel-pds-ncdb/</a>.</p>
+
+<p>The API is restricted in several ways including the number of simultaneous requests a single user can make, the number of requests a single user can make in a 24 hour period, as well as in the maximum size of a single request. The API rate limits are set at:</p>
+
+<blockquote>
+  <p>1000 requests per day<br />
+1 request every 2 seconds<br />
+20 requests in process at once</p>
+</blockquote>
+
+<p>For downloading directly via CSV there are separate rate limits. This is due to the fact that it is only possible to download a single site for a single year via the CSV endpoint, therefor these requests are always quite small by comparison:</p>
+
+<blockquote>
+  <p>5000 requests per day<br />
+1 request per second<br />
+20 requests in process at once</p>
+</blockquote>
+
+<p>The size limit per each single request is determined by the number of total attributes in each request. The maximum weight of each request is <strong>5000000</strong>. The calculation for determining the weight of each request is:</p>
+
+<blockquote>
+  <p><em>site-count*attribute-count*year-count*data-intervals-per-year</em></p>
+</blockquote>
+
+<ul>
+  <li><strong>site-count</strong> is derived from the WKT value submitted and can be retrieved using the <a href="/docs/solar/nsrdb/site_count">site_count</a> API endpoint.</li>
+  <li><strong>attribute-count</strong> is equal to the number of attributes requested</li>
+  <li><strong>year-count</strong> is equal to the number of years requested</li>
+  <li><strong>data-intervals-per-year</strong> is <em>((60/interval)*24*365)</em> where interval is the interval requested</li>
+</ul>
+
+<p>To maximize a single request simply minimize the variables wherever possible. For example by requesting half as many attributes one can request twice as many years (or sites) worth of data.</p>
+
+<p>Imagine a use case where one wanted to download all Climate data for the state of Texas. The first step would be to refine the request down to the least number of attributes, years, and intervals possible. From that one could determine the number of sites that could be requested in a single request. By experimenting with the site_count endpoint a polygon size could be identified that intersects close to that many sites. Using that polygon size create a grid that covers all of Texas. The final step would be to write a script that invokes the API once for every required grid cell at a rate of no more than 1 every 2 seconds and no more than 20 in process at a time. If more than 1000 requests are required the script will have to be continued across multiple days.</p>
+
+<p>In cases where a very large WKT value is required, e.g. downloading the maximum number of broadly spaced points at a time using a MULTIPOINT wkt, it is possible to POST a request to the API providing the WKT params in the payload. Here is an example of a Python script that uses this variation:</p>
+
+<div class="highlight"><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/climate/ncdb/v2/climate/ncdb-4km-Hourly-CONUS-v1-0-0-RCP8-5-download.json?api_key=yourapikeygoeshere"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"names=2012&amp;leap_day=false&amp;interval=60&amp;utc=false&amp;full_name=Honored%2BUser&amp;email=honored.user%40gmail.com&amp;affiliation=NREL&amp;mailing_list=true&amp;reason=Academic&amp;attributes=dhi%2Cdni%2Cwind_speed&amp;wkt=MULTIPOINT(-106.22%2032.9741%2C-106.18%2032.9741%2C-106.1%2032.9741)"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'content-type'</span><span class="p">:</span> <span class="s">"application/x-www-form-urlencoded"</span><span class="p">,</span>
+    <span class="s">'cache-control'</span><span class="p">:</span> <span class="s">"no-cache"</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div>
+<p>And a CURL example of the same</p>
+
+<div class="highlight"><pre class="highlight shell"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"Content-Type: application/x-www-form-urlencoded"</span> <span class="nt">-H</span> <span class="s2">"Cache-Control: no-cache"</span> <span class="nt">-d</span> <span class="s1">'names=2009&amp;leap_day=false&amp;interval=60&amp;utc=false&amp;full_name=Honored%2BUser&amp;email=user@company.com&amp;affiliation=NREL&amp;mailing_list=true&amp;reason=Academic&amp;attributes=dhi%2Cdni%2Cwind_speed&amp;wkt=MULTIPOINT(-106.22 32.9741%2C-106.18 32.9741%2C-106.1 32.9741%2C-106.06 32.9741)'</span> <span class="s2">"http://developer.nrel.gov/api/solar/psm3-5min-download.json?api_key=yourapikeygoeshere"</span>
+</code></pre></div>
+<h2 id="contacts">Contact</h2>
+
+<p>For questions about the API or the data models please contact <a href="mailto:nsrdb@nrel.gov">nsrdb@nrel.gov</a></p>
+
+    <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/climate/ncdb/guide.html.md.erb">Help Improve this Content</a>
+</div>
+
+      <footer class="container-fluid">
+    <div align="center"><img src="/assets/images/nrel/foot_nrelis-8e56f120.gif" alt="NREL is a national laboratory of the U.S. Department of Energy, Office of Energy Efficiency and Renewable Energy, operated by the Alliance for Sustainable Energy, LLC." usemap="#footer_map" class="img-fluid" /></div>
+
+    <map name="footer_map" id="footer_map">
+      <area shape="rect" coords="27,7,61,20" href="http://www.nrel.gov/" alt="NREL" />
+      <area shape="rect" coords="238,7,399,19" href="http://www.energy.gov/" alt="U.S. Department of Energy" />
+      <area shape="rect" coords="405,7,697,21" href="http://www.eere.energy.gov/" alt="Office of Energy Efficiency and Renewable Energy" />
+      <area shape="rect" coords="307,21,524,35" href="http://www.allianceforsustainableenergy.org/" alt="Alliance for Sustainable Energy, LLC" />
+    </map>
+
+    <p><a href="/contact">Need Help?</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.nrel.gov/security.html">Security &amp; Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.nrel.gov/disclaimer.html">Disclaimer</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.nrel.gov/">NREL Home</a></p>
+  </footer>
+</div>
+
+  </body>
+</html>
