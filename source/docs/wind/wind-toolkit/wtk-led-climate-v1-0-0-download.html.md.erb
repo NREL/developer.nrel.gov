@@ -1,7 +1,7 @@
 ---
-title: "WTK-LED CONUS V1"
-summary: "Collect and download, as CSV, a configurable set of data fields from a national collection of wind stations. This data represents wind-speed, temperature, direction, and air pressure values at multiple heights above the surface for the years 2018-2020."
-url: /api/wind-toolkit/v2/wind/wtk-conus-5min-v1-0-0-download
+title: "WTK LED Climate V1.0.0"
+summary: "Collect and download, as CSV, a configurable set of data fields from a national collection of wind stations."
+url: /api/wind-toolkit/v2/wind/wtk-led-climate-v1-0-0-download
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
@@ -56,7 +56,7 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>winddirection_10m, windspeed_10m, turbulent_kinetic_energy_20m, winddirection_20m, windspeed_20m, turbulent_kinetic_energy_40m, winddirection_40m, windspeed_40m, turbulent_kinetic_energy_60m, winddirection_60m, windspeed_60m, turbulent_kinetic_energy_80m, winddirection_80m, windspeed_80m, turbulent_kinetic_energy_100m, winddirection_100m, windspeed_100m, winddirection_120m, windspeed_120m, winddirection_140m, windspeed_140m, winddirection_160m, windspeed_160m, winddirection_180m, windspeed_180m, turbulent_kinetic_energy_200m, winddirection_200m, windspeed_200m, winddirection_250m, windspeed_250m, turbulent_kinetic_energy_300m, winddirection_300m, windspeed_300m, turbulent_kinetic_energy_500m, winddirection_500m, windspeed_500m, turbulent_kinetic_energy_1000m, winddirection_1000m, windspeed_1000m.</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>precipitation_0m, pressure_0m, pressure_100m, pressure_200m, pressure_500m, temperature_1000m, temperature_100m, temperature_200m, temperature_2m, temperature_300m, temperature_30m, temperature_40m, temperature_500m, temperature_60m, temperature_80m, virtual_potential_temperature_1000m, virtual_potential_temperature_100m, virtual_potential_temperature_200m, virtual_potential_temperature_2m, virtual_potential_temperature_300m, virtual_potential_temperature_30m, virtual_potential_temperature_40m, virtual_potential_temperature_500m, virtual_potential_temperature_60m, virtual_potential_temperature_80m, winddirection_1000m, winddirection_100m, winddirection_10m, winddirection_120m, winddirection_140m, winddirection_160m, winddirection_180m, winddirection_200m, winddirection_250m, winddirection_300m, winddirection_30m, winddirection_32m, winddirection_40m, winddirection_44m, winddirection_47m, winddirection_500m, winddirection_54m, winddirection_57m, winddirection_60m, winddirection_80m, windspeed_1000m, windspeed_100m, windspeed_10m, windspeed_120m, windspeed_140m, windspeed_160m, windspeed_180m, windspeed_200m, windspeed_250m, windspeed_300m, windspeed_30m, windspeed_32m, windspeed_40m, windspeed_44m, windspeed_47m, windspeed_500m, windspeed_54m, windspeed_57m, windspeed_60m, windspeed_80m.</em></div>
       </td>
       <td class="doc-parameter-description">
         Each specified attribute(*) will be returned as a column in the resultant CSV download.
@@ -68,7 +68,7 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2018, 2019, 2020</em>.</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020</em>.</div>
       </td>
       <td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
     </tr>
@@ -98,11 +98,11 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <th class="doc-parameter-name" scope="row">interval</th>
       <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong>5, 15, 30, 60</div>
+        <div class="doc-parameter-value-field"><strong>Type:</strong>60</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
       </td>
       <td class="doc-parameter-description">
-        This value determines data resolution. Either 5, 15, 30, 60 minute intervals are available.
+        This value determines data resolution. 60 minute interval is available.
       </td>
     </tr>
     <tr>
