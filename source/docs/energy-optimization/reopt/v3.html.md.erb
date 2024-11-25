@@ -1,15 +1,17 @@
 ---
 title: REopt API V3
-summary: Version 3 is the development version of the REopt API. It uses the REopt Julia package as it's back-end.
-url: GET /api/reopt/dev
+summary: Version 3 is the stable version of the REopt API. It uses the REopt Julia package as its optimization engine.
+url: GET /api/reopt/stable
 sort_value: "0"
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
 
-Version 3 of the REopt API is currently under development. 
+Version 3 of the REopt API is currently the stable version of the API. 
 # User Documentation
-The inputs and outputs for optimization jobs are revised in v3 for clarity and ease-of-use. Please see [https://github.com/NREL/REopt_API/wiki/new-job-endpoint](https://github.com/NREL/REopt_API/wiki/new-job-endpoint) for more information.
+The inputs and outputs for optimization jobs are revised in v3 for clarity and ease-of-use. Please see our [help documentation for creating/converting to V3 inputs .json POST](https://github.com/NREL/REopt-Analysis-Scripts/wiki/3.-V3-input-and-output-changes) for more information. 
+
+The REopt.jl Julia package is used as the optimization engine for the V3 (stable) version of the API. The I/O of the API largely mirrors REopt.jl. You can also access REopt.jl directly in a Julia environment, with documentation about I/O available at [REopt Julia package](https://nrel.github.io/REopt.jl/dev/)
 
 # Developer Documentation
-Information for developers regarding v3 can be found at [https://github.com/NREL/REopt_API/wiki/new-job-endpoint](https://github.com/NREL/REopt_API/wiki/new-job-endpoint)
+Information for developers regarding V3 can be found at [the REopt API GitHub Wiki page](https://github.com/NREL/REopt_API/wiki)
