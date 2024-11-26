@@ -38,7 +38,7 @@ In cases where a very large WKT value is required, e.g. downloading the maximum 
 ```python
 import requests
 
-url = "http://developer.nrel.gov/api/wind/offshore-nw-pacific-download.json?api_key=yourapikeygoeshere"
+url = "https://developer.nrel.gov/api/wind/offshore-nw-pacific-download.json?api_key=yourapikeygoeshere"
 
 payload = "attributes=winddirection_180m&names=2017&utc=false&leap_day=true&email=user@company.com&wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))"
 
@@ -55,7 +55,7 @@ print(response.text)
 And a CURL example of the same
 
 ```shell
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -H "Cache-Control: no-cache" -d 'attributes=winddirection_180m&names=2017&utc=false&leap_day=true&email=user@company.com&wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))' "http://developer.nrel.gov/api/wind/offshore-nw-pacific-download.json?api_key=yourapikeygoeshere"
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -H "Cache-Control: no-cache" -d 'attributes=winddirection_180m&names=2017&utc=false&leap_day=true&email=user@company.com&wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))' "https://developer.nrel.gov/api/wind/offshore-nw-pacific-download.json?api_key=yourapikeygoeshere"
 ```
 
 ## Contact

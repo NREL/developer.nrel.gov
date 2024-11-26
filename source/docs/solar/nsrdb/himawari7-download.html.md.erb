@@ -275,7 +275,7 @@ Year,Month,Day,Hour,Minute,Alpha,AOD,GHI,DNI,DHI
 ```python
 import requests
 
-url = "http://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
+url = "https://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
 
 payload = "wkt=POINT(179.9901 -16.96)&attributes=alpha,aod,ghi,dni,dhi&names=2011&utc=true&leap_day=true&interval=30&email=user@company.com"
 
