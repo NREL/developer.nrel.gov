@@ -254,7 +254,7 @@ Year,Month,Day,Hour,Minute,Air Temerature,Clearsky DHI,Clearsky DNI,Clearsky GHI
 ```python
 import requests
 
-url = "http://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
+url = "https://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
 
 payload = "names=2012&leap_day=false&interval=60&utc=false&full_name=Valued%2BUser&email=valued.user%40gmail.com&affiliation=NREL&mailing_list=true&reason=Academic&attributes=dhi%2Cdni%2Cwind_speed%2Cair_temperature&wkt=MULTIPOINT(-66.1057%2018.4655%2C-66.2057%2018.3655%2C-66.1157%2018.4655)"
 

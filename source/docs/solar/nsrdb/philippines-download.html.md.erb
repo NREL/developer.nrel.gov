@@ -260,7 +260,7 @@ Year,Month,Day,Hour,Minute,Temperature,Wind Speed
 ```python
 import requests
 
-url = "http://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
+url = "https://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
 
 payload = "wkt=POINT (121.083336 17.05)&attributes=air_temperature,wind_speed&names=2017&utc=false&leap_day=true&interval=60&full_name=Valued%2BUser&email=valued.user%40gmail.com&affiliation=NREL&mailing_list=true&reason=Academic"
 
