@@ -345,7 +345,7 @@ Year,Month,Day,Hour,Minute,GHI,DNI,DHI
 
 <div class="highlight"><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/nsrdb/v2/solar/himawari-tmy-download.json?api_key=yourapikeygoeshere"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://developer.nrel.gov/api/nsrdb/v2/solar/himawari-tmy-download.json?api_key=yourapikeygoeshere"</span>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="s">"wkt=POINT(179.99 -16.96)&amp;attributes=ghi,dni,dhi&amp;names=tdy-2020,tgy-2020,tmy-2020&amp;utc=false&amp;leap_day=true&amp;interval=60&amp;email=user@company.com&amp;full_name=Sample User&amp;affiliation=Test Organization&amp;reason=Researching solar potential in my area&amp;mailing_list=true"</span>
 

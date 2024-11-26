@@ -320,7 +320,7 @@ Year,Month,Day,Hour,Minute,Alpha,AOD,GHI,DNI,DHI
 
 <div class="highlight"><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/nsrdb/v2/solar/nsrdb-msg-v1-0-0-tmy-download.json?api_key=yourapikeygoeshere"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://developer.nrel.gov/api/nsrdb/v2/solar/nsrdb-msg-v1-0-0-tmy-download.json?api_key=yourapikeygoeshere"</span>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="s">"api_key={{API_KEY}}&amp;attributes=alpha,aod,ghi,dni,dhi&amp;names=2019&amp;utc=true&amp;leap_day=true&amp;interval=10&amp;email=user@company.com&amp;wkt=POINT(-179.99 -15.94)"</span>
 

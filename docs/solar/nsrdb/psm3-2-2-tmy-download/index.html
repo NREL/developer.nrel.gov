@@ -300,7 +300,7 @@ Year,Month,Day,Hour,Minute,DHI,DNI,GHI,Dew Point,Temperature,Pressure,Wind Direc
 
 <div class="highlight"><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/nsrdb/v2/solar/psm3-2-2-tmy-download.json?api_key=yourapikeygoeshere"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-2-2-tmy-download.json?api_key=yourapikeygoeshere"</span>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="s">"wkt=POINT(-99.49218%2043.83452)&amp;attributes=dhi%2Cdni%2Cghi%2Cdew_point%2Cair_temperature%2Csurface_pressure%2Cwind_direction%2Cwind_speed%2Csurface_albedo%2C%2C%2C&amp;names=tmy-2017%2Ctdy-2017%2Ctgy-2017&amp;full_name=Louis%20Bourbon&amp;email=user@company.com&amp;affiliation=NREL&amp;mailing_list=false&amp;reason=test&amp;utc=true"</span>
 
