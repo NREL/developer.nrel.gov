@@ -1,6 +1,14 @@
 ---
 title: NSRDB Data Query
-summary: Returns information on the nearest NSRDB datasets for a location, including links for accessing the data. For information about the NSRDB and the datasets available through this service, please visit https://nsrdb.nrel.gov.
+summary: "Returns information on the nearest NSRDB datasets for a location, including links for accessing the data. For information about the NSRDB and the datasets available through this service, please visit [https://nsrdb.nrel.gov](https://nsrdb.nrel.gov). 
+\n\n
+PSM v3: 
+\n\n
+The satellite data was created using cloud properties which are generated using the AVHRR Pathfinder Atmospheres-Extended (PATMOS-x) algorithms. Fast all-sky radiation model for solar applications (FARMS) in conjunction with the cloud properties, and aerosol optical depth (AOD) and precipitable water vapor (PWV) from ancillary source are used to estimate DNI and GHI. The direct normal irradiance (DNI) and GHI are computed for clear skies using the REST2 model. For cloud scenes identified by the cloud mask, the FARMS is used to compute the GHI. The DNI for cloud scenes is then computed using the DISC model. 
+\n\n
+PSM v4: 
+\n\n
+The satellite data was created using cloud properties which are generated using the AVHRR Pathfinder Atmospheres-Extended (PATMOS-x) algorithms. Fast all-sky radiation model for solar applications (FARMS) in conjunction with the cloud properties, and aerosol optical depth (AOD) and precipitable water vapor (PWV) from ancillary source are used to estimate DNI and GHI. The direct normal irradiance (DNI) and GHI are computed for clear skies using the REST2 model. For cloud scenes identified by the cloud mask, the FARMS is used to compute the GHI. The DNI for cloud scenes is computed using the FARMS-DNI model."
 url: /api/solar/nsrdb_data_query
 ---
 
