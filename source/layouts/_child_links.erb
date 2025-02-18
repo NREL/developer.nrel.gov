@@ -6,8 +6,8 @@ deprecated = children.find_all { |p| (p.data.deprecated == true) }.sort_by { |p|
 
 <%= partial("layouts/children", :locals => { :children => primary }) %>
 
-<% if(deprecated.any?) %>
 <hr>
+<% if(deprecated.any?) %>
 <h2>Deprecated</h2>
 <%= partial("layouts/children", :locals => { :children => deprecated }) %>
 <% end %>

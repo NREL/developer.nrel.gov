@@ -1,14 +1,14 @@
 ---
 title: Physical Solar Model (PSM) v3.2.2 TMY
-summary: Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database [(NSRDB)](https://nsrdb.nrel.gov/) is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed [here](https://nsrdb.nrel.gov/data-sets/how-to-access-data). Read more about the datasets at [https://nsrdb.nrel.gov](https://nsrdb.nrel.gov)
-detail: This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.
+summary: This data has been replaced by GOES TMY v4.0.0. Please use <a href="/docs/solar/nsrdb/nsrdb-GOES-tmy-v4-0-0-download/">GOES TMY v4.0.0.</a>
 url: /api/nsrdb/v2/solar/psm3-2-2-tmy-download
+deprecated: true
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
-<%= current_page.data.summary %>
-
-<%= current_page.data.detail %>
+<div class="alert alert-danger" style="margin-top: 10px;">
+  <p><%= current_page.data.summary %></p>
+</div>
 
 <ul id="toc"></ul>
 
@@ -245,7 +245,7 @@ sd
 ```python
 import requests
 
-url = "https://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
+url = "http://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
 
 payload = "wkt=POINT(-99.49218%2043.83452)&attributes=dhi%2Cdni%2Cghi%2Cdew_point%2Cair_temperature%2Csurface_pressure%2Cwind_direction%2Cwind_speed%2Csurface_albedo%2C%2C%2C&names=tmy-2017%2Ctdy-2017%2Ctgy-2017&full_name=Louis%20Bourbon&email=user@company.com&affiliation=NREL&mailing_list=false&reason=test&utc=true"
 
