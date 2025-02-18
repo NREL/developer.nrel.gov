@@ -13,7 +13,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        Puerto Rico SHR (Simulated High Resolution) 
+         
           API
         |
       NREL: Developer Network
@@ -62,300 +62,313 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li class="breadcrumb-item"><a href="/docs/">Documentation</a></li>
             <li class="breadcrumb-item"><a href="/docs/solar/">Solar</a></li>
             <li class="breadcrumb-item"><a href="/docs/solar/nsrdb/">NSRDB Data Downloads</a></li>
-            <li class="breadcrumb-item active">Puerto Rico SHR (Simulated High Resolution)</li>
+            <li class="breadcrumb-item active"></li>
     </ol>
 
 
-    <h1 id="puerto-rico-shr-simulated-high-resolution-apinsrdbv2solarpuerto-rico-download">Puerto Rico SHR (Simulated High Resolution) <span class="url">(/api/nsrdb/v2/solar/puerto-rico-download)</span></h1>
-<p>Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
+    <h1>—</h1>
+<h1 id="title-puerto-rico-shr-simulated-high-resolution">title: Puerto Rico SHR (Simulated High Resolution)</h1>
+<h1 id="summary-collect-and-download-as-csv-a-configurable-set-of-solar-and-meteorological-data-fields-from-the-nsrdb-the-national-solar-radiation-database-nsrdb-is-a-serially-complete-collection-of-satellite-derived-measurements-of-solar-radiationglobal-horizontal-direct-normal-and-diffuse-horizontal-irradianceand-meteorological-data-these-data-have-been-collected-at-a-sufficient-number-of-locations-and-temporal-and-spatial-scales-to-accurately-represent-regional-solar-radiation-climates-the-data-are-publicly-available-at-no-cost-to-the-user-these-api-provide-access-to-downloading-the-data-other-options-are-detailed-here-read-more-about-the-datasets-at-httpsnsrdbnrelgov">summary: Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></h1>
+<h1 id="detail-this-api-is-capable-of-creating-very-large-downloadable-archives-unlike-a-typical-api-the-response-to-this-provides-a-request-acknowledgement-the-real-work-of-creating-the-requested-downloadable-archive-will-continue-to-run-on-the-server-side-when-complete-and-email-will-be-sent-to-the-email-address-provided-in-the-initial-request-with-a-link-to-a-file-to-download-in-addition-to-this-two-step-workflow-there-is-also-an-option-for-users-who-wish-to-download-a-single-csv-file-in-direct-response-to-an-api-request-the-csv-format-may-be-used-to-download-a-csv-directly-this-feature-is-restricted-to-use-with-only-a-single-point-for-a-single-year-at-a-time">detail: This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.</h1>
+<h1 id="url-apinsrdbv2solarpuerto-rico-download">url: /api/nsrdb/v2/solar/puerto-rico-download</h1>
+<h1 id="-1">—</h1>
 
-<p>This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.</p>
+<h1 id="--">#  <span class="url">()</span></h1>
+<p>#</p>
 
-<ul id="toc"></ul>
+<p>#</p>
 
-<h2 id="request-url">Request URL</h2>
+<h1 id="ul-idtocul">&lt;ul id="toc"&gt;&lt;/ul&gt;</h1>
 
-<pre>GET|POST /api/nsrdb/v2/solar/puerto-rico-download<em>.format?parameters</em></pre>
+<h1 id="-request-url">## Request URL</h1>
 
-<h2 id="request-parameters">Request Parameters</h2>
-<p><em>NOTE: when using POST to submit a request the api_key must still be included as a query parameter in the url. All other parameters may be included in a POST request as part of the payload.</em></p>
+<h1 id="pregetpost-formatparameterspre">&lt;pre&gt;GET|POST <em>.format?parameters</em>&lt;/pre&gt;</h1>
 
-<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
-  <thead>
-    <tr>
-      <th class="doc-parameters-name" scope="col">Parameter</th>
-      <th class="doc-parameters-required" scope="col">Required</th>
-      <th class="doc-parameters-value" scope="col">Value</th>
-      <th class="doc-parameters-description" scope="col">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th class="doc-parameter-name" scope="row">api_key</th>
-      <td class="doc-parameter-required">Yes</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-      </td>
-      <td class="doc-parameter-description">
-        <p>Your developer API key. See <a href="/docs/api-key/">API keys</a> for more information.</p>
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">wkt</th>
-      <td class="doc-parameter-required">Yes</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> well-known text string</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-      </td>
-      <td class="doc-parameter-description">
-        A well-known text (WKT) representation of the geometry for which to extract data. May be a point, multipoint, or polygon geometry. When a point is passed the site nearest to that point is used. When a multipoint is passed the site nearest each point is used. This can be useful for downloading multiple sites in a single request when those sites are geographically distant from each other. When a polygon is passed all sites that intersect with the given polygon are used.
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">attributes</th>
-      <td class="doc-parameter-required">No</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>air_temperature, clearsky_dhi, clearsky_dni, clearsky_ghi, dhi, dni, ghi, solar_zenith_angle, surface_albedo, surface_pressure, total_precipitable_water, wind_speed</em></div>
-      </td>
-      <td class="doc-parameter-description">
-        Each specified attribute(*) will be returned as a column in the resultant CSV download.<br /><br />
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">names</th>
-      <td class="doc-parameter-required">Yes</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017</em></div>
-      </td>
-      <td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">utc</th>
-      <td class="doc-parameter-required">No</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> true</div>
-      </td>
-      <td class="doc-parameter-description">
-        Pass true to retrieve data with timestamps in UTC. Pass false to retrieve data with timestamps converted to local time of data point (without daylight savings time).
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">leap_day</th>
-      <td class="doc-parameter-required">No</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> false</div>
-      </td>
-      <td class="doc-parameter-description">
-        Pass true to retrieve data including leap day (where appropriate). Pass false to retrieve data excluding leap day.
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">interval</th>
-      <td class="doc-parameter-required">Yes</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> 5, 30 or 60</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-      </td>
-      <td class="doc-parameter-description">
-        This value determines data resolution. 5 minute, 30 minute, or 60 minute intervals are available.
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">full_name</th>
-      <td class="doc-parameter-required">No</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-      </td>
-      <td class="doc-parameter-description">The full name of the user requesting data.</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">email</th>
-      <td class="doc-parameter-required">Yes</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> email string</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-      </td>
-      <td class="doc-parameter-description">
-        An active email for the user requesting data. This email will be used to deliver the extracted data.
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">affiliation</th>
-      <td class="doc-parameter-required">No</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-      </td>
-      <td class="doc-parameter-description">
-        The organization with which the user requesting the data is affiliated.
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">reason</th>
-      <td class="doc-parameter-required">No</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-      </td>
-      <td class="doc-parameter-description">The reason that the user is requesting the data.</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">mailing_list</th>
-      <td class="doc-parameter-required">No</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> false</div>
-      </td>
-      <td class="doc-parameter-description">
-        Pass true to add the email address to our list of recipients for the NSRDB mailing list.
-      </td>
-    </tr>
-  </tbody>
-</table>
+<h1 id="-request-parameters">## Request Parameters</h1>
+<h1 id="note-when-using-post-to-submit-a-request-the-api_key-must-still-be-included-as-a-query-parameter-in-the-url-all-other-parameters-may-be-included-in-a-post-request-as-part-of-the-payload"><em>NOTE: when using POST to submit a request the api_key must still be included as a query parameter in the url. All other parameters may be included in a POST request as part of the payload.</em></h1>
 
-<h2 id="response-fields">Response Fields</h2>
+<h1 id="table-border0-cellpadding0-cellspacing0-classdoc-parameters">&lt;table border="0" cellpadding="0" cellspacing="0" class="doc-parameters"&gt;</h1>
+<h1 id="thead">&lt;thead&gt;</h1>
+<h1 id="tr">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameters-name-scopecolparameterth">&lt;th class="doc-parameters-name" scope="col"&gt;Parameter&lt;/th&gt;</h1>
+<h1 id="th-classdoc-parameters-required-scopecolrequiredth">&lt;th class="doc-parameters-required" scope="col"&gt;Required&lt;/th&gt;</h1>
+<h1 id="th-classdoc-parameters-value-scopecolvalueth">&lt;th class="doc-parameters-value" scope="col"&gt;Value&lt;/th&gt;</h1>
+<h1 id="th-classdoc-parameters-description-scopecoldescriptionth">&lt;th class="doc-parameters-description" scope="col"&gt;Description&lt;/th&gt;</h1>
+<h1 id="tr-1">&lt;/tr&gt;</h1>
+<h1 id="thead-1">&lt;/thead&gt;</h1>
+<h1 id="tbody">&lt;tbody&gt;</h1>
+<h1 id="tr-2">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowapi_keyth">&lt;th class="doc-parameter-name" scope="row"&gt;api_key&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requiredyestd">&lt;td class="doc-parameter-required"&gt;Yes&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-stringdiv">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> string&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-nonediv">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> None&lt;/div&gt;</h1>
+<h1 id="td">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-description">&lt;td class="doc-parameter-description"&gt;</h1>
+<h1 id="pyour-developer-api-key-see-api-keys-for-more-informationp">&lt;p&gt;Your developer API key. See <a href="/docs/api-key/">API keys</a> for more information.&lt;/p&gt;</h1>
+<h1 id="td-1">&lt;/td&gt;</h1>
+<h1 id="tr-3">&lt;/tr&gt;</h1>
+<h1 id="tr-4">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowwktth">&lt;th class="doc-parameter-name" scope="row"&gt;wkt&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requiredyestd-1">&lt;td class="doc-parameter-required"&gt;Yes&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value-1">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-well-known-text-stringdiv">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> well-known text string&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-nonediv-1">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> None&lt;/div&gt;</h1>
+<h1 id="td-2">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-description-1">&lt;td class="doc-parameter-description"&gt;</h1>
+<h1 id="a-well-known-text-wkt-representation-of-the-geometry-for-which-to-extract-data-may-be-a-point-multipoint-or-polygon-geometry-when-a-point-is-passed-the-site-nearest-to-that-point-is-used-when-a-multipoint-is-passed-the-site-nearest-each-point-is-used-this-can-be-useful-for-downloading-multiple-sites-in-a-single-request-when-those-sites-are-geographically-distant-from-each-other-when-a-polygon-is-passed-all-sites-that-intersect-with-the-given-polygon-are-used">A well-known text (WKT) representation of the geometry for which to extract data. May be a point, multipoint, or polygon geometry. When a point is passed the site nearest to that point is used. When a multipoint is passed the site nearest each point is used. This can be useful for downloading multiple sites in a single request when those sites are geographically distant from each other. When a polygon is passed all sites that intersect with the given polygon are used.</h1>
+<h1 id="td-3">&lt;/td&gt;</h1>
+<h1 id="tr-5">&lt;/tr&gt;</h1>
+<h1 id="tr-6">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowattributesth">&lt;th class="doc-parameter-name" scope="row"&gt;attributes&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requirednotd">&lt;td class="doc-parameter-required"&gt;No&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value-2">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-comma-delimited-string-arraydiv">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> comma delimited string array&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-returns-alldiv">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> Returns ALL&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldoptions-air_temperature-clearsky_dhi-clearsky_dni-clearsky_ghi-dhi-dni-ghi-solar_zenith_angle-surface_albedo-surface_pressure-total_precipitable_water-wind_speeddiv">&lt;div class="doc-parameter-value-field"&gt;<strong>Options:</strong> <em>air_temperature, clearsky_dhi, clearsky_dni, clearsky_ghi, dhi, dni, ghi, solar_zenith_angle, surface_albedo, surface_pressure, total_precipitable_water, wind_speed</em>&lt;/div&gt;</h1>
+<h1 id="td-4">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-description-2">&lt;td class="doc-parameter-description"&gt;</h1>
+<h1 id="each-specified-attribute-will-be-returned-as-a-column-in-the-resultant-csv-download">Each specified attribute(*) will be returned as a column in the resultant CSV download.<br /><br /></h1>
+<h1 id="td-5">&lt;/td&gt;</h1>
+<h1 id="tr-7">&lt;/tr&gt;</h1>
+<h1 id="tr-8">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperownamesth">&lt;th class="doc-parameter-name" scope="row"&gt;names&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requiredyestd-2">&lt;td class="doc-parameter-required"&gt;Yes&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value-3">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-comma-delimited-string-arraydiv-1">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> comma delimited string array&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-nonediv-2">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> None&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldoptions-1998-1999-2000-2001-2002-2003-2004-2005-2006-2007-2008-2009-2010-2011-2012-2013-2014-2015-2016-2017div">&lt;div class="doc-parameter-value-field"&gt;<strong>Options:</strong> <em>1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017</em>&lt;/div&gt;</h1>
+<h1 id="td-6">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-descriptionthe-years-for-which-data-should-be-extractedtd">&lt;td class="doc-parameter-description"&gt;The year(s) for which data should be extracted.&lt;/td&gt;</h1>
+<h1 id="tr-9">&lt;/tr&gt;</h1>
+<h1 id="tr-10">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowutcth">&lt;th class="doc-parameter-name" scope="row"&gt;utc&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requirednotd-1">&lt;td class="doc-parameter-required"&gt;No&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value-4">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-true-or-falsediv">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> true or false&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-truediv">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> true&lt;/div&gt;</h1>
+<h1 id="td-7">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-description-3">&lt;td class="doc-parameter-description"&gt;</h1>
+<h1 id="pass-true-to-retrieve-data-with-timestamps-in-utc-pass-false-to-retrieve-data-with-timestamps-converted-to-local-time-of-data-point-without-daylight-savings-time">Pass true to retrieve data with timestamps in UTC. Pass false to retrieve data with timestamps converted to local time of data point (without daylight savings time).</h1>
+<h1 id="td-8">&lt;/td&gt;</h1>
+<h1 id="tr-11">&lt;/tr&gt;</h1>
+<h1 id="tr-12">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowleap_dayth">&lt;th class="doc-parameter-name" scope="row"&gt;leap_day&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requirednotd-2">&lt;td class="doc-parameter-required"&gt;No&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value-5">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-true-or-falsediv-1">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> true or false&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-falsediv">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> false&lt;/div&gt;</h1>
+<h1 id="td-9">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-description-4">&lt;td class="doc-parameter-description"&gt;</h1>
+<h1 id="pass-true-to-retrieve-data-including-leap-day-where-appropriate-pass-false-to-retrieve-data-excluding-leap-day">Pass true to retrieve data including leap day (where appropriate). Pass false to retrieve data excluding leap day.</h1>
+<h1 id="td-10">&lt;/td&gt;</h1>
+<h1 id="tr-13">&lt;/tr&gt;</h1>
+<h1 id="tr-14">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowintervalth">&lt;th class="doc-parameter-name" scope="row"&gt;interval&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requiredyestd-3">&lt;td class="doc-parameter-required"&gt;Yes&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value-6">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-5-30-or-60div">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> 5, 30 or 60&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-nonediv-3">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> None&lt;/div&gt;</h1>
+<h1 id="td-11">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-description-5">&lt;td class="doc-parameter-description"&gt;</h1>
+<h1 id="this-value-determines-data-resolution-5-minute-30-minute-or-60-minute-intervals-are-available">This value determines data resolution. 5 minute, 30 minute, or 60 minute intervals are available.</h1>
+<h1 id="td-12">&lt;/td&gt;</h1>
+<h1 id="tr-15">&lt;/tr&gt;</h1>
+<h1 id="tr-16">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowfull_nameth">&lt;th class="doc-parameter-name" scope="row"&gt;full_name&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requirednotd-3">&lt;td class="doc-parameter-required"&gt;No&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value-7">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-stringdiv-1">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> string&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-nonediv-4">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> None&lt;/div&gt;</h1>
+<h1 id="td-13">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-descriptionthe-full-name-of-the-user-requesting-datatd">&lt;td class="doc-parameter-description"&gt;The full name of the user requesting data.&lt;/td&gt;</h1>
+<h1 id="tr-17">&lt;/tr&gt;</h1>
+<h1 id="tr-18">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowemailth">&lt;th class="doc-parameter-name" scope="row"&gt;email&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requiredyestd-4">&lt;td class="doc-parameter-required"&gt;Yes&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value-8">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-email-stringdiv">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> email string&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-nonediv-5">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> None&lt;/div&gt;</h1>
+<h1 id="td-14">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-description-6">&lt;td class="doc-parameter-description"&gt;</h1>
+<h1 id="an-active-email-for-the-user-requesting-data-this-email-will-be-used-to-deliver-the-extracted-data">An active email for the user requesting data. This email will be used to deliver the extracted data.</h1>
+<h1 id="td-15">&lt;/td&gt;</h1>
+<h1 id="tr-19">&lt;/tr&gt;</h1>
+<h1 id="tr-20">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowaffiliationth">&lt;th class="doc-parameter-name" scope="row"&gt;affiliation&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requirednotd-4">&lt;td class="doc-parameter-required"&gt;No&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value-9">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-stringdiv-2">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> string&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-nonediv-6">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> None&lt;/div&gt;</h1>
+<h1 id="td-16">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-description-7">&lt;td class="doc-parameter-description"&gt;</h1>
+<h1 id="the-organization-with-which-the-user-requesting-the-data-is-affiliated">The organization with which the user requesting the data is affiliated.</h1>
+<h1 id="td-17">&lt;/td&gt;</h1>
+<h1 id="tr-21">&lt;/tr&gt;</h1>
+<h1 id="tr-22">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowreasonth">&lt;th class="doc-parameter-name" scope="row"&gt;reason&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requirednotd-5">&lt;td class="doc-parameter-required"&gt;No&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value-10">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-stringdiv-3">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> string&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-nonediv-7">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> None&lt;/div&gt;</h1>
+<h1 id="td-18">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-descriptionthe-reason-that-the-user-is-requesting-the-datatd">&lt;td class="doc-parameter-description"&gt;The reason that the user is requesting the data.&lt;/td&gt;</h1>
+<h1 id="tr-23">&lt;/tr&gt;</h1>
+<h1 id="tr-24">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowmailing_listth">&lt;th class="doc-parameter-name" scope="row"&gt;mailing_list&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requirednotd-6">&lt;td class="doc-parameter-required"&gt;No&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value-11">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-true-or-falsediv-2">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> true or false&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-falsediv-1">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> false&lt;/div&gt;</h1>
+<h1 id="td-19">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-description-8">&lt;td class="doc-parameter-description"&gt;</h1>
+<h1 id="pass-true-to-add-the-email-address-to-our-list-of-recipients-for-the-nsrdb-mailing-list">Pass true to add the email address to our list of recipients for the NSRDB mailing list.</h1>
+<h1 id="td-20">&lt;/td&gt;</h1>
+<h1 id="tr-25">&lt;/tr&gt;</h1>
+<h1 id="tbody-1">&lt;/tbody&gt;</h1>
+<h1 id="table">&lt;/table&gt;</h1>
 
-<p>The response is composed of service-related informational fields and the results of the data query.</p>
+<h1 id="-response-fields">## Response Fields</h1>
 
-<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
-  <thead>
-    <tr>
-      <th class="doc-parameters-name" scope="col">Field</th>
-      <th class="doc-parameters-value" scope="col">Value</th>
-      <th class="doc-parameters-description" scope="col">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th class="doc-parameter-name" scope="row">errors</th>
-      <td class="doc-parameter-value">
-      <div class="doc-parameter-value-field"><strong>Type:</strong> string array</div>
-      </td>
-      <td class="doc-parameter-description">
-      <p>A list of error messages</p>
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">inputs</th>
-      <td class="doc-parameter-value">
-      <div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
-      </td>
-      <td class="doc-parameter-description">Key: Value pairs representing all input parameters</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">outputs</th>
-      <td class="doc-parameter-value">
-      <div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
-      </td>
-      <td class="doc-parameter-description">Upon successful completion a message will be returned informing the user that file generation is in progress and an email will be sent to the address provided in the <code>email</code> input field when the download is ready</td>
-    </tr>
-  </tbody>
-</table>
+<h1 id="the-response-is-composed-of-service-related-informational-fields-and-the-results-of-the-data-query">The response is composed of service-related informational fields and the results of the data query.</h1>
 
-<h2 id="data-file-format">Data File Format</h2>
+<h1 id="table-border0-cellpadding0-cellspacing0-classdoc-parameters-1">&lt;table border="0" cellpadding="0" cellspacing="0" class="doc-parameters"&gt;</h1>
+<h1 id="thead-2">&lt;thead&gt;</h1>
+<h1 id="tr-26">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameters-name-scopecolfieldth">&lt;th class="doc-parameters-name" scope="col"&gt;Field&lt;/th&gt;</h1>
+<h1 id="th-classdoc-parameters-value-scopecolvalueth-1">&lt;th class="doc-parameters-value" scope="col"&gt;Value&lt;/th&gt;</h1>
+<h1 id="th-classdoc-parameters-description-scopecoldescriptionth-1">&lt;th class="doc-parameters-description" scope="col"&gt;Description&lt;/th&gt;</h1>
+<h1 id="tr-27">&lt;/tr&gt;</h1>
+<h1 id="thead-3">&lt;/thead&gt;</h1>
+<h1 id="tbody-2">&lt;tbody&gt;</h1>
+<h1 id="tr-28">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowerrorsth">&lt;th class="doc-parameter-name" scope="row"&gt;errors&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-value-12">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-string-arraydiv">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> string array&lt;/div&gt;</h1>
+<h1 id="td-21">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-description-9">&lt;td class="doc-parameter-description"&gt;</h1>
+<h1 id="pa-list-of-error-messagesp">&lt;p&gt;A list of error messages&lt;/p&gt;</h1>
+<h1 id="td-22">&lt;/td&gt;</h1>
+<h1 id="tr-29">&lt;/tr&gt;</h1>
+<h1 id="tr-30">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowinputsth">&lt;th class="doc-parameter-name" scope="row"&gt;inputs&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-value-13">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-object-hashdiv">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> Object Hash&lt;/div&gt;</h1>
+<h1 id="td-23">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-descriptionkey-value-pairs-representing-all-input-parameterstd">&lt;td class="doc-parameter-description"&gt;Key: Value pairs representing all input parameters&lt;/td&gt;</h1>
+<h1 id="tr-31">&lt;/tr&gt;</h1>
+<h1 id="tr-32">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowoutputsth">&lt;th class="doc-parameter-name" scope="row"&gt;outputs&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-value-14">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-object-hashdiv-1">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> Object Hash&lt;/div&gt;</h1>
+<h1 id="td-24">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-descriptionupon-successful-completion-a-message-will-be-returned-informing-the-user-that-file-generation-is-in-progress-and-an-email-will-be-sent-to-the-address-provided-in-the-email-input-field-when-the-download-is-readytd">&lt;td class="doc-parameter-description"&gt;Upon successful completion a message will be returned informing the user that file generation is in progress and an email will be sent to the address provided in the <code>email</code> input field when the download is ready&lt;/td&gt;</h1>
+<h1 id="tr-33">&lt;/tr&gt;</h1>
+<h1 id="tbody-3">&lt;/tbody&gt;</h1>
+<h1 id="table-1">&lt;/table&gt;</h1>
 
-<p>Generated data files are formatted in accordance with the Standard Time Series Data File Format. This file format has been developed to support <a href="https://sam.nrel.gov/">SAM</a> and other NREL models and is documented fully in <a href="https://sam.nrel.gov/sites/default/files/content/documents/pdf/wfcsv.pdf">this PDF</a>. More information on SAM file formats available on <a href="https://sam.nrel.gov/weather">the SAM weather page</a>.</p>
+<h1 id="-data-file-format">## Data File Format</h1>
 
-<h2 id="examples">Examples</h2>
+<h1 id="generated-data-files-are-formatted-in-accordance-with-the-standard-time-series-data-file-format-this-file-format-has-been-developed-to-support-sam-and-other-nrel-models-and-is-documented-fully-in-this-pdf-more-information-on-sam-file-formats-available-on-the-sam-weather-page">Generated data files are formatted in accordance with the Standard Time Series Data File Format. This file format has been developed to support <a href="https://sam.nrel.gov/">SAM</a> and other NREL models and is documented fully in <a href="https://sam.nrel.gov/sites/default/files/content/documents/pdf/wfcsv.pdf">this PDF</a>. More information on SAM file formats available on <a href="https://sam.nrel.gov/weather">the SAM weather page</a>.</h1>
 
-<h3 id="json-output-format">JSON Output Format</h3>
+<h1 id="-examples">## Examples</h1>
 
-<div class="doc-example-url"><code>GET /api/nsrdb/v2/solar/puerto-rico-download.json?api_key=DEMO_KEY&amp;names=2016&amp;email=user@company.com&amp;interval=60&amp;wkt=POINT(-66.1057 18.4655)</code></div>
+<h1 id="-json-output-format">### JSON Output Format</h1>
 
-<div class="highlight"><pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="nl">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"names"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="mi">2016</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@company.com"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"wkt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POINT(-66.1057 18.4655)"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File generation in progress. An email will be sent to user@company.com when the download is ready."</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<h3 id="csv-output-format">CSV Output Format</h3>
-<p>Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.</p>
+<h1 id="div-classdoc-example-urlget-jsonapi_keydemo_keynames2016emailusercompanycominterval60wktpoint-661057-184655div">&lt;div class="doc-example-url"&gt;<code>GET .json?api_key=DEMO_KEY&amp;names=2016&amp;email=user@company.com&amp;interval=60&amp;wkt=POINT(-66.1057 18.4655)</code>&lt;/div&gt;</h1>
 
-<div class="doc-example-url"><code>GET /api/nsrdb/v2/solar/puerto-rico-download.csv?api_key=DEMO_KEY&amp;names=2016&amp;email=user@company.com&amp;interval=60&amp;wkt=POINT(-66.1057 18.4655)</code></div>
+<h1 id="json">```json</h1>
+<h1 id="-2">{</h1>
+<h1 id="errors-">"errors": [],</h1>
+<h1 id="inputs-">"inputs": {</h1>
+<h1 id="names-">"names": [</h1>
+<h1 id="2016">2016</h1>
+<h1 id="-3">],</h1>
+<h1 id="email-usercompanycom">"email": "user@company.com",</h1>
+<h1 id="interval-60">"interval": 60,</h1>
+<h1 id="wkt-point-661057-184655">"wkt": "POINT(-66.1057 18.4655)"</h1>
+<h1 id="-4">},</h1>
+<h1 id="outputs-">"outputs": {</h1>
+<h1 id="message-file-generation-in-progress-an-email-will-be-sent-to-usercompanycom-when-the-download-is-ready">"message": "File generation in progress. An email will be sent to user@company.com when the download is ready."</h1>
+<h1 id="-5">}</h1>
+<h1 id="-6">}</h1>
+<h1 id="-7">```</h1>
 
-<div class="highlight"><pre class="highlight plaintext"><code>Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,Local Time Zone,Clearsky DHI Units,Clearsky DNI Units,Clearsky GHI Units,DHI Units,DNI Units,GHI Units,Solar Zenith Angle Units,Pressure Units,Precipitable Water Units,Wind Speed,Version
-NSRDB,1601,-,PR,Puerto Rico,18.459999084472656,-66.11000061035156,-4,9,-4,w/m2,w/m2,w/m2,w/m2,w/m2,w/m2,Degree,mbar,mm,m/s,unknown
-Year,Month,Day,Hour,Minute,Air Temerature,Clearsky DHI,Clearsky DNI,Clearsky GHI,DHI,DNI,GHI,Solar Zenith Angle,Albedo,Pressure,Precipitable Water,Wind Speed
-2016,1,1,0,5,25,0,0,0,0,0,0,89.0,0.082,1020.0,3.286,5
-2016,1,1,1,5,25,0,0,0,0,0,0,89.0,0.082,1020.0,2.852,5
-2016,1,1,2,5,25,0,0,0,0,0,0,89.0,0.082,1020.0,2.5340000000000003,5
-2016,1,1,3,5,25,0,0,0,0,0,0,89.0,0.082,1020.0,2.316,5
-2016,1,1,4,5,25,0,0,0,0,0,0,89.0,0.082,1020.0,2.1350000000000002,4
-2016,1,1,5,5,24,0,0,0,0,0,0,89.0,0.082,1020.0,1.999,4
-2016,1,1,6,5,24,0,0,0,0,0,0,89.0,0.082,1020.0,1.926,4
-2016,1,1,7,5,25,16,78,18,16,78,18,88.26,0.082,1020.0,1.923,4
-2016,1,1,8,5,26,61,594,206,61,594,206,75.91,0.082,1021.7,1.973,4
-2016,1,1,9,5,27,79,788,423,79,788,423,64.15,0.082,1030.0,2.081,4
-2016,1,1,10,5,27,89,876,606,89,876,606,53.800000000000004,0.082,1030.0,2.248,5
-</code></pre></div>
-<h3 id="post-request-example-in-python">POST request example in Python</h3>
+<h1 id="-csv-output-format">### CSV Output Format</h1>
+<h1 id="direct-streaming-of-csv-data-is-supported-for-single-location-single-year-only-the-following-response-example-is-truncated-after-the-first-few-rows-of-data">Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.</h1>
 
-<div class="highlight"><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<h1 id="div-classdoc-example-urlget-csvapi_keydemo_keynames2016emailusercompanycominterval60wktpoint-661057-184655div">&lt;div class="doc-example-url"&gt;<code>GET .csv?api_key=DEMO_KEY&amp;names=2016&amp;email=user@company.com&amp;interval=60&amp;wkt=POINT(-66.1057 18.4655)</code>&lt;/div&gt;</h1>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://developer.nrel.gov/api/nsrdb/v2/solar/puerto-rico-download.json?api_key=yourapikeygoeshere"</span>
+<h1 id="csv">```csv</h1>
+<h1 id="sourcelocation-idcitystatecountrylatitudelongitudetime-zoneelevationlocal-time-zoneclearsky-dhi-unitsclearsky-dni-unitsclearsky-ghi-unitsdhi-unitsdni-unitsghi-unitssolar-zenith-angle-unitspressure-unitsprecipitable-water-unitswind-speedversion">Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,Local Time Zone,Clearsky DHI Units,Clearsky DNI Units,Clearsky GHI Units,DHI Units,DNI Units,GHI Units,Solar Zenith Angle Units,Pressure Units,Precipitable Water Units,Wind Speed,Version</h1>
+<h1 id="nsrdb1601-prpuerto-rico18459999084472656-6611000061035156-49-4wm2wm2wm2wm2wm2wm2degreembarmmmsunknown">NSRDB,1601,-,PR,Puerto Rico,18.459999084472656,-66.11000061035156,-4,9,-4,w/m2,w/m2,w/m2,w/m2,w/m2,w/m2,Degree,mbar,mm,m/s,unknown</h1>
+<h1 id="yearmonthdayhourminuteair-temeratureclearsky-dhiclearsky-dniclearsky-ghidhidnighisolar-zenith-anglealbedopressureprecipitable-waterwind-speed">Year,Month,Day,Hour,Minute,Air Temerature,Clearsky DHI,Clearsky DNI,Clearsky GHI,DHI,DNI,GHI,Solar Zenith Angle,Albedo,Pressure,Precipitable Water,Wind Speed</h1>
+<h1 id="201611052500000089000821020032865">2016,1,1,0,5,25,0,0,0,0,0,0,89.0,0.082,1020.0,3.286,5</h1>
+<h1 id="201611152500000089000821020028525">2016,1,1,1,5,25,0,0,0,0,0,0,89.0,0.082,1020.0,2.852,5</h1>
+<h1 id="2016112525000000890008210200253400000000000035">2016,1,1,2,5,25,0,0,0,0,0,0,89.0,0.082,1020.0,2.5340000000000003,5</h1>
+<h1 id="201611352500000089000821020023165">2016,1,1,3,5,25,0,0,0,0,0,0,89.0,0.082,1020.0,2.316,5</h1>
+<h1 id="2016114525000000890008210200213500000000000024">2016,1,1,4,5,25,0,0,0,0,0,0,89.0,0.082,1020.0,2.1350000000000002,4</h1>
+<h1 id="201611552400000089000821020019994">2016,1,1,5,5,24,0,0,0,0,0,0,89.0,0.082,1020.0,1.999,4</h1>
+<h1 id="201611652400000089000821020019264">2016,1,1,6,5,24,0,0,0,0,0,0,89.0,0.082,1020.0,1.926,4</h1>
+<h1 id="2016117525167818167818882600821020019234">2016,1,1,7,5,25,16,78,18,16,78,18,88.26,0.082,1020.0,1.923,4</h1>
+<h1 id="20161185266159420661594206759100821021719734">2016,1,1,8,5,26,61,594,206,61,594,206,75.91,0.082,1021.7,1.973,4</h1>
+<h1 id="20161195277978842379788423641500821030020814">2016,1,1,9,5,27,79,788,423,79,788,423,64.15,0.082,1030.0,2.081,4</h1>
+<h1 id="2016111052789876606898766065380000000000000400821030022485">2016,1,1,10,5,27,89,876,606,89,876,606,53.800000000000004,0.082,1030.0,2.248,5</h1>
+<h1 id="-8">```</h1>
 
-<span class="n">payload</span> <span class="o">=</span> <span class="s">"names=2012&amp;leap_day=false&amp;interval=60&amp;utc=false&amp;full_name=Valued%2BUser&amp;email=valued.user%40gmail.com&amp;affiliation=NREL&amp;mailing_list=true&amp;reason=Academic&amp;attributes=dhi%2Cdni%2Cwind_speed%2Cair_temperature&amp;wkt=MULTIPOINT(-66.1057%2018.4655%2C-66.2057%2018.3655%2C-66.1157%2018.4655)"</span>
+<h1 id="-post-request-example-in-python">### POST request example in Python</h1>
 
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">'content-type'</span><span class="p">:</span> <span class="s">"application/x-www-form-urlencoded"</span><span class="p">,</span>
-    <span class="s">'cache-control'</span><span class="p">:</span> <span class="s">"no-cache"</span>
-<span class="p">}</span>
+<h1 id="python">```python</h1>
+<h1 id="import-requests">import requests</h1>
 
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<h1 id="url--httpdevelopernrelgovjsonapi_keyyourapikeygoeshere">url = "http://developer.nrel.gov.json?api_key=yourapikeygoeshere"</h1>
 
-<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
-</code></pre></div>
-<h2 id="rate-limits">Rate Limits</h2>
+<h1 id="payload--names2012leap_dayfalseinterval60utcfalsefull_namevalued2buseremailvalueduser40gmailcomaffiliationnrelmailing_listtruereasonacademicattributesdhi2cdni2cwind_speed2cair_temperaturewktmultipoint-661057201846552c-662057201836552c-66115720184655">payload = "names=2012&amp;leap_day=false&amp;interval=60&amp;utc=false&amp;full_name=Valued%2BUser&amp;email=valued.user%40gmail.com&amp;affiliation=NREL&amp;mailing_list=true&amp;reason=Academic&amp;attributes=dhi%2Cdni%2Cwind_speed%2Cair_temperature&amp;wkt=MULTIPOINT(-66.1057%2018.4655%2C-66.2057%2018.3655%2C-66.1157%2018.4655)"</h1>
 
-<p>Rate limits for this application are significantly less than the <a href="/docs/rate-limits" target="_blank">standard rate limits</a> for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.</p>
+<h1 id="headers--">headers = {</h1>
+<h1 id="content-type-applicationx-www-form-urlencoded">'content-type': "application/x-www-form-urlencoded",</h1>
+<h1 id="cache-control-no-cache">'cache-control': "no-cache"</h1>
+<h1 id="-9">}</h1>
 
-<p>There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.</p>
+<h1 id="response--requestsrequestpost-url-datapayload-headersheaders">response = requests.request("POST", url, data=payload, headers=headers)</h1>
 
-<p>Secondly each user is limited to 20 in-flight requests at any given time.</p>
+<h1 id="printresponsetext">print(response.text)</h1>
+<h1 id="-10">```</h1>
 
-<p>In addition, the service has a fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.</p>
+<h1 id="h2-idrate-limitsrate-limitsh2">&lt;h2 id="rate-limits"&gt;Rate Limits&lt;/h2&gt;</h1>
 
-<p>For some tips and tricks to maximize data downloads please read the guide <a href="/docs/solar/nsrdb/guide">here</a>.</p>
+<h1 id="rate-limits-for-this-application-are-significantly-less-than-the-standard-rate-limits-for-developernrelgov-this-decrease-in-the-limit-is-required-as-the-data-provided-through-this-service-is-significantly-more-computationally-intensive-to-generate-and-provide-these-rate-limits-are-carefully-calculated-to-allow-all-users-the-maximum-throughput-that-our-servers-can-sustain">Rate limits for this application are significantly less than the <a href="/docs/rate-limits" target="_blank">standard rate limits</a> for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.</h1>
 
-<h2 id="contacts">Contact</h2>
+<h1 id="there-are-several-levels-of-rate-limiting-for-this-service-the-first-limit-determines-how-many-requests-a-given-user-can-make-per-24-hour-period-for-requests-utilizing-the-csv-format-this-rate-limit-is-set-at-5000-a-day-at-a-frequency-of-no-more-than-1-per-second-for-all-other-requests-this-limit-is-set-at-1000-requests-per-day-at-a-frequency-of-no-more-than-1-every-2-seconds">There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.</h1>
 
-<p>For questions about the API or the data models please contact <a href="mailto:nsrdb@nrel.gov">nsrdb@nrel.gov</a></p>
+<h1 id="secondly-each-user-is-limited-to-20-in-flight-requests-at-any-given-time">Secondly each user is limited to 20 in-flight requests at any given time.</h1>
 
-<h2 id="errors">Errors</h2>
+<h1 id="in-addition-the-service-has-a-fail-safe-mechanism-to-prevent-significant-performance-decreases-that-can-be-caused-by-unexpectedly-high-usage-of-the-service-this-limit-will-cause-the-service-to-stop-accepting-requests-when-the-queue-reaches-a-point-where-additional-requests-will-significantly-lower-server-performance-when-this-limit-is-hit-the-service-will-error-with-a-message-describing-that-the-request-queue-is-full">In addition, the service has a fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.</h1>
 
-<p><a href="/docs/errors/">Standard errors</a> may be returned. In addition, the following service-specific errors may be returned:</p>
+<h1 id="for-some-tips-and-tricks-to-maximize-data-downloads-please-read-the-guide-here">For some tips and tricks to maximize data downloads please read the guide <a href="/docs/solar/nsrdb/guide">here</a>.</h1>
 
-<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
-  <thead>
-    <tr>
-      <th class="doc-parameters-name" scope="col" style="width: 100px;">HTTP Status Code</th>
-      <th class="doc-parameters-required" scope="col">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th class="doc-parameter-name" scope="row">400</th>
-      <td class="doc-parameter-description">Bad Request: When required parameters are missing.</td>
-    </tr>
-  </tbody>
-</table>
+<h1 id="h2-idcontactscontacth2">&lt;h2 id="contacts"&gt;Contact&lt;/h2&gt;</h1>
+
+<h1 id="pfor-questions-about-the-api-or-the-data-models-please-contact-nsrdbnrelgovp">&lt;p&gt;For questions about the API or the data models please contact <a href="mailto:nsrdb@nrel.gov">nsrdb@nrel.gov</a>&lt;/p&gt;</h1>
+
+<h1 id="h2-iderrorserrorsh2">&lt;h2 id="errors"&gt;Errors&lt;/h2&gt;</h1>
+
+<h1 id="pstandard-errors-may-be-returned-in-addition-the-following-service-specific-errors-may-be-returnedp">&lt;p&gt;<a href="/docs/errors/">Standard errors</a> may be returned. In addition, the following service-specific errors may be returned:&lt;/p&gt;</h1>
+
+<h1 id="table-border0-cellpadding0-cellspacing0-classdoc-parameters-2">&lt;table border="0" cellpadding="0" cellspacing="0" class="doc-parameters"&gt;</h1>
+<h1 id="thead-4">&lt;thead&gt;</h1>
+<h1 id="tr-34">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameters-name-scopecol-stylewidth-100pxhttp-status-codeth">&lt;th class="doc-parameters-name" scope="col" style="width: 100px;"&gt;HTTP Status Code&lt;/th&gt;</h1>
+<h1 id="th-classdoc-parameters-required-scopecoldescriptionth">&lt;th class="doc-parameters-required" scope="col"&gt;Description&lt;/th&gt;</h1>
+<h1 id="tr-35">&lt;/tr&gt;</h1>
+<h1 id="thead-5">&lt;/thead&gt;</h1>
+<h1 id="tbody-4">&lt;tbody&gt;</h1>
+<h1 id="tr-36">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperow400th">&lt;th class="doc-parameter-name" scope="row"&gt;400&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-descriptionbad-request-when-required-parameters-are-missingtd">&lt;td class="doc-parameter-description"&gt;Bad Request: When required parameters are missing.&lt;/td&gt;</h1>
+<h1 id="tr-37">&lt;/tr&gt;</h1>
+<h1 id="tbody-5">&lt;/tbody&gt;</h1>
+<h1 id="table-2">&lt;/table&gt;</h1>
 
     <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
   <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/solar/nsrdb/puerto-rico-download.html.md.erb">Help Improve this Content</a>

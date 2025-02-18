@@ -68,7 +68,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1 id="nsrdb-data-downloads">NSRDB Data Downloads</h1>
 <p>Freely available downloads of The National Solar Radiation Database.</p>
 
-<p>The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a></p>
+<p>The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—including global horizontal irradiance (GHI), direct normal irradiance (DNI), and diffuse horizontal irradiance (DHI)—and other meteorological data. This dataset has been collected to accurately represent long-term solar radiation information at various temporal and spatial scales. The data are publicly available at no cost to users. The API provides easy access for downloading. Other options and details are available <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a></p>
 
 <h3 class="doc">
 
@@ -76,7 +76,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </h3>
 
-<p>Tips and tricks for getting the most out of the API</p>
+<p>Helpful tips to maximize the benefits of using the API</p>
+
+<h3 class="doc">
+
+<a href="/docs/solar/nsrdb/nsrdb-GOES-aggregated-v4-0-0-download/">GOES Aggregated: PSM v4 Download</a>
+
+<span class="url">(/api/nsrdb/v2/solar/nsrdb-GOES-aggregated-v4-0-0-download)</span>
+
+
+</h3>
+
+<p>The GOES Aggregated solar resource data uses the PSM v4.0.0. This dataset provides solar resource data for the period 1998 onwards covered by GOES east and west. The data have a spatial resolution of 4 km and temporal intervals of 30 minutes.</p>
+
+<h3 class="doc">
+
+<a href="/docs/solar/nsrdb/nsrdb-GOES-conus-v4-0-0-download/">GOES Conus: PSM v4 Download</a>
+
+<span class="url">(/api/nsrdb/v2/solar/nsrdb-GOES-conus-v4-0-0-download)</span>
+
+
+</h3>
+
+<p>The NSRDB GOES Conus solar resource data uses the PSM v4.0.0. This dataset provides solar resource data for the period 2019 onwards over the CONUS regions covered by the GOES satellites. The data have a spatial resolution of 2 km and temporal intervals of 5 minutes.</p>
+
+<h3 class="doc">
+
+<a href="/docs/solar/nsrdb/nsrdb-GOES-full-disc-v4-0-0-download/">GOES Full Disc: PSM v4 Download</a>
+
+<span class="url">(/api/nsrdb/v2/solar/nsrdb-GOES-full-disc-v4-0-0-download)</span>
+
+
+</h3>
+
+<p>This dataset provides solar resource data for the period 2019-2023 over the all the regions covered by GOES. The data have a spatial resolution of 2 km and temporal intervals of 10 minutes.</p>
+
+<h3 class="doc">
+
+<a href="/docs/solar/nsrdb/nsrdb-GOES-tmy-v4-0-0-download/">GOES TMY: PSM v4 Download</a>
+
+<span class="url">(/api/nsrdb/v2/solar/nsrdb-GOES-tmy-v4-0-0-download)</span>
+
+
+</h3>
+
+<p>The GOES TMY, TGY, and TDY is developed based on the time series data of GOES 1998 onwards. The resolution of the data is 4 km hourly.</p>
 
 <h3 class="doc">
 
@@ -87,7 +131,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </h3>
 
-<p>The Himawari based solar resource data uses the Physical Solar Model version 3 (PSM v3) which is similar to the model used in the National Solar Radiation Database (NSRDB) The Himawari: PSM v3 provides a serially complete collection of 30 minute values of the three most common measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data at a 2 km resolution. The data is available for all locations covered by the Himawari satellite. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
+<p>The Himawari-based solar resource data uses the Physical Solar Model version 3 (PSM v3) which is similar to the model used in the CONUS NSRDB. This dataset provides solar resource data for the period 2011-2015 over all regions covered by the Himawari-7 satellite with a spatial resolution of 4 km and temporal intervals of 30 minutes. An API is available for downloading the data with more details provided <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
+
+<h3 class="doc">
+
+<a href="/docs/solar/nsrdb/himawari-download/">Himawari 2016-2020: PSM v3 Download</a>
+
+<span class="url">(/api/nsrdb/v2/solar/himawari-download)</span>
+
+
+</h3>
+
+<p>This dataset provides solar resource data for the period 2016-2020 over all regions covered by the Himawari-8 satellite with a spatial resolution of 2 km and temporal intervals of 10 minutes.</p>
 
 <h3 class="doc">
 
@@ -98,73 +153,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </h3>
 
-<p>The Himawari TMY based solar resource data uses the Physical Solar Model version 3 (PSM v3) which is similar to the model used in the National Solar Radiation Database (NSRDB) The Himawari: PSM v3 provides a serially complete collection of 60 minute values of the three most common measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data at a 2 km resolution. The data is available for all locations covered by the Himawari satellite. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
+<p>The Himawari TMY is developed based on the time series data of Himawari 2011-2020. The resolution of the data is 4 km hourly.</p>
 
 <h3 class="doc">
 
-<a href="/docs/solar/nsrdb/himawari-download/">Himawari: PSM v3 Download</a>
-
-<span class="url">(/api/nsrdb/v2/solar/himawari-download)</span>
-
-
-</h3>
-
-<p>The Himawari based solar resource data uses the Physical Solar Model version 3 (PSM v3) which is similar to the model used in the National Solar Radiation Database (NSRDB) The Himawari: PSM v3 provides a serially complete collection of 15 minute values of the three most common measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data at a 2 km resolution. The data is available for all locations covered by the Himawari satellite. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/meteosat-download/">METEOSAT IODC Region: Physical Solar Model (PSM)</a>
+<a href="/docs/solar/nsrdb/meteosat-download/">METEOSAT IODC Region: PSM v3 Download</a>
 
 <span class="url">(/api/nsrdb/v2/solar/msg-iodc-download)</span>
 
 
 </h3>
 
-<p>The National Solar Radiation Database (NSRDB) is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
+<p>The Indian Ocean Data Coverage (IODC) region of the Meteosat satellite covers India and it’s surrounding regions. This dataset was developed using the PSM v3. The data are provided at a spatial resolution of 4km with 15 minute intervals. This data was produced as part of the U.S.-India Energy Cooperation with support from the US Department of Energy Office of International Affairs.</p>
 
 <h3 class="doc">
 
-<a href="/docs/solar/nsrdb/nsrdb-msg-v1-0-0-download/">Meteosat Prime Meridian V1.0.0</a>
-
-<span class="url">(/api/nsrdb/v2/solar/nsrdb-msg-v1-0-0-download)</span>
-
-
-</h3>
-
-<p>Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/nsrdb-msg-v1-0-0-tdy-download/">Meteosat Prime Meridian V1.0.0 TDY</a>
+<a href="/docs/solar/nsrdb/nsrdb-msg-v1-0-0-tdy-download/">Meteosat Prime Meridian TDY: PSM v4 Download</a>
 
 <span class="url">(/api/nsrdb/v2/solar/nsrdb-msg-v1-0-0-tdy-download)</span>
 
 
 </h3>
 
-<p>Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
+<p>The Meteosat Prime Meridian TDY is developed based on the time series data of Meteosat Prime Meridian. The resolution of the data is 4 km hourly.</p>
 
 <h3 class="doc">
 
-<a href="/docs/solar/nsrdb/nsrdb-msg-v1-0-0-tgy-download/">Meteosat Prime Meridian V1.0.0 TGY</a>
+<a href="/docs/solar/nsrdb/nsrdb-msg-v1-0-0-tgy-download/">Meteosat Prime Meridian TGY: PSM v4 Download</a>
 
 <span class="url">(/api/nsrdb/v2/solar/nsrdb-msg-v1-0-0-tgy-download)</span>
 
 
 </h3>
 
-<p>Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
+<p>The Meteosat Prime Meridian TGY is developed based on the time series data of Meteosat Prime Meridian. The resolution of the data is 4 km hourly.</p>
 
 <h3 class="doc">
 
-<a href="/docs/solar/nsrdb/nsrdb-msg-v1-0-0-tmy-download/">Meteosat Prime Meridian V1.0.0 TMY</a>
+<a href="/docs/solar/nsrdb/nsrdb-msg-v1-0-0-tmy-download/">Meteosat Prime Meridian TMY: PSM v4 Download </a>
 
 <span class="url">(/api/nsrdb/v2/solar/nsrdb-msg-v1-0-0-tmy-download)</span>
 
 
 </h3>
 
-<p>Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
+<p>The Meteosat Prime Meridian TMY is developed based on the time series data of Meteosat Prime Meridian. The resolution of the data is 4 km hourly.</p>
+
+<h3 class="doc">
+
+<a href="/docs/solar/nsrdb/nsrdb-msg-v1-0-0-download/">Meteosat Prime Meridian: PSM v4 Download</a>
+
+<span class="url">(/api/nsrdb/v2/solar/nsrdb-msg-v1-0-0-download)</span>
+
+
+</h3>
+
+<p>This dataset provides solar resource data for the period 2017-2019 over all regions covered by the Meteosat-1 (Meteosat Prime Meridian) satellite with a spatial resolution of 4 km and temporal intervals of 15 minutes.</p>
 
 <h3 class="doc">
 
@@ -175,125 +219,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </h3>
 
-<p>Returns information on the closest NSRDB datasets for a location including a set of links that can be used to download the data. For information about the NSRDB and the datasets represented by this service please visit <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a>.</p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/full-disc-download/">NSRDB Full Disc</a>
-
-<span class="url">(/api/nsrdb/v2/solar/full-disc-download)</span>
-
-
-</h3>
-
-<p>This data provides monthly average and annual average daily total solar resource averaged over surface cells of 0.02 degrees in both latitude and longitude, or nominally 2 km in size. The solar radiation values represent the resource available to solar energy systems. The data was created using cloud properties which are generated using the AVHRR Pathfinder Atmospheres-Extended (PATMOS-x) algorithms. Fast all-sky radiation model for solar applications (FARMS) in conjunction with the cloud properties, and aerosol optical depth (AOD) and precipitable water vapor (PWV) from ancillary source are used to estimate DNI and GHI. The direct normal irradiance (DNI) and GHI are computed for clear skies using the REST2 model. For cloud scenes identified by the cloud mask, the FARMS is used to compute the GHI. The DNI for cloud scenes is then computed using the DISC model. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/nsrdb-GOES-aggregated-v4-0-0-download/">NSRDB GOES Aggregated V4.0.0</a>
-
-<span class="url">(/api/nsrdb/v2/solar/nsrdb-GOES-aggregated-v4-0-0-download)</span>
-
-
-</h3>
-
-<p>Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/nsrdb-GOES-conus-v4-0-0-download/">NSRDB GOES Conus V4.0.0</a>
-
-<span class="url">(/api/nsrdb/v2/solar/nsrdb-GOES-conus-v4-0-0-download)</span>
-
-
-</h3>
-
-<p>Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/nsrdb-GOES-full-disc-v4-0-0-download/">NSRDB GOES Full Disc V4.0.0</a>
-
-<span class="url">(/api/nsrdb/v2/solar/nsrdb-GOES-full-disc-v4-0-0-download)</span>
-
-
-</h3>
-
-<p>Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/nsrdb-GOES-tmy-v4-0-0-download/">NSRDB GOES Tmy V4.0.0</a>
-
-<span class="url">(/api/nsrdb/v2/solar/nsrdb-GOES-tmy-v4-0-0-download)</span>
-
-
-</h3>
-
-<p>Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/philippines-download/">Philippines Solar</a>
-
-<span class="url">(/api/nsrdb/v2/solar/philippines-download)</span>
-
-
-</h3>
-
-<p>Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database (NSRDB) is a serially complete collection of hourly and half-hourly values of the three most common measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/psm3-5min-download/">Physical Solar Model (PSM) v3 - Five Minute Temporal Resolution</a>
-
-<span class="url">(/api/nsrdb/v2/solar/psm3-5min-download)</span>
-
-
-</h3>
-
-<p>Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a> Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/psm3-2-2-download/">Physical Solar Model (PSM) v3.2.2</a>
-
-<span class="url">(/api/nsrdb/v2/solar/psm3-2-2-download)</span>
-
-
-</h3>
-
-<p>Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/psm3-2-2-tmy-download/">Physical Solar Model (PSM) v3.2.2 TMY</a>
-
-<span class="url">(/api/nsrdb/v2/solar/psm3-2-2-tmy-download)</span>
-
-
-</h3>
-
-<p>Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/puerto-rico-download/">Puerto Rico SHR (Simulated High Resolution)</a>
-
-<span class="url">(/api/nsrdb/v2/solar/puerto-rico-download)</span>
-
-
-</h3>
-
-<p>Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/python-examples/">Python Examples</a>
-
-</h3>
-
-<p>NSRDB and SAM Python API examples showing automated download of resource data and SAM simulation</p>
+<p>Returns information on the nearest NSRDB datasets for a location, including links for accessing the data. For information about the NSRDB and the datasets available through this service, please visit <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a>.</p>
 
 <h3 class="doc">
 
@@ -304,7 +230,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </h3>
 
-<p>Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a>.</p>
+<p>The SUNY International Data is developed using Perez model from 2000-2014. The resolution of the data is 10 km hourly.</p>
 
 <h3 class="doc">
 
@@ -315,7 +241,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </h3>
 
-<p>Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a>.</p>
+<p>The SUNY International TMY Data is developed using Perez model from 2000-2014. The resolution of the data is 10 km hourly.</p>
 
 <h3 class="doc">
 
@@ -330,25 +256,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h3 class="doc">
 
-<a href="/docs/solar/nsrdb/dynamic_spectral_data_download/">Spectral Data On-demand (PSM) v3.2.2</a>
+<a href="/docs/solar/nsrdb/dynamic_spectral_data_download/">Spectral Data On-demand</a>
 
 <span class="url">(/api/nsrdb_api/solar/spectral_ondemand_download)</span>
 
 
 </h3>
 
-<p>Collect and download, as CSV, a configurable set of solar, solar radiation spectrum, and meteorological data fields for a single point from The NSRDB. The National Solar Radiation Database (NSRDB) is a serially complete collection of hourly and half-hourly values of the three most common measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></p>
+<p>The spectral on-demand data service provides solar irradiances on inclined PV panels for 2002 narrow-wavelength bands from 0.28 to 4.0 µm. Based on users’ selection of location, time period, and PV system (fixed or one-axis PV system), a dedicated high-performance server located at NREL computes the spectral data in real time using the Fast All-sky Radiation Model for Solar applications with Narrowband Irradiances on Tilted surfaces (FARMS-NIT) and broadband and ancillary data served by the NSRDB. FARMS-NIT is an innovative radiative transfer model developed at NREL to efficiently and simultaneously calculate the spatial distribution of solar energy (radiances) in narrow-wavelength bands which are integrated over inclined PV panels to infer the plane-of-array (POA) irradiances.</p>
+
+<hr />
+
+<h2>Deprecated</h2>
 
 <h3 class="doc">
 
-<a href="/docs/solar/nsrdb/spectral-india-tmy-download/">Spectral TMY India</a>
+<a href="/docs/solar/nsrdb/philippines-download/">Philippines Solar</a>
 
-<span class="url">(/api/nsrdb/v2/solar/spectral-india-tmy-download)</span>
+<span class="url">(/api/nsrdb/v2/solar/philippines-download)</span>
 
 
 </h3>
 
-<p>Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a>.</p>
+<p>This data has been replaced by Himawari 2016-2020. Please use <a href="/docs/solar/nsrdb/himawari-download/">Himawari 2016-2020</a>.</p>
+
+<h3 class="doc">
+
+<a href="/docs/solar/nsrdb/psm3-2-2-download/">Physical Solar Model (PSM) v3.2.2</a>
+
+<span class="url">(/api/nsrdb/v2/solar/psm3-2-2-download)</span>
+
+
+</h3>
+
+<p>This data has been replaced by GOES Aggregated v4.0.0. Please use <a href="/docs/solar/nsrdb/nsrdb-GOES-aggregated-v4-0-0-download/">GOES Aggregated v4.0.0.</a></p>
+
+<h3 class="doc">
+
+<a href="/docs/solar/nsrdb/psm3-2-2-tmy-download/">Physical Solar Model (PSM) v3.2.2 TMY</a>
+
+<span class="url">(/api/nsrdb/v2/solar/psm3-2-2-tmy-download)</span>
+
+
+</h3>
+
+<p>This data has been replaced by GOES TMY v4.0.0. Please use <a href="/docs/solar/nsrdb/nsrdb-GOES-tmy-v4-0-0-download/">GOES TMY v4.0.0.</a></p>
 
 <h3 class="doc">
 
@@ -359,131 +311,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </h3>
 
-<p>Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a>.</p>
-
-<hr />
-
-<h2>Deprecated</h2>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/mts1_data_download/">Meteorological Statistical Model 1 (MTS1)</a>
-
-</h3>
-
-<p>This data has been replaced by PSM v3. Please use <a href="/docs/solar/nsrdb/psm3_data_download">PSM v3</a> instead.</p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/mts2_data_download/">Meteorological Statistical Model 2 (MTS2)</a>
-
-</h3>
-
-<p>This data has been replaced by PSM v3. Please use <a href="/docs/solar/nsrdb/psm3_data_download">PSM v3</a> instead.</p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/psm_data_download/">Physical Solar Model (PSM) v2</a>
-
-</h3>
-
-<p>This data has been replaced by PSM v3.2.2. Please use <a href="/docs/solar/nsrdb/psm3-2-2-download">PSM v3.2.2</a> instead.</p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/psm3_data_download-old/">Physical Solar Model (PSM) v3</a>
-
-<span class="url">(/api/solar/nsrdb_psm3_download)</span>
-
-
-</h3>
-
-<p>This service has been replaced by a V3.2.2 version of the API. See <a href="/docs/solar/nsrdb/psm3-2-2-download">PSM v3.2.2</a>.</p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/psm3_tmy_data_download/">Physical Solar Model (PSM) v3 TMY</a>
-
-<span class="url">(/api/solar/nsrdb_psm3_tmy_download)</span>
-
-
-</h3>
-
-<p>This service has been replaced by a V3.2.2 version of the API. See <a href="/docs/solar/nsrdb/psm3-2-2-tmy-download/">PSM v3.2.2 TMY</a>.</p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/psm3-download/">Physical Solar Model (PSM) v3.1</a>
-
-<span class="url">(/api/nsrdb/v2/solar/psm3-download)</span>
-
-
-</h3>
-
-<p>This service has been replaced by a V3.2.2 version of the API. See <a href="/docs/solar/nsrdb/psm3-2-2-download">PSM v3.2.2</a>.</p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/psm3-tmy-download/">Physical Solar Model (PSM) v3.1 TMY</a>
-
-<span class="url">(/api/nsrdb/v2/solar/psm3-tmy-download)</span>
-
-
-</h3>
-
-<p>This service has been replaced by a V3.2.2 version of the API. See <a href="/docs/solar/nsrdb/psm3-2-2-tmy-download/">PSM v3.2.2 TMY</a>.</p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/puerto_rico_data_download/">Puerto Rico SHR (Simulated High Resolution)</a>
-
-<span class="url">(/api/nsrdb_api/solar/nsrdb_puerto_rico_download)</span>
-
-
-</h3>
-
-<p>This service has been replaced by a V2 version of the API. See <a href="/docs/solar/nsrdb/puerto-rico-download">Puerto Rico SHR v2</a>.</p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/suny_data_download/">SUNY International Data</a>
-
-<span class="url">(/api/solar/suny_india_download)</span>
-
-
-</h3>
-
-<p>This service has been replaced by a V2 version of the API. See <a href="/docs/solar/nsrdb/suny-india-data-download">SUNY India v2</a>.</p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/site_count/">Site Count</a>
-
-<span class="url">(/api/solar/nsrdb/site_count)</span>
-
-
-</h3>
-
-<p>This service has been replaced by a V2 version of the API. See <a href="/docs/solar/nsrdb/site-count">Site Count v2</a>.</p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/spectral_tmy_data_download/">Spectral TMY</a>
-
-</h3>
-
-<p>This data has been replaced by Spectral Data On-demand. Please use <a href="/docs/solar/nsrdb/dynamic_spectral_data_download">Spectral Data On-demand (PSM) v3</a> instead.</p>
-
-<h3 class="doc">
-
-<a href="/docs/solar/nsrdb/spectral_tmy_india_data_download/">Spectral TMY India</a>
-
-<span class="url">(/api/nsrdb_api/solar/spectral_tmy_india_download)</span>
-
-
-</h3>
-
-<p>This service has been replaced by a V2 version of the API. See <a href="/docs/solar/nsrdb/spectral-india-tmy-download">Spectral TMY India v2</a>.</p>
+<p>This data has been replaced by Himawari 2016-2020. Please use <a href="/docs/solar/nsrdb/himawari-download/">Himawari 2016-2020</a></p>
 
 <h2 id="contact">Contact</h2>
 

@@ -13,7 +13,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        Spectral TMY India 
+         
           API
         |
       NREL: Developer Network
@@ -62,582 +62,596 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li class="breadcrumb-item"><a href="/docs/">Documentation</a></li>
             <li class="breadcrumb-item"><a href="/docs/solar/">Solar</a></li>
             <li class="breadcrumb-item"><a href="/docs/solar/nsrdb/">NSRDB Data Downloads</a></li>
-            <li class="breadcrumb-item active">Spectral TMY India</li>
+            <li class="breadcrumb-item active"></li>
     </ol>
 
 
-    <h1 id="spectral-tmy-india-apinsrdbv2solarspectral-india-tmy-download">Spectral TMY India <span class="url">(/api/nsrdb/v2/solar/spectral-india-tmy-download)</span></h1>
-<p>Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a>.</p>
+    <h1>—</h1>
+<h1 id="title-spectral-tmy-india">title: Spectral TMY India</h1>
+<h1 id="summary-collect-and-download-as-csv-a-configurable-set-of-solar-and-meteorological-data-fields-from-the-nsrdb-the-national-solar-radiation-database-nsrdb-is-a-serially-complete-collection-of-satellite-derived-measurements-of-solar-radiationglobal-horizontal-direct-normal-and-diffuse-horizontal-irradianceand-meteorological-data-these-data-have-been-collected-at-a-sufficient-number-of-locations-and-temporal-and-spatial-scales-to-accurately-represent-regional-solar-radiation-climates-the-data-are-publicly-available-at-no-cost-to-the-user-these-api-provide-access-to-downloading-the-data-other-options-are-detailed-here-read-more-about-the-datasets-at-httpsnsrdbnrelgov">summary: Collect and download, as CSV, a configurable set of solar and meteorological data fields from The NSRDB. The National Solar Radiation Database <a href="https://nsrdb.nrel.gov/">(NSRDB)</a> is a serially complete collection of satellite-derived measurements of solar radiation—global horizontal, direct normal, and diffuse horizontal irradiance—and meteorological data. These data have been collected at a sufficient number of locations and temporal and spatial scales to accurately represent regional solar radiation climates. The data are publicly available at no cost to the user. These API provide access to downloading the data. Other options are detailed <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">here</a>. Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a>.</h1>
+<h1 id="detail-this-api-is-capable-of-creating-very-large-downloadable-archives-unlike-a-typical-api-the-response-to-this-provides-a-request-acknowledgement-the-real-work-of-creating-the-requested-downloadable-archive-will-continue-to-run-on-the-server-side-when-complete-and-email-will-be-sent-to-the-email-address-provided-in-the-initial-request-with-a-link-to-a-file-to-download-in-addition-to-this-two-step-workflow-there-is-also-an-option-for-users-who-wish-to-download-a-single-csv-file-in-direct-response-to-an-api-request-the-csv-format-may-be-used-to-download-a-csv-directly-this-feature-is-restricted-to-use-with-only-a-single-point-for-a-single-year-at-a-time-read-more-about-the-datasets-at-httpsnsrdbnrelgov">detail: This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time. <br />Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a></h1>
+<h1 id="url-apinsrdbv2solarspectral-india-tmy-download">url: /api/nsrdb/v2/solar/spectral-india-tmy-download</h1>
+<h1 id="deprecated-true--todo-im-not-sure-if-this-is-true">deprecated: true # TODO: I'm not sure if this is true…?</h1>
+<h1 id="-1">—</h1>
 
-<ul id="toc"></ul>
+<h1 id="--">#  <span class="url">()</span></h1>
+<p>#</p>
 
-<h2 id="request-url">Request URL</h2>
+<h1 id="ul-idtocul">&lt;ul id="toc"&gt;&lt;/ul&gt;</h1>
 
-<pre>GET|POST /api/nsrdb/v2/solar/spectral-india-tmy-download<em>.format?parameters</em></pre>
+<h1 id="-request-url">## Request URL</h1>
 
-<h2 id="request-parameters">Request Parameters</h2>
-<p><em>NOTE: when using POST to submit a request the api_key must still be included as a query parameter in the url. All other parameters may be included in a POST request as part of the payload.</em></p>
+<h1 id="pregetpost-formatparameterspre">&lt;pre&gt;GET|POST <em>.format?parameters</em>&lt;/pre&gt;</h1>
 
-<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
-  <thead>
-    <tr>
-      <th class="doc-parameters-name" scope="col">Parameter</th>
-      <th class="doc-parameters-required" scope="col">Required</th>
-      <th class="doc-parameters-value" scope="col">Value</th>
-      <th class="doc-parameters-description" scope="col">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th class="doc-parameter-name" scope="row">api_key</th>
-      <td class="doc-parameter-required">Yes</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-      </td>
-      <td class="doc-parameter-description">
-        <p>Your developer API key. See <a href="/docs/api-key/">API keys</a> for more information.</p>
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">wkt</th>
-      <td class="doc-parameter-required">Yes</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> well-known text string</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-      </td>
-      <td class="doc-parameter-description">
-        A well-known text (WKT) representation of the geometry for which to extract data. May be a point, multipoint, or polygon geometry. When a point is passed the site nearest to that point is used. When a multipoint is passed the site nearest each point is used. This can be useful for downloading multiple sites in a single request when those sites are geographically distant from each other. When a polygon is passed all sites that intersect with the given polygon are used.
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">attributes</th>
-      <td class="doc-parameter-required">No</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>PW, AT, WS, DNI_300, DNI_310, DNI_320, DNI_330, DNI_340, DNI_350, DNI_360, DNI_370, DNI_380, DNI_390, DNI_400, DNI_410, DNI_420, DNI_430, DNI_440, DNI_450, DNI_460, DNI_470, DNI_480, DNI_490, DNI_500, DNI_510, DNI_520, DNI_530, DNI_540, DNI_550, DNI_560, DNI_570, DNI_580, DNI_590, DNI_600, DNI_610, DNI_620, DNI_630, DNI_640, DNI_650, DNI_660, DNI_670, DNI_680, DNI_690, DNI_700, DNI_710, DNI_720, DNI_730, DNI_740, DNI_750, DNI_760, DNI_770, DNI_780, DNI_790, DNI_800, DNI_810, DNI_820, DNI_830, DNI_840, DNI_850, DNI_860, DNI_870, DNI_880, DNI_890, DNI_900, DNI_910, DNI_920, DNI_930, DNI_940, DNI_950, DNI_960, DNI_970, DNI_980, DNI_990, DNI_1000, DNI_1010, DNI_1020, DNI_1030, DNI_1040, DNI_1050, DNI_1060, DNI_1070, DNI_1080, DNI_1090, DNI_1100, DNI_1110, DNI_1120, DNI_1130, DNI_1140, DNI_1150, DNI_1160, DNI_1170, DNI_1180, DNI_1190, DNI_1200, DNI_1210, DNI_1220, DNI_1230, DNI_1240, DNI_1250, DNI_1260, DNI_1270, DNI_1280, DNI_1290, DNI_1300, DNI_1310, DNI_1320, DNI_1330, DNI_1340, DNI_1350, DNI_1360, DNI_1370, DNI_1380, DNI_1390, DNI_1400, DNI_1410, DNI_1420, DNI_1430, DNI_1440, DNI_1450, DNI_1460, DNI_1470, DNI_1480, DNI_1490, DNI_1500, DNI_1510, DNI_1520, DNI_1530, DNI_1540, DNI_1550, DNI_1560, DNI_1570, DNI_1580, DNI_1590, DNI_1600, DNI_1610, DNI_1620, DNI_1630, DNI_1640, DNI_1650, DNI_1660, DNI_1670, DNI_1680, DNI_1690, DNI_1700, DNI_1710, DNI_1720, DNI_1730, DNI_1740, DNI_1750, DNI_1760, DNI_1770, DNI_1780, DNI_1790, DNI_1800, GHI_300, GHI_310, GHI_320, GHI_330, GHI_340, GHI_350, GHI_360, GHI_370, GHI_380, GHI_390, GHI_400, GHI_410, GHI_420, GHI_430, GHI_440, GHI_450, GHI_460, GHI_470, GHI_480, GHI_490, GHI_500, GHI_510, GHI_520, GHI_530, GHI_540, GHI_550, GHI_560, GHI_570, GHI_580, GHI_590, GHI_600, GHI_610, GHI_620, GHI_630, GHI_640, GHI_650, GHI_660, GHI_670, GHI_680, GHI_690, GHI_700, GHI_710, GHI_720, GHI_730, GHI_740, GHI_750, GHI_760, GHI_770, GHI_780, GHI_790, GHI_800, GHI_810, GHI_820, GHI_830, GHI_840, GHI_850, GHI_860, GHI_870, GHI_880, GHI_890, GHI_900, GHI_910, GHI_920, GHI_930, GHI_940, GHI_950, GHI_960, GHI_970, GHI_980, GHI_990, GHI_1000, GHI_1010, GHI_1020, GHI_1030, GHI_1040, GHI_1050, GHI_1060, GHI_1070, GHI_1080, GHI_1090, GHI_1100, GHI_1110, GHI_1120, GHI_1130, GHI_1140, GHI_1150, GHI_1160, GHI_1170, GHI_1180, GHI_1190, GHI_1200, GHI_1210, GHI_1220, GHI_1230, GHI_1240, GHI_1250, GHI_1260, GHI_1270, GHI_1280, GHI_1290, GHI_1300, GHI_1310, GHI_1320, GHI_1330, GHI_1340, GHI_1350, GHI_1360, GHI_1370, GHI_1380, GHI_1390, GHI_1400, GHI_1410, GHI_1420, GHI_1430, GHI_1440, GHI_1450, GHI_1460, GHI_1470, GHI_1480, GHI_1490, GHI_1500, GHI_1510, GHI_1520, GHI_1530, GHI_1540, GHI_1550, GHI_1560, GHI_1570, GHI_1580, GHI_1590, GHI_1600, GHI_1610, GHI_1620, GHI_1630, GHI_1640, GHI_1650, GHI_1660, GHI_1670, GHI_1680, GHI_1690, GHI_1700, GHI_1710, GHI_1720, GHI_1730, GHI_1740, GHI_1750, GHI_1760, GHI_1770, GHI_1780, GHI_1790, GHI_1800</em></div>
-      </td>
-      <td class="doc-parameter-description">
-        Each specified attribute will be returned as a column in the resultant CSV download.
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">names</th>
-      <td class="doc-parameter-required">Yes</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>tmy</em></div>
-      </td>
-      <td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">utc</th>
-      <td class="doc-parameter-required">No</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> true</div>
-      </td>
-      <td class="doc-parameter-description">
-        Pass true to retrieve data with timestamps in UTC. Pass false to retrieve data with timestamps converted to local time of data point (without daylight savings time).
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">full_name</th>
-      <td class="doc-parameter-required">No</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-      </td>
-      <td class="doc-parameter-description">The full name of the user requesting data.</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">email</th>
-      <td class="doc-parameter-required">Yes</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> email string</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-      </td>
-      <td class="doc-parameter-description">
-        An active email for the user requesting data. This email will be used to deliver the extracted data.
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">affiliation</th>
-      <td class="doc-parameter-required">No</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-      </td>
-      <td class="doc-parameter-description">
-        The organization with which the user requesting the data is affiliated.
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">reason</th>
-      <td class="doc-parameter-required">No</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-      </td>
-      <td class="doc-parameter-description">The reason that the user is requesting the data.</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">mailing_list</th>
-      <td class="doc-parameter-required">No</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
-        <div class="doc-parameter-value-field"><strong>Default:</strong> false</div>
-      </td>
-      <td class="doc-parameter-description">
-        Pass true to add the email address to our list of recipients for the NSRDB mailing list.
-      </td>
-    </tr>
-  </tbody>
-</table>
+<h1 id="-request-parameters">## Request Parameters</h1>
+<h1 id="note-when-using-post-to-submit-a-request-the-api_key-must-still-be-included-as-a-query-parameter-in-the-url-all-other-parameters-may-be-included-in-a-post-request-as-part-of-the-payload"><em>NOTE: when using POST to submit a request the api_key must still be included as a query parameter in the url. All other parameters may be included in a POST request as part of the payload.</em></h1>
 
-<h2 id="response-fields">Response Fields</h2>
+<h1 id="table-border0-cellpadding0-cellspacing0-classdoc-parameters">&lt;table border="0" cellpadding="0" cellspacing="0" class="doc-parameters"&gt;</h1>
+<h1 id="thead">&lt;thead&gt;</h1>
+<h1 id="tr">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameters-name-scopecolparameterth">&lt;th class="doc-parameters-name" scope="col"&gt;Parameter&lt;/th&gt;</h1>
+<h1 id="th-classdoc-parameters-required-scopecolrequiredth">&lt;th class="doc-parameters-required" scope="col"&gt;Required&lt;/th&gt;</h1>
+<h1 id="th-classdoc-parameters-value-scopecolvalueth">&lt;th class="doc-parameters-value" scope="col"&gt;Value&lt;/th&gt;</h1>
+<h1 id="th-classdoc-parameters-description-scopecoldescriptionth">&lt;th class="doc-parameters-description" scope="col"&gt;Description&lt;/th&gt;</h1>
+<h1 id="tr-1">&lt;/tr&gt;</h1>
+<h1 id="thead-1">&lt;/thead&gt;</h1>
+<h1 id="tbody">&lt;tbody&gt;</h1>
+<h1 id="tr-2">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowapi_keyth">&lt;th class="doc-parameter-name" scope="row"&gt;api_key&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requiredyestd">&lt;td class="doc-parameter-required"&gt;Yes&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-stringdiv">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> string&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-nonediv">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> None&lt;/div&gt;</h1>
+<h1 id="td">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-description">&lt;td class="doc-parameter-description"&gt;</h1>
+<h1 id="pyour-developer-api-key-see-api-keys-for-more-informationp">&lt;p&gt;Your developer API key. See <a href="/docs/api-key/">API keys</a> for more information.&lt;/p&gt;</h1>
+<h1 id="td-1">&lt;/td&gt;</h1>
+<h1 id="tr-3">&lt;/tr&gt;</h1>
+<h1 id="tr-4">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowwktth">&lt;th class="doc-parameter-name" scope="row"&gt;wkt&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requiredyestd-1">&lt;td class="doc-parameter-required"&gt;Yes&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value-1">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-well-known-text-stringdiv">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> well-known text string&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-nonediv-1">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> None&lt;/div&gt;</h1>
+<h1 id="td-2">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-description-1">&lt;td class="doc-parameter-description"&gt;</h1>
+<h1 id="a-well-known-text-wkt-representation-of-the-geometry-for-which-to-extract-data-may-be-a-point-multipoint-or-polygon-geometry-when-a-point-is-passed-the-site-nearest-to-that-point-is-used-when-a-multipoint-is-passed-the-site-nearest-each-point-is-used-this-can-be-useful-for-downloading-multiple-sites-in-a-single-request-when-those-sites-are-geographically-distant-from-each-other-when-a-polygon-is-passed-all-sites-that-intersect-with-the-given-polygon-are-used">A well-known text (WKT) representation of the geometry for which to extract data. May be a point, multipoint, or polygon geometry. When a point is passed the site nearest to that point is used. When a multipoint is passed the site nearest each point is used. This can be useful for downloading multiple sites in a single request when those sites are geographically distant from each other. When a polygon is passed all sites that intersect with the given polygon are used.</h1>
+<h1 id="td-3">&lt;/td&gt;</h1>
+<h1 id="tr-5">&lt;/tr&gt;</h1>
+<h1 id="tr-6">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowattributesth">&lt;th class="doc-parameter-name" scope="row"&gt;attributes&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requirednotd">&lt;td class="doc-parameter-required"&gt;No&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value-2">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-comma-delimited-string-arraydiv">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> comma delimited string array&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-returns-alldiv">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> Returns ALL&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldoptions-pw-at-ws-dni_300-dni_310-dni_320-dni_330-dni_340-dni_350-dni_360-dni_370-dni_380-dni_390-dni_400-dni_410-dni_420-dni_430-dni_440-dni_450-dni_460-dni_470-dni_480-dni_490-dni_500-dni_510-dni_520-dni_530-dni_540-dni_550-dni_560-dni_570-dni_580-dni_590-dni_600-dni_610-dni_620-dni_630-dni_640-dni_650-dni_660-dni_670-dni_680-dni_690-dni_700-dni_710-dni_720-dni_730-dni_740-dni_750-dni_760-dni_770-dni_780-dni_790-dni_800-dni_810-dni_820-dni_830-dni_840-dni_850-dni_860-dni_870-dni_880-dni_890-dni_900-dni_910-dni_920-dni_930-dni_940-dni_950-dni_960-dni_970-dni_980-dni_990-dni_1000-dni_1010-dni_1020-dni_1030-dni_1040-dni_1050-dni_1060-dni_1070-dni_1080-dni_1090-dni_1100-dni_1110-dni_1120-dni_1130-dni_1140-dni_1150-dni_1160-dni_1170-dni_1180-dni_1190-dni_1200-dni_1210-dni_1220-dni_1230-dni_1240-dni_1250-dni_1260-dni_1270-dni_1280-dni_1290-dni_1300-dni_1310-dni_1320-dni_1330-dni_1340-dni_1350-dni_1360-dni_1370-dni_1380-dni_1390-dni_1400-dni_1410-dni_1420-dni_1430-dni_1440-dni_1450-dni_1460-dni_1470-dni_1480-dni_1490-dni_1500-dni_1510-dni_1520-dni_1530-dni_1540-dni_1550-dni_1560-dni_1570-dni_1580-dni_1590-dni_1600-dni_1610-dni_1620-dni_1630-dni_1640-dni_1650-dni_1660-dni_1670-dni_1680-dni_1690-dni_1700-dni_1710-dni_1720-dni_1730-dni_1740-dni_1750-dni_1760-dni_1770-dni_1780-dni_1790-dni_1800-ghi_300-ghi_310-ghi_320-ghi_330-ghi_340-ghi_350-ghi_360-ghi_370-ghi_380-ghi_390-ghi_400-ghi_410-ghi_420-ghi_430-ghi_440-ghi_450-ghi_460-ghi_470-ghi_480-ghi_490-ghi_500-ghi_510-ghi_520-ghi_530-ghi_540-ghi_550-ghi_560-ghi_570-ghi_580-ghi_590-ghi_600-ghi_610-ghi_620-ghi_630-ghi_640-ghi_650-ghi_660-ghi_670-ghi_680-ghi_690-ghi_700-ghi_710-ghi_720-ghi_730-ghi_740-ghi_750-ghi_760-ghi_770-ghi_780-ghi_790-ghi_800-ghi_810-ghi_820-ghi_830-ghi_840-ghi_850-ghi_860-ghi_870-ghi_880-ghi_890-ghi_900-ghi_910-ghi_920-ghi_930-ghi_940-ghi_950-ghi_960-ghi_970-ghi_980-ghi_990-ghi_1000-ghi_1010-ghi_1020-ghi_1030-ghi_1040-ghi_1050-ghi_1060-ghi_1070-ghi_1080-ghi_1090-ghi_1100-ghi_1110-ghi_1120-ghi_1130-ghi_1140-ghi_1150-ghi_1160-ghi_1170-ghi_1180-ghi_1190-ghi_1200-ghi_1210-ghi_1220-ghi_1230-ghi_1240-ghi_1250-ghi_1260-ghi_1270-ghi_1280-ghi_1290-ghi_1300-ghi_1310-ghi_1320-ghi_1330-ghi_1340-ghi_1350-ghi_1360-ghi_1370-ghi_1380-ghi_1390-ghi_1400-ghi_1410-ghi_1420-ghi_1430-ghi_1440-ghi_1450-ghi_1460-ghi_1470-ghi_1480-ghi_1490-ghi_1500-ghi_1510-ghi_1520-ghi_1530-ghi_1540-ghi_1550-ghi_1560-ghi_1570-ghi_1580-ghi_1590-ghi_1600-ghi_1610-ghi_1620-ghi_1630-ghi_1640-ghi_1650-ghi_1660-ghi_1670-ghi_1680-ghi_1690-ghi_1700-ghi_1710-ghi_1720-ghi_1730-ghi_1740-ghi_1750-ghi_1760-ghi_1770-ghi_1780-ghi_1790-ghi_1800div">&lt;div class="doc-parameter-value-field"&gt;<strong>Options:</strong> <em>PW, AT, WS, DNI_300, DNI_310, DNI_320, DNI_330, DNI_340, DNI_350, DNI_360, DNI_370, DNI_380, DNI_390, DNI_400, DNI_410, DNI_420, DNI_430, DNI_440, DNI_450, DNI_460, DNI_470, DNI_480, DNI_490, DNI_500, DNI_510, DNI_520, DNI_530, DNI_540, DNI_550, DNI_560, DNI_570, DNI_580, DNI_590, DNI_600, DNI_610, DNI_620, DNI_630, DNI_640, DNI_650, DNI_660, DNI_670, DNI_680, DNI_690, DNI_700, DNI_710, DNI_720, DNI_730, DNI_740, DNI_750, DNI_760, DNI_770, DNI_780, DNI_790, DNI_800, DNI_810, DNI_820, DNI_830, DNI_840, DNI_850, DNI_860, DNI_870, DNI_880, DNI_890, DNI_900, DNI_910, DNI_920, DNI_930, DNI_940, DNI_950, DNI_960, DNI_970, DNI_980, DNI_990, DNI_1000, DNI_1010, DNI_1020, DNI_1030, DNI_1040, DNI_1050, DNI_1060, DNI_1070, DNI_1080, DNI_1090, DNI_1100, DNI_1110, DNI_1120, DNI_1130, DNI_1140, DNI_1150, DNI_1160, DNI_1170, DNI_1180, DNI_1190, DNI_1200, DNI_1210, DNI_1220, DNI_1230, DNI_1240, DNI_1250, DNI_1260, DNI_1270, DNI_1280, DNI_1290, DNI_1300, DNI_1310, DNI_1320, DNI_1330, DNI_1340, DNI_1350, DNI_1360, DNI_1370, DNI_1380, DNI_1390, DNI_1400, DNI_1410, DNI_1420, DNI_1430, DNI_1440, DNI_1450, DNI_1460, DNI_1470, DNI_1480, DNI_1490, DNI_1500, DNI_1510, DNI_1520, DNI_1530, DNI_1540, DNI_1550, DNI_1560, DNI_1570, DNI_1580, DNI_1590, DNI_1600, DNI_1610, DNI_1620, DNI_1630, DNI_1640, DNI_1650, DNI_1660, DNI_1670, DNI_1680, DNI_1690, DNI_1700, DNI_1710, DNI_1720, DNI_1730, DNI_1740, DNI_1750, DNI_1760, DNI_1770, DNI_1780, DNI_1790, DNI_1800, GHI_300, GHI_310, GHI_320, GHI_330, GHI_340, GHI_350, GHI_360, GHI_370, GHI_380, GHI_390, GHI_400, GHI_410, GHI_420, GHI_430, GHI_440, GHI_450, GHI_460, GHI_470, GHI_480, GHI_490, GHI_500, GHI_510, GHI_520, GHI_530, GHI_540, GHI_550, GHI_560, GHI_570, GHI_580, GHI_590, GHI_600, GHI_610, GHI_620, GHI_630, GHI_640, GHI_650, GHI_660, GHI_670, GHI_680, GHI_690, GHI_700, GHI_710, GHI_720, GHI_730, GHI_740, GHI_750, GHI_760, GHI_770, GHI_780, GHI_790, GHI_800, GHI_810, GHI_820, GHI_830, GHI_840, GHI_850, GHI_860, GHI_870, GHI_880, GHI_890, GHI_900, GHI_910, GHI_920, GHI_930, GHI_940, GHI_950, GHI_960, GHI_970, GHI_980, GHI_990, GHI_1000, GHI_1010, GHI_1020, GHI_1030, GHI_1040, GHI_1050, GHI_1060, GHI_1070, GHI_1080, GHI_1090, GHI_1100, GHI_1110, GHI_1120, GHI_1130, GHI_1140, GHI_1150, GHI_1160, GHI_1170, GHI_1180, GHI_1190, GHI_1200, GHI_1210, GHI_1220, GHI_1230, GHI_1240, GHI_1250, GHI_1260, GHI_1270, GHI_1280, GHI_1290, GHI_1300, GHI_1310, GHI_1320, GHI_1330, GHI_1340, GHI_1350, GHI_1360, GHI_1370, GHI_1380, GHI_1390, GHI_1400, GHI_1410, GHI_1420, GHI_1430, GHI_1440, GHI_1450, GHI_1460, GHI_1470, GHI_1480, GHI_1490, GHI_1500, GHI_1510, GHI_1520, GHI_1530, GHI_1540, GHI_1550, GHI_1560, GHI_1570, GHI_1580, GHI_1590, GHI_1600, GHI_1610, GHI_1620, GHI_1630, GHI_1640, GHI_1650, GHI_1660, GHI_1670, GHI_1680, GHI_1690, GHI_1700, GHI_1710, GHI_1720, GHI_1730, GHI_1740, GHI_1750, GHI_1760, GHI_1770, GHI_1780, GHI_1790, GHI_1800</em>&lt;/div&gt;</h1>
+<h1 id="td-4">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-description-2">&lt;td class="doc-parameter-description"&gt;</h1>
+<h1 id="each-specified-attribute-will-be-returned-as-a-column-in-the-resultant-csv-download">Each specified attribute will be returned as a column in the resultant CSV download.</h1>
+<h1 id="td-5">&lt;/td&gt;</h1>
+<h1 id="tr-7">&lt;/tr&gt;</h1>
+<h1 id="tr-8">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperownamesth">&lt;th class="doc-parameter-name" scope="row"&gt;names&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requiredyestd-2">&lt;td class="doc-parameter-required"&gt;Yes&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value-3">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-comma-delimited-string-arraydiv-1">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> comma delimited string array&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-nonediv-2">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> None&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldoptions-tmydiv">&lt;div class="doc-parameter-value-field"&gt;<strong>Options:</strong> <em>tmy</em>&lt;/div&gt;</h1>
+<h1 id="td-6">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-descriptionthe-years-for-which-data-should-be-extractedtd">&lt;td class="doc-parameter-description"&gt;The year(s) for which data should be extracted.&lt;/td&gt;</h1>
+<h1 id="tr-9">&lt;/tr&gt;</h1>
+<h1 id="tr-10">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowutcth">&lt;th class="doc-parameter-name" scope="row"&gt;utc&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requirednotd-1">&lt;td class="doc-parameter-required"&gt;No&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value-4">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-true-or-falsediv">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> true or false&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-truediv">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> true&lt;/div&gt;</h1>
+<h1 id="td-7">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-description-3">&lt;td class="doc-parameter-description"&gt;</h1>
+<h1 id="pass-true-to-retrieve-data-with-timestamps-in-utc-pass-false-to-retrieve-data-with-timestamps-converted-to-local-time-of-data-point-without-daylight-savings-time">Pass true to retrieve data with timestamps in UTC. Pass false to retrieve data with timestamps converted to local time of data point (without daylight savings time).</h1>
+<h1 id="td-8">&lt;/td&gt;</h1>
+<h1 id="tr-11">&lt;/tr&gt;</h1>
+<h1 id="tr-12">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowfull_nameth">&lt;th class="doc-parameter-name" scope="row"&gt;full_name&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requirednotd-2">&lt;td class="doc-parameter-required"&gt;No&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value-5">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-stringdiv-1">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> string&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-nonediv-3">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> None&lt;/div&gt;</h1>
+<h1 id="td-9">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-descriptionthe-full-name-of-the-user-requesting-datatd">&lt;td class="doc-parameter-description"&gt;The full name of the user requesting data.&lt;/td&gt;</h1>
+<h1 id="tr-13">&lt;/tr&gt;</h1>
+<h1 id="tr-14">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowemailth">&lt;th class="doc-parameter-name" scope="row"&gt;email&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requiredyestd-3">&lt;td class="doc-parameter-required"&gt;Yes&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value-6">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-email-stringdiv">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> email string&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-nonediv-4">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> None&lt;/div&gt;</h1>
+<h1 id="td-10">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-description-4">&lt;td class="doc-parameter-description"&gt;</h1>
+<h1 id="an-active-email-for-the-user-requesting-data-this-email-will-be-used-to-deliver-the-extracted-data">An active email for the user requesting data. This email will be used to deliver the extracted data.</h1>
+<h1 id="td-11">&lt;/td&gt;</h1>
+<h1 id="tr-15">&lt;/tr&gt;</h1>
+<h1 id="tr-16">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowaffiliationth">&lt;th class="doc-parameter-name" scope="row"&gt;affiliation&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requirednotd-3">&lt;td class="doc-parameter-required"&gt;No&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value-7">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-stringdiv-2">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> string&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-nonediv-5">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> None&lt;/div&gt;</h1>
+<h1 id="td-12">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-description-5">&lt;td class="doc-parameter-description"&gt;</h1>
+<h1 id="the-organization-with-which-the-user-requesting-the-data-is-affiliated">The organization with which the user requesting the data is affiliated.</h1>
+<h1 id="td-13">&lt;/td&gt;</h1>
+<h1 id="tr-17">&lt;/tr&gt;</h1>
+<h1 id="tr-18">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowreasonth">&lt;th class="doc-parameter-name" scope="row"&gt;reason&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requirednotd-4">&lt;td class="doc-parameter-required"&gt;No&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value-8">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-stringdiv-3">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> string&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-nonediv-6">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> None&lt;/div&gt;</h1>
+<h1 id="td-14">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-descriptionthe-reason-that-the-user-is-requesting-the-datatd">&lt;td class="doc-parameter-description"&gt;The reason that the user is requesting the data.&lt;/td&gt;</h1>
+<h1 id="tr-19">&lt;/tr&gt;</h1>
+<h1 id="tr-20">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowmailing_listth">&lt;th class="doc-parameter-name" scope="row"&gt;mailing_list&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-requirednotd-5">&lt;td class="doc-parameter-required"&gt;No&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-value-9">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-true-or-falsediv-1">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> true or false&lt;/div&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fielddefault-falsediv">&lt;div class="doc-parameter-value-field"&gt;<strong>Default:</strong> false&lt;/div&gt;</h1>
+<h1 id="td-15">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-description-6">&lt;td class="doc-parameter-description"&gt;</h1>
+<h1 id="pass-true-to-add-the-email-address-to-our-list-of-recipients-for-the-nsrdb-mailing-list">Pass true to add the email address to our list of recipients for the NSRDB mailing list.</h1>
+<h1 id="td-16">&lt;/td&gt;</h1>
+<h1 id="tr-21">&lt;/tr&gt;</h1>
+<h1 id="tbody-1">&lt;/tbody&gt;</h1>
+<h1 id="table">&lt;/table&gt;</h1>
 
-<p>The response is composed of service-related informational fields and the results of the data query.</p>
+<h1 id="-response-fields">## Response Fields</h1>
 
-<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
-  <thead>
-    <tr>
-      <th class="doc-parameters-name" scope="col">Field</th>
-      <th class="doc-parameters-value" scope="col">Value</th>
-      <th class="doc-parameters-description" scope="col">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th class="doc-parameter-name" scope="row">errors</th>
-      <td class="doc-parameter-value">
-      <div class="doc-parameter-value-field"><strong>Type:</strong> string array</div>
-      </td>
-      <td class="doc-parameter-description">
-      <p>A list of error messages</p>
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">inputs</th>
-      <td class="doc-parameter-value">
-      <div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
-      </td>
-      <td class="doc-parameter-description">Key: Value pairs representing all input parameters</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">outputs</th>
-      <td class="doc-parameter-value">
-      <div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
-      </td>
-      <td class="doc-parameter-description">Upon successful completion a message will be returned informing the user that file generation is in progress and an email will be sent to the address provided in the <code>email</code> input field when the download is ready</td>
-    </tr>
-  </tbody>
-</table>
+<h1 id="the-response-is-composed-of-service-related-informational-fields-and-the-results-of-the-data-query">The response is composed of service-related informational fields and the results of the data query.</h1>
 
-<h2 id="data-file-format">Data File Format</h2>
+<h1 id="table-border0-cellpadding0-cellspacing0-classdoc-parameters-1">&lt;table border="0" cellpadding="0" cellspacing="0" class="doc-parameters"&gt;</h1>
+<h1 id="thead-2">&lt;thead&gt;</h1>
+<h1 id="tr-22">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameters-name-scopecolfieldth">&lt;th class="doc-parameters-name" scope="col"&gt;Field&lt;/th&gt;</h1>
+<h1 id="th-classdoc-parameters-value-scopecolvalueth-1">&lt;th class="doc-parameters-value" scope="col"&gt;Value&lt;/th&gt;</h1>
+<h1 id="th-classdoc-parameters-description-scopecoldescriptionth-1">&lt;th class="doc-parameters-description" scope="col"&gt;Description&lt;/th&gt;</h1>
+<h1 id="tr-23">&lt;/tr&gt;</h1>
+<h1 id="thead-3">&lt;/thead&gt;</h1>
+<h1 id="tbody-2">&lt;tbody&gt;</h1>
+<h1 id="tr-24">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowerrorsth">&lt;th class="doc-parameter-name" scope="row"&gt;errors&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-value-10">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-string-arraydiv">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> string array&lt;/div&gt;</h1>
+<h1 id="td-17">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-description-7">&lt;td class="doc-parameter-description"&gt;</h1>
+<h1 id="pa-list-of-error-messagesp">&lt;p&gt;A list of error messages&lt;/p&gt;</h1>
+<h1 id="td-18">&lt;/td&gt;</h1>
+<h1 id="tr-25">&lt;/tr&gt;</h1>
+<h1 id="tr-26">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowinputsth">&lt;th class="doc-parameter-name" scope="row"&gt;inputs&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-value-11">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-object-hashdiv">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> Object Hash&lt;/div&gt;</h1>
+<h1 id="td-19">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-descriptionkey-value-pairs-representing-all-input-parameterstd">&lt;td class="doc-parameter-description"&gt;Key: Value pairs representing all input parameters&lt;/td&gt;</h1>
+<h1 id="tr-27">&lt;/tr&gt;</h1>
+<h1 id="tr-28">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperowoutputsth">&lt;th class="doc-parameter-name" scope="row"&gt;outputs&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-value-12">&lt;td class="doc-parameter-value"&gt;</h1>
+<h1 id="div-classdoc-parameter-value-fieldtype-object-hashdiv-1">&lt;div class="doc-parameter-value-field"&gt;<strong>Type:</strong> Object Hash&lt;/div&gt;</h1>
+<h1 id="td-20">&lt;/td&gt;</h1>
+<h1 id="td-classdoc-parameter-descriptionupon-successful-completion-a-message-will-be-returned-informing-the-user-that-file-generation-is-in-progress-and-an-email-will-be-sent-to-the-address-provided-in-the-email-input-field-when-the-download-is-readytd">&lt;td class="doc-parameter-description"&gt;Upon successful completion a message will be returned informing the user that file generation is in progress and an email will be sent to the address provided in the <code>email</code> input field when the download is ready&lt;/td&gt;</h1>
+<h1 id="tr-29">&lt;/tr&gt;</h1>
+<h1 id="tbody-3">&lt;/tbody&gt;</h1>
+<h1 id="table-1">&lt;/table&gt;</h1>
 
-<p>Generated data files are formatted in accordance with the Standard Time Series Data File Format. This file format has been developed to support <a href="https://sam.nrel.gov/">SAM</a> and other NREL models and is documented fully in <a href="https://sam.nrel.gov/sites/default/files/content/documents/pdf/wfcsv.pdf">this PDF</a>. More information on SAM file formats avaialable on <a href="https://sam.nrel.gov/weather">the SAM weather page</a>.</p>
+<h1 id="-data-file-format">## Data File Format</h1>
 
-<h2 id="examples">Examples</h2>
+<h1 id="generated-data-files-are-formatted-in-accordance-with-the-standard-time-series-data-file-format-this-file-format-has-been-developed-to-support-sam-and-other-nrel-models-and-is-documented-fully-in-this-pdf-more-information-on-sam-file-formats-avaialable-on-the-sam-weather-page">Generated data files are formatted in accordance with the Standard Time Series Data File Format. This file format has been developed to support <a href="https://sam.nrel.gov/">SAM</a> and other NREL models and is documented fully in <a href="https://sam.nrel.gov/sites/default/files/content/documents/pdf/wfcsv.pdf">this PDF</a>. More information on SAM file formats avaialable on <a href="https://sam.nrel.gov/weather">the SAM weather page</a>.</h1>
 
-<h3 id="json-output-format">JSON Output Format</h3>
+<h1 id="-examples">## Examples</h1>
 
-<div class="doc-example-url"><code>GET /api/nsrdb/v2/solar/spectral-india-tmy-download.json?api_key=DEMO_KEY&amp;full_name=Sample+User&amp;email=user@company.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT(77.08007%2020.79720)&amp;names=tmy&amp;attributes=PW,AT,WS,DNI_300,DNI_310,DNI_320,DNI_330,DNI_340,DNI_350,DNI_360,DNI_370,DNI_380,DNI_390,DNI_400,DNI_410,DNI_420,DNI_430,DNI_440,DNI_450,DNI_460,DNI_470,DNI_480,DNI_490,DNI_500,DNI_510,DNI_520,DNI_530,DNI_540,DNI_550,DNI_560,DNI_570,DNI_580,DNI_590,DNI_600,DNI_610,DNI_620,DNI_630,DNI_640,DNI_650,DNI_660,DNI_670,DNI_680,DNI_690,DNI_700,DNI_710,DNI_720,DNI_730,DNI_740,DNI_750,DNI_760,DNI_770,DNI_780,DNI_790,DNI_800,DNI_810,DNI_820,DNI_830,DNI_840,DNI_850,DNI_860,DNI_870,DNI_880,DNI_890,DNI_900,DNI_910,DNI_920,DNI_930,DNI_940,DNI_950,DNI_960,DNI_970,DNI_980,DNI_990,DNI_1000,DNI_1010,DNI_1020,DNI_1030,DNI_1040,DNI_1050,DNI_1060,DNI_1070,DNI_1080,DNI_1090,DNI_1100,DNI_1110,DNI_1120,DNI_1130,DNI_1140,DNI_1150,DNI_1160,DNI_1170,DNI_1180,DNI_1190,DNI_1200,DNI_1210,DNI_1220,DNI_1230,DNI_1240,DNI_1250,DNI_1260,DNI_1270,DNI_1280,DNI_1290,DNI_1300,DNI_1310,DNI_1320,DNI_1330,DNI_1340,DNI_1350,DNI_1360,DNI_1370,DNI_1380,DNI_1390,DNI_1400,DNI_1410,DNI_1420,DNI_1430,DNI_1440,DNI_1450,DNI_1460,DNI_1470,DNI_1480,DNI_1490,DNI_1500,DNI_1510,DNI_1520,DNI_1530,DNI_1540,DNI_1550,DNI_1560,DNI_1570,DNI_1580,DNI_1590,DNI_1600,DNI_1610,DNI_1620,DNI_1630,DNI_1640,DNI_1650,DNI_1660,DNI_1670,DNI_1680,DNI_1690,DNI_1700,DNI_1710,DNI_1720,DNI_1730,DNI_1740,DNI_1750,DNI_1760,DNI_1770,DNI_1780,DNI_1790,DNI_1800,GHI_300,GHI_310,GHI_320,GHI_330,GHI_340,GHI_350,GHI_360,GHI_370,GHI_380,GHI_390,GHI_400,GHI_410,GHI_420,GHI_430,GHI_440,GHI_450,GHI_460,GHI_470,GHI_480,GHI_490,GHI_500,GHI_510,GHI_520,GHI_530,GHI_540,GHI_550,GHI_560,GHI_570,GHI_580,GHI_590,GHI_600,GHI_610,GHI_620,GHI_630,GHI_640,GHI_650,GHI_660,GHI_670,GHI_680,GHI_690,GHI_700,GHI_710,GHI_720,GHI_730,GHI_740,GHI_750,GHI_760,GHI_770,GHI_780,GHI_790,GHI_800,GHI_810,GHI_820,GHI_830,GHI_840,GHI_850,GHI_860,GHI_870,GHI_880,GHI_890,GHI_900,GHI_910,GHI_920,GHI_930,GHI_940,GHI_950,GHI_960,GHI_970,GHI_980,GHI_990,GHI_1000,GHI_1010,GHI_1020,GHI_1030,GHI_1040,GHI_1050,GHI_1060,GHI_1070,GHI_1080,GHI_1090,GHI_1100,GHI_1110,GHI_1120,GHI_1130,GHI_1140,GHI_1150,GHI_1160,GHI_1170,GHI_1180,GHI_1190,GHI_1200,GHI_1210,GHI_1220,GHI_1230,GHI_1240,GHI_1250,GHI_1260,GHI_1270,GHI_1280,GHI_1290,GHI_1300,GHI_1310,GHI_1320,GHI_1330,GHI_1340,GHI_1350,GHI_1360,GHI_1370,GHI_1380,GHI_1390,GHI_1400,GHI_1410,GHI_1420,GHI_1430,GHI_1440,GHI_1450,GHI_1460,GHI_1470,GHI_1480,GHI_1490,GHI_1500,GHI_1510,GHI_1520,GHI_1530,GHI_1540,GHI_1550,GHI_1560,GHI_1570,GHI_1580,GHI_1590,GHI_1600,GHI_1610,GHI_1620,GHI_1630,GHI_1640,GHI_1650,GHI_1660,GHI_1670,GHI_1680,GHI_1690,GHI_1700,GHI_1710,GHI_1720,GHI_1730,GHI_1740,GHI_1750,GHI_1760,GHI_1770,GHI_1780,GHI_1790,GHI_1800&amp;utc=true</code></div>
+<h1 id="-json-output-format">### JSON Output Format</h1>
 
-<div class="highlight"><pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-  </span><span class="nl">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample User"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@company.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"affiliation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Organization"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"mailing_list"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"wkt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POINT(77.08007%2020.79720)"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"names"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"tmy"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"PW"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"AT"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"WS"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_300"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_310"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_320"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_330"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_340"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_350"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_360"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_370"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_380"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_390"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_400"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_410"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_420"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_430"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_440"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_450"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_460"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_470"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_480"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_490"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_500"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_510"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_520"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_530"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_540"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_550"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_560"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_570"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_580"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_590"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_600"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_610"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_620"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_630"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_640"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_650"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_660"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_670"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_680"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_690"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_700"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_710"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_720"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_730"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_740"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_750"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_760"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_770"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_780"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_790"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_800"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_810"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_820"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_830"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_840"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_850"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_860"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_870"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_880"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_890"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_900"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_910"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_920"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_930"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_940"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_950"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_960"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_970"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_980"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_990"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1010"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1020"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1030"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1040"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1050"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1060"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1070"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1080"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1090"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1100"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1110"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1120"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1130"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1140"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1150"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1160"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1170"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1180"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1190"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1200"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1210"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1220"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1230"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1240"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1250"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1260"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1270"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1280"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1290"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1300"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1310"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1320"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1330"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1340"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1350"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1360"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1370"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1380"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1390"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1400"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1410"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1420"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1430"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1440"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1450"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1460"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1470"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1480"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1490"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1500"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1510"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1520"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1530"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1540"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1550"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1560"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1570"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1580"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1590"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1600"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1610"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1620"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1630"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1640"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1650"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1660"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1670"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1680"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1690"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1700"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1710"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1720"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1730"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1740"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1750"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1760"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1770"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1780"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1790"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DNI_1800"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_300"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_310"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_320"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_330"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_340"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_350"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_360"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_370"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_380"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_390"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_400"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_410"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_420"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_430"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_440"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_450"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_460"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_470"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_480"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_490"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_500"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_510"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_520"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_530"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_540"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_550"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_560"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_570"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_580"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_590"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_600"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_610"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_620"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_630"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_640"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_650"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_660"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_670"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_680"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_690"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_700"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_710"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_720"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_730"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_740"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_750"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_760"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_770"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_780"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_790"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_800"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_810"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_820"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_830"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_840"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_850"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_860"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_870"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_880"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_890"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_900"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_910"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_920"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_930"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_940"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_950"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_960"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_970"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_980"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_990"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1010"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1020"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1030"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1040"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1050"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1060"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1070"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1080"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1090"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1100"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1110"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1120"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1130"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1140"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1150"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1160"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1170"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1180"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1190"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1200"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1210"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1220"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1230"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1240"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1250"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1260"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1270"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1280"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1290"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1300"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1310"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1320"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1330"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1340"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1350"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1360"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1370"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1380"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1390"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1400"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1410"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1420"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1430"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1440"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1450"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1460"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1470"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1480"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1490"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1500"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1510"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1520"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1530"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1540"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1550"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1560"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1570"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1580"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1590"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1600"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1610"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1620"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1630"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1640"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1650"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1660"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1670"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1680"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1690"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1700"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1710"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1720"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1730"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1740"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1750"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1760"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1770"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1780"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1790"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"GHI_1800"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"utc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File generation in progress. An email will be sent to user@company.com when the download is ready."</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<h3 id="csv-output-format">CSV Output Format</h3>
-<p>Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.</p>
+<h1 id="div-classdoc-example-urlget-jsonapi_keydemo_keyfull_namesampleuseremailusercompanycomaffiliationtestorganizationreasonexamplemailing_listtruewktpoint7708007202079720namestmyattributespwatwsdni_300dni_310dni_320dni_330dni_340dni_350dni_360dni_370dni_380dni_390dni_400dni_410dni_420dni_430dni_440dni_450dni_460dni_470dni_480dni_490dni_500dni_510dni_520dni_530dni_540dni_550dni_560dni_570dni_580dni_590dni_600dni_610dni_620dni_630dni_640dni_650dni_660dni_670dni_680dni_690dni_700dni_710dni_720dni_730dni_740dni_750dni_760dni_770dni_780dni_790dni_800dni_810dni_820dni_830dni_840dni_850dni_860dni_870dni_880dni_890dni_900dni_910dni_920dni_930dni_940dni_950dni_960dni_970dni_980dni_990dni_1000dni_1010dni_1020dni_1030dni_1040dni_1050dni_1060dni_1070dni_1080dni_1090dni_1100dni_1110dni_1120dni_1130dni_1140dni_1150dni_1160dni_1170dni_1180dni_1190dni_1200dni_1210dni_1220dni_1230dni_1240dni_1250dni_1260dni_1270dni_1280dni_1290dni_1300dni_1310dni_1320dni_1330dni_1340dni_1350dni_1360dni_1370dni_1380dni_1390dni_1400dni_1410dni_1420dni_1430dni_1440dni_1450dni_1460dni_1470dni_1480dni_1490dni_1500dni_1510dni_1520dni_1530dni_1540dni_1550dni_1560dni_1570dni_1580dni_1590dni_1600dni_1610dni_1620dni_1630dni_1640dni_1650dni_1660dni_1670dni_1680dni_1690dni_1700dni_1710dni_1720dni_1730dni_1740dni_1750dni_1760dni_1770dni_1780dni_1790dni_1800ghi_300ghi_310ghi_320ghi_330ghi_340ghi_350ghi_360ghi_370ghi_380ghi_390ghi_400ghi_410ghi_420ghi_430ghi_440ghi_450ghi_460ghi_470ghi_480ghi_490ghi_500ghi_510ghi_520ghi_530ghi_540ghi_550ghi_560ghi_570ghi_580ghi_590ghi_600ghi_610ghi_620ghi_630ghi_640ghi_650ghi_660ghi_670ghi_680ghi_690ghi_700ghi_710ghi_720ghi_730ghi_740ghi_750ghi_760ghi_770ghi_780ghi_790ghi_800ghi_810ghi_820ghi_830ghi_840ghi_850ghi_860ghi_870ghi_880ghi_890ghi_900ghi_910ghi_920ghi_930ghi_940ghi_950ghi_960ghi_970ghi_980ghi_990ghi_1000ghi_1010ghi_1020ghi_1030ghi_1040ghi_1050ghi_1060ghi_1070ghi_1080ghi_1090ghi_1100ghi_1110ghi_1120ghi_1130ghi_1140ghi_1150ghi_1160ghi_1170ghi_1180ghi_1190ghi_1200ghi_1210ghi_1220ghi_1230ghi_1240ghi_1250ghi_1260ghi_1270ghi_1280ghi_1290ghi_1300ghi_1310ghi_1320ghi_1330ghi_1340ghi_1350ghi_1360ghi_1370ghi_1380ghi_1390ghi_1400ghi_1410ghi_1420ghi_1430ghi_1440ghi_1450ghi_1460ghi_1470ghi_1480ghi_1490ghi_1500ghi_1510ghi_1520ghi_1530ghi_1540ghi_1550ghi_1560ghi_1570ghi_1580ghi_1590ghi_1600ghi_1610ghi_1620ghi_1630ghi_1640ghi_1650ghi_1660ghi_1670ghi_1680ghi_1690ghi_1700ghi_1710ghi_1720ghi_1730ghi_1740ghi_1750ghi_1760ghi_1770ghi_1780ghi_1790ghi_1800utctruediv">&lt;div class="doc-example-url"&gt;<code>GET .json?api_key=DEMO_KEY&amp;full_name=Sample+User&amp;email=user@company.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT(77.08007%2020.79720)&amp;names=tmy&amp;attributes=PW,AT,WS,DNI_300,DNI_310,DNI_320,DNI_330,DNI_340,DNI_350,DNI_360,DNI_370,DNI_380,DNI_390,DNI_400,DNI_410,DNI_420,DNI_430,DNI_440,DNI_450,DNI_460,DNI_470,DNI_480,DNI_490,DNI_500,DNI_510,DNI_520,DNI_530,DNI_540,DNI_550,DNI_560,DNI_570,DNI_580,DNI_590,DNI_600,DNI_610,DNI_620,DNI_630,DNI_640,DNI_650,DNI_660,DNI_670,DNI_680,DNI_690,DNI_700,DNI_710,DNI_720,DNI_730,DNI_740,DNI_750,DNI_760,DNI_770,DNI_780,DNI_790,DNI_800,DNI_810,DNI_820,DNI_830,DNI_840,DNI_850,DNI_860,DNI_870,DNI_880,DNI_890,DNI_900,DNI_910,DNI_920,DNI_930,DNI_940,DNI_950,DNI_960,DNI_970,DNI_980,DNI_990,DNI_1000,DNI_1010,DNI_1020,DNI_1030,DNI_1040,DNI_1050,DNI_1060,DNI_1070,DNI_1080,DNI_1090,DNI_1100,DNI_1110,DNI_1120,DNI_1130,DNI_1140,DNI_1150,DNI_1160,DNI_1170,DNI_1180,DNI_1190,DNI_1200,DNI_1210,DNI_1220,DNI_1230,DNI_1240,DNI_1250,DNI_1260,DNI_1270,DNI_1280,DNI_1290,DNI_1300,DNI_1310,DNI_1320,DNI_1330,DNI_1340,DNI_1350,DNI_1360,DNI_1370,DNI_1380,DNI_1390,DNI_1400,DNI_1410,DNI_1420,DNI_1430,DNI_1440,DNI_1450,DNI_1460,DNI_1470,DNI_1480,DNI_1490,DNI_1500,DNI_1510,DNI_1520,DNI_1530,DNI_1540,DNI_1550,DNI_1560,DNI_1570,DNI_1580,DNI_1590,DNI_1600,DNI_1610,DNI_1620,DNI_1630,DNI_1640,DNI_1650,DNI_1660,DNI_1670,DNI_1680,DNI_1690,DNI_1700,DNI_1710,DNI_1720,DNI_1730,DNI_1740,DNI_1750,DNI_1760,DNI_1770,DNI_1780,DNI_1790,DNI_1800,GHI_300,GHI_310,GHI_320,GHI_330,GHI_340,GHI_350,GHI_360,GHI_370,GHI_380,GHI_390,GHI_400,GHI_410,GHI_420,GHI_430,GHI_440,GHI_450,GHI_460,GHI_470,GHI_480,GHI_490,GHI_500,GHI_510,GHI_520,GHI_530,GHI_540,GHI_550,GHI_560,GHI_570,GHI_580,GHI_590,GHI_600,GHI_610,GHI_620,GHI_630,GHI_640,GHI_650,GHI_660,GHI_670,GHI_680,GHI_690,GHI_700,GHI_710,GHI_720,GHI_730,GHI_740,GHI_750,GHI_760,GHI_770,GHI_780,GHI_790,GHI_800,GHI_810,GHI_820,GHI_830,GHI_840,GHI_850,GHI_860,GHI_870,GHI_880,GHI_890,GHI_900,GHI_910,GHI_920,GHI_930,GHI_940,GHI_950,GHI_960,GHI_970,GHI_980,GHI_990,GHI_1000,GHI_1010,GHI_1020,GHI_1030,GHI_1040,GHI_1050,GHI_1060,GHI_1070,GHI_1080,GHI_1090,GHI_1100,GHI_1110,GHI_1120,GHI_1130,GHI_1140,GHI_1150,GHI_1160,GHI_1170,GHI_1180,GHI_1190,GHI_1200,GHI_1210,GHI_1220,GHI_1230,GHI_1240,GHI_1250,GHI_1260,GHI_1270,GHI_1280,GHI_1290,GHI_1300,GHI_1310,GHI_1320,GHI_1330,GHI_1340,GHI_1350,GHI_1360,GHI_1370,GHI_1380,GHI_1390,GHI_1400,GHI_1410,GHI_1420,GHI_1430,GHI_1440,GHI_1450,GHI_1460,GHI_1470,GHI_1480,GHI_1490,GHI_1500,GHI_1510,GHI_1520,GHI_1530,GHI_1540,GHI_1550,GHI_1560,GHI_1570,GHI_1580,GHI_1590,GHI_1600,GHI_1610,GHI_1620,GHI_1630,GHI_1640,GHI_1650,GHI_1660,GHI_1670,GHI_1680,GHI_1690,GHI_1700,GHI_1710,GHI_1720,GHI_1730,GHI_1740,GHI_1750,GHI_1760,GHI_1770,GHI_1780,GHI_1790,GHI_1800&amp;utc=true</code>&lt;/div&gt;</h1>
 
-<div class="doc-example-url"><code>GET /api/nsrdb/v2/solar/spectral-india-tmy-download.json?api_key=DEMO_KEY&amp;full_name=Sample+User&amp;email=user@company.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT(77.08007%2020.79720)&amp;names=tmy&amp;attributes=PW,AT,WS,DNI_300,DNI_310,DNI_320,DNI_330,DNI_340,DNI_350,DNI_360,DNI_370,DNI_380,DNI_390,DNI_400,DNI_410,DNI_420,DNI_430,DNI_440,DNI_450,DNI_460,DNI_470,DNI_480,DNI_490,DNI_500,DNI_510,DNI_520,DNI_530,DNI_540,DNI_550,DNI_560,DNI_570,DNI_580,DNI_590,DNI_600,DNI_610,DNI_620,DNI_630,DNI_640,DNI_650,DNI_660,DNI_670,DNI_680,DNI_690,DNI_700,DNI_710,DNI_720,DNI_730,DNI_740,DNI_750,DNI_760,DNI_770,DNI_780,DNI_790,DNI_800,DNI_810,DNI_820,DNI_830,DNI_840,DNI_850,DNI_860,DNI_870,DNI_880,DNI_890,DNI_900,DNI_910,DNI_920,DNI_930,DNI_940,DNI_950,DNI_960,DNI_970,DNI_980,DNI_990,DNI_1000,DNI_1010,DNI_1020,DNI_1030,DNI_1040,DNI_1050,DNI_1060,DNI_1070,DNI_1080,DNI_1090,DNI_1100,DNI_1110,DNI_1120,DNI_1130,DNI_1140,DNI_1150,DNI_1160,DNI_1170,DNI_1180,DNI_1190,DNI_1200,DNI_1210,DNI_1220,DNI_1230,DNI_1240,DNI_1250,DNI_1260,DNI_1270,DNI_1280,DNI_1290,DNI_1300,DNI_1310,DNI_1320,DNI_1330,DNI_1340,DNI_1350,DNI_1360,DNI_1370,DNI_1380,DNI_1390,DNI_1400,DNI_1410,DNI_1420,DNI_1430,DNI_1440,DNI_1450,DNI_1460,DNI_1470,DNI_1480,DNI_1490,DNI_1500,DNI_1510,DNI_1520,DNI_1530,DNI_1540,DNI_1550,DNI_1560,DNI_1570,DNI_1580,DNI_1590,DNI_1600,DNI_1610,DNI_1620,DNI_1630,DNI_1640,DNI_1650,DNI_1660,DNI_1670,DNI_1680,DNI_1690,DNI_1700,DNI_1710,DNI_1720,DNI_1730,DNI_1740,DNI_1750,DNI_1760,DNI_1770,DNI_1780,DNI_1790,DNI_1800,GHI_300,GHI_310,GHI_320,GHI_330,GHI_340,GHI_350,GHI_360,GHI_370,GHI_380,GHI_390,GHI_400,GHI_410,GHI_420,GHI_430,GHI_440,GHI_450,GHI_460,GHI_470,GHI_480,GHI_490,GHI_500,GHI_510,GHI_520,GHI_530,GHI_540,GHI_550,GHI_560,GHI_570,GHI_580,GHI_590,GHI_600,GHI_610,GHI_620,GHI_630,GHI_640,GHI_650,GHI_660,GHI_670,GHI_680,GHI_690,GHI_700,GHI_710,GHI_720,GHI_730,GHI_740,GHI_750,GHI_760,GHI_770,GHI_780,GHI_790,GHI_800,GHI_810,GHI_820,GHI_830,GHI_840,GHI_850,GHI_860,GHI_870,GHI_880,GHI_890,GHI_900,GHI_910,GHI_920,GHI_930,GHI_940,GHI_950,GHI_960,GHI_970,GHI_980,GHI_990,GHI_1000,GHI_1010,GHI_1020,GHI_1030,GHI_1040,GHI_1050,GHI_1060,GHI_1070,GHI_1080,GHI_1090,GHI_1100,GHI_1110,GHI_1120,GHI_1130,GHI_1140,GHI_1150,GHI_1160,GHI_1170,GHI_1180,GHI_1190,GHI_1200,GHI_1210,GHI_1220,GHI_1230,GHI_1240,GHI_1250,GHI_1260,GHI_1270,GHI_1280,GHI_1290,GHI_1300,GHI_1310,GHI_1320,GHI_1330,GHI_1340,GHI_1350,GHI_1360,GHI_1370,GHI_1380,GHI_1390,GHI_1400,GHI_1410,GHI_1420,GHI_1430,GHI_1440,GHI_1450,GHI_1460,GHI_1470,GHI_1480,GHI_1490,GHI_1500,GHI_1510,GHI_1520,GHI_1530,GHI_1540,GHI_1550,GHI_1560,GHI_1570,GHI_1580,GHI_1590,GHI_1600,GHI_1610,GHI_1620,GHI_1630,GHI_1640,GHI_1650,GHI_1660,GHI_1670,GHI_1680,GHI_1690,GHI_1700,GHI_1710,GHI_1720,GHI_1730,GHI_1740,GHI_1750,GHI_1760,GHI_1770,GHI_1780,GHI_1790,GHI_1800&amp;utc=true</code>
-</div>
+<h1 id="json">```json</h1>
+<h1 id="-2">{</h1>
+<h1 id="errors-">"errors": [],</h1>
+<h1 id="inputs-">"inputs": {</h1>
+<h1 id="full_name-sample-user">"full_name": "Sample User",</h1>
+<h1 id="email-usercompanycom">"email": "user@company.com",</h1>
+<h1 id="affiliation-test-organization">"affiliation": "Test Organization",</h1>
+<h1 id="reason-example">"reason": "Example",</h1>
+<h1 id="mailing_list-true">"mailing_list": true,</h1>
+<h1 id="wkt-point7708007202079720">"wkt": "POINT(77.08007%2020.79720)",</h1>
+<h1 id="names-">"names": [</h1>
+<h1 id="tmy">"tmy"</h1>
+<h1 id="-3">],</h1>
+<h1 id="attributes-">"attributes": [</h1>
+<h1 id="pw">"PW",</h1>
+<h1 id="at">"AT",</h1>
+<h1 id="ws">"WS",</h1>
+<h1 id="dni_300">"DNI_300",</h1>
+<h1 id="dni_310">"DNI_310",</h1>
+<h1 id="dni_320">"DNI_320",</h1>
+<h1 id="dni_330">"DNI_330",</h1>
+<h1 id="dni_340">"DNI_340",</h1>
+<h1 id="dni_350">"DNI_350",</h1>
+<h1 id="dni_360">"DNI_360",</h1>
+<h1 id="dni_370">"DNI_370",</h1>
+<h1 id="dni_380">"DNI_380",</h1>
+<h1 id="dni_390">"DNI_390",</h1>
+<h1 id="dni_400">"DNI_400",</h1>
+<h1 id="dni_410">"DNI_410",</h1>
+<h1 id="dni_420">"DNI_420",</h1>
+<h1 id="dni_430">"DNI_430",</h1>
+<h1 id="dni_440">"DNI_440",</h1>
+<h1 id="dni_450">"DNI_450",</h1>
+<h1 id="dni_460">"DNI_460",</h1>
+<h1 id="dni_470">"DNI_470",</h1>
+<h1 id="dni_480">"DNI_480",</h1>
+<h1 id="dni_490">"DNI_490",</h1>
+<h1 id="dni_500">"DNI_500",</h1>
+<h1 id="dni_510">"DNI_510",</h1>
+<h1 id="dni_520">"DNI_520",</h1>
+<h1 id="dni_530">"DNI_530",</h1>
+<h1 id="dni_540">"DNI_540",</h1>
+<h1 id="dni_550">"DNI_550",</h1>
+<h1 id="dni_560">"DNI_560",</h1>
+<h1 id="dni_570">"DNI_570",</h1>
+<h1 id="dni_580">"DNI_580",</h1>
+<h1 id="dni_590">"DNI_590",</h1>
+<h1 id="dni_600">"DNI_600",</h1>
+<h1 id="dni_610">"DNI_610",</h1>
+<h1 id="dni_620">"DNI_620",</h1>
+<h1 id="dni_630">"DNI_630",</h1>
+<h1 id="dni_640">"DNI_640",</h1>
+<h1 id="dni_650">"DNI_650",</h1>
+<h1 id="dni_660">"DNI_660",</h1>
+<h1 id="dni_670">"DNI_670",</h1>
+<h1 id="dni_680">"DNI_680",</h1>
+<h1 id="dni_690">"DNI_690",</h1>
+<h1 id="dni_700">"DNI_700",</h1>
+<h1 id="dni_710">"DNI_710",</h1>
+<h1 id="dni_720">"DNI_720",</h1>
+<h1 id="dni_730">"DNI_730",</h1>
+<h1 id="dni_740">"DNI_740",</h1>
+<h1 id="dni_750">"DNI_750",</h1>
+<h1 id="dni_760">"DNI_760",</h1>
+<h1 id="dni_770">"DNI_770",</h1>
+<h1 id="dni_780">"DNI_780",</h1>
+<h1 id="dni_790">"DNI_790",</h1>
+<h1 id="dni_800">"DNI_800",</h1>
+<h1 id="dni_810">"DNI_810",</h1>
+<h1 id="dni_820">"DNI_820",</h1>
+<h1 id="dni_830">"DNI_830",</h1>
+<h1 id="dni_840">"DNI_840",</h1>
+<h1 id="dni_850">"DNI_850",</h1>
+<h1 id="dni_860">"DNI_860",</h1>
+<h1 id="dni_870">"DNI_870",</h1>
+<h1 id="dni_880">"DNI_880",</h1>
+<h1 id="dni_890">"DNI_890",</h1>
+<h1 id="dni_900">"DNI_900",</h1>
+<h1 id="dni_910">"DNI_910",</h1>
+<h1 id="dni_920">"DNI_920",</h1>
+<h1 id="dni_930">"DNI_930",</h1>
+<h1 id="dni_940">"DNI_940",</h1>
+<h1 id="dni_950">"DNI_950",</h1>
+<h1 id="dni_960">"DNI_960",</h1>
+<h1 id="dni_970">"DNI_970",</h1>
+<h1 id="dni_980">"DNI_980",</h1>
+<h1 id="dni_990">"DNI_990",</h1>
+<h1 id="dni_1000">"DNI_1000",</h1>
+<h1 id="dni_1010">"DNI_1010",</h1>
+<h1 id="dni_1020">"DNI_1020",</h1>
+<h1 id="dni_1030">"DNI_1030",</h1>
+<h1 id="dni_1040">"DNI_1040",</h1>
+<h1 id="dni_1050">"DNI_1050",</h1>
+<h1 id="dni_1060">"DNI_1060",</h1>
+<h1 id="dni_1070">"DNI_1070",</h1>
+<h1 id="dni_1080">"DNI_1080",</h1>
+<h1 id="dni_1090">"DNI_1090",</h1>
+<h1 id="dni_1100">"DNI_1100",</h1>
+<h1 id="dni_1110">"DNI_1110",</h1>
+<h1 id="dni_1120">"DNI_1120",</h1>
+<h1 id="dni_1130">"DNI_1130",</h1>
+<h1 id="dni_1140">"DNI_1140",</h1>
+<h1 id="dni_1150">"DNI_1150",</h1>
+<h1 id="dni_1160">"DNI_1160",</h1>
+<h1 id="dni_1170">"DNI_1170",</h1>
+<h1 id="dni_1180">"DNI_1180",</h1>
+<h1 id="dni_1190">"DNI_1190",</h1>
+<h1 id="dni_1200">"DNI_1200",</h1>
+<h1 id="dni_1210">"DNI_1210",</h1>
+<h1 id="dni_1220">"DNI_1220",</h1>
+<h1 id="dni_1230">"DNI_1230",</h1>
+<h1 id="dni_1240">"DNI_1240",</h1>
+<h1 id="dni_1250">"DNI_1250",</h1>
+<h1 id="dni_1260">"DNI_1260",</h1>
+<h1 id="dni_1270">"DNI_1270",</h1>
+<h1 id="dni_1280">"DNI_1280",</h1>
+<h1 id="dni_1290">"DNI_1290",</h1>
+<h1 id="dni_1300">"DNI_1300",</h1>
+<h1 id="dni_1310">"DNI_1310",</h1>
+<h1 id="dni_1320">"DNI_1320",</h1>
+<h1 id="dni_1330">"DNI_1330",</h1>
+<h1 id="dni_1340">"DNI_1340",</h1>
+<h1 id="dni_1350">"DNI_1350",</h1>
+<h1 id="dni_1360">"DNI_1360",</h1>
+<h1 id="dni_1370">"DNI_1370",</h1>
+<h1 id="dni_1380">"DNI_1380",</h1>
+<h1 id="dni_1390">"DNI_1390",</h1>
+<h1 id="dni_1400">"DNI_1400",</h1>
+<h1 id="dni_1410">"DNI_1410",</h1>
+<h1 id="dni_1420">"DNI_1420",</h1>
+<h1 id="dni_1430">"DNI_1430",</h1>
+<h1 id="dni_1440">"DNI_1440",</h1>
+<h1 id="dni_1450">"DNI_1450",</h1>
+<h1 id="dni_1460">"DNI_1460",</h1>
+<h1 id="dni_1470">"DNI_1470",</h1>
+<h1 id="dni_1480">"DNI_1480",</h1>
+<h1 id="dni_1490">"DNI_1490",</h1>
+<h1 id="dni_1500">"DNI_1500",</h1>
+<h1 id="dni_1510">"DNI_1510",</h1>
+<h1 id="dni_1520">"DNI_1520",</h1>
+<h1 id="dni_1530">"DNI_1530",</h1>
+<h1 id="dni_1540">"DNI_1540",</h1>
+<h1 id="dni_1550">"DNI_1550",</h1>
+<h1 id="dni_1560">"DNI_1560",</h1>
+<h1 id="dni_1570">"DNI_1570",</h1>
+<h1 id="dni_1580">"DNI_1580",</h1>
+<h1 id="dni_1590">"DNI_1590",</h1>
+<h1 id="dni_1600">"DNI_1600",</h1>
+<h1 id="dni_1610">"DNI_1610",</h1>
+<h1 id="dni_1620">"DNI_1620",</h1>
+<h1 id="dni_1630">"DNI_1630",</h1>
+<h1 id="dni_1640">"DNI_1640",</h1>
+<h1 id="dni_1650">"DNI_1650",</h1>
+<h1 id="dni_1660">"DNI_1660",</h1>
+<h1 id="dni_1670">"DNI_1670",</h1>
+<h1 id="dni_1680">"DNI_1680",</h1>
+<h1 id="dni_1690">"DNI_1690",</h1>
+<h1 id="dni_1700">"DNI_1700",</h1>
+<h1 id="dni_1710">"DNI_1710",</h1>
+<h1 id="dni_1720">"DNI_1720",</h1>
+<h1 id="dni_1730">"DNI_1730",</h1>
+<h1 id="dni_1740">"DNI_1740",</h1>
+<h1 id="dni_1750">"DNI_1750",</h1>
+<h1 id="dni_1760">"DNI_1760",</h1>
+<h1 id="dni_1770">"DNI_1770",</h1>
+<h1 id="dni_1780">"DNI_1780",</h1>
+<h1 id="dni_1790">"DNI_1790",</h1>
+<h1 id="dni_1800">"DNI_1800",</h1>
+<h1 id="ghi_300">"GHI_300",</h1>
+<h1 id="ghi_310">"GHI_310",</h1>
+<h1 id="ghi_320">"GHI_320",</h1>
+<h1 id="ghi_330">"GHI_330",</h1>
+<h1 id="ghi_340">"GHI_340",</h1>
+<h1 id="ghi_350">"GHI_350",</h1>
+<h1 id="ghi_360">"GHI_360",</h1>
+<h1 id="ghi_370">"GHI_370",</h1>
+<h1 id="ghi_380">"GHI_380",</h1>
+<h1 id="ghi_390">"GHI_390",</h1>
+<h1 id="ghi_400">"GHI_400",</h1>
+<h1 id="ghi_410">"GHI_410",</h1>
+<h1 id="ghi_420">"GHI_420",</h1>
+<h1 id="ghi_430">"GHI_430",</h1>
+<h1 id="ghi_440">"GHI_440",</h1>
+<h1 id="ghi_450">"GHI_450",</h1>
+<h1 id="ghi_460">"GHI_460",</h1>
+<h1 id="ghi_470">"GHI_470",</h1>
+<h1 id="ghi_480">"GHI_480",</h1>
+<h1 id="ghi_490">"GHI_490",</h1>
+<h1 id="ghi_500">"GHI_500",</h1>
+<h1 id="ghi_510">"GHI_510",</h1>
+<h1 id="ghi_520">"GHI_520",</h1>
+<h1 id="ghi_530">"GHI_530",</h1>
+<h1 id="ghi_540">"GHI_540",</h1>
+<h1 id="ghi_550">"GHI_550",</h1>
+<h1 id="ghi_560">"GHI_560",</h1>
+<h1 id="ghi_570">"GHI_570",</h1>
+<h1 id="ghi_580">"GHI_580",</h1>
+<h1 id="ghi_590">"GHI_590",</h1>
+<h1 id="ghi_600">"GHI_600",</h1>
+<h1 id="ghi_610">"GHI_610",</h1>
+<h1 id="ghi_620">"GHI_620",</h1>
+<h1 id="ghi_630">"GHI_630",</h1>
+<h1 id="ghi_640">"GHI_640",</h1>
+<h1 id="ghi_650">"GHI_650",</h1>
+<h1 id="ghi_660">"GHI_660",</h1>
+<h1 id="ghi_670">"GHI_670",</h1>
+<h1 id="ghi_680">"GHI_680",</h1>
+<h1 id="ghi_690">"GHI_690",</h1>
+<h1 id="ghi_700">"GHI_700",</h1>
+<h1 id="ghi_710">"GHI_710",</h1>
+<h1 id="ghi_720">"GHI_720",</h1>
+<h1 id="ghi_730">"GHI_730",</h1>
+<h1 id="ghi_740">"GHI_740",</h1>
+<h1 id="ghi_750">"GHI_750",</h1>
+<h1 id="ghi_760">"GHI_760",</h1>
+<h1 id="ghi_770">"GHI_770",</h1>
+<h1 id="ghi_780">"GHI_780",</h1>
+<h1 id="ghi_790">"GHI_790",</h1>
+<h1 id="ghi_800">"GHI_800",</h1>
+<h1 id="ghi_810">"GHI_810",</h1>
+<h1 id="ghi_820">"GHI_820",</h1>
+<h1 id="ghi_830">"GHI_830",</h1>
+<h1 id="ghi_840">"GHI_840",</h1>
+<h1 id="ghi_850">"GHI_850",</h1>
+<h1 id="ghi_860">"GHI_860",</h1>
+<h1 id="ghi_870">"GHI_870",</h1>
+<h1 id="ghi_880">"GHI_880",</h1>
+<h1 id="ghi_890">"GHI_890",</h1>
+<h1 id="ghi_900">"GHI_900",</h1>
+<h1 id="ghi_910">"GHI_910",</h1>
+<h1 id="ghi_920">"GHI_920",</h1>
+<h1 id="ghi_930">"GHI_930",</h1>
+<h1 id="ghi_940">"GHI_940",</h1>
+<h1 id="ghi_950">"GHI_950",</h1>
+<h1 id="ghi_960">"GHI_960",</h1>
+<h1 id="ghi_970">"GHI_970",</h1>
+<h1 id="ghi_980">"GHI_980",</h1>
+<h1 id="ghi_990">"GHI_990",</h1>
+<h1 id="ghi_1000">"GHI_1000",</h1>
+<h1 id="ghi_1010">"GHI_1010",</h1>
+<h1 id="ghi_1020">"GHI_1020",</h1>
+<h1 id="ghi_1030">"GHI_1030",</h1>
+<h1 id="ghi_1040">"GHI_1040",</h1>
+<h1 id="ghi_1050">"GHI_1050",</h1>
+<h1 id="ghi_1060">"GHI_1060",</h1>
+<h1 id="ghi_1070">"GHI_1070",</h1>
+<h1 id="ghi_1080">"GHI_1080",</h1>
+<h1 id="ghi_1090">"GHI_1090",</h1>
+<h1 id="ghi_1100">"GHI_1100",</h1>
+<h1 id="ghi_1110">"GHI_1110",</h1>
+<h1 id="ghi_1120">"GHI_1120",</h1>
+<h1 id="ghi_1130">"GHI_1130",</h1>
+<h1 id="ghi_1140">"GHI_1140",</h1>
+<h1 id="ghi_1150">"GHI_1150",</h1>
+<h1 id="ghi_1160">"GHI_1160",</h1>
+<h1 id="ghi_1170">"GHI_1170",</h1>
+<h1 id="ghi_1180">"GHI_1180",</h1>
+<h1 id="ghi_1190">"GHI_1190",</h1>
+<h1 id="ghi_1200">"GHI_1200",</h1>
+<h1 id="ghi_1210">"GHI_1210",</h1>
+<h1 id="ghi_1220">"GHI_1220",</h1>
+<h1 id="ghi_1230">"GHI_1230",</h1>
+<h1 id="ghi_1240">"GHI_1240",</h1>
+<h1 id="ghi_1250">"GHI_1250",</h1>
+<h1 id="ghi_1260">"GHI_1260",</h1>
+<h1 id="ghi_1270">"GHI_1270",</h1>
+<h1 id="ghi_1280">"GHI_1280",</h1>
+<h1 id="ghi_1290">"GHI_1290",</h1>
+<h1 id="ghi_1300">"GHI_1300",</h1>
+<h1 id="ghi_1310">"GHI_1310",</h1>
+<h1 id="ghi_1320">"GHI_1320",</h1>
+<h1 id="ghi_1330">"GHI_1330",</h1>
+<h1 id="ghi_1340">"GHI_1340",</h1>
+<h1 id="ghi_1350">"GHI_1350",</h1>
+<h1 id="ghi_1360">"GHI_1360",</h1>
+<h1 id="ghi_1370">"GHI_1370",</h1>
+<h1 id="ghi_1380">"GHI_1380",</h1>
+<h1 id="ghi_1390">"GHI_1390",</h1>
+<h1 id="ghi_1400">"GHI_1400",</h1>
+<h1 id="ghi_1410">"GHI_1410",</h1>
+<h1 id="ghi_1420">"GHI_1420",</h1>
+<h1 id="ghi_1430">"GHI_1430",</h1>
+<h1 id="ghi_1440">"GHI_1440",</h1>
+<h1 id="ghi_1450">"GHI_1450",</h1>
+<h1 id="ghi_1460">"GHI_1460",</h1>
+<h1 id="ghi_1470">"GHI_1470",</h1>
+<h1 id="ghi_1480">"GHI_1480",</h1>
+<h1 id="ghi_1490">"GHI_1490",</h1>
+<h1 id="ghi_1500">"GHI_1500",</h1>
+<h1 id="ghi_1510">"GHI_1510",</h1>
+<h1 id="ghi_1520">"GHI_1520",</h1>
+<h1 id="ghi_1530">"GHI_1530",</h1>
+<h1 id="ghi_1540">"GHI_1540",</h1>
+<h1 id="ghi_1550">"GHI_1550",</h1>
+<h1 id="ghi_1560">"GHI_1560",</h1>
+<h1 id="ghi_1570">"GHI_1570",</h1>
+<h1 id="ghi_1580">"GHI_1580",</h1>
+<h1 id="ghi_1590">"GHI_1590",</h1>
+<h1 id="ghi_1600">"GHI_1600",</h1>
+<h1 id="ghi_1610">"GHI_1610",</h1>
+<h1 id="ghi_1620">"GHI_1620",</h1>
+<h1 id="ghi_1630">"GHI_1630",</h1>
+<h1 id="ghi_1640">"GHI_1640",</h1>
+<h1 id="ghi_1650">"GHI_1650",</h1>
+<h1 id="ghi_1660">"GHI_1660",</h1>
+<h1 id="ghi_1670">"GHI_1670",</h1>
+<h1 id="ghi_1680">"GHI_1680",</h1>
+<h1 id="ghi_1690">"GHI_1690",</h1>
+<h1 id="ghi_1700">"GHI_1700",</h1>
+<h1 id="ghi_1710">"GHI_1710",</h1>
+<h1 id="ghi_1720">"GHI_1720",</h1>
+<h1 id="ghi_1730">"GHI_1730",</h1>
+<h1 id="ghi_1740">"GHI_1740",</h1>
+<h1 id="ghi_1750">"GHI_1750",</h1>
+<h1 id="ghi_1760">"GHI_1760",</h1>
+<h1 id="ghi_1770">"GHI_1770",</h1>
+<h1 id="ghi_1780">"GHI_1780",</h1>
+<h1 id="ghi_1790">"GHI_1790",</h1>
+<h1 id="ghi_1800">"GHI_1800"</h1>
+<h1 id="-4">],</h1>
+<h1 id="utc-true">"utc": true</h1>
+<h1 id="-5">},</h1>
+<h1 id="outputs-">"outputs": {</h1>
+<h1 id="message-file-generation-in-progress-an-email-will-be-sent-to-usercompanycom-when-the-download-is-ready">"message": "File generation in progress. An email will be sent to user@company.com when the download is ready."</h1>
+<h1 id="-6">}</h1>
+<h1 id="-7">}</h1>
+<h1 id="-8">```</h1>
 
-<div class="highlight"><pre class="highlight plaintext"><code>Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,Local Time Zone, DNI Units, GHI Units, Version
-NSRDB,422,-,-,-,20.79720,77.08007,-7,1446,-7,w/m2,w/m2,1.0.0
-Year,Month,Day,Hour,Minute,Precip water (cm),hr mean ambient tmp,Wind speed (M/s),DNI for 300nm,DNI for 310nm,DNI for 320nm,DNI for 330nm,DNI for 340nm,DNI for 350nm,DNI for 360nm,DNI for 370nm,DNI for 380nm,DNI for 390nm,DNI for 400nm,DNI for 410nm,DNI for 420nm,DNI for 430nm,DNI for 440nm,DNI for 450nm,DNI for 460nm,DNI for 470nm,DNI for 480nm,DNI for 490nm,DNI for 500nm,DNI for 510nm,DNI for 520nm,DNI for 530nm,DNI for 540nm,DNI for 550nm,DNI for 560nm,DNI for 570nm,DNI for 580nm,DNI for 590nm,DNI for 600nm,DNI for 610nm,DNI for 620nm,DNI for 630nm,DNI for 640nm,DNI for 650nm,DNI for 660nm,DNI for 670nm,DNI for 680nm,DNI for 690nm,DNI for 700nm,DNI for 710nm,DNI for 720nm,DNI for 730nm,DNI for 740nm,DNI for 750nm,DNI for 760nm,DNI for 770nm,DNI for 780nm,DNI for 790nm,DNI for 800nm,DNI for 810nm,DNI for 820nm,DNI for 830nm,DNI for 840nm,DNI for 850nm,DNI for 860nm,DNI for 870nm,DNI for 880nm,DNI for 890nm,DNI for 900nm,DNI for 910nm,DNI for 920nm,DNI for 930nm,DNI for 940nm,DNI for 950nm,DNI for 960nm,DNI for 970nm,DNI for 980nm,DNI for 990nm,DNI for 1000nm,DNI for 1010nm,DNI for 1020nm,DNI for 1030nm,DNI for 1040nm,DNI for 1050nm,DNI for 1060nm,DNI for 1070nm,DNI for 1080nm,DNI for 1090nm,DNI for 1100nm,DNI for 1110nm,DNI for 1120nm,DNI for 1130nm,DNI for 1140nm,DNI for 1150nm,DNI for 1160nm,DNI for 1170nm,DNI for 1180nm,DNI for 1190nm,DNI for 1200nm,DNI for 1210nm,DNI for 1220nm,DNI for 1230nm,DNI for 1240nm,DNI for 1250nm,DNI for 1260nm,DNI for 1270nm,DNI for 1280nm,DNI for 1290nm,DNI for 1300nm,DNI for 1310nm,DNI for 1320nm,DNI for 1330nm,DNI for 1340nm,DNI for 1350nm,DNI for 1360nm,DNI for 1370nm,DNI for 1380nm,DNI for 1390nm,DNI for 1400nm,DNI for 1410nm,DNI for 1420nm,DNI for 1430nm,DNI for 1440nm,DNI for 1450nm,DNI for 1460nm,DNI for 1470nm,DNI for 1480nm,DNI for 1490nm,DNI for 1500nm,DNI for 1510nm,DNI for 1520nm,DNI for 1530nm,DNI for 1540nm,DNI for 1550nm,DNI for 1560nm,DNI for 1570nm,DNI for 1580nm,DNI for 1590nm,DNI for 1600nm,DNI for 1610nm,DNI for 1620nm,DNI for 1630nm,DNI for 1640nm,DNI for 1650nm,DNI for 1660nm,DNI for 1670nm,DNI for 1680nm,DNI for 1690nm,DNI for 1700nm,DNI for 1710nm,DNI for 1720nm,DNI for 1730nm,DNI for 1740nm,DNI for 1750nm,DNI for 1760nm,DNI for 1770nm,DNI for 1780nm,DNI for 1790nm,DNI for 1800nm,GHI for 300nm,GHI for 310nm,GHI for 320nm,GHI for 330nm,GHI for 340nm,GHI for 350nm,GHI for 360nm,GHI for 370nm,GHI for 380nm,GHI for 390nm,GHI for 400nm,GHI for 410nm,GHI for 420nm,GHI for 430nm,GHI for 440nm,GHI for 450nm,GHI for 460nm,GHI for 470nm,GHI for 480nm,GHI for 490nm,GHI for 500nm,GHI for 510nm,GHI for 520nm,GHI for 530nm,GHI for 540nm,GHI for 550nm,GHI for 560nm,GHI for 570nm,GHI for 580nm,GHI for 590nm,GHI for 600nm,GHI for 610nm,GHI for 620nm,GHI for 630nm,GHI for 640nm,GHI for 650nm,GHI for 660nm,GHI for 670nm,GHI for 680nm,GHI for 690nm,GHI for 700nm,GHI for 710nm,GHI for 720nm,GHI for 730nm,GHI for 740nm,GHI for 750nm,GHI for 760nm,GHI for 770nm,GHI for 780nm,GHI for 790nm,GHI for 800nm,GHI for 810nm,GHI for 820nm,GHI for 830nm,GHI for 840nm,GHI for 850nm,GHI for 860nm,GHI for 870nm,GHI for 880nm,GHI for 890nm,GHI for 900nm,GHI for 910nm,GHI for 920nm,GHI for 930nm,GHI for 940nm,GHI for 950nm,GHI for 960nm,GHI for 970nm,GHI for 980nm,GHI for 990nm,GHI for 1000nm,GHI for 1010nm,GHI for 1020nm,GHI for 1030nm,GHI for 1040nm,GHI for 1050nm,GHI for 1060nm,GHI for 1070nm,GHI for 1080nm,GHI for 1090nm,GHI for 1100nm,GHI for 1110nm,GHI for 1120nm,GHI for 1130nm,GHI for 1140nm,GHI for 1150nm,GHI for 1160nm,GHI for 1170nm,GHI for 1180nm,GHI for 1190nm,GHI for 1200nm,GHI for 1210nm,GHI for 1220nm,GHI for 1230nm,GHI for 1240nm,GHI for 1250nm,GHI for 1260nm,GHI for 1270nm,GHI for 1280nm,GHI for 1290nm,GHI for 1300nm,GHI for 1310nm,GHI for 1320nm,GHI for 1330nm,GHI for 1340nm,GHI for 1350nm,GHI for 1360nm,GHI for 1370nm,GHI for 1380nm,GHI for 1390nm,GHI for 1400nm,GHI for 1410nm,GHI for 1420nm,GHI for 1430nm,GHI for 1440nm,GHI for 1450nm,GHI for 1460nm,GHI for 1470nm,GHI for 1480nm,GHI for 1490nm,GHI for 1500nm,GHI for 1510nm,GHI for 1520nm,GHI for 1530nm,GHI for 1540nm,GHI for 1550nm,GHI for 1560nm,GHI for 1570nm,GHI for 1580nm,GHI for 1590nm,GHI for 1600nm,GHI for 1610nm,GHI for 1620nm,GHI for 1630nm,GHI for 1640nm,GHI for 1650nm,GHI for 1660nm,GHI for 1670nm,GHI for 1680nm,GHI for 1690nm,GHI for 1700nm,GHI for 1710nm,GHI for 1720nm,GHI for 1730nm,GHI for 1740nm,GHI for 1750nm,GHI for 1760nm,GHI for 1770nm,GHI for 1780nm,GHI for 1790nm,GHI for 1800nm
-2004,1,1,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-2004,1,1,1,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-2004,1,1,2,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-2004,1,1,3,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-2004,1,1,4,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-</code></pre></div>
-<h3 id="post-request-example-in-python">POST request example in Python</h3>
+<h1 id="-csv-output-format">### CSV Output Format</h1>
+<h1 id="direct-streaming-of-csv-data-is-supported-for-single-location-single-year-only-the-following-response-example-is-truncated-after-the-first-few-rows-of-data">Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.</h1>
 
-<div class="highlight"><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<h1 id="div-classdoc-example-urlget-jsonapi_keydemo_keyfull_namesampleuseremailusercompanycomaffiliationtestorganizationreasonexamplemailing_listtruewktpoint7708007202079720namestmyattributespwatwsdni_300dni_310dni_320dni_330dni_340dni_350dni_360dni_370dni_380dni_390dni_400dni_410dni_420dni_430dni_440dni_450dni_460dni_470dni_480dni_490dni_500dni_510dni_520dni_530dni_540dni_550dni_560dni_570dni_580dni_590dni_600dni_610dni_620dni_630dni_640dni_650dni_660dni_670dni_680dni_690dni_700dni_710dni_720dni_730dni_740dni_750dni_760dni_770dni_780dni_790dni_800dni_810dni_820dni_830dni_840dni_850dni_860dni_870dni_880dni_890dni_900dni_910dni_920dni_930dni_940dni_950dni_960dni_970dni_980dni_990dni_1000dni_1010dni_1020dni_1030dni_1040dni_1050dni_1060dni_1070dni_1080dni_1090dni_1100dni_1110dni_1120dni_1130dni_1140dni_1150dni_1160dni_1170dni_1180dni_1190dni_1200dni_1210dni_1220dni_1230dni_1240dni_1250dni_1260dni_1270dni_1280dni_1290dni_1300dni_1310dni_1320dni_1330dni_1340dni_1350dni_1360dni_1370dni_1380dni_1390dni_1400dni_1410dni_1420dni_1430dni_1440dni_1450dni_1460dni_1470dni_1480dni_1490dni_1500dni_1510dni_1520dni_1530dni_1540dni_1550dni_1560dni_1570dni_1580dni_1590dni_1600dni_1610dni_1620dni_1630dni_1640dni_1650dni_1660dni_1670dni_1680dni_1690dni_1700dni_1710dni_1720dni_1730dni_1740dni_1750dni_1760dni_1770dni_1780dni_1790dni_1800ghi_300ghi_310ghi_320ghi_330ghi_340ghi_350ghi_360ghi_370ghi_380ghi_390ghi_400ghi_410ghi_420ghi_430ghi_440ghi_450ghi_460ghi_470ghi_480ghi_490ghi_500ghi_510ghi_520ghi_530ghi_540ghi_550ghi_560ghi_570ghi_580ghi_590ghi_600ghi_610ghi_620ghi_630ghi_640ghi_650ghi_660ghi_670ghi_680ghi_690ghi_700ghi_710ghi_720ghi_730ghi_740ghi_750ghi_760ghi_770ghi_780ghi_790ghi_800ghi_810ghi_820ghi_830ghi_840ghi_850ghi_860ghi_870ghi_880ghi_890ghi_900ghi_910ghi_920ghi_930ghi_940ghi_950ghi_960ghi_970ghi_980ghi_990ghi_1000ghi_1010ghi_1020ghi_1030ghi_1040ghi_1050ghi_1060ghi_1070ghi_1080ghi_1090ghi_1100ghi_1110ghi_1120ghi_1130ghi_1140ghi_1150ghi_1160ghi_1170ghi_1180ghi_1190ghi_1200ghi_1210ghi_1220ghi_1230ghi_1240ghi_1250ghi_1260ghi_1270ghi_1280ghi_1290ghi_1300ghi_1310ghi_1320ghi_1330ghi_1340ghi_1350ghi_1360ghi_1370ghi_1380ghi_1390ghi_1400ghi_1410ghi_1420ghi_1430ghi_1440ghi_1450ghi_1460ghi_1470ghi_1480ghi_1490ghi_1500ghi_1510ghi_1520ghi_1530ghi_1540ghi_1550ghi_1560ghi_1570ghi_1580ghi_1590ghi_1600ghi_1610ghi_1620ghi_1630ghi_1640ghi_1650ghi_1660ghi_1670ghi_1680ghi_1690ghi_1700ghi_1710ghi_1720ghi_1730ghi_1740ghi_1750ghi_1760ghi_1770ghi_1780ghi_1790ghi_1800utctrue">&lt;div class="doc-example-url"&gt;<code>GET .json?api_key=DEMO_KEY&amp;full_name=Sample+User&amp;email=user@company.com&amp;affiliation=Test+Organization&amp;reason=Example&amp;mailing_list=true&amp;wkt=POINT(77.08007%2020.79720)&amp;names=tmy&amp;attributes=PW,AT,WS,DNI_300,DNI_310,DNI_320,DNI_330,DNI_340,DNI_350,DNI_360,DNI_370,DNI_380,DNI_390,DNI_400,DNI_410,DNI_420,DNI_430,DNI_440,DNI_450,DNI_460,DNI_470,DNI_480,DNI_490,DNI_500,DNI_510,DNI_520,DNI_530,DNI_540,DNI_550,DNI_560,DNI_570,DNI_580,DNI_590,DNI_600,DNI_610,DNI_620,DNI_630,DNI_640,DNI_650,DNI_660,DNI_670,DNI_680,DNI_690,DNI_700,DNI_710,DNI_720,DNI_730,DNI_740,DNI_750,DNI_760,DNI_770,DNI_780,DNI_790,DNI_800,DNI_810,DNI_820,DNI_830,DNI_840,DNI_850,DNI_860,DNI_870,DNI_880,DNI_890,DNI_900,DNI_910,DNI_920,DNI_930,DNI_940,DNI_950,DNI_960,DNI_970,DNI_980,DNI_990,DNI_1000,DNI_1010,DNI_1020,DNI_1030,DNI_1040,DNI_1050,DNI_1060,DNI_1070,DNI_1080,DNI_1090,DNI_1100,DNI_1110,DNI_1120,DNI_1130,DNI_1140,DNI_1150,DNI_1160,DNI_1170,DNI_1180,DNI_1190,DNI_1200,DNI_1210,DNI_1220,DNI_1230,DNI_1240,DNI_1250,DNI_1260,DNI_1270,DNI_1280,DNI_1290,DNI_1300,DNI_1310,DNI_1320,DNI_1330,DNI_1340,DNI_1350,DNI_1360,DNI_1370,DNI_1380,DNI_1390,DNI_1400,DNI_1410,DNI_1420,DNI_1430,DNI_1440,DNI_1450,DNI_1460,DNI_1470,DNI_1480,DNI_1490,DNI_1500,DNI_1510,DNI_1520,DNI_1530,DNI_1540,DNI_1550,DNI_1560,DNI_1570,DNI_1580,DNI_1590,DNI_1600,DNI_1610,DNI_1620,DNI_1630,DNI_1640,DNI_1650,DNI_1660,DNI_1670,DNI_1680,DNI_1690,DNI_1700,DNI_1710,DNI_1720,DNI_1730,DNI_1740,DNI_1750,DNI_1760,DNI_1770,DNI_1780,DNI_1790,DNI_1800,GHI_300,GHI_310,GHI_320,GHI_330,GHI_340,GHI_350,GHI_360,GHI_370,GHI_380,GHI_390,GHI_400,GHI_410,GHI_420,GHI_430,GHI_440,GHI_450,GHI_460,GHI_470,GHI_480,GHI_490,GHI_500,GHI_510,GHI_520,GHI_530,GHI_540,GHI_550,GHI_560,GHI_570,GHI_580,GHI_590,GHI_600,GHI_610,GHI_620,GHI_630,GHI_640,GHI_650,GHI_660,GHI_670,GHI_680,GHI_690,GHI_700,GHI_710,GHI_720,GHI_730,GHI_740,GHI_750,GHI_760,GHI_770,GHI_780,GHI_790,GHI_800,GHI_810,GHI_820,GHI_830,GHI_840,GHI_850,GHI_860,GHI_870,GHI_880,GHI_890,GHI_900,GHI_910,GHI_920,GHI_930,GHI_940,GHI_950,GHI_960,GHI_970,GHI_980,GHI_990,GHI_1000,GHI_1010,GHI_1020,GHI_1030,GHI_1040,GHI_1050,GHI_1060,GHI_1070,GHI_1080,GHI_1090,GHI_1100,GHI_1110,GHI_1120,GHI_1130,GHI_1140,GHI_1150,GHI_1160,GHI_1170,GHI_1180,GHI_1190,GHI_1200,GHI_1210,GHI_1220,GHI_1230,GHI_1240,GHI_1250,GHI_1260,GHI_1270,GHI_1280,GHI_1290,GHI_1300,GHI_1310,GHI_1320,GHI_1330,GHI_1340,GHI_1350,GHI_1360,GHI_1370,GHI_1380,GHI_1390,GHI_1400,GHI_1410,GHI_1420,GHI_1430,GHI_1440,GHI_1450,GHI_1460,GHI_1470,GHI_1480,GHI_1490,GHI_1500,GHI_1510,GHI_1520,GHI_1530,GHI_1540,GHI_1550,GHI_1560,GHI_1570,GHI_1580,GHI_1590,GHI_1600,GHI_1610,GHI_1620,GHI_1630,GHI_1640,GHI_1650,GHI_1660,GHI_1670,GHI_1680,GHI_1690,GHI_1700,GHI_1710,GHI_1720,GHI_1730,GHI_1740,GHI_1750,GHI_1760,GHI_1770,GHI_1780,GHI_1790,GHI_1800&amp;utc=true</code></h1>
+<h1 id="div">&lt;/div&gt;</h1>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://developer.nrel.gov/api/nsrdb/v2/solar/spectral-india-tmy-download.json?api_key=yourapikeygoeshere"</span>
+<h1 id="csv">```csv</h1>
+<h1 id="sourcelocation-idcitystatecountrylatitudelongitudetime-zoneelevationlocal-time-zone-dni-units-ghi-units-version">Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,Local Time Zone, DNI Units, GHI Units, Version</h1>
+<h1 id="nsrdb422---20797207708007-71446-7wm2wm2100">NSRDB,422,-,-,-,20.79720,77.08007,-7,1446,-7,w/m2,w/m2,1.0.0</h1>
+<h1 id="yearmonthdayhourminuteprecip-water-cmhr-mean-ambient-tmpwind-speed-msdni-for-300nmdni-for-310nmdni-for-320nmdni-for-330nmdni-for-340nmdni-for-350nmdni-for-360nmdni-for-370nmdni-for-380nmdni-for-390nmdni-for-400nmdni-for-410nmdni-for-420nmdni-for-430nmdni-for-440nmdni-for-450nmdni-for-460nmdni-for-470nmdni-for-480nmdni-for-490nmdni-for-500nmdni-for-510nmdni-for-520nmdni-for-530nmdni-for-540nmdni-for-550nmdni-for-560nmdni-for-570nmdni-for-580nmdni-for-590nmdni-for-600nmdni-for-610nmdni-for-620nmdni-for-630nmdni-for-640nmdni-for-650nmdni-for-660nmdni-for-670nmdni-for-680nmdni-for-690nmdni-for-700nmdni-for-710nmdni-for-720nmdni-for-730nmdni-for-740nmdni-for-750nmdni-for-760nmdni-for-770nmdni-for-780nmdni-for-790nmdni-for-800nmdni-for-810nmdni-for-820nmdni-for-830nmdni-for-840nmdni-for-850nmdni-for-860nmdni-for-870nmdni-for-880nmdni-for-890nmdni-for-900nmdni-for-910nmdni-for-920nmdni-for-930nmdni-for-940nmdni-for-950nmdni-for-960nmdni-for-970nmdni-for-980nmdni-for-990nmdni-for-1000nmdni-for-1010nmdni-for-1020nmdni-for-1030nmdni-for-1040nmdni-for-1050nmdni-for-1060nmdni-for-1070nmdni-for-1080nmdni-for-1090nmdni-for-1100nmdni-for-1110nmdni-for-1120nmdni-for-1130nmdni-for-1140nmdni-for-1150nmdni-for-1160nmdni-for-1170nmdni-for-1180nmdni-for-1190nmdni-for-1200nmdni-for-1210nmdni-for-1220nmdni-for-1230nmdni-for-1240nmdni-for-1250nmdni-for-1260nmdni-for-1270nmdni-for-1280nmdni-for-1290nmdni-for-1300nmdni-for-1310nmdni-for-1320nmdni-for-1330nmdni-for-1340nmdni-for-1350nmdni-for-1360nmdni-for-1370nmdni-for-1380nmdni-for-1390nmdni-for-1400nmdni-for-1410nmdni-for-1420nmdni-for-1430nmdni-for-1440nmdni-for-1450nmdni-for-1460nmdni-for-1470nmdni-for-1480nmdni-for-1490nmdni-for-1500nmdni-for-1510nmdni-for-1520nmdni-for-1530nmdni-for-1540nmdni-for-1550nmdni-for-1560nmdni-for-1570nmdni-for-1580nmdni-for-1590nmdni-for-1600nmdni-for-1610nmdni-for-1620nmdni-for-1630nmdni-for-1640nmdni-for-1650nmdni-for-1660nmdni-for-1670nmdni-for-1680nmdni-for-1690nmdni-for-1700nmdni-for-1710nmdni-for-1720nmdni-for-1730nmdni-for-1740nmdni-for-1750nmdni-for-1760nmdni-for-1770nmdni-for-1780nmdni-for-1790nmdni-for-1800nmghi-for-300nmghi-for-310nmghi-for-320nmghi-for-330nmghi-for-340nmghi-for-350nmghi-for-360nmghi-for-370nmghi-for-380nmghi-for-390nmghi-for-400nmghi-for-410nmghi-for-420nmghi-for-430nmghi-for-440nmghi-for-450nmghi-for-460nmghi-for-470nmghi-for-480nmghi-for-490nmghi-for-500nmghi-for-510nmghi-for-520nmghi-for-530nmghi-for-540nmghi-for-550nmghi-for-560nmghi-for-570nmghi-for-580nmghi-for-590nmghi-for-600nmghi-for-610nmghi-for-620nmghi-for-630nmghi-for-640nmghi-for-650nmghi-for-660nmghi-for-670nmghi-for-680nmghi-for-690nmghi-for-700nmghi-for-710nmghi-for-720nmghi-for-730nmghi-for-740nmghi-for-750nmghi-for-760nmghi-for-770nmghi-for-780nmghi-for-790nmghi-for-800nmghi-for-810nmghi-for-820nmghi-for-830nmghi-for-840nmghi-for-850nmghi-for-860nmghi-for-870nmghi-for-880nmghi-for-890nmghi-for-900nmghi-for-910nmghi-for-920nmghi-for-930nmghi-for-940nmghi-for-950nmghi-for-960nmghi-for-970nmghi-for-980nmghi-for-990nmghi-for-1000nmghi-for-1010nmghi-for-1020nmghi-for-1030nmghi-for-1040nmghi-for-1050nmghi-for-1060nmghi-for-1070nmghi-for-1080nmghi-for-1090nmghi-for-1100nmghi-for-1110nmghi-for-1120nmghi-for-1130nmghi-for-1140nmghi-for-1150nmghi-for-1160nmghi-for-1170nmghi-for-1180nmghi-for-1190nmghi-for-1200nmghi-for-1210nmghi-for-1220nmghi-for-1230nmghi-for-1240nmghi-for-1250nmghi-for-1260nmghi-for-1270nmghi-for-1280nmghi-for-1290nmghi-for-1300nmghi-for-1310nmghi-for-1320nmghi-for-1330nmghi-for-1340nmghi-for-1350nmghi-for-1360nmghi-for-1370nmghi-for-1380nmghi-for-1390nmghi-for-1400nmghi-for-1410nmghi-for-1420nmghi-for-1430nmghi-for-1440nmghi-for-1450nmghi-for-1460nmghi-for-1470nmghi-for-1480nmghi-for-1490nmghi-for-1500nmghi-for-1510nmghi-for-1520nmghi-for-1530nmghi-for-1540nmghi-for-1550nmghi-for-1560nmghi-for-1570nmghi-for-1580nmghi-for-1590nmghi-for-1600nmghi-for-1610nmghi-for-1620nmghi-for-1630nmghi-for-1640nmghi-for-1650nmghi-for-1660nmghi-for-1670nmghi-for-1680nmghi-for-1690nmghi-for-1700nmghi-for-1710nmghi-for-1720nmghi-for-1730nmghi-for-1740nmghi-for-1750nmghi-for-1760nmghi-for-1770nmghi-for-1780nmghi-for-1790nmghi-for-1800nm">Year,Month,Day,Hour,Minute,Precip water (cm),hr mean ambient tmp,Wind speed (M/s),DNI for 300nm,DNI for 310nm,DNI for 320nm,DNI for 330nm,DNI for 340nm,DNI for 350nm,DNI for 360nm,DNI for 370nm,DNI for 380nm,DNI for 390nm,DNI for 400nm,DNI for 410nm,DNI for 420nm,DNI for 430nm,DNI for 440nm,DNI for 450nm,DNI for 460nm,DNI for 470nm,DNI for 480nm,DNI for 490nm,DNI for 500nm,DNI for 510nm,DNI for 520nm,DNI for 530nm,DNI for 540nm,DNI for 550nm,DNI for 560nm,DNI for 570nm,DNI for 580nm,DNI for 590nm,DNI for 600nm,DNI for 610nm,DNI for 620nm,DNI for 630nm,DNI for 640nm,DNI for 650nm,DNI for 660nm,DNI for 670nm,DNI for 680nm,DNI for 690nm,DNI for 700nm,DNI for 710nm,DNI for 720nm,DNI for 730nm,DNI for 740nm,DNI for 750nm,DNI for 760nm,DNI for 770nm,DNI for 780nm,DNI for 790nm,DNI for 800nm,DNI for 810nm,DNI for 820nm,DNI for 830nm,DNI for 840nm,DNI for 850nm,DNI for 860nm,DNI for 870nm,DNI for 880nm,DNI for 890nm,DNI for 900nm,DNI for 910nm,DNI for 920nm,DNI for 930nm,DNI for 940nm,DNI for 950nm,DNI for 960nm,DNI for 970nm,DNI for 980nm,DNI for 990nm,DNI for 1000nm,DNI for 1010nm,DNI for 1020nm,DNI for 1030nm,DNI for 1040nm,DNI for 1050nm,DNI for 1060nm,DNI for 1070nm,DNI for 1080nm,DNI for 1090nm,DNI for 1100nm,DNI for 1110nm,DNI for 1120nm,DNI for 1130nm,DNI for 1140nm,DNI for 1150nm,DNI for 1160nm,DNI for 1170nm,DNI for 1180nm,DNI for 1190nm,DNI for 1200nm,DNI for 1210nm,DNI for 1220nm,DNI for 1230nm,DNI for 1240nm,DNI for 1250nm,DNI for 1260nm,DNI for 1270nm,DNI for 1280nm,DNI for 1290nm,DNI for 1300nm,DNI for 1310nm,DNI for 1320nm,DNI for 1330nm,DNI for 1340nm,DNI for 1350nm,DNI for 1360nm,DNI for 1370nm,DNI for 1380nm,DNI for 1390nm,DNI for 1400nm,DNI for 1410nm,DNI for 1420nm,DNI for 1430nm,DNI for 1440nm,DNI for 1450nm,DNI for 1460nm,DNI for 1470nm,DNI for 1480nm,DNI for 1490nm,DNI for 1500nm,DNI for 1510nm,DNI for 1520nm,DNI for 1530nm,DNI for 1540nm,DNI for 1550nm,DNI for 1560nm,DNI for 1570nm,DNI for 1580nm,DNI for 1590nm,DNI for 1600nm,DNI for 1610nm,DNI for 1620nm,DNI for 1630nm,DNI for 1640nm,DNI for 1650nm,DNI for 1660nm,DNI for 1670nm,DNI for 1680nm,DNI for 1690nm,DNI for 1700nm,DNI for 1710nm,DNI for 1720nm,DNI for 1730nm,DNI for 1740nm,DNI for 1750nm,DNI for 1760nm,DNI for 1770nm,DNI for 1780nm,DNI for 1790nm,DNI for 1800nm,GHI for 300nm,GHI for 310nm,GHI for 320nm,GHI for 330nm,GHI for 340nm,GHI for 350nm,GHI for 360nm,GHI for 370nm,GHI for 380nm,GHI for 390nm,GHI for 400nm,GHI for 410nm,GHI for 420nm,GHI for 430nm,GHI for 440nm,GHI for 450nm,GHI for 460nm,GHI for 470nm,GHI for 480nm,GHI for 490nm,GHI for 500nm,GHI for 510nm,GHI for 520nm,GHI for 530nm,GHI for 540nm,GHI for 550nm,GHI for 560nm,GHI for 570nm,GHI for 580nm,GHI for 590nm,GHI for 600nm,GHI for 610nm,GHI for 620nm,GHI for 630nm,GHI for 640nm,GHI for 650nm,GHI for 660nm,GHI for 670nm,GHI for 680nm,GHI for 690nm,GHI for 700nm,GHI for 710nm,GHI for 720nm,GHI for 730nm,GHI for 740nm,GHI for 750nm,GHI for 760nm,GHI for 770nm,GHI for 780nm,GHI for 790nm,GHI for 800nm,GHI for 810nm,GHI for 820nm,GHI for 830nm,GHI for 840nm,GHI for 850nm,GHI for 860nm,GHI for 870nm,GHI for 880nm,GHI for 890nm,GHI for 900nm,GHI for 910nm,GHI for 920nm,GHI for 930nm,GHI for 940nm,GHI for 950nm,GHI for 960nm,GHI for 970nm,GHI for 980nm,GHI for 990nm,GHI for 1000nm,GHI for 1010nm,GHI for 1020nm,GHI for 1030nm,GHI for 1040nm,GHI for 1050nm,GHI for 1060nm,GHI for 1070nm,GHI for 1080nm,GHI for 1090nm,GHI for 1100nm,GHI for 1110nm,GHI for 1120nm,GHI for 1130nm,GHI for 1140nm,GHI for 1150nm,GHI for 1160nm,GHI for 1170nm,GHI for 1180nm,GHI for 1190nm,GHI for 1200nm,GHI for 1210nm,GHI for 1220nm,GHI for 1230nm,GHI for 1240nm,GHI for 1250nm,GHI for 1260nm,GHI for 1270nm,GHI for 1280nm,GHI for 1290nm,GHI for 1300nm,GHI for 1310nm,GHI for 1320nm,GHI for 1330nm,GHI for 1340nm,GHI for 1350nm,GHI for 1360nm,GHI for 1370nm,GHI for 1380nm,GHI for 1390nm,GHI for 1400nm,GHI for 1410nm,GHI for 1420nm,GHI for 1430nm,GHI for 1440nm,GHI for 1450nm,GHI for 1460nm,GHI for 1470nm,GHI for 1480nm,GHI for 1490nm,GHI for 1500nm,GHI for 1510nm,GHI for 1520nm,GHI for 1530nm,GHI for 1540nm,GHI for 1550nm,GHI for 1560nm,GHI for 1570nm,GHI for 1580nm,GHI for 1590nm,GHI for 1600nm,GHI for 1610nm,GHI for 1620nm,GHI for 1630nm,GHI for 1640nm,GHI for 1650nm,GHI for 1660nm,GHI for 1670nm,GHI for 1680nm,GHI for 1690nm,GHI for 1700nm,GHI for 1710nm,GHI for 1720nm,GHI for 1730nm,GHI for 1740nm,GHI for 1750nm,GHI for 1760nm,GHI for 1770nm,GHI for 1780nm,GHI for 1790nm,GHI for 1800nm</h1>
+<h1 id="200411000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000">2004,1,1,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0</h1>
+<h1 id="200411100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000">2004,1,1,1,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0</h1>
+<h1 id="200411200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000">2004,1,1,2,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0</h1>
+<h1 id="200411300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000">2004,1,1,3,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0</h1>
+<h1 id="200411400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000">2004,1,1,4,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0</h1>
+<h1 id="-9">```</h1>
 
-<span class="n">payload</span> <span class="o">=</span> <span class="s">"names=2012&amp;leap_day=false&amp;interval=60&amp;utc=false&amp;full_name=Honored%2BUser&amp;email=honored.user%40gmail.com&amp;affiliation=NREL&amp;mailing_list=true&amp;reason=Academic&amp;attributes=dhi%2Cdni%2Cwind_speed_10m_nwp%2Csurface_air_temperature_nwp&amp;wkt=MULTIPOINT(-106.22%2032.9741%2C-106.18%2032.9741%2C-106.1%2032.9741)"</span>
+<h1 id="-post-request-example-in-python">### POST request example in Python</h1>
 
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">'content-type'</span><span class="p">:</span> <span class="s">"application/x-www-form-urlencoded"</span><span class="p">,</span>
-    <span class="s">'cache-control'</span><span class="p">:</span> <span class="s">"no-cache"</span>
-<span class="p">}</span>
+<h1 id="python">```python</h1>
+<h1 id="import-requests">import requests</h1>
 
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<h1 id="url--httpdevelopernrelgovjsonapi_keyyourapikeygoeshere">url = "http://developer.nrel.gov.json?api_key=yourapikeygoeshere"</h1>
 
-<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
-</code></pre></div>
-<h2 id="rate-limits">Rate Limits</h2>
+<h1 id="payload--names2012leap_dayfalseinterval60utcfalsefull_namehonored2buseremailhonoreduser40gmailcomaffiliationnrelmailing_listtruereasonacademicattributesdhi2cdni2cwind_speed_10m_nwp2csurface_air_temperature_nwpwktmultipoint-10622203297412c-10618203297412c-106120329741">payload = "names=2012&amp;leap_day=false&amp;interval=60&amp;utc=false&amp;full_name=Honored%2BUser&amp;email=honored.user%40gmail.com&amp;affiliation=NREL&amp;mailing_list=true&amp;reason=Academic&amp;attributes=dhi%2Cdni%2Cwind_speed_10m_nwp%2Csurface_air_temperature_nwp&amp;wkt=MULTIPOINT(-106.22%2032.9741%2C-106.18%2032.9741%2C-106.1%2032.9741)"</h1>
 
-<p>Rate limits for this application are significantly less than the <a href="/docs/rate-limits" target="_blank">standard rate limits</a> for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.</p>
+<h1 id="headers--">headers = {</h1>
+<h1 id="content-type-applicationx-www-form-urlencoded">'content-type': "application/x-www-form-urlencoded",</h1>
+<h1 id="cache-control-no-cache">'cache-control': "no-cache"</h1>
+<h1 id="-10">}</h1>
 
-<p>There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.</p>
+<h1 id="response--requestsrequestpost-url-datapayload-headersheaders">response = requests.request("POST", url, data=payload, headers=headers)</h1>
 
-<p>Secondly each user is limited to 20 in-flight requests at any given time.</p>
+<h1 id="printresponsetext">print(response.text)</h1>
+<h1 id="-11">```</h1>
 
-<p>In addition, the service has a fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.</p>
+<h1 id="h2-idrate-limitsrate-limitsh2">&lt;h2 id="rate-limits"&gt;Rate Limits&lt;/h2&gt;</h1>
 
-<p>For some tips and tricks to maximize data downloads please read the guide <a href="/docs/solar/nsrdb/guide">here</a>.</p>
+<h1 id="rate-limits-for-this-application-are-significantly-less-than-the-standard-rate-limits-for-developernrelgov-this-decrease-in-the-limit-is-required-as-the-data-provided-through-this-service-is-significantly-more-computationally-intensive-to-generate-and-provide-these-rate-limits-are-carefully-calculated-to-allow-all-users-the-maximum-throughput-that-our-servers-can-sustain">Rate limits for this application are significantly less than the <a href="/docs/rate-limits" target="_blank">standard rate limits</a> for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.</h1>
 
-<h2 id="contacts">Contact</h2>
+<h1 id="there-are-several-levels-of-rate-limiting-for-this-service-the-first-limit-determines-how-many-requests-a-given-user-can-make-per-24-hour-period-for-requests-utilizing-the-csv-format-this-rate-limit-is-set-at-5000-a-day-at-a-frequency-of-no-more-than-1-per-second-for-all-other-requests-this-limit-is-set-at-1000-requests-per-day-at-a-frequency-of-no-more-than-1-every-2-seconds">There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.</h1>
 
-<p>For questions about the API or the data models please contact <a href="mailto:nsrdb@nrel.gov">nsrdb@nrel.gov</a></p>
+<h1 id="secondly-each-user-is-limited-to-20-in-flight-requests-at-any-given-time">Secondly each user is limited to 20 in-flight requests at any given time.</h1>
 
-<h2 id="errors">Errors</h2>
+<h1 id="in-addition-the-service-has-a-fail-safe-mechanism-to-prevent-significant-performance-decreases-that-can-be-caused-by-unexpectedly-high-usage-of-the-service-this-limit-will-cause-the-service-to-stop-accepting-requests-when-the-queue-reaches-a-point-where-additional-requests-will-significantly-lower-server-performance-when-this-limit-is-hit-the-service-will-error-with-a-message-describing-that-the-request-queue-is-full">In addition, the service has a fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.</h1>
 
-<p><a href="/docs/errors/">Standard errors</a> may be returned. In addition, the following service-specific errors may be returned:</p>
+<h1 id="for-some-tips-and-tricks-to-maximize-data-downloads-please-read-the-guide-here">For some tips and tricks to maximize data downloads please read the guide <a href="/docs/solar/nsrdb/guide">here</a>.</h1>
 
-<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
-  <thead>
-    <tr>
-      <th class="doc-parameters-name" scope="col" style="width: 100px;">HTTP Status Code</th>
-      <th class="doc-parameters-required" scope="col">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th class="doc-parameter-name" scope="row">400</th>
-      <td class="doc-parameter-description">Bad Request: When required parameters are missing.</td>
-    </tr>
-  </tbody>
-</table>
+<h1 id="h2-idcontactscontacth2">&lt;h2 id="contacts"&gt;Contact&lt;/h2&gt;</h1>
+
+<h1 id="pfor-questions-about-the-api-or-the-data-models-please-contact-nsrdbnrelgovp">&lt;p&gt;For questions about the API or the data models please contact <a href="mailto:nsrdb@nrel.gov">nsrdb@nrel.gov</a>&lt;/p&gt;</h1>
+
+<h1 id="h2-iderrorserrorsh2">&lt;h2 id="errors"&gt;Errors&lt;/h2&gt;</h1>
+
+<h1 id="pstandard-errors-may-be-returned-in-addition-the-following-service-specific-errors-may-be-returnedp">&lt;p&gt;<a href="/docs/errors/">Standard errors</a> may be returned. In addition, the following service-specific errors may be returned:&lt;/p&gt;</h1>
+
+<h1 id="table-border0-cellpadding0-cellspacing0-classdoc-parameters-2">&lt;table border="0" cellpadding="0" cellspacing="0" class="doc-parameters"&gt;</h1>
+<h1 id="thead-4">&lt;thead&gt;</h1>
+<h1 id="tr-30">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameters-name-scopecol-stylewidth-100pxhttp-status-codeth">&lt;th class="doc-parameters-name" scope="col" style="width: 100px;"&gt;HTTP Status Code&lt;/th&gt;</h1>
+<h1 id="th-classdoc-parameters-required-scopecoldescriptionth">&lt;th class="doc-parameters-required" scope="col"&gt;Description&lt;/th&gt;</h1>
+<h1 id="tr-31">&lt;/tr&gt;</h1>
+<h1 id="thead-5">&lt;/thead&gt;</h1>
+<h1 id="tbody-4">&lt;tbody&gt;</h1>
+<h1 id="tr-32">&lt;tr&gt;</h1>
+<h1 id="th-classdoc-parameter-name-scoperow400th">&lt;th class="doc-parameter-name" scope="row"&gt;400&lt;/th&gt;</h1>
+<h1 id="td-classdoc-parameter-descriptionbad-request-when-required-parameters-are-missingtd">&lt;td class="doc-parameter-description"&gt;Bad Request: When required parameters are missing.&lt;/td&gt;</h1>
+<h1 id="tr-33">&lt;/tr&gt;</h1>
+<h1 id="tbody-5">&lt;/tbody&gt;</h1>
+<h1 id="table-2">&lt;/table&gt;</h1>
 
     <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
   <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/solar/nsrdb/spectral-india-tmy-download.html.md.erb">Help Improve this Content</a>
