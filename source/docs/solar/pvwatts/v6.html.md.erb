@@ -222,23 +222,8 @@ The algorithms used to calculate energy output are the same as in Version 5. For
       <td class="doc-parameter-description">Azimuth angle (degrees).</td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">address</th>
-      <td class="doc-parameter-required">Depends</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> string
-        </div>
-        <div class="doc-parameter-value-field">
-          <strong>Default:</strong> None
-        </div>
-      </td>
-      <td class="doc-parameter-description">
-        <p>The address to use. Required if lat/lon or file_id not specified.</p>
-      </td>
-    </tr>
-    <tr>
       <th class="doc-parameter-name" scope="row">lat</th>
-      <td class="doc-parameter-required">Depends</td>
+      <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
           <strong>Type:</strong> decimal
@@ -251,12 +236,12 @@ The algorithms used to calculate energy output are the same as in Version 5. For
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>The latitude for the location to use. Required if address or file_id not specified.</p>
+        <p>The latitude for the location to use. Required if file_id not specified.</p>
       </td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">lon</th>
-      <td class="doc-parameter-required">Depends</td>
+      <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
           <strong>Type:</strong> decimal
@@ -269,7 +254,7 @@ The algorithms used to calculate energy output are the same as in Version 5. For
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>The longitude for the location to use. Required if address or file_id not specified.</p>
+        <p>The longitude for the location to use. Required if file_id not specified.</p>
       </td>
     </tr>
     <tr>
@@ -284,7 +269,7 @@ The algorithms used to calculate energy output are the same as in Version 5. For
         </div>
       </td>
       <td class="doc-parameter-description">
-        Reference to a specific climate data file to use. Must be a valid <code>id</code> returned by the <a href="/docs/solar/data-query/v1/">Solar Dataset Query V1 API</a>. Required if lat/lon or address not specified.
+        Reference to a specific climate data file to use. Must be a valid <code>id</code> returned by the <a href="/docs/solar/data-query/v1/">Solar Dataset Query V1 API</a>. Required if lat/lon not specified.
       </td>
     </tr>
     <tr>
