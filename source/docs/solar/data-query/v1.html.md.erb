@@ -1,6 +1,6 @@
 ---
 title: Solar Dataset Query V1
-summary: Returns information about data available for a given location for the solar resource database used by the <a href="/docs/solar/pvwatts/v6/">PVWatts v6 API</a>. 
+summary: Returns information about data available for a given location for the solar resource database used by the <a href="/docs/solar/pvwatts/v6/">PVWatts v6 API</a>.
 url: GET /api/solar/data_query/v1
 alias: docs/solar/data-query-v1/
 
@@ -61,21 +61,8 @@ alias: docs/solar/data-query-v1/
       </td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">address</th>
-      <td class="doc-parameter-required">Depends</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> string
-        </div>
-        <div class="doc-parameter-value-field">
-          <strong>Default:</strong> None
-        </div>
-      </td>
-      <td class="doc-parameter-description">The address to use. Required if lat/lon not specified.</td>
-    </tr>
-    <tr>
       <th class="doc-parameter-name" scope="row">lat</th>
-      <td class="doc-parameter-required">Depends</td>
+      <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
           <strong>Type:</strong> decimal
@@ -90,11 +77,11 @@ alias: docs/solar/data-query-v1/
           <strong>Max:</strong> <i>90</i>
         </div>
       </td>
-      <td class="doc-parameter-description">The latitude for the location to use. Required if address not specified.</td>
+      <td class="doc-parameter-description">The latitude for the location to use.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">lon</th>
-      <td class="doc-parameter-required">Depends</td>
+      <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
           <strong>Type:</strong> decimal
@@ -109,7 +96,7 @@ alias: docs/solar/data-query-v1/
           <strong>Max:</strong> <i>180</i>
         </div>
       </td>
-      <td class="doc-parameter-description">The longitude for the location to use. Required if address not specified.</td>
+      <td class="doc-parameter-description">The longitude for the location to use.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">radius</th>

@@ -223,21 +223,6 @@ There is a forthcoming report containing a technical description of the model.
       <td class="doc-parameter-description">Azimuth angle (degrees).</td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">address</th>
-      <td class="doc-parameter-required">Depends</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> string
-        </div>
-        <div class="doc-parameter-value-field">
-          <strong>Default:</strong> None
-        </div>
-      </td>
-      <td class="doc-parameter-description">
-        <p>The address to use. Required if lat/lon or file_id not specified.</p>
-      </td>
-    </tr>
-    <tr>
       <th class="doc-parameter-name" scope="row">lat</th>
       <td class="doc-parameter-required">Depends</td>
       <td class="doc-parameter-value">
@@ -252,7 +237,7 @@ There is a forthcoming report containing a technical description of the model.
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>The latitude for the location to use. Required if address or file_id not specified.</p>
+        <p>The latitude for the location to use. Required if file_id not specified.</p>
       </td>
     </tr>
     <tr>
@@ -270,7 +255,7 @@ There is a forthcoming report containing a technical description of the model.
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>The longitude for the location to use. Required if address or file_id not specified.</p>
+        <p>The longitude for the location to use. Required if file_id not specified.</p>
       </td>
     </tr>
     <tr>
@@ -285,7 +270,7 @@ There is a forthcoming report containing a technical description of the model.
         </div>
       </td>
       <td class="doc-parameter-description">
-        Reference to a specific climate data file to use. Must be a valid <code>id</code> returned by the <a href="/docs/solar/data-query/v2/">Solar Dataset Query V2 API</a>. Required if lat/lon or address not specified.
+        Reference to a specific climate data file to use. Must be a valid <code>id</code> returned by the <a href="/docs/solar/data-query/v2/">Solar Dataset Query V2 API</a>. Required if lat/lon not specified.
       </td>
     </tr>
     <tr>
@@ -732,7 +717,7 @@ The response is composed of service-related informational fields and the results
 
 ### JSON Output Format
 
-<pre>GET <a href="/api/pvwatts/v8.json?api_key=DEMO_KEY&azimuth=180&system_capacity=4&losses=14&array_type=1&module_type=0&gcr=0.4&dc_ac_ratio=1.2&inv_eff=96.0&radius=0&dataset=nsrdb&tilt=10&address=boulder, co&soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&albedo=0.3&bifaciality=0.7">/api/pvwatts/v8.json?api_key=DEMO_KEY&amp;azimuth=180&amp;system_capacity=4&amp;losses=14&amp;array_type=1&amp;module_type=0&amp;gcr=0.4&amp;dc_ac_ratio=1.2&amp;inv_eff=96.0&amp;radius=0&amp;dataset=nsrdb&amp;tilt=10&amp;address=boulder, co&amp;soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&amp;albedo=0.3&amp;bifaciality=0.7</a></pre>
+<pre>GET <a href="/api/pvwatts/v8.json?api_key=DEMO_KEY&azimuth=180&system_capacity=4&losses=14&array_type=1&module_type=0&gcr=0.4&dc_ac_ratio=1.2&inv_eff=96.0&radius=0&dataset=nsrdb&tilt=10&lat=40&lon=-105&soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&albedo=0.3&bifaciality=0.7">/api/pvwatts/v8.json?api_key=DEMO_KEY&amp;azimuth=180&amp;system_capacity=4&amp;losses=14&amp;array_type=1&amp;module_type=0&amp;gcr=0.4&amp;dc_ac_ratio=1.2&amp;inv_eff=96.0&amp;radius=0&amp;dataset=nsrdb&amp;tilt=10&amp;lat=40&amp;lon=-105&amp;soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&amp;albedo=0.3&amp;bifaciality=0.7</a></pre>
 
 ```json
 {
@@ -749,7 +734,8 @@ The response is composed of service-related informational fields and the results
     "radius": "0",
     "dataset": "nsrdb",
     "tilt": "10",
-    "address": "boulder, co",
+    "lat": "40",
+    "lon": "-105",
     "soiling": [
       12.0,
       4.0,
@@ -852,7 +838,7 @@ The response is composed of service-related informational fields and the results
 
 ### XML Output Format
 
-<pre>GET <a href="/api/pvwatts/v8.xml?api_key=DEMO_KEY&azimuth=180&system_capacity=4&losses=14&array_type=1&module_type=0&gcr=0.4&dc_ac_ratio=1.2&inv_eff=96.0&radius=0&dataset=nsrdb&tilt=10&address=boulder, co&soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&albedo=0.3&bifaciality=0.7">/api/pvwatts/v8.xml?api_key=DEMO_KEY&amp;azimuth=180&amp;system_capacity=4&amp;losses=14&amp;array_type=1&amp;module_type=0&amp;gcr=0.4&amp;dc_ac_ratio=1.2&amp;inv_eff=96.0&amp;radius=0&amp;dataset=nsrdb&amp;tilt=10&amp;address=boulder, co&amp;soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&amp;albedo=0.3&amp;bifaciality=0.7</a></pre>
+<pre>GET <a href="/api/pvwatts/v8.xml?api_key=DEMO_KEY&azimuth=180&system_capacity=4&losses=14&array_type=1&module_type=0&gcr=0.4&dc_ac_ratio=1.2&inv_eff=96.0&radius=0&dataset=nsrdb&tilt=10&lat=40&lon=-105&soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&albedo=0.3&bifaciality=0.7">/api/pvwatts/v8.xml?api_key=DEMO_KEY&amp;azimuth=180&amp;system_capacity=4&amp;losses=14&amp;array_type=1&amp;module_type=0&amp;gcr=0.4&amp;dc_ac_ratio=1.2&amp;inv_eff=96.0&amp;radius=0&amp;dataset=nsrdb&amp;tilt=10&amp;lat=40&amp;lon=-105&amp;soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&amp;albedo=0.3&amp;bifaciality=0.7</a></pre>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -870,7 +856,8 @@ The response is composed of service-related informational fields and the results
     <radius>0</radius>
     <dataset>nsrdb</dataset>
     <tilt>10</tilt>
-    <address>boulder, co</address>
+    <lat>40</lat>,
+    <lon>-105</lon>,
     <soiling type="array">
       <soiling type="float">12.0</soiling>
       <soiling type="float">4.0</soiling>

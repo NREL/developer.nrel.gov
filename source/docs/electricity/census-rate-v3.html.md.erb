@@ -74,24 +74,8 @@ url: GET /api/census_rate/v3
       <td class="doc-parameter-description">Identifiying number provided by requester.</td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">address</th>
-      <td class="doc-parameter-required">Depends</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> string
-        </div>
-        <div class="doc-parameter-value-field">
-          <strong>Default:</strong> None
-        </div>
-        <div class="doc-parameter-value-field"></div>
-      </td>
-      <td class="doc-parameter-description">
-        <p>The address to use. Required if lat/lon not provided.</p>
-      </td>
-    </tr>
-    <tr>
       <th class="doc-parameter-name" scope="row">lat</th>
-      <td class="doc-parameter-required">Depends</td>
+      <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
           <strong>Type:</strong> decimal
@@ -103,11 +87,11 @@ url: GET /api/census_rate/v3
           <strong>Range:</strong> <i>-90 to 90</i>
         </div>
       </td>
-      <td class="doc-parameter-description">The latitude for the location to use. Required if address not given.</td>
+      <td class="doc-parameter-description">The latitude for the location to use.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">lon</th>
-      <td class="doc-parameter-required">Depends</td>
+      <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
           <strong>Type:</strong> decimal
@@ -119,7 +103,7 @@ url: GET /api/census_rate/v3
           <strong>Range:</strong> <i>-180 to 180</i>
         </div>
       </td>
-      <td class="doc-parameter-description">The longitude for the location to use. Required if address not given.</td>
+      <td class="doc-parameter-description">The longitude for the location to use.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">region</th>
@@ -235,16 +219,6 @@ The response is composed of service-related informational fields and the results
       <th class="doc-parameter-name" scope="row">industrial</th>
       <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
       <td class="doc-parameter-description">The industrial electricity rate.</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">partial_match</th>
-      <td class="doc-parameter-value"><strong>Type:</strong> boolean</td>
-      <td class="doc-parameter-description">A value of true indicates that the geocoder was not able to find an exact match on the original address. (only returned for address-based requests)</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">geocoded_address</th>
-      <td class="doc-parameter-value"><strong>Type:</strong> string</td>
-      <td class="doc-parameter-description">The actual (possibly corrected) address used by the geocoder to determine lat/lon. (only returned for address-based requests)</td>
     </tr>
   </tbody>
 </table>

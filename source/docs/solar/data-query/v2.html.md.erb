@@ -60,21 +60,8 @@ url: GET /api/solar/data_query/v2
       </td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">address</th>
-      <td class="doc-parameter-required">Depends</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> string
-        </div>
-        <div class="doc-parameter-value-field">
-          <strong>Default:</strong> None
-        </div>
-      </td>
-      <td class="doc-parameter-description">The address to use. Required if lat/lon not specified.</td>
-    </tr>
-    <tr>
       <th class="doc-parameter-name" scope="row">lat</th>
-      <td class="doc-parameter-required">Depends</td>
+      <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
           <strong>Type:</strong> decimal
@@ -89,11 +76,11 @@ url: GET /api/solar/data_query/v2
           <strong>Max:</strong> <i>90</i>
         </div>
       </td>
-      <td class="doc-parameter-description">The latitude for the location to use. Required if address not specified.</td>
+      <td class="doc-parameter-description">The latitude for the location to use.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">lon</th>
-      <td class="doc-parameter-required">Depends</td>
+      <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
           <strong>Type:</strong> decimal
@@ -108,7 +95,7 @@ url: GET /api/solar/data_query/v2
           <strong>Max:</strong> <i>180</i>
         </div>
       </td>
-      <td class="doc-parameter-description">The longitude for the location to use. Required if address not specified.</td>
+      <td class="doc-parameter-description">The longitude for the location to use.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">radius</th>
@@ -309,7 +296,8 @@ The output fields contain the following information regarding climate data files
   "metadata": {},
   "inputs": {
     "api_key": "DEMO_KEY",
-    "address": "boulder, co",
+    "lat": "40",
+    "lon": "-105",
     "radius": "0"
   },
   "outputs": {
@@ -377,7 +365,8 @@ The output fields contain the following information regarding climate data files
   </metadata>
   <inputs>
     <api-key>DEMO_KEY</api-key>
-    <address>boulder, co</address>
+    <lat>40</lat>
+    <lon>-105</lon>
     <radius>0</radius>
   </inputs>
   <outputs>
