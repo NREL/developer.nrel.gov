@@ -167,23 +167,6 @@ The response is composed of the fuel stations matching the requested query. For 
       </td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">latitude</th>
-      <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
-      <td class="doc-parameter-description">The latitude of the given location. This either matches the "latitude" parameter passed in, or is the geocoded latitude of the "location" parameter.</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">longitude</th>
-      <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
-      <td class="doc-parameter-description">The longitude of the given location. This either matches the "longitude" parameter passed in, or is the geocoded longitude of the "location" parameter.</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">precision</th>
-      <td class="doc-parameter-value"><strong>Type:</strong> record</td>
-      <td class="doc-parameter-description">
-        Details on the precision of the geocoded "location" parameter (if given). See <a href="#precision-record-fields">precision record fields</a> for response details.
-      </td>
-    </tr>
-    <tr>
       <th class="doc-parameter-name" scope="row">fuel_stations</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -202,51 +185,6 @@ The response is composed of the fuel stations matching the requested query. For 
 The individual fuel station records are returned in order of ascending distance from the given location. Each station has the following attributes:
 
 <%= partial("docs/transportation/alt-fuel-stations-v1/record_fields", :locals => { :distance => true }) %>
-
-### Precision Record Fields
-
-<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
-  <thead>
-    <tr>
-      <th class="doc-parameters-name" scope="col">Field</th>
-      <th class="doc-parameters-value" scope="col">Value</th>
-      <th class="doc-parameters-description" scope="col">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th class="doc-parameter-name" scope="row">name</th>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> string
-        </div>
-      </td>
-      <td class="doc-parameter-description">A textual code for the accuracy of the geocoded location.</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">value</th>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> integer
-        </div>
-      </td>
-      <td class="doc-parameter-description">
-        A numeric code for the accuracy of the geocoded location. These generally match the Google Geocoding API V2 <a href="https://developers.google.com/maps/documentation/geocoding/v2/#GeocodingAccuracy">accuracy values</a>.
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">types</th>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> array
-        </div>
-      </td>
-      <td class="doc-parameter-description">
-        An array of strings describing the type of location matched. These refer to the Google Geocoding API V3 <a href="https://developers.google.com/maps/documentation/geocoding/#Types">address component types</a>.
-      </td>
-    </tr>
-  </tbody>
-</table>
 
 <%= partial("docs/transportation/alt-fuel-stations-v1/station_count_record_fields") %>
 
