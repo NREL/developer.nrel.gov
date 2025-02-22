@@ -283,21 +283,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <td class="doc-parameter-description">Azimuth angle (degrees).</td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">address</th>
-      <td class="doc-parameter-required">Depends</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> string
-        </div>
-        <div class="doc-parameter-value-field">
-          <strong>Default:</strong> None
-        </div>
-      </td>
-      <td class="doc-parameter-description">
-        <p>The address to use. Required if lat/lon or file_id not specified.</p>
-      </td>
-    </tr>
-    <tr>
       <th class="doc-parameter-name" scope="row">lat</th>
       <td class="doc-parameter-required">Depends</td>
       <td class="doc-parameter-value">
@@ -312,7 +297,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>The latitude for the location to use. Required if address or file_id not specified.</p>
+        <p>The latitude for the location to use. Required if file_id not specified.</p>
       </td>
     </tr>
     <tr>
@@ -330,7 +315,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>The longitude for the location to use. Required if address or file_id not specified.</p>
+        <p>The longitude for the location to use. Required if file_id not specified.</p>
       </td>
     </tr>
     <tr>
@@ -345,7 +330,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </td>
       <td class="doc-parameter-description">
-        Reference to a specific climate data file to use. Must be a valid <code>id</code> returned by the <a href="/docs/solar/data-query/v2/">Solar Dataset Query V2 API</a>. Required if lat/lon or address not specified.
+        Reference to a specific climate data file to use. Must be a valid <code>id</code> returned by the <a href="/docs/solar/data-query/v2/">Solar Dataset Query V2 API</a>. Required if lat/lon not specified.
       </td>
     </tr>
     <tr>
@@ -792,7 +777,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h3 id="json-output-format">JSON Output Format</h3>
 
-<pre>GET <a href="/api/pvwatts/v8.json?api_key=DEMO_KEY&amp;azimuth=180&amp;system_capacity=4&amp;losses=14&amp;array_type=1&amp;module_type=0&amp;gcr=0.4&amp;dc_ac_ratio=1.2&amp;inv_eff=96.0&amp;radius=0&amp;dataset=nsrdb&amp;tilt=10&amp;address=boulder, co&amp;soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&amp;albedo=0.3&amp;bifaciality=0.7">/api/pvwatts/v8.json?api_key=DEMO_KEY&amp;azimuth=180&amp;system_capacity=4&amp;losses=14&amp;array_type=1&amp;module_type=0&amp;gcr=0.4&amp;dc_ac_ratio=1.2&amp;inv_eff=96.0&amp;radius=0&amp;dataset=nsrdb&amp;tilt=10&amp;address=boulder, co&amp;soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&amp;albedo=0.3&amp;bifaciality=0.7</a></pre>
+<pre>GET <a href="/api/pvwatts/v8.json?api_key=DEMO_KEY&amp;azimuth=180&amp;system_capacity=4&amp;losses=14&amp;array_type=1&amp;module_type=0&amp;gcr=0.4&amp;dc_ac_ratio=1.2&amp;inv_eff=96.0&amp;radius=0&amp;dataset=nsrdb&amp;tilt=10&amp;lat=40&amp;lon=-105&amp;soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&amp;albedo=0.3&amp;bifaciality=0.7">/api/pvwatts/v8.json?api_key=DEMO_KEY&amp;azimuth=180&amp;system_capacity=4&amp;losses=14&amp;array_type=1&amp;module_type=0&amp;gcr=0.4&amp;dc_ac_ratio=1.2&amp;inv_eff=96.0&amp;radius=0&amp;dataset=nsrdb&amp;tilt=10&amp;lat=40&amp;lon=-105&amp;soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&amp;albedo=0.3&amp;bifaciality=0.7</a></pre>
 
 <div class="highlight"><pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -808,7 +793,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </span><span class="nl">"radius"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"dataset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nsrdb"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"tilt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boulder, co"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-105"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"soiling"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="mf">12.0</span><span class="p">,</span><span class="w">
       </span><span class="mf">4.0</span><span class="p">,</span><span class="w">
@@ -910,7 +896,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </span></code></pre></div>
 <h3 id="xml-output-format">XML Output Format</h3>
 
-<pre>GET <a href="/api/pvwatts/v8.xml?api_key=DEMO_KEY&amp;azimuth=180&amp;system_capacity=4&amp;losses=14&amp;array_type=1&amp;module_type=0&amp;gcr=0.4&amp;dc_ac_ratio=1.2&amp;inv_eff=96.0&amp;radius=0&amp;dataset=nsrdb&amp;tilt=10&amp;address=boulder, co&amp;soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&amp;albedo=0.3&amp;bifaciality=0.7">/api/pvwatts/v8.xml?api_key=DEMO_KEY&amp;azimuth=180&amp;system_capacity=4&amp;losses=14&amp;array_type=1&amp;module_type=0&amp;gcr=0.4&amp;dc_ac_ratio=1.2&amp;inv_eff=96.0&amp;radius=0&amp;dataset=nsrdb&amp;tilt=10&amp;address=boulder, co&amp;soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&amp;albedo=0.3&amp;bifaciality=0.7</a></pre>
+<pre>GET <a href="/api/pvwatts/v8.xml?api_key=DEMO_KEY&amp;azimuth=180&amp;system_capacity=4&amp;losses=14&amp;array_type=1&amp;module_type=0&amp;gcr=0.4&amp;dc_ac_ratio=1.2&amp;inv_eff=96.0&amp;radius=0&amp;dataset=nsrdb&amp;tilt=10&amp;lat=40&amp;lon=-105&amp;soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&amp;albedo=0.3&amp;bifaciality=0.7">/api/pvwatts/v8.xml?api_key=DEMO_KEY&amp;azimuth=180&amp;system_capacity=4&amp;losses=14&amp;array_type=1&amp;module_type=0&amp;gcr=0.4&amp;dc_ac_ratio=1.2&amp;inv_eff=96.0&amp;radius=0&amp;dataset=nsrdb&amp;tilt=10&amp;lat=40&amp;lon=-105&amp;soiling=12|4|45|23|9|99|67|12.54|54|9|0|7.6&amp;albedo=0.3&amp;bifaciality=0.7</a></pre>
 
 <div class="highlight"><pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;response&gt;</span>
@@ -927,7 +913,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="nt">&lt;radius&gt;</span>0<span class="nt">&lt;/radius&gt;</span>
     <span class="nt">&lt;dataset&gt;</span>nsrdb<span class="nt">&lt;/dataset&gt;</span>
     <span class="nt">&lt;tilt&gt;</span>10<span class="nt">&lt;/tilt&gt;</span>
-    <span class="nt">&lt;address&gt;</span>boulder, co<span class="nt">&lt;/address&gt;</span>
+    <span class="nt">&lt;lat&gt;</span>40<span class="nt">&lt;/lat&gt;</span>,
+    <span class="nt">&lt;lon&gt;</span>-105<span class="nt">&lt;/lon&gt;</span>,
     <span class="nt">&lt;soiling</span> <span class="na">type=</span><span class="s">"array"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;soiling</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>12.0<span class="nt">&lt;/soiling&gt;</span>
       <span class="nt">&lt;soiling</span> <span class="na">type=</span><span class="s">"float"</span><span class="nt">&gt;</span>4.0<span class="nt">&lt;/soiling&gt;</span>

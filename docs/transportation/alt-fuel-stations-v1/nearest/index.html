@@ -124,31 +124,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </tr>
 
     <tr>
-      <th class="doc-parameter-name" scope="row">location</th>
-      <td class="doc-parameter-required">Depends</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> string
-        </div>
-        <div class="doc-parameter-value-field">
-          <strong>Default:</strong> None
-        </div>
-      </td>
-      <td class="doc-parameter-description">
-        <p>A free-form input describing the address of the location. This may include the address given in a variety of formats, such as:</p>
-        <ul>
-          <li>street, city, state, postal code</li>
-          <li>street, city, state</li>
-          <li>street, postal code</li>
-          <li>postal code</li>
-          <li>city, state</li>
-        </ul>
-        <p>(Either the <em>location</em> parameter or both the latitude and <em>longitude</em> parameters are required)</p>
-      </td>
-    </tr>
-    <tr>
       <th class="doc-parameter-name" scope="row">latitude</th>
-      <td class="doc-parameter-required">Depends</td>
+      <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
           <strong>Type:</strong> decimal
@@ -159,12 +136,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </td>
       <td class="doc-parameter-description">
         <p>The latitude of the desired location.</p>
-        <p>(Either the <em>location</em> parameter or both the latitude and <em>longitude</em> parameters are required)</p>
       </td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">longitude</th>
-      <td class="doc-parameter-required">Depends</td>
+      <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
           <strong>Type:</strong> decimal
@@ -175,7 +151,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </td>
       <td class="doc-parameter-description">
         <p>The longitude of the desired location.</p>
-        <p>(Either the <em>location</em> parameter or both the latitude and <em>longitude</em> parameters are required)</p>
       </td>
     </tr>
     <tr>
@@ -2096,19 +2071,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <tr>
       <th class="doc-parameter-name" scope="row">latitude</th>
       <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
-      <td class="doc-parameter-description">The latitude of the given location. This either matches the "latitude" parameter passed in, or is the geocoded latitude of the "location" parameter.</td>
+      <td class="doc-parameter-description">The latitude of the given input location.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">longitude</th>
       <td class="doc-parameter-value"><strong>Type:</strong> decimal</td>
-      <td class="doc-parameter-description">The longitude of the given location. This either matches the "longitude" parameter passed in, or is the geocoded longitude of the "location" parameter.</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">precision</th>
-      <td class="doc-parameter-value"><strong>Type:</strong> record</td>
-      <td class="doc-parameter-description">
-        Details on the precision of the geocoded "location" parameter (if given). See <a href="#precision-record-fields">precision record fields</a> for response details.
-      </td>
+      <td class="doc-parameter-description">The longitude of the given input location.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">fuel_stations</th>
@@ -4430,51 +4398,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </tbody>
 </table>
 
-<h3 id="precision-record-fields">Precision Record Fields</h3>
-
-<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
-  <thead>
-    <tr>
-      <th class="doc-parameters-name" scope="col">Field</th>
-      <th class="doc-parameters-value" scope="col">Value</th>
-      <th class="doc-parameters-description" scope="col">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th class="doc-parameter-name" scope="row">name</th>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> string
-        </div>
-      </td>
-      <td class="doc-parameter-description">A textual code for the accuracy of the geocoded location.</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">value</th>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> integer
-        </div>
-      </td>
-      <td class="doc-parameter-description">
-        A numeric code for the accuracy of the geocoded location. These generally match the Google Geocoding API V2 <a href="https://developers.google.com/maps/documentation/geocoding/v2/#GeocodingAccuracy">accuracy values</a>.
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">types</th>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> array
-        </div>
-      </td>
-      <td class="doc-parameter-description">
-        An array of strings describing the type of location matched. These refer to the Google Geocoding API V3 <a href="https://developers.google.com/maps/documentation/geocoding/#Types">address component types</a>.
-      </td>
-    </tr>
-  </tbody>
-</table>
-
 <h3 id="station-count-record-fields">Station Count Record Fields</h3>
 
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
@@ -4511,19 +4434,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h3 id="json-output-format">JSON Output Format</h3>
 
-<pre>GET <a href="/api/alt-fuel-stations/v1/nearest.json?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.json?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1</a></pre>
+<pre>GET <a href="/api/alt-fuel-stations/v1/nearest.json?api_key=DEMO_KEY&amp;latitude=39.743078&amp;longitude=-105.152278&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.json?api_key=DEMO_KEY&amp;latitude=39.743078&amp;longitude=-105.152278&amp;fuel_type=ELEC&amp;limit=1</a></pre>
 
 <div class="highlight"><pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.743078</span><span class="p">,</span><span class="w">
   </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-105.152278</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"location_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"precision"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"premise"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"premise"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">},</span><span class="w">
   </span><span class="nl">"station_locator_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://afdc.energy.gov/stations/"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"total_results"</span><span class="p">:</span><span class="w"> </span><span class="mi">82</span><span class="p">,</span><span class="w">
   </span><span class="nl">"station_counts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4644,21 +4559,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </span></code></pre></div>
 <h3 id="geojson-output-format">GeoJSON Output Format</h3>
 
-<pre>GET <a href="/api/alt-fuel-stations/v1/nearest.geojson?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.geojson?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1</a></pre>
+<pre>GET <a href="/api/alt-fuel-stations/v1/nearest.geojson?api_key=DEMO_KEY&amp;latitude=39.743078&amp;longitude=-105.152278&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.geojson?api_key=DEMO_KEY&amp;latitude=39.743078&amp;longitude=-105.152278&amp;fuel_type=ELEC&amp;limit=1</a></pre>
 
 <div class="highlight"><pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FeatureCollection"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.743078</span><span class="p">,</span><span class="w">
     </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-105.152278</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"location_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"precision"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"premise"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"premise"</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"station_locator_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://afdc.energy.gov/stations/"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"total_results"</span><span class="p">:</span><span class="w"> </span><span class="mi">82</span><span class="p">,</span><span class="w">
     </span><span class="nl">"station_counts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4788,20 +4695,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </span></code></pre></div>
 <h3 id="xml-output-format">XML Output Format</h3>
 
-<pre>GET <a href="/api/alt-fuel-stations/v1/nearest.xml?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.xml?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1</a></pre>
+<pre>GET <a href="/api/alt-fuel-stations/v1/nearest.xml?api_key=DEMO_KEY&amp;latitude=39.743078&amp;longitude=-105.152278&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.xml?api_key=DEMO_KEY&amp;latitude=39.743078&amp;longitude=-105.152278&amp;fuel_type=ELEC&amp;limit=1</a></pre>
 
 <div class="highlight"><pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;response&gt;</span>
   <span class="nt">&lt;latitude&gt;</span>39.743078<span class="nt">&lt;/latitude&gt;</span>
   <span class="nt">&lt;longitude&gt;</span>-105.152278<span class="nt">&lt;/longitude&gt;</span>
-  <span class="nt">&lt;location-country&gt;</span>US<span class="nt">&lt;/location-country&gt;</span>
-  <span class="nt">&lt;precision&gt;</span>
-    <span class="nt">&lt;value</span> <span class="na">type=</span><span class="s">"integer"</span><span class="nt">&gt;</span>9<span class="nt">&lt;/value&gt;</span>
-    <span class="nt">&lt;name&gt;</span>premise<span class="nt">&lt;/name&gt;</span>
-    <span class="nt">&lt;types</span> <span class="na">type=</span><span class="s">"array"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;type&gt;</span>premise<span class="nt">&lt;/type&gt;</span>
-    <span class="nt">&lt;/types&gt;</span>
-  <span class="nt">&lt;/precision&gt;</span>
   <span class="nt">&lt;station-locator-url&gt;</span>https://afdc.energy.gov/stations/<span class="nt">&lt;/station-locator-url&gt;</span>
   <span class="nt">&lt;total-results&gt;</span>82<span class="nt">&lt;/total-results&gt;</span>
   <span class="nt">&lt;station-counts&gt;</span>
@@ -4922,7 +4821,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </code></pre></div>
 <h3 id="kml-output-format">KML Output Format</h3>
 
-<pre>GET <a href="/api/alt-fuel-stations/v1/nearest.kml?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.kml?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1</a></pre>
+<pre>GET <a href="/api/alt-fuel-stations/v1/nearest.kml?api_key=DEMO_KEY&amp;latitude=39.743078&amp;longitude=-105.152278&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.kml?api_key=DEMO_KEY&amp;latitude=39.743078&amp;longitude=-105.152278&amp;fuel_type=ELEC&amp;limit=1</a></pre>
 
 <div class="highlight"><pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;kml</span> <span class="na">xmlns=</span><span class="s">"http://www.opengis.net/kml/2.2"</span><span class="nt">&gt;</span>
@@ -5011,7 +4910,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </code></pre></div>
 <h3 id="csv-output-format">CSV Output Format</h3>
 
-<pre>GET <a href="/api/alt-fuel-stations/v1/nearest.csv?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.csv?api_key=DEMO_KEY&amp;location=1617+Cole+Blvd+Golden+CO&amp;fuel_type=ELEC&amp;limit=1</a></pre>
+<pre>GET <a href="/api/alt-fuel-stations/v1/nearest.csv?api_key=DEMO_KEY&amp;latitude=39.743078&amp;longitude=-105.152278&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.csv?api_key=DEMO_KEY&amp;latitude=39.743078&amp;longitude=-105.152278&amp;fuel_type=ELEC&amp;limit=1</a></pre>
 
 <div class="highlight"><pre class="highlight plaintext"><code>Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump,EV Connector Types,Country,Intersection Directions (French),Access Days Time (French),BD Blends (French),Groups With Access Code (French),Hydrogen Is Retail,Access Code,Access Detail Code,Federal Agency Code,Facility Type,CNG Dispenser Num,CNG On-Site Renewable Source,CNG Total Compression Capacity,CNG Storage Capacity,LNG On-Site Renewable Source,E85 Other Ethanol Blends,EV Pricing,EV Pricing (French),LPG Nozzle Types,Hydrogen Pressures,Hydrogen Standards,CNG Fill Type Code,CNG PSI,CNG Vehicle Class,LNG Vehicle Class,EV On-Site Renewable Source,Restricted Access,RD Blends,RD Blends (French),RD Blended with Biodiesel,RD Maximum Biodiesel Level,Maximum Vehicle Class
 ELEC,1687 COLE BLVD EAST STATION 1,1687 Cole Blvd,,Lakewood,CO,80401,,888-758-4389,E,,Public,24 hours daily,,,,,,2,,,ChargePoint Network,http://www.chargepoint.com/,GPS,39.740932,-105.156235,2023-01-02,194116,2023-01-02 23:31:30 UTC,,,,2021-08-19,,,,,J1772,US,,,,Public,,public,,,,,,,,,,,,,,,,,,,,,,,,,

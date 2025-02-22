@@ -121,21 +121,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">address</th>
-      <td class="doc-parameter-required">Depends</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> string
-        </div>
-        <div class="doc-parameter-value-field">
-          <strong>Default:</strong> None
-        </div>
-      </td>
-      <td class="doc-parameter-description">The address to use. Required if lat/lon not specified.</td>
-    </tr>
-    <tr>
       <th class="doc-parameter-name" scope="row">lat</th>
-      <td class="doc-parameter-required">Depends</td>
+      <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
           <strong>Type:</strong> decimal
@@ -150,11 +137,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <strong>Max:</strong> <i>90</i>
         </div>
       </td>
-      <td class="doc-parameter-description">The latitude for the location to use. Required if address not specified.</td>
+      <td class="doc-parameter-description">The latitude for the location to use.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">lon</th>
-      <td class="doc-parameter-required">Depends</td>
+      <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
           <strong>Type:</strong> decimal
@@ -169,7 +156,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <strong>Max:</strong> <i>180</i>
         </div>
       </td>
-      <td class="doc-parameter-description">The longitude for the location to use. Required if address not specified.</td>
+      <td class="doc-parameter-description">The longitude for the location to use.</td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">radius</th>
@@ -369,7 +356,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
   </span><span class="nl">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEMO_KEY"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boulder, co"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-105"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"radius"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -435,7 +423,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="nt">&lt;/metadata&gt;</span>
   <span class="nt">&lt;inputs&gt;</span>
     <span class="nt">&lt;api-key&gt;</span>DEMO_KEY<span class="nt">&lt;/api-key&gt;</span>
-    <span class="nt">&lt;address&gt;</span>boulder, co<span class="nt">&lt;/address&gt;</span>
+    <span class="nt">&lt;lat&gt;</span>40<span class="nt">&lt;/lat&gt;</span>
+    <span class="nt">&lt;lon&gt;</span>-105<span class="nt">&lt;/lon&gt;</span>
     <span class="nt">&lt;radius&gt;</span>0<span class="nt">&lt;/radius&gt;</span>
   <span class="nt">&lt;/inputs&gt;</span>
   <span class="nt">&lt;outputs&gt;</span>
