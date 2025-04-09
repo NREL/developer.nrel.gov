@@ -1399,7 +1399,38 @@
           <strong>Type:</strong> record
         </div>
       </td>
-      <td class="doc-parameter-description">A record with <a href="#ev-connector-types">connector types</a> present as keys, and the power output information for each connector type as the value. See <a href="#power-output-record-fields">power output record fields</a> for information.</td>
+      <td class="doc-parameter-description">
+        <p>The connectors available at the charging unit as a record with the <a href="#ev-connector-types">connector types</a> present as keys, and the power output information for each connector type as the value:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="doc-parameters-name" scope="col">Field</th>
+              <th class="doc-parameters-value" scope="col">Value</th>
+              <th class="doc-parameters-description" scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="doc-parameter-name" scope="row">power_kw</th>
+              <td class="doc-parameter-value">
+                <div class="doc-parameter-value-field">
+                  <strong>Type:</strong> decimal
+                </div>
+              </td>
+              <td class="doc-parameter-description">The power output in kilowatts of the charging unit.</td>
+            </tr>
+            <tr>
+              <th class="doc-parameter-name" scope="row">port_count</th>
+              <td class="doc-parameter-value">
+                <div class="doc-parameter-value-field">
+                  <strong>Type:</strong> integer
+                </div>
+              </td>
+              <td class="doc-parameter-description">The number of ports for the connector type on the charging unit.</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
     </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">port_count</th>
@@ -1427,38 +1458,6 @@
         </div>
       </td>
       <td class="doc-parameter-description">A list of funding sources used to build the EV charging unit.</td>
-    </tr>
-  </tbody>
-</table>
-
-### Power Output Record Fields
-
-<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
-  <thead>
-    <tr>
-      <th class="doc-parameters-name" scope="col">Field</th>
-      <th class="doc-parameters-value" scope="col">Value</th>
-      <th class="doc-parameters-description" scope="col">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th class="doc-parameter-name" scope="row">power_kw</th>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> decimal
-        </div>
-      </td>
-      <td class="doc-parameter-description">The power output in kilowatts of the charger</td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">port_count</th>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> integer
-        </div>
-      </td>
-      <td class="doc-parameter-description">The number of ports at the station for that particular network and connector type.</td>
     </tr>
   </tbody>
 </table>
