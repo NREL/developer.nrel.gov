@@ -105,7 +105,7 @@ GEM
     parallel (1.26.3)
     parslet (2.0.0)
     public_suffix (6.0.1)
-    rack (2.2.9)
+    rack (2.2.13)
     rack-livereload (0.3.17)
       rack
     rake (13.2.1)
