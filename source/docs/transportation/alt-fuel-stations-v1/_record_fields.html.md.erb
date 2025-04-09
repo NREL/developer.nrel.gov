@@ -844,7 +844,7 @@
       </td>
     </tr>
     <% electric_connectors = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/electric-connectors.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
-    <tr>
+    <tr id="ev-connector-types">
       <th class="doc-parameter-name" scope="row">ev_connector_types</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -873,7 +873,7 @@
       </td>
     </tr>
     <% ev_networks = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/electric-networks.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
-    <tr>
+    <tr id="ev-networks">
       <th class="doc-parameter-name" scope="row">ev_network</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -1326,6 +1326,17 @@
         </table>
       </td>
     </tr>
+    <tr id="ev-charging-units">
+      <th class="doc-parameter-name" scope="row">ev_charging_units</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        This field is present only if the <a href="#include-ev-charging-units"><code>include_ev_charging_units</code></a> request parameter is passed. This will be an array of EV charging unit records. See <a href="#ev-charging-unit-record-fields">EV charging unit record fields</a> for response details.
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -1357,6 +1368,97 @@
         </div>
       </td>
       <td class="doc-parameter-description">The name of the federal agency.</td>
+    </tr>
+  </tbody>
+</table>
+
+### EV Charging Unit Record Fields
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">network</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">The <a href="#ev-networks">network identifier</a> for the charging unit.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">connectors</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> record
+        </div>
+      </td>
+      <td class="doc-parameter-description">A record with <a href="#ev-connector-types">connector types</a> present as keys, and the power output information for each connector type as the value. See <a href="#power-output-record-fields">power output record fields</a> for information.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">port_count</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+      </td>
+      <td class="doc-parameter-description">The number of EV charging ports on the charging unit.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">charging_level</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">The <a href="#ev-charging-level">charging level</a> of the EV charging unit.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">funding_sources</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">A list of funding sources used to build the EV charging unit.</td>
+    </tr>
+  </tbody>
+</table>
+
+### Power Output Record Fields
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">power_kw</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> decimal
+        </div>
+      </td>
+      <td class="doc-parameter-description">The power output in kilowatts of the charger</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">port_count</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+      </td>
+      <td class="doc-parameter-description">The number of ports at the station for that particular network and connector type.</td>
     </tr>
   </tbody>
 </table>

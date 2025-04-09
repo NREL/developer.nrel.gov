@@ -441,7 +441,7 @@
   </td>
 </tr>
 <% electric_levels = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/electric-levels.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
-<tr>
+<tr id="ev-charging-level">
   <th class="doc-parameter-name" scope="row">ev_charging_level</th>
   <td class="doc-parameter-required">No</td>
   <td class="doc-parameter-value">
@@ -569,7 +569,7 @@
     </table>
   </td>
 </tr>
-<tr>
+<tr id="include-ev-charging-units">
   <th class="doc-parameter-name" scope="row">include_ev_charging_units</th>
   <td class="doc-parameter-required">No</td>
   <td class="doc-parameter-value">
@@ -584,7 +584,7 @@
     </div>
   </td>
   <td class="doc-parameter-description">
-    <p>If <code>true</code>, then include the <code>ev_charging_units</code> field in the Fuel Station Record Fields response.</p>
+    <p>If <code>true</code>, then include the <a href="#ev-charging-units"><code>ev_charging_units</code></a> field in the Fuel Station Record Fields response, which provides network and power output data for each EV charging unit present at the station.</p>
   </td>
 </tr>
 <tr>
