@@ -1,0 +1,34 @@
+<tr>
+  <th class="doc-parameter-name" scope="row">cards_accepted</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <%= payment_methods.map { |payment_method| "<em>#{payment_method.fetch("key")}</em>" }.join(", ") %>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return stations that accept any of the given payment methods. A single payment method, or a comma-separated list of multiple payment methods, may be given.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% payment_methods.each do |payment_method| %>
+          <tr>
+            <th scope="row"><%= payment_method.fetch("key") %></th>
+            <td><%= payment_method.fetch("name") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </td>
+</tr>

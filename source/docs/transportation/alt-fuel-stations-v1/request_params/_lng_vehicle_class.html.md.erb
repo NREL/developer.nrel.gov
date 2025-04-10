@@ -1,0 +1,34 @@
+<tr>
+  <th class="doc-parameter-name" scope="row">lng_vehicle_class</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <%= lng_vehicle_classes.map { |lng_vehicle_class| "<em>#{lng_vehicle_class.fetch("key")}</em>" }.join(", ") %>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only LNG stations that can accomodate the specified vehicle class size or greater.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Value</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% lng_vehicle_classes.each do |lng_vehicle_class| %>
+          <tr>
+            <th scope="row"><%= lng_vehicle_class.fetch("key") %></th>
+            <td><%= lng_vehicle_class.fetch("name") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </td>
+</tr>

@@ -1,0 +1,34 @@
+<tr>
+  <th class="doc-parameter-name" scope="row">country</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>US</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <%= loader.fetch("countries").map { |country| "<em>#{country.fetch("key")}</em>" }.join(", ") %>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only stations within the given country code.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Value</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% loader.fetch("countries").each do |country| %>
+          <tr>
+            <th scope="row"><%= country.fetch("key") %></th>
+            <td><%= country.fetch("name") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </td>
+</tr>

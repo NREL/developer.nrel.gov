@@ -1,0 +1,19 @@
+<tr>
+  <th class="doc-parameter-name" scope="row">ev_connector_type_operator</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>OR</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>OR, AND</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Control how multiple connector type options passed to the <code>ev_connector_type</code> parameter behave. The default of <code>OR</code> will return stations that have <em>any</em> of the connectors present. Specifying <code>AND</code> will only return stations that have <em>all</em> of the connectors present.</p>
+    <p>For example, with the default <code>OR</code> value, then performing a query for <code>ev_connector_type=CHADEMO,J1772COMBO</code> will return any station that has either <code>CHADEMO</code> or <code>J1772COMBO</code> connectors present. Compare that to a query for <code>ev_connector_type=CHADEMO,J1772COMBO&#8203;&ev_connector_type_operator=AND</code> which will return stations that must have both <code>CHADEMO</code> and <code>J1772COMBO</code> connectors present at the same station.</p>
+  </td>
+</tr>

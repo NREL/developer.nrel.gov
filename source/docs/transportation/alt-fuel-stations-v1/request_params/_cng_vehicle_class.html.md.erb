@@ -1,0 +1,34 @@
+<tr>
+  <th class="doc-parameter-name" scope="row">cng_vehicle_class</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <%= cng_vehicle_classes.map { |cng_vehicle_class| "<em>#{cng_vehicle_class.fetch("key")}</em>" }.join(", ") %>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only CNG stations that can accomodate the specified vehicle class size or greater.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Value</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% cng_vehicle_classes.each do |cng_vehicle_class| %>
+          <tr>
+            <th scope="row"><%= cng_vehicle_class.fetch("key") %></th>
+            <td><%= cng_vehicle_class.fetch("name") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </td>
+</tr>

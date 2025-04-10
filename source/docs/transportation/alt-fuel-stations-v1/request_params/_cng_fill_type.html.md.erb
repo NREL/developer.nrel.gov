@@ -1,0 +1,34 @@
+<tr>
+  <th class="doc-parameter-name" scope="row">cng_fill_type</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <%= cng_fill_types.map { |cng_fill_type| "<em>#{cng_fill_type.fetch("key")}</em>" }.join(", ") %>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only CNG stations that provide the specified type of dispensing capability. A single type, or a comma separated list of multiple types, may be given.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Value</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% cng_fill_types.each do |cng_fill_type| %>
+          <tr>
+            <th scope="row"><%= cng_fill_type.fetch("key") %></th>
+            <td><%= cng_fill_type.fetch("name") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </td>
+</tr>

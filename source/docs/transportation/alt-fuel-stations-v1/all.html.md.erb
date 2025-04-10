@@ -2,7 +2,6 @@
 title: All Stations
 summary: Return a full list of alternative fuel stations that match your query.
 url: GET /api/alt-fuel-stations/v1
-
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
@@ -30,22 +29,7 @@ The following query parameters may be passed in the request to control the outpu
   <tbody>
     <%= partial("docs/transportation/alt-fuel-stations-v1/request_params_common1") %>
     <%= partial("docs/transportation/alt-fuel-stations-v1/request_params_common2") %>
-    <tr>
-      <th class="doc-parameter-name" scope="row">limit</th>
-      <td class="doc-parameter-required">No</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> integer or string
-        </div>
-        <div class="doc-parameter-value-field">
-          <strong>Default:</strong> all
-        </div>
-        <div class="doc-parameter-value-field">
-          <strong>Range:</strong> <em>0</em> to <em>200</em>, or <em>all</em>
-        </div>
-      </td>
-      <td class="doc-parameter-description">The maximum number of results to return. An explicit limit of up to 200 may be passed in, or the special <code>all</code> string may be passed in to return all results.</td>
-    </tr>
+    <%= partial("docs/transportation/alt-fuel-stations-v1/request_params/limit") %>
   </tbody>
 </table>
 
