@@ -1,4 +1,3 @@
-<% loader = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/locator/loader.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
   <thead>
     <tr>
@@ -8,7 +7,6 @@
     </tr>
   </thead>
   <tbody>
-    <% fuels = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/fuels.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr>
       <th class="doc-parameter-name" scope="row">fuel_type_code</th>
       <td class="doc-parameter-value">
@@ -202,7 +200,6 @@
         </table>
       </td>
     </tr>
-    <% access_details = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/access-details.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr id="response-access-detail-code">
       <th class="doc-parameter-name" scope="row">access_detail_code</th>
       <td class="doc-parameter-value">
@@ -252,7 +249,6 @@
       </td>
       <td class="doc-parameter-description">Hours of operation for the station.</td>
     </tr>
-    <% payment_methods = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/payment-methods.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr>
       <th class="doc-parameter-name" scope="row">cards_accepted</th>
       <td class="doc-parameter-value">
@@ -281,7 +277,6 @@
         </table>
       </td>
     </tr>
-    <% owner_types = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/owner-types.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr>
       <th class="doc-parameter-name" scope="row">owner_type_code</th>
       <td class="doc-parameter-value">
@@ -359,7 +354,6 @@
         </table>
       </td>
     </tr>
-    <% ethanol_blends = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/ethanol-blends.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr>
       <th class="doc-parameter-name" scope="row">e85_other_ethanol_blends</th>
       <td class="doc-parameter-value">
@@ -388,7 +382,6 @@
         </table>
       </td>
     </tr>
-    <% lpg_nozzle_types = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/lpg-nozzle-types.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr>
       <th class="doc-parameter-name" scope="row">lpg_nozzle_types</th>
       <td class="doc-parameter-value">
@@ -546,7 +539,6 @@
       </td>
       <td class="doc-parameter-description">For CNG stations, the number of CNG dispensers installed.</td>
     </tr>
-    <% cng_fill_types = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/cng-fill-types.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr id="cng-fill-type-code">
       <th class="doc-parameter-name" scope="row">cng_fill_type_code</th>
       <td class="doc-parameter-value">
@@ -604,7 +596,6 @@
         </table>
       </td>
     </tr>
-    <% cng_psis = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/cng-psis.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr id="cng-psi">
       <th class="doc-parameter-name" scope="row">cng_psi</th>
       <td class="doc-parameter-value">
@@ -633,7 +624,6 @@
         </table>
       </td>
     </tr>
-    <% renewable_sources = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/renewable-sources.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr>
       <th class="doc-parameter-name" scope="row">cng_renewable_source</th>
       <td class="doc-parameter-value">
@@ -680,7 +670,6 @@
       </td>
       <td class="doc-parameter-description">For CNG stations, the total storage capacity, measured in standard cubic feet (scf).</td>
     </tr>
-    <% cng_vehicle_classes = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/cng-vehicle-classes.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr id="cng-vehicle-class">
       <th class="doc-parameter-name" scope="row">cng_vehicle_class</th>
       <td class="doc-parameter-value">
@@ -739,7 +728,6 @@
         </table>
       </td>
     </tr>
-    <% lng_vehicle_classes = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/lng-vehicle-classes.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr id="lng-vehicle-class">
       <th class="doc-parameter-name" scope="row">lng_vehicle_class</th>
       <td class="doc-parameter-value">
@@ -843,7 +831,6 @@
         </ul>
       </td>
     </tr>
-    <% electric_connectors = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/electric-connectors.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr id="ev-connector-types">
       <th class="doc-parameter-name" scope="row">ev_connector_types</th>
       <td class="doc-parameter-value">
@@ -872,7 +859,6 @@
         </table>
       </td>
     </tr>
-    <% ev_networks = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/electric-networks.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr id="ev-networks">
       <th class="doc-parameter-name" scope="row">ev_network</th>
       <td class="doc-parameter-value">
@@ -987,7 +973,6 @@
         </table>
       </td>
     </tr>
-    <% hy_pressures = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/hy-pressures.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr>
       <th class="doc-parameter-name" scope="row">hy_pressures</th>
       <td class="doc-parameter-value">
@@ -1016,7 +1001,6 @@
         </table>
       </td>
     </tr>
-    <% hy_standards = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/hy-standards.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr>
       <th class="doc-parameter-name" scope="row">hy_standards</th>
       <td class="doc-parameter-value">
@@ -1054,7 +1038,6 @@
       </td>
       <td class="doc-parameter-description">For hydrogen stations, a link to a website that provides up-to-date information about the current status of this hydrogen station.</td>
     </tr>
-    <% geocode_statuses = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/geocode-statuses.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr>
       <th class="doc-parameter-name" scope="row">geocode_status</th>
       <td class="doc-parameter-value">
@@ -1146,7 +1129,6 @@
       </td>
       <td class="doc-parameter-description">A unique identifier for this specific station.</td>
     </tr>
-    <% facility_types = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/facility-types.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr>
       <th class="doc-parameter-name" scope="row">facility_type</th>
       <td class="doc-parameter-value">
@@ -1266,8 +1248,6 @@
         </table>
       </td>
     </tr>
-    <!-- ###### NOTE: CHANGE THIS TO NON-CNG ENDPOINT ONCE PR 484 IS DEPLOYED TO PRODUCTION ###### -->
-    <% vehicle_classes = MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/cng-vehicle-classes.json", :params => { :country => "all", :api_key => ENV["DOCS_API_KEY"] })) %>
     <tr id="maximum-vehicle-class">
       <th class="doc-parameter-name" scope="row">maximum_vehicle_class</th>
       <td class="doc-parameter-value">

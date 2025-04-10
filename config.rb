@@ -66,6 +66,97 @@ helpers do
 
     trail.reverse
   end
+
+  def access_details
+    @_access_details ||= make_request("access-details")
+  end
+
+  def cng_fill_types
+    @_cng_fill_types ||= make_request("cng-fill-types")
+  end
+
+  def cng_psis
+    @_cng_psis ||= make_request("cng-psis")
+  end
+
+  def cng_vehicle_classes
+    @_cng_vehicle_classes ||= make_request("cng-vehicle-classes")
+  end
+
+  def electric_connectors
+    @_electric_connectors ||= make_request("electric-connectors")
+  end
+
+  def electric_levels
+    @_electric_levels ||= make_request("electric-levels")
+  end
+
+  def ethanol_blends
+    @_ethanol_blends ||= make_request("ethanol-blends")
+  end
+
+  def ev_networks
+    @_ev_networks ||= make_request("electric-networks")
+  end
+
+  def facility_types
+    @_facility_types ||= make_request("facility-types")
+  end
+
+  def federal_agencies
+    @_federal_agencies ||= make_request("federal-agencies")
+  end
+
+  def fuels
+    @_fuels ||= make_request("fuels")
+  end
+
+  def geocode_statuses
+    @_geocode_statuses ||= make_request("geocode-statuses")
+  end
+
+  def hy_pressures
+    @_hy_pressures ||= make_request("hy-pressures")
+  end
+
+  def hy_standards
+    @_hy_standards ||= make_request("hy-standards")
+  end
+
+  def lng_vehicle_classes
+    @_lng_vehicle_classes ||= make_request("lng-vehicle-classes")
+  end
+
+  def loader
+    @_loader ||= make_request("locator/loader")
+  end
+
+  def lpg_nozzle_types
+    @_lpg_nozzle_types ||= make_request("lpg-nozzle-types")
+  end
+
+  def owner_types
+    @_owner_types ||= make_request("owner-types")
+  end
+
+  def payment_methods
+    @_payment_methods ||= make_request("payment-methods")
+  end
+
+  def renewable_sources
+    @_renewable_sources ||= make_request("renewable-sources")
+  end
+
+  def vehicle_classes
+    # NOTE: CHANGE THIS TO NON-CNG ENDPOINT ONCE PR 484 IS DEPLOYED TO PRODUCTION
+    @_vehicle_classes ||= make_request("cng-vehicle-classes")
+  end
+
+  private
+
+  def make_request(path, params = {country: "all", api_key: ENV["DOCS_API_KEY"]})
+    MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/#{path}.json", params: params))
+  end
 end
 
 # Build-specific configuration
