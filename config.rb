@@ -148,8 +148,7 @@ helpers do
   end
 
   def vehicle_classes
-    # NOTE: CHANGE THIS TO NON-CNG ENDPOINT ONCE PR 484 IS DEPLOYED TO PRODUCTION
-    @_vehicle_classes ||= make_request("cng-vehicle-classes")
+    @_vehicle_classes ||= make_request("vehicle-classes")
   end
 
   private
