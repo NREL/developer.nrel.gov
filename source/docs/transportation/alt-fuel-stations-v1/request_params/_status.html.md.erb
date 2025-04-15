@@ -1,0 +1,34 @@
+<tr>
+  <th class="doc-parameter-name" scope="row">status</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <%= loader.fetch("status_types").map { |status_type| "<em>#{status_type.fetch("key")}</em>" }.join(", ") %>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return stations that match the given status. A single status, or a comma-separated list of multiple statuses, may be given.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% loader.fetch("status_types").each do |status_type| %>
+          <tr>
+            <th scope="row"><%= status_type.fetch("key") %></th>
+            <td><%= status_type.fetch("name") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </td>
+</tr>

@@ -1,0 +1,35 @@
+<tr>
+  <th class="doc-parameter-name" scope="row">access</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <%= loader.fetch("access_types").map { |access_type| "<em>#{access_type.fetch("key")}</em>" }.join(", ") %>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return stations with the given access type.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% loader.fetch("access_types").each do |access_type| %>
+          <tr>
+            <th scope="row"><%= access_type.fetch("key") %></th>
+            <td><%= access_type.fetch("name") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </td>
+</tr>
+
