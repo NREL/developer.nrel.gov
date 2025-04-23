@@ -13,16 +13,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        SUNY International TMY Data 
+        NOW-23 Guam (60 minute) 
           API
         |
       NREL: Developer Network
     </title>
 
-    <link rel="canonical" href="https://developer.nrel.gov/docs/solar/nsrdb/suny-india-tmy-data-download/" />
+    <link rel="canonical" href="https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-guam-v1-0-0-hourly-download/" />
     <script>
       if(window.location.href.indexOf('nrel.github.io') !== -1) {
-        window.location.href = 'https://developer.nrel.gov/docs/solar/nsrdb/suny-india-tmy-data-download/';
+        window.location.href = 'https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-guam-v1-0-0-hourly-download/';
       }
     </script>
 
@@ -31,7 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <script src="/assets/javascripts/shared-5e98af56.js"></script>
     <script src="/assets/javascripts/all-be6b361f.js"></script>
   </head>
-  <body class="docs docs_solar docs_solar_nsrdb docs_solar_nsrdb_suny-india-tmy-data-download docs_solar_nsrdb_suny-india-tmy-data-download_index">
+  <body class="docs docs_wind docs_wind_wind-toolkit docs_wind_wind-toolkit_wtk-guam-v1-0-0-hourly-download docs_wind_wind-toolkit_wtk-guam-v1-0-0-hourly-download_index">
     <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src=https://www.googletagmanager.com/ns.html?id=GTM-KG7PVKB
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -60,22 +60,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/docs/">Documentation</a></li>
-            <li class="breadcrumb-item"><a href="/docs/solar/">Solar</a></li>
-            <li class="breadcrumb-item"><a href="/docs/solar/nsrdb/">NSRDB Data Downloads</a></li>
-            <li class="breadcrumb-item active">SUNY International TMY Data</li>
+            <li class="breadcrumb-item"><a href="/docs/wind/">Wind</a></li>
+            <li class="breadcrumb-item"><a href="/docs/wind/wind-toolkit/">Wind Toolkit Data Downloads</a></li>
+            <li class="breadcrumb-item active">NOW-23 Guam (60 minute)</li>
     </ol>
 
 
-    <h1 id="suny-international-tmy-data-apinsrdbv2solarsuny-india-tmy-download">SUNY International TMY Data <span class="url">(/api/nsrdb/v2/solar/suny-india-tmy-download)</span></h1>
-<p>The SUNY International TMY Data is developed using Perez model from 2000-2014. The resolution of the data is 10 km hourly.</p>
+    <p>The NOW-23 Guam Dataset is a 24-year wind resource dataset for Guam. Produced in 2024, this new data set was created using the Weather Research and Forecasting (WRF) numerical weather prediction model (NWP). The NOW-23 Guam shares many of the same attributes as the WIND Toolkit, including 5-minute time resolution and 2-kilometer horizontal spatial resolution.</p>
 
-<p>This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.<br />Read more about the datasets at <a href="https://nsrdb.nrel.gov">https://nsrdb.nrel.gov</a><br /><br />The complete library of NSRDB solar data can be accessed in bulk at <a href="https://data.openei.org/s3_viewer?bucket=nrel-pds-nsrdb" target="_blank">https://data.openei.org/s3_viewer?bucket=nrel-pds-nsrdb</a>.</p>
+<p>This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.<br /><br />The complete library of wind data can be accessed in bulk at <a href="https://data.openei.org/s3_viewer?bucket=nrel-pds-wtk" target="_blank">https://data.openei.org/s3_viewer?bucket=nrel-pds-wtk</a>.</p>
 
 <ul id="toc"></ul>
 
 <h2 id="request-url">Request URL</h2>
 
-<pre>GET|POST /api/nsrdb/v2/solar/suny-india-tmy-download<em>.format?parameters</em></pre>
+<pre>GET|POST /api/wind-toolkit/v2/wind/wtk-guam-v1-0-0-hourly-download<em>.format?parameters</em></pre>
 
 <h2 id="request-parameters">Request Parameters</h2>
 <p><em>NOTE: when using POST to submit a request the api_key must still be included as a query parameter in the url. All other parameters may be included in a POST request as part of the payload.</em></p>
@@ -118,7 +117,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>dhi, dni, ghi, dew_point, air_temperature, surface_pressure, wind_direction, wind_speed</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>boundary_layer_height, friction_velocity_2m, inversemoninobukhovlength_2m, latent_heat_flux, precipitation_0m, pressure_0m, pressure_100m, pressure_200m, pressure_500m, relativehumidity_2m, sensible_heat_flux, skin_temperature, temperature_1000m, temperature_100m, temperature_200m, temperature_20m, temperature_2m, temperature_300m, temperature_40m, temperature_500m, temperature_60m, temperature_80m, turbulent_kinetic_energy_1000m, turbulent_kinetic_energy_100m, turbulent_kinetic_energy_200m, turbulent_kinetic_energy_20m, turbulent_kinetic_energy_300m, turbulent_kinetic_energy_40m, turbulent_kinetic_energy_500m, turbulent_kinetic_energy_60m, turbulent_kinetic_energy_80m, virtual_potential_temperature_1000m, virtual_potential_temperature_100m, virtual_potential_temperature_200m, virtual_potential_temperature_20m, virtual_potential_temperature_2m, virtual_potential_temperature_300m, virtual_potential_temperature_40m, virtual_potential_temperature_500m, virtual_potential_temperature_60m, virtual_potential_temperature_80m, winddirection_1000m, winddirection_100m, winddirection_10m, winddirection_120m, winddirection_140m, winddirection_160m, winddirection_180m, winddirection_200m, winddirection_20m, winddirection_250m, winddirection_300m, winddirection_40m, winddirection_500m, winddirection_60m, winddirection_80m, windspeed_1000m, windspeed_100m, windspeed_10m, windspeed_120m, windspeed_140m, windspeed_160m, windspeed_180m, windspeed_200m, windspeed_20m, windspeed_250m, windspeed_300m, windspeed_40m, windspeed_500m, windspeed_60m, windspeed_80m.</em></div>
       </td>
       <td class="doc-parameter-description">
         Each specified attribute(*) will be returned as a column in the resultant CSV download.
@@ -130,7 +129,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>tmy</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023</em>.</div>
       </td>
       <td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
     </tr>
@@ -154,6 +153,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </td>
       <td class="doc-parameter-description">
         Pass true to retrieve data including leap day (where appropriate). Pass false to retrieve data excluding leap day.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">interval</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong>60</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        This value determines data resolution. Either 60 minute intervals are available.
       </td>
     </tr>
     <tr>
@@ -233,15 +243,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </td>
     </tr>
     <tr>
-      <th class="doc-parameter-name" scope="row">warnings</th>
-      <td class="doc-parameter-value">
-      <div class="doc-parameter-value-field"><strong>Type:</strong> string array</div>
-      </td>
-      <td class="doc-parameter-description">
-      <p>A list of warning messages</p>
-      </td>
-    </tr>
-    <tr>
       <th class="doc-parameter-name" scope="row">inputs</th>
       <td class="doc-parameter-value">
       <div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
@@ -260,75 +261,60 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h2 id="data-file-format">Data File Format</h2>
 
-<p>Generated data files are formatted in accordance with the Standard Time Series Data File Format. This file format has been developed to support <a href="https://sam.nrel.gov/">SAM</a> and other NREL models and is documented fully in <a href="https://sam.nrel.gov/sites/default/files/content/documents/pdf/wfcsv.pdf">this PDF</a>. More information on SAM file formats avaialable on <a href="https://sam.nrel.gov/weather">the SAM weather page</a>.</p>
+<p>Generated data files are formatted in accordance with the Standard Time Series Data File Format. This file format has been developed to support <a href="https://sam.nrel.gov/">SAM</a> and other NREL models and is documented fully in <a href="https://sam.nrel.gov/sites/default/files/content/documents/pdf/wfcsv.pdf">this PDF</a>. More information on SAM file formats available on <a href="https://sam.nrel.gov/weather">the SAM weather page</a>.</p>
 
 <h2 id="examples">Examples</h2>
+<p>Examples may not reflect this specific dataset.</p>
 
 <h3 id="json-output-format">JSON Output Format</h3>
 
-<div class="doc-example-url"><code>GET /api/nsrdb/v2/solar/suny-india-tmy-download.json?wkt=POINT(78.9629 20.5937)&amp;attributes=dhi,dni,ghi&amp;names=tmy&amp;email=user@company.com</code></div>
+<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/wtk-guam-v1-0-0-hourly-download.json?wkt=POINT(144.99 13.94)&amp;attributes=boundary_layer_height&amp;names=2022,2023&amp;interval=60&amp;email=user@company.com</code></div>
 
-<div class="highlight"><pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"wkt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POINT(78.9629 20.5937)"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dhi,dni,ghi"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"names"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tmy"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@company.com"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0.0"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"resultset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File generation in progress. An email will be sent to user@company.com when the download is ready."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"downloadUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mapfiles.nrel.gov/data/solar/3c289d22fb03c926a5f5b8a03e2d5c86.zip"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "inputs": {
+        "body": {},
+        "params": {},
+        "query": {
+            "email": "user@company.com",
+            "wkt": "POINT(144.99 13.94)",
+            "attributes": "boundary_layer_height",
+            "names": "2022,2023",
+            "interval": "60"
+        }
+    },
+    "metadata": {
+        "version": "2.0.0",
+        "resultset": {
+            "count": 1
+        }
+    },
+    "status": 200,
+    "outputs": {
+        "message": "File generation in progress. An email will be sent to user@company.com when the download is ready.",
+        "downloadUrl": "https://mapfiles.nrel.gov/data/wind/aeb209bbde74620814e3a020c12b37e4.zip"
+    },
+    "errors": []
+}
+</code></pre></div>
 <h3 id="csv-output-format">CSV Output Format</h3>
 <p>Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.</p>
 
-<div class="doc-example-url"><code>GET /api/nsrdb/v2/solar/suny-india-tmy-download.csv?wkt=POINT(78.9629 20.5937)&amp;attributes=dhi,dni,ghi&amp;names=tmy&amp;email=user@company.com</code></div>
+<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/wtk-guam-v1-0-0-hourly-download.csv?email=user@company.com&amp;wkt=POINT(144.99%2013.94)&amp;names=2000&amp;interval=60&amp;api_key=YOUR_API_KEY</code></div>
 
-<div class="highlight"><pre class="highlight plaintext"><code>Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,Local Time Zone,Dew Point Units,DHI Units,DNI Units,GHI Units,Temperature Units,Pressure Units,Wind Direction Units,Wind Speed Units,Version
-NSRDB,39425,-,-,-,20.55,78.95,0,0,5.5,c,w/m2,w/m2,w/m2,c,mbar,Degrees,m/s,unknown
-Year,Month,Day,Hour,Minute,DHI,DNI,GHI
-2003,1,1,0,30,0,0,0
-2003,1,1,1,30,0,0,0
-2003,1,1,2,30,58,79,69
-2003,1,1,3,30,155,369,279
-2003,1,1,4,30,172,592,471
-2003,1,1,5,30,200,686,633
-2003,1,1,6,30,206,714,711
-2003,1,1,7,30,209,722,732
-2003,1,1,8,30,208,712,694
-2003,1,1,9,30,187,651,568
-2003,1,1,10,30,175,486,388
-2003,1,1,11,30,117,237,177
-2003,1,1,12,30,3,0,3
-2003,1,1,13,30,0,0,0
-2003,1,1,14,30,0,0,0
-2003,1,1,15,30,0,0,0
-2003,1,1,16,30,0,0,0
-2003,1,1,17,30,0,0,0
-2003,1,1,18,30,0,0,0
-2003,1,1,19,30,0,0,0
-2003,1,1,20,30,0,0,0
-2003,1,1,21,30,0,0,0
-2003,1,1,22,30,0,0,0
-2003,1,1,23,30,0,0,0
+<div class="highlight"><pre class="highlight plaintext"><code>SiteID,8012,Site Timezone,10,Data Timezone,0,Longitude,144.99762,Latitude,13.948067
+Year,Month,Day,Hour,Minute,boundary layer height,2-m friction velocity (m/s),2-m Inverse Monin-Obukhov Length,latent heat flux,precipitation at 0m,surface air pressure (Pa),air pressure at 100m (Pa),air pressure at 200m (Pa),air pressure at 500m (Pa),relative humidity at 2m (%),sensible heat flux,skin temperature,temperature at 1000m (C),air temperature at 100m (C),air temperature at 200m (C),air temperature at 20m (C),air temperature at 2m (C),temperature at 300m (C),air temperature at 40m (C),temperature at 500m (C),air temperature at 60m (C),air temperature at 80m (C),turbulent kinetic energy at 1000m (m2/s2),turbulent kinetic energy at 100m (m2/s2),turbulent kinetic energy at 200m (m2/s2),turbulent kinetic energy at 20m (m2/s2),turbulent kinetic energy at 300m (m2/s2),turbulent kinetic energy at 40m (m2/s2),turbulent kinetic energy at 500m (m2/s2),turbulent kinetic energy at 60m (m2/s2),turbulent kinetic energy at 80m (m2/s2),virtual potential temperature at 1000m (C),virtual potential temperature at 100m (C),virtual potential temperature at 200m (C),virtual potential temperature at 20m (C),virtual potential temperature at 2m (C),virtual potential temperature at 300m (C),virtual potential temperature at 40m (C),virtual potential temperature at 500m (C),virtual potential temperature at 60m (C),virtual potential temperature at 80m (C),wind direction at 1000m (deg),wind direction at 100m (deg),wind direction at 10m (deg),wind direction at 120m (deg),wind direction at 140m (deg),wind direction at 160m (deg),wind direction at 180m (deg),wind direction at 200m (deg),wind direction at 20m (deg),wind direction at 250m (deg),wind direction at 300m (deg),wind direction at 40m (deg),wind direction 500m (deg),wind direction at 60m (deg),wind direction at 80m (deg),windspeed at 1000m (deg),wind speed at 100m (m/s),wind speed at 10m (m/s),wind speed at 120m (m/s),wind speed at 140m (m/s),wind speed at 160m (m/s),wind speed at 180m (m/s),wind speed at 200m (m/s),wind speed at 20m (m/s),wind speed at 250m (m/s),wind speed at 300m (m/s),wind speed at 40m (m/s),wind speed 500m (m/s),wind speed at 60m (m/s),wind speed at 80m (m/s)
+2000,1,1,0,0,866.9000000000001,0.2617,-0.015259254723787308,181.3253173828125,0.008423328399658203,1011.3,1000,988.8,955.5,80.36,8.3294677734375,28.12,19.11,26.29,25.32,27.1,27.39,24.36,26.89,22.44,26.69,26.490000000000002,0,0,0,0,0,0,0,0,0,30.22,29.240000000000002,29.21,29.37,30.61,29.2,29.3,29.19,29.27,29.26,59.36,64.57000000000001,64.64,64.54,64.51,64.47,64.43,64.39,64.66,64.29,64.18,64.65,63.71,64.63,64.61,6.08,7.68,6.93,7.7,7.71,7.71,7.7,7.69,7.22,7.66,7.62,7.49,7.390000000000001,7.6000000000000005,7.65
+2000,1,1,1,0,542.8000000000001,0.269,-0.016174810007214546,186.45912170410156,0.008423328399658203,1011.5,1000.1,988.9,955.6,81.10000000000001,10.620513916015625,28.12,19.34,26.1,25.150000000000002,26.91,27.21,24.21,26.69,22.54,26.490000000000002,26.3,0,0,0,0,0,0,0,0,0,30.36,29.03,29.02,29.150000000000002,30.43,29.02,29.080000000000002,29.19,29.060000000000002,29.04,39.82,67.51,67.22,67.58,67.64,67.7,67.76,67.82000000000001,67.28,67.96000000000001,68.09,67.34,66.42,67.39,67.45,6.79,7.96,7.0600000000000005,8.01,8.040000000000001,8.06,8.08,8.1,7.38,8.14,8.16,7.69,8.01,7.82,7.9
+2000,1,1,2,0,625.4000000000001,0.2555,-0.016479995101690292,176.36578369140625,0.008423328399658203,1011,999.7,988.4,955.2,80.76,8.522796630859375,28.12,18.78,26.26,25.3,27.07,27.36,24.35,26.85,22.55,26.650000000000002,26.45,0,0,0,0,0,0,0,0,0,30.29,29.240000000000002,29.21,29.37,30.59,29.2,29.3,29.240000000000002,29.27,29.26,40.77,66.68,66.08,66.71000000000001,66.73,66.74,66.75,66.75,66.33,66.73,66.69,66.5,65.9,66.58,66.64,6.640000000000001,7.53,6.76,7.55,7.5600000000000005,7.57,7.57,7.5600000000000005,7.05,7.54,7.5,7.33,7.17,7.44,7.5
+2000,1,1,3,0,536.8000000000001,0.2371,-0.019531846046447754,167.78915405273438,0.008423328399658203,1010.3,998.9,987.7,954.5,80.77,8.650543212890625,28.12,18.96,26.21,25.26,27.01,27.3,24.32,26.8,22.76,26.59,26.400000000000002,0,0,0,0,0,0,0,0,0,30.400000000000002,29.240000000000002,29.22,29.37,30.52,29.21,29.3,29.37,29.27,29.26,48.300000000000004,71.57000000000001,71.05,71.59,71.62,71.64,71.65,71.66,71.24,71.67,71.64,71.37,68.93,71.46000000000001,71.52,7.24,7,6.3100000000000005,7.0200000000000005,7.0200000000000005,7.0200000000000005,7.01,7,6.57,6.96,6.91,6.82,6.41,6.92,6.97
 </code></pre></div>
 <h3 id="post-request-example-in-python">POST request example in Python</h3>
 
 <div class="highlight"><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://developer.nrel.gov/api/nsrdb/v2/solar/suny-india-tmy-download.json?api_key=yourapikeygoeshere"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/wind-toolkit/v2/wind/wtk-guam-v1-0-0-hourly-download.json?api_key=yourapikeygoeshere"</span>
 
-<span class="n">payload</span> <span class="o">=</span> <span class="s">"names=tmy&amp;leap_day=false&amp;utc=false&amp;full_name=Honored%2BUser&amp;email=honored.user%40gmail.com&amp;affiliation=NREL&amp;mailing_list=true&amp;reason=Academic&amp;attributes=dhi%2Cdni%2Cwind_speed_10m_nwp%2Csurface_air_temperature_nwp&amp;wkt=MULTIPOINT(-106.22%2032.9741%2C-106.18%2032.9741%2C-106.1%2032.9741)"</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"api_key={{API_KEY}}&amp;email=user@company.com&amp;wkt=POINT(144.99%2013.94)&amp;names=2000&amp;interval=60"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'content-type'</span><span class="p">:</span> <span class="s">"application/x-www-form-urlencoded"</span><span class="p">,</span>
@@ -349,11 +335,11 @@ Year,Month,Day,Hour,Minute,DHI,DNI,GHI
 
 <p>In addition, the service has a fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.</p>
 
-<p>For some tips and tricks to maximize data downloads please read the guide <a href="/docs/solar/nsrdb/guide">here</a>.</p>
+<p>For some tips and tricks to maximize data downloads please read the guide <a href="/docs/wind/wind-toolkit/guide/">here</a>.</p>
 
 <h2 id="contacts">Contact</h2>
 
-<p>For questions about the API or the data models please contact <a href="mailto:nsrdb@nrel.gov">nsrdb@nrel.gov</a></p>
+<p>For questions about the API or the data models please contact <a href="mailto:wind-toolkit@nrel.gov">wind-toolkit@nrel.gov</a></p>
 
 <h2 id="errors">Errors</h2>
 
@@ -375,7 +361,7 @@ Year,Month,Day,Hour,Minute,DHI,DNI,GHI
 </table>
 
     <div style="text-align: center; font-style: italic; padding: 3em 0.5em 0em 0.5em;">
-  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/solar/nsrdb/suny-india-tmy-data-download.html.md.erb">Help Improve this Content</a>
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/master/source/docs/wind/wind-toolkit/wtk-guam-v1-0-0-hourly-download.html.md.erb">Help Improve this Content</a>
 </div>
 
       <footer class="container-fluid">
