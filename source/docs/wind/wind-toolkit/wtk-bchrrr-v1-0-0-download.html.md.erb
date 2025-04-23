@@ -1,5 +1,5 @@
 ---
-title: "BC-HRRR CONUS 60-minute (NOAA + NREL)"
+title: "BC-HRRR CONUS (NOAA + NREL)"
 summary: "NREL processed NOAA's HRRR data to overcome limitations for wind energy use, such as missing timesteps, low resolution, and bias versus the WIND Toolkit. The resulting BC-HRRR dataset (2015-2023) ensures consistency through bias correction, enabling seamless use in grid integration studies alongside the WIND Toolkit and future scalability."
 detail: "To address the need for regularly updated wind resource data, NREL has processed the High-Resolution Rapid Refresh (HRRR) outputs for use in grid integration modeling. The HRRR is an hourly-updated operational forecast product produced by the National Oceanic and Atmospheric Administration (NOAA) (Dowell et al., 2022).<br>
 <br>
@@ -7,7 +7,8 @@ Several barriers have prevented the HRRR's widespread proliferation in the wind 
 <br>
 Bias correction is necessary for wind resource consistency across weather years to be used simultaneously in planning-focused grid integration studies alongside the original WIND Toolkit data. We show that quantile mapping with the WIND Toolkit as a historical baseline is an effective method for bias correcting the interpolated HRRR data: the BC-HRRR has reduced mean bias versus comparable gridded wind resource datasets (+0.12 m/s versus Vortex) and has very low mean bias versus ground measurement stations (+0.01 m/s) (Buster et al., 2024).<br>
 <br>
-BC-HRRR's consistency with the legacy WIND Toolkit allows NREL to extend grid integration analysis to 15+ weather years of wind data with low-overhead extensibility to future years as they are made available by NOAA. As with historical datasets like the WIND Toolkit, BC-HRRR is intended for use in grid integration modeling (e.g., capacity expansion, production cost, and resource adequacy modeling) both independently and alongside the legacy WIND Toolkit. "
+BC-HRRR's consistency with the legacy WIND Toolkit allows NREL to extend grid integration analysis to 15+ weather years of wind data with low-overhead extensibility to future years as they are made available by NOAA. As with historical datasets like the WIND Toolkit, BC-HRRR is intended for use in grid integration modeling (e.g., capacity expansion, production cost, and resource adequacy modeling) both independently and alongside the legacy WIND Toolkit.
+<br><br>The complete library of wind data can be accessed in bulk at <a href=\"https://data.openei.org/s3_viewer?bucket=nrel-pds-wtk\" target=\"_blank\">https://data.openei.org/s3_viewer?bucket=nrel-pds-wtk</a>."
 url: /api/wind-toolkit/v2/wind/wtk-bchrrr-v1-0-0-download
 ---
 
