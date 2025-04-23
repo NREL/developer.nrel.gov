@@ -1,0 +1,311 @@
+---
+title: "NOW-23 Guam (5 minute)"
+summary: The NOW-23 Guam Dataset is a 24-year wind resource dataset for Guam. Produced in 2024, this new data set was created using the Weather Research and Forecasting (WRF) numerical weather prediction model (NWP). The NOW-23 Guam shares many of the same attributes as the WIND Toolkit, including 5-minute time resolution and 2-kilometer horizontal spatial resolution.
+detail: This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.<br><br>The complete library of wind data can be accessed in bulk at <a href="https://data.openei.org/s3_viewer?bucket=nrel-pds-wtk" target="_blank">https://data.openei.org/s3_viewer?bucket=nrel-pds-wtk</a>.
+url: /api/wind-toolkit/v2/wind/wtk-guam-v1-0-0-5min-download
+---
+
+<%= current_page.data.summary %>
+
+<%= current_page.data.detail %>
+
+<ul id="toc"></ul>
+
+## Request URL
+
+<pre>GET|POST <%= current_page.data.url %><em>.format?parameters</em></pre>
+
+## Request Parameters
+_NOTE: when using POST to submit a request the api_key must still be included as a query parameter in the url. All other parameters may be included in a POST request as part of the payload._
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Parameter</th>
+      <th class="doc-parameters-required" scope="col">Required</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">api_key</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Your developer API key. See <a href="/docs/api-key/">API keys</a> for more information.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">wkt</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> well-known text string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        A well-known text (WKT) representation of the geometry for which to extract data. May be a point, multipoint, or polygon geometry. When a point is passed the site nearest to that point is used. When a multipoint is passed the site nearest each point is used. This can be useful for downloading multiple sites in a single request when those sites are geographically distant from each other. When a polygon is passed all sites that intersect with the given polygon are used.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">attributes</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>turbulent_kinetic_energy_1000m, turbulent_kinetic_energy_100m, turbulent_kinetic_energy_200m, turbulent_kinetic_energy_20m, turbulent_kinetic_energy_300m, turbulent_kinetic_energy_40m, turbulent_kinetic_energy_500m, turbulent_kinetic_energy_60m, turbulent_kinetic_energy_80m, winddirection_1000m, winddirection_100m, winddirection_10m, winddirection_120m, winddirection_140m, winddirection_160m, winddirection_180m, winddirection_200m, winddirection_20m, winddirection_250m, winddirection_300m, winddirection_40m, winddirection_500m, winddirection_60m, winddirection_80m, windspeed_1000m, windspeed_100m, windspeed_10m, windspeed_120m, windspeed_140m, windspeed_160m, windspeed_180m, windspeed_200m, windspeed_20m, windspeed_250m, windspeed_300m, windspeed_40m, windspeed_500m, windspeed_60m, windspeed_80m.</em></div>
+      </td>
+      <td class="doc-parameter-description">
+        Each specified attribute(*) will be returned as a column in the resultant CSV download.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">names</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023</em>.</div>
+      </td>
+      <td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">utc</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> true</div>
+      </td>
+      <td class="doc-parameter-description">
+        Pass true to retrieve data with timestamps in UTC. Pass false to retrieve data with timestamps converted to local time of data point (without daylight savings time).
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">leap_day</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> false</div>
+      </td>
+      <td class="doc-parameter-description">
+        Pass true to retrieve data including leap day (where appropriate). Pass false to retrieve data excluding leap day.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">interval</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong>5, 15, 30, 60</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        This value determines data resolution. Either 5, 15, 30, 60 minute intervals are available.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">full_name</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">The full name of the user requesting data.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">email</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> email string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        An active email for the user requesting data. This email will be used to deliver the extracted data.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">affiliation</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        The organization with which the user requesting the data is affiliated.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">reason</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">The reason that the user is requesting the data.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">mailing_list</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> false</div>
+      </td>
+      <td class="doc-parameter-description">
+        Pass true to add the email address to our list of recipients for the NSRDB mailing list.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Response Fields
+
+The response is composed of service-related informational fields and the results of the data query.
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">errors</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> string array</div>
+      </td>
+      <td class="doc-parameter-description">
+      <p>A list of error messages</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">inputs</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
+      </td>
+      <td class="doc-parameter-description">Key: Value pairs representing all input parameters</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">outputs</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
+      </td>
+      <td class="doc-parameter-description">Upon successful completion a message will be returned informing the user that file generation is in progress and an email will be sent to the address provided in the <code>email</code> input field when the download is ready</td>
+    </tr>
+  </tbody>
+</table>
+
+## Data File Format
+
+Generated data files are formatted in accordance with the Standard Time Series Data File Format. This file format has been developed to support [SAM](https://sam.nrel.gov/) and other NREL models and is documented fully in [this PDF](https://sam.nrel.gov/sites/default/files/content/documents/pdf/wfcsv.pdf). More information on SAM file formats available on [the SAM weather page](https://sam.nrel.gov/weather).
+
+## Examples
+Examples may not reflect this specific dataset.
+
+### JSON Output Format
+
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?email=user@company.com&wkt=POINT(144.99+13.94)&attributes=turbulent_kinetic_energy_1000m&names=2022,2023&interval=5</code></div>
+
+```JSON
+{
+    "inputs": {
+        "body": {},
+        "params": {},
+        "query": {
+            "email": "user@company.com",
+            "wkt": "POINT(144.99 13.94)",
+            "attributes": "turbulent_kinetic_energy_1000m",
+            "names": "2022,2023",
+            "interval": "5"
+        }
+    },
+    "metadata": {
+        "version": "2.0.0",
+        "resultset": {
+            "count": 1
+        }
+    },
+    "status": 200,
+    "outputs": {
+        "message": "File generation in progress. An email will be sent to user@company.com when the download is ready.",
+        "downloadUrl": "https://mapfiles.nrel.gov/data/wind/09761e6d005aa671d9ac28df8fe30dd0.zip"
+    },
+    "errors": []
+}
+```
+
+### CSV Output Format
+Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.
+
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?email=user@email.com&wkt=POINT%28144.7+13.7%29&names=2000&interval=5&api_key=DEMO_KEY</code></div>
+
+```csv
+SiteID,6078,Site Timezone,10,Data Timezone,0,Longitude,144.70114,Latitude,13.696274
+Year,Month,Day,Hour,Minute,turbulent kinetic energy at 1000m (m2/s2),turbulent kinetic energy at 100m (m2/s2),turbulent kinetic energy at 200m (m2/s2),turbulent kinetic energy at 20m (m2/s2),turbulent kinetic energy at 300m (m2/s2),turbulent kinetic energy at 40m (m2/s2),turbulent kinetic energy at 500m (m2/s2),turbulent kinetic energy at 60m (m2/s2),turbulent kinetic energy at 80m (m2/s2),wind direction at 1000m (deg),wind direction at 100m (deg),wind direction at 10m (deg),wind direction at 120m (deg),wind direction at 140m (deg),wind direction at 160m (deg),wind direction at 180m (deg),wind direction at 200m (deg),wind direction at 20m (deg),wind direction at 250m (deg),wind direction at 300m (deg),wind direction at 40m (deg),wind direction at 500m (deg),wind direction at 60m (deg),wind direction at 80m (deg),wind speed at 1000m (m/s),wind speed at 100m (m/s),wind speed at 10m (m/s),wind speed at 120m (m/s),wind speed at 140m (m/s),wind speed at 160m (m/s),wind speed at 180m (m/s),wind speed at 200m (m/s),wind speed at 20m (m/s),wind speed at 250m (m/s),wind speed at 300m (m/s),wind speed at 40m (m/s),wind speed at 500m (m/s),wind speed at 60m (m/s),wind speed at 80m (m/s)
+2000,1,1,0,0,0,0,0,0,0,0,0,0,0,65.08,63.43,63.7,63.39,63.34,63.31,63.27,63.230000000000004,63.620000000000005,63.15,63.07,63.56,62.81,63.52,63.480000000000004,6.95,7.890000000000001,7.09,7.92,7.94,7.96,7.97,7.98,7.38,8,8.01,7.66,8.01,7.78,7.84
+2000,1,1,0,5,0,0,0,0,0,0,0,0,0,63.7,61.88,62.1,61.85,61.82,61.79,61.77,61.74,62.03,61.68,61.620000000000005,61.99,61.49,61.95,61.910000000000004,7,7.6000000000000005,6.75,7.640000000000001,7.68,7.71,7.74,7.76,7.04,7.8,7.84,7.33,7.97,7.46,7.54
+2000,1,1,0,10,0,0,0,0,0,0,0,0,0,63.18,60.45,60.33,60.480000000000004,60.49,60.51,60.54,60.56,60.34,60.63,60.7,60.38,61.14,60.4,60.43,7.13,7.57,6.68,7.62,7.65,7.68,7.71,7.73,6.99,7.7700000000000005,7.8,7.29,7.890000000000001,7.43,7.51
+2000,1,1,0,15,0,0,0,0,0,0,0,0,0,63.29,59.75,59.15,59.83,59.9,59.980000000000004,60.06,60.13,59.300000000000004,60.31,60.49,59.44,61.34,59.56,59.65,7.28,7.71,6.83,7.75,7.7700000000000005,7.79,7.8100000000000005,7.82,7.140000000000001,7.84,7.8500000000000005,7.45,7.8500000000000005,7.58,7.65
+2000,1,1,0,20,0,0,0,0,0,0,0,0,0,64.22,60.14,59.370000000000005,60.230000000000004,60.33,60.410000000000004,60.49,60.56,59.59,60.76,60.94,59.77,61.67,59.910000000000004,60.03,7.36,7.8500000000000005,6.98,7.890000000000001,7.91,7.930000000000001,7.95,7.96,7.29,7.98,7.99,7.59,7.97,7.72,7.8
+2000,1,1,0,25,0,0,0,0,0,0,0,0,0,63.96,60.96,60.31,61.03,61.07,61.120000000000005,61.160000000000004,61.2,60.54,61.29,61.370000000000005,60.7,61.6,60.81,60.89,7.3500000000000005,7.84,6.96,7.88,7.91,7.930000000000001,7.95,7.96,7.2700000000000005,7.99,8,7.57,8.03,7.71,7.78
+2000,1,1,0,30,0,0,0,0,0,0,0,0,0,63.730000000000004,61.980000000000004,61.68,61.980000000000004,61.980000000000004,61.97,61.96,61.95,61.83,61.92,61.870000000000005,61.910000000000004,61.620000000000005,61.95,61.97,7.5600000000000005,7.82,6.94,7.86,7.88,7.91,7.930000000000001,7.94,7.25,7.96,7.98,7.55,8.01,7.69,7.76
+2000,1,1,0,35,0,0,0,0,0,0,0,0,0,65.52,61.9,62.06,61.84,61.79,61.74,61.690000000000005,61.64,62.06,61.5,61.370000000000005,62.03,60.86,61.99,61.95,7.47,7.88,7,7.92,7.94,7.96,7.97,7.98,7.32,7.99,7.99,7.63,7.96,7.76,7.83
+
+```
+
+### POST request example in Python
+
+```python
+import requests
+
+url = "http://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
+
+payload = "api_key={{API_KEY}}&email=user@email.com&wkt=POINT%28144.7+13.7%29&names=2000&interval=5"
+
+headers = {
+    'content-type': "application/x-www-form-urlencoded",
+    'cache-control': "no-cache"
+}
+
+response = requests.request("POST", url, data=payload, headers=headers)
+
+print(response.text)
+```
+
+<h2 id="rate-limits">Rate Limits</h2>
+
+Rate limits for this application are significantly less than the [standard rate limits](/docs/rate-limits){:target="_blank"} for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.
+
+There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.
+
+Secondly each user is limited to 20 in-flight requests at any given time.
+
+In addition, the service has a fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.
+
+For some tips and tricks to maximize data downloads please read the guide [here](/docs/wind/wind-toolkit/guide/).
+
+<h2 id="contacts">Contact</h2>
+
+<p>For questions about the API or the data models please contact <a href="mailto:wind-toolkit@nrel.gov">wind-toolkit@nrel.gov</a></p>
+
+<h2 id="errors">Errors</h2>
+
+<p><a href="/docs/errors/">Standard errors</a> may be returned. In addition, the following service-specific errors may be returned:</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col" style="width: 100px;">HTTP Status Code</th>
+      <th class="doc-parameters-required" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">400</th>
+      <td class="doc-parameter-description">Bad Request: When required parameters are missing.</td>
+    </tr>
+  </tbody>
+</table>
