@@ -1,0 +1,122 @@
+body, html { overflow-x:hidden; }
+#content {
+	margin-top:.5em
+}
+
+header .logo{
+	background-position:center center
+}
+@media (min-width:768px){
+	#content {
+		margin-top:1em
+	}
+	header .logo{
+		background-position:center right
+	}
+	.navbar-wrapper .container.app{
+		border-top:none
+	}
+}
+header a.app-name,header a.app-name:hover,header a.app-name:visited{
+	color:#4B545A;
+	display:block;
+	font-family:Roboto;
+	font-size:1.5rem;
+	line-height:1.2em;
+	margin:0 0 .3em;
+	text-align:center;
+	text-decoration:none
+}
+@media (min-width:768px){
+	header a.app-name,header a.app-name:hover,header a.app-name:visited {
+		font-size:1.85rem;
+		margin-top:28px;
+		text-align:left
+	}
+}
+/* Interior page header */
+header .logo.interior {
+	height: 65px;
+	background-size: 137px;
+}
+#interior.program-header .navbar-light .navbar-nav > li > a {padding: 5px 15px;}
+@media (min-width: 768px) {
+	.banner-logo {
+		min-height: 75px;
+	}
+}
+/* Login/Help links */
+.navbar-light .navbar-nav.ml-auto .nav-link {
+	color: #045881;
+	font-weight: 400;
+}
+/* Search */
+.site-searchbar-toggle {
+	border: 1px solid #5e6a71;
+	border-radius: 5px;
+	color: #5e6a71;
+	margin: 15px;
+	padding: 8px 6px 8px 6px;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.site-searchbar-toggle.int {margin:0;}
+.site-navbar-toggler {
+	display: inline-block;
+}  
+.application .navbar-light .site-navbar-toggler,
+.program-header .navbar-light .side-navbar-toggler {
+	border: none;
+}
+.site-navbar-toggler {
+	font-size: 1rem;
+	line-height: 1;
+	background-color: transparent;
+}
+.custom-toggler .navbar-toggler-icon {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.site-search-bar {
+	margin: 0;
+}
+.site-searchbar-form {
+	font-family: Roboto, "Helvetica Neue", Helvetica, sans-serif;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	background-color: transparent;
+}
+.site-searchbar-form .form-control {
+    display: inline-block;
+    width: 200px;
+    vertical-align: middle;
+    box-shadow: none;
+    height: 40px;
+}
+@media (max-width: 350px) {
+    .site-searchbar-form .form-control {
+        width: 160px;
+    }
+}
+.site-searchbar-form .form-group {margin-bottom:0;}
+#searchbar-collapse-mobile button {
+	background-color: #D1D5D8;
+	border-color: #D1D5D8;
+	color: #333;
+    line-height:1.7;
+}
+
+@media (min-width: 576px) {
+    #searchbar-collapse-mobile button {margin-left:3px;}
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {  
+	.site-searchbar-toggle {
+		position: relative;
+	}
+	.site-searchbar-form {float:right;}
+	.site-search-bar {
+		background-color: #e3e3e3;
+	}
+}

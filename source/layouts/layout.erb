@@ -25,15 +25,19 @@
       }
     </script>
 
-    <%= stylesheet_link_tag("all") %>
+    <%= vite_stylesheet_tag("all.scss") %>
 
-    <%= javascript_include_tag("shared") %>
-    <%= javascript_include_tag("all") %>
+    <%#= vite_javascript_tag("shared") %>
+    <%= vite_javascript_tag("all") %>
   </head>
   <body class="<%= page_classes %>">
     <%= partial("layouts/noscript_analytics") %>
     <%= partial("layouts/header") %>
-    <%= yield %>
+    <main id="content" class="container">
+      <%= partial("layouts/breadcrumbs") %>
+
+      <%= yield %>
+    </main>
     <%= partial("layouts/edit_me") %>
     <%= partial("layouts/footer") %>
   </body>

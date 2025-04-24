@@ -1,0 +1,17 @@
+{
+  "all": {
+    "publicDir": "tmp/vite",
+    "sourceCodeDir": "frontend",
+    "additionalEntrypoints": ["~/{assets,fonts,icons,images,nrel-app-template/img}/**/*"],
+    "watchAdditionalPaths": []
+  },
+  "development": {
+    "autoBuild": true,
+    "publicOutputDir": "vite-dev",
+    "port": 3036
+  },
+  "test": {
+    "autoBuild": true,
+    "publicOutputDir": "vite-test"
+  }
+}

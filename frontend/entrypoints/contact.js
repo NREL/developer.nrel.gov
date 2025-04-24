@@ -1,7 +1,6 @@
 import bootbox from 'bootbox';
 
 require('parsleyjs');
-require('./_vendor/jquery.iecors');
 
 var defaults = {};
 var options = $.extend({}, defaults, nrelContactOptions || {});

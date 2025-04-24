@@ -55,3 +55,6 @@ task :lint do
 end
 
 task :default => [:test, :lint]
+
+require 'vite_padrino'
+ViteRuby.install_tasks

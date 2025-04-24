@@ -1,3 +1,5 @@
+require "vite_padrino/tag_helpers"
+
 ###
 # Page options, layouts, aliases and proxies
 ###
@@ -21,17 +23,29 @@ page "/404.html", :directory_index => false
 # General configuration
 
 activate :external_pipeline,
-  name: :webpack,
-  command: build? ? "pnpm run build" : "pnpm run start",
-  source: "tmp/webpack-dist",
+  name: :vite,
+  command: build? ? "bundle exec vite build --clobber" : "pnpm exec vite build --watch --mode development",
+  source: "tmp/vite",
   latency: 1
 activate :directory_indexes
 activate :syntax
+
+module MiddlemanWatcherViteDirectoryFix
+  def file_contents_include_binary_bytes?(filename)
+    if File.directory?(filename)
+      true
+    else
+      super
+    end
+  end
+end
+Middleman::Util.singleton_class.send(:prepend, MiddlemanWatcherViteDirectoryFix)
 
 set :css_dir, "assets/stylesheets"
 set :js_dir, "assets/javascripts"
 set :fonts_dir, "assets/fonts"
 set :images_dir, "assets/images"
+
 
 set :markdown_engine, :kramdown
 set :markdown, {
@@ -39,21 +53,21 @@ set :markdown, {
   :smart_quotes => ["apos", "apos", "quot", "quot"],
 }
 
-# Reload the browser automatically whenever files change
-configure :development do
-  if(ENV["MIDDLEMAN_LIVERELOAD_PORT"] && ENV["MIDDLEMAN_LIVERELOAD_JS_HOST"])
-    activate :livereload, :port => ENV["MIDDLEMAN_LIVERELOAD_PORT"], :js_host => ENV["MIDDLEMAN_LIVERELOAD_JS_HOST"]
-  else
-    activate :livereload
-  end
-end
-
 ###
 # Helpers
 ###
 
 # Methods defined in the helpers block are available in templates
+helpers VitePadrino::TagHelpers
 helpers do
+  def asset_path(*args)
+    if args.length == 1
+      super(File.extname(args.first).delete_prefix(".").to_sym, args.first)
+    else
+      super(*args)
+    end
+  end
+
   def breadcrumbs_trail
     page = current_page
     trail = [page]
@@ -70,17 +84,11 @@ end
 
 # Build-specific configuration
 configure :build do
-  # Minify CSS on build
-  activate :minify_css
-
-  # Minify Javascript on build
-  activate :minify_javascript
-
   # Enable cache buster
-  activate :asset_hash, :ignore => [
-    # Don't cache-bust the Swagger throbber.gif, since it's a hardcoded path.
-    %r{throbber.gif},
-  ]
+  # activate :asset_hash, :ignore => [
+  #   # Don't cache-bust the Swagger throbber.gif, since it's a hardcoded path.
+  #   %r{throbber.gif},
+  # ]
 end
 
 # Set default API key for local development.

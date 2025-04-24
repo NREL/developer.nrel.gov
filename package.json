@@ -1,11 +1,20 @@
 {
+  "name": "developer.nrel.gov",
+  "version": "0.0.0",
   "private": true,
+  "type": "module",
+  "scripts": {
+    "watch": "vite build --watch",
+    "build": "vite build"
+  },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.36",
-    "@fortawesome/free-brands-svg-icons": "^5.15.4",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "bootbox": "^5.5.3",
-    "bootstrap": "^4.6.2",
+    "@fontsource-variable/roboto": "^5.2.5",
+    "@fontsource/roboto": "^5.2.5",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "bootbox": "^6.0.3",
+    "bootstrap": "^5.3.5",
     "file-loader": "^6.2.0",
     "jquery": "^3.7.1",
     "parsleyjs": "^2.9.2",
@@ -14,9 +23,9 @@
     "swagger-ui-dist": "~3.31.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.25.2",
-    "@babel/preset-env": "^7.25.3",
-    "babel-loader": "^8.3.0",
+    "@babel/core": "^7.26.10",
+    "@babel/preset-env": "^7.26.9",
+    "babel-loader": "^8.4.1",
     "css-loader": "^3.6.0",
     "gh-pages": "^3.2.3",
     "mini-css-extract-plugin": "^0.9.0",
@@ -24,14 +33,13 @@
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.2",
-    "sass": "^1.77.8",
+    "sass": "^1.87.0",
     "sass-loader": "^10.5.2",
     "swagger-tools": "^0.10.4",
+    "vite": "^5.4.18",
+    "vite-plugin-ruby": "^5.1.1",
     "webpack": "^4.47.0",
     "webpack-cli": "^3.3.12"
   },
-  "scripts": {
-    "start": "NODE_ENV=development webpack --watch -d --color",
-    "build": "NODE_ENV=production webpack --bail -p"
-  }
+  "packageManager": "pnpm@10.8.1+sha512.c50088ba998c67b8ca8c99df8a5e02fd2ae2e2b29aaf238feaa9e124248d3f48f9fb6db2424949ff901cffbb5e0f0cc1ad6aedb602cd29450751d11c35023677"
 }
