@@ -21,10 +21,10 @@
     "swagger-ui": "^5.21.0"
   },
   "devDependencies": {
+    "@stoplight/spectral-cli": "^6.15.0",
     "autoprefixer": "^10.4.21",
     "gh-pages": "^3.2.3",
     "sass": "^1.87.0",
-    "swagger-tools": "^0.10.4",
     "vite": "^5.4.18",
     "vite-plugin-ruby": "^5.1.1"
   },

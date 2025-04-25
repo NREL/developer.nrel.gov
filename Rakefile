@@ -35,13 +35,13 @@ task :lint do
 
     # Validate the swagger spec
     unless errors[file]
-      output, status = Open3.capture2e("./node_modules/.bin/swagger-tools", "validate", "-v", file)
+      output, status = Open3.capture2e("pnpm", "exec", "spectral", "lint", file)
       output = output.to_s.strip
       puts "#{output}\n\n\n"
 
       # swagger-tools doesn't exit with an unsuccessful code on warnings, so also
       # manually check the output.
-      if(!status.success? || !output.include?("Swagger document is valid"))
+      if !status.success?
         errors[file] = output
       end
     end
