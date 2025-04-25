@@ -111,6 +111,10 @@ helpers do
     @_fuels ||= make_request("fuels")
   end
 
+  def funding_sources
+    @_funding_sources ||= loader.fetch("funding_sources")
+  end
+
   def geocode_statuses
     @_geocode_statuses ||= make_request("geocode-statuses")
   end
