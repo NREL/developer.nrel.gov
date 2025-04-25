@@ -9,7 +9,7 @@
       <strong>Default:</strong> <em>US</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <%= loader.fetch("countries").map { |country| "<em>#{country.fetch("key")}</em>" }.join(", ") %>
+      <strong>Options:</strong> <%= countries.map { |country| "<em>#{country.fetch("key")}</em>" }.join(", ") %>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <% loader.fetch("countries").each do |country| %>
+        <% countries.each do |country| %>
           <tr>
             <th scope="row"><%= country.fetch("key") %></th>
             <td><%= country.fetch("name") %></td>
