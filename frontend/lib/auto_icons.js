@@ -8,15 +8,20 @@ function buildIcon(iconData, alt) {
   const cacheId = `${iconData.prefix}-${iconData.iconName}`;
   if (!cache[cacheId]) {
     // Handle imported FontAwesome SVG icons.
-    const faIcon = icon(iconData, { classes: ['template-auto-icon'] });
-    cache[cacheId] = faIcon.node[0];
+    const faIcon = icon(iconData);
+
+    const wrapperEl = document.createElement('span');
+    wrapperEl.className = 'template-auto-icon';
+    wrapperEl.appendChild(faIcon.node[0]);
+
+    cache[cacheId] = wrapperEl;
   }
 
   return cache[cacheId].cloneNode(true);
 }
 
-function addHeaderLinkIcon(header) {
-  header.appendChild(buildIcon(faChevronRight));
+function addHeaderLinkIcon(headerEl) {
+  headerEl.appendChild(buildIcon(faChevronRight));
 }
 
 function appendNodeMatches(matches, selector, node) {
@@ -90,8 +95,8 @@ function observe(selector, observerOptions, callback) {
 }
 
 // Keep selectors in sync with selectors in
-// `app/assets/stylesheets/eere/typography.scss`, since we don't want underline
-// on header links that also have this icon to serve as a link indicator.
+// `frontend/stylesheets/_type.scss`, since we don't want underline on header
+// links that also have this icon to serve as a link indicator.
 observe('h1 a[href]:not(.skip-template-auto-icon), h2 a[href]:not(.skip-template-auto-icon), h3 a[href]:not(.skip-template-auto-icon), h4 a[href]:not(.skip-template-auto-icon), h5 a[href]:not(.skip-template-auto-icon), h6 a[href]:not(.skip-template-auto-icon)', {
   childList: true,
   subtree: true,

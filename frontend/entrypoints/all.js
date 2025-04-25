@@ -13,6 +13,6 @@ import '@fontsource/roboto/700-italic.css';
 import '@fontsource/roboto/900.css';
 import '@fontsource/roboto/900-italic.css';
 
-import '@/javascripts/_font_awesome_icons';
-import '@/lib/auto-icons';
+import '@/lib/font_awesome_icons';
+import '@/lib/auto_icons';
 import '@/lib/toc';

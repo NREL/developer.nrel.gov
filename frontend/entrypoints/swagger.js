@@ -1,5 +1,5 @@
 import SwaggerUI from 'swagger-ui'
-import ApiKeyFormPlugin from '@/javascripts/_swagger_api_key_form';
+import ApiKeyFormPlugin from '@/lib/swagger_api_key_form';
 import domready from 'domready';
 import 'swagger-ui/dist/swagger-ui.css';
 

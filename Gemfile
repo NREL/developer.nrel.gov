@@ -4,7 +4,6 @@ ruby "~> 3.4.0"
 
 # Middleman Gems
 gem "middleman", "~> 4.6.0"
-gem "middleman-livereload", "~> 3.4.6"
 
 # GitHub-flavored markdown.
 gem "kramdown-parser-gfm", "~> 1.1.0"
@@ -27,4 +26,5 @@ gem "rake", "~> 13.0"
 # For making API calls to generate docs.
 gem "rest-client", "~> 2.1.0"
 
+# Use Vite for assets.
 gem "vite_padrino", "~> 3.0.0"

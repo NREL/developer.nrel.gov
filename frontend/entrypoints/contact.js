@@ -33,7 +33,10 @@ formEl.addEventListener("submit", (event) => {
     submitButtonEl.innerText = "Sending...";
   }, 0);
 
-  return fetch('/api/contactor/v1.json' + new URLSearchParams({
+  const hostname = window.location.hostname;
+  const apiHost = (hostname === 'developer.nrel.gov') ? 'developer.nrel.gov' : 'devstage.nrel.gov';
+
+  return fetch(`https://${apiHost}/api/contactor/v1.json?` + new URLSearchParams({
     api_key: options.apiKey,
   }), {
     method: "POST",
@@ -96,7 +99,6 @@ formEl.addEventListener("submit", (event) => {
       modalMessageEl.innerHTML = `Sending your message unexpectedly failed.${messageStr}<br>Please try again or <a href="${escapeHtml(
         options.issuesUrl,
       )}">file an issue</a> for assistance.`;
-      console.info('modal: ', modal);
       modal.show();
     })
     .finally(() => {

@@ -30,11 +30,7 @@ GEM
     dotenv (3.1.8)
     drb (2.2.1)
     dry-cli (1.2.0)
-    em-websocket (0.5.3)
-      eventmachine (>= 0.12.9)
-      http_parser.rb (~> 0)
     erubi (1.13.1)
-    eventmachine (1.2.7)
     execjs (2.10.0)
     fast_blank (1.0.1)
     fastimage (2.4.0)
@@ -51,7 +47,6 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.8)
       domain_name (~> 0.5)
-    http_parser.rb (0.8.0)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     kramdown (2.5.1)
@@ -98,10 +93,6 @@ GEM
       toml
       uglifier (>= 3, < 5)
       webrick
-    middleman-livereload (3.4.7)
-      em-websocket (~> 0.5.1)
-      middleman-core (>= 3.3)
-      rack-livereload (~> 0.3.15)
     middleman-syntax (3.5.0)
       middleman-core (>= 3.2)
       rouge (~> 3.2)
@@ -122,8 +113,6 @@ GEM
     parslet (2.0.0)
     public_suffix (6.0.1)
     rack (3.1.13)
-    rack-livereload (0.3.17)
-      rack
     rack-proxy (0.7.7)
       rack
     rackup (2.2.1)
@@ -174,7 +163,6 @@ DEPENDENCIES
   kramdown-parser-gfm (~> 1.1.0)
   middleman (~> 4.6.0)
   middleman-alias (~> 0.0.17)
-  middleman-livereload (~> 3.4.6)
   middleman-syntax (~> 3.5.0)
   multi_json (~> 1.15.0)
   rake (~> 13.0)

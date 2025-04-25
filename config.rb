@@ -5,25 +5,21 @@ require "vite_padrino/tag_helpers"
 ###
 
 # Per-page layout changes:
-#
+
 # With no layout
 page "/*.xml", layout: false
 page "/*.json", layout: false
 page "/*.txt", layout: false
 
-# With alternative layout
-# page "/path/to/file.html", layout: :otherlayout
-
-# Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
-# proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
-#  which_fake_page: "Rendering a fake page with a local variable" }
-
+# Disable directory index paths for the 404 page.
 page "/404.html", :directory_index => false
 
 # General configuration
 
-
+# Use Vite for assets.
 if build?
+  # In build mode, force the Vite Ruby integration into production mode so the
+  # tag helpers know where to look for the built assets.
   ENV["RACK_ENV"] = "production"
 end
 activate :external_pipeline,
@@ -31,9 +27,9 @@ activate :external_pipeline,
   command: build? ? "bundle exec vite build --clobber" : "pnpm exec vite build --watch --mode development",
   source: "tmp/vite",
   latency: 1
-activate :directory_indexes
-activate :syntax
-
+# Middleman's file watcher seems to trigger on directory changes when watching
+# the vite build directory. So ignore directory changes to avoid it throwing
+# errors in local development.
 module MiddlemanWatcherViteDirectoryFix
   def file_contents_include_binary_bytes?(filename)
     if File.directory?(filename)
@@ -45,11 +41,8 @@ module MiddlemanWatcherViteDirectoryFix
 end
 Middleman::Util.singleton_class.send(:prepend, MiddlemanWatcherViteDirectoryFix)
 
-set :css_dir, "assets/stylesheets"
-set :js_dir, "assets/javascripts"
-set :fonts_dir, "assets/fonts"
-set :images_dir, "assets/images"
-
+activate :directory_indexes
+activate :syntax
 
 set :markdown_engine, :kramdown
 set :markdown, {
@@ -61,9 +54,15 @@ set :markdown, {
 # Helpers
 ###
 
-# Methods defined in the helpers block are available in templates
+# Middleman is largely compatible with Padrino helpers, so use the Padrino
+# helpers for `vite_*` helpers.
 helpers VitePadrino::TagHelpers
+
+# Methods defined in the helpers block are available in templates
 helpers do
+  # Vite's Padrino's helpers just pass `asset_path` a single path, but
+  # Middleman's `asset_path` expects 2 arguments to give the type and then the
+  # path. So patch for compatibility.
   def asset_path(*args)
     if args.length == 1
       super(File.extname(args.first).delete_prefix(".").to_sym, args.first)
@@ -84,15 +83,6 @@ helpers do
 
     trail.reverse
   end
-end
-
-# Build-specific configuration
-configure :build do
-  # Enable cache buster
-  # activate :asset_hash, :ignore => [
-  #   # Don't cache-bust the Swagger throbber.gif, since it's a hardcoded path.
-  #   %r{throbber.gif},
-  # ]
 end
 
 # Set default API key for local development.

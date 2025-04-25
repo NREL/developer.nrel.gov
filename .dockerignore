@@ -1,3 +1,4 @@
-.git
-tmp
-node_modules
+/.git
+/build
+/node_modules
+/tmp
