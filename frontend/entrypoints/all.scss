@@ -1,5 +1,3 @@
-// @use "@fontsource/roboto/index.css";
-
 // @import "@/stylesheets/_variables";
 @import "bootstrap/scss/bootstrap";
 
@@ -10,10 +8,6 @@
 @import "@/stylesheets/_shared/popup";
 @import "@/stylesheets/_shared/syntax";
 @import "@/stylesheets/_shared/docs";
-
-.swagger-ui-wrapper {
-  @import "swagger-ui-dist/swagger-ui";
-}
 @import "@/stylesheets/_swagger_overrides";
 
 // @import "@/stylesheets/_api_umbrella";

@@ -1,5 +1,4 @@
-import $ from 'jquery';
-import '@fontsource/roboto';
+import 'bootstrap/js/dist/collapse';
 
 import '@fontsource/roboto/100.css';
 import '@fontsource/roboto/100-italic.css';
@@ -15,5 +14,5 @@ import '@fontsource/roboto/900.css';
 import '@fontsource/roboto/900-italic.css';
 
 import '@/javascripts/_font_awesome_icons';
-// import 'popper.js';
-// import 'bootstrap/dist/js/bootstrap';
+import '@/lib/auto-icons';
+import '@/lib/toc';

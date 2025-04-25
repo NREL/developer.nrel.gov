@@ -4,7 +4,7 @@
 <header id="banner">
   <div class="banner-logo">
     <div class="container app">
-      <div class="row">
+      <div class="row align-items-center">
 
         <div class="col-md-6 col-xl-4 order-md-2">
           <a href="https://www.nrel.gov"><div class="logo"><img src="<%= vite_asset_path "nrel-app-template/img/nrel-logo-2025.svg" %>" class="sr-only" alt="National Renewable Energy Laboratory"></div></a>
@@ -47,7 +47,7 @@
         </div>
 
         <div class="col-md-6 col-xl-8 order-md-1">
-          <a href="/" class="app-name">Developer Network</a>
+          <a href="/" class="app-name mt-md-2">Developer Network</a>
         </div>
 
       </div>
@@ -59,15 +59,15 @@
     <div class="container">
       <nav class="navbar navbar-expand-md navbar-light" aria-label="Main">
 
-        <div id="program-menu" class="mr-auto">
-          <button class="custom-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#topnav-collapse" aria-controls="topnav-collapse" aria-expanded="false" aria-label="Toggle navigation">
+        <div id="program-menu" class="me-auto">
+          <button class="custom-toggler navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topnav-collapse" aria-controls="topnav-collapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             <span class="navbar-toggle-label">Menu</span>
           </button>
         </div>
 
         <!-- Navigation -->
-        <div class="navbar-collapse collapse" id="topnav-collapse">
+        <div class="navbar-collapse collapse border-0" id="topnav-collapse">
           <ul class="nav navbar-nav">
             <li class="nav-item<%= " active" if(current_page.url == "/") %>"><a href="/" class="nav-link">Home</a></li>
             <li class="nav-item<%= " active" if(current_page.url =~ %r{/docs($|/)}) %>"><a href="/docs/" class="nav-link">APIs &amp; Documentation</a></li>
@@ -75,15 +75,15 @@
             <li class="nav-item<%= " active" if(current_page.url =~ %r{/contact($|/)}) %>"><a href="/contact/" class="nav-link">Contact</a></li>
           </ul>
           <!-- desktop search button -->
-          <button type="button" class="custom-toggler site-navbar-toggler site-searchbar-toggle d-none d-md-inline" data-toggle="collapse" data-target="#searchbar-collapse" aria-expanded="false" aria-label="Toggle Search">
-            <i class="fa-solid fa-magnifying-glass"></i>
+          <button type="button" class="custom-toggler site-navbar-toggler site-searchbar-toggle d-none d-md-inline ms-auto me-0" data-bs-toggle="collapse" data-bs-target="#searchbar-collapse" aria-expanded="false" aria-label="Toggle Search">
+            <i class="fa-solid fa-fw fa-magnifying-glass"></i>
           </button>
         </div>
       </nav>
     </div><!--container-->
   </div><!--program-header-->
   <!-- mobile search button -->
-  <button type="button" class="custom-toggler site-navbar-toggler site-searchbar-toggle d-md-none" data-toggle="collapse" data-target="#searchbar-collapse-mobile" aria-expanded="false" aria-label="Toggle Search">
+  <button type="button" class="custom-toggler site-navbar-toggler site-searchbar-toggle d-md-none" data-bs-toggle="collapse" data-bs-target="#searchbar-collapse-mobile" aria-expanded="false" aria-label="Toggle Search">
     <span class="fa fa-search" aria-hidden="true"></span>
   </button>   
   <!-- Start desktop collapsible site search bar -->

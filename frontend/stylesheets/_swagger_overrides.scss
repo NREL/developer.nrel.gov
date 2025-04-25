@@ -1,96 +1,75 @@
-// Hide the Swagger top bar, allowing for arbitrary Swagger specification URLs.
-.swagger-ui .topbar {
-  display: none;
-}
+#swagger-ui {
+  // Hide the link to the swagger specification file.
+  .swagger-ui .info hgroup.main a {
+    display: none;
+  }
 
-// Hide the link to the swagger specification file.
-.swagger-ui .info hgroup.main a {
-  display: none;
-}
+  .swagger-ui .info .base-url {
+    font-size: 1.125rem;
+    color: #777;
+  }
 
-.swagger-ui .info .base-url {
-  font-size: 14px !important;
-}
+  // Restore default "pre" tag styles, so Bootstrap's defaults don't interfere
+  // with Swagger's styles.
+  .swagger-ui pre {
+    background-color: transparent;
+    border-width: 0px;
+    padding: 0px;
+  }
 
-// Restore default "pre" tag styles, so Bootstrap's defaults don't interfere
-// with Swagger's styles.
-.swagger-ui pre {
-  background-color: transparent;
-  border-width: 0px;
-  padding: 0px;
-}
+  // Since we force HTTPS, hide the scheme selector dropdown.
+  .swagger-ui .scheme-container {
+    display: none;
+  }
 
-// Since we force HTTPS, hide the scheme selector dropdown.
-.swagger-ui .scheme-container {
-  display: none;
-}
+  // Hide the API version number in the header, since we usually make this part
+  // of the overall URL and page (and our current data doesn't seem accurate).
+  .swagger-ui .info .title small {
+    display: none !important;
+  }
 
-// Hide the API version number in the header, since we usually make this part
-// of the overall URL and page (and our current data doesn't seem accurate).
-.swagger-ui .info .title small {
-  display: none !important;
-}
+  // Make the sans-serif font match the body text from the NREL theme.
+  .swagger-ui,
+  .swagger-ui label,
+  .swagger-ui button,
+  .swagger-ui input,
+  .swagger-ui optgroup,
+  .swagger-ui select,
+  .swagger-ui textarea,
+  .swagger-ui .info,
+  .swagger-ui .info a,
+  .swagger-ui .info .title,
+  .swagger-ui .opblock .opblock-summary-description {
+    font-family: inherit;
+  }
 
-// Hide the authorization lock icon, since we provide DEMO_KEY.
-.swagger-ui .authorization__btn {
-  display: none;
-}
+  // Make the header text styles match the NREL theme.
+  .swagger-ui .info .title {
+    @extend h1;
+  }
+  .swagger-ui .info p,
+  .swagger-ui .info a {
+    font-size: inherit;
+  }
 
-// Make the header text styles match the NREL theme.
-.swagger-ui {
-  font-family: inherit !important;
-}
-.swagger-ui .info .title {
-  color: #cc6600 !important;
-  font-size: 18px !important;
-  font-family: inherit !important;
-}
-.swagger-ui .info p {
-  font-size: 13px !important;
-  font-family: inherit !important;
-}
+  // Adjust some spacing to better fit our template.
+  .swagger-ui .wrapper {
+    padding: 0px !important;
+  }
+  .swagger-ui .info {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+  .swagger-ui .info hgroup.main {
+    margin-bottom: 0.75rem;
+  }
 
-// Adjust some spacing to better fit our template.
-.swagger-ui .wrapper {
-  padding: 0px !important;
-}
-.swagger-ui .info {
-  margin-top: 0px !important;
-  margin-bottom: 24px !important;
-}
-.swagger-ui .info hgroup.main {
-  margin-bottom: 12px;
-}
-.swagger-ui .tab li {
-  min-width: 96px !important;
-}
-
-// Styling for the custom API key form we inject on the page.
-.swagger-ui .api-key-form {
-  text-align: right;
-}
-.swagger-ui .api-key-form label {
-  font-size: 14px;
-  margin-right: 6px;
-}
-.swagger-ui .api-key-form input {
-  margin: 0px !important;
-}
-.swagger-ui .api-key-form p {
-  font-size: 12px;
-  font-style: italic;
-  color: #555;
-}
-.swagger-ui .api-key-form .form-group {
-  margin-left: auto;
-}
-
-.swagger-ui .col,
-.swagger-ui .col-12 {
-  width: unset;
-  max-width: unset;
-  position: unset;
-  padding: unset;
-  flex-basis: unset;
-  flex-grow: unset;
+  // Styling for the custom API key form we inject on the page.
+  .swagger-ui .api-key-form label {
+    font-size: inherit;
+  }
+  .swagger-ui .api-key-form input[type="text"] {
+    @extend .form-control;
+    height: unset;
+  }
 }

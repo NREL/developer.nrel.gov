@@ -1,13 +1,19 @@
-h1 {
-  margin-bottom: 0px;
+.container {
+  // Match the max-width of the NREL template (narrower than Bootstrap 5).
+  max-width: 1140px;
+  --bs-gutter-x: 1.875rem;
 }
 
-h1 {
-  margin-top: 18px;
+// Disable FontAwesome content after links from the NREL CSS, since we're using
+// the FontAwesome SVG approach instead.
+a[href]::after {
+  content: none !important
 }
 
-h2 {
-  margin-bottom: 0px;
+a[href] .template-auto-icon {
+  font-size: 0.65em;
+  vertical-align: middle;
+  margin-left: 0.25em;
 }
 
 h5, .h5 {
@@ -31,7 +37,7 @@ h3.doc span.url {
 
 .doc-parameters thead th {
   border-style: none;
-  color: #777;
+  color: #555;
   background-color: #e5e5e5;
   background-image: linear-gradient(to bottom, #edeeef 0%, #e5e5e5 100%);
   text-shadow: #fff 1px 1px 0;
@@ -68,17 +74,15 @@ h3.doc span.url {
 }
 
 pre {
-  // font-size: 12px;
   word-break: break-all;
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity, 1));
+  border: var(--bs-border-width) solid var(--bs-border-color-translucent);
+  border-radius: var(--bs-border-radius);
   padding: 0.75rem;
   margin-bottom: 1rem;
 }
 
 code {
-  // font-size: 12px;
   padding: 2px 4px;
   background-color: #f9f2f4;
   border-radius: 4px;
@@ -100,13 +104,18 @@ strong small, b small {
 
 blockquote {
   @extend .blockquote;
-  padding: 9px 18px;
-  border-left: 5px solid #eeeeee
+  font-size: inherit;
+  color: inherit;
+  padding: 0.5rem 1rem;
+  border-width: 0px 0px 0px 5px;
+  border-style: solid;
+  border-color: #ddd;
 }
 
 blockquote p:last-child,
 blockquote ul:last-child,
-blockquote ol:last-child {
+blockquote ol:last-child,
+.alert p:last-child {
   margin-bottom: 0px;
 }
 
@@ -116,4 +125,45 @@ blockquote ol:last-child {
   .card-header a {
     color: #333;
   }
+}
+
+[hidden][hidden] {
+  display: none !important;
+}
+
+#toc ul {
+  margin-bottom: 0px;
+}
+
+.btn {
+  text-transform: none;
+}
+
+abbr.required {
+  border-style: none;
+  cursor: default;
+  color: #c45500;
+  font-family: "Verdana";
+  font-size: 0.9rem;
+  font-weight: bold;
+  font-weight: 1000;
+  text-decoration: none;
+  vertical-align: top;
+}
+
+label abbr.required {
+  margin-left: 0.2rem;
+}
+
+.required-fields {
+  font-size: 93%;
+  color: #555;
+}
+
+.dialog-container {
+  display: block !important;
+}
+
+.dialog-container[aria-hidden="true"] {
+  display: none !important;
 }

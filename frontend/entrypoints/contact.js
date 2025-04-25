@@ -1,38 +1,106 @@
-import bootbox from 'bootbox';
+import A11yDialog from "a11y-dialog";
+import escapeHtml from "escape-html";
+import serialize from "form-serialize";
 
-require('parsleyjs');
+const defaults = {};
+const options = {
+  ...defaults,
+  ...(window.nrelContactOptions || {}),
+};
 
-var defaults = {};
-var options = $.extend({}, defaults, nrelContactOptions || {});
-
-if(!options.apiKey) {
-  alert('nrelContactOptions.apiKey must be set');
+if (!options.apiKey) {
+  // eslint-disable-next-line no-alert
+  alert("nrelContactOptions.apiKey must be set");
 }
 
-var form = $("#nrel_contact_form");
-form.parsley();
-form.submit(function(event) {
-  var submit = $(this).find('button');
-  submit.button('loading');
+const modalEl = document.getElementById("alert_modal");
+const modalMessageEl = modalEl.querySelector("#alert_modal_message");
+const modal = new A11yDialog(modalEl);
 
+const formEl = document.getElementById("nrel_contact_form");
+formEl.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  $.ajax({
-    url: '/api/contactor/v1.json?api_key=' + options.apiKey,
-    type: 'POST',
-    data: $(this).serialize(),
-    dataType: 'json',
-  }).done(function(response) {
-    bootbox.alert('Thanks for sending your message. We\'ll be in touch.', function() {
-      form.trigger('reset');
-    });
-  }).fail(function(xhr, message, error) {
-    if(typeof(Rollbar) != 'undefined') {
-      Rollbar.error('Unexpected contact sending failure', { error: error, message: message, response: xhr.responseText  });
-    }
+  if (!formEl.checkValidity()) {
+    formEl.classList.add("was-validated");
+    return false;
+  }
 
-    bootbox.alert('Sending your message unexpectedly failed.<br>Please try again or <a href="' + options.issuesUrl + '">file an issue</a> for assistance.');
-  }).always(function() {
-    submit.button('reset');
-  });
+  const submitButtonEl = formEl.querySelector("button[type=submit]");
+  const submitButtonOrig = submitButtonEl.innerHTML;
+  setTimeout(() => {
+    submitButtonEl.disabled = true;
+    submitButtonEl.innerText = "Sending...";
+  }, 0);
+
+  return fetch('/api/contactor/v1.json' + new URLSearchParams({
+    api_key: options.apiKey,
+  }), {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(serialize(formEl, { hash: true })),
+  })
+    .then((response) => {
+      const contentType = response.headers.get("Content-Type");
+      if (!contentType || !contentType.includes("application/json")) {
+        throw new Error("Response is not JSON");
+      }
+
+      return response.json().then((data) => ({
+        response,
+        data,
+      }));
+    })
+    .then(({ response, data }) => {
+      if (!response.ok) {
+        // eslint-disable-next-line no-throw-literal
+        throw { responseData: data };
+      }
+
+      formEl.reset();
+
+      modalMessageEl.innerText =
+        "Thanks for sending your message. We'll be in touch.";
+      modal.show();
+    })
+    .catch((error) => {
+      const messages = [];
+      let messageStr = "";
+      try {
+        if (error?.responseData?.errors) {
+          for (let i = 0; i < error.responseData.errors.length; i += 1) {
+            const err = error.responseData.errors[i];
+            if (err.full_message || err.message) {
+              messages.push(escapeHtml(err.full_message || err.message));
+            }
+          }
+        }
+
+        if (error?.responseData?.error?.message) {
+          messages.push(escapeHtml(error.responseData.error.message));
+        }
+
+        if (messages.length > 0) {
+          messageStr = `<br><ul><li>${messages.join("</li><li>")}</li></ul>`;
+        } else {
+          // eslint-disable-next-line no-console
+          console.error(error);
+        }
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(e);
+      }
+
+      modalMessageEl.innerHTML = `Sending your message unexpectedly failed.${messageStr}<br>Please try again or <a href="${escapeHtml(
+        options.issuesUrl,
+      )}">file an issue</a> for assistance.`;
+      console.info('modal: ', modal);
+      modal.show();
+    })
+    .finally(() => {
+      submitButtonEl.disabled = false;
+      submitButtonEl.innerHTML = submitButtonOrig;
+    });
 });

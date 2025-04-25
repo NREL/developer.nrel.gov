@@ -1,5 +1,16 @@
+import SwaggerUI from 'swagger-ui'
 import ApiKeyFormPlugin from '@/javascripts/_swagger_api_key_form';
+import domready from 'domready';
+import 'swagger-ui/dist/swagger-ui.css';
 
-window.SwaggerUIBundle = require('swagger-ui-dist/swagger-ui-bundle');
-window.SwaggerUIStandalonePreset = require('swagger-ui-dist/swagger-ui-standalone-preset');
-window.ApiKeyFormPlugin = ApiKeyFormPlugin;
+domready(() => {
+  const swaggerUiEl = document.getElementById('swagger-ui');
+
+  SwaggerUI({
+    url: swaggerUiEl.dataset.swaggerUrl,
+    dom_id: '#swagger-ui',
+    plugins: [
+      ApiKeyFormPlugin,
+    ],
+  });
+});
