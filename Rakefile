@@ -9,7 +9,9 @@ task :lint do
   require "open3"
   require "yaml"
 
-  swagger_specs = `grep -l -r -i --include '*.yml' --include '*.json' swagger ./source ./build`.split("\n")
+  swagger_specs = `grep -l -r -i --include '*.yml' --include '*.json' swagger ./source ./build`.split("\n").reject do |line|
+    line.start_with? "./build/vite"
+  end
   if($?.exitstatus != 0)
     puts swagger_specs
     exit 1
