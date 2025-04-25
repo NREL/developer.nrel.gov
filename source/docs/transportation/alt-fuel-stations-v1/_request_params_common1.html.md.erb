@@ -1,2 +1,2 @@
-<%= partial("docs/transportation/alt-fuel-stations-v1/request_params/format") %>
+<%= render_partial "docs/transportation/alt-fuel-stations-v1/request_params/format", locals: {formats: %w[json xml csv geojson kml]} %>
 <%= partial("docs/transportation/alt-fuel-stations-v1/request_params/api_key") %>
