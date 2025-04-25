@@ -9,7 +9,7 @@
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <%= loader.fetch("status_types").map { |status_type| "<em>#{status_type.fetch("key")}</em>" }.join(", ") %>
+      <strong>Options:</strong> <%= status_types.map { |status_type| "<em>#{status_type.fetch("key")}</em>" }.join(", ") %>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <% loader.fetch("status_types").each do |status_type| %>
+        <% status_types.each do |status_type| %>
           <tr>
             <th scope="row"><%= status_type.fetch("key") %></th>
             <td><%= status_type.fetch("name") %></td>

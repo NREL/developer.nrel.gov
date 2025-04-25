@@ -71,6 +71,10 @@ helpers do
     @_access_details ||= make_request("access-details")
   end
 
+  def access_types
+    @_access_types ||= loader.fetch("access_types")
+  end
+
   def cng_fill_types
     @_cng_fill_types ||= loader.fetch("cng_fill_types_by_country").fetch("all")
   end
@@ -135,10 +139,6 @@ helpers do
     @_lng_vehicle_classes ||= loader.fetch("vehicle_class_options")
   end
 
-  def loader
-    @_loader ||= make_request("locator/loader")
-  end
-
   def lpg_nozzle_types
     @_lpg_nozzle_types ||= loader.fetch("lpg_nozzle_types")
   end
@@ -155,11 +155,19 @@ helpers do
     @_renewable_sources ||= loader.fetch("renewable_sources")
   end
 
+  def status_types
+    @_status_types ||= loader.fetch("status_types")
+  end
+
   def vehicle_classes
     @_vehicle_classes ||= loader.fetch("vehicle_class_options")
   end
 
   private
+
+  def loader
+    @_loader ||= make_request("locator/loader")
+  end
 
   def make_request(path, params = {country: "all", api_key: ENV["DOCS_API_KEY"]})
     MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/#{path}.json", params: params))

@@ -115,7 +115,7 @@
             </tr>
           </thead>
           <tbody>
-            <% loader.fetch("countries").each do |country| %>
+            <% countries.each do |country| %>
               <% next if country.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= country.fetch("key") %></th>
@@ -152,7 +152,7 @@
             </tr>
           </thead>
           <tbody>
-            <% loader.fetch("status_types").each do |status_type| %>
+            <% status_types.each do |status_type| %>
               <% next if status_type.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= status_type.fetch("key") %></th>
@@ -189,7 +189,7 @@
             </tr>
           </thead>
           <tbody>
-            <% loader.fetch("access_types").each do |access_type| %>
+            <% access_types.each do |access_type| %>
               <% next if access_type.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= access_type.fetch("key") %></th>
