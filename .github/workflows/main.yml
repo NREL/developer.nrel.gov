@@ -95,7 +95,7 @@ jobs:
             --s3-no-check-bucket \
             --s3-no-head \
             --header-upload "Cache-Control: public, max-age=31536000, immutable" \
-            --include "/assets/**" \
+            --include "/vite/assets/**" \
             ./build/ \
             "$S3_DEST"
           # Sync the remaining files, disallowing caching on those.
@@ -119,6 +119,6 @@ jobs:
             --no-update-modtime \
             --s3-no-check-bucket \
             --s3-no-head \
-            --exclude "/assets/**" \
+            --exclude "/vite/assets/**" \
             ./build/ \
             "$S3_DEST"

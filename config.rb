@@ -22,6 +22,10 @@ page "/404.html", :directory_index => false
 
 # General configuration
 
+
+if build?
+  ENV["RACK_ENV"] = "production"
+end
 activate :external_pipeline,
   name: :vite,
   command: build? ? "bundle exec vite build --clobber" : "pnpm exec vite build --watch --mode development",
