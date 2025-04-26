@@ -69,7 +69,10 @@ a[href]::after {
 // Placement for the icons added to the header links.
 a[href] .template-auto-icon {
   font-size: 0.65em;
-  vertical-align: 0.125em;
   margin-left: 0.25em;
-  white-space: nowrap;
+
+  // Adjust the vertical-alignment since Font Awesome's default styling don't
+  // work quite as well when the font-size shrinks:
+  // https://github.com/FortAwesome/Font-Awesome/issues/10657#issuecomment-395333009
+  vertical-align: inherit;
 }

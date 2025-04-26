@@ -8,20 +8,58 @@ function buildIcon(iconData, alt) {
   const cacheId = `${iconData.prefix}-${iconData.iconName}`;
   if (!cache[cacheId]) {
     // Handle imported FontAwesome SVG icons.
-    const faIcon = icon(iconData);
-
-    const wrapperEl = document.createElement('span');
-    wrapperEl.className = 'template-auto-icon';
-    wrapperEl.appendChild(faIcon.node[0]);
-
-    cache[cacheId] = wrapperEl;
+    const faIcon = icon(iconData, { classes: ['template-auto-icon'] });
+    cache[cacheId] = faIcon.node[0];
   }
 
   return cache[cacheId].cloneNode(true);
 }
 
+// Add the icon, but wrap a span around the last word in the text and the icon
+// so that they can always be kept on the same line together (so the icon
+// doesn't end up on its own on a new line).
+function addIconNowrapLastWord(el, icon) {
+  // Recursively find all of the text nodes inside (this accounts for this
+  // element potentially including more nested HTML markup by just focusing on
+  // the text nodes).
+  const treeWalker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+  const textNodes = [];
+  while (treeWalker.nextNode()) {
+    textNodes.push(treeWalker.currentNode);
+  }
+
+  // If there is no text, then we won't add an icon.
+  if (textNodes.length === 0) {
+    return;
+  }
+
+  // Grab the last text node and extract the text.
+  const lastTextNode = textNodes[textNodes.length - 1];
+  const lastParentEl = lastTextNode.parentNode;
+  const lastText = lastTextNode.nodeValue
+
+  // Split the text node into 2 text nodes based on the position of the last
+  // space (or if there are no spaces, then the last text node is the last
+  // word).
+  const lastSpaceIndex = lastText.lastIndexOf(' ');
+  const lastWordTextNode = (lastSpaceIndex === -1) ? lastTextNode : lastTextNode.splitText(lastSpaceIndex);
+
+  // Create a span element to wrap the last word with the new icon we're
+  // adding. This way the two can always be kept together with a CSS
+  // `white-space: nowrap` setting.
+  const nowrapEl = document.createElement('span')
+  nowrapEl.className = 'text-nowrap template-auto-icon-nowrap';
+  nowrapEl.appendChild(lastWordTextNode);
+  nowrapEl.appendChild(buildIcon(icon));
+
+  // Since the last word text node was moved into a new element, we can now
+  // append the combined nowrap el that contains the last word and the icon
+  // back into the DOM to replace the last word that was moved.
+  lastParentEl.appendChild(nowrapEl);
+}
+
 function addHeaderLinkIcon(headerEl) {
-  headerEl.appendChild(buildIcon(faChevronRight));
+  addIconNowrapLastWord(headerEl, faChevronRight);
 }
 
 function appendNodeMatches(matches, selector, node) {
