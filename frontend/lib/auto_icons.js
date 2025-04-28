@@ -18,6 +18,13 @@ function buildIcon(iconData, alt) {
 // Add the icon, but wrap a span around the last word in the text and the icon
 // so that they can always be kept on the same line together (so the icon
 // doesn't end up on its own on a new line).
+//
+// There are other slightly simpler ways (like a final span around a `&nbsp;`
+// and the icon), but those tend to require more explicit CSS styling (eg,
+// since the `&nbsp;` may lead to underlining the space, but not the icon,
+// which is solvable, but requires additional wrapper elements or explicit CSS
+// rules), so going with this approach since it should make the CSS rules apply
+// more intuitively.
 function addIconNowrapLastWord(el, icon) {
   // Recursively find all of the text nodes inside (this accounts for this
   // element potentially including more nested HTML markup by just focusing on
