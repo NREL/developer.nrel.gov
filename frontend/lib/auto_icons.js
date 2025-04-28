@@ -2,7 +2,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons/faChevronRight
 import { icon } from '@fortawesome/fontawesome-svg-core';
 
 const cache = {};
-function buildIcon(iconData, alt) {
+function buildIcon(iconData) {
   // Determine a unique cache ID for either FontAwesome icons, or the raw image
   // icons.
   const cacheId = `${iconData.prefix}-${iconData.iconName}`;

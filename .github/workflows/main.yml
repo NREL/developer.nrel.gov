@@ -44,6 +44,9 @@ jobs:
         run: bundle exec middleman build --clean --verbose --environment=${{ env.DEPLOY_ENV }}
 
       # Lint
+      - name: JS Lint
+        run: pnpm run lint
+
       - name: Lint
         run: bundle exec rake lint
 

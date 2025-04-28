@@ -9,7 +9,6 @@ const options = {
 };
 
 if (!options.apiKey) {
-  // eslint-disable-next-line no-alert
   alert("nrelContactOptions.apiKey must be set");
 }
 
@@ -58,7 +57,6 @@ formEl.addEventListener("submit", (event) => {
     })
     .then(({ response, data }) => {
       if (!response.ok) {
-        // eslint-disable-next-line no-throw-literal
         throw { responseData: data };
       }
 
@@ -88,11 +86,9 @@ formEl.addEventListener("submit", (event) => {
         if (messages.length > 0) {
           messageStr = `<br><ul><li>${messages.join("</li><li>")}</li></ul>`;
         } else {
-          // eslint-disable-next-line no-console
           console.error(error);
         }
       } catch (e) {
-        // eslint-disable-next-line no-console
         console.error(e);
       }
 
