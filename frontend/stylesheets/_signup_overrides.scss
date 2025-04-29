@@ -1,0 +1,15 @@
+// Styles we inject into the signup form's shadow root to make the signup form
+// better match the site look and feel.
+
+:root,
+.app-style-root {
+  --bs-link-color: #0071b8;
+  --bs-link-color-rgb: 0, 113, 184;
+  --bs-link-hover-color: var(--bs-link-color);
+  --bs-link-hover-color-rgb: var(--bs-link-color-rgb);
+}
+
+.btn-primary {
+  --bs-btn-bg: #0079c2;
+  --bs-btn-border-color: #0079c2;
+}

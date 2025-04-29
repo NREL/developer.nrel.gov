@@ -1351,7 +1351,7 @@ definitions:
     type: object
     description: Includes both light-duty automobiles and heavy-duty vehicles
     properties:
-      0:
+      "0":
         type: object
         description: This is a light-duty automobile
         properties:
@@ -1492,7 +1492,7 @@ definitions:
           class:
             type: string
             description: The type of the vehicle
-      1:
+      "1":
         type: object
         description: This is a heavy-duty vehicle
         properties:

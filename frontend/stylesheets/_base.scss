@@ -1,0 +1,4 @@
+// Ensure the HTML `hidden` attribute hides elements.
+[hidden][hidden] {
+  display: none !important;
+}

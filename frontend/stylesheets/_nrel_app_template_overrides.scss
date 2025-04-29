@@ -1,0 +1,96 @@
+// Various overrides to try and make the nrel-app-template styles better match
+// the current production NREL.gov styles.
+
+.application .navbar-light .navbar-nav > li > a,
+.program-header .navbar-light .navbar-nav >li > a {
+  border-width: 0px !important;
+}
+
+.site-searchbar-toggle {
+  margin: 0px;
+}
+
+#content {
+  margin-top: 0px !important;
+}
+
+.skip-to-content {
+  position: absolute;
+  z-index: 1031;
+  display: block;
+  margin: 0;
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: white;
+  border: dashed;
+  transition: transform .2s ease-in-out;
+  text-decoration: underline;
+}
+
+header {
+  margin-bottom: 0.9375rem;
+
+  .logo-img img {
+    height: 80px;
+    margin-bottom: 10px;
+
+    @include media-breakpoint-up(md) {
+      height: 130px;
+    }
+  }
+
+  .banner-logo .site-searchbar-toggle {
+    margin-top: 32px;
+    margin-right: calc(var(--bs-gutter-x) * .5);
+  }
+
+  nav.navbar {
+    text-align: left;
+  }
+
+  .navbar-toggler {
+    font-size: 1rem;
+    line-height: 1.75rem;
+    color: #fff;
+
+    .svg-inline--fa {
+      font-size: 1.25rem;
+      vertical-align: -0.2em;
+      margin-right: 0.1875rem;
+    }
+  }
+
+  .navbar-toggler[aria-expanded=true] {
+    .navbar-toggler-opened {
+      display: unset;
+    }
+
+    .navbar-toggler-closed {
+      display: none;
+    }
+  }
+
+  .navbar-toggler[aria-expanded=false] {
+    .navbar-toggler-opened {
+      display: none;
+    }
+
+    .navbar-toggler-closed {
+      display: unset;
+    }
+  }
+}
+
+.breadcrumb > li + li::before {
+  padding: unset;
+}
+
+.breadcrumb-item + .breadcrumb-item:before {
+  font-size: 1rem;
+  line-height: 1.1875em;
+}
+
+h1 {
+  margin-top: 1.5625rem;
+}

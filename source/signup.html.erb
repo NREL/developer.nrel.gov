@@ -4,8 +4,11 @@ title: API Key Signup
 
 <h1>API Key Signup</h1>
 
-  <div id="apidatagov_signup">Loading signup form...</div>
-  <script type="text/javascript">
+<p>Use this form to request an API key to use our web services.</p>
+
+<%= vite_javascript_tag "signup" %>
+<div id="apidatagov_signup">Loading signup form...</div>
+<script type="text/javascript">
   /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
   var apiUmbrellaSignupOptions = {
     // Pick a short, unique name to identify your site, like 'gsa-auctions'
@@ -61,7 +64,7 @@ title: API Key Signup
 
     // OPTIONAL: If the terms & conditions checkbox is enabled, link to this
     // URL for your API's terms & conditions. Defaults to "".
-    termsUrl: "<%= url_for("terms.html") %>",
+    termsUrl: "<%= url_for("terms.html") %>#terms",
   };
 
   /* * * DON'T EDIT BELOW THIS LINE * * */

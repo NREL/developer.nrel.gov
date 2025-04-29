@@ -1,0 +1,32 @@
+.btn {
+  text-transform: none;
+}
+
+abbr.required {
+  border-style: none;
+  cursor: default;
+  color: #c45500;
+  font-family: "Verdana";
+  font-size: 0.9rem;
+  font-weight: bold;
+  font-weight: 1000;
+  text-decoration: none;
+  vertical-align: top;
+}
+
+label abbr.required {
+  margin-left: 0.2rem;
+}
+
+.required-fields {
+  font-size: 93%;
+  color: #555;
+}
+
+.dialog-container {
+  display: block !important;
+}
+
+.dialog-container[aria-hidden="true"] {
+  display: none !important;
+}

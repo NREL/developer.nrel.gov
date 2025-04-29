@@ -1,0 +1,78 @@
+a {
+  color: $link-color;
+
+  &:active,
+  &:visited {
+    color: $link-color;
+  }
+
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+
+    // Make focused links match the Bootstrap default hover state.
+    text-decoration: $link-hover-decoration;
+  }
+}
+
+// Define areas on the page where we do *not* want links to be underlined by
+// default (and instead only underline on hover).
+//
+// Keep header selectors in sync with selectors in
+// `frontend/lib/auto_icons.js`, since we don't want underline on header
+// links that also have this icon to serve as a link indicator.
+footer a,
+.breadcrumb a,
+h1 a:not(.skip-template-auto-icon),
+h2 a:not(.skip-template-auto-icon),
+h3 a:not(.skip-template-auto-icon),
+h4 a:not(.skip-template-auto-icon),
+h5 a:not(.skip-template-auto-icon),
+h6 a:not(.skip-template-auto-icon) {
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+// A helper to specifically force no underline links.
+a.no-link-underline,
+.no-link-underline a {
+  text-decoration: none !important;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline !important;
+  }
+}
+
+// A helper to specifically force underline links (for nesting inside other
+// areas that may have underlines disabled by default).
+a.link-underline,
+.link-underline a {
+  text-decoration: underline !important;
+
+  &:hover,
+  &:focus {
+    text-decoration: none !important;
+  }
+}
+
+// Disable FontAwesome content after links from the NREL CSS, since we're using
+// the FontAwesome SVG approach instead.
+a[href]::after {
+  content: none !important
+}
+
+// Placement for the icons added to the header links.
+a[href] .template-auto-icon {
+  font-size: 0.65em;
+  margin-left: 0.25em;
+
+  // Adjust the vertical-alignment since Font Awesome's default styling don't
+  // work quite as well when the font-size shrinks:
+  // https://github.com/FortAwesome/Font-Awesome/issues/10657#issuecomment-395333009
+  vertical-align: inherit;
+}

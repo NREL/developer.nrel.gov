@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%= partial("layouts/analytics") %>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
       <% unless(current_page.url == "/") %>
@@ -19,22 +17,27 @@
     </title>
 
     <link rel="canonical" href="https://developer.nrel.gov<%= current_page.url %>" />
-    <script>
-      if(window.location.href.indexOf('nrel.github.io') !== -1) {
-        window.location.href = 'https://developer.nrel.gov<%= current_page.url %>';
-      }
-    </script>
 
-    <%= stylesheet_link_tag("all") %>
+    <%= vite_stylesheet_tag("all.scss") %>
+    <%= partial("layouts/analytics") %>
+    <%= vite_javascript_tag("all") %>
 
-    <%= javascript_include_tag("shared") %>
-    <%= javascript_include_tag("all") %>
+    <link rel="shortcut icon" type="image/x-icon" href="<%= vite_asset_path "nrel-app-template/img/favicon.ico" %>">
+    <link rel="apple-touch-icon" href="<%= vite_asset_path "nrel-app-template/img/touch-icon-iphone.png" %>">
+    <link rel="apple-touch-icon" sizes="72x72" href="<%= vite_asset_path "nrel-app-template/img/touch-icon-ipad.png" %>">
+    <link rel="apple-touch-icon" sizes="114x114" href="<%= vite_asset_path "nrel-app-template/img/touch-icon-iphone-retina.png" %>">
+    <link rel="apple-touch-icon" sizes="144x144" href="<%= vite_asset_path "nrel-app-template/img/touch-icon-ipad-retina.png" %>">
   </head>
   <body class="<%= page_classes %>">
     <%= partial("layouts/noscript_analytics") %>
     <%= partial("layouts/header") %>
-    <%= yield %>
-    <%= partial("layouts/edit_me") %>
+    <main id="content" class="container-xl">
+      <%= partial("layouts/breadcrumbs") %>
+
+      <%= yield %>
+
+      <%= partial("layouts/edit_me") %>
+    </main>
     <%= partial("layouts/footer") %>
   </body>
 </html>
