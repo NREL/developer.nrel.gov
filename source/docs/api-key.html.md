@@ -9,10 +9,10 @@ hidden_child: true
 After [signing up](/signup), you'll be given your own, unique API key. This 40 character string is your API key. The key:
 
 - Uniquely identifies you.
-- Gives you access to NREL's Web services.
+- Gives you access to NREL's web services.
 - Should be kept private and should not be shared.
 
-To use your key, simply pass the key as a URL query parameter when making Web service requests. For example:
+To use your key, simply pass the key as a URL query parameter when making web service requests. For example:
 
 ```
 GET https://developer.nrel.gov/api/alt-fuel-stations/v1.json?limit=1&api_key=YOUR_KEY_HERE
