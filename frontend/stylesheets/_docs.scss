@@ -68,7 +68,7 @@ h3.doc span.url {
 
 pre {
   word-break: break-all;
-  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity, 1));
+  background-color: $body-secondary-bg;
   border: var(--bs-border-width) solid var(--bs-border-color-translucent);
   border-radius: var(--bs-border-radius);
   padding: 0.75rem;

@@ -8,9 +8,9 @@ disable_in_breadcrumbs_trail: true
 
 <div class="row feature-row">
   <div class="col-md-4 mb-3">
-    <div class="card text-bg-light h-100">
+    <div class="card bg-body-secondary border-0 rounded-0 h-100">
       <div class="card-body">
-        <h2 class="card-title"><a href="/docs/">APIs and Documentation</a></h2>
+        <h2 class="card-title"><a href="/docs/">APIs &amp; Documentation</a></h2>
         <p>Explore our web services and API documentation.</p>
         <ul>
           <% sitemap.find_resource_by_destination_path("/docs/index.html").children.sort_by { |p| p.data.title.to_s }.each do |child| %>
@@ -23,19 +23,16 @@ disable_in_breadcrumbs_trail: true
   </div>
 
   <div class="col-md-4 mb-3">
-    <div class="card text-bg-light h-100">
+    <div class="card bg-body-secondary border-0 rounded-0 h-100">
       <div class="card-body">
         <h2 class="card-title"><a href="/signup/">Key Signup</a></h2>
         <p>Request an API key to use our web services.</p>
-        <ul>
-          <li><a href="/signup/">Get an API Key</a></li>
-        </ul>
       </div>
     </div>
   </div>
 
   <div class="col-md-4 mb-3">
-    <div class="card text-bg-light h-100">
+    <div class="card bg-body-secondary border-0 rounded-0 h-100">
       <div class="card-body">
         <h2 class="card-title"><a href="/contact/">Contact Us</a></h2>
         <p>Ask a question, send comments, or report a problem.</p>

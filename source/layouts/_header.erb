@@ -1,13 +1,20 @@
 <!--stopindex-->
-<a href="#content" class="visually-hidden app">Skip to main content</a>
+<a href="#content" class="visually-hidden-focusable skip-to-content">Skip to main content</a>
 
-<header id="banner">
+<header id="banner" class="gov-site-header header3" aria-label="main site header">
   <div class="banner-logo">
     <div class="container-xl app">
       <div class="row align-items-center">
 
-        <div class="col-md-6 col-xl-4 order-md-2">
-          <a href="https://www.nrel.gov"><div class="logo" aria-label="National Renewable Energy Laboratory"></div></a>
+        <div class="col-md-6 col-xl-4 order-md-2 text-center text-md-end">
+          <a class="logo-img" href="https://www.nrel.gov/">
+            <img src="<%= vite_asset_path "nrel-app-template/img/nrel-logo-2025.svg" %>" alt="NREL logo">
+          </a>
+
+          <!-- mobile search button -->
+          <button type="button" class="custom-toggler site-navbar-toggler site-searchbar-toggle d-md-none" data-bs-toggle="collapse" data-bs-target="#searchbar-collapse-mobile" aria-expanded="false" aria-label="Toggle Search">
+            <i class="fa-solid fa-fw fa-magnifying-glass"></i>
+          </button>
         </div>
 
         <div class="col-12 d-md-none">
@@ -47,7 +54,7 @@
         </div>
 
         <div class="col-md-6 col-xl-8 order-md-1">
-          <a href="/" class="app-name mt-md-2">Developer Network</a>
+          <a href="/" class="app-name my-0 mb-1 mb-md-0 mt-md-1">Developer Network</a>
         </div>
 
       </div>
@@ -61,8 +68,8 @@
 
         <div id="program-menu" class="me-auto">
           <button class="custom-toggler navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topnav-collapse" aria-controls="topnav-collapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggle-label">Menu</span>
+            <span class="navbar-toggler-closed"><i class="fa-solid fa-bars fa-fw"></i>Menu</span>
+            <span class="navbar-toggler-opened"><i class="fa-solid fa-xmark fa-fw"></i>Close</span>
           </button>
         </div>
 
@@ -72,7 +79,7 @@
             <li class="nav-item<%= " active" if(current_page.url == "/") %>"><a href="/" class="nav-link">Home</a></li>
             <li class="nav-item<%= " active" if(current_page.url =~ %r{/docs($|/)}) %>"><a href="/docs/" class="nav-link">APIs &amp; Documentation</a></li>
             <li class="nav-item<%= " active" if(current_page.url =~ %r{/signup($|/)}) %>"><a href="/signup/" class="nav-link">Key Signup</a></li>
-            <li class="nav-item<%= " active" if(current_page.url =~ %r{/contact($|/)}) %>"><a href="/contact/" class="nav-link">Contact</a></li>
+            <li class="nav-item<%= " active" if(current_page.url =~ %r{/contact($|/)}) %>"><a href="/contact/" class="nav-link">Contact Us</a></li>
           </ul>
           <!-- desktop search button -->
           <button type="button" class="custom-toggler site-navbar-toggler site-searchbar-toggle d-none d-md-inline ms-auto me-0" data-bs-toggle="collapse" data-bs-target="#searchbar-collapse" aria-expanded="false" aria-label="Toggle Search">
@@ -82,10 +89,6 @@
       </nav>
     </div><!--container-->
   </div><!--program-header-->
-  <!-- mobile search button -->
-  <button type="button" class="custom-toggler site-navbar-toggler site-searchbar-toggle d-md-none" data-bs-toggle="collapse" data-bs-target="#searchbar-collapse-mobile" aria-expanded="false" aria-label="Toggle Search">
-    <span class="fa fa-search" aria-hidden="true"></span>
-  </button>   
   <!-- Start desktop collapsible site search bar -->
   <div class="site-search-bar">
     <div class="container-xl">
