@@ -1,0 +1,2 @@
+const t=":root,.app-style-root{--bs-link-color: #0071b8;--bs-link-color-rgb: 0, 113, 184;--bs-link-hover-color: var(--bs-link-color);--bs-link-hover-color-rgb: var(--bs-link-color-rgb)}.btn-primary{--bs-btn-bg: #0079c2;--bs-btn-border-color: #0079c2}",r=new MutationObserver(()=>{const e=document.querySelector(".api-umbrella-signup-embed-content-container");if(e&&e.shadowRoot){r.disconnect();const o=new CSSStyleSheet;o.replaceSync(t),e.shadowRoot.adoptedStyleSheets.push(o)}});r.observe(document.body,{subtree:!0,childList:!0});
+//# sourceMappingURL=signup-BGU1Zxzy.js.map
