@@ -1,12 +1,12 @@
 ---
 title: Data Download Guide
-summary: Helpful tips to maximize the benefits of using the API 
+summary: Helpful tips to maximize the benefits of using the API
 
 ---
 
 ## Data Download Usage Guide
 
-We often receive requests from users interested in downloading larger segments of the data than are supported by the API. It is important to understand that these datasets are large. Currently our storage archive contains hundreds of terabytes of data and is constantly growing! In order to reliably serve dynamic segments of a dataset of this size to a growing community of users we have calculated the maximum capacity our server hardware can sustain. We use this physical capacity to determine our API rate limits. For users insterested in accessing bulk data the full datasets are available via the Registry of Open Data on AWS at [https://registry.opendata.aws/nrel-pds-nsrdb/](https://registry.opendata.aws/nrel-pds-nsrdb/).
+We often receive requests from users interested in downloading larger segments of the data than are supported by the API. It is important to understand that these datasets are large. Currently our storage archive contains hundreds of terabytes of data and is constantly growing! In order to reliably serve dynamic segments of a dataset of this size to a growing community of users we have calculated the maximum capacity our server hardware can sustain. We use this physical capacity to determine our API rate limits. For users insterested in accessing bulk data the full datasets are available at [https://data.openei.org/s3_viewer?bucket=nrel-pds-nsrdb](https://data.openei.org/s3_viewer?bucket=nrel-pds-nsrdb).
 
 The API is restricted in several ways including the number of simultaneous requests a single user can make, the number of requests a single user can make in a 24 hour period, as well as in the maximum size of a single request. The API rate limits are set at:
 

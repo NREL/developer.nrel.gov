@@ -1,0 +1,20 @@
+$link-color: #0071b8;
+$link-decoration: underline;
+$link-hover-color: $link-color;
+$link-hover-decoration: none;
+
+// Match the max-width and gutters of the NREL template (narrower than
+// Bootstrap 5's default).
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1134px,
+  xxl: 1134px
+);
+
+$body-secondary-bg: #f5f5f5;
+
+$breadcrumb-divider: quote('»');
+$breadcrumb-divider-color: #000;
+$breadcrumb-active-color: #000;

@@ -1,0 +1,13 @@
+@import "@/stylesheets/_variables";
+@import "bootstrap/scss/bootstrap";
+
+@import "@/nrel-app-template/css/nrel.complete";
+@import "@/nrel-app-template/css/nrel.application";
+@import "@/stylesheets/_nrel_app_template_overrides";
+
+@import "@/stylesheets/_base";
+@import "@/stylesheets/_docs";
+@import "@/stylesheets/_forms";
+@import "@/stylesheets/_swagger_overrides";
+@import "@/stylesheets/_syntax";
+@import "@/stylesheets/_type";

@@ -1,0 +1,75 @@
+#swagger-ui {
+  // Hide the link to the swagger specification file.
+  .swagger-ui .info hgroup.main a {
+    display: none;
+  }
+
+  .swagger-ui .info .base-url {
+    font-size: 1.125rem;
+    color: #777;
+  }
+
+  // Restore default "pre" tag styles, so Bootstrap's defaults don't interfere
+  // with Swagger's styles.
+  .swagger-ui pre {
+    background-color: transparent;
+    border-width: 0px;
+    padding: 0px;
+  }
+
+  // Since we force HTTPS, hide the scheme selector dropdown.
+  .swagger-ui .scheme-container {
+    display: none;
+  }
+
+  // Hide the API version number in the header, since we usually make this part
+  // of the overall URL and page (and our current data doesn't seem accurate).
+  .swagger-ui .info .title small {
+    display: none !important;
+  }
+
+  // Make the sans-serif font match the body text from the NREL theme.
+  .swagger-ui,
+  .swagger-ui label,
+  .swagger-ui button,
+  .swagger-ui input,
+  .swagger-ui optgroup,
+  .swagger-ui select,
+  .swagger-ui textarea,
+  .swagger-ui .info,
+  .swagger-ui .info a,
+  .swagger-ui .info .title,
+  .swagger-ui .opblock .opblock-summary-description {
+    font-family: inherit;
+  }
+
+  // Make the header text styles match the NREL theme.
+  .swagger-ui .info .title {
+    @extend h1;
+  }
+  .swagger-ui .info p,
+  .swagger-ui .info a {
+    font-size: inherit;
+  }
+
+  // Adjust some spacing to better fit our template.
+  .swagger-ui .wrapper {
+    padding: 0px !important;
+  }
+  .swagger-ui .info {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+  .swagger-ui .info hgroup.main {
+    margin-bottom: 0.75rem;
+  }
+
+  // Styling for the custom API key form we inject on the page.
+  .swagger-ui .api-key-form label {
+    font-size: inherit;
+  }
+  .swagger-ui .api-key-form input[type="text"] {
+    @extend .form-control;
+    height: unset;
+  }
+}

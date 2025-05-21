@@ -6,39 +6,39 @@ title: Contact Us
 <p>Feel free to contact us with questions, comments, or to report any problems.</p>
 
 <div class="row">
-  <div class="col-md-5">
-    <a href="https://github.com/NREL/developer.nrel.gov/issues" class="d-block btn btn-outline-dark btn-lg">
-      <i class="fab fa-github"></i>
+  <div class="col-md-5 mb-3">
+    <a href="https://github.com/NREL/developer.nrel.gov/issues" class="d-block btn btn-primary btn-lg">
+      <i class="fab fa-github me-1"></i>
       <span>File an issue on GitHub</span>
     </a>
   </div>
-  <div class="col-md-5 offset-md-2">
-    <a href="#contact" class="d-block btn btn-outline-dark btn-lg">
-      <i class="fas fa-comments"></i>
+  <div class="col-md-5 mb-3 offset-md-2">
+    <a href="#contact" class="d-block btn btn-primary btn-lg">
+      <i class="fas fa-comments me-1"></i>
       <span>Contact us directly</span>
     </a>
   </div>
 </div>
 
 <h3 id="contact" style="margin-top: 3em;"><i class="fas fa-comments"></i> Contact us directly</h3>
-<p class="required-fields"><abbr title="Required" class="required"><span class="abbr-required">*</span></abbr> Required fields</p>
+<p class="required-fields">Required fields are marked with an asterisk (<abbr title="required" class="required">*</abbr>).</p>
 <form id="nrel_contact_form" class="form-horizontal" role="form">
-  <div class="form-group row">
-    <label class="col-sm-4 col-form-label text-right font-weight-bold" for="contact_name"><abbr title="Required" class="required"><span class="abbr-required">*</span></abbr> Name</label>
+  <div class="mb-3">
+    <label class="form-label" for="contact_name">Name <abbr title="required" class="required">*</abbr></label>
     <div class="col-sm-5">
       <input class="form-control" id="contact_name" name="contact[name]" size="50" type="text" required />
     </div>
   </div>
-  <div class="form-group row">
-    <label class="col-sm-4 col-form-label text-right font-weight-bold" for="contact_email"><abbr title="Required" class="required"><span class="abbr-required">*</span></abbr> Email</label>
+  <div class="mb-3">
+    <label class="form-label" for="contact_email">Email <abbr title="required" class="required">*</abbr> </label>
     <div class="col-sm-5">
       <input class="form-control" id="contact_email" name="contact[email]" size="50" type="email" required />
     </div>
   </div>
-  <div class="form-group row">
-    <label class="col-sm-4 col-form-label text-right font-weight-bold" for="contact_subject"><abbr title="Required" class="required"><span class="abbr-required">*</span></abbr> Subject</label>
+  <div class="mb-3">
+    <label class="form-label" for="contact_subject">Subject <abbr title="required" class="required">*</abbr> </label>
     <div class="col-sm-5">
-      <select class="form-control" id="contact_subject" name="contact[subject]" required>
+      <select class="form-select" id="contact_subject" name="contact[subject]" required>
         <option value="">Please choose one...</option>
         <option>Alternative Fuel Stations API</option>
         <option>Buildings APIs</option>
@@ -56,24 +56,36 @@ title: Contact Us
       </select>
     </div>
   </div>
-  <div class="form-group row">
-    <label class="col-sm-4 col-form-label text-right font-weight-bold" for="contact_message"><abbr title="Required" class="required"><span class="abbr-required">*</span></abbr> What can we help you with?</label>
+  <div class="mb-3">
+    <label class="form-label" for="contact_message">What can we help you with? <abbr title="required" class="required">*</abbr> </label>
     <div class="col-sm-5">
       <textarea class="form-control" cols="40" id="contact_message" name="contact[message]" rows="6" required></textarea>
     </div>
   </div>
   <input id="contact_project" name="contact[project]" type="hidden" value="developer" required />
-  <div class="form-group row">
-    <div class="col-sm-8 offset-sm-4">
-      <noscript><div class="alert alert-danger" role="alert">Please enable JavaScript to contact us.</div></noscript>
-      <button type="submit" class="btn btn-lg btn-primary" data-loading-text="Loading...">Send</button>
+  <div class="mb-3">
+    <noscript><div class="alert alert-danger" role="alert">Please enable JavaScript to contact us.</div></noscript>
+    <button type="submit" class="btn btn-lg btn-primary" data-loading-text="Loading...">Send</button>
+  </div>
+
+  <div id="alert_modal" class="modal dialog-container" aria-describedby="alert_modal_message" aria-hidden="true">
+    <div class="modal-backdrop show" data-a11y-dialog-hide></div>
+    <div role="document" class="modal d-block">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <button type="button" class="btn-close" data-a11y-dialog-hide aria-label="Close"></button>
+          </div>
+          <div class="modal-body pt-0" id="alert_modal_message"></div>
+        </div>
+      </div>
     </div>
   </div>
 </form>
 <script type="text/javascript">
-  var nrelContactOptions = {
+  window.nrelContactOptions = {
     apiKey: "qhbzQVQybC6mS0Nfk2ad5bs9C9VIUnIkvAckkuBx",
     issuesUrl: "https://github.com/NREL/developer.nrel.gov/issues"
   };
 </script>
-<%= javascript_include_tag("contact") %>
+<%= vite_javascript_tag "contact" %>

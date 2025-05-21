@@ -1,7 +1,7 @@
 ---
 title: "GOES TMY: PSM v4 Download"
-summary: "The GOES TMY, TGY, and TDY is developed based on the time series data of GOES 1998 onwards. The resolution of the data is 4 km hourly."
-detail: "This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time."
+summary: "The NSRDB GOES TMY, TGY, and TDY is developed based on the time series data of Geostationary Operational Environmental Satellite (GOES) from 1998 onwards. The resolution of the data is 4 km hourly."
+detail: This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.<br><br>The complete library of NSRDB solar data can be accessed in bulk at <a href="https://data.openei.org/s3_viewer?bucket=nrel-pds-nsrdb" target="_blank">https://data.openei.org/s3_viewer?bucket=nrel-pds-nsrdb</a>.
 url: /api/nsrdb/v2/solar/nsrdb-GOES-tmy-v4-0-0-download
 ---
 
@@ -10,7 +10,7 @@ url: /api/nsrdb/v2/solar/nsrdb-GOES-tmy-v4-0-0-download
 
 <%= current_page.data.detail %>
 
-<ul id="toc"></ul>
+<%= partial "layouts/toc" %>
 
 ## Request URL
 

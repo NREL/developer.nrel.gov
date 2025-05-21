@@ -1,13 +1,72 @@
-  <footer class="container-fluid">
-    <div align="center"><%= image_tag("nrel/foot_nrelis.gif", :alt => "NREL is a national laboratory of the U.S. Department of Energy, Office of Energy Efficiency and Renewable Energy, operated by the Alliance for Sustainable Energy, LLC.", :usemap => "#footer_map", :class => "img-fluid") %></div>
+<!--stopindex-->
+<footer id="footer" class="hidden-print">
 
-    <map name="footer_map" id="footer_map">
-      <area shape="rect" coords="27,7,61,20" href="http://www.nrel.gov/" alt="NREL" />
-      <area shape="rect" coords="238,7,399,19" href="http://www.energy.gov/" alt="U.S. Department of Energy" />
-      <area shape="rect" coords="405,7,697,21" href="http://www.eere.energy.gov/" alt="Office of Energy Efficiency and Renewable Energy" />
-      <area shape="rect" coords="307,21,524,35" href="http://www.allianceforsustainableenergy.org/" alt="Alliance for Sustainable Energy, LLC" />
-    </map>
+  <nav class="footertop" aria-label="Main">
+    <div class="container-xl">
+      <div class="row">
+        <div class="col-12 col-lg-5">
+          <a href="https://www.nrel.gov/"><strong>National Renewable Energy Laboratory</strong></a>
+        </div>
+        <div class="col col-lg-7">
+          <div class="d-flex flex-column flex-lg-row justify-content-lg-start global">
+            <div><a href="https://www.nrel.gov/about">About</a></div>
+            <div><a href="https://www.nrel.gov/research">Research</a></div>
+            <div><a href="https://www.nrel.gov/workingwithus">Partner With Us</a></div>
+            <div><a href="https://www.nrel.gov/news/">News</a></div>
+            <div><a href="https://www.nrel.gov/careers">Careers</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <nav class="footerbottom"  aria-label="Secondary">
+    <div class="container-xl">
+      <div class="row">
+        <div class="col-md-4 col-lg-5">
+          <div><a href="/contact/">Contact Us</a></div>
+          <div class="mt-2"><a href="https://www.nrel.gov/about/visiting-nrel">Visit</a></div>
+          <div class="mt-2"><a href="https://www.nrel.gov/news/subscribe.html">Subscribe to NREL</a></div>
+          <div class="mt-3">
+            <ul class="social-links list-inline">
+              <li class="list-inline-item"><a href="https://www.facebook.com/nationalrenewableenergylab" aria-label="Follow NREL on Facebook"><i class="fa-brands fa-square-facebook"><!--facebook--></i></a></li>
+              <li class="list-inline-item"><a href="https://www.instagram.com/nationalrenewableenergylab/" aria-label="Follow NREL on Instagram"><i class="fa-brands fa-instagram"><!--Instagram--></i></a></li>
+              <li class="list-inline-item"><a href="https://www.linkedin.com/company/national-renewable-energy-laboratory"
+                                              aria-label="Follow NREL on Linked In"><i class="fa-brands fa-linkedin"><!--Linked In--></i></a></li>
+              <li class="list-inline-item"><a href="https://www.youtube.com/user/NRELPR/" aria-label="Follow NREL on YouTube"><i class="fa-brands fa-youtube"><!--You Tube--></i></a></li>
+              <li class="list-inline-item"><a href="https://twitter.com/nrel/" aria-label="Follow NREL on X"><i class="fa-brands fa-x-twitter"><!--twitter--></i></a></li>
+              <li class="list-inline-item"><a href="https://www.threads.net/@nationalrenewableenergylab" aria-label="Follow NREL on X"><span class="fa-brands fa-threads"><!-- Threads --></span></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-8 col-lg-7 globalsecondary">
+          <div class="row">
+            <div class="col-sm-6 col-lg-3">
+              <div class="mt-0"><a href="https://www.nrel.gov/accessibility.html">Accessibility</a></div>
+              <div class="mt-3 mt-sm-2"><a href="https://www.nrel.gov/disclaimer.html">Disclaimer</a></div>
+              <div class="mt-3 mt-sm-2"><a href="https://www.nrel.gov/security.html">Security and Privacy</a></div>
+              <div class="mt-3 mt-sm-2"><a href="https://www.nrel.gov/webmaster.html">Site Feedback</a></div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
 
-    <p><a href="/contact">Need Help?</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.nrel.gov/security.html">Security &amp; Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.nrel.gov/disclaimer.html">Disclaimer</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.nrel.gov/">NREL Home</a></p>
-  </footer>
-</div>
+              <div class="mt-3 mt-sm-0"><a href="https://developer.nrel.gov/">Developers</a></div>
+              <div class="mt-3 mt-sm-2"><a href="https://thesource.nrel.gov/">Employees</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="mt-4">
+        <div class="row">
+          <div class="col-sm-5">
+            <a href="https://www.allianceforsustainableenergy.org/"><img src="<%= vite_asset_path "nrel-app-template/img/alliance-logo-black.svg" %>" alt="Alliance for Sustainable Energy, LLC" class="mb-3" width="145" height="53" style="width:145px;height:53px;"></a>
+            <a href="https://www.energy.gov"><img src="<%= vite_asset_path "nrel-app-template/img/2025-doe-logo-stacked-horizontal.svg" %>" alt="U.S. Department of Energy" class="ms-3" width="203" height="50" style="width:203px;height:50px;"></a>
+          </div>
+          <div class="col-12 col-sm-7">
+            <p class="nrel-attr mt-3">The National Renewable Energy Laboratory is a national laboratory of the <a href="https://www.energy.gov/">U.S. Department of Energy</a>, <a href="https://www.energy.gov/eere/office-energy-efficiency-renewable-energy">Office of Energy Efficiency and Renewable Energy</a>, operated under Contract No. DE-AC36-08GO28308.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+</footer>

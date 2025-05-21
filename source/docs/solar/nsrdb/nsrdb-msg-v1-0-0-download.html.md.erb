@@ -1,7 +1,7 @@
 ---
 title: "Meteosat Prime Meridian: PSM v4 Download"
 summary: "This dataset provides solar resource data for the period 2017-2019 over all regions covered by the Meteosat-1 (Meteosat Prime Meridian) satellite with a spatial resolution of 4 km and temporal intervals of 15 minutes."
-detail: This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.
+detail: This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.<br><br>The complete library of NSRDB solar data can be accessed in bulk at <a href="https://data.openei.org/s3_viewer?bucket=nrel-pds-nsrdb" target="_blank">https://data.openei.org/s3_viewer?bucket=nrel-pds-nsrdb</a>.
 url: /api/nsrdb/v2/solar/nsrdb-msg-v1-0-0-download
 ---
 
@@ -10,7 +10,7 @@ url: /api/nsrdb/v2/solar/nsrdb-msg-v1-0-0-download
 
 <%= current_page.data.detail %>
 
-<ul id="toc"></ul>
+<%= partial "layouts/toc" %>
 
 ## Request URL
 
@@ -57,7 +57,8 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>solar_zenith_angle, surface_albedo, total_precipitable_water, clearsky_dhi, clearsky_dni, clearsky_ghi, cloud_type, dew_point, relative_humidity, surface_pressure, dhi, dni, fill_flag, ghi, air_temperature, wind_direction, wind_speed.</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>
+        air_temperature, alpha, aod, asymmetry, clearsky_dhi, clearsky_dni, clearsky_ghi, cloud_type, dew_point, dhi, dni, fill_flag, ghi, relative_humidity, solar_zenith_angle, surface_albedo, surface_pressure, total_precipitable_water, wind_direction, wind_speed.</em></div>
       </td>
       <td class="doc-parameter-description">
         Each specified attribute(*) will be returned as a column in the resultant CSV download.

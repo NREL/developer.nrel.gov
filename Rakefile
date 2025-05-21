@@ -9,7 +9,9 @@ task :lint do
   require "open3"
   require "yaml"
 
-  swagger_specs = `grep -l -r -i --include '*.yml' --include '*.json' swagger ./source ./build`.split("\n")
+  swagger_specs = `grep -l -r -i --include '*.yml' --include '*.json' swagger ./source ./build`.split("\n").reject do |line|
+    line.start_with? "./build/vite"
+  end
   if($?.exitstatus != 0)
     puts swagger_specs
     exit 1
@@ -33,13 +35,13 @@ task :lint do
 
     # Validate the swagger spec
     unless errors[file]
-      output, status = Open3.capture2e("./node_modules/.bin/swagger-tools", "validate", "-v", file)
+      output, status = Open3.capture2e("pnpm", "exec", "spectral", "lint", file)
       output = output.to_s.strip
       puts "#{output}\n\n\n"
 
       # swagger-tools doesn't exit with an unsuccessful code on warnings, so also
       # manually check the output.
-      if(!status.success? || !output.include?("Swagger document is valid"))
+      if !status.success?
         errors[file] = output
       end
     end
@@ -55,3 +57,6 @@ task :lint do
 end
 
 task :default => [:test, :lint]
+
+require 'vite_padrino'
+ViteRuby.install_tasks

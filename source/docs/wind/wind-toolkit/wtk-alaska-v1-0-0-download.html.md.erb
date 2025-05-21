@@ -1,6 +1,7 @@
 ---
-title: "Alaska V1.0.0"
-summary: "Collect and download, as CSV, a configurable set of data fields from a national collection of wind stations. This data represents wind-speed, temperature, direction, and air pressure values at multiple heights above the surface for the years 2018 to 2020."
+title: WTK-LED Alaska (60-minute)
+summary: Collect and download, as CSV, a configurable set of data fields from a national collection of wind stations. This data represents wind-speed, temperature, direction, and air pressure values at multiple heights above the surface for the years 2018 to 2020.
+detail: The complete library of wind data can be accessed in bulk at <a href="https://data.openei.org/s3_viewer?bucket=nrel-pds-wtk" target="_blank">https://data.openei.org/s3_viewer?bucket=nrel-pds-wtk</a>.
 url: /api/wind-toolkit/v2/wind/wtk-alaska-v1-0-0-download
 ---
 
@@ -9,7 +10,7 @@ url: /api/wind-toolkit/v2/wind/wtk-alaska-v1-0-0-download
 
 <%= current_page.data.detail %>
 
-<ul id="toc"></ul>
+<%= partial "layouts/toc" %>
 
 ## Request URL
 
@@ -102,7 +103,7 @@ _NOTE: when using POST to submit a request the api_key must still be included as
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
       </td>
       <td class="doc-parameter-description">
-        This value determines data resolution. Either 60 minute intervals are available.
+        This value determines data resolution. 60 minute intervals are available.
       </td>
     </tr>
     <tr>
