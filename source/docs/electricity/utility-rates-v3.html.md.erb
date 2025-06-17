@@ -10,9 +10,12 @@ url: GET /api/utility_rates/v3
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
 <%= current_page.data.summary %>
 
-The data source is Ventyx Research Inc. and the Energy Information Agency (EIA), and was updated with 2012 numbers.
+The data source is Ventyx Research Inc. and the Energy Information Agency (EIA).
+<div class="alert alert-danger" style="margin-top: 10px;">
+NOTE: the data returned by this API is from 2012 and there are currently no plans to update the data in the future.
+</div>
 
-Version 3 is the current version of the utility rates API. Previous versions have been deprecated and its users are encouraged to migrate to this newly enhanced version.
+Version 3 is the current version of the utility rates API. Previous versions have been deprecated and its users are encouraged to migrate to this version.
 
 <%= partial "layouts/toc" %>
 
