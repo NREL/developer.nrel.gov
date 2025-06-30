@@ -172,9 +172,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
       <h1 id="pvdaq-pv-data-acquisition">PVDAQ (PV Data Acquisition)</h1>
-<p>Provides access to photovoltaic performance data collected by NREL for systems throughout the country.</p>
+<div class="alert alert-danger" style="margin-top: 10px;">
+  The PVDAQ V3 APIs have been decommissioned. For the new data map for browsing and downloading PV data, please go to <a href="https://openei.org/wiki/PVDAQ/PVData_Map">the new PVDAQ data map</a>. Programmatic data access details are also available at <a href="https://github.com/NREL/pvdaq_access">the PVDAQ GitHub repository</a>.
+</div>
 
-<p>The <a href="http://maps.nrel.gov/pvdaq">PVDAQ mapping application</a> uses this data to help industry and government planners study solar array efficiency.</p>
+<hr />
+
+<h2>Decommissioned</h2>
 
 <h3 class="doc">
 
@@ -185,8 +189,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </h3>
 
-<p>Return aggregated IEC61724 data for a specific PVDAQ system and date range.</p>
-
 <h3 class="doc">
 
 <a href="/docs/solar/pvdaq-v3/data_file/">Annual Data CSV for a System</a>
@@ -195,8 +197,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 </h3>
-
-<p>Download a CSV file containing raw data for a specific PVDAQ system for a specific year. The file for the current year is updated as new data comes in. The first row of the CSV contains the field names.</p>
 
 <h3 class="doc">
 
@@ -207,8 +207,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </h3>
 
-<p>Return raw data for a specific PVDAQ system and date range. NOTE: Due to the large amounts of data being logged in some cases, some systems may only be able to return data for a single day at a time, or in some cases, a single hour at a time, without the queries timing out. Alternatively, you can download full-year CSV files of the raw data for systems via the <a href="https://developer.nrel.gov/docs/solar/pvdaq-v3/data_file/">PVDAQ data_file API</a>.</p>
-
 <h3 class="doc">
 
 <a href="/docs/solar/pvdaq-v3/sites/">Sites Metadata</a>
@@ -217,10 +215,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 </h3>
-
-<p>Fetch metadata for PVDAQ sites.</p>
-
-<hr />
 
 
 
