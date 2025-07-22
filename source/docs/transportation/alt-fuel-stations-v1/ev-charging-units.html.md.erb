@@ -1,13 +1,15 @@
 ---
-title: Electric Charging Ports
-summary: Return a CSV file of electric charging ports for stations that match your query.
+title: Electric Vehicle Charging Ports
+summary: Return a CSV file of EV charging ports for stations that match your query.
 url: GET /api/alt-fuel-stations/v1/ev-charging-units
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
 <%= current_page.data.summary %>
 
-<ul id="toc"></ul>
+{:toc}
+
+<%= partial "layouts/toc" %>
 
 ## Request URL
 
@@ -30,7 +32,7 @@ The following query parameters may be passed in the request to control the outpu
     <%= partial("docs/transportation/alt-fuel-stations-v1/request_params/access") %>
     <%= partial("docs/transportation/alt-fuel-stations-v1/request_params/api_key") %>
     <%= partial("docs/transportation/alt-fuel-stations-v1/request_params/cards_accepted") %>
-    <%= partial("docs/transportation/alt-fuel-stations-v1/request_params/country") %>
+    <%= render_partial "docs/transportation/alt-fuel-stations-v1/request_params/country", locals: {resources: "stations"} %>
     <%= partial("docs/transportation/alt-fuel-stations-v1/request_params/ev_charging_level") %>
     <%= partial("docs/transportation/alt-fuel-stations-v1/request_params/ev_connector_type") %>
     <%= partial("docs/transportation/alt-fuel-stations-v1/request_params/ev_connector_type_operator") %>
@@ -102,6 +104,14 @@ The table below documents the columns unique to this data download. For document
     <tr>
       <th>EV J3400 Power Output (kW)</th>
       <td>Power output in kilowatts of J3400 ports</td>
+    </tr>
+    <tr>
+      <th>EV J3271 Connector Count</th>
+      <td>Total number of MCS (J3271) connectors at station location</td>
+    </tr>
+    <tr>
+      <th>EV J3271 Power Output (kW)</th>
+      <td>Power output in kilowatts of MCS (J3271) ports</td>
     </tr>
   </tbody>
 </table>
