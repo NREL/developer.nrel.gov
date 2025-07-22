@@ -1593,7 +1593,7 @@ a.singleLightbox:hover {
 	margin-bottom:1em;
 }
 .well h2 {color:#000;}
-.well h2:first-of-type, .well h3:first-of-type, .well h4:first-of-type, .well h5:first-of-type, .well h6:first-of-type {margin-top:0}
+.well h2:first-of-type, .well h3:first-of-type, .well h4:first-of-type, .well h5:first-of-type, .well h6:first-of-type {margin-top:0} 
 div.well p.caption {color: #222;}
 @media (min-width: 768px) {
 	.well.pull-right {
@@ -2463,7 +2463,7 @@ footer {
 	color: #000;
 	font-size: 14px;
 	font-weight: 400;
-	padding-bottom: 2em;
+	padding-bottom: 5em;
 }
 footer .footertop {
 	background-color: #D1D5D8;
@@ -2479,7 +2479,6 @@ footer .footerbottom {
 	padding-top:2em;
 }
 footer .globalsecondary div, footer .nrel-attr {font-size: 0.75rem;}
-footer .nrel-attr {line-height: 0.875rem;}
 footer .nrel-attr a:link, footer .nrel-attr a:visited {text-decoration:underline;}
 footer .nrel-attr a:hover, footer .nrel-attr a:active {color: #0071b8;}
 footer .header {
