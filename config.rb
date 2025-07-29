@@ -100,10 +100,6 @@ helpers do
     @_cng_psis ||= loader.fetch("cng_psis_by_country").fetch("all")
   end
 
-  def alt_fuel_stations_cng_vehicle_classes
-    @_cng_vehicle_classes ||= loader.fetch("vehicle_class_options")
-  end
-
   def alt_fuel_stations_countries
     @_countries = loader.fetch("countries")
   end
@@ -152,10 +148,6 @@ helpers do
     @_hy_standards ||= loader.fetch("hy_standards")
   end
 
-  def lng_vehicle_classes
-    @_lng_vehicle_classes ||= loader.fetch("vehicle_class_options")
-  end
-
   def alt_fuel_stations_lpg_nozzle_types
     @_lpg_nozzle_types ||= loader.fetch("lpg_nozzle_types")
   end
@@ -176,7 +168,7 @@ helpers do
     @_status_types ||= loader.fetch("status_types")
   end
 
-  def vehicle_classes
+  def alt_fuel_stations_vehicle_classes
     @_vehicle_classes ||= loader.fetch("vehicle_class_options")
   end
 

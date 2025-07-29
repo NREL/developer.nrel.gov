@@ -9,7 +9,7 @@
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <%= alt_fuel_stations_cng_vehicle_classes.map { |cng_vehicle_class| "<em>#{cng_vehicle_class.fetch("key")}</em>" }.join(", ") %>
+      <strong>Options:</strong> <%= alt_fuel_stations_vehicle_classes.map { |vehicle_class| "<em>#{vehicle_class.fetch("key")}</em>" }.join(", ") %>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -23,10 +23,10 @@
         </tr>
       </thead>
       <tbody>
-        <% alt_fuel_stations_cng_vehicle_classes.each do |cng_vehicle_class| %>
+        <% alt_fuel_stations_vehicle_classes.each do |vehicle_class| %>
           <tr>
-            <th scope="row"><%= cng_vehicle_class.fetch("key") %></th>
-            <td><%= cng_vehicle_class.fetch("name") %></td>
+            <th scope="row"><%= vehicle_class.fetch("key") %></th>
+            <td><%= vehicle_class.fetch("name") %></td>
           </tr>
         <% end %>
       </tbody>

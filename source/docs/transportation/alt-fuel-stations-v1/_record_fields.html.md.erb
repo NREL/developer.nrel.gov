@@ -688,11 +688,11 @@
             </tr>
           </thead>
           <tbody>
-            <% alt_fuel_stations_cng_vehicle_classes.each do |cng_vehicle_class| %>
-              <% next if cng_vehicle_class.fetch("key") == "all" %>
+            <% alt_fuel_stations_vehicle_classes.each do |vehicle_class| %>
+              <% next if vehicle_class.fetch("key") == "all" %>
               <tr>
-                <th scope="row"><%= cng_vehicle_class.fetch("key") %></th>
-                <td><%= cng_vehicle_class.fetch("name") %></td>
+                <th scope="row"><%= vehicle_class.fetch("key") %></th>
+                <td><%= vehicle_class.fetch("name") %></td>
               </tr>
             <% end %>
           </tbody>
@@ -746,11 +746,11 @@
             </tr>
           </thead>
           <tbody>
-            <% lng_vehicle_classes.each do |lng_vehicle_class| %>
-              <% next if lng_vehicle_class.fetch("key") == "all" %>
+            <% alt_fuel_stations_vehicle_classes.each do |vehicle_class| %>
+              <% next if vehicle_class.fetch("key") == "all" %>
               <tr>
-                <th scope="row"><%= lng_vehicle_class.fetch("key") %></th>
-                <td><%= lng_vehicle_class.fetch("name") %></td>
+                <th scope="row"><%= vehicle_class.fetch("key") %></th>
+                <td><%= vehicle_class.fetch("name") %></td>
               </tr>
             <% end %>
           </tbody>
@@ -1265,7 +1265,7 @@
             </tr>
           </thead>
           <tbody>
-            <% vehicle_classes.each do |vehicle_class| %>
+            <% alt_fuel_stations_vehicle_classes.each do |vehicle_class| %>
               <% next if vehicle_class.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= vehicle_class.fetch("key") %></th>
