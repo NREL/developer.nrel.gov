@@ -84,71 +84,71 @@ helpers do
     trail.reverse
   end
 
-  def access_details
+  def alt_fuel_stations_access_details
     @_access_details ||= make_request("access-details")
   end
 
-  def access_types
+  def alt_fuel_stations_access_types
     @_access_types ||= loader.fetch("access_types")
   end
 
-  def cng_fill_types
+  def alt_fuel_stations_cng_fill_types
     @_cng_fill_types ||= loader.fetch("cng_fill_types_by_country").fetch("all")
   end
 
-  def cng_psis
+  def alt_fuel_stations_cng_psis
     @_cng_psis ||= loader.fetch("cng_psis_by_country").fetch("all")
   end
 
-  def cng_vehicle_classes
+  def alt_fuel_stations_cng_vehicle_classes
     @_cng_vehicle_classes ||= loader.fetch("vehicle_class_options")
   end
 
-  def countries
+  def alt_fuel_stations_countries
     @_countries = loader.fetch("countries")
   end
 
-  def electric_connectors
+  def alt_fuel_stations_electric_connectors
     @_electric_connectors ||= loader.fetch("electric_connectors_by_country").fetch("all")
   end
 
-  def electric_levels
+  def alt_fuel_stations_electric_levels
     @_electric_levels ||= loader.fetch("electric_levels_by_country").fetch("all")
   end
 
-  def ethanol_blends
+  def alt_fuel_stations_ethanol_blends
     @_ethanol_blends ||= loader.fetch("ethanol_blends")
   end
 
-  def ev_networks
+  def alt_fuel_stations_ev_networks
     @_ev_networks ||= loader.fetch("electric_networks_by_country").fetch("all")
   end
 
-  def facility_types
+  def alt_fuel_stations_facility_types
     @_facility_types ||= make_request("facility-types")
   end
 
-  def federal_agencies
+  def alt_fuel_stations_federal_agencies
     @_federal_agencies ||= loader.fetch("federal_agencies")
   end
 
-  def fuels
+  def alt_fuel_stations_fuels
     @_fuels ||= loader.fetch("fuels")
   end
 
-  def funding_sources
+  def alt_fuel_stations_funding_sources
     @_funding_sources ||= loader.fetch("funding_sources")
   end
 
-  def geocode_statuses
+  def alt_fuel_stations_geocode_statuses
     @_geocode_statuses ||= make_request("geocode-statuses")
   end
 
-  def hy_pressures
+  def alt_fuel_stations_hy_pressures
     @_hy_pressures ||= loader.fetch("hy_pressure")
   end
 
-  def hy_standards
+  def alt_fuel_stations_hy_standards
     @_hy_standards ||= loader.fetch("hy_standards")
   end
 
@@ -156,23 +156,23 @@ helpers do
     @_lng_vehicle_classes ||= loader.fetch("vehicle_class_options")
   end
 
-  def lpg_nozzle_types
+  def alt_fuel_stations_lpg_nozzle_types
     @_lpg_nozzle_types ||= loader.fetch("lpg_nozzle_types")
   end
 
-  def owner_types
+  def alt_fuel_stations_owner_types
     @_owner_types ||= loader.fetch("owner_types_by_country").fetch("all")
   end
 
-  def payment_methods
+  def alt_fuel_stations_payment_methods
     @_payment_methods ||= loader.fetch("payment_methods_by_country").fetch("all")
   end
 
-  def renewable_sources
+  def alt_fuel_stations_renewable_sources
     @_renewable_sources ||= loader.fetch("renewable_sources")
   end
 
-  def status_types
+  def alt_fuel_stations_status_types
     @_status_types ||= loader.fetch("status_types")
   end
 

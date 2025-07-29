@@ -9,7 +9,7 @@
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <%= electric_connectors.map { |electric_connector| "<em>#{electric_connector.fetch("key")}</em>" }.join(", ") %>
+      <strong>Options:</strong> <%= alt_fuel_stations_electric_connectors.map { |electric_connector| "<em>#{electric_connector.fetch("key")}</em>" }.join(", ") %>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <% electric_connectors.each do |electric_connector| %>
+        <% alt_fuel_stations_electric_connectors.each do |electric_connector| %>
           <tr>
             <th scope="row"><%= electric_connector.fetch("key") %></th>
             <td><%= electric_connector.fetch("name") %></td>

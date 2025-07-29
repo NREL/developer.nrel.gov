@@ -9,7 +9,7 @@
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <%= funding_sources.map { |funding_source| "<em>#{funding_source.fetch("key")}</em>" }.join(", ") %>
+      <strong>Options:</strong> <%= alt_fuel_stations_funding_sources.map { |funding_source| "<em>#{funding_source.fetch("key")}</em>" }.join(", ") %>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <% funding_sources.each do |funding_source| %>
+        <% alt_fuel_stations_funding_sources.each do |funding_source| %>
           <tr>
             <th scope="row"><%= funding_source.fetch("key") %></th>
             <td><%= funding_source.fetch("name") %></td>

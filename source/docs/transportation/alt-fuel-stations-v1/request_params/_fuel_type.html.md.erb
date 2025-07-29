@@ -9,7 +9,7 @@
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <%= fuels.map { |fuel| "<em>#{fuel.fetch("key")}</em>" }.join(", ") %>
+      <strong>Options:</strong> <%= alt_fuel_stations_fuels.map { |fuel| "<em>#{fuel.fetch("key")}</em>" }.join(", ") %>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <% fuels.each do |fuel| %>
+        <% alt_fuel_stations_fuels.each do |fuel| %>
           <tr>
             <th scope="row"><%= fuel.fetch("key") %></th>
             <td><%= fuel.fetch("name") %></td>

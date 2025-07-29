@@ -9,7 +9,7 @@
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <%= access_types.map { |access_type| "<em>#{access_type.fetch("key")}</em>" }.join(", ") %>
+      <strong>Options:</strong> <%= alt_fuel_stations_access_types.map { |access_type| "<em>#{access_type.fetch("key")}</em>" }.join(", ") %>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <% access_types.each do |access_type| %>
+        <% alt_fuel_stations_access_types.each do |access_type| %>
           <tr>
             <th scope="row"><%= access_type.fetch("key") %></th>
             <td><%= access_type.fetch("name") %></td>

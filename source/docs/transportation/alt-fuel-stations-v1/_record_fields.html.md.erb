@@ -24,7 +24,7 @@
             </tr>
           </thead>
           <tbody>
-            <% fuels.each do |fuel| %>
+            <% alt_fuel_stations_fuels.each do |fuel| %>
               <% next if fuel.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= fuel.fetch("key") %></th>
@@ -115,7 +115,7 @@
             </tr>
           </thead>
           <tbody>
-            <% countries.each do |country| %>
+            <% alt_fuel_stations_countries.each do |country| %>
               <% next if country.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= country.fetch("key") %></th>
@@ -152,7 +152,7 @@
             </tr>
           </thead>
           <tbody>
-            <% status_types.each do |status_type| %>
+            <% alt_fuel_stations_status_types.each do |status_type| %>
               <% next if status_type.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= status_type.fetch("key") %></th>
@@ -189,7 +189,7 @@
             </tr>
           </thead>
           <tbody>
-            <% access_types.each do |access_type| %>
+            <% alt_fuel_stations_access_types.each do |access_type| %>
               <% next if access_type.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= access_type.fetch("key") %></th>
@@ -217,7 +217,7 @@
             </tr>
           </thead>
           <tbody>
-            <% access_details.each do |access_detail| %>
+            <% alt_fuel_stations_access_details.each do |access_detail| %>
               <% next if access_detail.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= access_detail.fetch("key") %></th>
@@ -266,7 +266,7 @@
             </tr>
           </thead>
           <tbody>
-            <% payment_methods.each do |payment_method| %>
+            <% alt_fuel_stations_payment_methods.each do |payment_method| %>
               <% next if payment_method.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= payment_method.fetch("key") %></th>
@@ -294,7 +294,7 @@
             </tr>
           </thead>
           <tbody>
-            <% owner_types.each do |owner_type| %>
+            <% alt_fuel_stations_owner_types.each do |owner_type| %>
               <% next if owner_type.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= owner_type.fetch("key") %></th>
@@ -371,7 +371,7 @@
             </tr>
           </thead>
           <tbody>
-            <% ethanol_blends.each do |ethanol_blend| %>
+            <% alt_fuel_stations_ethanol_blends.each do |ethanol_blend| %>
               <% next if ethanol_blend.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= ethanol_blend.fetch("key") %></th>
@@ -399,7 +399,7 @@
             </tr>
           </thead>
           <tbody>
-            <% lpg_nozzle_types.each do |lpg_nozzle_type| %>
+            <% alt_fuel_stations_lpg_nozzle_types.each do |lpg_nozzle_type| %>
               <% next if lpg_nozzle_type.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= lpg_nozzle_type.fetch("key") %></th>
@@ -556,7 +556,7 @@
             </tr>
           </thead>
           <tbody>
-            <% cng_fill_types.each do |cng_fill_type| %>
+            <% alt_fuel_stations_cng_fill_types.each do |cng_fill_type| %>
               <% next if cng_fill_type.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= cng_fill_type.fetch("key") %></th>
@@ -613,7 +613,7 @@
             </tr>
           </thead>
           <tbody>
-            <% cng_psis.each do |cng_psi| %>
+            <% alt_fuel_stations_cng_psis.each do |cng_psi| %>
               <% next if cng_psi.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= cng_psi.fetch("key") %></th>
@@ -641,7 +641,7 @@
             </tr>
           </thead>
           <tbody>
-            <% renewable_sources.each do |renewable_source| %>
+            <% alt_fuel_stations_renewable_sources.each do |renewable_source| %>
               <% next if renewable_source.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= renewable_source.fetch("key") %></th>
@@ -688,7 +688,7 @@
             </tr>
           </thead>
           <tbody>
-            <% cng_vehicle_classes.each do |cng_vehicle_class| %>
+            <% alt_fuel_stations_cng_vehicle_classes.each do |cng_vehicle_class| %>
               <% next if cng_vehicle_class.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= cng_vehicle_class.fetch("key") %></th>
@@ -717,7 +717,7 @@
             </tr>
           </thead>
           <tbody>
-            <% renewable_sources.each do |renewable_source| %>
+            <% alt_fuel_stations_renewable_sources.each do |renewable_source| %>
               <% next if renewable_source.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= renewable_source.fetch("key") %></th>
@@ -848,7 +848,7 @@
             </tr>
           </thead>
           <tbody>
-            <% electric_connectors.each do |electric_connector| %>
+            <% alt_fuel_stations_electric_connectors.each do |electric_connector| %>
               <% next if electric_connector.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= electric_connector.fetch("key") %></th>
@@ -876,7 +876,7 @@
             </tr>
           </thead>
           <tbody>
-            <% ev_networks.each do |ev_network| %>
+            <% alt_fuel_stations_ev_networks.each do |ev_network| %>
               <% next if ev_network.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= ev_network.fetch("key") %></th>
@@ -933,7 +933,7 @@
             </tr>
           </thead>
           <tbody>
-            <% renewable_sources.each do |renewable_source| %>
+            <% alt_fuel_stations_renewable_sources.each do |renewable_source| %>
               <% next if renewable_source.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= renewable_source.fetch("key") %></th>
@@ -990,7 +990,7 @@
             </tr>
           </thead>
           <tbody>
-            <% hy_pressures.each do |hy_pressure| %>
+            <% alt_fuel_stations_hy_pressures.each do |hy_pressure| %>
               <% next if hy_pressure.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= hy_pressure.fetch("key") %></th>
@@ -1018,7 +1018,7 @@
             </tr>
           </thead>
           <tbody>
-            <% hy_standards.each do |hy_standard| %>
+            <% alt_fuel_stations_hy_standards.each do |hy_standard| %>
               <% next if hy_standard.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= hy_standard.fetch("key") %></th>
@@ -1055,7 +1055,7 @@
             </tr>
           </thead>
           <tbody>
-            <% geocode_statuses.each do |geocode_status| %>
+            <% alt_fuel_stations_geocode_statuses.each do |geocode_status| %>
               <% next if geocode_status.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= geocode_status.fetch("key") %></th>
@@ -1146,7 +1146,7 @@
             </tr>
           </thead>
           <tbody>
-            <% facility_types.each do |facility_type| %>
+            <% alt_fuel_stations_facility_types.each do |facility_type| %>
               <% next if facility_type.fetch("key") == "all" %>
               <tr>
                 <th scope="row"><%= facility_type.fetch("key") %></th>

@@ -9,7 +9,7 @@
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <%= federal_agencies.map { |federal_agency| "<em>#{federal_agency.fetch("id")}</em>" }.join(", ") %>
+      <strong>Options:</strong> <%= alt_fuel_stations_federal_agencies.map { |federal_agency| "<em>#{federal_agency.fetch("id")}</em>" }.join(", ") %>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -23,7 +23,7 @@
         </tr>
       </thead>
       <tbody>
-        <% federal_agencies.each do |federal_agency| %>
+        <% alt_fuel_stations_federal_agencies.each do |federal_agency| %>
           <tr>
             <th scope="row"><%= federal_agency.fetch("id") %></th>
             <td><%= federal_agency.fetch("name") %><%= " (#{federal_agency.fetch("country")})" if(federal_agency.fetch("key") != "all") %></td>
