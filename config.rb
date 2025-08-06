@@ -83,6 +83,104 @@ helpers do
 
     trail.reverse
   end
+
+  def alt_fuel_stations_access_details
+    @_access_details ||= make_request("access-details")
+  end
+
+  def alt_fuel_stations_access_types
+    @_access_types ||= loader.fetch("access_types")
+  end
+
+  def alt_fuel_stations_cng_fill_types
+    @_cng_fill_types ||= loader.fetch("cng_fill_types_by_country").fetch("all")
+  end
+
+  def alt_fuel_stations_cng_psis
+    @_cng_psis ||= loader.fetch("cng_psis_by_country").fetch("all")
+  end
+
+  def alt_fuel_stations_countries
+    @_countries = loader.fetch("countries")
+  end
+
+  def alt_fuel_stations_electric_connectors
+    @_electric_connectors ||= loader.fetch("electric_connectors_by_country").fetch("all")
+  end
+
+  def alt_fuel_stations_electric_levels
+    @_electric_levels ||= loader.fetch("electric_levels_by_country").fetch("all")
+  end
+
+  def alt_fuel_stations_ethanol_blends
+    @_ethanol_blends ||= loader.fetch("ethanol_blends")
+  end
+
+  def alt_fuel_stations_ev_networks
+    @_ev_networks ||= loader.fetch("electric_networks_by_country").fetch("all")
+  end
+
+  def alt_fuel_stations_facility_types
+    @_facility_types ||= make_request("facility-types")
+  end
+
+  def alt_fuel_stations_federal_agencies
+    @_federal_agencies ||= loader.fetch("federal_agencies")
+  end
+
+  def alt_fuel_stations_fuels
+    @_fuels ||= loader.fetch("fuels")
+  end
+
+  def alt_fuel_stations_funding_sources
+    @_funding_sources ||= loader.fetch("funding_sources")
+  end
+
+  def alt_fuel_stations_geocode_statuses
+    @_geocode_statuses ||= make_request("geocode-statuses")
+  end
+
+  def alt_fuel_stations_hy_pressures
+    @_hy_pressures ||= loader.fetch("hy_pressure")
+  end
+
+  def alt_fuel_stations_hy_standards
+    @_hy_standards ||= loader.fetch("hy_standards")
+  end
+
+  def alt_fuel_stations_lpg_nozzle_types
+    @_lpg_nozzle_types ||= loader.fetch("lpg_nozzle_types")
+  end
+
+  def alt_fuel_stations_owner_types
+    @_owner_types ||= loader.fetch("owner_types_by_country").fetch("all")
+  end
+
+  def alt_fuel_stations_payment_methods
+    @_payment_methods ||= loader.fetch("payment_methods_by_country").fetch("all")
+  end
+
+  def alt_fuel_stations_renewable_sources
+    @_renewable_sources ||= loader.fetch("renewable_sources")
+  end
+
+  def alt_fuel_stations_status_types
+    @_status_types ||= loader.fetch("status_types")
+  end
+
+  def alt_fuel_stations_vehicle_classes
+    @_vehicle_classes ||= loader.fetch("vehicle_class_options")
+  end
+
+  private
+
+  def loader
+    @_loader ||= make_request("locator/loader")
+  end
+
+  def make_request(path, params = {country: "all", api_key: ENV["DOCS_API_KEY"]})
+    MultiJson.load(RestClient.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/#{path}.json", params: params))
+  end
 end
 
 # Set default API key for local development.

@@ -1,0 +1,35 @@
+<tr>
+  <th class="doc-parameter-name" scope="row">lng_vehicle_class</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <%= alt_fuel_stations_vehicle_classes.map { |vehicle_class| "<em>#{vehicle_class.fetch("key")}</em>" }.join(", ") %>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Deprecated: See <a href="#request-maximum-vehicle-class"><code>maximum_vehicle_class</code></a>. (Note: this query parameter will remain for legacy application support)</p>
+    <p>Return only LNG stations that can accomodate the specified vehicle class size or greater.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Value</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% alt_fuel_stations_vehicle_classes.each do |vehicle_class| %>
+          <tr>
+            <th scope="row"><%= vehicle_class.fetch("key") %></th>
+            <td><%= vehicle_class.fetch("name") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </td>
+</tr>

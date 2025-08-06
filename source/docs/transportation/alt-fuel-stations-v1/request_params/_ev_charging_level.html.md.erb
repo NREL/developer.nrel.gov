@@ -1,0 +1,34 @@
+<tr id="ev-charging-level">
+  <th class="doc-parameter-name" scope="row">ev_charging_level</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <%= alt_fuel_stations_electric_levels.map { |electric_level| "<em>#{electric_level.fetch("key")}</em>" }.join(", ") %>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only EV charging stations that provide the given level of electric vehicle supply equipment (EVSE).</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% alt_fuel_stations_electric_levels.each do |electric_level| %>
+          <tr>
+            <th scope="row"><%= electric_level.fetch("key") %></th>
+            <td><%= electric_level.fetch("name") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </td>
+</tr>

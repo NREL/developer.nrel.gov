@@ -1,0 +1,36 @@
+<tr>
+  <th class="doc-parameter-name" scope="row">federal_agency_id</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> integer
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <%= alt_fuel_stations_federal_agencies.map { |federal_agency| "<em>#{federal_agency.fetch("id")}</em>" }.join(", ") %>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Deprecated: See <a href="#request-federal-agency"><code>federal_agency</code></a>. (Note: this query parameter will remain for legacy application support)</p>
+    <p>Return stations owned by the given federal agency. A federal agency ID, or a comma-separated list of multiple federal agency IDs, may be given.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% alt_fuel_stations_federal_agencies.each do |federal_agency| %>
+          <tr>
+            <th scope="row"><%= federal_agency.fetch("id") %></th>
+            <td><%= federal_agency.fetch("name") %><%= " (#{federal_agency.fetch("country")})" if(federal_agency.fetch("key") != "all") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </td>
+</tr>
+
