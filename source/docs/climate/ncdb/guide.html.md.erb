@@ -10,17 +10,17 @@ We often receive requests from users interested in downloading larger segments o
 
 The API is restricted in several ways including the number of simultaneous requests a single user can make, the number of requests a single user can make in a 24 hour period, as well as in the maximum size of a single request. The API rate limits are set at:
 
-> 1000 requests per day
+> 2000 requests per day
 > 1 request every 2 seconds
 > 20 requests in process at once
 
 For downloading directly via CSV there are separate rate limits. This is due to the fact that it is only possible to download a single site for a single year via the CSV endpoint, therefor these requests are always quite small by comparison:
 
-> 5000 requests per day
+> 10,000 requests per day
 > 1 request per second
 > 20 requests in process at once
 
-The size limit per each single request is determined by the number of total attributes in each request. The maximum weight of each request is **5000000**. The calculation for determining the weight of each request is:
+The size limit per each single request is determined by the number of total attributes in each request. The maximum weight of each request is **175000100**. The calculation for determining the weight of each request is:
 
 > <em>site-count\*attribute-count\*year-count\*data-intervals-per-year</em>
 
@@ -31,7 +31,7 @@ The size limit per each single request is determined by the number of total attr
 
 To maximize a single request simply minimize the variables wherever possible. For example by requesting half as many attributes one can request twice as many years (or sites) worth of data.
 
-Imagine a use case where one wanted to download all Climate data for the state of Texas. The first step would be to refine the request down to the least number of attributes, years, and intervals possible. From that one could determine the number of sites that could be requested in a single request. By experimenting with the site_count endpoint a polygon size could be identified that intersects close to that many sites. Using that polygon size create a grid that covers all of Texas. The final step would be to write a script that invokes the API once for every required grid cell at a rate of no more than 1 every 2 seconds and no more than 20 in process at a time. If more than 1000 requests are required the script will have to be continued across multiple days.
+Imagine a use case where one wanted to download all Climate data for the state of Texas. The first step would be to refine the request down to the least number of attributes, years, and intervals possible. From that one could determine the number of sites that could be requested in a single request. By experimenting with the site_count endpoint a polygon size could be identified that intersects close to that many sites. Using that polygon size create a grid that covers all of Texas. The final step would be to write a script that invokes the API once for every required grid cell at a rate of no more than 1 every 2 seconds and no more than 20 in process at a time. If more than 2000 requests are required the script will have to be continued across multiple days.
 
 
 In cases where a very large WKT value is required, e.g. downloading the maximum number of broadly spaced points at a time using a MULTIPOINT wkt, it is possible to POST a request to the API providing the WKT params in the payload. Here is an example of a Python script that uses this variation:
