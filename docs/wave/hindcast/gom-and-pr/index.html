@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        Canada 
+        Gulf Of America And Puerto Rico Wave Data 
           API
         |
       NREL: Developer Network
     </title>
 
-    <link rel="canonical" href="https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-canada-5min-download/" />
+    <link rel="canonical" href="https://developer.nrel.gov/docs/wave/hindcast/gom-and-pr/" />
 
     <link href="/vite/assets/a-entrypoints/all-EgikzgNO.css" rel="stylesheet" />
     <!-- Google Tag Manager -->
@@ -30,7 +30,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="apple-touch-icon" sizes="114x114" href="/vite/assets/a-touch-icon-iphone-retina-CZo0JGSQ.png">
     <link rel="apple-touch-icon" sizes="144x144" href="/vite/assets/a-touch-icon-ipad-retina-DCfTusX0.png">
   </head>
-  <body class="docs docs_wind docs_wind_wind-toolkit docs_wind_wind-toolkit_wtk-canada-5min-download docs_wind_wind-toolkit_wtk-canada-5min-download_index">
+  <body class="docs docs_wave docs_wave_hindcast docs_wave_hindcast_gom-and-pr docs_wave_hindcast_gom-and-pr_index">
     <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src=https://www.googletagmanager.com/ns.html?id=GTM-KG7PVKB
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -166,22 +166,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <main id="content" class="container-xl">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/docs/">APIs & Documentation</a></li>
-            <li class="breadcrumb-item"><a href="/docs/wind/">Wind</a></li>
-            <li class="breadcrumb-item"><a href="/docs/wind/wind-toolkit/">Wind Toolkit Data Downloads</a></li>
-            <li class="breadcrumb-item active">Canada</li>
+            <li class="breadcrumb-item"><a href="/docs/wave/">Wave</a></li>
+            <li class="breadcrumb-item"><a href="/docs/wave/hindcast/">Hindcast Data Downloads</a></li>
+            <li class="breadcrumb-item active">Gulf Of America And Puerto Rico Wave Data</li>
     </ol>
 
 
-      <h1 id="canada-apiwind-toolkitv2windwtk-canada-5min-download">Canada <span class="url">(/api/wind-toolkit/v2/wind/wtk-canada-5min-download)</span></h1>
-<p>Collect and download, as CSV, a configurable set of data fields from a multi-national collection of wind stations. This data represents wind-speed, temperature, direction, and air pressure values at multiple heights above the surface for the years 2007 to 2014.</p>
+      <h1 id="gulf-of-america-and-puerto-rico-wave-data-apiwavev2waveus-wave-v1-0-0-gom-and-pr-download">Gulf Of America And Puerto Rico Wave Data <span class="url">(/api/wave/v2/wave/us-wave-v1-0-0-gom-and-pr-download)</span></h1>
+<p>Collect and download, as CSV, a configurable set of wave data fields from the DOE-WPTO.</p>
 
-<p>The complete library of wind data can be accessed in bulk at <a href="https://data.openei.org/s3_viewer?bucket=nrel-pds-wtk" target="_blank">https://data.openei.org/s3_viewer?bucket=nrel-pds-wtk</a>.</p>
+<p>This data was generated using WaveWatch III and SWAN, and spanned 42-years from 1979 through 2020. The 'annual' data is a complete average over that time-span. The monthly fields (available via drop-down) are averages across all years of the selected month.</p>
+<p>The data was developed with funding from the U.S. Department of Energy, Office of Energy Efficiency &amp; Renewable Energy, Water Power Technologies Office to improve our understanding of the U.S. wave energy resource and to provide critical information for wave energy project development and wave energy converter design.</p>
+<p>This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.</p>
 
-<div id="toc" class="card bg-body-secondary border-0 rounded-0 py-3 pe-4 mb-3 d-inline-block" hidden=""></div>
+<ul id="toc"></ul>
 
 <h2 id="request-url">Request URL</h2>
 
-<pre>GET|POST /api/wind-toolkit/v2/wind/wtk-canada-5min-download<em>.format?parameters</em></pre>
+<pre>GET|POST /api/wave/v2/wave/us-wave-v1-0-0-gom-and-pr-download<em>.format?parameters</em></pre>
 
 <h2 id="request-parameters">Request Parameters</h2>
 <p><em>NOTE: when using POST to submit a request the api_key must still be included as a query parameter in the url. All other parameters may be included in a POST request as part of the payload.</em></p>
@@ -224,7 +226,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>pressure_100m, temperature_100m, winddirection_100m, windspeed_100m, temperature_10m, winddirection_10m, windspeed_10m, temperature_120m, winddirection_120m, windspeed_120m, temperature_140m, winddirection_140m, windspeed_140m, temperature_160m, winddirection_160m, windspeed_160m, pressure_200m, temperature_200m, winddirection_200m, windspeed_200m, inversemoninobukhovlength_2m, relativehumidity_2m, temperature_2m, temperature_40m, winddirection_40m, windspeed_40m, temperature_60m, winddirection_60m, windspeed_60m, temperature_80m, winddirection_80m, windspeed_80m, precipitationrate_0m, pressure_0m.</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>direction_of_maximum_directionally_resolved_wave_power, directionality_coefficient, energy_period, mean_absolute_period, mean_wave_direction, mean_zero-crossing_period, omnidirectional_wave_power, peak_period, peak_wave_direction, significant_wave_height, spectral_width.</em></div>
       </td>
       <td class="doc-parameter-description">
         Each specified attribute(*) will be returned as a column in the resultant CSV download.
@@ -236,7 +238,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014</em>.</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020</em>.</div>
       </td>
       <td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
     </tr>
@@ -266,11 +268,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <th class="doc-parameter-name" scope="row">interval</th>
       <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong>5, 15, 30, 60</div>
+        <div class="doc-parameter-value-field"><strong>Type:</strong> integer</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
       </td>
       <td class="doc-parameter-description">
-        This value determines data resolution. Either 5, 15, 30, 60 minute intervals are available.
+        This value determines data resolution. 180 minute intervals are available.
       </td>
     </tr>
     <tr>
@@ -321,7 +323,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="doc-parameter-value-field"><strong>Default:</strong> false</div>
       </td>
       <td class="doc-parameter-description">
-        Pass true to add the email address to our list of recipients for the Wind Toolkit mailing list.
+        Pass true to add the email address to our list of recipients for the NSRDB mailing list.
       </td>
     </tr>
   </tbody>
@@ -371,33 +373,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>Generated data files are formatted in accordance with the Standard Time Series Data File Format. This file format has been developed to support <a href="https://sam.nrel.gov/">SAM</a> and other NREL models and is documented fully in <a href="https://sam.nrel.gov/sites/default/files/content/documents/pdf/wfcsv.pdf">this PDF</a>. More information on SAM file formats available on <a href="https://sam.nrel.gov/weather">the SAM weather page</a>.</p>
 
 <h2 id="examples">Examples</h2>
-<p>Examples may not reflect this specific dataset.</p>
+<p>Examples may not reflect the full range of possible options for this dataset.</p>
 
 <h3 id="json-output-format">JSON Output Format</h3>
 
-<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/wtk-canada-5min-download.json?wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=user@company.com</code></div>
+<div class="doc-example-url"><code>GET /api/wave/v2/wave/us-wave-v1-0-0-gom-and-pr-download.json?email=paul.edwards@nrel.gov&amp;wkt=POINT(-67.97 17.62)&amp;attributes=direction_of_maximum_directionally_resolved_wave_power&amp;names=2019,2020&amp;interval=180</code></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>{
     "inputs": {
+        "body": {},
+        "params": {
+            "0": ".json"
+        },
         "query": {
-            "attributes": "winddirection_180m",
-            "names": "2017",
-            "utc": "false",
-            "leap_day": "true",
-            "email": "user@company.com",
-            "wkt": "POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))"
+            "email": "paul.edwards@nrel.gov",
+            "wkt": "POINT(-67.97 17.62)",
+            "attributes": "direction_of_maximum_directionally_resolved_wave_power",
+            "names": "2019,2020",
+            "interval": "180"
         }
     },
     "metadata": {
         "version": "2.0.0",
         "resultset": {
-          "count": 1
+            "count": 1
         }
     },
     "status": 200,
     "outputs": {
-        "message": "File generation in progress. An email will be sent to user@company.com when the download is ready.",
-        "downloadUrl": "https://mapfiles.nrel.gov/data/wind/ebc9bbbc34f91c65ac50707d43176c6c.zip"
+        "message": "File generation in progress. An email will be sent to paul.edwards@nrel.gov when the download is ready.",
+        "downloadUrl": "https://mapfiles.nrel.gov/data/wave/7c1320137c7c8f98e96af4781903419f.zip"
     },
     "errors": []
 }
@@ -405,28 +410,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h3 id="csv-output-format">CSV Output Format</h3>
 <p>Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.</p>
 
-<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/wtk-canada-5min-download.csv?wkt=POINT(-179.99 -15.94)&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=false&amp;leap_day=true&amp;email=user@company.com&amp;api_key=DEMO_KEY</code></div>
+<div class="doc-example-url"><code>GET /api/wave/v2/wave/us-wave-v1-0-0-gom-and-pr-download.csv?email=paul.edwards@nrel.gov&amp;wkt=POINT(-67.97 17.62)&amp;attributes=energy_period,spectral_width&amp;names=2020&amp;interval=180</code></div>
 
-<div class="highlight"><pre class="highlight plaintext"><code>SiteID,Site Timezone,Data Timezone,Longitude,Latitude,Country
-80,-9,-9,-130.756,48.75498,b'Canada'
-Year,Month,Day,Hour,Minute,wind direction at 180m (deg)
-2017,1,1,0,0,347.18
-2017,1,1,0,5,347.3
-2017,1,1,0,10,347.40000000000003
-2017,1,1,0,15,347.52
-2017,1,1,0,20,347.66
-2017,1,1,0,25,347.79
-2017,1,1,0,30,348
-2017,1,1,0,35,348.18
-2017,1,1,0,40,348.35
+<div class="highlight"><pre class="highlight plaintext"><code>Source,Location ID,Jurisdiction,Latitude,Longitude,Time Zone,Local Time Zone,Distance to Shore,Water Depth,Direction of Maximum Directionally Resolved Wave Power,Directionality Coefficient,Energy Period,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omnidirectional Wave Power,Peak Period,Peak Wave Direction,Significant Wave Height,Spectral Width,Version
+DOE-WPTO US Wave dataset,3586863,b'Federal',,,0,,48960.945,,deg,-,s,s,deg,s,W/m,s,deg,m,-,v1.0.0
+Year,Month,Day,Hour,Minute,Energy Period,Spectral Width
+2020,1,1,0,0,10.592300415039062,0.33000001311302185
+2020,1,1,3,0,10.504500389099121,0.33169999718666077
+2020,1,1,6,0,10.272199630737305,0.34470000863075256
+2020,1,1,9,0,10.026399612426758,0.35109999775886536
+...
 </code></pre></div>
 <h3 id="post-request-example-in-python">POST request example in Python</h3>
 
 <div class="highlight"><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://developer.nrel.gov/api/wind-toolkit/v2/wind/wtk-canada-5min-download.json?api_key=yourapikeygoeshere"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/wave/v2/wave/us-wave-v1-0-0-gom-and-pr-download.json?api_key=yourapikeygoeshere"</span>
 
-<span class="n">payload</span> <span class="o">=</span> <span class="s">"api_key={{API_KEY}}&amp;attributes=winddirection_180m&amp;names=2017&amp;utc=true&amp;leap_day=true&amp;interval=60&amp;email=user@company.com&amp;wkt=POINT(-179.99 -15.94)"</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"api_key={{API_KEY}}&amp;email=paul.edwards@nrel.gov&amp;wkt=POINT(-67.97 17.62)&amp;attributes=energy_period,spectral_width&amp;names=2020&amp;interval=180"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'content-type'</span><span class="p">:</span> <span class="s">"application/x-www-form-urlencoded"</span><span class="p">,</span>
@@ -441,17 +442,17 @@ Year,Month,Day,Hour,Minute,wind direction at 180m (deg)
 
 <p>Rate limits for this application are significantly less than the <a href="/docs/rate-limits" target="_blank">standard rate limits</a> for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.</p>
 
-<p>There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 10,000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 2000 requests per day at a frequency of no more than 1 every 2 seconds.</p>
+<p>There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 10000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 2000 requests per day at a frequency of no more than 1 every 2 seconds.</p>
 
 <p>Secondly each user is limited to 20 in-flight requests at any given time.</p>
 
 <p>In addition, the service has a fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.</p>
 
-<p>For some tips and tricks to maximize data downloads please read the guide <a href="/docs/wind/wind-toolkit/guide/">here</a>.</p>
+<p>For some tips and tricks to maximize data downloads please read the guide <a href="/docs/wave/guide/">here</a>.</p>
 
 <h2 id="contacts">Contact</h2>
 
-<p>For questions about the API or the data models please contact <a href="mailto:wind-toolkit@nrel.gov">wind-toolkit@nrel.gov</a></p>
+<p>For questions about the API or the data models please contact <a href="mailto:marineresource@nrel.gov">marineresource@nrel.gov</a></p>
 
 <h2 id="errors">Errors</h2>
 
@@ -474,7 +475,7 @@ Year,Month,Day,Hour,Minute,wind direction at 180m (deg)
 
 
       <div style="text-align: center; font-style: italic; margin-top: 2rem;">
-  <a href="https://github.com/NREL/developer.nrel.gov/blob/main/source/docs/wind/wind-toolkit/wtk-canada-5min-download.html.md.erb">Help improve this content</a>
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/main/source/docs/wave/hindcast/gom-and-pr.html.md.erb">Help improve this content</a>
 </div>
 
     </main>
