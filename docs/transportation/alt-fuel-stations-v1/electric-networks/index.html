@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        Electric Vehicle Charging Networks 
+          API
+        |
+      NREL: Developer Network
+    </title>
+
+    <link rel="canonical" href="https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1/electric-networks/" />
+
+    <link href="/vite/assets/a-entrypoints/all-EgikzgNO.css" rel="stylesheet" />
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KG7PVKB');</script>
+<!-- End Google Tag Manager -->
+
+    <script src="/vite/assets/all-BYMPrWtX.js" crossorigin="anonymous" type="module"></script><link rel="modulepreload" href="/vite/assets/c-_commonjsHelpers-Cpj98o6Y.js" as="script" crossorigin="anonymous" />
+<link rel="modulepreload" href="/vite/assets/c-ready-D7ecCvij.js" as="script" crossorigin="anonymous" /><link href="/vite/assets/a-all-qZ9mOat6.css" rel="stylesheet" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="/vite/assets/a-favicon-DsvBt6aY.ico">
+    <link rel="apple-touch-icon" href="/vite/assets/a-touch-icon-iphone-AtpJUIge.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/vite/assets/a-touch-icon-ipad-S2DOJiH4.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/vite/assets/a-touch-icon-iphone-retina-CZo0JGSQ.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/vite/assets/a-touch-icon-ipad-retina-DCfTusX0.png">
+  </head>
+  <body class="docs docs_transportation docs_transportation_alt-fuel-stations-v1 docs_transportation_alt-fuel-stations-v1_electric-networks docs_transportation_alt-fuel-stations-v1_electric-networks_index">
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src=https://www.googletagmanager.com/ns.html?id=GTM-KG7PVKB
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <!--stopindex-->
+<a href="#content" class="visually-hidden-focusable skip-to-content">Skip to main content</a>
+
+<header id="banner" class="gov-site-header header3" aria-label="main site header">
+  <div class="banner-logo">
+    <div class="container-xl app">
+      <div class="row align-items-center">
+
+        <div class="col-md-6 col-xl-4 order-md-2 text-center text-md-end">
+          <a class="logo-img" href="https://www.nrel.gov/">
+            <img src="/vite/assets/a-nrel-logo-2025-DWUhGQbs.svg" alt="NREL logo">
+          </a>
+
+          <!-- mobile search button -->
+          <button type="button" class="custom-toggler site-navbar-toggler site-searchbar-toggle d-md-none" data-bs-toggle="collapse" data-bs-target="#searchbar-collapse-mobile" aria-expanded="false" aria-label="Toggle Search">
+            <i class="fa-solid fa-fw fa-magnifying-glass"></i>
+          </button>
+        </div>
+
+        <div class="col-12 d-md-none">
+          <!-- Start MOBILE collapsible site search bar -->
+          <div class="site-search-bar">
+            <div class="container-xl">
+              <div class="row">
+                <div class="col d-flex justify-content-center mb-1">
+                  <nav class="navbar navbar-light" aria-label="Search">
+                    <div class="navbar-collapse collapse" id="searchbar-collapse-mobile">
+                      <form
+                          method="get"
+                          class="site-searchbar-form form-inline ThunderstoneForm"
+                          action="https://search4.nrel.gov/texis/search/" 
+                          id="ThunderstoneSearchFormMobile">
+
+                        <input type="hidden" name="pr" value="metanrel">
+                        <div class="form-group">
+                          <label for="querymobile" class="visually-hidden">Search NREL.gov</label>
+                          <input
+                              type="search"
+                              id="querymobile" name="query"
+                                               maxlength="2047"
+                                               placeholder="Search NREL.gov"
+                                               class="form-control"
+                                               aria-label="Search NREL.gov">
+                          <button type="submit" class="btn btn-default">Search</button>
+                        </div>
+                      </form>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>    
+          <!-- End MOBILE collapsible site search bar -->
+        </div>
+
+        <div class="col-md-6 col-xl-8 order-md-1">
+          <a href="/" class="app-name my-0 mb-1 mb-md-0 mt-md-1">Developer Network</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- TOP NAVIGATION -->
+  <div class="program-header">
+    <div class="container-xl gx-0 gx-md-4">
+      <nav class="navbar navbar-expand-md navbar-light" aria-label="Main">
+
+        <div id="program-menu" class="me-auto">
+          <button class="custom-toggler navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topnav-collapse" aria-controls="topnav-collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-closed"><i class="fa-solid fa-bars fa-fw"></i>Menu</span>
+            <span class="navbar-toggler-opened"><i class="fa-solid fa-xmark fa-fw"></i>Close</span>
+          </button>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navbar-collapse collapse border-0" id="topnav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item active"><a href="/docs/" class="nav-link">APIs &amp; Documentation</a></li>
+            <li class="nav-item"><a href="/signup/" class="nav-link">Key Signup</a></li>
+            <li class="nav-item"><a href="/contact/" class="nav-link">Contact Us</a></li>
+          </ul>
+          <!-- desktop search button -->
+          <button type="button" class="custom-toggler site-navbar-toggler site-searchbar-toggle d-none d-md-inline ms-auto me-0" data-bs-toggle="collapse" data-bs-target="#searchbar-collapse" aria-expanded="false" aria-label="Toggle Search">
+            <i class="fa-solid fa-fw fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </nav>
+    </div><!--container-->
+  </div><!--program-header-->
+  <!-- Start desktop collapsible site search bar -->
+  <div class="site-search-bar">
+    <div class="container-xl">
+      <div class="row">
+        <div class="col">
+          <nav class="navbar navbar-light" aria-label="Search">
+            <div class="navbar-collapse collapse" id="searchbar-collapse">
+              <form
+                  method="get"
+                  class="site-searchbar-form form-inline ThunderstoneForm"
+                  action="https://search4.nrel.gov/texis/search/" 
+                  id="ThunderstoneSearchForm">
+
+                <input type="hidden" name="pr" value="metanrel">
+                <div class="form-group">
+                  <label for="query" class="visually-hidden">Search NREL.gov</label>
+                  <input
+                      type="search"
+                      id="query" name="query"
+                                 maxlength="2047"
+                                 placeholder="Search NREL.gov"
+                                 class="form-control"
+                                 aria-label="Search NREL.gov">
+                  <button type="submit" class="btn btn-default">Search</button>
+                </div>
+              </form>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>    
+<!-- End collapsible site search bar -->
+</header>
+<!--startindex-->
+
+    <main id="content" class="container-xl">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/docs/">APIs & Documentation</a></li>
+            <li class="breadcrumb-item"><a href="/docs/transportation/">Transportation</a></li>
+            <li class="breadcrumb-item"><a href="/docs/transportation/alt-fuel-stations-v1/">Alternative Fuel Stations</a></li>
+            <li class="breadcrumb-item active">Electric Vehicle Charging Networks</li>
+    </ol>
+
+
+      <h1 id="electric-vehicle-charging-networks-get-apialt-fuel-stationsv1electric-networks">Electric Vehicle Charging Networks <span class="url">(GET /api/alt-fuel-stations/v1/electric-networks)</span></h1>
+<p>Return a full list of electric vehicle (EV) charging networks. This dataset powers the <a href="https://afdc.energy.gov/stations/charging-networks">Electric Vehicle Charging Networks</a> on the Alternative Fuels Data Center (AFDC).</p>
+
+<div id="toc" class="card bg-body-secondary border-0 rounded-0 py-3 pe-4 mb-3 d-inline-block" hidden=""></div>
+
+<h2 id="request-url">Request URL</h2>
+
+<pre>GET /api/alt-fuel-stations/v1/electric-networks.json<em>?parameters</em></pre>
+
+<h2 id="request-parameters">Request Parameters</h2>
+
+<p>The following query parameters may be passed in the request to control the output:</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Parameter</th>
+      <th class="doc-parameters-required" scope="col">Required</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <th class="doc-parameter-name" scope="row">api_key</th>
+  <td class="doc-parameter-required">Yes</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> None
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Your developer API key. See <a href="/docs/api-key/">API key usage</a> for more information.</p>
+  </td>
+</tr>
+
+    <tr>
+  <th class="doc-parameter-name" scope="row">country</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>US</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all</em>, <em>US</em>, <em>CA</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only networks within the given country code.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Value</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th scope="row">all</th>
+            <td>U.S. and Canada</td>
+          </tr>
+          <tr>
+            <th scope="row">US</th>
+            <td>United States</td>
+          </tr>
+          <tr>
+            <th scope="row">CA</th>
+            <td>Canada</td>
+          </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+
+    <tr>
+  <th class="doc-parameter-name" scope="row">include_inactive</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> boolean
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>false</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> true, false
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>If <code>true</code>, then include inactive EV charging networks that are not visible on the AFDC.</p>
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+<h2 id="response-fields">Response Fields</h2>
+
+<p>The response is composed of a list of electric vehicle charging networks matching the requested query. The network data is provided in the following structure.</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">key</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The key that identifies the charging network.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">evchart_key</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>A key in use for EV-ChART.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">name</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>EV charging network name.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">url</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The URL for the charging network.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">last_import_date</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> date
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The most recent date for which equipment data has been confirmed.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">date_added</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> date
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The date the network was added to the AFDC.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">import_type</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The method by which data about the network is imported.</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">CSV</th>
+              <td>CSV import</td>
+            </tr>
+            <tr>
+              <th scope="row">API</th>
+              <td>API import</td>
+            </tr>
+            <tr>
+              <th scope="row">Manual</th>
+              <td>Data is manually entered</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="examples">Examples</h2>
+
+<h3 id="json-output-format">JSON Output Format</h3>
+
+<pre>GET <a href="/api/alt-fuel-stations/electric-networks.json?api_key=DEMO_KEY&amp;country=all">/api/alt-fuel-stations/electric-networks.json?api_key=DEMO_KEY&amp;country=all</a></pre>
+
+<div class="highlight"><pre class="highlight json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tous"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7CHARGE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7charge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7Charge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7Charge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.7-eleven.com/7charge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-09"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-05"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABM"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abm"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABM"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABM"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://info.abm.com/SimplifyEV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-04-22"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AMPED_UP"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ampedup"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AmpedUp! Networks"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AmpedUp! Networks"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.ampedup.net"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-10-08"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AMPUP"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ampup"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AmpUp"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AmpUp"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ampup.io"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-10"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-02"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"APPLEGREEN"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"applegreen_electric"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"applegreen electric"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"applegreen electric"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.applegreenelectric.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-05-07"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUTEL"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"autel"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Autel"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Autel"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://autelenergy.us"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-08-14"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BCHYDRO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bc_hydro"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BC Hydro"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BC Hydro"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://electricvehicles.bchydro.com/charge/public-charging/our-fast-charging-network"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-06"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blink Network"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blink"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blink"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blink"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://blinkcharging.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-01-01"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SemaConnect"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BP_PULSE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bp_pulse"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bp pulse"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bp pulse"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.bp.com/en_us/united-states/home/what-we-do/customers-and-products/bp-pulse/bp-pulse-products.html"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-10-30"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CHARGELAB"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargelab"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChargeLab"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChargeLab"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://chargelab.co"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-08-24"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CHARGENET"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargenet"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChargeNet"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChargeNet"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://chargenetstations.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-04-14"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-12-05"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChargePoint Network"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargepoint"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChargePoint"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChargePoint"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.chargepoint.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-01-01"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CHARGESMART_EV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargesmart_ev"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChargeSmart EV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChargeSmart EV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://chargesmartev.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-07-18"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CHARGEUP"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargeup"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChargeUP"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChargeUP"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.novacharge.net/en-us/"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-21"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CHARGIE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chargie"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chargie"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chargie"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.chargie.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-02-28"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CIRCLE_K"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"circlek"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CircleK Charge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CircleK Charge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.circlek.com/charge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-09"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-01-05"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COUCHE_TARD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"circlek_couche_tard_recharge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CircleK/Couche-Tard Recharge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CircleK/Couche-Tard Recharge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.couche-tard.com/recharge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-03-07"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-01-05"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Circuit électrique"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"circuit_electrique"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Circuit électrique"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Circuit électrique"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://lecircuitelectrique.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DIRT_ROAD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dirtroad"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DirtRoad"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DirtRoad"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.carbonsolutionsgroup.com/ev-charging/drivers/"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-01"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eCharge Network"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echarge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eCharge Network"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eCharge Network"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://echargenetwork.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-06"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ELECTRIC_ERA"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"electric_era"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Electric Era"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Electric Era"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://electriceratechnologies.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-10"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-10-31"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Electrify America"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"electrify_america"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Electrify America"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Electrify America"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.electrifyamerica.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Electrify Canada"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"electrify_canada"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Electrify Canada"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Electrify Canada"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.electrify-canada.ca"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-04"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enel X Way"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enel_x_way"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enel X Way"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enel X Way"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.enelxway.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-07-15"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENVIROSPARK"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"envirospark"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EnviroSpark"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EnviroSpark"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://envirosparkenergy.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-09"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-07-20"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVBOLT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"evbolt"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVBOLT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVBOLT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://evbolt.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-08"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EV Connect"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ev_connect"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EV Connect"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EV Connect"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.evconnect.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02-19"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVCS"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"evcs"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVCS"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVCS"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.evcs.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-19"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVGATEWAY"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"evgateway"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"evGateway"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"evGateway"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://evgateway.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eVgo Network"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"evgo"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVgo"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVgo"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.evgo.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-01-01"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVIUM"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"evium_charging"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVIUM Charging"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVIUM Charging"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.eviumcharging.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-28"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVMATCH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"evmatch"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVmatch"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVmatch"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://evmatch.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-03"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVOKE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"evoke_systems"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Evoke Systems"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Evoke Systems"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://evokesystems.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-05"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVPASSPORT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"evpassport"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVPassport"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVPassport"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.evpassport.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-11-06"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-07"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVPOWER"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"evpower"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eVPower"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eVPower"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.evpowerexchange.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-14"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-21"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVRANGE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ev_range"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EV Range"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EV Range"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.evrange.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-07-07"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLASH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flash"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLASH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLASH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.flashparking.com/products/diversify-parking-revenue/ev-charging-as-a-revenue-stream/"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-23"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLITWAY"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flitway"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flitway"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flitway"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.eneridge.com/aboutus"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-28"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flo"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.flo.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FORD_CHARGE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ford_charge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ford Charge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ford Charge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.ford.com/support/category/electric-vehicle/charging/public-charging/"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-07"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FPLEV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fpl_evolution"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FPL EVolution"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FPL EVolution"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.fpl.com/electric-vehicles/evolution.html"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-15"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FCN"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"francis_energy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Francis Energy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Francis Energy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://francisenergy.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-12"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GRAVITI_ENERGY"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"graviti_energy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Graviti Energy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Graviti Energy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://gravitienergy.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-04-14"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-12-15"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GRAVITY_CHARGING_CENTER"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gravity_charging_center"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gravity Charging Center"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gravity Charging Center"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://gravitytechnologies.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-11-06"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-07-15"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HONEY_BADGER"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"honeybadger_charging"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HoneyBadger Charging"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HoneyBadger Charging"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.badgercharging.ca"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-14"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hwisel"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hwisel"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hwisel"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hwisel"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hwisel.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-09"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-05"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN_CHARGE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"incharge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"InCharge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"InCharge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://inchargeus.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-09"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-07-24"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IONNA"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ionna"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IONNA"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IONNA"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.ionna.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-17"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IVY"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ivy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ivy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ivy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ivycharge.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-10"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-04"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JULE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jule"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jule"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jule"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.julepower.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-02-11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-07-20"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KWIK_CHARGE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kwik_charge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kwik Charge by Kwik Trip"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kwik Charge by Kwik Trip"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.kwiktrip.com/kwikcharge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-08-14"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LAKELAND_EV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lakeland_ev_charging"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lakeland EV CHARGING"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lakeland EV CHARGING"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://lakelandevcharging.ca"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-02-11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-05-30"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOOP"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loop"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Loop"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Loop"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://loopglobal.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-22"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MATCHA"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"matcha_electric"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matcha Electric"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Matcha Electric"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.matchaelectric.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-07-11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-07-02"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Networked"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"non_networked"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Networked"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-réseautés"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-10"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manual"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOODOE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noodoe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Noodoe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Noodoe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.noodoe.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-04-11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ON_THE_RUN_EV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on_the_run_ev"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"On the Run EV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marché Express VE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.ontherunstores.com/ev-charging"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-03-07"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-18"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OpConnect"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"opconnect"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OpConnect"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OpConnect"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://opconnect-ev.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-01-01"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PETROCAN"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"petro_canada"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Petro-Canada"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Petro-Canada"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.petro-canada.ca/en/personal/fuel/canadas-electric-highway/"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-10"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POWERFLEX"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"powerflex"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PowerFlex"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PowerFlex"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.powerflex.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-30"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POWERPORT_EVC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"powerport_evc"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PowerPort EVC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PowerPort EVC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://powerportevc.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-10"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-06-10"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POWERPUMP"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"powerpump"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PowerPump"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PowerPump"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://powerpump.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-07-11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-06-10"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RED_E"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red_e_charging"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Red E Charging"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Red E Charging"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.redecharge.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-26"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REVEL"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"revel"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Revel"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Revel"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://gorevel.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-11-06"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-14"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REVITALIZE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"revitalize_charging_solutions"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Revitalize Charging Solutions"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Revitalize Charging Solutions"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.revitalizecs.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-09-19"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RIVIAN_ADVENTURE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rivian_adventure"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rivian Adventure Network"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rivian Adventure Network"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://rivian.com/experience/charging"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RIVIAN_WAYPOINTS"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rivian_waypoints"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rivian Waypoints"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rivian Waypoints"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://rivian.com/experience/charging"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHELL_RECHARGE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shell_recharge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shell Recharge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shell Recharge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.shell.us/motorist/electric-vehicle-charging.html"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-12"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Volta and Greenlots"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STAY_N_CHARGE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stay_n_charge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stay-N-Charge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stay-N-Charge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.stayncharge.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-06-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-10-31"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sun Country Highway"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sun_country_highway"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sun Country Highway"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sun Country Highway"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://suncountryhighway.ca"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-09"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SWTCH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swtch_energy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SWTCH Energy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SWTCH Energy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://swtchenergy.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-10"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-08-24"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tesla Destination"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesla_destination"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tesla Destination"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tesla Destination"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.tesla.com/destination-charging"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tesla"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesla_supercharger"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tesla Supercharger"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tesla Supercharger"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.tesla.com/supercharger"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-09"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-01-20"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TURNONGREEN"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"turnongreen"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TurnOnGreen"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TurnOnGreen"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://turnongreen.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-09-12"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-10"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNIVERSAL"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"universal_ev_chargers"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Universal EV Chargers"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Universal EV Chargers"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://universalevcharging.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-07-22"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VIALYNK"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vialynk"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ViaLynk"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ViaLynk"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.lynkwell.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-22"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Livingston Energy Group"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WATT_EV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wattev"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WattEV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WattEV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.wattev.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-11-06"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-05-30"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAVE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wave"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAVE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAVE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://wavecharging.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-09-12"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-12-05"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CSV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZEFNET"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"evchart_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zef"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZEF Network"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name_fr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZEF Network"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.zefenergy.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_import_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-04-25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"import_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"real_time_status_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transition_note"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<h2 id="rate-limits">Rate Limits</h2>
+
+<p><a href="/docs/rate-limits">Standard rate limits</a> apply. No more than 1,000 requests may be made in any hour</p>
+
+<h2 id="errors">Errors</h2>
+
+<p><a href="/docs/errors">Standard errors</a> may be returned. In addition, the following service-specific errors may be returned:</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col"><span>HTTP Status Code</span></th>
+      <th class="doc-parameters-required" scope="col"><span>Description</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row"><span>422</span></th>
+      <td class="doc-parameter-description"><span>Unprocessable Entity - An invalid value was given for a query parameter. The response body will describe the specific error.</span></td>
+    </tr>
+  </tbody>
+</table>
+
+
+      <div style="text-align: center; font-style: italic; margin-top: 2rem;">
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/main/source/docs/transportation/alt-fuel-stations-v1/electric-networks.html.md.erb">Help improve this content</a>
+</div>
+
+    </main>
+    <!--stopindex-->
+<footer id="footer" class="hidden-print">
+
+  <nav class="footertop" aria-label="Main">
+    <div class="container-xl">
+      <div class="row">
+        <div class="col-12 col-lg-5">
+          <a href="https://www.nrel.gov/"><strong>NREL</strong></a>
+        </div>
+        <div class="col col-lg-7">
+          <div class="d-flex flex-column flex-lg-row justify-content-lg-start global">
+            <div><a href="https://www.nrel.gov/about">About</a></div>
+            <div><a href="https://www.nrel.gov/research">Research</a></div>
+            <div><a href="https://www.nrel.gov/workingwithus">Partner With Us</a></div>
+            <div><a href="https://www.nrel.gov/news/">News</a></div>
+            <div><a href="https://www.nrel.gov/careers">Careers</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <nav class="footerbottom"  aria-label="Secondary">
+    <div class="container-xl">
+      <div class="row">
+        <div class="col-md-4 col-lg-5">
+          <div><a href="/contact/">Contact Us</a></div>
+          <div class="mt-2"><a href="https://www.nrel.gov/about/visiting-nrel">Visit</a></div>
+          <div class="mt-2"><a href="https://www.nrel.gov/news/subscribe.html">Subscribe to NREL</a></div>
+          <div class="mt-3">
+            <ul class="social-links list-inline">
+              <li class="list-inline-item"><a href="https://www.facebook.com/nationalrenewableenergylab" aria-label="Follow NREL on Facebook"><i class="fa-brands fa-square-facebook"><!--facebook--></i></a></li>
+              <li class="list-inline-item"><a href="https://www.instagram.com/nationalrenewableenergylab/" aria-label="Follow NREL on Instagram"><i class="fa-brands fa-instagram"><!--Instagram--></i></a></li>
+              <li class="list-inline-item"><a href="https://www.linkedin.com/company/national-renewable-energy-laboratory"
+                                              aria-label="Follow NREL on Linked In"><i class="fa-brands fa-linkedin"><!--Linked In--></i></a></li>
+              <li class="list-inline-item"><a href="https://www.youtube.com/user/NRELPR/" aria-label="Follow NREL on YouTube"><i class="fa-brands fa-youtube"><!--You Tube--></i></a></li>
+              <li class="list-inline-item"><a href="https://twitter.com/nrel/" aria-label="Follow NREL on X"><i class="fa-brands fa-x-twitter"><!--twitter--></i></a></li>
+              <li class="list-inline-item"><a href="https://www.threads.net/@nationalrenewableenergylab" aria-label="Follow NREL on X"><span class="fa-brands fa-threads"><!-- Threads --></span></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-8 col-lg-7 globalsecondary">
+          <div class="row">
+            <div class="col-sm-6 col-lg-3">
+              <div class="mt-0"><a href="https://www.nrel.gov/accessibility.html">Accessibility</a></div>
+              <div class="mt-3 mt-sm-2"><a href="https://www.nrel.gov/disclaimer.html">Disclaimer</a></div>
+              <div class="mt-3 mt-sm-2"><a href="https://www.nrel.gov/security.html">Security and Privacy</a></div>
+              <div class="mt-3 mt-sm-2"><a href="https://www.nrel.gov/webmaster.html">Site Feedback</a></div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+
+              <div class="mt-3 mt-sm-0"><a href="https://developer.nrel.gov/">Developers</a></div>
+              <div class="mt-3 mt-sm-2"><a href="https://thesource.nrel.gov/">Employees</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="mt-4">
+        <div class="row">
+          <div class="col-sm-5">
+            <a href="https://www.allianceforsustainableenergy.org/"><img src="/vite/assets/a-alliance-logo-black-s2Lk0kd-.svg" alt="Alliance for Sustainable Energy, LLC" class="mb-3" width="145" height="53" style="width:145px;height:53px;"></a>
+            <a href="https://www.energy.gov"><img src="/vite/assets/a-2025-doe-logo-stacked-horizontal-BBms34oz.svg" alt="U.S. Department of Energy" class="ms-3" width="203" height="50" style="width:203px;height:50px;"></a>
+          </div>
+          <div class="col-12 col-sm-7">
+            <p class="nrel-attr mt-3">NREL is a national laboratory of the <a href="https://www.energy.gov/">U.S. Department of Energy</a>, <a href="https://www.energy.gov/eere/office-energy-efficiency-renewable-energy">Office of Energy Efficiency and Renewable Energy</a>, operated under Contract No. DE-AC36-08GO28308.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+</footer>
+
+  </body>
+</html>

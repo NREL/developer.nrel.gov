@@ -1,0 +1,1831 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        Electric Vehicle Charging Ports 
+          API
+        |
+      NREL: Developer Network
+    </title>
+
+    <link rel="canonical" href="https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1/ev-charging-units/" />
+
+    <link href="/vite/assets/a-entrypoints/all-EgikzgNO.css" rel="stylesheet" />
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KG7PVKB');</script>
+<!-- End Google Tag Manager -->
+
+    <script src="/vite/assets/all-BYMPrWtX.js" crossorigin="anonymous" type="module"></script><link rel="modulepreload" href="/vite/assets/c-_commonjsHelpers-Cpj98o6Y.js" as="script" crossorigin="anonymous" />
+<link rel="modulepreload" href="/vite/assets/c-ready-D7ecCvij.js" as="script" crossorigin="anonymous" /><link href="/vite/assets/a-all-qZ9mOat6.css" rel="stylesheet" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="/vite/assets/a-favicon-DsvBt6aY.ico">
+    <link rel="apple-touch-icon" href="/vite/assets/a-touch-icon-iphone-AtpJUIge.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/vite/assets/a-touch-icon-ipad-S2DOJiH4.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/vite/assets/a-touch-icon-iphone-retina-CZo0JGSQ.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/vite/assets/a-touch-icon-ipad-retina-DCfTusX0.png">
+  </head>
+  <body class="docs docs_transportation docs_transportation_alt-fuel-stations-v1 docs_transportation_alt-fuel-stations-v1_ev-charging-units docs_transportation_alt-fuel-stations-v1_ev-charging-units_index">
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src=https://www.googletagmanager.com/ns.html?id=GTM-KG7PVKB
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <!--stopindex-->
+<a href="#content" class="visually-hidden-focusable skip-to-content">Skip to main content</a>
+
+<header id="banner" class="gov-site-header header3" aria-label="main site header">
+  <div class="banner-logo">
+    <div class="container-xl app">
+      <div class="row align-items-center">
+
+        <div class="col-md-6 col-xl-4 order-md-2 text-center text-md-end">
+          <a class="logo-img" href="https://www.nrel.gov/">
+            <img src="/vite/assets/a-nrel-logo-2025-DWUhGQbs.svg" alt="NREL logo">
+          </a>
+
+          <!-- mobile search button -->
+          <button type="button" class="custom-toggler site-navbar-toggler site-searchbar-toggle d-md-none" data-bs-toggle="collapse" data-bs-target="#searchbar-collapse-mobile" aria-expanded="false" aria-label="Toggle Search">
+            <i class="fa-solid fa-fw fa-magnifying-glass"></i>
+          </button>
+        </div>
+
+        <div class="col-12 d-md-none">
+          <!-- Start MOBILE collapsible site search bar -->
+          <div class="site-search-bar">
+            <div class="container-xl">
+              <div class="row">
+                <div class="col d-flex justify-content-center mb-1">
+                  <nav class="navbar navbar-light" aria-label="Search">
+                    <div class="navbar-collapse collapse" id="searchbar-collapse-mobile">
+                      <form
+                          method="get"
+                          class="site-searchbar-form form-inline ThunderstoneForm"
+                          action="https://search4.nrel.gov/texis/search/" 
+                          id="ThunderstoneSearchFormMobile">
+
+                        <input type="hidden" name="pr" value="metanrel">
+                        <div class="form-group">
+                          <label for="querymobile" class="visually-hidden">Search NREL.gov</label>
+                          <input
+                              type="search"
+                              id="querymobile" name="query"
+                                               maxlength="2047"
+                                               placeholder="Search NREL.gov"
+                                               class="form-control"
+                                               aria-label="Search NREL.gov">
+                          <button type="submit" class="btn btn-default">Search</button>
+                        </div>
+                      </form>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>    
+          <!-- End MOBILE collapsible site search bar -->
+        </div>
+
+        <div class="col-md-6 col-xl-8 order-md-1">
+          <a href="/" class="app-name my-0 mb-1 mb-md-0 mt-md-1">Developer Network</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- TOP NAVIGATION -->
+  <div class="program-header">
+    <div class="container-xl gx-0 gx-md-4">
+      <nav class="navbar navbar-expand-md navbar-light" aria-label="Main">
+
+        <div id="program-menu" class="me-auto">
+          <button class="custom-toggler navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topnav-collapse" aria-controls="topnav-collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-closed"><i class="fa-solid fa-bars fa-fw"></i>Menu</span>
+            <span class="navbar-toggler-opened"><i class="fa-solid fa-xmark fa-fw"></i>Close</span>
+          </button>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navbar-collapse collapse border-0" id="topnav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item active"><a href="/docs/" class="nav-link">APIs &amp; Documentation</a></li>
+            <li class="nav-item"><a href="/signup/" class="nav-link">Key Signup</a></li>
+            <li class="nav-item"><a href="/contact/" class="nav-link">Contact Us</a></li>
+          </ul>
+          <!-- desktop search button -->
+          <button type="button" class="custom-toggler site-navbar-toggler site-searchbar-toggle d-none d-md-inline ms-auto me-0" data-bs-toggle="collapse" data-bs-target="#searchbar-collapse" aria-expanded="false" aria-label="Toggle Search">
+            <i class="fa-solid fa-fw fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </nav>
+    </div><!--container-->
+  </div><!--program-header-->
+  <!-- Start desktop collapsible site search bar -->
+  <div class="site-search-bar">
+    <div class="container-xl">
+      <div class="row">
+        <div class="col">
+          <nav class="navbar navbar-light" aria-label="Search">
+            <div class="navbar-collapse collapse" id="searchbar-collapse">
+              <form
+                  method="get"
+                  class="site-searchbar-form form-inline ThunderstoneForm"
+                  action="https://search4.nrel.gov/texis/search/" 
+                  id="ThunderstoneSearchForm">
+
+                <input type="hidden" name="pr" value="metanrel">
+                <div class="form-group">
+                  <label for="query" class="visually-hidden">Search NREL.gov</label>
+                  <input
+                      type="search"
+                      id="query" name="query"
+                                 maxlength="2047"
+                                 placeholder="Search NREL.gov"
+                                 class="form-control"
+                                 aria-label="Search NREL.gov">
+                  <button type="submit" class="btn btn-default">Search</button>
+                </div>
+              </form>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>    
+<!-- End collapsible site search bar -->
+</header>
+<!--startindex-->
+
+    <main id="content" class="container-xl">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/docs/">APIs & Documentation</a></li>
+            <li class="breadcrumb-item"><a href="/docs/transportation/">Transportation</a></li>
+            <li class="breadcrumb-item"><a href="/docs/transportation/alt-fuel-stations-v1/">Alternative Fuel Stations</a></li>
+            <li class="breadcrumb-item active">Electric Vehicle Charging Ports</li>
+    </ol>
+
+
+      <h1 id="electric-vehicle-charging-ports-get-apialt-fuel-stationsv1ev-charging-units">Electric Vehicle Charging Ports <span class="url">(GET /api/alt-fuel-stations/v1/ev-charging-units)</span></h1>
+<p>Return a CSV file of EV charging ports for stations that match your query. For JSON or other file formats, this information is available via the <a href="/docs/transportation/alt-fuel-stations-v1/all/">All Stations</a> API.</p>
+
+<div id="toc" class="card bg-body-secondary border-0 rounded-0 py-3 pe-4 mb-3 d-inline-block" hidden=""></div>
+
+<h2 id="request-url">Request URL</h2>
+
+<pre>GET /api/alt-fuel-stations/v1/ev-charging-units.csv?parameters</pre>
+
+<h2 id="request-parameters">Request Parameters</h2>
+
+<p>The following query parameters may be passed in the request to control the output:</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Parameter</th>
+      <th class="doc-parameters-required" scope="col">Required</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <th class="doc-parameter-name" scope="row">access</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all</em>, <em>public</em>, <em>private</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return stations with the given access type.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th scope="row">public</th>
+            <td>Public</td>
+          </tr>
+          <tr>
+            <th scope="row">private</th>
+            <td>Private</td>
+          </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+
+    <tr>
+  <th class="doc-parameter-name" scope="row">api_key</th>
+  <td class="doc-parameter-required">Yes</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> None
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Your developer API key. See <a href="/docs/api-key/">API key usage</a> for more information.</p>
+  </td>
+</tr>
+
+    <tr>
+  <th class="doc-parameter-name" scope="row">cards_accepted</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all</em>, <em>A</em>, <em>CREDIT</em>, <em>Debit</em>, <em>D</em>, <em>M</em>, <em>V</em>, <em>Cash</em>, <em>Checks</em>, <em>ACCOUNT_BALANCE</em>, <em>ALLIANCE</em>, <em>ANDROID_PAY</em>, <em>APPLE_PAY</em>, <em>ARI</em>, <em>CleanEnergy</em>, <em>Comdata</em>, <em>CFN</em>, <em>EFS</em>, <em>FleetOne</em>, <em>FuelMan</em>, <em>GasCard</em>, <em>PacificPride</em>, <em>PHH</em>, <em>Proprietor</em>, <em>Speedway</em>, <em>SuperPass</em>, <em>TCH</em>, <em>Tchek</em>, <em>Trillium</em>, <em>Voyager</em>, <em>Wright_Exp</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return stations that accept any of the given payment methods. A single payment method, or a comma-separated list of multiple payment methods, may be given.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th scope="row">A</th>
+            <td>American Express</td>
+          </tr>
+          <tr>
+            <th scope="row">CREDIT</th>
+            <td>Credit</td>
+          </tr>
+          <tr>
+            <th scope="row">Debit</th>
+            <td>Debit</td>
+          </tr>
+          <tr>
+            <th scope="row">D</th>
+            <td>Discover</td>
+          </tr>
+          <tr>
+            <th scope="row">M</th>
+            <td>MasterCard</td>
+          </tr>
+          <tr>
+            <th scope="row">V</th>
+            <td>Visa</td>
+          </tr>
+          <tr>
+            <th scope="row">Cash</th>
+            <td>Cash</td>
+          </tr>
+          <tr>
+            <th scope="row">Checks</th>
+            <td>Check</td>
+          </tr>
+          <tr>
+            <th scope="row">ACCOUNT_BALANCE</th>
+            <td>Account Balance</td>
+          </tr>
+          <tr>
+            <th scope="row">ALLIANCE</th>
+            <td>Alliance AutoGas</td>
+          </tr>
+          <tr>
+            <th scope="row">ANDROID_PAY</th>
+            <td>Android Pay</td>
+          </tr>
+          <tr>
+            <th scope="row">APPLE_PAY</th>
+            <td>Apple Pay</td>
+          </tr>
+          <tr>
+            <th scope="row">ARI</th>
+            <td>ARI</td>
+          </tr>
+          <tr>
+            <th scope="row">CleanEnergy</th>
+            <td>Clean Energy</td>
+          </tr>
+          <tr>
+            <th scope="row">Comdata</th>
+            <td>Comdata</td>
+          </tr>
+          <tr>
+            <th scope="row">CFN</th>
+            <td>Commercial Fueling Network</td>
+          </tr>
+          <tr>
+            <th scope="row">EFS</th>
+            <td>EFS</td>
+          </tr>
+          <tr>
+            <th scope="row">FleetOne</th>
+            <td>Fleet One</td>
+          </tr>
+          <tr>
+            <th scope="row">FuelMan</th>
+            <td>Fuelman</td>
+          </tr>
+          <tr>
+            <th scope="row">GasCard</th>
+            <td>GASCARD</td>
+          </tr>
+          <tr>
+            <th scope="row">PacificPride</th>
+            <td>Pacific Pride</td>
+          </tr>
+          <tr>
+            <th scope="row">PHH</th>
+            <td>PHH</td>
+          </tr>
+          <tr>
+            <th scope="row">Proprietor</th>
+            <td>Proprietor Fleet Card</td>
+          </tr>
+          <tr>
+            <th scope="row">Speedway</th>
+            <td>Speedway</td>
+          </tr>
+          <tr>
+            <th scope="row">SuperPass</th>
+            <td>SuperPass</td>
+          </tr>
+          <tr>
+            <th scope="row">TCH</th>
+            <td>TCH</td>
+          </tr>
+          <tr>
+            <th scope="row">Tchek</th>
+            <td>T-Chek T-Card</td>
+          </tr>
+          <tr>
+            <th scope="row">Trillium</th>
+            <td>Trillium</td>
+          </tr>
+          <tr>
+            <th scope="row">Voyager</th>
+            <td>Voyager</td>
+          </tr>
+          <tr>
+            <th scope="row">Wright_Exp</th>
+            <td>WEX</td>
+          </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+
+    <tr>
+  <th class="doc-parameter-name" scope="row">country</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>US</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all</em>, <em>US</em>, <em>CA</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only stations within the given country code.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Value</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th scope="row">all</th>
+            <td>U.S. and Canada</td>
+          </tr>
+          <tr>
+            <th scope="row">US</th>
+            <td>United States</td>
+          </tr>
+          <tr>
+            <th scope="row">CA</th>
+            <td>Canada</td>
+          </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+
+    <tr id="ev-charging-level">
+  <th class="doc-parameter-name" scope="row">ev_charging_level</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all</em>, <em>1</em>, <em>2</em>, <em>dc_fast</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only EV charging stations that provide the given level of electric vehicle supply equipment (EVSE).</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th scope="row">1</th>
+            <td>Level 1</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Level 2</td>
+          </tr>
+          <tr>
+            <th scope="row">dc_fast</th>
+            <td>DC Fast</td>
+          </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+
+    <tr>
+  <th class="doc-parameter-name" scope="row">ev_connector_type</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all</em>, <em>NEMA1450</em>, <em>NEMA515</em>, <em>NEMA520</em>, <em>J1772</em>, <em>TESLA</em>, <em>J1772COMBO</em>, <em>CHADEMO</em>, <em>J3271</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only EV charging stations that provide the given connector types.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th scope="row">NEMA1450</th>
+            <td>NEMA 14-50 (J1772 AC)</td>
+          </tr>
+          <tr>
+            <th scope="row">NEMA515</th>
+            <td>NEMA 5-15 (J1772 AC)</td>
+          </tr>
+          <tr>
+            <th scope="row">NEMA520</th>
+            <td>NEMA 5-20 (J1772 AC)</td>
+          </tr>
+          <tr>
+            <th scope="row">J1772</th>
+            <td>J1772 (AC)</td>
+          </tr>
+          <tr>
+            <th scope="row">TESLA</th>
+            <td>NACS (J3400 AC/DC)</td>
+          </tr>
+          <tr>
+            <th scope="row">J1772COMBO</th>
+            <td>CCS (DC)</td>
+          </tr>
+          <tr>
+            <th scope="row">CHADEMO</th>
+            <td>CHAdeMO (DC)</td>
+          </tr>
+          <tr>
+            <th scope="row">J3271</th>
+            <td>MCS (J3271 DC)</td>
+          </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+
+    <tr>
+  <th class="doc-parameter-name" scope="row">ev_connector_type_operator</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>OR</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>OR, AND</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Control how multiple connector type options passed to the <code>ev_connector_type</code> parameter behave. The default of <code>OR</code> will return stations that have <em>any</em> of the connectors present. Specifying <code>AND</code> will only return stations that have <em>all</em> of the connectors present.</p>
+    <p>For example, with the default <code>OR</code> value, then performing a query for <code>ev_connector_type=CHADEMO,J1772COMBO</code> will return any station that has either <code>CHADEMO</code> or <code>J1772COMBO</code> connectors present. Compare that to a query for <code>ev_connector_type=CHADEMO,J1772COMBO&#8203;&amp;ev_connector_type_operator=AND</code> which will return stations that must have both <code>CHADEMO</code> and <code>J1772COMBO</code> connectors present at the same station.</p>
+  </td>
+</tr>
+
+    <tr id="request-ev-network">
+  <th class="doc-parameter-name" scope="row">ev_network</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all</em>, <em>7CHARGE</em>, <em>ABM</em>, <em>AMPED_UP</em>, <em>AMPUP</em>, <em>APPLEGREEN</em>, <em>AUTEL</em>, <em>BCHYDRO</em>, <em>Blink Network</em>, <em>BP_PULSE</em>, <em>CHAEVI</em>, <em>CHARGELAB</em>, <em>CHARGENET</em>, <em>ChargePoint Network</em>, <em>CHARGESMART_EV</em>, <em>CHARGEUP</em>, <em>CHARGIE</em>, <em>CIRCLE_K</em>, <em>COUCHE_TARD</em>, <em>Circuit électrique</em>, <em>DIRT_ROAD</em>, <em>eCharge Network</em>, <em>ELECTRIC_ERA</em>, <em>Electrify America</em>, <em>Electrify Canada</em>, <em>Enel X Way</em>, <em>ENVIROSPARK</em>, <em>EPIC_CHARGING</em>, <em>EVBOLT</em>, <em>EV Connect</em>, <em>EVCS</em>, <em>EVGATEWAY</em>, <em>eVgo Network</em>, <em>EVIUM</em>, <em>EVMATCH</em>, <em>EVOKE</em>, <em>EVPASSPORT</em>, <em>EVPOWER</em>, <em>EVRANGE</em>, <em>FLASH</em>, <em>FLITWAY</em>, <em>FLO</em>, <em>FORD_CHARGE</em>, <em>FPLEV</em>, <em>FCN</em>, <em>GRAVITI_ENERGY</em>, <em>GRAVITY_CHARGING_CENTER</em>, <em>HONEY_BADGER</em>, <em>Hwisel</em>, <em>HYPERFUEL</em>, <em>IN_CHARGE</em>, <em>IONNA</em>, <em>IVY</em>, <em>JULE</em>, <em>KWIK_CHARGE</em>, <em>LAKELAND_EV</em>, <em>LOOP</em>, <em>MATCHA</em>, <em>MERCEDES_BENZ</em>, <em>Non-Networked</em>, <em>NOODOE</em>, <em>OBE_POWER</em>, <em>ON_THE_RUN_EV</em>, <em>OpConnect</em>, <em>PETROCAN</em>, <em>POWERFLEX</em>, <em>POWERPORT_EVC</em>, <em>POWERPUMP</em>, <em>RED_E</em>, <em>REVEL</em>, <em>REVITALIZE</em>, <em>RIVIAN_ADVENTURE</em>, <em>RIVIAN_WAYPOINTS</em>, <em>ROVE</em>, <em>SHELL_RECHARGE</em>, <em>STAY_N_CHARGE</em>, <em>Sun Country Highway</em>, <em>SWTCH</em>, <em>Tesla Destination</em>, <em>Tesla</em>, <em>TURNONGREEN</em>, <em>UNIVERSAL</em>, <em>VIALYNK</em>, <em>WATT_EV</em>, <em>WAVE</em>, <em>ZEFNET</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only EV charging stations that belong to the given network. A single network, or a comma-separated list of multiple networks, may be given.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th scope="row">7CHARGE</th>
+            <td>7Charge</td>
+          </tr>
+          <tr>
+            <th scope="row">ABM</th>
+            <td>ABM</td>
+          </tr>
+          <tr>
+            <th scope="row">AMPED_UP</th>
+            <td>AmpedUp! Networks</td>
+          </tr>
+          <tr>
+            <th scope="row">AMPUP</th>
+            <td>AmpUp</td>
+          </tr>
+          <tr>
+            <th scope="row">APPLEGREEN</th>
+            <td>applegreen electric</td>
+          </tr>
+          <tr>
+            <th scope="row">AUTEL</th>
+            <td>Autel</td>
+          </tr>
+          <tr>
+            <th scope="row">BCHYDRO</th>
+            <td>BC Hydro</td>
+          </tr>
+          <tr>
+            <th scope="row">Blink Network</th>
+            <td>Blink</td>
+          </tr>
+          <tr>
+            <th scope="row">BP_PULSE</th>
+            <td>bp pulse</td>
+          </tr>
+          <tr>
+            <th scope="row">CHAEVI</th>
+            <td>Chaevi</td>
+          </tr>
+          <tr>
+            <th scope="row">CHARGELAB</th>
+            <td>ChargeLab</td>
+          </tr>
+          <tr>
+            <th scope="row">CHARGENET</th>
+            <td>ChargeNet</td>
+          </tr>
+          <tr>
+            <th scope="row">ChargePoint Network</th>
+            <td>ChargePoint</td>
+          </tr>
+          <tr>
+            <th scope="row">CHARGESMART_EV</th>
+            <td>ChargeSmart EV</td>
+          </tr>
+          <tr>
+            <th scope="row">CHARGEUP</th>
+            <td>ChargeUP</td>
+          </tr>
+          <tr>
+            <th scope="row">CHARGIE</th>
+            <td>Chargie</td>
+          </tr>
+          <tr>
+            <th scope="row">CIRCLE_K</th>
+            <td>CircleK Charge</td>
+          </tr>
+          <tr>
+            <th scope="row">COUCHE_TARD</th>
+            <td>CircleK/Couche-Tard Recharge</td>
+          </tr>
+          <tr>
+            <th scope="row">Circuit électrique</th>
+            <td>Circuit électrique</td>
+          </tr>
+          <tr>
+            <th scope="row">DIRT_ROAD</th>
+            <td>DirtRoad</td>
+          </tr>
+          <tr>
+            <th scope="row">eCharge Network</th>
+            <td>eCharge Network</td>
+          </tr>
+          <tr>
+            <th scope="row">ELECTRIC_ERA</th>
+            <td>Electric Era</td>
+          </tr>
+          <tr>
+            <th scope="row">Electrify America</th>
+            <td>Electrify America</td>
+          </tr>
+          <tr>
+            <th scope="row">Electrify Canada</th>
+            <td>Electrify Canada</td>
+          </tr>
+          <tr>
+            <th scope="row">Enel X Way</th>
+            <td>Enel X Way</td>
+          </tr>
+          <tr>
+            <th scope="row">ENVIROSPARK</th>
+            <td>EnviroSpark</td>
+          </tr>
+          <tr>
+            <th scope="row">EPIC_CHARGING</th>
+            <td>Epic Charging</td>
+          </tr>
+          <tr>
+            <th scope="row">EVBOLT</th>
+            <td>EVBOLT</td>
+          </tr>
+          <tr>
+            <th scope="row">EV Connect</th>
+            <td>EV Connect</td>
+          </tr>
+          <tr>
+            <th scope="row">EVCS</th>
+            <td>EVCS</td>
+          </tr>
+          <tr>
+            <th scope="row">EVGATEWAY</th>
+            <td>evGateway</td>
+          </tr>
+          <tr>
+            <th scope="row">eVgo Network</th>
+            <td>EVgo</td>
+          </tr>
+          <tr>
+            <th scope="row">EVIUM</th>
+            <td>EVIUM Charging</td>
+          </tr>
+          <tr>
+            <th scope="row">EVMATCH</th>
+            <td>EVmatch</td>
+          </tr>
+          <tr>
+            <th scope="row">EVOKE</th>
+            <td>Evoke Systems</td>
+          </tr>
+          <tr>
+            <th scope="row">EVPASSPORT</th>
+            <td>EVPassport</td>
+          </tr>
+          <tr>
+            <th scope="row">EVPOWER</th>
+            <td>eVPower</td>
+          </tr>
+          <tr>
+            <th scope="row">EVRANGE</th>
+            <td>EV Range</td>
+          </tr>
+          <tr>
+            <th scope="row">FLASH</th>
+            <td>FLASH</td>
+          </tr>
+          <tr>
+            <th scope="row">FLITWAY</th>
+            <td>Flitway</td>
+          </tr>
+          <tr>
+            <th scope="row">FLO</th>
+            <td>FLO</td>
+          </tr>
+          <tr>
+            <th scope="row">FORD_CHARGE</th>
+            <td>Ford Charge</td>
+          </tr>
+          <tr>
+            <th scope="row">FPLEV</th>
+            <td>FPL EVolution</td>
+          </tr>
+          <tr>
+            <th scope="row">FCN</th>
+            <td>Francis Energy</td>
+          </tr>
+          <tr>
+            <th scope="row">GRAVITI_ENERGY</th>
+            <td>Graviti Energy</td>
+          </tr>
+          <tr>
+            <th scope="row">GRAVITY_CHARGING_CENTER</th>
+            <td>Gravity Charging Center</td>
+          </tr>
+          <tr>
+            <th scope="row">HONEY_BADGER</th>
+            <td>HoneyBadger Charging</td>
+          </tr>
+          <tr>
+            <th scope="row">Hwisel</th>
+            <td>Hwisel</td>
+          </tr>
+          <tr>
+            <th scope="row">HYPERFUEL</th>
+            <td>Hyperfuel</td>
+          </tr>
+          <tr>
+            <th scope="row">IN_CHARGE</th>
+            <td>InCharge</td>
+          </tr>
+          <tr>
+            <th scope="row">IONNA</th>
+            <td>IONNA</td>
+          </tr>
+          <tr>
+            <th scope="row">IVY</th>
+            <td>Ivy</td>
+          </tr>
+          <tr>
+            <th scope="row">JULE</th>
+            <td>Jule</td>
+          </tr>
+          <tr>
+            <th scope="row">KWIK_CHARGE</th>
+            <td>Kwik Charge by Kwik Trip</td>
+          </tr>
+          <tr>
+            <th scope="row">LAKELAND_EV</th>
+            <td>Lakeland EV CHARGING</td>
+          </tr>
+          <tr>
+            <th scope="row">LOOP</th>
+            <td>Loop</td>
+          </tr>
+          <tr>
+            <th scope="row">MATCHA</th>
+            <td>Matcha Electric</td>
+          </tr>
+          <tr>
+            <th scope="row">MERCEDES_BENZ</th>
+            <td>Mercedes-Benz High-Power Charging</td>
+          </tr>
+          <tr>
+            <th scope="row">Non-Networked</th>
+            <td>Non-Networked</td>
+          </tr>
+          <tr>
+            <th scope="row">NOODOE</th>
+            <td>Noodoe</td>
+          </tr>
+          <tr>
+            <th scope="row">OBE_POWER</th>
+            <td>OBE Power</td>
+          </tr>
+          <tr>
+            <th scope="row">ON_THE_RUN_EV</th>
+            <td>On the Run EV</td>
+          </tr>
+          <tr>
+            <th scope="row">OpConnect</th>
+            <td>OpConnect</td>
+          </tr>
+          <tr>
+            <th scope="row">PETROCAN</th>
+            <td>Petro-Canada</td>
+          </tr>
+          <tr>
+            <th scope="row">POWERFLEX</th>
+            <td>PowerFlex</td>
+          </tr>
+          <tr>
+            <th scope="row">POWERPORT_EVC</th>
+            <td>PowerPort EVC</td>
+          </tr>
+          <tr>
+            <th scope="row">POWERPUMP</th>
+            <td>PowerPump</td>
+          </tr>
+          <tr>
+            <th scope="row">RED_E</th>
+            <td>Red E Charge</td>
+          </tr>
+          <tr>
+            <th scope="row">REVEL</th>
+            <td>Revel</td>
+          </tr>
+          <tr>
+            <th scope="row">REVITALIZE</th>
+            <td>Revitalize Charging Solutions</td>
+          </tr>
+          <tr>
+            <th scope="row">RIVIAN_ADVENTURE</th>
+            <td>Rivian Adventure Network</td>
+          </tr>
+          <tr>
+            <th scope="row">RIVIAN_WAYPOINTS</th>
+            <td>Rivian Waypoints</td>
+          </tr>
+          <tr>
+            <th scope="row">ROVE</th>
+            <td>Rove</td>
+          </tr>
+          <tr>
+            <th scope="row">SHELL_RECHARGE</th>
+            <td>Shell Recharge</td>
+          </tr>
+          <tr>
+            <th scope="row">STAY_N_CHARGE</th>
+            <td>Stay-N-Charge</td>
+          </tr>
+          <tr>
+            <th scope="row">Sun Country Highway</th>
+            <td>Sun Country Highway</td>
+          </tr>
+          <tr>
+            <th scope="row">SWTCH</th>
+            <td>SWTCH Energy</td>
+          </tr>
+          <tr>
+            <th scope="row">Tesla Destination</th>
+            <td>Tesla Destination</td>
+          </tr>
+          <tr>
+            <th scope="row">Tesla</th>
+            <td>Tesla Supercharger</td>
+          </tr>
+          <tr>
+            <th scope="row">TURNONGREEN</th>
+            <td>TurnOnGreen</td>
+          </tr>
+          <tr>
+            <th scope="row">UNIVERSAL</th>
+            <td>Universal EV Chargers</td>
+          </tr>
+          <tr>
+            <th scope="row">VIALYNK</th>
+            <td>ViaLynk</td>
+          </tr>
+          <tr>
+            <th scope="row">WATT_EV</th>
+            <td>WattEV</td>
+          </tr>
+          <tr>
+            <th scope="row">WAVE</th>
+            <td>WAVE</td>
+          </tr>
+          <tr>
+            <th scope="row">ZEFNET</th>
+            <td>ZEF Network</td>
+          </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+
+    <tr>
+  <th class="doc-parameter-name" scope="row">ev_power_kw_max</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> decimal
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> None
+    </div>
+  </td>
+  <td class="doc-parameter-description">Return stations that have at least one charging port with power output no greater than this value.</td>
+</tr>
+
+    <tr>
+  <th class="doc-parameter-name" scope="row">ev_power_kw_min</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> decimal
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> None
+    </div>
+  </td>
+  <td class="doc-parameter-description">Return stations that have at least one charging port with power output no less than this value.</td>
+</tr>
+
+    <tr>
+  <th class="doc-parameter-name" scope="row">facility_type</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all</em>, <em>AIRPORT</em>, <em>ARENA</em>, <em>AUTO_REPAIR</em>, <em>BANK</em>, <em>B_AND_B</em>, <em>BREWERY_DISTILLERY_WINERY</em>, <em>CAMPGROUND</em>, <em>CAR_DEALER</em>, <em>CARWASH</em>, <em>COLLEGE_CAMPUS</em>, <em>CONVENIENCE_STORE</em>, <em>CONVENTION_CENTER</em>, <em>COOP</em>, <em>FACTORY</em>, <em>FED_GOV</em>, <em>FIRE_STATION</em>, <em>FLEET_GARAGE</em>, <em>FUEL_RESELLER</em>, <em>GROCERY</em>, <em>HARDWARE_STORE</em>, <em>HOSPITAL</em>, <em>HOTEL</em>, <em>INN</em>, <em>LIBRARY</em>, <em>MIL_BASE</em>, <em>MOTOR_POOL</em>, <em>MULTI_UNIT_DWELLING</em>, <em>MUNI_GOV</em>, <em>MUSEUM</em>, <em>NATL_PARK</em>, <em>OFFICE_BLDG</em>, <em>OTHER</em>, <em>OTHER_ENTERTAINMENT</em>, <em>PARK</em>, <em>PARKING_GARAGE</em>, <em>PARKING_LOT</em>, <em>PAY_GARAGE</em>, <em>PAY_LOT</em>, <em>PHARMACY</em>, <em>PLACE_OF_WORSHIP</em>, <em>PRISON</em>, <em>PRIVATE</em>, <em>PUBLIC</em>, <em>REC_SPORTS_FACILITY</em>, <em>REFINERY</em>, <em>RENTAL_CAR_RETURN</em>, <em>RESEARCH_FACILITY</em>, <em>RESTAURANT</em>, <em>REST_STOP</em>, <em>RETAIL</em>, <em>RV_PARK</em>, <em>SCHOOL</em>, <em>GAS_STATION</em>, <em>SHOPPING_CENTER</em>, <em>SHOPPING_MALL</em>, <em>STADIUM</em>, <em>STANDALONE_STATION</em>, <em>STATE_GOV</em>, <em>STORAGE</em>, <em>STREET_PARKING</em>, <em>TNC</em>, <em>TRAVEL_CENTER</em>, <em>TRUCK_STOP</em>, <em>UTILITY</em>, <em>WORKPLACE</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only EV charging stations located at the given facility type. A single facility type, or a comma-separated list of multiple facility types, may be given.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th scope="row">AIRPORT</th>
+            <td>Airport</td>
+          </tr>
+          <tr>
+            <th scope="row">ARENA</th>
+            <td>Arena</td>
+          </tr>
+          <tr>
+            <th scope="row">AUTO_REPAIR</th>
+            <td>Auto Repair Shop</td>
+          </tr>
+          <tr>
+            <th scope="row">BANK</th>
+            <td>Bank</td>
+          </tr>
+          <tr>
+            <th scope="row">B_AND_B</th>
+            <td>B&amp;B</td>
+          </tr>
+          <tr>
+            <th scope="row">BREWERY_DISTILLERY_WINERY</th>
+            <td>Brewery/Distillery/Winery</td>
+          </tr>
+          <tr>
+            <th scope="row">CAMPGROUND</th>
+            <td>Campground</td>
+          </tr>
+          <tr>
+            <th scope="row">CAR_DEALER</th>
+            <td>Car Dealer</td>
+          </tr>
+          <tr>
+            <th scope="row">CARWASH</th>
+            <td>Carwash</td>
+          </tr>
+          <tr>
+            <th scope="row">COLLEGE_CAMPUS</th>
+            <td>College Campus</td>
+          </tr>
+          <tr>
+            <th scope="row">CONVENIENCE_STORE</th>
+            <td>Convenience Store</td>
+          </tr>
+          <tr>
+            <th scope="row">CONVENTION_CENTER</th>
+            <td>Convention Center</td>
+          </tr>
+          <tr>
+            <th scope="row">COOP</th>
+            <td>Co-Op</td>
+          </tr>
+          <tr>
+            <th scope="row">FACTORY</th>
+            <td>Factory</td>
+          </tr>
+          <tr>
+            <th scope="row">FED_GOV</th>
+            <td>Federal Government</td>
+          </tr>
+          <tr>
+            <th scope="row">FIRE_STATION</th>
+            <td>Fire Station</td>
+          </tr>
+          <tr>
+            <th scope="row">FLEET_GARAGE</th>
+            <td>Fleet Garage</td>
+          </tr>
+          <tr>
+            <th scope="row">FUEL_RESELLER</th>
+            <td>Fuel Reseller</td>
+          </tr>
+          <tr>
+            <th scope="row">GROCERY</th>
+            <td>Grocery Store</td>
+          </tr>
+          <tr>
+            <th scope="row">HARDWARE_STORE</th>
+            <td>Hardware Store</td>
+          </tr>
+          <tr>
+            <th scope="row">HOSPITAL</th>
+            <td>Hospital</td>
+          </tr>
+          <tr>
+            <th scope="row">HOTEL</th>
+            <td>Hotel</td>
+          </tr>
+          <tr>
+            <th scope="row">INN</th>
+            <td>Inn</td>
+          </tr>
+          <tr>
+            <th scope="row">LIBRARY</th>
+            <td>Library</td>
+          </tr>
+          <tr>
+            <th scope="row">MIL_BASE</th>
+            <td>Military Base</td>
+          </tr>
+          <tr>
+            <th scope="row">MOTOR_POOL</th>
+            <td>Motor Pool</td>
+          </tr>
+          <tr>
+            <th scope="row">MULTI_UNIT_DWELLING</th>
+            <td>Multi-Family Housing</td>
+          </tr>
+          <tr>
+            <th scope="row">MUNI_GOV</th>
+            <td>Municipal Government</td>
+          </tr>
+          <tr>
+            <th scope="row">MUSEUM</th>
+            <td>Museum</td>
+          </tr>
+          <tr>
+            <th scope="row">NATL_PARK</th>
+            <td>National Park</td>
+          </tr>
+          <tr>
+            <th scope="row">OFFICE_BLDG</th>
+            <td>Office Building</td>
+          </tr>
+          <tr>
+            <th scope="row">OTHER</th>
+            <td>Other</td>
+          </tr>
+          <tr>
+            <th scope="row">OTHER_ENTERTAINMENT</th>
+            <td>Other Entertainment</td>
+          </tr>
+          <tr>
+            <th scope="row">PARK</th>
+            <td>Park</td>
+          </tr>
+          <tr>
+            <th scope="row">PARKING_GARAGE</th>
+            <td>Parking Garage</td>
+          </tr>
+          <tr>
+            <th scope="row">PARKING_LOT</th>
+            <td>Parking Lot</td>
+          </tr>
+          <tr>
+            <th scope="row">PAY_GARAGE</th>
+            <td>Pay-Parking Garage</td>
+          </tr>
+          <tr>
+            <th scope="row">PAY_LOT</th>
+            <td>Pay-Parking Lot</td>
+          </tr>
+          <tr>
+            <th scope="row">PHARMACY</th>
+            <td>Pharmacy</td>
+          </tr>
+          <tr>
+            <th scope="row">PLACE_OF_WORSHIP</th>
+            <td>Place of Worship</td>
+          </tr>
+          <tr>
+            <th scope="row">PRISON</th>
+            <td>Prison</td>
+          </tr>
+          <tr>
+            <th scope="row">PRIVATE</th>
+            <td>Private</td>
+          </tr>
+          <tr>
+            <th scope="row">PUBLIC</th>
+            <td>Public</td>
+          </tr>
+          <tr>
+            <th scope="row">REC_SPORTS_FACILITY</th>
+            <td>Recreational Sports Facility</td>
+          </tr>
+          <tr>
+            <th scope="row">REFINERY</th>
+            <td>Refinery</td>
+          </tr>
+          <tr>
+            <th scope="row">RENTAL_CAR_RETURN</th>
+            <td>Rental Car Return</td>
+          </tr>
+          <tr>
+            <th scope="row">RESEARCH_FACILITY</th>
+            <td>Research Facility/Laboratory</td>
+          </tr>
+          <tr>
+            <th scope="row">RESTAURANT</th>
+            <td>Restaurant</td>
+          </tr>
+          <tr>
+            <th scope="row">REST_STOP</th>
+            <td>Rest Stop</td>
+          </tr>
+          <tr>
+            <th scope="row">RETAIL</th>
+            <td>Retail</td>
+          </tr>
+          <tr>
+            <th scope="row">RV_PARK</th>
+            <td>RV Park</td>
+          </tr>
+          <tr>
+            <th scope="row">SCHOOL</th>
+            <td>School</td>
+          </tr>
+          <tr>
+            <th scope="row">GAS_STATION</th>
+            <td>Service/Gas Station</td>
+          </tr>
+          <tr>
+            <th scope="row">SHOPPING_CENTER</th>
+            <td>Shopping Center</td>
+          </tr>
+          <tr>
+            <th scope="row">SHOPPING_MALL</th>
+            <td>Shopping Mall</td>
+          </tr>
+          <tr>
+            <th scope="row">STADIUM</th>
+            <td>Stadium</td>
+          </tr>
+          <tr>
+            <th scope="row">STANDALONE_STATION</th>
+            <td>Standalone Station</td>
+          </tr>
+          <tr>
+            <th scope="row">STATE_GOV</th>
+            <td>State/Provincial Government</td>
+          </tr>
+          <tr>
+            <th scope="row">STORAGE</th>
+            <td>Storage Facility</td>
+          </tr>
+          <tr>
+            <th scope="row">STREET_PARKING</th>
+            <td>Street Parking</td>
+          </tr>
+          <tr>
+            <th scope="row">TNC</th>
+            <td>Transportation Network Company</td>
+          </tr>
+          <tr>
+            <th scope="row">TRAVEL_CENTER</th>
+            <td>Travel Center</td>
+          </tr>
+          <tr>
+            <th scope="row">TRUCK_STOP</th>
+            <td>Truck Stop</td>
+          </tr>
+          <tr>
+            <th scope="row">UTILITY</th>
+            <td>Utility</td>
+          </tr>
+          <tr>
+            <th scope="row">WORKPLACE</th>
+            <td>Workplace</td>
+          </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+
+    <tr id="request-federal-agency">
+  <th class="doc-parameter-name" scope="row">federal_agency</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all</em>, <em>AAF</em>, <em>CH</em>, <em>CHSW</em>, <em>USACE_CW</em>, <em>CSOSA</em>, <em>DEF</em>, <em>DAF</em>, <em>DA</em>, <em>DOC</em>, <em>HHS</em>, <em>DHS</em>, <em>HUD</em>, <em>DOJ</em>, <em>DOL</em>, <em>DON</em>, <em>DOS</em>, <em>DOI</em>, <em>DOT</em>, <em>DTS</em>, <em>VA</em>, <em>EWDL</em>, <em>ECC</em>, <em>FCSD</em>, <em>FTC</em>, <em>FIN</em>, <em>FOCCG</em>, <em>GSA</em>, <em>GAFA</em>, <em>GAID</em>, <em>GAIT</em>, <em>HLTH</em>, <em>IRC</em>, <em>INA</em>, <em>IC</em>, <em>ISED</em>, <em>JUS</em>, <em>LGHC</em>, <em>NASA</em>, <em>NDEF</em>, <em>NREV</em>, <em>NRES</em>, <em>PARL</em>, <em>PQPCC</em>, <em>PM</em>, <em>PSEP</em>, <em>PSP</em>, <em>SCI</em>, <em>SBT</em>, <em>SI</em>, <em>SSA</em>, <em>TVA</em>, <em>TRANS</em>, <em>TREAS</em>, <em>USMC</em>, <em>CBP</em>, <em>USDA</em>, <em>DOD</em>, <em>EDU</em>, <em>DOE</em>, <em>EPA</em>, <em>FAA</em>, <em>IRS</em>, <em>NRC</em>, <em>USPS</em>, <em>VAFF</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return stations owned by the given federal agency. A federal agency code, or a comma-separated list of multiple federal agency codes, may be given.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th scope="row">AAF</th>
+            <td>Agriculture and Agri-Food (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">CH</th>
+            <td>Canadian Heritage (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">CHSW</th>
+            <td>Canadian Heritage (Status of Women) (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">USACE_CW</th>
+            <td>Corps of Engineers, Civil Works (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">CSOSA</th>
+            <td>Court Services and Offender Supervision Agency (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DEF</th>
+            <td>Defense Agencies (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DAF</th>
+            <td>Department of Air Force (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DA</th>
+            <td>Department of Army (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DOC</th>
+            <td>Department of Commerce (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">HHS</th>
+            <td>Department of Health and Human Services (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DHS</th>
+            <td>Department of Homeland Security (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">HUD</th>
+            <td>Department of Housing and Urban Development (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DOJ</th>
+            <td>Department of Justice (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DOL</th>
+            <td>Department of Labor (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DON</th>
+            <td>Department of Navy (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DOS</th>
+            <td>Department of State (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DOI</th>
+            <td>Department of the Interior (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DOT</th>
+            <td>Department of Transportation (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DTS</th>
+            <td>Department of Treasury (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">VA</th>
+            <td>Department of Veterans Affairs (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">EWDL</th>
+            <td>Employment, Workforce Development and Labour (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">ECC</th>
+            <td>Environment and Climate Change (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">FCSD</th>
+            <td>Families, Children and Social Development (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">FTC</th>
+            <td>Federal Trade Commission (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">FIN</th>
+            <td>Finance (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">FOCCG</th>
+            <td>Fisheries, Oceans and the Canadian Coast Guard (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">GSA</th>
+            <td>General Services Administration (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">GAFA</th>
+            <td>Global Affairs (Foreign Affairs) (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">GAID</th>
+            <td>Global Affairs (International Development) (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">GAIT</th>
+            <td>Global Affairs (International Trade) (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">HLTH</th>
+            <td>Health (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">IRC</th>
+            <td>Immigration, Refugees and Citizenship (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">INA</th>
+            <td>Indigenous and Northern Affairs (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">IC</th>
+            <td>Infrastructure and Communities (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">ISED</th>
+            <td>Innovation, Science and Economic Development (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">JUS</th>
+            <td>Justice (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">LGHC</th>
+            <td>Leader of the Government in the House of Commons (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">NASA</th>
+            <td>National Aeronautics and Space Administration (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">NDEF</th>
+            <td>National Defence (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">NREV</th>
+            <td>National Revenue (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">NRES</th>
+            <td>Natural Resources (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">PARL</th>
+            <td>Parliament (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">PQPCC</th>
+            <td>President of the Queen's Privy Council for Canada (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">PM</th>
+            <td>Prime Minister (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">PSEP</th>
+            <td>Public Safety and Emergency Preparedness (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">PSP</th>
+            <td>Public Services and Procurement (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">SCI</th>
+            <td>Science (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">SBT</th>
+            <td>Small Business and Tourism (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">SI</th>
+            <td>Smithsonian Institution (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">SSA</th>
+            <td>Social Security Administration (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">TVA</th>
+            <td>Tennessee Valley Authority (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">TRANS</th>
+            <td>Transport (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">TREAS</th>
+            <td>Treasury Board (CA)</td>
+          </tr>
+          <tr>
+            <th scope="row">USMC</th>
+            <td>United States Marine Corps (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">CBP</th>
+            <td>U.S. Customs and Border Protection (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">USDA</th>
+            <td>U.S. Department of Agriculture (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DOD</th>
+            <td>U.S. Department of Defense (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">EDU</th>
+            <td>U.S. Department of Education (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">DOE</th>
+            <td>U.S. Department of Energy (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">EPA</th>
+            <td>U.S. Environmental Protection Agency (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">FAA</th>
+            <td>U.S. Federal Aviation Administration (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">IRS</th>
+            <td>U.S. Internal Revenue Service (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">NRC</th>
+            <td>U.S. Nuclear Regulatory Commission (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">USPS</th>
+            <td>U.S. Postal Service (US)</td>
+          </tr>
+          <tr>
+            <th scope="row">VAFF</th>
+            <td>Veterans Affairs (CA)</td>
+          </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+
+    <tr>
+  <th class="doc-parameter-name" scope="row">limit</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> integer or string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> all
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Range:</strong> <em>0</em> to <em>200</em>, or <em>all</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">The maximum number of results to return. An explicit limit of up to 200 may be passed in, or the special <code>all</code> string may be passed in to return all results.</td>
+</tr>
+
+    <tr>
+  <th class="doc-parameter-name" scope="row">status</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all</em>, <em>E</em>, <em>P</em>, <em>T</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return stations that match the given status. A single status, or a comma-separated list of multiple statuses, may be given.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th scope="row">E</th>
+            <td>Available</td>
+          </tr>
+          <tr>
+            <th scope="row">P</th>
+            <td>Planned</td>
+          </tr>
+          <tr>
+            <th scope="row">T</th>
+            <td>Temporarily Unavailable</td>
+          </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+
+    <tr>
+  <th class="doc-parameter-name" scope="row">state</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> None
+    </div>
+  </td>
+  <td class="doc-parameter-description">Return only stations within the given state. State must be given as a two-character state code (eg, "CO" for Colorado). A single state, or a comma-separate list of multiple states, may be given.</td>
+</tr>
+
+    <tr>
+  <th class="doc-parameter-name" scope="row">zip</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> None
+    </div>
+  </td>
+  <td class="doc-parameter-description">Return only stations within the given ZIP code. ZIP codes must be exactly 5 digits long. A single ZIP code, or a comma-separate list of multiple ZIP codes, may be given.</td>
+</tr>
+
+  </tbody>
+</table>
+
+<h2 id="response-fields">Response Fields</h2>
+
+<p>The response is a CSV data download that includes information about EV charging power output by connector type matching the requested query. Each row in the spreadsheet represents an EV charging unit that might have one or more ports and one or more connectors. A single station location may have multiple rows in the spreadsheet.</p>
+
+<p>The table below documents the columns unique to this data download. For documentation on the remaining columns in the CSV, see the response fields for the <a href="/docs/transportation/alt-fuel-stations-v1/all/#response-fields">All Stations endpoint</a>.</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th scope="col">Field</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>EV Level1 EVSE Num</th>
+      <td>Total number of Level 1 charging ports at station location</td>
+    </tr>
+    <tr>
+      <th>EV Level2 EVSE Num</th>
+      <td>Total number of Level 2 charging ports at station location</td>
+    </tr>
+    <tr>
+      <th>EV DC Fast Count</th>
+      <td>Total number of DC Fast charging ports at station location</td>
+    </tr>
+    <tr>
+      <th>EV J1772 Connector Count</th>
+      <td>Total number of J1772 connectors at station location</td>
+    </tr>
+    <tr>
+      <th>EV J1772 Power Output (kW)</th>
+      <td>Power output in kilowatts of J1772 ports</td>
+    </tr>
+    <tr>
+      <th>EV CCS Connector Count</th>
+      <td>Total number of CCS/J1772 Combo connectors at station location</td>
+    </tr>
+    <tr>
+      <th>EV CCS Power Output (kW)</th>
+      <td>Power output in kilowatts of CCS/J1772 Combo ports</td>
+    </tr>
+    <tr>
+      <th>EV CHAdeMO Connector Count</th>
+      <td>Total number of CHAdeMO connectors at station location</td>
+    </tr>
+    <tr>
+      <th>EV CHAdeMO Power Output (kW)</th>
+      <td>Power output in kilowatts of CHAdeMO ports</td>
+    </tr>
+    <tr>
+      <th>EV J3400 Connector Count</th>
+      <td>Total number of NACS/J3400 connectors at station location</td>
+    </tr>
+    <tr>
+      <th>EV J3400 Power Output (kW)</th>
+      <td>Power output in kilowatts of NACS/J3400 ports</td>
+    </tr>
+    <tr>
+      <th>EV J3271 Connector Count</th>
+      <td>Total number of MCS/J3271 connectors at station location</td>
+    </tr>
+    <tr>
+      <th>EV J3271 Power Output (kW)</th>
+      <td>Power output in kilowatts of MCS/J3271 ports</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="rate-limits">Rate Limits</h2>
+
+<p><a href="/docs/rate-limits">Standard rate limits</a> apply. No more than 1,000 requests may be made in any hour</p>
+
+<h2 id="errors">Errors</h2>
+
+<p><a href="/docs/errors">Standard errors</a> may be returned. In addition, the following service-specific errors may be returned:</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">HTTP Status Code</th>
+      <th class="doc-parameters-required" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">422</th>
+      <td class="doc-parameter-description">Unprocessable Entity - An invalid value was given for a query parameter. The response body will describe the specific error.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+      <div style="text-align: center; font-style: italic; margin-top: 2rem;">
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/main/source/docs/transportation/alt-fuel-stations-v1/ev-charging-units.html.md.erb">Help improve this content</a>
+</div>
+
+    </main>
+    <!--stopindex-->
+<footer id="footer" class="hidden-print">
+
+  <nav class="footertop" aria-label="Main">
+    <div class="container-xl">
+      <div class="row">
+        <div class="col-12 col-lg-5">
+          <a href="https://www.nrel.gov/"><strong>NREL</strong></a>
+        </div>
+        <div class="col col-lg-7">
+          <div class="d-flex flex-column flex-lg-row justify-content-lg-start global">
+            <div><a href="https://www.nrel.gov/about">About</a></div>
+            <div><a href="https://www.nrel.gov/research">Research</a></div>
+            <div><a href="https://www.nrel.gov/workingwithus">Partner With Us</a></div>
+            <div><a href="https://www.nrel.gov/news/">News</a></div>
+            <div><a href="https://www.nrel.gov/careers">Careers</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <nav class="footerbottom"  aria-label="Secondary">
+    <div class="container-xl">
+      <div class="row">
+        <div class="col-md-4 col-lg-5">
+          <div><a href="/contact/">Contact Us</a></div>
+          <div class="mt-2"><a href="https://www.nrel.gov/about/visiting-nrel">Visit</a></div>
+          <div class="mt-2"><a href="https://www.nrel.gov/news/subscribe.html">Subscribe to NREL</a></div>
+          <div class="mt-3">
+            <ul class="social-links list-inline">
+              <li class="list-inline-item"><a href="https://www.facebook.com/nationalrenewableenergylab" aria-label="Follow NREL on Facebook"><i class="fa-brands fa-square-facebook"><!--facebook--></i></a></li>
+              <li class="list-inline-item"><a href="https://www.instagram.com/nationalrenewableenergylab/" aria-label="Follow NREL on Instagram"><i class="fa-brands fa-instagram"><!--Instagram--></i></a></li>
+              <li class="list-inline-item"><a href="https://www.linkedin.com/company/national-renewable-energy-laboratory"
+                                              aria-label="Follow NREL on Linked In"><i class="fa-brands fa-linkedin"><!--Linked In--></i></a></li>
+              <li class="list-inline-item"><a href="https://www.youtube.com/user/NRELPR/" aria-label="Follow NREL on YouTube"><i class="fa-brands fa-youtube"><!--You Tube--></i></a></li>
+              <li class="list-inline-item"><a href="https://twitter.com/nrel/" aria-label="Follow NREL on X"><i class="fa-brands fa-x-twitter"><!--twitter--></i></a></li>
+              <li class="list-inline-item"><a href="https://www.threads.net/@nationalrenewableenergylab" aria-label="Follow NREL on X"><span class="fa-brands fa-threads"><!-- Threads --></span></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-8 col-lg-7 globalsecondary">
+          <div class="row">
+            <div class="col-sm-6 col-lg-3">
+              <div class="mt-0"><a href="https://www.nrel.gov/accessibility.html">Accessibility</a></div>
+              <div class="mt-3 mt-sm-2"><a href="https://www.nrel.gov/disclaimer.html">Disclaimer</a></div>
+              <div class="mt-3 mt-sm-2"><a href="https://www.nrel.gov/security.html">Security and Privacy</a></div>
+              <div class="mt-3 mt-sm-2"><a href="https://www.nrel.gov/webmaster.html">Site Feedback</a></div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+
+              <div class="mt-3 mt-sm-0"><a href="https://developer.nrel.gov/">Developers</a></div>
+              <div class="mt-3 mt-sm-2"><a href="https://thesource.nrel.gov/">Employees</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="mt-4">
+        <div class="row">
+          <div class="col-sm-5">
+            <a href="https://www.allianceforsustainableenergy.org/"><img src="/vite/assets/a-alliance-logo-black-s2Lk0kd-.svg" alt="Alliance for Sustainable Energy, LLC" class="mb-3" width="145" height="53" style="width:145px;height:53px;"></a>
+            <a href="https://www.energy.gov"><img src="/vite/assets/a-2025-doe-logo-stacked-horizontal-BBms34oz.svg" alt="U.S. Department of Energy" class="ms-3" width="203" height="50" style="width:203px;height:50px;"></a>
+          </div>
+          <div class="col-12 col-sm-7">
+            <p class="nrel-attr mt-3">NREL is a national laboratory of the <a href="https://www.energy.gov/">U.S. Department of Energy</a>, <a href="https://www.energy.gov/eere/office-energy-efficiency-renewable-energy">Office of Energy Efficiency and Renewable Energy</a>, operated under Contract No. DE-AC36-08GO28308.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+</footer>
+
+  </body>
+</html>

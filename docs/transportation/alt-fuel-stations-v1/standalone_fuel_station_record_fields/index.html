@@ -1102,7 +1102,7 @@
         </ul>
       </td>
     </tr>
-    <tr>
+    <tr id="ev-connector-types">
       <th class="doc-parameter-name" scope="row">ev_connector_types</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -1155,7 +1155,7 @@
         </table>
       </td>
     </tr>
-    <tr>
+    <tr id="ev-networks">
       <th class="doc-parameter-name" scope="row">ev_network</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -1524,7 +1524,7 @@
         </div>
       </td>
       <td class="doc-parameter-description">
-        For electric stations, if the station belongs to an EV charging network, a record describing the network-specific IDs for this station. See <a href="#ev-network-id-record-fields">EV network ID record fields</a> for response details.
+        For electric stations, if the station belongs to an EV charging network, a record describing the network-specific IDs for this station. See <a href="#ev-charging-network-id-record-fields">EV charging network ID record fields</a> for response details.
       </td>
     </tr>
     <tr>
@@ -1598,6 +1598,51 @@
         </table>
       </td>
     </tr>
+    <tr id="funding-sources-response">
+      <th class="doc-parameter-name" scope="row">funding_sources</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>A list of funding sources used to build the EV charging unit, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <th scope="row">CFI</th>
+                <td>Charging and Fueling Infrastructure (CFI) Discretionary Grant Program</td>
+              </tr>
+              <tr>
+                <th scope="row">CHRI</th>
+                <td>Charging and Hydrogen Refuelling Infrastructure Initiative (CHRI)</td>
+              </tr>
+              <tr>
+                <th scope="row">EVAFIDI</th>
+                <td>Electric Vehicle and Alternative Fuel Infrastructure Deployment Initiative (EVAFIDI)</td>
+              </tr>
+              <tr>
+                <th scope="row">EVC-RAA</th>
+                <td>Electric Vehicle Charger Reliability and Accessibility Accelerator (EVC-RAA)</td>
+              </tr>
+              <tr>
+                <th scope="row">NEVI</th>
+                <td>National Electric Vehicle Infrastructure (NEVI) Formula Program</td>
+              </tr>
+              <tr>
+                <th scope="row">ZEVIP</th>
+                <td>Zero Emission Vehicle Infrastructure Program (ZEVIP)</td>
+              </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">hy_is_retail</th>
       <td class="doc-parameter-value">
@@ -1635,7 +1680,7 @@
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>For hydrogen stations, any array of strings identifying the pressures of the hydrogen available (in bar), given as code values as described below:</p>
+        <p>For hydrogen stations, an array of strings identifying the pressures of the hydrogen available (in bar), given as code values as described below:</p>
         <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
@@ -1664,7 +1709,7 @@
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>For hydrogen stations, any array of strings identifying which SAE International fueling protocol standard(s) the infrastructure meets, given as code values as described below:</p>
+        <p>For hydrogen stations, an array of strings identifying which SAE International fueling protocol standard(s) the infrastructure meets, given as code values as described below:</p>
         <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
@@ -2191,7 +2236,6 @@
         </table>
       </td>
     </tr>
-    <!-- ###### NOTE: CHANGE THIS TO NON-CNG ENDPOINT ONCE PR 484 IS DEPLOYED TO PRODUCTION ###### -->
     <tr id="maximum-vehicle-class">
       <th class="doc-parameter-name" scope="row">maximum_vehicle_class</th>
       <td class="doc-parameter-value">
@@ -2255,6 +2299,17 @@
         </table>
       </td>
     </tr>
+    <tr id="ev-charging-units">
+      <th class="doc-parameter-name" scope="row">ev_charging_units</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        For electric vehicle charging stations, an array of EV charging units. See <a href="#ev-charging-unit-record-fields">EV charging unit record fields</a> for response details.
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -2290,7 +2345,97 @@
   </tbody>
 </table>
 
-<h3 id="ev-network-id-record-fields">EV Network ID Record Fields</h3>
+<h3 id="ev-charging-unit-record-fields">EV Charging Unit Record Fields</h3>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">network</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">The <a href="#ev-networks">network identifier</a> for the charging unit.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">connectors</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> record
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The connectors available at the charging unit as a record with the <a href="#ev-connector-types">connector types</a> present as keys, and the power output information for each connector type as the value:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="doc-parameters-name" scope="col">Field</th>
+              <th class="doc-parameters-value" scope="col">Value</th>
+              <th class="doc-parameters-description" scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="doc-parameter-name" scope="row">power_kw</th>
+              <td class="doc-parameter-value">
+                <div class="doc-parameter-value-field">
+                  <strong>Type:</strong> decimal
+                </div>
+              </td>
+              <td class="doc-parameter-description">The power output in kilowatts of the charging unit.</td>
+            </tr>
+            <tr>
+              <th class="doc-parameter-name" scope="row">port_count</th>
+              <td class="doc-parameter-value">
+                <div class="doc-parameter-value-field">
+                  <strong>Type:</strong> integer
+                </div>
+              </td>
+              <td class="doc-parameter-description">The number of ports for the connector type on the charging unit.</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">port_count</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+      </td>
+      <td class="doc-parameter-description">The number of EV charging ports on the charging unit.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">charging_level</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">The <a href="#ev-charging-level">charging level</a> of the EV charging unit.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">funding_sources</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">A list of <a href="#funding-sources-response">funding sources</a> used to build the EV charging unit.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="ev-charging-network-id-record-fields">EV Charging Network ID Record Fields</h3>
 
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
   <thead>

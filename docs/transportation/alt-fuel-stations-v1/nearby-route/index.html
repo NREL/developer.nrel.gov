@@ -217,6 +217,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>The output response format. Given in the URL as the file extension.</p>
   </td>
 </tr>
+
 <tr>
   <th class="doc-parameter-name" scope="row">api_key</th>
   <td class="doc-parameter-required">Yes</td>
@@ -232,6 +233,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>Your developer API key. See <a href="/docs/api-key/">API key usage</a> for more information.</p>
   </td>
 </tr>
+
 
     <tr>
       <th class="doc-parameter-name" scope="row">route</th>
@@ -349,6 +351,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </table>
   </td>
 </tr>
+
 <tr>
   <th class="doc-parameter-name" scope="row">access</th>
   <td class="doc-parameter-required">No</td>
@@ -389,6 +392,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </table>
   </td>
 </tr>
+
 <tr>
   <th class="doc-parameter-name" scope="row">fuel_type</th>
   <td class="doc-parameter-required">No</td>
@@ -453,6 +457,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </table>
   </td>
 </tr>
+
 <tr>
   <th class="doc-parameter-name" scope="row">cards_accepted</th>
   <td class="doc-parameter-required">No</td>
@@ -605,6 +610,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </table>
   </td>
 </tr>
+
 <tr>
   <th class="doc-parameter-name" scope="row">owner_type</th>
   <td class="doc-parameter-required">No</td>
@@ -661,6 +667,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </table>
   </td>
 </tr>
+
 <tr id="request-federal-agency">
   <th class="doc-parameter-name" scope="row">federal_agency</th>
   <td class="doc-parameter-required">No</td>
@@ -953,6 +960,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </table>
   </td>
 </tr>
+
 <tr>
   <th class="doc-parameter-name" scope="row">federal_agency_id</th>
   <td class="doc-parameter-required">No</td>
@@ -1246,6 +1254,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </table>
   </td>
 </tr>
+
 <tr>
   <th class="doc-parameter-name" scope="row">cng_fill_type</th>
   <td class="doc-parameter-required">No</td>
@@ -1261,7 +1270,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </div>
   </td>
   <td class="doc-parameter-description">
-    <p>Return only CNG stations that provide the specified type of dispensing capability. A single type, or a comma separated list of multiple types, may be given.</p>
+    <p>Return only CNG stations that provide the specified type of dispensing capability. A single type, or a comma-separated list of multiple types, may be given.</p>
     <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
@@ -1290,6 +1299,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </table>
   </td>
 </tr>
+
 <tr>
   <th class="doc-parameter-name" scope="row">cng_has_rng</th>
   <td class="doc-parameter-required">No</td>
@@ -1330,6 +1340,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </table>
   </td>
 </tr>
+
 <tr>
   <th class="doc-parameter-name" scope="row">cng_psi</th>
   <td class="doc-parameter-required">No</td>
@@ -1345,7 +1356,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </div>
   </td>
   <td class="doc-parameter-description">
-    <p>Return only CNG stations that provide the specified PSI pressure. A single pressure level, or a comma separated list of multiple pressure levels, may be given.</p>
+    <p>Return only CNG stations that provide the specified PSI pressure. A single pressure level, or a comma-separated list of multiple pressure levels, may be given.</p>
     <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
@@ -1374,6 +1385,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </table>
   </td>
 </tr>
+
 <tr>
   <th class="doc-parameter-name" scope="row">cng_vehicle_class</th>
   <td class="doc-parameter-required">No</td>
@@ -1389,6 +1401,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </div>
   </td>
   <td class="doc-parameter-description">
+    <p>Deprecated: See <a href="#request-maximum-vehicle-class"><code>maximum_vehicle_class</code></a>. (Note: this query parameter will remain for legacy application support)</p>
     <p>Return only CNG stations that can accomodate the specified vehicle class size or greater.</p>
     <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
@@ -1418,6 +1431,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </table>
   </td>
 </tr>
+
 <tr>
   <th class="doc-parameter-name" scope="row">e85_has_blender_pump</th>
   <td class="doc-parameter-required">No</td>
@@ -1436,7 +1450,8 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     <p>If <code>true</code>, then return only E85 stations that also have a blender pump capable of providing mid-level ethanol blends.</p>
   </td>
 </tr>
-<tr>
+
+<tr id="request-ev-network">
   <th class="doc-parameter-name" scope="row">ev_network</th>
   <td class="doc-parameter-required">No</td>
   <td class="doc-parameter-value">
@@ -1451,7 +1466,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </div>
   </td>
   <td class="doc-parameter-description">
-    <p>Return only electric charging stations that belong to the given network. A single network, or a comma separated list of multiple networks, may be given.</p>
+    <p>Return only EV charging stations that belong to the given network. A single network, or a comma-separated list of multiple networks, may be given.</p>
     <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
@@ -1808,7 +1823,25 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </table>
   </td>
 </tr>
+
 <tr>
+  <th class="doc-parameter-name" scope="row">ev_network_station_ids</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only stations that match the network-assigned station ID for the EV charging network. A single EV charging network station ID, or a comma-separated list of multiple EV charging network station IDs, may be given.</p>
+    <p>It is recommended to also pass the <a href="#request-ev-network"><code>ev_network</code></a> parameter to avoid ambiguity in station IDs across networks.</p>
+  </td>
+</tr>
+
+<tr id="ev-charging-level">
   <th class="doc-parameter-name" scope="row">ev_charging_level</th>
   <td class="doc-parameter-required">No</td>
   <td class="doc-parameter-value">
@@ -1823,7 +1856,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </div>
   </td>
   <td class="doc-parameter-description">
-    <p>Return only electric charging stations that provide the given level of electric vehicle supply equipment (EVSE).</p>
+    <p>Return only EV charging stations that provide the given level of electric vehicle supply equipment (EVSE).</p>
     <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
@@ -1852,6 +1885,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </table>
   </td>
 </tr>
+
 <tr>
   <th class="doc-parameter-name" scope="row">ev_connector_type</th>
   <td class="doc-parameter-required">No</td>
@@ -1867,7 +1901,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </div>
   </td>
   <td class="doc-parameter-description">
-    <p>Return only electric charging stations that provide the given connector types.</p>
+    <p>Return only EV charging stations that provide the given connector types.</p>
     <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
         <tr>
@@ -1916,6 +1950,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </table>
   </td>
 </tr>
+
 <tr>
   <th class="doc-parameter-name" scope="row">ev_connector_type_operator</th>
   <td class="doc-parameter-required">No</td>
@@ -1935,6 +1970,385 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     <p>For example, with the default <code>OR</code> value, then performing a query for <code>ev_connector_type=CHADEMO,J1772COMBO</code> will return any station that has either <code>CHADEMO</code> or <code>J1772COMBO</code> connectors present. Compare that to a query for <code>ev_connector_type=CHADEMO,J1772COMBO&#8203;&amp;ev_connector_type_operator=AND</code> which will return stations that must have both <code>CHADEMO</code> and <code>J1772COMBO</code> connectors present at the same station.</p>
   </td>
 </tr>
+
+<tr>
+  <th class="doc-parameter-name" scope="row">ev_power_kw_max</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> decimal
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> None
+    </div>
+  </td>
+  <td class="doc-parameter-description">Return stations that have at least one charging port with power output no greater than this value.</td>
+</tr>
+
+<tr>
+  <th class="doc-parameter-name" scope="row">ev_power_kw_min</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> decimal
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> None
+    </div>
+  </td>
+  <td class="doc-parameter-description">Return stations that have at least one charging port with power output no less than this value.</td>
+</tr>
+
+<tr>
+  <th class="doc-parameter-name" scope="row">facility_type</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all</em>, <em>AIRPORT</em>, <em>ARENA</em>, <em>AUTO_REPAIR</em>, <em>BANK</em>, <em>B_AND_B</em>, <em>BREWERY_DISTILLERY_WINERY</em>, <em>CAMPGROUND</em>, <em>CAR_DEALER</em>, <em>CARWASH</em>, <em>COLLEGE_CAMPUS</em>, <em>CONVENIENCE_STORE</em>, <em>CONVENTION_CENTER</em>, <em>COOP</em>, <em>FACTORY</em>, <em>FED_GOV</em>, <em>FIRE_STATION</em>, <em>FLEET_GARAGE</em>, <em>FUEL_RESELLER</em>, <em>GROCERY</em>, <em>HARDWARE_STORE</em>, <em>HOSPITAL</em>, <em>HOTEL</em>, <em>INN</em>, <em>LIBRARY</em>, <em>MIL_BASE</em>, <em>MOTOR_POOL</em>, <em>MULTI_UNIT_DWELLING</em>, <em>MUNI_GOV</em>, <em>MUSEUM</em>, <em>NATL_PARK</em>, <em>OFFICE_BLDG</em>, <em>OTHER</em>, <em>OTHER_ENTERTAINMENT</em>, <em>PARK</em>, <em>PARKING_GARAGE</em>, <em>PARKING_LOT</em>, <em>PAY_GARAGE</em>, <em>PAY_LOT</em>, <em>PHARMACY</em>, <em>PLACE_OF_WORSHIP</em>, <em>PRISON</em>, <em>PRIVATE</em>, <em>PUBLIC</em>, <em>REC_SPORTS_FACILITY</em>, <em>REFINERY</em>, <em>RENTAL_CAR_RETURN</em>, <em>RESEARCH_FACILITY</em>, <em>RESTAURANT</em>, <em>REST_STOP</em>, <em>RETAIL</em>, <em>RV_PARK</em>, <em>SCHOOL</em>, <em>GAS_STATION</em>, <em>SHOPPING_CENTER</em>, <em>SHOPPING_MALL</em>, <em>STADIUM</em>, <em>STANDALONE_STATION</em>, <em>STATE_GOV</em>, <em>STORAGE</em>, <em>STREET_PARKING</em>, <em>TNC</em>, <em>TRAVEL_CENTER</em>, <em>TRUCK_STOP</em>, <em>UTILITY</em>, <em>WORKPLACE</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only EV charging stations located at the given facility type. A single facility type, or a comma-separated list of multiple facility types, may be given.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th scope="row">AIRPORT</th>
+            <td>Airport</td>
+          </tr>
+          <tr>
+            <th scope="row">ARENA</th>
+            <td>Arena</td>
+          </tr>
+          <tr>
+            <th scope="row">AUTO_REPAIR</th>
+            <td>Auto Repair Shop</td>
+          </tr>
+          <tr>
+            <th scope="row">BANK</th>
+            <td>Bank</td>
+          </tr>
+          <tr>
+            <th scope="row">B_AND_B</th>
+            <td>B&amp;B</td>
+          </tr>
+          <tr>
+            <th scope="row">BREWERY_DISTILLERY_WINERY</th>
+            <td>Brewery/Distillery/Winery</td>
+          </tr>
+          <tr>
+            <th scope="row">CAMPGROUND</th>
+            <td>Campground</td>
+          </tr>
+          <tr>
+            <th scope="row">CAR_DEALER</th>
+            <td>Car Dealer</td>
+          </tr>
+          <tr>
+            <th scope="row">CARWASH</th>
+            <td>Carwash</td>
+          </tr>
+          <tr>
+            <th scope="row">COLLEGE_CAMPUS</th>
+            <td>College Campus</td>
+          </tr>
+          <tr>
+            <th scope="row">CONVENIENCE_STORE</th>
+            <td>Convenience Store</td>
+          </tr>
+          <tr>
+            <th scope="row">CONVENTION_CENTER</th>
+            <td>Convention Center</td>
+          </tr>
+          <tr>
+            <th scope="row">COOP</th>
+            <td>Co-Op</td>
+          </tr>
+          <tr>
+            <th scope="row">FACTORY</th>
+            <td>Factory</td>
+          </tr>
+          <tr>
+            <th scope="row">FED_GOV</th>
+            <td>Federal Government</td>
+          </tr>
+          <tr>
+            <th scope="row">FIRE_STATION</th>
+            <td>Fire Station</td>
+          </tr>
+          <tr>
+            <th scope="row">FLEET_GARAGE</th>
+            <td>Fleet Garage</td>
+          </tr>
+          <tr>
+            <th scope="row">FUEL_RESELLER</th>
+            <td>Fuel Reseller</td>
+          </tr>
+          <tr>
+            <th scope="row">GROCERY</th>
+            <td>Grocery Store</td>
+          </tr>
+          <tr>
+            <th scope="row">HARDWARE_STORE</th>
+            <td>Hardware Store</td>
+          </tr>
+          <tr>
+            <th scope="row">HOSPITAL</th>
+            <td>Hospital</td>
+          </tr>
+          <tr>
+            <th scope="row">HOTEL</th>
+            <td>Hotel</td>
+          </tr>
+          <tr>
+            <th scope="row">INN</th>
+            <td>Inn</td>
+          </tr>
+          <tr>
+            <th scope="row">LIBRARY</th>
+            <td>Library</td>
+          </tr>
+          <tr>
+            <th scope="row">MIL_BASE</th>
+            <td>Military Base</td>
+          </tr>
+          <tr>
+            <th scope="row">MOTOR_POOL</th>
+            <td>Motor Pool</td>
+          </tr>
+          <tr>
+            <th scope="row">MULTI_UNIT_DWELLING</th>
+            <td>Multi-Family Housing</td>
+          </tr>
+          <tr>
+            <th scope="row">MUNI_GOV</th>
+            <td>Municipal Government</td>
+          </tr>
+          <tr>
+            <th scope="row">MUSEUM</th>
+            <td>Museum</td>
+          </tr>
+          <tr>
+            <th scope="row">NATL_PARK</th>
+            <td>National Park</td>
+          </tr>
+          <tr>
+            <th scope="row">OFFICE_BLDG</th>
+            <td>Office Building</td>
+          </tr>
+          <tr>
+            <th scope="row">OTHER</th>
+            <td>Other</td>
+          </tr>
+          <tr>
+            <th scope="row">OTHER_ENTERTAINMENT</th>
+            <td>Other Entertainment</td>
+          </tr>
+          <tr>
+            <th scope="row">PARK</th>
+            <td>Park</td>
+          </tr>
+          <tr>
+            <th scope="row">PARKING_GARAGE</th>
+            <td>Parking Garage</td>
+          </tr>
+          <tr>
+            <th scope="row">PARKING_LOT</th>
+            <td>Parking Lot</td>
+          </tr>
+          <tr>
+            <th scope="row">PAY_GARAGE</th>
+            <td>Pay-Parking Garage</td>
+          </tr>
+          <tr>
+            <th scope="row">PAY_LOT</th>
+            <td>Pay-Parking Lot</td>
+          </tr>
+          <tr>
+            <th scope="row">PHARMACY</th>
+            <td>Pharmacy</td>
+          </tr>
+          <tr>
+            <th scope="row">PLACE_OF_WORSHIP</th>
+            <td>Place of Worship</td>
+          </tr>
+          <tr>
+            <th scope="row">PRISON</th>
+            <td>Prison</td>
+          </tr>
+          <tr>
+            <th scope="row">PRIVATE</th>
+            <td>Private</td>
+          </tr>
+          <tr>
+            <th scope="row">PUBLIC</th>
+            <td>Public</td>
+          </tr>
+          <tr>
+            <th scope="row">REC_SPORTS_FACILITY</th>
+            <td>Recreational Sports Facility</td>
+          </tr>
+          <tr>
+            <th scope="row">REFINERY</th>
+            <td>Refinery</td>
+          </tr>
+          <tr>
+            <th scope="row">RENTAL_CAR_RETURN</th>
+            <td>Rental Car Return</td>
+          </tr>
+          <tr>
+            <th scope="row">RESEARCH_FACILITY</th>
+            <td>Research Facility/Laboratory</td>
+          </tr>
+          <tr>
+            <th scope="row">RESTAURANT</th>
+            <td>Restaurant</td>
+          </tr>
+          <tr>
+            <th scope="row">REST_STOP</th>
+            <td>Rest Stop</td>
+          </tr>
+          <tr>
+            <th scope="row">RETAIL</th>
+            <td>Retail</td>
+          </tr>
+          <tr>
+            <th scope="row">RV_PARK</th>
+            <td>RV Park</td>
+          </tr>
+          <tr>
+            <th scope="row">SCHOOL</th>
+            <td>School</td>
+          </tr>
+          <tr>
+            <th scope="row">GAS_STATION</th>
+            <td>Service/Gas Station</td>
+          </tr>
+          <tr>
+            <th scope="row">SHOPPING_CENTER</th>
+            <td>Shopping Center</td>
+          </tr>
+          <tr>
+            <th scope="row">SHOPPING_MALL</th>
+            <td>Shopping Mall</td>
+          </tr>
+          <tr>
+            <th scope="row">STADIUM</th>
+            <td>Stadium</td>
+          </tr>
+          <tr>
+            <th scope="row">STANDALONE_STATION</th>
+            <td>Standalone Station</td>
+          </tr>
+          <tr>
+            <th scope="row">STATE_GOV</th>
+            <td>State/Provincial Government</td>
+          </tr>
+          <tr>
+            <th scope="row">STORAGE</th>
+            <td>Storage Facility</td>
+          </tr>
+          <tr>
+            <th scope="row">STREET_PARKING</th>
+            <td>Street Parking</td>
+          </tr>
+          <tr>
+            <th scope="row">TNC</th>
+            <td>Transportation Network Company</td>
+          </tr>
+          <tr>
+            <th scope="row">TRAVEL_CENTER</th>
+            <td>Travel Center</td>
+          </tr>
+          <tr>
+            <th scope="row">TRUCK_STOP</th>
+            <td>Truck Stop</td>
+          </tr>
+          <tr>
+            <th scope="row">UTILITY</th>
+            <td>Utility</td>
+          </tr>
+          <tr>
+            <th scope="row">WORKPLACE</th>
+            <td>Workplace</td>
+          </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+
+<tr>
+  <th class="doc-parameter-name" scope="row">funding_sources</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all</em>, <em>CFI</em>, <em>CHRI</em>, <em>EVAFIDI</em>, <em>EVC-RAA</em>, <em>NEVI</em>, <em>ZEVIP</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only EV charging stations that are funded by the given funding source. A single funding source, or a comma-separated list of multiple funding sources, may be given.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th scope="row">CFI</th>
+            <td>Charging and Fueling Infrastructure (CFI) Discretionary Grant Program</td>
+          </tr>
+          <tr>
+            <th scope="row">CHRI</th>
+            <td>Charging and Hydrogen Refuelling Infrastructure Initiative (CHRI)</td>
+          </tr>
+          <tr>
+            <th scope="row">EVAFIDI</th>
+            <td>Electric Vehicle and Alternative Fuel Infrastructure Deployment Initiative (EVAFIDI)</td>
+          </tr>
+          <tr>
+            <th scope="row">EVC-RAA</th>
+            <td>Electric Vehicle Charger Reliability and Accessibility Accelerator (EVC-RAA)</td>
+          </tr>
+          <tr>
+            <th scope="row">NEVI</th>
+            <td>National Electric Vehicle Infrastructure (NEVI) Formula Program</td>
+          </tr>
+          <tr>
+            <th scope="row">ZEVIP</th>
+            <td>Zero Emission Vehicle Infrastructure Program (ZEVIP)</td>
+          </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+
 <tr>
   <th class="doc-parameter-name" scope="row">hy_is_retail</th>
   <td class="doc-parameter-required">No</td>
@@ -1975,6 +2389,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </table>
   </td>
 </tr>
+
 <tr>
   <th class="doc-parameter-name" scope="row">lpg_include_secondary</th>
   <td class="doc-parameter-required">No</td>
@@ -1993,6 +2408,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     <p>If <code>false</code>, then exclude LPG stations that do not meet the <a href="#response-lpg-primary">criteria</a> to be considered primary.</p>
   </td>
 </tr>
+
 <tr>
   <th class="doc-parameter-name" scope="row">lng_has_rng</th>
   <td class="doc-parameter-required">No</td>
@@ -2033,6 +2449,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </table>
   </td>
 </tr>
+
 <tr>
   <th class="doc-parameter-name" scope="row">lng_vehicle_class</th>
   <td class="doc-parameter-required">No</td>
@@ -2048,6 +2465,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </div>
   </td>
   <td class="doc-parameter-description">
+    <p>Deprecated: See <a href="#request-maximum-vehicle-class"><code>maximum_vehicle_class</code></a>. (Note: this query parameter will remain for legacy application support)</p>
     <p>Return only LNG stations that can accomodate the specified vehicle class size or greater.</p>
     <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
       <thead>
@@ -2077,6 +2495,52 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </table>
   </td>
 </tr>
+
+<tr id="request-maximum-vehicle-class">
+  <th class="doc-parameter-name" scope="row">maximum_vehicle_class</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>all</em>, <em>LD</em>, <em>MD</em>, <em>HD</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only stations that can accomodate the specified vehicle class size or greater.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Value</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th scope="row">all</th>
+            <td>All</td>
+          </tr>
+          <tr>
+            <th scope="row">LD</th>
+            <td>Passenger vehicles (class 1-2)</td>
+          </tr>
+          <tr>
+            <th scope="row">MD</th>
+            <td>Medium-duty (class 3-6)</td>
+          </tr>
+          <tr>
+            <th scope="row">HD</th>
+            <td>Heavy-duty (class 7-8)</td>
+          </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+
 <tr>
   <th class="doc-parameter-name" scope="row">state</th>
   <td class="doc-parameter-required">No</td>
@@ -2088,8 +2552,9 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
       <strong>Default:</strong> None
     </div>
   </td>
-  <td class="doc-parameter-description">Return only stations within the given state. State must be given as a two character state code (eg, "CO" for Colorado). A single state, or a comma-separate list of multiple states, may be given.</td>
+  <td class="doc-parameter-description">Return only stations within the given state. State must be given as a two-character state code (eg, "CO" for Colorado). A single state, or a comma-separate list of multiple states, may be given.</td>
 </tr>
+
 <tr>
   <th class="doc-parameter-name" scope="row">zip</th>
   <td class="doc-parameter-required">No</td>
@@ -2103,6 +2568,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
   </td>
   <td class="doc-parameter-description">Return only stations within the given ZIP code. ZIP codes must be exactly 5 digits long. A single ZIP code, or a comma-separate list of multiple ZIP codes, may be given.</td>
 </tr>
+
 <tr>
   <th class="doc-parameter-name" scope="row">country</th>
   <td class="doc-parameter-required">No</td>
@@ -2143,6 +2609,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
     </table>
   </td>
 </tr>
+
 
     <tr>
       <th class="doc-parameter-name" scope="row">limit</th>
@@ -3359,7 +3826,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </ul>
       </td>
     </tr>
-    <tr>
+    <tr id="ev-connector-types">
       <th class="doc-parameter-name" scope="row">ev_connector_types</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -3412,7 +3879,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </table>
       </td>
     </tr>
-    <tr>
+    <tr id="ev-networks">
       <th class="doc-parameter-name" scope="row">ev_network</th>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field">
@@ -3781,7 +4248,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </div>
       </td>
       <td class="doc-parameter-description">
-        For electric stations, if the station belongs to an EV charging network, a record describing the network-specific IDs for this station. See <a href="#ev-network-id-record-fields">EV network ID record fields</a> for response details.
+        For electric stations, if the station belongs to an EV charging network, a record describing the network-specific IDs for this station. See <a href="#ev-charging-network-id-record-fields">EV charging network ID record fields</a> for response details.
       </td>
     </tr>
     <tr>
@@ -3855,6 +4322,51 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </table>
       </td>
     </tr>
+    <tr id="funding-sources-response">
+      <th class="doc-parameter-name" scope="row">funding_sources</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>A list of funding sources used to build the EV charging unit, given as code values as described below:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <th scope="row">CFI</th>
+                <td>Charging and Fueling Infrastructure (CFI) Discretionary Grant Program</td>
+              </tr>
+              <tr>
+                <th scope="row">CHRI</th>
+                <td>Charging and Hydrogen Refuelling Infrastructure Initiative (CHRI)</td>
+              </tr>
+              <tr>
+                <th scope="row">EVAFIDI</th>
+                <td>Electric Vehicle and Alternative Fuel Infrastructure Deployment Initiative (EVAFIDI)</td>
+              </tr>
+              <tr>
+                <th scope="row">EVC-RAA</th>
+                <td>Electric Vehicle Charger Reliability and Accessibility Accelerator (EVC-RAA)</td>
+              </tr>
+              <tr>
+                <th scope="row">NEVI</th>
+                <td>National Electric Vehicle Infrastructure (NEVI) Formula Program</td>
+              </tr>
+              <tr>
+                <th scope="row">ZEVIP</th>
+                <td>Zero Emission Vehicle Infrastructure Program (ZEVIP)</td>
+              </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
     <tr>
       <th class="doc-parameter-name" scope="row">hy_is_retail</th>
       <td class="doc-parameter-value">
@@ -3892,7 +4404,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>For hydrogen stations, any array of strings identifying the pressures of the hydrogen available (in bar), given as code values as described below:</p>
+        <p>For hydrogen stations, an array of strings identifying the pressures of the hydrogen available (in bar), given as code values as described below:</p>
         <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
@@ -3921,7 +4433,7 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </div>
       </td>
       <td class="doc-parameter-description">
-        <p>For hydrogen stations, any array of strings identifying which SAE International fueling protocol standard(s) the infrastructure meets, given as code values as described below:</p>
+        <p>For hydrogen stations, an array of strings identifying which SAE International fueling protocol standard(s) the infrastructure meets, given as code values as described below:</p>
         <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
@@ -4457,7 +4969,6 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </table>
       </td>
     </tr>
-    <!-- ###### NOTE: CHANGE THIS TO NON-CNG ENDPOINT ONCE PR 484 IS DEPLOYED TO PRODUCTION ###### -->
     <tr id="maximum-vehicle-class">
       <th class="doc-parameter-name" scope="row">maximum_vehicle_class</th>
       <td class="doc-parameter-value">
@@ -4521,6 +5032,17 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
         </table>
       </td>
     </tr>
+    <tr id="ev-charging-units">
+      <th class="doc-parameter-name" scope="row">ev_charging_units</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        For electric vehicle charging stations, an array of EV charging units. See <a href="#ev-charging-unit-record-fields">EV charging unit record fields</a> for response details.
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -4556,7 +5078,97 @@ LINESTRING(-74.0 40.7, -87.63 41.87, -104.98 39.76)
   </tbody>
 </table>
 
-<h3 id="ev-network-id-record-fields">EV Network ID Record Fields</h3>
+<h3 id="ev-charging-unit-record-fields">EV Charging Unit Record Fields</h3>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">network</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">The <a href="#ev-networks">network identifier</a> for the charging unit.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">connectors</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> record
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The connectors available at the charging unit as a record with the <a href="#ev-connector-types">connector types</a> present as keys, and the power output information for each connector type as the value:</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="doc-parameters-name" scope="col">Field</th>
+              <th class="doc-parameters-value" scope="col">Value</th>
+              <th class="doc-parameters-description" scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="doc-parameter-name" scope="row">power_kw</th>
+              <td class="doc-parameter-value">
+                <div class="doc-parameter-value-field">
+                  <strong>Type:</strong> decimal
+                </div>
+              </td>
+              <td class="doc-parameter-description">The power output in kilowatts of the charging unit.</td>
+            </tr>
+            <tr>
+              <th class="doc-parameter-name" scope="row">port_count</th>
+              <td class="doc-parameter-value">
+                <div class="doc-parameter-value-field">
+                  <strong>Type:</strong> integer
+                </div>
+              </td>
+              <td class="doc-parameter-description">The number of ports for the connector type on the charging unit.</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">port_count</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> integer
+        </div>
+      </td>
+      <td class="doc-parameter-description">The number of EV charging ports on the charging unit.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">charging_level</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">The <a href="#ev-charging-level">charging level</a> of the EV charging unit.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">funding_sources</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> array
+        </div>
+      </td>
+      <td class="doc-parameter-description">A list of <a href="#funding-sources-response">funding sources</a> used to build the EV charging unit.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="ev-charging-network-id-record-fields">EV Charging Network ID Record Fields</h3>
 
 <table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
   <thead>
