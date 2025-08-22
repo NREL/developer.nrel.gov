@@ -3,7 +3,7 @@ title: Get Station by ID
 summary: Fetch the details of a specific alternative fuel station given the station's
   ID.
 url: GET /api/alt-fuel-stations/v1/:id
-
+sort_value: "20"
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
@@ -29,39 +29,8 @@ The following query parameters may be passed in the request to control the outpu
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th class="doc-parameter-name" scope="row">format</th>
-      <td class="doc-parameter-required">Yes</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> string
-        </div>
-        <div class="doc-parameter-value-field">
-          <strong>Default:</strong> None
-        </div>
-        <div class="doc-parameter-value-field">
-          <strong>Options:</strong> <em>json</em>, <em>xml</em>, <em>csv</em>, <em>geojson</em>, <em>kml</em>
-        </div>
-      </td>
-      <td class="doc-parameter-description">
-        <p>The output response format. Given in the URL as the file extension.</p>
-      </td>
-    </tr>
-    <tr>
-      <th class="doc-parameter-name" scope="row">api_key</th>
-      <td class="doc-parameter-required">Yes</td>
-      <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field">
-          <strong>Type:</strong> string
-        </div>
-        <div class="doc-parameter-value-field">
-          <strong>Default:</strong> None
-        </div>
-      </td>
-      <td class="doc-parameter-description">
-        <p>Your developer API key. See <a href="/docs/api-key/">API key usage</a> for more information.</p>
-      </td>
-    </tr>
+    <%= render_partial "docs/transportation/alt-fuel-stations-v1/request_params/format", locals: {formats: %w[json xml csv geojson kml]} %>
+    <%= partial("docs/transportation/alt-fuel-stations-v1/request_params/api_key") %>
     <tr>
       <th class="doc-parameter-name" scope="row">id</th>
       <td class="doc-parameter-required">Yes</td>

@@ -1,0 +1,34 @@
+<tr id="request-ev-network">
+  <th class="doc-parameter-name" scope="row">ev_network</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> <em>all</em>
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <%= alt_fuel_stations_ev_networks.map { |ev_network| "<em>#{ev_network.fetch("key")}</em>" }.join(", ") %>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return only EV charging stations that belong to the given network. A single network, or a comma-separated list of multiple networks, may be given.</p>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% alt_fuel_stations_ev_networks.each do |ev_network| %>
+          <tr>
+            <th scope="row"><%= ev_network.fetch("key") %></th>
+            <td><%= ev_network.fetch("name") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </td>
+</tr>

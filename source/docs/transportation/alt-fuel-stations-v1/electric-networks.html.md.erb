@@ -1,0 +1,1139 @@
+---
+title: Electric Vehicle Charging Networks
+summary: Return a full list of electric vehicle (EV) charging networks.
+url: GET /api/alt-fuel-stations/v1/electric-networks
+sort_value: "50"
+---
+
+# <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
+<%= current_page.data.summary %> This dataset powers the <a href="https://afdc.energy.gov/stations/charging-networks">Electric Vehicle Charging Networks</a> on the Alternative Fuels Data Center (AFDC).
+
+{:toc}
+
+<%= partial "layouts/toc" %>
+
+## Request URL
+
+<pre>GET /api/alt-fuel-stations/v1/electric-networks.json<em>?parameters</em></pre>
+
+## Request Parameters
+
+The following query parameters may be passed in the request to control the output:
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Parameter</th>
+      <th class="doc-parameters-required" scope="col">Required</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= partial("docs/transportation/alt-fuel-stations-v1/request_params/api_key") %>
+    <%= render_partial "docs/transportation/alt-fuel-stations-v1/request_params/country", locals: {resources: "networks"} %>
+    <%= render_partial "docs/transportation/alt-fuel-stations-v1/request_params/include_inactive", locals: {resources: "EV charging networks"} %>
+  </tbody>
+</table>
+
+## Response Fields
+
+The response is composed of a list of electric vehicle charging networks matching the requested query. The network data is provided in the following structure.
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">key</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The key that identifies the charging network.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">evchart_key</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>A key in use for EV-ChART.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">name</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>EV charging network name.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">url</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The URL for the charging network.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">last_import_date</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> date
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The most recent date for which equipment data has been confirmed.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">date_added</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> date
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The date the network was added to the AFDC.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">import_type</th>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field">
+          <strong>Type:</strong> string
+        </div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>The method by which data about the network is imported.</p>
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Value</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">CSV</th>
+              <td>CSV import</td>
+            </tr>
+            <tr>
+              <th scope="row">API</th>
+              <td>API import</td>
+            </tr>
+            <tr>
+              <th scope="row">Manual</th>
+              <td>Data is manually entered</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Examples
+
+### JSON Output Format
+
+<pre>GET <a href="/api/alt-fuel-stations/electric-networks.json?api_key=DEMO_KEY&amp;country=all">/api/alt-fuel-stations/electric-networks.json?api_key=DEMO_KEY&amp;country=all</a></pre>
+
+```json
+[
+    {
+        "key": "all",
+        "name": "All",
+        "name_fr": "Tous"
+    },
+    {
+        "key": "7CHARGE",
+        "evchart_key": "7charge",
+        "name": "7Charge",
+        "name_fr": "7Charge",
+        "url": "https://www.7-eleven.com/7charge",
+        "last_import_date": "2025-04-09",
+        "date_added": "2023-06-05",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "ABM",
+        "evchart_key": "abm",
+        "name": "ABM",
+        "name_fr": "ABM",
+        "url": "https://info.abm.com/SimplifyEV",
+        "last_import_date": "2025-04-25",
+        "date_added": "2024-04-22",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "AMPED_UP",
+        "evchart_key": "ampedup",
+        "name": "AmpedUp! Networks",
+        "name_fr": "AmpedUp! Networks",
+        "url": "https://www.ampedup.net",
+        "last_import_date": "2024-10-11",
+        "date_added": "2023-10-08",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "AMPUP",
+        "evchart_key": "ampup",
+        "name": "AmpUp",
+        "name_fr": "AmpUp",
+        "url": "https://ampup.io",
+        "last_import_date": "2024-12-10",
+        "date_added": "2020-12-02",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "APPLEGREEN",
+        "evchart_key": "applegreen_electric",
+        "name": "applegreen electric",
+        "name_fr": "applegreen electric",
+        "url": "https://www.applegreenelectric.com",
+        "last_import_date": "2024-10-11",
+        "date_added": "2024-05-07",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "AUTEL",
+        "evchart_key": "autel",
+        "name": "Autel",
+        "name_fr": "Autel",
+        "url": "https://autelenergy.us",
+        "last_import_date": "2025-01-13",
+        "date_added": "2024-08-14",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "BCHYDRO",
+        "evchart_key": "bc_hydro",
+        "name": "BC Hydro",
+        "name_fr": "BC Hydro",
+        "url": "https://electricvehicles.bchydro.com/charge/public-charging/our-fast-charging-network",
+        "last_import_date": "2025-04-25",
+        "date_added": "2020-07-06",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "Blink Network",
+        "evchart_key": "blink",
+        "name": "Blink",
+        "name_fr": "Blink",
+        "url": "https://blinkcharging.com",
+        "last_import_date": "2025-04-25",
+        "date_added": "2013-01-01",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": "SemaConnect"
+    },
+    {
+        "key": "BP_PULSE",
+        "evchart_key": "bp_pulse",
+        "name": "bp pulse",
+        "name_fr": "bp pulse",
+        "url": "https://www.bp.com/en_us/united-states/home/what-we-do/customers-and-products/bp-pulse/bp-pulse-products.html",
+        "last_import_date": "2025-04-25",
+        "date_added": "2023-10-30",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "CHARGELAB",
+        "evchart_key": "chargelab",
+        "name": "ChargeLab",
+        "name_fr": "ChargeLab",
+        "url": "https://chargelab.co",
+        "last_import_date": "2025-04-25",
+        "date_added": "2020-08-24",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "CHARGENET",
+        "evchart_key": "chargenet",
+        "name": "ChargeNet",
+        "name_fr": "ChargeNet",
+        "url": "https://chargenetstations.com",
+        "last_import_date": "2024-04-14",
+        "date_added": "2022-12-05",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "ChargePoint Network",
+        "evchart_key": "chargepoint",
+        "name": "ChargePoint",
+        "name_fr": "ChargePoint",
+        "url": "https://www.chargepoint.com",
+        "last_import_date": "2025-04-25",
+        "date_added": "2013-01-01",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "CHARGESMART_EV",
+        "evchart_key": "chargesmart_ev",
+        "name": "ChargeSmart EV",
+        "name_fr": "ChargeSmart EV",
+        "url": "https://chargesmartev.com",
+        "last_import_date": "2025-04-25",
+        "date_added": "2024-07-18",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "CHARGEUP",
+        "evchart_key": "chargeup",
+        "name": "ChargeUP",
+        "name_fr": "ChargeUP",
+        "url": "https://www.novacharge.net/en-us/",
+        "last_import_date": "2025-04-25",
+        "date_added": "2022-09-21",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "CHARGIE",
+        "evchart_key": "chargie",
+        "name": "Chargie",
+        "name_fr": "Chargie",
+        "url": "https://www.chargie.com",
+        "last_import_date": "2025-01-13",
+        "date_added": "2023-02-28",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "CIRCLE_K",
+        "evchart_key": "circlek",
+        "name": "CircleK Charge",
+        "name_fr": "CircleK Charge",
+        "url": "https://www.circlek.com/charge",
+        "last_import_date": "2025-04-09",
+        "date_added": "2023-01-05",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "COUCHE_TARD",
+        "evchart_key": "circlek_couche_tard_recharge",
+        "name": "CircleK/Couche-Tard Recharge",
+        "name_fr": "CircleK/Couche-Tard Recharge",
+        "url": "https://www.couche-tard.com/recharge",
+        "last_import_date": "2025-03-07",
+        "date_added": "2023-01-05",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "Circuit électrique",
+        "evchart_key": "circuit_electrique",
+        "name": "Circuit électrique",
+        "name_fr": "Circuit électrique",
+        "url": "https://lecircuitelectrique.com",
+        "last_import_date": "2025-04-25",
+        "date_added": "2017-07-11",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "DIRT_ROAD",
+        "evchart_key": "dirtroad",
+        "name": "DirtRoad",
+        "name_fr": "DirtRoad",
+        "url": "https://www.carbonsolutionsgroup.com/ev-charging/drivers/",
+        "last_import_date": null,
+        "date_added": "2023-09-01",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "eCharge Network",
+        "evchart_key": "echarge",
+        "name": "eCharge Network",
+        "name_fr": "eCharge Network",
+        "url": "https://echargenetwork.com",
+        "last_import_date": "2025-04-25",
+        "date_added": "2020-04-06",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "ELECTRIC_ERA",
+        "evchart_key": "electric_era",
+        "name": "Electric Era",
+        "name_fr": "Electric Era",
+        "url": "https://electriceratechnologies.com",
+        "last_import_date": "2024-12-10",
+        "date_added": "2023-10-31",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "Electrify America",
+        "evchart_key": "electrify_america",
+        "name": "Electrify America",
+        "name_fr": "Electrify America",
+        "url": "https://www.electrifyamerica.com",
+        "last_import_date": "2025-04-25",
+        "date_added": "2018-07-13",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "Electrify Canada",
+        "evchart_key": "electrify_canada",
+        "name": "Electrify Canada",
+        "name_fr": "Electrify Canada",
+        "url": "https://www.electrify-canada.ca",
+        "last_import_date": "2025-04-25",
+        "date_added": "2019-12-04",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "Enel X Way",
+        "evchart_key": "enel_x_way",
+        "name": "Enel X Way",
+        "name_fr": "Enel X Way",
+        "url": "https://www.enelxway.com",
+        "last_import_date": "2025-01-13",
+        "date_added": "2024-07-15",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "ENVIROSPARK",
+        "evchart_key": "envirospark",
+        "name": "EnviroSpark",
+        "name_fr": "EnviroSpark",
+        "url": "https://envirosparkenergy.com",
+        "last_import_date": "2024-01-09",
+        "date_added": "2023-07-20",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "EVBOLT",
+        "evchart_key": "evbolt",
+        "name": "EVBOLT",
+        "name_fr": "EVBOLT",
+        "url": "https://evbolt.com",
+        "last_import_date": "2025-01-13",
+        "date_added": "2024-02-08",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "EV Connect",
+        "evchart_key": "ev_connect",
+        "name": "EV Connect",
+        "name_fr": "EV Connect",
+        "url": "https://www.evconnect.com",
+        "last_import_date": "2025-04-25",
+        "date_added": "2015-02-19",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "EVCS",
+        "evchart_key": "evcs",
+        "name": "EVCS",
+        "name_fr": "EVCS",
+        "url": "https://www.evcs.com",
+        "last_import_date": "2025-04-25",
+        "date_added": "2020-11-19",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "EVGATEWAY",
+        "evchart_key": "evgateway",
+        "name": "evGateway",
+        "name_fr": "evGateway",
+        "url": "https://evgateway.com",
+        "last_import_date": "2025-04-25",
+        "date_added": "2020-07-13",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "eVgo Network",
+        "evchart_key": "evgo",
+        "name": "EVgo",
+        "name_fr": "EVgo",
+        "url": "https://www.evgo.com",
+        "last_import_date": "2025-04-25",
+        "date_added": "2013-01-01",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "EVIUM",
+        "evchart_key": "evium_charging",
+        "name": "EVIUM Charging",
+        "name_fr": "EVIUM Charging",
+        "url": "https://www.eviumcharging.com",
+        "last_import_date": "2025-04-25",
+        "date_added": "2025-01-28",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "EVMATCH",
+        "evchart_key": "evmatch",
+        "name": "EVmatch",
+        "name_fr": "EVmatch",
+        "url": "https://evmatch.com",
+        "last_import_date": "2025-01-13",
+        "date_added": "2023-08-03",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "EVOKE",
+        "evchart_key": "evoke_systems",
+        "name": "Evoke Systems",
+        "name_fr": "Evoke Systems",
+        "url": "https://evokesystems.com",
+        "last_import_date": "2025-01-13",
+        "date_added": "2023-06-05",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "EVPASSPORT",
+        "evchart_key": "evpassport",
+        "name": "EVPassport",
+        "name_fr": "EVPassport",
+        "url": "https://www.evpassport.com",
+        "last_import_date": "2024-11-06",
+        "date_added": "2024-10-07",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "EVPOWER",
+        "evchart_key": "evpower",
+        "name": "eVPower",
+        "name_fr": "eVPower",
+        "url": "https://www.evpowerexchange.com",
+        "last_import_date": "2024-03-14",
+        "date_added": "2024-02-21",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "EVRANGE",
+        "evchart_key": "ev_range",
+        "name": "EV Range",
+        "name_fr": "EV Range",
+        "url": "https://www.evrange.com",
+        "last_import_date": "2025-04-25",
+        "date_added": "2022-07-07",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "FLASH",
+        "evchart_key": "flash",
+        "name": "FLASH",
+        "name_fr": "FLASH",
+        "url": "https://www.flashparking.com/products/diversify-parking-revenue/ev-charging-as-a-revenue-stream/",
+        "last_import_date": "2025-04-25",
+        "date_added": "2022-10-23",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "FLITWAY",
+        "evchart_key": "flitway",
+        "name": "Flitway",
+        "name_fr": "Flitway",
+        "url": "https://www.eneridge.com/aboutus",
+        "last_import_date": "2025-04-25",
+        "date_added": "2025-01-28",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "FLO",
+        "evchart_key": "flo",
+        "name": "FLO",
+        "name_fr": "FLO",
+        "url": "https://www.flo.com",
+        "last_import_date": "2025-04-25",
+        "date_added": "2017-07-11",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "FORD_CHARGE",
+        "evchart_key": "ford_charge",
+        "name": "Ford Charge",
+        "name_fr": "Ford Charge",
+        "url": "https://www.ford.com/support/category/electric-vehicle/charging/public-charging/",
+        "last_import_date": "2025-01-13",
+        "date_added": "2024-10-07",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "FPLEV",
+        "evchart_key": "fpl_evolution",
+        "name": "FPL EVolution",
+        "name_fr": "FPL EVolution",
+        "url": "https://www.fpl.com/electric-vehicles/evolution.html",
+        "last_import_date": "2024-10-11",
+        "date_added": "2020-10-15",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "FCN",
+        "evchart_key": "francis_energy",
+        "name": "Francis Energy",
+        "name_fr": "Francis Energy",
+        "url": "https://francisenergy.com",
+        "last_import_date": "2025-04-25",
+        "date_added": "2020-03-12",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "GRAVITI_ENERGY",
+        "evchart_key": "graviti_energy",
+        "name": "Graviti Energy",
+        "name_fr": "Graviti Energy",
+        "url": "https://gravitienergy.com",
+        "last_import_date": "2024-04-14",
+        "date_added": "2022-12-15",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "GRAVITY_CHARGING_CENTER",
+        "evchart_key": "gravity_charging_center",
+        "name": "Gravity Charging Center",
+        "name_fr": "Gravity Charging Center",
+        "url": "https://gravitytechnologies.com",
+        "last_import_date": "2024-11-06",
+        "date_added": "2024-07-15",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "HONEY_BADGER",
+        "evchart_key": "honeybadger_charging",
+        "name": "HoneyBadger Charging",
+        "name_fr": "HoneyBadger Charging",
+        "url": "https://www.badgercharging.ca",
+        "last_import_date": "2025-01-13",
+        "date_added": "2023-08-14",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "Hwisel",
+        "evchart_key": "hwisel",
+        "name": "Hwisel",
+        "name_fr": "Hwisel",
+        "url": "https://hwisel.com",
+        "last_import_date": "2025-04-09",
+        "date_added": "2024-02-05",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "IN_CHARGE",
+        "evchart_key": "incharge",
+        "name": "InCharge",
+        "name_fr": "InCharge",
+        "url": "https://inchargeus.com",
+        "last_import_date": "2025-04-09",
+        "date_added": "2024-07-24",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "IONNA",
+        "evchart_key": "ionna",
+        "name": "IONNA",
+        "name_fr": "IONNA",
+        "url": "https://www.ionna.com",
+        "last_import_date": "2025-04-25",
+        "date_added": "2025-04-17",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "IVY",
+        "evchart_key": "ivy",
+        "name": "Ivy",
+        "name_fr": "Ivy",
+        "url": "https://ivycharge.com",
+        "last_import_date": "2025-04-10",
+        "date_added": "2020-11-04",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "JULE",
+        "evchart_key": "jule",
+        "name": "Jule",
+        "name_fr": "Jule",
+        "url": "https://www.julepower.com",
+        "last_import_date": "2025-02-11",
+        "date_added": "2023-07-20",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "KWIK_CHARGE",
+        "evchart_key": "kwik_charge",
+        "name": "Kwik Charge by Kwik Trip",
+        "name_fr": "Kwik Charge by Kwik Trip",
+        "url": "https://www.kwiktrip.com/kwikcharge",
+        "last_import_date": "2025-01-13",
+        "date_added": "2024-08-14",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "LAKELAND_EV",
+        "evchart_key": "lakeland_ev_charging",
+        "name": "Lakeland EV CHARGING",
+        "name_fr": "Lakeland EV CHARGING",
+        "url": "https://lakelandevcharging.ca",
+        "last_import_date": "2025-02-11",
+        "date_added": "2024-05-30",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "LOOP",
+        "evchart_key": "loop",
+        "name": "Loop",
+        "name_fr": "Loop",
+        "url": "https://loopglobal.com",
+        "last_import_date": "2025-01-13",
+        "date_added": "2023-06-22",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "MATCHA",
+        "evchart_key": "matcha_electric",
+        "name": "Matcha Electric",
+        "name_fr": "Matcha Electric",
+        "url": "https://www.matchaelectric.com",
+        "last_import_date": "2024-07-11",
+        "date_added": "2024-07-02",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "Non-Networked",
+        "evchart_key": "non_networked",
+        "name": "Non-Networked",
+        "name_fr": "Non-réseautés",
+        "url": null,
+        "last_import_date": "2025-04-10",
+        "date_added": null,
+        "import_type": "Manual",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "NOODOE",
+        "evchart_key": "noodoe",
+        "name": "Noodoe",
+        "name_fr": "Noodoe",
+        "url": "https://www.noodoe.com",
+        "last_import_date": "2025-04-25",
+        "date_added": "2023-04-11",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "ON_THE_RUN_EV",
+        "evchart_key": "on_the_run_ev",
+        "name": "On the Run EV",
+        "name_fr": "Marché Express VE",
+        "url": "https://www.ontherunstores.com/ev-charging",
+        "last_import_date": "2025-03-07",
+        "date_added": "2024-03-18",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "OpConnect",
+        "evchart_key": "opconnect",
+        "name": "OpConnect",
+        "name_fr": "OpConnect",
+        "url": "https://opconnect-ev.com",
+        "last_import_date": "2025-04-25",
+        "date_added": "2013-01-01",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "PETROCAN",
+        "evchart_key": "petro_canada",
+        "name": "Petro-Canada",
+        "name_fr": "Petro-Canada",
+        "url": "https://www.petro-canada.ca/en/personal/fuel/canadas-electric-highway/",
+        "last_import_date": "2025-04-10",
+        "date_added": "2020-07-11",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "POWERFLEX",
+        "evchart_key": "powerflex",
+        "name": "PowerFlex",
+        "name_fr": "PowerFlex",
+        "url": "https://www.powerflex.com",
+        "last_import_date": "2025-01-13",
+        "date_added": "2020-07-30",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "POWERPORT_EVC",
+        "evchart_key": "powerport_evc",
+        "name": "PowerPort EVC",
+        "name_fr": "PowerPort EVC",
+        "url": "https://powerportevc.com",
+        "last_import_date": "2024-12-10",
+        "date_added": "2024-06-10",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "POWERPUMP",
+        "evchart_key": "powerpump",
+        "name": "PowerPump",
+        "name_fr": "PowerPump",
+        "url": "https://powerpump.com",
+        "last_import_date": "2024-07-11",
+        "date_added": "2024-06-10",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "RED_E",
+        "evchart_key": "red_e_charging",
+        "name": "Red E Charging",
+        "name_fr": "Red E Charging",
+        "url": "https://www.redecharge.com",
+        "last_import_date": "2025-01-13",
+        "date_added": "2022-10-26",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "REVEL",
+        "evchart_key": "revel",
+        "name": "Revel",
+        "name_fr": "Revel",
+        "url": "https://gorevel.com",
+        "last_import_date": "2024-11-06",
+        "date_added": "2023-08-14",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "REVITALIZE",
+        "evchart_key": "revitalize_charging_solutions",
+        "name": "Revitalize Charging Solutions",
+        "name_fr": "Revitalize Charging Solutions",
+        "url": "https://www.revitalizecs.com",
+        "last_import_date": "2024-10-11",
+        "date_added": "2024-09-19",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "RIVIAN_ADVENTURE",
+        "evchart_key": "rivian_adventure",
+        "name": "Rivian Adventure Network",
+        "name_fr": "Rivian Adventure Network",
+        "url": "https://rivian.com/experience/charging",
+        "last_import_date": "2025-04-25",
+        "date_added": "2022-01-11",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "RIVIAN_WAYPOINTS",
+        "evchart_key": "rivian_waypoints",
+        "name": "Rivian Waypoints",
+        "name_fr": "Rivian Waypoints",
+        "url": "https://rivian.com/experience/charging",
+        "last_import_date": "2025-04-25",
+        "date_added": "2022-01-11",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "SHELL_RECHARGE",
+        "evchart_key": "shell_recharge",
+        "name": "Shell Recharge",
+        "name_fr": "Shell Recharge",
+        "url": "https://www.shell.us/motorist/electric-vehicle-charging.html",
+        "last_import_date": "2025-04-25",
+        "date_added": "2022-09-12",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": "Volta and Greenlots"
+    },
+    {
+        "key": "STAY_N_CHARGE",
+        "evchart_key": "stay_n_charge",
+        "name": "Stay-N-Charge",
+        "name_fr": "Stay-N-Charge",
+        "url": "https://www.stayncharge.com",
+        "last_import_date": "2024-06-13",
+        "date_added": "2023-10-31",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "Sun Country Highway",
+        "evchart_key": "sun_country_highway",
+        "name": "Sun Country Highway",
+        "name_fr": "Sun Country Highway",
+        "url": "https://suncountryhighway.ca",
+        "last_import_date": "2025-04-09",
+        "date_added": "2017-07-11",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "SWTCH",
+        "evchart_key": "swtch_energy",
+        "name": "SWTCH Energy",
+        "name_fr": "SWTCH Energy",
+        "url": "https://swtchenergy.com",
+        "last_import_date": "2025-04-10",
+        "date_added": "2020-08-24",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "Tesla Destination",
+        "evchart_key": "tesla_destination",
+        "name": "Tesla Destination",
+        "name_fr": "Tesla Destination",
+        "url": "https://www.tesla.com/destination-charging",
+        "last_import_date": "2025-01-13",
+        "date_added": "2018-08-13",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "Tesla",
+        "evchart_key": "tesla_supercharger",
+        "name": "Tesla Supercharger",
+        "name_fr": "Tesla Supercharger",
+        "url": "https://www.tesla.com/supercharger",
+        "last_import_date": "2025-04-09",
+        "date_added": "2015-01-20",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "TURNONGREEN",
+        "evchart_key": "turnongreen",
+        "name": "TurnOnGreen",
+        "name_fr": "TurnOnGreen",
+        "url": "https://turnongreen.com",
+        "last_import_date": "2024-09-12",
+        "date_added": "2024-01-10",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "UNIVERSAL",
+        "evchart_key": "universal_ev_chargers",
+        "name": "Universal EV Chargers",
+        "name_fr": "Universal EV Chargers",
+        "url": "https://universalevcharging.com",
+        "last_import_date": "2025-01-13",
+        "date_added": "2022-07-22",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "VIALYNK",
+        "evchart_key": "vialynk",
+        "name": "ViaLynk",
+        "name_fr": "ViaLynk",
+        "url": "https://www.lynkwell.com",
+        "last_import_date": "2025-04-25",
+        "date_added": "2021-03-22",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": "Livingston Energy Group"
+    },
+    {
+        "key": "WATT_EV",
+        "evchart_key": "wattev",
+        "name": "WattEV",
+        "name_fr": "WattEV",
+        "url": "https://www.wattev.com",
+        "last_import_date": "2024-11-06",
+        "date_added": "2024-05-30",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "WAVE",
+        "evchart_key": "wave",
+        "name": "WAVE",
+        "name_fr": "WAVE",
+        "url": "https://wavecharging.com",
+        "last_import_date": "2024-09-12",
+        "date_added": "2022-12-05",
+        "import_type": "CSV",
+        "real_time_status_api": null,
+        "transition_note": null
+    },
+    {
+        "key": "ZEFNET",
+        "evchart_key": "zef",
+        "name": "ZEF Network",
+        "name_fr": "ZEF Network",
+        "url": "https://www.zefenergy.com",
+        "last_import_date": "2025-04-25",
+        "date_added": "2021-02-11",
+        "import_type": "API",
+        "real_time_status_api": null,
+        "transition_note": null
+    }
+]
+```
+
+## Rate Limits
+
+[Standard rate limits](/docs/rate-limits) apply. No more than 1,000 requests may be made in any hour
+
+## Errors
+
+[Standard errors](/docs/errors) may be returned. In addition, the following service-specific errors may be returned:
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col"><span>HTTP Status Code</span></th>
+      <th class="doc-parameters-required" scope="col"><span>Description</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row"><span>422</span></th>
+      <td class="doc-parameter-description"><span>Unprocessable Entity - An invalid value was given for a query parameter. The response body will describe the specific error.</span></td>
+    </tr>
+  </tbody>
+</table>
