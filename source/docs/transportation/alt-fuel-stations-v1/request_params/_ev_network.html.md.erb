@@ -9,7 +9,7 @@
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <%= ev_networks.map { |ev_network| "<em>#{ev_network.fetch("key")}</em>" }.join(", ") %>
+      <strong>Options:</strong> <%= alt_fuel_stations_ev_networks.map { |ev_network| "<em>#{ev_network.fetch("key")}</em>" }.join(", ") %>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <% ev_networks.each do |ev_network| %>
+        <% alt_fuel_stations_ev_networks.each do |ev_network| %>
           <tr>
             <th scope="row"><%= ev_network.fetch("key") %></th>
             <td><%= ev_network.fetch("name") %></td>

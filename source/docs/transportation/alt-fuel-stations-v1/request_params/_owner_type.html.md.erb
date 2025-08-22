@@ -9,7 +9,7 @@
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <%= owner_types.map { |owner_type| "<em>#{owner_type.fetch("key")}</em>" }.join(", ") %>
+      <strong>Options:</strong> <%= alt_fuel_stations_owner_types.map { |owner_type| "<em>#{owner_type.fetch("key")}</em>" }.join(", ") %>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <% owner_types.each do |owner_type| %>
+        <% alt_fuel_stations_owner_types.each do |owner_type| %>
           <tr>
             <th scope="row"><%= owner_type.fetch("key") %></th>
             <td><%= owner_type.fetch("name") %></td>

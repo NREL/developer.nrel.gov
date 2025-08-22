@@ -9,7 +9,7 @@
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <%= payment_methods.map { |payment_method| "<em>#{payment_method.fetch("key")}</em>" }.join(", ") %>
+      <strong>Options:</strong> <%= alt_fuel_stations_payment_methods.map { |payment_method| "<em>#{payment_method.fetch("key")}</em>" }.join(", ") %>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <% payment_methods.each do |payment_method| %>
+        <% alt_fuel_stations_payment_methods.each do |payment_method| %>
           <tr>
             <th scope="row"><%= payment_method.fetch("key") %></th>
             <td><%= payment_method.fetch("name") %></td>

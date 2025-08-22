@@ -9,7 +9,7 @@
       <strong>Default:</strong> <em>all</em>
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Options:</strong> <%= electric_levels.map { |electric_level| "<em>#{electric_level.fetch("key")}</em>" }.join(", ") %>
+      <strong>Options:</strong> <%= alt_fuel_stations_electric_levels.map { |electric_level| "<em>#{electric_level.fetch("key")}</em>" }.join(", ") %>
     </div>
   </td>
   <td class="doc-parameter-description">
@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <% electric_levels.each do |electric_level| %>
+        <% alt_fuel_stations_electric_levels.each do |electric_level| %>
           <tr>
             <th scope="row"><%= electric_level.fetch("key") %></th>
             <td><%= electric_level.fetch("name") %></td>
