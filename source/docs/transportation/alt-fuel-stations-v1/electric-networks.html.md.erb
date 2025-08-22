@@ -32,6 +32,7 @@ The following query parameters may be passed in the request to control the outpu
   <tbody>
     <%= partial("docs/transportation/alt-fuel-stations-v1/request_params/api_key") %>
     <%= render_partial "docs/transportation/alt-fuel-stations-v1/request_params/country", locals: {resources: "networks"} %>
+    <%= render_partial "docs/transportation/alt-fuel-stations-v1/request_params/include_inactive", locals: {resources: "EV charging networks"} %>
   </tbody>
 </table>
 
