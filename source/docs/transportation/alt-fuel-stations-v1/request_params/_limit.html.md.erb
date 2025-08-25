@@ -1,3 +1,5 @@
+<% bonus_description = "" unless locals.key?(:bonus_description) %>
+<% default = "<em>all</em>" unless locals.key?(:default) %>
 <tr>
   <th class="doc-parameter-name" scope="row">limit</th>
   <td class="doc-parameter-required">No</td>
@@ -12,5 +14,5 @@
       <strong>Range:</strong> <em>0</em> to <em>200</em>, or <em>all</em>
     </div>
   </td>
-  <td class="doc-parameter-description">The maximum number of results to return. An explicit limit of up to 200 may be passed in, or the special <code>all</code> string may be passed in to return all results.</td>
+  <td class="doc-parameter-description">The maximum number of results to return. An explicit limit of up to 200 may be passed in, or the special <code>all</code> string may be passed in to return all results<%= bonus_description %>.</td>
 </tr>
