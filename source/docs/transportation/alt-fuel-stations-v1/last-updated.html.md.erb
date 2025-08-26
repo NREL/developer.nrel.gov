@@ -26,7 +26,7 @@ sort_value: "70"
     </tr>
   </thead>
   <tbody>
-    <%= render_partial "docs/transportation/alt-fuel-stations-v1/request_params/format", locals: {formats: %w[json xml]} %>
+    <%= partial "docs/transportation/alt-fuel-stations-v1/request_params/format", locals: {formats: %w[json xml]} %>
     <%= partial "docs/transportation/alt-fuel-stations-v1/request_params/api_key" %>
   </tbody>
 </table>

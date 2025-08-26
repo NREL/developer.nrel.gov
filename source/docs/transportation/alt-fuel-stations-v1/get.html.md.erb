@@ -29,7 +29,7 @@ The following query parameters may be passed in the request to control the outpu
     </tr>
   </thead>
   <tbody>
-    <%= render_partial "docs/transportation/alt-fuel-stations-v1/request_params/format", locals: {formats: %w[json xml csv geojson kml]} %>
+    <%= partial "docs/transportation/alt-fuel-stations-v1/request_params/format", locals: {formats: %w[json xml csv geojson kml]} %>
     <%= partial("docs/transportation/alt-fuel-stations-v1/request_params/api_key") %>
     <tr>
       <th class="doc-parameter-name" scope="row">id</th>
