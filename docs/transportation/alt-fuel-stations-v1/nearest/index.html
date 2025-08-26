@@ -232,6 +232,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
     <tr>
+  <th class="doc-parameter-name" scope="row">response_format</th>
+  <td class="doc-parameter-required">No</td>
+  <td class="doc-parameter-value">
+    <div class="doc-parameter-value-field">
+      <strong>Type:</strong> string
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Default:</strong> None
+    </div>
+    <div class="doc-parameter-value-field">
+      <strong>Options:</strong> <em>compact</em>
+    </div>
+  </td>
+  <td class="doc-parameter-description">
+    <p>Return a simplified response for fuel station records with only these fields included: <code>id</code>, <code>fuel_type_code</code>, <code>latitude</code>, and <code>longitude</code>.</p>
+  </td>
+</tr>
+
+    <tr>
       <th class="doc-parameter-name" scope="row">latitude</th>
       <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
@@ -1574,7 +1593,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </tr>
           <tr>
             <th scope="row">EVGATEWAY</th>
-            <td>evGateway</td>
+            <td>EvGateway</td>
           </tr>
           <tr>
             <th scope="row">eVgo Network</th>
@@ -2592,13 +2611,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <strong>Type:</strong> integer or string
     </div>
     <div class="doc-parameter-value-field">
-      <strong>Default:</strong> all
+      <strong>Default:</strong> 20
     </div>
     <div class="doc-parameter-value-field">
       <strong>Range:</strong> <em>0</em> to <em>200</em>, or <em>all</em>
     </div>
   </td>
-  <td class="doc-parameter-description">The maximum number of results to return. An explicit limit of up to 200 may be passed in, or the special <code>all</code> string may be passed in to return all results.</td>
+  <td class="doc-parameter-description">The maximum number of results to return. An explicit limit of up to 200 may be passed in, or the special <code>all</code> string may be passed in to return all results except when the radius is <code>infinite</code>.</td>
 </tr>
 
     <tr>
@@ -4002,7 +4021,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </tr>
               <tr>
                 <th scope="row">EVGATEWAY</th>
-                <td>evGateway</td>
+                <td>EvGateway</td>
               </tr>
               <tr>
                 <th scope="row">eVgo Network</th>
