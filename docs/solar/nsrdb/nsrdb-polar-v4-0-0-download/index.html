@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        NSRDB Polar V4.0.0 
+          API
+        |
+      NREL: Developer Network
+    </title>
+
+    <link rel="canonical" href="https://developer.nrel.gov/docs/solar/nsrdb/nsrdb-polar-v4-0-0-download/" />
+
+    <link href="/vite/assets/a-entrypoints/all-EgikzgNO.css" rel="stylesheet" />
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KG7PVKB');</script>
+<!-- End Google Tag Manager -->
+
+    <script src="/vite/assets/all-BYMPrWtX.js" crossorigin="anonymous" type="module"></script><link rel="modulepreload" href="/vite/assets/c-_commonjsHelpers-Cpj98o6Y.js" as="script" crossorigin="anonymous" />
+<link rel="modulepreload" href="/vite/assets/c-ready-D7ecCvij.js" as="script" crossorigin="anonymous" /><link href="/vite/assets/a-all-qZ9mOat6.css" rel="stylesheet" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="/vite/assets/a-favicon-DsvBt6aY.ico">
+    <link rel="apple-touch-icon" href="/vite/assets/a-touch-icon-iphone-AtpJUIge.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/vite/assets/a-touch-icon-ipad-S2DOJiH4.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/vite/assets/a-touch-icon-iphone-retina-CZo0JGSQ.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/vite/assets/a-touch-icon-ipad-retina-DCfTusX0.png">
+  </head>
+  <body class="docs docs_solar docs_solar_nsrdb docs_solar_nsrdb_nsrdb-polar-v4-0-0-download docs_solar_nsrdb_nsrdb-polar-v4-0-0-download_index">
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src=https://www.googletagmanager.com/ns.html?id=GTM-KG7PVKB
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <!--stopindex-->
+<a href="#content" class="visually-hidden-focusable skip-to-content">Skip to main content</a>
+
+<header id="banner" class="gov-site-header header3" aria-label="main site header">
+  <div class="banner-logo">
+    <div class="container-xl app">
+      <div class="row align-items-center">
+
+        <div class="col-md-6 col-xl-4 order-md-2 text-center text-md-end">
+          <a class="logo-img" href="https://www.nrel.gov/">
+            <img src="/vite/assets/a-nrel-logo-2025-DWUhGQbs.svg" alt="NREL logo">
+          </a>
+
+          <!-- mobile search button -->
+          <button type="button" class="custom-toggler site-navbar-toggler site-searchbar-toggle d-md-none" data-bs-toggle="collapse" data-bs-target="#searchbar-collapse-mobile" aria-expanded="false" aria-label="Toggle Search">
+            <i class="fa-solid fa-fw fa-magnifying-glass"></i>
+          </button>
+        </div>
+
+        <div class="col-12 d-md-none">
+          <!-- Start MOBILE collapsible site search bar -->
+          <div class="site-search-bar">
+            <div class="container-xl">
+              <div class="row">
+                <div class="col d-flex justify-content-center mb-1">
+                  <nav class="navbar navbar-light" aria-label="Search">
+                    <div class="navbar-collapse collapse" id="searchbar-collapse-mobile">
+                      <form
+                          method="get"
+                          class="site-searchbar-form form-inline ThunderstoneForm"
+                          action="https://search4.nrel.gov/texis/search/" 
+                          id="ThunderstoneSearchFormMobile">
+
+                        <input type="hidden" name="pr" value="metanrel">
+                        <div class="form-group">
+                          <label for="querymobile" class="visually-hidden">Search NREL.gov</label>
+                          <input
+                              type="search"
+                              id="querymobile" name="query"
+                                               maxlength="2047"
+                                               placeholder="Search NREL.gov"
+                                               class="form-control"
+                                               aria-label="Search NREL.gov">
+                          <button type="submit" class="btn btn-default">Search</button>
+                        </div>
+                      </form>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>    
+          <!-- End MOBILE collapsible site search bar -->
+        </div>
+
+        <div class="col-md-6 col-xl-8 order-md-1">
+          <a href="/" class="app-name my-0 mb-1 mb-md-0 mt-md-1">Developer Network</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- TOP NAVIGATION -->
+  <div class="program-header">
+    <div class="container-xl gx-0 gx-md-4">
+      <nav class="navbar navbar-expand-md navbar-light" aria-label="Main">
+
+        <div id="program-menu" class="me-auto">
+          <button class="custom-toggler navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topnav-collapse" aria-controls="topnav-collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-closed"><i class="fa-solid fa-bars fa-fw"></i>Menu</span>
+            <span class="navbar-toggler-opened"><i class="fa-solid fa-xmark fa-fw"></i>Close</span>
+          </button>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navbar-collapse collapse border-0" id="topnav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item active"><a href="/docs/" class="nav-link">APIs &amp; Documentation</a></li>
+            <li class="nav-item"><a href="/signup/" class="nav-link">Key Signup</a></li>
+            <li class="nav-item"><a href="/contact/" class="nav-link">Contact Us</a></li>
+          </ul>
+          <!-- desktop search button -->
+          <button type="button" class="custom-toggler site-navbar-toggler site-searchbar-toggle d-none d-md-inline ms-auto me-0" data-bs-toggle="collapse" data-bs-target="#searchbar-collapse" aria-expanded="false" aria-label="Toggle Search">
+            <i class="fa-solid fa-fw fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </nav>
+    </div><!--container-->
+  </div><!--program-header-->
+  <!-- Start desktop collapsible site search bar -->
+  <div class="site-search-bar">
+    <div class="container-xl">
+      <div class="row">
+        <div class="col">
+          <nav class="navbar navbar-light" aria-label="Search">
+            <div class="navbar-collapse collapse" id="searchbar-collapse">
+              <form
+                  method="get"
+                  class="site-searchbar-form form-inline ThunderstoneForm"
+                  action="https://search4.nrel.gov/texis/search/" 
+                  id="ThunderstoneSearchForm">
+
+                <input type="hidden" name="pr" value="metanrel">
+                <div class="form-group">
+                  <label for="query" class="visually-hidden">Search NREL.gov</label>
+                  <input
+                      type="search"
+                      id="query" name="query"
+                                 maxlength="2047"
+                                 placeholder="Search NREL.gov"
+                                 class="form-control"
+                                 aria-label="Search NREL.gov">
+                  <button type="submit" class="btn btn-default">Search</button>
+                </div>
+              </form>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>    
+<!-- End collapsible site search bar -->
+</header>
+<!--startindex-->
+
+    <main id="content" class="container-xl">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/docs/">APIs & Documentation</a></li>
+            <li class="breadcrumb-item"><a href="/docs/solar/">Solar</a></li>
+            <li class="breadcrumb-item"><a href="/docs/solar/nsrdb/">NSRDB Data Downloads</a></li>
+            <li class="breadcrumb-item active">NSRDB Polar V4.0.0</li>
+    </ol>
+
+
+      <h1 id="nsrdb-polar-v400-apinsrdbv2solarnsrdb-polar-v4-0-0-download">NSRDB Polar V4.0.0 <span class="url">(/api/nsrdb/v2/solar/nsrdb-polar-v4-0-0-download)</span></h1>
+<p>The NSRDB polar solar resource data uses the PSM v4.0.0. This dataset provides solar resource data for the period 2013 onwards over the exclusive economic zone above 60 degrees north. The data have a spatial resolution of 4 km and temporal intervals of 1 hour.</p>
+
+<ul id="toc"></ul>
+
+<h2 id="request-url">Request URL</h2>
+
+<pre>GET|POST /api/nsrdb/v2/solar/nsrdb-polar-v4-0-0-download<em>.format?parameters</em></pre>
+
+<h2 id="request-parameters">Request Parameters</h2>
+<p><em>NOTE: when using POST to submit a request the api_key must still be included as a query parameter in the url. All other parameters may be included in a POST request as part of the payload.</em></p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Parameter</th>
+      <th class="doc-parameters-required" scope="col">Required</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">api_key</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Your developer API key. See <a href="/docs/api-key/">API keys</a> for more information.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">wkt</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> well-known text string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        A well-known text (WKT) representation of the geometry for which to extract data. May be a point, multipoint, or polygon geometry. When a point is passed the site nearest to that point is used. When a multipoint is passed the site nearest each point is used. This can be useful for downloading multiple sites in a single request when those sites are geographically distant from each other. When a polygon is passed all sites that intersect with the given polygon are used.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">attributes</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>air_temperature, alpha, aod, asymmetry, clearsky_dhi, clearsky_dni, clearsky_ghi, cloud_fill_flag, cloud_type, dew_point, dhi, dni, fill_flag, ghi, ozone, relative_humidity, solar_zenith_angle, ssa, surface_albedo, surface_pressure, total_precipitable_water, wind_direction, wind_speed.</em></div>
+      </td>
+      <td class="doc-parameter-description">
+        Each specified attribute(*) will be returned as a column in the resultant CSV download.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">names</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023</em>.</div>
+      </td>
+      <td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">utc</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> true</div>
+      </td>
+      <td class="doc-parameter-description">
+        Pass true to retrieve data with timestamps in UTC. Pass false to retrieve data with timestamps converted to local time of data point (without daylight savings time).
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">leap_day</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> false</div>
+      </td>
+      <td class="doc-parameter-description">
+        Pass true to retrieve data including leap day (where appropriate). Pass false to retrieve data excluding leap day.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">interval</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong>60</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        This value determines data resolution. 60 minute intervals are available.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">full_name</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">The full name of the user requesting data.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">email</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> email string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        An active email for the user requesting data. This email will be used to deliver the extracted data.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">affiliation</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        The organization with which the user requesting the data is affiliated.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">reason</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">The reason that the user is requesting the data.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">mailing_list</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> false</div>
+      </td>
+      <td class="doc-parameter-description">
+        Pass true to add the email address to our list of recipients for the NSRDB mailing list.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="response-fields">Response Fields</h2>
+
+<p>The response is composed of service-related informational fields and the results of the data query.</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">errors</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> string array</div>
+      </td>
+      <td class="doc-parameter-description">
+      <p>A list of error messages</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">inputs</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
+      </td>
+      <td class="doc-parameter-description">Key: Value pairs representing all input parameters</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">outputs</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
+      </td>
+      <td class="doc-parameter-description">Upon successful completion a message will be returned informing the user that file generation is in progress and an email will be sent to the address provided in the <code>email</code> input field when the download is ready</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="data-file-format">Data File Format</h2>
+
+<p>Generated data files are formatted in accordance with the Standard Time Series Data File Format. This file format has been developed to support <a href="https://sam.nrel.gov/">SAM</a> and other NREL models and is documented fully in <a href="https://sam.nrel.gov/sites/default/files/content/documents/pdf/wfcsv.pdf">this PDF</a>. More information on SAM file formats available on <a href="https://sam.nrel.gov/weather">the SAM weather page</a>.</p>
+
+<h2 id="examples">Examples</h2>
+<p>Examples may not reflect this specific dataset.</p>
+
+<h3 id="json-output-format">JSON Output Format</h3>
+
+<div class="doc-example-url"><code>GET /api/nsrdb/v2/solar/nsrdb-polar-v4-0-0-download.json?email=paul.edwards@nrel.gov&amp;wkt=POINT%28-89.7+79.7%29&amp;attributes=air_temperature,ghi,dni&amp;names=2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023&amp;interval=60</code></div>
+
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "inputs": {
+        "body": {},
+        "params": {
+            "0": ".json"
+        },
+        "query": {
+            "email": "paul.edwards@nrel.gov",
+            "wkt": "POINT(-89.7 79.7)",
+            "attributes": "air_temperature,ghi,dni",
+            "names": "2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023",
+            "interval": "60"
+        }
+    },
+    "metadata": {
+        "version": "2.0.0",
+        "resultset": {
+            "count": 1
+        }
+    },
+    "status": 200,
+    "outputs": {
+        "message": "File generation in progress. An email will be sent to paul.edwards@nrel.gov when the download is ready.",
+        "downloadUrl": "https://mapfiles.nrel.gov/data/solar/e03e851150396de37fc1944a205b7f53.zip"
+    },
+    "errors": []
+}
+</code></pre></div>
+<h3 id="csv-output-format">CSV Output Format</h3>
+<p>Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.</p>
+
+<div class="doc-example-url"><code>GET /api/nsrdb/v2/solar/nsrdb-polar-v4-0-0-download.csv?email=paul.edwards@nrel.gov&amp;wkt=POINT%28-89.7+79.7%29&amp;attributes=air_temperature,ghi,dni&amp;names=2013&amp;interval=60&amp;api_key=DEMO_KEY</code></div>
+
+<div class="highlight"><pre class="highlight plaintext"><code>Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,Local Time Zone,Clearsky DHI Units,Clearsky DNI Units,Clearsky GHI Units,Dew Point Units,DHI Units,DNI Units,GHI Units,Solar Zenith Angle Units,Temperature Units,Pressure Units,Relative Humidity Units,Precipitable Water Units,Wind Direction Units,Wind Speed Units,Cloud Type -15,Cloud Type 0,Cloud Type 1,Cloud Type 2,Cloud Type 3,Cloud Type 4,Cloud Type 5,Cloud Type 6,Cloud Type 7,Cloud Type 8,Cloud Type 9,Cloud Type 10,Cloud Type 11,Cloud Type 12,Fill Flag 0,Fill Flag 1,Fill Flag 2,Fill Flag 3,Fill Flag 4,Fill Flag 5,Surface Albedo Units,Version
+NSRDB,657736,-,-,-,79.70455,-89.70455,0,936,-6,w/m2,w/m2,w/m2,c,w/m2,w/m2,w/m2,Degree,c,mbar,%,cm,Degrees,m/s,N/A,Clear,Probably Clear,Fog,Water,Super-Cooled Water,Mixed,Opaque Ice,Cirrus,Overlapping,Overshooting,Unknown,Dust,Smoke,N/A,Missing Image,Low Irradiance,Exceeds Clearsky,Missing CLoud Properties,Rayleigh Violation,N/A,4.1.3.dev28+g75fa2f74.d20250603
+Year,Month,Day,Hour,Minute,Temperature,GHI,DNI
+2013,1,1,0,0,-34.6,0,0
+2013,1,1,1,0,-34.7,0,0
+2013,1,1,2,0,-34.800000000000004,0,0
+2013,1,1,3,0,-35.4,0,0
+2013,1,1,4,0,-36,0,0
+2013,1,1,5,0,-36.4,0,0
+2013,1,1,6,0,-36.5,0,0
+2013,1,1,7,0,-36.4,0,0
+2013,1,1,8,0,-36.2,0,0
+2013,1,1,9,0,-35.6,0,0
+2013,1,1,10,0,-35.1,0,0
+2013,1,1,11,0,-35.2,0,0
+2013,1,1,12,0,-35.7,0,0
+2013,1,1,13,0,-36.300000000000004,0,0
+2013,1,1,14,0,-36.9,0,0
+2013,1,1,15,0,-37.7,0,0
+</code></pre></div>
+<h3 id="post-request-example-in-python">POST request example in Python</h3>
+
+<div class="highlight"><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/nsrdb/v2/solar/nsrdb-polar-v4-0-0-download.json?api_key=yourapikeygoeshere"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"api_key={{API_KEY}}&amp;email=paul.edwards@nrel.gov&amp;wkt=POINT(-89.7+79.7)&amp;attributes=air_temperature,ghi,dni&amp;names=2013&amp;interval=60"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'content-type'</span><span class="p">:</span> <span class="s">"application/x-www-form-urlencoded"</span><span class="p">,</span>
+    <span class="s">'cache-control'</span><span class="p">:</span> <span class="s">"no-cache"</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="rate-limits">Rate Limits</h2>
+
+<p>Rate limits for this application are significantly less than the <a href="/docs/rate-limits" target="_blank">standard rate limits</a> for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.</p>
+
+<p>There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 10,000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 2000 requests per day at a frequency of no more than 1 every 2 seconds.</p>
+
+<p>Secondly each user is limited to 20 in-flight requests at any given time.</p>
+
+<p>In addition, the service has a fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.</p>
+
+<p>For some tips and tricks to maximize data downloads please read the guide <a href="/docs/solar/nsrdb/guide/">here</a>.</p>
+
+<h2 id="contacts">Contact</h2>
+
+<p>For questions about the API or the data models please contact <a href="mailto:nsrdb@nrel.gov">nsrdb@nrel.gov</a></p>
+
+<h2 id="errors">Errors</h2>
+
+<p><a href="/docs/errors/">Standard errors</a> may be returned. In addition, the following service-specific errors may be returned:</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col" style="width: 100px;">HTTP Status Code</th>
+      <th class="doc-parameters-required" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">400</th>
+      <td class="doc-parameter-description">Bad Request: When required parameters are missing.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+      <div style="text-align: center; font-style: italic; margin-top: 2rem;">
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/main/source/docs/solar/nsrdb/nsrdb-polar-v4-0-0-download.html.md.erb">Help improve this content</a>
+</div>
+
+    </main>
+    <!--stopindex-->
+<footer id="footer" class="hidden-print">
+
+  <nav class="footertop" aria-label="Main">
+    <div class="container-xl">
+      <div class="row">
+        <div class="col-12 col-lg-5">
+          <a href="https://www.nrel.gov/"><strong>NREL</strong></a>
+        </div>
+        <div class="col col-lg-7">
+          <div class="d-flex flex-column flex-lg-row justify-content-lg-start global">
+            <div><a href="https://www.nrel.gov/about">About</a></div>
+            <div><a href="https://www.nrel.gov/research">Research</a></div>
+            <div><a href="https://www.nrel.gov/workingwithus">Partner With Us</a></div>
+            <div><a href="https://www.nrel.gov/news/">News</a></div>
+            <div><a href="https://www.nrel.gov/careers">Careers</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <nav class="footerbottom"  aria-label="Secondary">
+    <div class="container-xl">
+      <div class="row">
+        <div class="col-md-4 col-lg-5">
+          <div><a href="/contact/">Contact Us</a></div>
+          <div class="mt-2"><a href="https://www.nrel.gov/about/visiting-nrel">Visit</a></div>
+          <div class="mt-2"><a href="https://www.nrel.gov/news/subscribe.html">Subscribe to NREL</a></div>
+          <div class="mt-3">
+            <ul class="social-links list-inline">
+              <li class="list-inline-item"><a href="https://www.facebook.com/nationalrenewableenergylab" aria-label="Follow NREL on Facebook"><i class="fa-brands fa-square-facebook"><!--facebook--></i></a></li>
+              <li class="list-inline-item"><a href="https://www.instagram.com/nationalrenewableenergylab/" aria-label="Follow NREL on Instagram"><i class="fa-brands fa-instagram"><!--Instagram--></i></a></li>
+              <li class="list-inline-item"><a href="https://www.linkedin.com/company/national-renewable-energy-laboratory"
+                                              aria-label="Follow NREL on Linked In"><i class="fa-brands fa-linkedin"><!--Linked In--></i></a></li>
+              <li class="list-inline-item"><a href="https://www.youtube.com/user/NRELPR/" aria-label="Follow NREL on YouTube"><i class="fa-brands fa-youtube"><!--You Tube--></i></a></li>
+              <li class="list-inline-item"><a href="https://twitter.com/nrel/" aria-label="Follow NREL on X"><i class="fa-brands fa-x-twitter"><!--twitter--></i></a></li>
+              <li class="list-inline-item"><a href="https://www.threads.net/@nationalrenewableenergylab" aria-label="Follow NREL on X"><span class="fa-brands fa-threads"><!-- Threads --></span></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-8 col-lg-7 globalsecondary">
+          <div class="row">
+            <div class="col-sm-6 col-lg-3">
+              <div class="mt-0"><a href="https://www.nrel.gov/accessibility.html">Accessibility</a></div>
+              <div class="mt-3 mt-sm-2"><a href="https://www.nrel.gov/disclaimer.html">Disclaimer</a></div>
+              <div class="mt-3 mt-sm-2"><a href="https://www.nrel.gov/security.html">Security and Privacy</a></div>
+              <div class="mt-3 mt-sm-2"><a href="https://www.nrel.gov/webmaster.html">Site Feedback</a></div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+
+              <div class="mt-3 mt-sm-0"><a href="https://developer.nrel.gov/">Developers</a></div>
+              <div class="mt-3 mt-sm-2"><a href="https://thesource.nrel.gov/">Employees</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="mt-4">
+        <div class="row">
+          <div class="col-sm-5">
+            <a href="https://www.allianceforsustainableenergy.org/"><img src="/vite/assets/a-alliance-logo-black-s2Lk0kd-.svg" alt="Alliance for Sustainable Energy, LLC" class="mb-3" width="145" height="53" style="width:145px;height:53px;"></a>
+            <a href="https://www.energy.gov"><img src="/vite/assets/a-2025-doe-logo-stacked-horizontal-BBms34oz.svg" alt="U.S. Department of Energy" class="ms-3" width="203" height="50" style="width:203px;height:50px;"></a>
+          </div>
+          <div class="col-12 col-sm-7">
+            <p class="nrel-attr mt-3">NREL is a national laboratory of the <a href="https://www.energy.gov/">U.S. Department of Energy</a>, <a href="https://www.energy.gov/eere/office-energy-efficiency-renewable-energy">Office of Energy Efficiency and Renewable Energy</a>, operated under Contract No. DE-AC36-08GO28308.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+</footer>
+
+  </body>
+</html>
