@@ -103,26 +103,95 @@ The response is composed of service-related informational fields and the results
 
 ### JSON Output Format
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&wkt=POLYGON((-114.609374+40.178873%2C-112.675781+40.178873%2C-112.675781+38.616870%2C-114.609374+38.616870%2C-114.609374+40.178873))</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&wkt=POINT(-152.6000585749817 64.81107997666865)</code></div>
 
 ```json
 {
-  "errors": [ ],
-  "inputs": {
-    "wkt": "POLYGON((-114.609374 40.178873,-112.675781 40.178873,-112.675781 38.616870,-114.609374 38.616870,-114.609374 40.178873))"
-  },
-  "outputs": {
-    "nsrdb_spectral_site_count": 0,
-    "nsrdb_0512_site_count": 1872,
-    "suny_india_site_count": 0,
-    "nsrdb_9110_site_count": 0,
-    "nsrdb_9105_site_count": 0,
-    "nsrdb_9105_tmy_site_count": 0,
-    "nsrdb_6190_site_count": 0,
-    "nsrdb_9809_count": 0,
-    "within_united_states": true,
-    "nsrdb_site_count": 1872
-  }
+    "inputs": {
+        "body": {},
+        "params": {},
+        "query": {
+            "wkt": "POINT(-152.6000585749817 64.81107997666865)"
+        }
+    },
+    "metadata": {
+        "version": "2.0.0",
+        "resultset": {
+            "count": 1
+        }
+    },
+    "status": 200,
+    "outputs": {
+        "himawari7": 0,
+        "india-wind": 0,
+        "himawari-tmy": 0,
+        "himawari": 0,
+        "nsrdb-msg-v1-0-0": 0,
+        "msg-iodc": 0,
+        "ncdb-4km-Hourly-CONUS-v1-0-0-RCP4-5-percent-change": 0,
+        "ncdb-4km-Hourly-CONUS-v1-0-0-RCP8-5": 0,
+        "nsrdb-GOES-conus-v4-0-0": 0,
+        "ncdb-4km-Hourly-CONUS-v1-0-0-RCP4-5": 0,
+        "nsrdb-GOES-tmy-v4-0-0": 0,
+        "spectral-ondemand": 0,
+        "mexico-wtk": 0,
+        "nsrdb-GOES-aggregated-v4-0-0": 0,
+        "nsrdb-GOES-full-disc-v4-0-0": 0,
+        "suny-india-tmy": 0,
+        "us-atlantic-virtual-buoy": 0,
+        "us-west-coast-hindcast": 0,
+        "suny-india": 0,
+        "us-wave-v1-0-0-gom-and-pr": 0,
+        "vietnam-wtk": 0,
+        "spectral-ondemand-meteosat": 0,
+        "spectral-ondemand-himawari7": 0,
+        "wtk-bangladesh": 0,
+        "spectral-ondemand-himawari": 0,
+        "spectral-india-tmy": 0,
+        "wtk-bchrrr-v1-0-0": 0,
+        "spectral-ondemand-msg": 0,
+        "sup3rwind-ukraine": 0,
+        "seasia-wtk": 0,
+        "wtk-indonesia-v1-0-0": 0,
+        "wtk-conus-5min-v1-0-0": 0,
+        "wtk-led-conus": 0,
+        "wtk-guam-v1-0-0-hourly": 0,
+        "us-atlantic-hindcast": 0,
+        "wtk-guam-v1-0-0-5min": 0,
+        "wtk-kazakhstan": 0,
+        "wtk-led-climate-v1-0-0": 1,
+        "wtk-sup3rwind-south-america-v1-0-0-5min": 0,
+        "wtk-south-atlantic-yearly-5min-v1-0-0": 0,
+        "wtk-now23-california-v1-0-0-5min": 0,
+        "wtk-led-alaska": 1,
+        "wtk-maine": 0,
+        "wtk-alaska-v1-0-0": 1,
+        "wtk-mexico-5min": 0,
+        "us-west-coast-virtual-buoy": 0,
+        "wtk-pr100-5min": 0,
+        "wtk-seasiawind-v3": 0,
+        "spectral-ondemand-polar": 1,
+        "wtk-canada-5min": 0,
+        "nsrdb-polar-tmy-v4-0-0": 1,
+        "nsrdb-msg-v1-0-0-tdy": 0,
+        "offshore-gulf-of-mexico": 0,
+        "offshore-mid-atlantic": 0,
+        "offshore-hawaii": 0,
+        "nsrdb-polar-v4-0-0": 1,
+        "offshore-ca": 0,
+        "offshore-great-lakes": 0,
+        "nsrdb-msg-v1-0-0-tgy": 0,
+        "philippines-wtk": 0,
+        "central-asia-wind": 0,
+        "nsrdb-msg-v1-0-0-tmy": 0,
+        "offshore-nw-pacific": 0,
+        "offshore-north-atlantic": 0,
+        "hawaii-hindcast": 0,
+        "alaska-hindcast": 0,
+        "wtk": 0,
+        "wtk-srw": 0
+    },
+    "errors": []
 }
 ```
 
