@@ -1,8 +1,8 @@
 ---
-title: Sup3rWind South America (5 min)
+title: Sup3rWind South America (60 min)
 summary: This historical wind resource data set covers onshore and offshore regions of South America and was produced with NREL's <a href="https://nrel.github.io/sup3r/index.html" target="_blank">Super Resolution for Renewable Resource Data (sup3r)</a> for Wind (Sup3rWind) model.
 detail: Sup3rWind uses generative adversarial networks to create synthetic high-resolution data from coarse low-resolution inputs (ERA5 in this case). These data include wind-speed and direction at 2-km 5-minute resolution along with pressure, temperature and relative humidity at 2-km hourly resolution, for the years 2005 through 2024. Usage examples can be found <a href="https://nrel.github.io/sup3r/examples/sup3rwind.html" target="_blank">here</a>.
-url: /api/wind-toolkit/v2/wind/wtk-sup3rwind-south-america-v1-0-0-5min-download
+url: /api/wind-toolkit/v2/wind/wtk-sup3rwind-south-america-v1-0-0-60min-download
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
@@ -57,7 +57,7 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>winddirection_10m, winddirection_40m, winddirection_120m, windspeed_10m, winddirection_80m, winddirection_160m, windspeed_40m, winddirection_200m, winddirection_100m, windspeed_80m, windspeed_100m, windspeed_120m, windspeed_160m, windspeed_200m.</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>pressure_0m, relativehumidity_2m, temperature_2m, u_100m, u_10m, u_120m, u_160m, u_200m, u_40m, u_80m, v_100m, v_10m, v_120m, v_160m, v_200m, v_40m, v_80m.</em></div>
       </td>
       <td class="doc-parameter-description">
         Each specified attribute(*) will be returned as a column in the resultant CSV download.
@@ -99,11 +99,11 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <th class="doc-parameter-name" scope="row">interval</th>
       <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong>5, 15, 30, 60</div>
+        <div class="doc-parameter-value-field"><strong>Type:</strong>60</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
       </td>
       <td class="doc-parameter-description">
-        This value determines data resolution. Either 5, 15, 30, 60 minute intervals are available.
+        This value determines data resolution. Either 60 minute intervals are available.
       </td>
     </tr>
     <tr>
@@ -208,33 +208,30 @@ Examples may not reflect this specific dataset.
 
 ### JSON Output Format
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?email=user@email.com&wkt=POINT%28-64.19+-12.53%29&attributes=winddirection_10m&names=2022,2023,2024&interval=5</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))&attributes=winddirection_180m&names=2017&utc=false&leap_day=true&email=user@company.com</code></div>
 
 ```JSON
 {
     "inputs": {
-        "body": {},
-        "params": {
-            "0": ".json"
-        },
         "query": {
-            "email": "user@email.com",
-            "wkt": "POINT(-64.19 -12.53)",
-            "attributes": "winddirection_10m",
-            "names": "2022,2023,2024",
-            "interval": "5"
+            "attributes": "winddirection_180m",
+            "names": "2017",
+            "utc": "false",
+            "leap_day": "true",
+            "email": "user@company.com",
+            "wkt": "POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))"
         }
     },
     "metadata": {
         "version": "2.0.0",
         "resultset": {
-            "count": 1
+          "count": 1
         }
     },
     "status": 200,
     "outputs": {
-        "message": "File generation in progress. An email will be sent to user@email.com when the download is ready.",
-        "downloadUrl": "https://mapfiles.nrel.gov/data/wind/26ae6a84b7709bccdeafbdfccc6fb7e7.zip"
+        "message": "File generation in progress. An email will be sent to user@company.com when the download is ready.",
+        "downloadUrl": "https://mapfiles.nrel.gov/data/wind/ebc9bbbc34f91c65ac50707d43176c6c.zip"
     },
     "errors": []
 }
@@ -243,20 +240,21 @@ Examples may not reflect this specific dataset.
 ### CSV Output Format
 Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?email=user@email.com&wkt=POINT%28-64.19+-12.53%29&attributes=winddirection_10m&names=2022&interval=5&api_key=DEMO_KEY</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?wkt=POINT(-179.99 -15.94)&attributes=winddirection_180m&names=2017&utc=false&leap_day=true&email=user@company.com&api_key=DEMO_KEY</code></div>
 
 ```csv
-SiteID,4279718,Site Timezone,-4,Data Timezone,0,Longitude,-64.183334,Latitude,-12.533334
-Year,Month,Day,Hour,Minute,wind direction at 10m (deg)
-2022,1,1,0,0,354.85
-2022,1,1,0,5,359.73
-2022,1,1,0,10,359.76
-2022,1,1,0,15,356.73
-2022,1,1,0,20,2.97
-2022,1,1,0,25,2.79
-2022,1,1,0,30,2.95
-2022,1,1,0,35,358.63
-...
+SiteID,Site Timezone,Data Timezone,Longitude,Latitude,Country
+80,-9,-9,-130.756,48.75498,b'Canada'
+Year,Month,Day,Hour,Minute,wind direction at 180m (deg)
+2017,1,1,0,0,347.18
+2017,1,1,0,5,347.3
+2017,1,1,0,10,347.40000000000003
+2017,1,1,0,15,347.52
+2017,1,1,0,20,347.66
+2017,1,1,0,25,347.79
+2017,1,1,0,30,348
+2017,1,1,0,35,348.18
+2017,1,1,0,40,348.35
 ```
 
 ### POST request example in Python
@@ -266,7 +264,7 @@ import requests
 
 url = "http://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
 
-payload = "api_key={{API_KEY}}&?email=user@email.com&wkt=POINT(-64.19 -12.53)&attributes=winddirection_10m&names=2022&interval=5"
+payload = "api_key={{API_KEY}}&attributes=winddirection_180m&names=2017&utc=true&leap_day=true&interval=60&email=user@company.com&wkt=POINT(-179.99 -15.94)"
 
 headers = {
     'content-type': "application/x-www-form-urlencoded",
@@ -282,7 +280,7 @@ print(response.text)
 
 Rate limits for this application are significantly less than the [standard rate limits](/docs/rate-limits){:target="_blank"} for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.
 
-There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 10,000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 2000 requests per day at a frequency of no more than 1 every 2 seconds.
+There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.
 
 Secondly each user is limited to 20 in-flight requests at any given time.
 
