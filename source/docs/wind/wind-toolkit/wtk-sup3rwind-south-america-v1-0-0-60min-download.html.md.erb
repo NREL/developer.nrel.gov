@@ -1,7 +1,6 @@
 ---
 title: Sup3rWind South America (60 min)
-summary: This historical wind resource data set covers onshore and offshore regions of South America and was produced with NREL's <a href="https://nrel.github.io/sup3r/index.html" target="_blank">Super Resolution for Renewable Resource Data (sup3r)</a> for Wind (Sup3rWind) model.
-detail: Sup3rWind uses generative adversarial networks to create synthetic high-resolution data from coarse low-resolution inputs (ERA5 in this case). These data include wind-speed and direction at 2-km 5-minute resolution along with pressure, temperature and relative humidity at 2-km hourly resolution, for the years 2005 through 2024. Usage examples can be found <a href="https://nrel.github.io/sup3r/examples/sup3rwind.html" target="_blank">here</a>.
+summary: This historical wind resource data set covers onshore and offshore regions of South America and was produced with NREL's <a href="https://nrel.github.io/sup3r/index.html" target="_blank">Super Resolution for Renewable Resource Data (sup3r)</a> for Wind (Sup3rWind) model. Sup3rWind uses generative adversarial networks to create synthetic high-resolution data from coarse low-resolution inputs (ERA5 in this case). These data include wind-speed and direction at 2-km 5-minute resolution along with pressure, temperature and relative humidity at 2-km hourly resolution, for the years 2005 through 2024. Usage examples can be found <a href="https://nrel.github.io/sup3r/examples/sup3rwind.html" target="_blank">here</a>.
 url: /api/wind-toolkit/v2/wind/wtk-sup3rwind-south-america-v1-0-0-60min-download
 ---
 
@@ -208,30 +207,32 @@ Examples may not reflect this specific dataset.
 
 ### JSON Output Format
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?wkt=POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))&attributes=winddirection_180m&names=2017&utc=false&leap_day=true&email=user@company.com</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?email=user@email.com&wkt=POINT%28-64.19+-12.53%29&names=2022,2023,2024&interval=60</code></div>
 
 ```JSON
 {
     "inputs": {
+        "body": {},
+        "params": {
+            "0": ".json"
+        },
         "query": {
-            "attributes": "winddirection_180m",
-            "names": "2017",
-            "utc": "false",
-            "leap_day": "true",
-            "email": "user@company.com",
-            "wkt": "POLYGON((-130.756145509839060 48.75520578942107,-130.75571635639668 48.75520578942107,-130.75571635639668 48.75485477666326,-130.75614550983906 48.75485477666326,-130.75614550983906 48.75520578942107))"
+            "email": "user@email.com",
+            "wkt": "POINT(-64.19 -12.53)",
+            "names": "2022,2023,2024",
+            "interval": "60"
         }
     },
     "metadata": {
         "version": "2.0.0",
         "resultset": {
-          "count": 1
+            "count": 1
         }
     },
     "status": 200,
     "outputs": {
-        "message": "File generation in progress. An email will be sent to user@company.com when the download is ready.",
-        "downloadUrl": "https://mapfiles.nrel.gov/data/wind/ebc9bbbc34f91c65ac50707d43176c6c.zip"
+        "message": "File generation in progress. An email will be sent to user@email.com when the download is ready.",
+        "downloadUrl": "https://mapfiles.nrel.gov/data/wind/d745b450dfa1c097eb0d101f9ebfcb4d.zip"
     },
     "errors": []
 }
@@ -240,21 +241,17 @@ Examples may not reflect this specific dataset.
 ### CSV Output Format
 Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?wkt=POINT(-179.99 -15.94)&attributes=winddirection_180m&names=2017&utc=false&leap_day=true&email=user@company.com&api_key=DEMO_KEY</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?email=user@company.com&wkt=POINT%28-64.19+-12.53%29&names=2022&interval=60</code></div>
 
 ```csv
-SiteID,Site Timezone,Data Timezone,Longitude,Latitude,Country
-80,-9,-9,-130.756,48.75498,b'Canada'
-Year,Month,Day,Hour,Minute,wind direction at 180m (deg)
-2017,1,1,0,0,347.18
-2017,1,1,0,5,347.3
-2017,1,1,0,10,347.40000000000003
-2017,1,1,0,15,347.52
-2017,1,1,0,20,347.66
-2017,1,1,0,25,347.79
-2017,1,1,0,30,348
-2017,1,1,0,35,348.18
-2017,1,1,0,40,348.35
+SiteID,4279718,Site Timezone,-4,Data Timezone,0,Longitude,-64.183334,Latitude,-12.533334
+Year,Month,Day,Hour,Minute,surface air pressure (Pa),relative humidity at 2m (%),air temperature at 2m (C),zonal wind component at 100m (m/s),zonal wind component at 10m (m/s),zonal wind component at 120m (m/s),zonal wind component at 160m (m/s),zonal wind component at 200m (m/s),zonal wind component at 40m (m/s),zonal wind component at 80m (m/s),meridional wind component at 100m (m/s),meridional wind component at 10m (m/s),meridional wind component at 120m (m/s),meridional wind component at 160m (m/s),meridional wind component at 200m (m/s),meridional wind component at 40m (m/s),meridional wind component at 80m (m/s)
+2022,1,1,0,0,99201.3046875,89.86260986328125,25.59832763671875,-1.5316224098205566,-0.38651013374328613,-1.6345202922821045,-1.951876163482666,-1.8352165222167969,-0.5614514350891113,-1.1926573514938354,-4.8288421630859375,-1.2931967973709106,-5.370330333709717,-6.105531215667725,-6.486119270324707,-2.8195366859436035,-4.298759460449219
+2022,1,1,1,0,99309.4453125,84.4408187866211,25.514095306396484,-1.0296084880828857,0.12978364527225494,-1.4702295064926147,-2.292844295501709,-2.5664074420928955,-0.01497352123260498,-0.8232975006103516,-7.450264930725098,-2.8019373416900635,-7.838329315185547,-8.457208633422852,-8.70748519897461,-4.951198101043701,-6.869712829589844
+2022,1,1,2,0,99275.4375,85.2576904296875,25.822101593017578,0.43038299679756165,1.0821130275726318,0.1657087206840515,-0.06569331884384155,-0.400595486164093,1.1211967468261719,0.5903605818748474,-6.380609512329102,-1.7334656715393066,-6.839644908905029,-7.183594703674316,-7.483083248138428,-3.877810478210449,-5.698904037475586
+2022,1,1,3,0,99154.3671875,86.2011489868164,25.708669662475586,-0.9264735579490662,-0.006558150053024292,-1.207019329071045,-1.2228854894638062,-1.4497122764587402,-0.44843631982803345,-0.7307984828948975,-5.734489440917969,-1.632975459098816,-6.263022422790527,-7.146021842956543,-7.779045581817627,-3.427278518676758,-5.2001800537109375
+2022,1,1,4,0,99096.6640625,86.01972961425781,25.607540130615234,-0.23324573040008545,0.012689068913459778,-0.42095667123794556,-0.6269303560256958,-0.7001635432243347,-0.19719970226287842,-0.3054424524307251,-3.342146396636963,-0.7312078475952148,-3.7732629776000977,-4.514834403991699,-4.997927665710449,-1.7314863204956055,-2.9090824127197266
+2022,1,1,5,0,99025.9140625,91.75425720214844,25.259780883789062,0.3833771347999573,0.29999789595603943,0.4404573142528534,0.3217392861843109,0.1367313265800476,0.4593396484851837,0.4361357092857361,-3.1791369915008545,-0.9665793776512146,-3.4097795486450195,-4.047221660614014,-4.406704902648926,-1.8964966535568237,-2.7589547634124756
 ```
 
 ### POST request example in Python
@@ -264,7 +261,7 @@ import requests
 
 url = "http://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
 
-payload = "api_key={{API_KEY}}&attributes=winddirection_180m&names=2017&utc=true&leap_day=true&interval=60&email=user@company.com&wkt=POINT(-179.99 -15.94)"
+payload = "api_key={{API_KEY}}&email=user@company.com&wkt=POINT%28-64.19+-12.53%29&names=2022&interval=60"
 
 headers = {
     'content-type': "application/x-www-form-urlencoded",
