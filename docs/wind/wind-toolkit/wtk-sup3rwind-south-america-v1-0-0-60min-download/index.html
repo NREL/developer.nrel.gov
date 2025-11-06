@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        Sup3rWind South America (5 min) 
+        Sup3rWind South America (60 min) 
           API
         |
       NREL: Developer Network
     </title>
 
-    <link rel="canonical" href="https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-sup3rwind-south-america-v1-0-0-5min-download/" />
+    <link rel="canonical" href="https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-sup3rwind-south-america-v1-0-0-60min-download/" />
 
     <link href="/vite/assets/a-entrypoints/all-EgikzgNO.css" rel="stylesheet" />
     <!-- Google Tag Manager -->
@@ -30,7 +30,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="apple-touch-icon" sizes="114x114" href="/vite/assets/a-touch-icon-iphone-retina-CZo0JGSQ.png">
     <link rel="apple-touch-icon" sizes="144x144" href="/vite/assets/a-touch-icon-ipad-retina-DCfTusX0.png">
   </head>
-  <body class="docs docs_wind docs_wind_wind-toolkit docs_wind_wind-toolkit_wtk-sup3rwind-south-america-v1-0-0-5min-download docs_wind_wind-toolkit_wtk-sup3rwind-south-america-v1-0-0-5min-download_index">
+  <body class="docs docs_wind docs_wind_wind-toolkit docs_wind_wind-toolkit_wtk-sup3rwind-south-america-v1-0-0-60min-download docs_wind_wind-toolkit_wtk-sup3rwind-south-america-v1-0-0-60min-download_index">
     <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src=https://www.googletagmanager.com/ns.html?id=GTM-KG7PVKB
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -168,18 +168,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li class="breadcrumb-item"><a href="/docs/">APIs & Documentation</a></li>
             <li class="breadcrumb-item"><a href="/docs/wind/">Wind</a></li>
             <li class="breadcrumb-item"><a href="/docs/wind/wind-toolkit/">Wind Toolkit Data Downloads</a></li>
-            <li class="breadcrumb-item active">Sup3rWind South America (5 min)</li>
+            <li class="breadcrumb-item active">Sup3rWind South America (60 min)</li>
     </ol>
 
 
-      <h1 id="sup3rwind-south-america-5-min-apiwind-toolkitv2windwtk-sup3rwind-south-america-v1-0-0-5min-download">Sup3rWind South America (5 min) <span class="url">(/api/wind-toolkit/v2/wind/wtk-sup3rwind-south-america-v1-0-0-5min-download)</span></h1>
+      <h1 id="sup3rwind-south-america-60-min-apiwind-toolkitv2windwtk-sup3rwind-south-america-v1-0-0-60min-download">Sup3rWind South America (60 min) <span class="url">(/api/wind-toolkit/v2/wind/wtk-sup3rwind-south-america-v1-0-0-60min-download)</span></h1>
 <p>This historical wind resource data set covers onshore and offshore regions of South America and was produced with NREL's <a href="https://nrel.github.io/sup3r/index.html" target="_blank">Super Resolution for Renewable Resource Data (sup3r)</a> for Wind (Sup3rWind) model. Sup3rWind uses generative adversarial networks to create synthetic high-resolution data from coarse low-resolution inputs (ERA5 in this case). These data include wind-speed and direction at 2-km 5-minute resolution along with pressure, temperature and relative humidity at 2-km hourly resolution, for the years 2005 through 2024. Usage examples can be found <a href="https://nrel.github.io/sup3r/examples/sup3rwind.html" target="_blank">here</a>.</p>
 
 <ul id="toc"></ul>
 
 <h2 id="request-url">Request URL</h2>
 
-<pre>GET|POST /api/wind-toolkit/v2/wind/wtk-sup3rwind-south-america-v1-0-0-5min-download<em>.format?parameters</em></pre>
+<pre>GET|POST /api/wind-toolkit/v2/wind/wtk-sup3rwind-south-america-v1-0-0-60min-download<em>.format?parameters</em></pre>
 
 <h2 id="request-parameters">Request Parameters</h2>
 <p><em>NOTE: when using POST to submit a request the api_key must still be included as a query parameter in the url. All other parameters may be included in a POST request as part of the payload.</em></p>
@@ -222,7 +222,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>winddirection_10m, winddirection_40m, winddirection_120m, windspeed_10m, winddirection_80m, winddirection_160m, windspeed_40m, winddirection_200m, winddirection_100m, windspeed_80m, windspeed_100m, windspeed_120m, windspeed_160m, windspeed_200m.</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>pressure_0m, relativehumidity_2m, temperature_2m, u_100m, u_10m, u_120m, u_160m, u_200m, u_40m, u_80m, v_100m, v_10m, v_120m, v_160m, v_200m, v_40m, v_80m.</em></div>
       </td>
       <td class="doc-parameter-description">
         Each specified attribute(*) will be returned as a column in the resultant CSV download.
@@ -264,11 +264,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <th class="doc-parameter-name" scope="row">interval</th>
       <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong>5, 15, 30, 60</div>
+        <div class="doc-parameter-value-field"><strong>Type:</strong>60</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
       </td>
       <td class="doc-parameter-description">
-        This value determines data resolution. Either 5, 15, 30, 60 minute intervals are available.
+        This value determines data resolution. Either 60 minute intervals are available.
       </td>
     </tr>
     <tr>
@@ -373,7 +373,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h3 id="json-output-format">JSON Output Format</h3>
 
-<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/wtk-sup3rwind-south-america-v1-0-0-5min-download.json?email=user@email.com&amp;wkt=POINT%28-64.19+-12.53%29&amp;attributes=winddirection_10m&amp;names=2022,2023,2024&amp;interval=5</code></div>
+<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/wtk-sup3rwind-south-america-v1-0-0-60min-download.json?email=user@email.com&amp;wkt=POINT%28-64.19+-12.53%29&amp;names=2022,2023,2024&amp;interval=60</code></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>{
     "inputs": {
@@ -384,9 +384,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         "query": {
             "email": "user@email.com",
             "wkt": "POINT(-64.19 -12.53)",
-            "attributes": "winddirection_10m",
             "names": "2022,2023,2024",
-            "interval": "5"
+            "interval": "60"
         }
     },
     "metadata": {
@@ -398,7 +397,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     "status": 200,
     "outputs": {
         "message": "File generation in progress. An email will be sent to user@email.com when the download is ready.",
-        "downloadUrl": "https://mapfiles.nrel.gov/data/wind/26ae6a84b7709bccdeafbdfccc6fb7e7.zip"
+        "downloadUrl": "https://mapfiles.nrel.gov/data/wind/d745b450dfa1c097eb0d101f9ebfcb4d.zip"
     },
     "errors": []
 }
@@ -406,27 +405,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h3 id="csv-output-format">CSV Output Format</h3>
 <p>Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.</p>
 
-<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/wtk-sup3rwind-south-america-v1-0-0-5min-download.csv?email=user@email.com&amp;wkt=POINT%28-64.19+-12.53%29&amp;attributes=winddirection_10m&amp;names=2022&amp;interval=5&amp;api_key=DEMO_KEY</code></div>
+<div class="doc-example-url"><code>GET /api/wind-toolkit/v2/wind/wtk-sup3rwind-south-america-v1-0-0-60min-download.csv?email=user@company.com&amp;wkt=POINT%28-64.19+-12.53%29&amp;names=2022&amp;interval=60</code></div>
 
 <div class="highlight"><pre class="highlight plaintext"><code>SiteID,4279718,Site Timezone,-4,Data Timezone,0,Longitude,-64.183334,Latitude,-12.533334
-Year,Month,Day,Hour,Minute,wind direction at 10m (deg)
-2022,1,1,0,0,354.85
-2022,1,1,0,5,359.73
-2022,1,1,0,10,359.76
-2022,1,1,0,15,356.73
-2022,1,1,0,20,2.97
-2022,1,1,0,25,2.79
-2022,1,1,0,30,2.95
-2022,1,1,0,35,358.63
-...
+Year,Month,Day,Hour,Minute,surface air pressure (Pa),relative humidity at 2m (%),air temperature at 2m (C),zonal wind component at 100m (m/s),zonal wind component at 10m (m/s),zonal wind component at 120m (m/s),zonal wind component at 160m (m/s),zonal wind component at 200m (m/s),zonal wind component at 40m (m/s),zonal wind component at 80m (m/s),meridional wind component at 100m (m/s),meridional wind component at 10m (m/s),meridional wind component at 120m (m/s),meridional wind component at 160m (m/s),meridional wind component at 200m (m/s),meridional wind component at 40m (m/s),meridional wind component at 80m (m/s)
+2022,1,1,0,0,99201.3046875,89.86260986328125,25.59832763671875,-1.5316224098205566,-0.38651013374328613,-1.6345202922821045,-1.951876163482666,-1.8352165222167969,-0.5614514350891113,-1.1926573514938354,-4.8288421630859375,-1.2931967973709106,-5.370330333709717,-6.105531215667725,-6.486119270324707,-2.8195366859436035,-4.298759460449219
+2022,1,1,1,0,99309.4453125,84.4408187866211,25.514095306396484,-1.0296084880828857,0.12978364527225494,-1.4702295064926147,-2.292844295501709,-2.5664074420928955,-0.01497352123260498,-0.8232975006103516,-7.450264930725098,-2.8019373416900635,-7.838329315185547,-8.457208633422852,-8.70748519897461,-4.951198101043701,-6.869712829589844
+2022,1,1,2,0,99275.4375,85.2576904296875,25.822101593017578,0.43038299679756165,1.0821130275726318,0.1657087206840515,-0.06569331884384155,-0.400595486164093,1.1211967468261719,0.5903605818748474,-6.380609512329102,-1.7334656715393066,-6.839644908905029,-7.183594703674316,-7.483083248138428,-3.877810478210449,-5.698904037475586
+2022,1,1,3,0,99154.3671875,86.2011489868164,25.708669662475586,-0.9264735579490662,-0.006558150053024292,-1.207019329071045,-1.2228854894638062,-1.4497122764587402,-0.44843631982803345,-0.7307984828948975,-5.734489440917969,-1.632975459098816,-6.263022422790527,-7.146021842956543,-7.779045581817627,-3.427278518676758,-5.2001800537109375
+2022,1,1,4,0,99096.6640625,86.01972961425781,25.607540130615234,-0.23324573040008545,0.012689068913459778,-0.42095667123794556,-0.6269303560256958,-0.7001635432243347,-0.19719970226287842,-0.3054424524307251,-3.342146396636963,-0.7312078475952148,-3.7732629776000977,-4.514834403991699,-4.997927665710449,-1.7314863204956055,-2.9090824127197266
+2022,1,1,5,0,99025.9140625,91.75425720214844,25.259780883789062,0.3833771347999573,0.29999789595603943,0.4404573142528534,0.3217392861843109,0.1367313265800476,0.4593396484851837,0.4361357092857361,-3.1791369915008545,-0.9665793776512146,-3.4097795486450195,-4.047221660614014,-4.406704902648926,-1.8964966535568237,-2.7589547634124756
 </code></pre></div>
 <h3 id="post-request-example-in-python">POST request example in Python</h3>
 
 <div class="highlight"><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/wind-toolkit/v2/wind/wtk-sup3rwind-south-america-v1-0-0-5min-download.json?api_key=yourapikeygoeshere"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"http://developer.nrel.gov/api/wind-toolkit/v2/wind/wtk-sup3rwind-south-america-v1-0-0-60min-download.json?api_key=yourapikeygoeshere"</span>
 
-<span class="n">payload</span> <span class="o">=</span> <span class="s">"api_key={{API_KEY}}&amp;?email=user@email.com&amp;wkt=POINT(-64.19 -12.53)&amp;attributes=winddirection_10m&amp;names=2022&amp;interval=5"</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"api_key={{API_KEY}}&amp;email=user@company.com&amp;wkt=POINT%28-64.19+-12.53%29&amp;names=2022&amp;interval=60"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'content-type'</span><span class="p">:</span> <span class="s">"application/x-www-form-urlencoded"</span><span class="p">,</span>
@@ -441,7 +437,7 @@ Year,Month,Day,Hour,Minute,wind direction at 10m (deg)
 
 <p>Rate limits for this application are significantly less than the <a href="/docs/rate-limits" target="_blank">standard rate limits</a> for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.</p>
 
-<p>There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 10,000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 2000 requests per day at a frequency of no more than 1 every 2 seconds.</p>
+<p>There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.</p>
 
 <p>Secondly each user is limited to 20 in-flight requests at any given time.</p>
 
@@ -474,7 +470,7 @@ Year,Month,Day,Hour,Minute,wind direction at 10m (deg)
 
 
       <div style="text-align: center; font-style: italic; margin-top: 2rem;">
-  <a href="https://github.com/NREL/developer.nrel.gov/blob/main/source/docs/wind/wind-toolkit/wtk-sup3rwind-south-america-v1-0-0-5min-download.html.md.erb">Help improve this content</a>
+  <a href="https://github.com/NREL/developer.nrel.gov/blob/main/source/docs/wind/wind-toolkit/wtk-sup3rwind-south-america-v1-0-0-60min-download.html.md.erb">Help improve this content</a>
 </div>
 
     </main>
