@@ -60,7 +60,7 @@ a.link-underline,
   }
 }
 
-// Disable FontAwesome content after links from the NREL CSS, since we're using
+// Disable FontAwesome content after links from the NLR CSS, since we're using
 // the FontAwesome SVG approach instead.
 a[href]::after {
   content: none !important

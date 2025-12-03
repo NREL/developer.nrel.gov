@@ -28,7 +28,7 @@
     display: none !important;
   }
 
-  // Make the sans-serif font match the body text from the NREL theme.
+  // Make the sans-serif font match the body text from the NLR theme.
   .swagger-ui,
   .swagger-ui label,
   .swagger-ui button,
@@ -43,7 +43,7 @@
     font-family: inherit;
   }
 
-  // Make the header text styles match the NREL theme.
+  // Make the header text styles match the NLR theme.
   .swagger-ui .info .title {
     @extend h1;
   }
