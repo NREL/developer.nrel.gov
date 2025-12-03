@@ -1,16 +1,14 @@
 ---
-title: US West Coast Hindcast Wave Data
-summary: Collect and download, as CSV, a configurable set of wave data fields from the DOE-WPTO.
-detail: <p>This data was generated using WaveWatch III and SWAN, and spanned 42-years from 1979 through 2020. The data was developed with funding from the U.S. Department of Energy, Office of Energy Efficiency & Renewable Energy, Water Power Technologies Office to improve our understanding of the U.S. wave energy resource and to provide critical information for wave energy project development and wave energy converter design.</p><p>This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.</p>
-url: /api/wave/v2/wave/us-west-coast-hindcast-download
+title: NSRDB Polar V4.0.0
+summary: The NSRDB polar solar resource data uses the PSM v4.0.0. This dataset provides solar resource data for the period 2013 onwards over the exclusive economic zone above 60 degrees north. The data have a spatial resolution of 4 km and temporal intervals of 1 hour.
+detail:
+url: /api/nsrdb/v2/solar/nsrdb-polar-v4-0-0-download
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
 <%= current_page.data.summary %>
 
-<%= current_page.data.detail %>
-
-<%= partial "layouts/toc" %>
+<ul id="toc"></ul>
 
 ## Request URL
 
@@ -57,7 +55,7 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>directionality_coefficient, energy_period, maximum_energy_direction, mean_absolute_period, mean_wave_direction, mean_zero-crossing_period, omni-directional_wave_power, peak_period, significant_wave_height, spectral_width, time_index, water_depth</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>air_temperature, alpha, aod, asymmetry, clearsky_dhi, clearsky_dni, clearsky_ghi, cloud_fill_flag, cloud_type, dew_point, dhi, dni, fill_flag, ghi, ozone, relative_humidity, solar_zenith_angle, ssa, surface_albedo, surface_pressure, total_precipitable_water, wind_direction, wind_speed.</em></div>
       </td>
       <td class="doc-parameter-description">
         Each specified attribute(*) will be returned as a column in the resultant CSV download.
@@ -69,7 +67,7 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010</em>.</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023</em>.</div>
       </td>
       <td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
     </tr>
@@ -99,11 +97,11 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <th class="doc-parameter-name" scope="row">interval</th>
       <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong>180 </div>
+        <div class="doc-parameter-value-field"><strong>Type:</strong>60</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
       </td>
       <td class="doc-parameter-description">
-        This value determines data resolution. 180 minute intervals are available.
+        This value determines data resolution. 60 minute intervals are available.
       </td>
     </tr>
     <tr>
@@ -204,23 +202,25 @@ The response is composed of service-related informational fields and the results
 Generated data files are formatted in accordance with the Standard Time Series Data File Format. This file format has been developed to support [SAM](https://sam.nrel.gov/) and other NREL models and is documented fully in [this PDF](https://sam.nrel.gov/sites/default/files/content/documents/pdf/wfcsv.pdf). More information on SAM file formats available on [the SAM weather page](https://sam.nrel.gov/weather).
 
 ## Examples
+Examples may not reflect this specific dataset.
 
 ### JSON Output Format
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&full_name=Sample+User&email=user@company.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-124.2 46.2)&names=2010&utc=true&leap_day=true</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?email=paul.edwards@nrel.gov&wkt=POINT%28-89.7+79.7%29&attributes=air_temperature,ghi,dni&names=2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023&interval=60</code></div>
 
-```json
+```JSON
 {
     "inputs": {
         "body": {},
-        "params": {},
+        "params": {
+            "0": ".json"
+        },
         "query": {
-            "names": "2010",
-            "utc": "true",
-            "leap_day": "true",
-            "interval": "180",
-            "email": "user@company.com",
-            "wkt": "POINT (-124.2 46.2)"
+            "email": "paul.edwards@nrel.gov",
+            "wkt": "POINT(-89.7 79.7)",
+            "attributes": "air_temperature,ghi,dni",
+            "names": "2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023",
+            "interval": "60"
         }
     },
     "metadata": {
@@ -231,27 +231,38 @@ Generated data files are formatted in accordance with the Standard Time Series D
     },
     "status": 200,
     "outputs": {
-        "message": "File generation in progress. An email will be sent to user@company.com when the download is ready.",
-        "downloadUrl": "https://mapfiles.nrel.gov/data/wave/f3a8731d7d677f56ebb174e278f6e53e.zip"
+        "message": "File generation in progress. An email will be sent to paul.edwards@nrel.gov when the download is ready.",
+        "downloadUrl": "https://mapfiles.nrel.gov/data/solar/e03e851150396de37fc1944a205b7f53.zip"
     },
     "errors": []
 }
 ```
 
-
 ### CSV Output Format
 Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?api_key=DEMO_KEY&full_name=Sample+User&email=user@company.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-124.2 46.2)&names=2010&utc=true&leap_day=true</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?email=paul.edwards@nrel.gov&wkt=POINT%28-89.7+79.7%29&attributes=air_temperature,ghi,dni&names=2013&interval=60&api_key=DEMO_KEY</code></div>
 
 ```csv
-Source,Location ID,Jurisdiction,Latitude,Longitude,Time Zone,Local Time Zone,Distance to Shore,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth,Version
-NSRDB,6,b'Canada',48.7261,-125.735,0,-8,25022.521,-,s,deg,s,deg,s,W/m,s,m,-,m,v1.0.0
-Year,Month,Day,Hour,Minute,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth
-2010,1,1,0,0,0.7430920004844666,7.980100154876709,45,6.493599891662598,69.25299835205078,5.601600170135498,30369,11.013500213623047,2.7738099098205566,0.38694000244140625,
-2010,1,1,3,0,0.820123016834259,8.767999649047852,45,7.562900066375732,58.25400161743164,6.708000183105469,28324,9.101699829101562,2.5543301105499268,0.3178200125694275,
-2010,1,1,6,0,0.87534499168396,9.151900291442871,45,8.133099555969238,49.43600082397461,7.355999946594238,26162,11.013500213623047,2.4019699096679688,0.2858000099658966,
-2010,1,1,9,0,0.8557509779930115,8.202699661254883,45,6.8653998374938965,57.36899948120117,5.986800193786621,29702,10.01200008392334,2.705440044403076,0.35593000054359436,
+Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,Local Time Zone,Clearsky DHI Units,Clearsky DNI Units,Clearsky GHI Units,Dew Point Units,DHI Units,DNI Units,GHI Units,Solar Zenith Angle Units,Temperature Units,Pressure Units,Relative Humidity Units,Precipitable Water Units,Wind Direction Units,Wind Speed Units,Cloud Type -15,Cloud Type 0,Cloud Type 1,Cloud Type 2,Cloud Type 3,Cloud Type 4,Cloud Type 5,Cloud Type 6,Cloud Type 7,Cloud Type 8,Cloud Type 9,Cloud Type 10,Cloud Type 11,Cloud Type 12,Fill Flag 0,Fill Flag 1,Fill Flag 2,Fill Flag 3,Fill Flag 4,Fill Flag 5,Surface Albedo Units,Version
+NSRDB,657736,-,-,-,79.70455,-89.70455,0,936,-6,w/m2,w/m2,w/m2,c,w/m2,w/m2,w/m2,Degree,c,mbar,%,cm,Degrees,m/s,N/A,Clear,Probably Clear,Fog,Water,Super-Cooled Water,Mixed,Opaque Ice,Cirrus,Overlapping,Overshooting,Unknown,Dust,Smoke,N/A,Missing Image,Low Irradiance,Exceeds Clearsky,Missing CLoud Properties,Rayleigh Violation,N/A,4.1.3.dev28+g75fa2f74.d20250603
+Year,Month,Day,Hour,Minute,Temperature,GHI,DNI
+2013,1,1,0,0,-34.6,0,0
+2013,1,1,1,0,-34.7,0,0
+2013,1,1,2,0,-34.800000000000004,0,0
+2013,1,1,3,0,-35.4,0,0
+2013,1,1,4,0,-36,0,0
+2013,1,1,5,0,-36.4,0,0
+2013,1,1,6,0,-36.5,0,0
+2013,1,1,7,0,-36.4,0,0
+2013,1,1,8,0,-36.2,0,0
+2013,1,1,9,0,-35.6,0,0
+2013,1,1,10,0,-35.1,0,0
+2013,1,1,11,0,-35.2,0,0
+2013,1,1,12,0,-35.7,0,0
+2013,1,1,13,0,-36.300000000000004,0,0
+2013,1,1,14,0,-36.9,0,0
+2013,1,1,15,0,-37.7,0,0
 ```
 
 ### POST request example in Python
@@ -259,9 +270,9 @@ Year,Month,Day,Hour,Minute,Directionality Coefficient,Energy Period,Maximum Ener
 ```python
 import requests
 
-url = "https://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
+url = "http://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
 
-payload = "full_name=Sample+User&email=user@company.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-124.2 46.2)&names=2010&utc=true&leap_day=true"
+payload = "api_key={{API_KEY}}&email=paul.edwards@nrel.gov&wkt=POINT(-89.7+79.7)&attributes=air_temperature,ghi,dni&names=2013&interval=60"
 
 headers = {
     'content-type': "application/x-www-form-urlencoded",
@@ -283,7 +294,11 @@ Secondly each user is limited to 20 in-flight requests at any given time.
 
 In addition, the service has a fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.
 
-For some tips and tricks to maximize data downloads please read the guide [here](/docs/solar/nsrdb/guide).
+For some tips and tricks to maximize data downloads please read the guide [here](/docs/solar/nsrdb/guide/).
+
+<h2 id="contacts">Contact</h2>
+
+<p>For questions about the API or the data models please contact <a href="mailto:nsrdb@nrel.gov">nsrdb@nrel.gov</a></p>
 
 <h2 id="errors">Errors</h2>
 

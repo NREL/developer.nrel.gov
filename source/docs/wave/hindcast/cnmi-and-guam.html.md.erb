@@ -1,8 +1,8 @@
 ---
-title: US West Coast Hindcast Wave Data
+title: C.N.M.I. and Guam Wave Hindcast
 summary: Collect and download, as CSV, a configurable set of wave data fields from the DOE-WPTO.
 detail: <p>This data was generated using WaveWatch III and SWAN, and spanned 42-years from 1979 through 2020. The data was developed with funding from the U.S. Department of Energy, Office of Energy Efficiency & Renewable Energy, Water Power Technologies Office to improve our understanding of the U.S. wave energy resource and to provide critical information for wave energy project development and wave energy converter design.</p><p>This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.</p>
-url: /api/wave/v2/wave/us-west-coast-hindcast-download
+url: /api/wave/v2/wave/us-wave-v1-0-0-cnmi-and-guam-download
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
@@ -10,7 +10,7 @@ url: /api/wave/v2/wave/us-west-coast-hindcast-download
 
 <%= current_page.data.detail %>
 
-<%= partial "layouts/toc" %>
+<ul id="toc"></ul>
 
 ## Request URL
 
@@ -57,7 +57,7 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>directionality_coefficient, energy_period, maximum_energy_direction, mean_absolute_period, mean_wave_direction, mean_zero-crossing_period, omni-directional_wave_power, peak_period, significant_wave_height, spectral_width, time_index, water_depth</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>directionality_coefficient, energy_period, maximum_energy_direction, mean_absolute_period, mean_wave_direction, omni-directional_wave_power, peak_period, significant_wave_height, spectral_width.</em></div>
       </td>
       <td class="doc-parameter-description">
         Each specified attribute(*) will be returned as a column in the resultant CSV download.
@@ -69,7 +69,7 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010</em>.</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020</em>.</div>
       </td>
       <td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
     </tr>
@@ -99,11 +99,11 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <th class="doc-parameter-name" scope="row">interval</th>
       <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong>180 </div>
+        <div class="doc-parameter-value-field"><strong>Type:</strong></div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
       </td>
       <td class="doc-parameter-description">
-        This value determines data resolution. 180 minute intervals are available.
+        This value determines data resolution. Either  minute intervals are available.
       </td>
     </tr>
     <tr>
@@ -204,23 +204,25 @@ The response is composed of service-related informational fields and the results
 Generated data files are formatted in accordance with the Standard Time Series Data File Format. This file format has been developed to support [SAM](https://sam.nrel.gov/) and other NREL models and is documented fully in [this PDF](https://sam.nrel.gov/sites/default/files/content/documents/pdf/wfcsv.pdf). More information on SAM file formats available on [the SAM weather page](https://sam.nrel.gov/weather).
 
 ## Examples
+Examples may not reflect this specific dataset.
 
 ### JSON Output Format
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&full_name=Sample+User&email=user@company.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-124.2 46.2)&names=2010&utc=true&leap_day=true</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key={{API_KEY}}email=datalovr@nrel.gov&wkt=POINT(145.6704112711147+16.32973014436503)&attributes=directionality_coefficient,energy_period,maximum_energy_direction,mean_absolute_period,mean_wave_direction,omni-directional_wave_power,peak_period,significant_wave_height,spectral_width&names=2018,2019,2020&interval=180</code></div>
 
-```json
+```JSON
 {
     "inputs": {
         "body": {},
-        "params": {},
+        "params": {
+            "0": ".json"
+        },
         "query": {
-            "names": "2010",
-            "utc": "true",
-            "leap_day": "true",
-            "interval": "180",
-            "email": "user@company.com",
-            "wkt": "POINT (-124.2 46.2)"
+            "email": "datalovr@nrel.gov",
+            "wkt": "POINT(145.6704112711147 16.32973014436503)",
+            "attributes": "directionality_coefficient,energy_period,maximum_energy_direction,mean_absolute_period,mean_wave_direction,omni-directional_wave_power,peak_period,significant_wave_height,spectral_width",
+            "names": "2018,2019,2020",
+            "interval": "180"
         }
     },
     "metadata": {
@@ -231,27 +233,31 @@ Generated data files are formatted in accordance with the Standard Time Series D
     },
     "status": 200,
     "outputs": {
-        "message": "File generation in progress. An email will be sent to user@company.com when the download is ready.",
-        "downloadUrl": "https://mapfiles.nrel.gov/data/wave/f3a8731d7d677f56ebb174e278f6e53e.zip"
+        "message": "File generation in progress. An email will be sent to paul.edwards@nrel.gov when the download is ready.",
+        "downloadUrl": "https://mapfiles.nrel.gov/data/wave/e45b28fa8da80a1a75e1ef8b1a4751a0.zip"
     },
     "errors": []
 }
 ```
 
-
 ### CSV Output Format
 Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?api_key=DEMO_KEY&full_name=Sample+User&email=user@company.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-124.2 46.2)&names=2010&utc=true&leap_day=true</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?api_key={{API_KEY}}&email=datalovr@nrel.gov&wkt=POINT(145.6704112711147+16.32973014436503)&attributes=directionality_coefficient,energy_period,maximum_energy_direction,mean_absolute_period,mean_wave_direction,omni-directional_wave_power,peak_period,significant_wave_height,spectral_width&names=2020&interval=180</code></div>
 
 ```csv
-Source,Location ID,Jurisdiction,Latitude,Longitude,Time Zone,Local Time Zone,Distance to Shore,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth,Version
-NSRDB,6,b'Canada',48.7261,-125.735,0,-8,25022.521,-,s,deg,s,deg,s,W/m,s,m,-,m,v1.0.0
-Year,Month,Day,Hour,Minute,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth
-2010,1,1,0,0,0.7430920004844666,7.980100154876709,45,6.493599891662598,69.25299835205078,5.601600170135498,30369,11.013500213623047,2.7738099098205566,0.38694000244140625,
-2010,1,1,3,0,0.820123016834259,8.767999649047852,45,7.562900066375732,58.25400161743164,6.708000183105469,28324,9.101699829101562,2.5543301105499268,0.3178200125694275,
-2010,1,1,6,0,0.87534499168396,9.151900291442871,45,8.133099555969238,49.43600082397461,7.355999946594238,26162,11.013500213623047,2.4019699096679688,0.2858000099658966,
-2010,1,1,9,0,0.8557509779930115,8.202699661254883,45,6.8653998374938965,57.36899948120117,5.986800193786621,29702,10.01200008392334,2.705440044403076,0.35593000054359436,
+Source,Location ID,Jurisdiction,Latitude,Longitude,Time Zone,Local Time Zone,Distance to Shore,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth,Version
+DOE-WPTO US Wave dataset,338510,b'Northern Mariana Islands',16.330185,145.6703,0,10,322.8552,-,s,deg,s,deg,s,W/m,s,m,-,,v1.0.0
+Year,Month,Day,Hour,Minute,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Wave Power,Peak Period,Significant Wave Height,Spectral Width
+2020,1,1,0,0,0.9615110158920288,7.73360013961792,162.5,6.638999938964844,110.3239974975586,12672,9.655200004577637,1.8277499675750732,0.31060001254081726
+2020,1,1,3,0,0.9600890278816223,7.841700077056885,162.5,6.764500141143799,110.14800262451172,11280,9.655200004577637,1.7124500274658203,0.3042199909687042
+2020,1,1,6,0,0.9585899710655212,7.906599998474121,162.5,6.789700031280518,110.1240005493164,10422,9.655200004577637,1.6392899751663208,0.30553001165390015
+2020,1,1,9,0,0.9591460227966309,8.050700187683105,162.5,7.052199840545654,110.4739990234375,10409,9.655200004577637,1.6233999729156494,0.2883700132369995
+2020,1,1,12,0,0.959659993648529,7.910600185394287,162.5,6.751699924468994,110.35900115966797,10371,9.655200004577637,1.6348600387573242,0.30720001459121704
+2020,1,1,15,0,0.9594699740409851,7.69290018081665,162.5,6.434899806976318,109.55899810791016,9923,9.655200004577637,1.6216100454330444,0.3305700123310089
+2020,1,1,18,0,0.9580479860305786,7.453700065612793,162.5,6.138199806213379,109.15499877929688,9774,8.77750015258789,1.63510000705719,0.351610004901886
+2020,1,1,21,0,0.9555919766426086,7.393899917602539,162.5,6.149099826812744,109.66799926757812,9899,8.77750015258789,1.6520099639892578,0.34953999519348145
+2020,1,2,0,0,0.953354001045227,7.534599781036377,162.5,6.332799911499023,110.36699676513672,9676,8.77750015258789,1.617859959602356,0.3371399939060211
 ```
 
 ### POST request example in Python
@@ -259,9 +265,9 @@ Year,Month,Day,Hour,Minute,Directionality Coefficient,Energy Period,Maximum Ener
 ```python
 import requests
 
-url = "https://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
+url = "http://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
 
-payload = "full_name=Sample+User&email=user@company.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-124.2 46.2)&names=2010&utc=true&leap_day=true"
+payload = "api_key={{API_KEY}}&email=datalovr@nrel.gov&wkt=POINT(145.6704112711147+16.32973014436503)&attributes=directionality_coefficient,energy_period,maximum_energy_direction,mean_absolute_period,mean_wave_direction,omni-directional_wave_power,peak_period,significant_wave_height,spectral_width&names=2020&interval=180"
 
 headers = {
     'content-type': "application/x-www-form-urlencoded",
@@ -283,7 +289,11 @@ Secondly each user is limited to 20 in-flight requests at any given time.
 
 In addition, the service has a fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.
 
-For some tips and tricks to maximize data downloads please read the guide [here](/docs/solar/nsrdb/guide).
+For some tips and tricks to maximize data downloads please read the guide [here](/docs/wave/guide/).
+
+<h2 id="contacts">Contact</h2>
+
+<p>For questions about the API or the data models please contact <a href="mailto:marineresource@nrel.gov">marineresource@nrel.gov</a></p>
 
 <h2 id="errors">Errors</h2>
 

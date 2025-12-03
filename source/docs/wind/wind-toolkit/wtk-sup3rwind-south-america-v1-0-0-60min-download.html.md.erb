@@ -1,8 +1,7 @@
 ---
-title: US West Coast Hindcast Wave Data
-summary: Collect and download, as CSV, a configurable set of wave data fields from the DOE-WPTO.
-detail: <p>This data was generated using WaveWatch III and SWAN, and spanned 42-years from 1979 through 2020. The data was developed with funding from the U.S. Department of Energy, Office of Energy Efficiency & Renewable Energy, Water Power Technologies Office to improve our understanding of the U.S. wave energy resource and to provide critical information for wave energy project development and wave energy converter design.</p><p>This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download. In addition to this two step workflow, there is also an option for users who wish to download a single CSV file in direct response to an API request. The <em>.csv</em> format may be used to download a CSV directly. This feature is restricted to use with only a single POINT, for a single YEAR at a time.</p>
-url: /api/wave/v2/wave/us-west-coast-hindcast-download
+title: Sup3rWind South America (60 min)
+summary: This historical wind resource data set covers onshore and offshore regions of South America and was produced with NREL's <a href="https://nrel.github.io/sup3r/index.html" target="_blank">Super Resolution for Renewable Resource Data (sup3r)</a> for Wind (Sup3rWind) model. Sup3rWind uses generative adversarial networks to create synthetic high-resolution data from coarse low-resolution inputs (ERA5 in this case). These data include wind-speed and direction at 2-km 5-minute resolution along with pressure, temperature and relative humidity at 2-km hourly resolution, for the years 2005 through 2024. Usage examples can be found <a href="https://nrel.github.io/sup3r/examples/sup3rwind.html" target="_blank">here</a>.
+url: /api/wind-toolkit/v2/wind/wtk-sup3rwind-south-america-v1-0-0-60min-download
 ---
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
@@ -10,7 +9,7 @@ url: /api/wave/v2/wave/us-west-coast-hindcast-download
 
 <%= current_page.data.detail %>
 
-<%= partial "layouts/toc" %>
+<ul id="toc"></ul>
 
 ## Request URL
 
@@ -57,7 +56,7 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> Returns ALL</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>directionality_coefficient, energy_period, maximum_energy_direction, mean_absolute_period, mean_wave_direction, mean_zero-crossing_period, omni-directional_wave_power, peak_period, significant_wave_height, spectral_width, time_index, water_depth</em></div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>pressure_0m, relativehumidity_2m, temperature_2m, u_100m, u_10m, u_120m, u_160m, u_200m, u_40m, u_80m, v_100m, v_10m, v_120m, v_160m, v_200m, v_40m, v_80m.</em></div>
       </td>
       <td class="doc-parameter-description">
         Each specified attribute(*) will be returned as a column in the resultant CSV download.
@@ -69,7 +68,7 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <td class="doc-parameter-value">
         <div class="doc-parameter-value-field"><strong>Type:</strong> comma delimited string array</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
-        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010</em>.</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2022, 2023, 2024</em>.</div>
       </td>
       <td class="doc-parameter-description">The year(s) for which data should be extracted.</td>
     </tr>
@@ -99,11 +98,11 @@ _NOTE: when using POST to submit a request the api_key must still be included as
       <th class="doc-parameter-name" scope="row">interval</th>
       <td class="doc-parameter-required">Yes</td>
       <td class="doc-parameter-value">
-        <div class="doc-parameter-value-field"><strong>Type:</strong>180 </div>
+        <div class="doc-parameter-value-field"><strong>Type:</strong>60</div>
         <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
       </td>
       <td class="doc-parameter-description">
-        This value determines data resolution. 180 minute intervals are available.
+        This value determines data resolution. Either 60 minute intervals are available.
       </td>
     </tr>
     <tr>
@@ -204,23 +203,24 @@ The response is composed of service-related informational fields and the results
 Generated data files are formatted in accordance with the Standard Time Series Data File Format. This file format has been developed to support [SAM](https://sam.nrel.gov/) and other NREL models and is documented fully in [this PDF](https://sam.nrel.gov/sites/default/files/content/documents/pdf/wfcsv.pdf). More information on SAM file formats available on [the SAM weather page](https://sam.nrel.gov/weather).
 
 ## Examples
+Examples may not reflect this specific dataset.
 
 ### JSON Output Format
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&full_name=Sample+User&email=user@company.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-124.2 46.2)&names=2010&utc=true&leap_day=true</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?email=user@email.com&wkt=POINT%28-64.19+-12.53%29&names=2022,2023,2024&interval=60</code></div>
 
-```json
+```JSON
 {
     "inputs": {
         "body": {},
-        "params": {},
+        "params": {
+            "0": ".json"
+        },
         "query": {
-            "names": "2010",
-            "utc": "true",
-            "leap_day": "true",
-            "interval": "180",
-            "email": "user@company.com",
-            "wkt": "POINT (-124.2 46.2)"
+            "email": "user@email.com",
+            "wkt": "POINT(-64.19 -12.53)",
+            "names": "2022,2023,2024",
+            "interval": "60"
         }
     },
     "metadata": {
@@ -231,27 +231,27 @@ Generated data files are formatted in accordance with the Standard Time Series D
     },
     "status": 200,
     "outputs": {
-        "message": "File generation in progress. An email will be sent to user@company.com when the download is ready.",
-        "downloadUrl": "https://mapfiles.nrel.gov/data/wave/f3a8731d7d677f56ebb174e278f6e53e.zip"
+        "message": "File generation in progress. An email will be sent to user@email.com when the download is ready.",
+        "downloadUrl": "https://mapfiles.nrel.gov/data/wind/d745b450dfa1c097eb0d101f9ebfcb4d.zip"
     },
     "errors": []
 }
 ```
 
-
 ### CSV Output Format
 Direct streaming of CSV data is supported for single location, single year only. The following response example is truncated after the first few rows of data.
 
-<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?api_key=DEMO_KEY&full_name=Sample+User&email=user@company.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-124.2 46.2)&names=2010&utc=true&leap_day=true</code></div>
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.csv?email=user@company.com&wkt=POINT%28-64.19+-12.53%29&names=2022&interval=60</code></div>
 
 ```csv
-Source,Location ID,Jurisdiction,Latitude,Longitude,Time Zone,Local Time Zone,Distance to Shore,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth,Version
-NSRDB,6,b'Canada',48.7261,-125.735,0,-8,25022.521,-,s,deg,s,deg,s,W/m,s,m,-,m,v1.0.0
-Year,Month,Day,Hour,Minute,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth
-2010,1,1,0,0,0.7430920004844666,7.980100154876709,45,6.493599891662598,69.25299835205078,5.601600170135498,30369,11.013500213623047,2.7738099098205566,0.38694000244140625,
-2010,1,1,3,0,0.820123016834259,8.767999649047852,45,7.562900066375732,58.25400161743164,6.708000183105469,28324,9.101699829101562,2.5543301105499268,0.3178200125694275,
-2010,1,1,6,0,0.87534499168396,9.151900291442871,45,8.133099555969238,49.43600082397461,7.355999946594238,26162,11.013500213623047,2.4019699096679688,0.2858000099658966,
-2010,1,1,9,0,0.8557509779930115,8.202699661254883,45,6.8653998374938965,57.36899948120117,5.986800193786621,29702,10.01200008392334,2.705440044403076,0.35593000054359436,
+SiteID,4279718,Site Timezone,-4,Data Timezone,0,Longitude,-64.183334,Latitude,-12.533334
+Year,Month,Day,Hour,Minute,surface air pressure (Pa),relative humidity at 2m (%),air temperature at 2m (C),zonal wind component at 100m (m/s),zonal wind component at 10m (m/s),zonal wind component at 120m (m/s),zonal wind component at 160m (m/s),zonal wind component at 200m (m/s),zonal wind component at 40m (m/s),zonal wind component at 80m (m/s),meridional wind component at 100m (m/s),meridional wind component at 10m (m/s),meridional wind component at 120m (m/s),meridional wind component at 160m (m/s),meridional wind component at 200m (m/s),meridional wind component at 40m (m/s),meridional wind component at 80m (m/s)
+2022,1,1,0,0,99201.3046875,89.86260986328125,25.59832763671875,-1.5316224098205566,-0.38651013374328613,-1.6345202922821045,-1.951876163482666,-1.8352165222167969,-0.5614514350891113,-1.1926573514938354,-4.8288421630859375,-1.2931967973709106,-5.370330333709717,-6.105531215667725,-6.486119270324707,-2.8195366859436035,-4.298759460449219
+2022,1,1,1,0,99309.4453125,84.4408187866211,25.514095306396484,-1.0296084880828857,0.12978364527225494,-1.4702295064926147,-2.292844295501709,-2.5664074420928955,-0.01497352123260498,-0.8232975006103516,-7.450264930725098,-2.8019373416900635,-7.838329315185547,-8.457208633422852,-8.70748519897461,-4.951198101043701,-6.869712829589844
+2022,1,1,2,0,99275.4375,85.2576904296875,25.822101593017578,0.43038299679756165,1.0821130275726318,0.1657087206840515,-0.06569331884384155,-0.400595486164093,1.1211967468261719,0.5903605818748474,-6.380609512329102,-1.7334656715393066,-6.839644908905029,-7.183594703674316,-7.483083248138428,-3.877810478210449,-5.698904037475586
+2022,1,1,3,0,99154.3671875,86.2011489868164,25.708669662475586,-0.9264735579490662,-0.006558150053024292,-1.207019329071045,-1.2228854894638062,-1.4497122764587402,-0.44843631982803345,-0.7307984828948975,-5.734489440917969,-1.632975459098816,-6.263022422790527,-7.146021842956543,-7.779045581817627,-3.427278518676758,-5.2001800537109375
+2022,1,1,4,0,99096.6640625,86.01972961425781,25.607540130615234,-0.23324573040008545,0.012689068913459778,-0.42095667123794556,-0.6269303560256958,-0.7001635432243347,-0.19719970226287842,-0.3054424524307251,-3.342146396636963,-0.7312078475952148,-3.7732629776000977,-4.514834403991699,-4.997927665710449,-1.7314863204956055,-2.9090824127197266
+2022,1,1,5,0,99025.9140625,91.75425720214844,25.259780883789062,0.3833771347999573,0.29999789595603943,0.4404573142528534,0.3217392861843109,0.1367313265800476,0.4593396484851837,0.4361357092857361,-3.1791369915008545,-0.9665793776512146,-3.4097795486450195,-4.047221660614014,-4.406704902648926,-1.8964966535568237,-2.7589547634124756
 ```
 
 ### POST request example in Python
@@ -259,9 +259,9 @@ Year,Month,Day,Hour,Minute,Directionality Coefficient,Energy Period,Maximum Ener
 ```python
 import requests
 
-url = "https://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
+url = "http://developer.nrel.gov<%= current_page.data.url %>.json?api_key=yourapikeygoeshere"
 
-payload = "full_name=Sample+User&email=user@company.com&affiliation=Test+Organization&reason=Example&mailing_list=true&wkt=POINT (-124.2 46.2)&names=2010&utc=true&leap_day=true"
+payload = "api_key={{API_KEY}}&email=user@company.com&wkt=POINT%28-64.19+-12.53%29&names=2022&interval=60"
 
 headers = {
     'content-type': "application/x-www-form-urlencoded",
@@ -277,13 +277,17 @@ print(response.text)
 
 Rate limits for this application are significantly less than the [standard rate limits](/docs/rate-limits){:target="_blank"} for developer.nrel.gov. This decrease in the limit is required as the data provided through this service is significantly more computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.
 
-There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 10,000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 2000 requests per day at a frequency of no more than 1 every 2 seconds.
+There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For requests utilizing the <em>.csv</em> format this rate limit is set at 5000 a day at a frequency of no more than 1 per second. For all other requests this limit is set at 1000 requests per day at a frequency of no more than 1 every 2 seconds.
 
 Secondly each user is limited to 20 in-flight requests at any given time.
 
 In addition, the service has a fail-safe mechanism to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.
 
-For some tips and tricks to maximize data downloads please read the guide [here](/docs/solar/nsrdb/guide).
+For some tips and tricks to maximize data downloads please read the guide [here](/docs/wind/wind-toolkit/guide/).
+
+<h2 id="contacts">Contact</h2>
+
+<p>For questions about the API or the data models please contact <a href="mailto:wind-toolkit@nrel.gov">wind-toolkit@nrel.gov</a></p>
 
 <h2 id="errors">Errors</h2>
 

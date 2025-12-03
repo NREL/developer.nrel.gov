@@ -1,0 +1,282 @@
+---
+title: Spectral Data On-demand - Arctic
+summary: "The spectral on-demand arctic data service provides solar irradiances on inclined PV panels for 2002 narrow-wavelength bands from 0.28 to 4.0 µm. Based on users’ selection of location, time period, and PV system (fixed or one-axis PV system), a dedicated high-performance server located at NREL computes the spectral data in real time using the Fast All-sky Radiation Model for Solar applications with Narrowband Irradiances on Tilted surfaces (FARMS-NIT) and broadband and ancillary data served by the NSRDB. FARMS-NIT is an innovative radiative transfer model developed at NREL to efficiently and simultaneously calculate the spatial distribution of solar energy (radiances) in narrow-wavelength bands which are integrated over inclined PV panels to infer the plane-of-array (POA) irradiances."
+detail: This API is capable of creating very large downloadable archives. Unlike a typical API, the response to this provides a request acknowledgement. The real work of creating the requested downloadable archive will continue to run on the server side. When complete, and email will be sent to the email address provided in the initial request with a link to a file to download.
+url: /api/nsrdb_api/solar/spectral_ondemand_polar_download
+---
+
+# <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
+<%= current_page.data.summary %>
+
+<%= current_page.data.detail %>
+
+<%= partial "layouts/toc" %>
+
+## Request URL
+
+<pre>GET|POST <%= current_page.data.url %><em>.json?parameters</em></pre>
+
+## Request Parameters
+_NOTE: when using POST to submit a request the api_key must still be included as a query parameter in the url. All other parameters may be included in a POST request as part of the payload._
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Parameter</th>
+      <th class="doc-parameters-required" scope="col">Required</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">api_key</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        <p>Your developer API key. See <a href="/docs/api-key/">API keys</a> for more information.</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">wkt</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> well-known text string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        A well-known text (WKT) representation of the geometry for which to extract data. Geometries are limited to points and only a single pixel of data may be downloaded per request. When the point is passed the site nearest to that point is used.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">names</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> integer</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023</em></div>
+      </td>
+      <td class="doc-parameter-description">The year for which data should be extracted.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">equipment</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> <em>one_axis, fixed_tilt</em></div>
+      </td>
+      <td class="doc-parameter-description">The type of system to emulate when calculating spectral values.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">tilt</th>
+      <td class="doc-parameter-required">Only for fixed_tilt</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> float</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> 0 to 90</div>
+      </td>
+      <td class="doc-parameter-description">
+        Panel zenith angle. Must be a number between 0 and 90 (inclusive). Tilt and angle are required when the equipment is fixed tilt.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">angle</th>
+      <td class="doc-parameter-required">Only for fixed_tilt</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> float</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+        <div class="doc-parameter-value-field"><strong>Options:</strong> 0 to 359.9</div>
+      </td>
+      <td class="doc-parameter-description">
+        Panel azimuth angle and must be a number between 0 and 359.9 where 0.0 north, 90.0 east, 180.0 south, 270.0 west. Tilt and angle are required when the equipment is fixed tilt.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">full_name</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">The full name of the user requesting data.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">email</th>
+      <td class="doc-parameter-required">Yes</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> email string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        An active email for the user requesting data. This email will be used to deliver the extracted data.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">affiliation</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">
+        The organization with which the user requesting the data is affiliated.
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">reason</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> string</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> None</div>
+      </td>
+      <td class="doc-parameter-description">The reason that the user is requesting the data.</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">mailing_list</th>
+      <td class="doc-parameter-required">No</td>
+      <td class="doc-parameter-value">
+        <div class="doc-parameter-value-field"><strong>Type:</strong> true or false</div>
+        <div class="doc-parameter-value-field"><strong>Default:</strong> false</div>
+      </td>
+      <td class="doc-parameter-description">
+        Pass true to add the email address to our list of recipients for the NSRDB mailing list.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Response Fields
+
+The response is composed of service-related informational fields and the results of the data query.
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col">Field</th>
+      <th class="doc-parameters-value" scope="col">Value</th>
+      <th class="doc-parameters-description" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">errors</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> string array</div>
+      </td>
+      <td class="doc-parameter-description">
+      <p>A list of error messages</p>
+      </td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">inputs</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
+      </td>
+      <td class="doc-parameter-description">Key: Value pairs representing all input parameters</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">outputs</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
+      </td>
+      <td class="doc-parameter-description">Upon successful completion a message will be returned informing the user that file generation is in progress and an email will be sent to the address provided in the <code>email</code> input field when the download is ready</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">metadata</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> Object Hash</div>
+      </td>
+      <td class="doc-parameter-description">Key: Value pairs representing result version and file count</td>
+    </tr>
+    <tr>
+      <th class="doc-parameter-name" scope="row">status</th>
+      <td class="doc-parameter-value">
+      <div class="doc-parameter-value-field"><strong>Type:</strong> integer</div>
+      </td>
+      <td class="doc-parameter-description">HTTP response status code</td>
+    </tr>
+  </tbody>
+</table>
+
+## Data File Format
+
+Generated data files are formatted in accordance with the Standard Time Series Data File Format. This file format has been developed to support [SAM](https://sam.nrel.gov/) and other NREL models and is documented fully in [this PDF](https://sam.nrel.gov/sites/default/files/content/documents/pdf/wfcsv.pdf). More information on SAM file formats avaialable on [the SAM weather page](https://sam.nrel.gov/weather).
+
+## Examples
+
+### JSON Output Format
+
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&wkt=POINT(-103.0078125%2043.068887774169625)&names=2017&full_name=Nikola%20Tesla&email=user@company.com&affiliation=NREL&mailing_list=false&reason=test&equipment=fixed_tilt&tilt=40&angle=130</code></div>
+
+```json
+{
+  "errors": [],
+  "inputs": {
+    "wkt": "POINT(-103.0078125 43.068887774169625)",
+    "names": "2017",
+    "full_name": "Nikola Tesla",
+    "email": "user@company.com",
+    "affiliation": "NREL",
+    "mailing_list": false,
+    "reason": "test",
+    "equipment": "fixed_tilt",
+    "tilt": "40",
+    "angle": "130"
+  },
+  "outputs": {
+    "message": "File generation in progress. An email will be sent to user@company.com when the download is ready."
+  }
+}
+```
+
+
+### CSV Data Format
+The following download example is truncated after the first few rows of data.
+
+<div class="doc-example-url"><code>GET <%= current_page.data.url %>.json?api_key=DEMO_KEY&wkt=POINT(-103.0078125%2043.068887774169625)&names=2017&full_name=Nikola%20Tesla&email=user@company.com&affiliation=NREL&mailing_list=false&reason=test&equipment=fixed_tilt&tilt=40&angle=130</code></div>
+
+```csv
+Source,Location ID,City,State,Country,Latitude,Longitude,Time Zone,Elevation,Local Time Zone,Clearsky DHI Units,Clearsky DNI Units,Clearsky GHI Units,Dew Point Units,DHI Units,DNI Units,GHI Units,Solar Zenith Angle Units,Temperature Units,Pressure Units,Relative Humidity Units,Precipitable Water Units,Wind Direction Units,Wind Speed,Cloud Type -15,Cloud Type 0,Cloud Type 1,Cloud Type 2,Cloud Type 3,Cloud Type 4,Cloud Type 5,Cloud Type 6,Cloud Type 7,Cloud Type 8,Cloud Type 9,Cloud Type 10,Cloud Type 11,Cloud Type 12,Fill Flag 0,Fill Flag 1,Fill Flag 2,Fill Flag 3,Fill Flag 4,Fill Flag 5,Surface Albedo Units,Solar Azimuth Units,Panel Tilt Units,Panel Azimuth Units,Spectral Data Units,Version
+NSRDB,535998,-,-,-,43.05,-103.02,0,1009,-7,w/m2,w/m2,w/m2,c,w/m2,w/m2,w/m2,Degree,c,mbar,%,cm,Degrees,m/s,N/A,Clear,Probably Clear,Fog,Water,Super-Cooled Water,Mixed,Opaque Ice,Cirrus,Overlapping,Overshooting,Unknown,Dust,Smoke,N/A,Missing Image,Low Irradiance,Exceeds Clearsky,Missing CLoud Properties,Rayleigh Violation,N/A,degrees,degrees,degrees,W/m^2/um,v3.0.1
+Year,Month,Day,Hour,Minute,Temperature,Clearsky DHI,Clearsky DNI,Clearsky GHI,Cloud Type,Dew Point,DHI,DNI,Fill Flag,GHI,Relative Humidity,Solar Zenith Angle,Surface Albedo,Pressure,Precipitable Water,Wind Direction,Wind Speed,Solar Azimuth Angle,Panel Tilt,Panel Azimuth Angle,0.2800 um,0.2805 um,0.2810 um,0.2815 um,0.2820 um,0.2825 um,0.2830 um,0.2835 um,0.2840 um,0.2845 um,0.2850 um,0.2855 um,0.2860 um,0.2865 um,0.2870 um,0.2875 um,0.2880 um,0.2885 um,0.2890 um,0.2895 um,0.2900 um,0.2905 um,0.2910 um,0.2915 um,0.2920 um,0.2925 um,0.2930 um,0.2935 um,0.2940 um,0.2945 um,0.2950 um,0.2955 um,0.2960 um,0.2965 um,0.2970 um,0.2975 um,0.2980 um,0.2985 um,0.2990 um,0.2995 um,0.3000 um,0.3005 um,0.3010 um,0.3015 um,0.3020 um,0.3025 um,0.3030 um,0.3035 um,0.3040 um,0.3045 um,0.3050 um,0.3055 um,0.3060 um,0.3065 um,0.3070 um,0.3075 um,0.3080 um,0.3085 um,0.3090 um,0.3095 um,0.3100 um,0.3105 um,0.3110 um,0.3115 um,0.3120 um,0.3125 um,0.3130 um,0.3135 um,0.3140 um,0.3145 um,0.3150 um,0.3155 um,0.3160 um,0.3165 um,0.3170 um,0.3175 um,0.3180 um,0.3185 um,0.3190 um,0.3195 um,0.3200 um,0.3205 um,0.3210 um,0.3215 um,0.3220 um,0.3225 um,0.3230 um,0.3235 um,0.3240 um,0.3245 um,0.3250 um,0.3255 um,0.3260 um,0.3265 um,0.3270 um,0.3275 um,0.3280 um,0.3285 um,0.3290 um,0.3295 um,0.3300 um,0.3305 um,0.3310 um,0.3315 um,0.3320 um,0.3325 um,0.3330 um,0.3335 um,0.3340 um,0.3345 um,0.3350 um,0.3355 um,0.3360 um,0.3365 um,0.3370 um,0.3375 um,0.3380 um,0.3385 um,0.3390 um,0.3395 um,0.3400 um,0.3405 um,0.3410 um,0.3415 um,0.3420 um,0.3425 um,0.3430 um,0.3435 um,0.3440 um,0.3445 um,0.3450 um,0.3455 um,0.3460 um,0.3465 um,0.3470 um,0.3475 um,0.3480 um,0.3485 um,0.3490 um,0.3495 um,0.3500 um,0.3505 um,0.3510 um,0.3515 um,0.3520 um,0.3525 um,0.3530 um,0.3535 um,0.3540 um,0.3545 um,0.3550 um,0.3555 um,0.3560 um,0.3565 um,0.3570 um,0.3575 um,0.3580 um,0.3585 um,0.3590 um,0.3595 um,0.3600 um,0.3605 um,0.3610 um,0.3615 um,0.3620 um,0.3625 um,0.3630 um,0.3635 um,0.3640 um,0.3645 um,0.3650 um,0.3655 um,0.3660 um,0.3665 um,0.3670 um,0.3675 um,0.3680 um,0.3685 um,0.3690 um,0.3695 um,0.3700 um,0.3705 um,0.3710 um,0.3715 um,0.3720 um,0.3725 um,0.3730 um,0.3735 um,0.3740 um,0.3745 um,0.3750 um,0.3755 um,0.3760 um,0.3765 um,0.3770 um,0.3775 um,0.3780 um,0.3785 um,0.3790 um,0.3795 um,0.3800 um,0.3805 um,0.3810 um,0.3815 um,0.3820 um,0.3825 um,0.3830 um,0.3835 um,0.3840 um,0.3845 um,0.3850 um,0.3855 um,0.3860 um,0.3865 um,0.3870 um,0.3875 um,0.3880 um,0.3885 um,0.3890 um,0.3895 um,0.3900 um,0.3905 um,0.3910 um,0.3915 um,0.3920 um,0.3925 um,0.3930 um,0.3935 um,0.3940 um,0.3945 um,0.3950 um,0.3955 um,0.3960 um,0.3965 um,0.3970 um,0.3975 um,0.3980 um,0.3985 um,0.3990 um,0.3995 um,0.4000 um,0.4010 um,0.4020 um,0.4030 um,0.4040 um,0.4050 um,0.4060 um,0.4070 um,0.4080 um,0.4090 um,0.4100 um,0.4110 um,0.4120 um,0.4130 um,0.4140 um,0.4150 um,0.4160 um,0.4170 um,0.4180 um,0.4190 um,0.4200 um,0.4210 um,0.4220 um,0.4230 um,0.4240 um,0.4250 um,0.4260 um,0.4270 um,0.4280 um,0.4290 um,0.4300 um,0.4310 um,0.4320 um,0.4330 um,0.4340 um,0.4350 um,0.4360 um,0.4370 um,0.4380 um,0.4390 um,0.4400 um,0.4410 um,0.4420 um,0.4430 um,0.4440 um,0.4450 um,0.4460 um,0.4470 um,0.4480 um,0.4490 um,0.4500 um,0.4510 um,0.4520 um,0.4530 um,0.4540 um,0.4550 um,0.4560 um,0.4570 um,0.4580 um,0.4590 um,0.4600 um,0.4610 um,0.4620 um,0.4630 um,0.4640 um,0.4650 um,0.4660 um,0.4670 um,0.4680 um,0.4690 um,0.4700 um,0.4710 um,0.4720 um,0.4730 um,0.4740 um,0.4750 um,0.4760 um,0.4770 um,0.4780 um,0.4790 um,0.4800 um,0.4810 um,0.4820 um,0.4830 um,0.4840 um,0.4850 um,0.4860 um,0.4870 um,0.4880 um,0.4890 um,0.4900 um,0.4910 um,0.4920 um,0.4930 um,0.4940 um,0.4950 um,0.4960 um,0.4970 um,0.4980 um,0.4990 um,0.5000 um,0.5010 um,0.5020 um,0.5030 um,0.5040 um,0.5050 um,0.5060 um,0.5070 um,0.5080 um,0.5090 um,0.5100 um,0.5110 um,0.5120 um,0.5130 um,0.5140 um,0.5150 um,0.5160 um,0.5170 um,0.5180 um,0.5190 um,0.5200 um,0.5210 um,0.5220 um,0.5230 um,0.5240 um,0.5250 um,0.5260 um,0.5270 um,0.5280 um,0.5290 um,0.5300 um,0.5310 um,0.5320 um,0.5330 um,0.5340 um,0.5350 um,0.5360 um,0.5370 um,0.5380 um,0.5390 um,0.5400 um,0.5410 um,0.5420 um,0.5430 um,0.5440 um,0.5450 um,0.5460 um,0.5470 um,0.5480 um,0.5490 um,0.5500 um,0.5510 um,0.5520 um,0.5530 um,0.5540 um,0.5550 um,0.5560 um,0.5570 um,0.5580 um,0.5590 um,0.5600 um,0.5610 um,0.5620 um,0.5630 um,0.5640 um,0.5650 um,0.5660 um,0.5670 um,0.5680 um,0.5690 um,0.5700 um,0.5710 um,0.5720 um,0.5730 um,0.5740 um,0.5750 um,0.5760 um,0.5770 um,0.5780 um,0.5790 um,0.5800 um,0.5810 um,0.5820 um,0.5830 um,0.5840 um,0.5850 um,0.5860 um,0.5870 um,0.5880 um,0.5890 um,0.5900 um,0.5910 um,0.5920 um,0.5930 um,0.5940 um,0.5950 um,0.5960 um,0.5970 um,0.5980 um,0.5990 um,0.6000 um,0.6010 um,0.6020 um,0.6030 um,0.6040 um,0.6050 um,0.6060 um,0.6070 um,0.6080 um,0.6090 um,0.6100 um,0.6110 um,0.6120 um,0.6130 um,0.6140 um,0.6150 um,0.6160 um,0.6170 um,0.6180 um,0.6190 um,0.6200 um,0.6210 um,0.6220 um,0.6230 um,0.6240 um,0.6250 um,0.6260 um,0.6270 um,0.6280 um,0.6290 um,0.6300 um,0.6310 um,0.6320 um,0.6330 um,0.6340 um,0.6350 um,0.6360 um,0.6370 um,0.6380 um,0.6390 um,0.6400 um,0.6410 um,0.6420 um,0.6430 um,0.6440 um,0.6450 um,0.6460 um,0.6470 um,0.6480 um,0.6490 um,0.6500 um,0.6510 um,0.6520 um,0.6530 um,0.6540 um,0.6550 um,0.6560 um,0.6570 um,0.6580 um,0.6590 um,0.6600 um,0.6610 um,0.6620 um,0.6630 um,0.6640 um,0.6650 um,0.6660 um,0.6670 um,0.6680 um,0.6690 um,0.6700 um,0.6710 um,0.6720 um,0.6730 um,0.6740 um,0.6750 um,0.6760 um,0.6770 um,0.6780 um,0.6790 um,0.6800 um,0.6810 um,0.6820 um,0.6830 um,0.6840 um,0.6850 um,0.6860 um,0.6870 um,0.6880 um,0.6890 um,0.6900 um,0.6910 um,0.6920 um,0.6930 um,0.6940 um,0.6950 um,0.6960 um,0.6970 um,0.6980 um,0.6990 um,0.7000 um,0.7010 um,0.7020 um,0.7030 um,0.7040 um,0.7050 um,0.7060 um,0.7070 um,0.7080 um,0.7090 um,0.7100 um,0.7110 um,0.7120 um,0.7130 um,0.7140 um,0.7150 um,0.7160 um,0.7170 um,0.7180 um,0.7190 um,0.7200 um,0.7210 um,0.7220 um,0.7230 um,0.7240 um,0.7250 um,0.7260 um,0.7270 um,0.7280 um,0.7290 um,0.7300 um,0.7310 um,0.7320 um,0.7330 um,0.7340 um,0.7350 um,0.7360 um,0.7370 um,0.7380 um,0.7390 um,0.7400 um,0.7410 um,0.7420 um,0.7430 um,0.7440 um,0.7450 um,0.7460 um,0.7470 um,0.7480 um,0.7490 um,0.7500 um,0.7510 um,0.7520 um,0.7530 um,0.7540 um,0.7550 um,0.7560 um,0.7570 um,0.7580 um,0.7590 um,0.7600 um,0.7610 um,0.7620 um,0.7630 um,0.7640 um,0.7650 um,0.7660 um,0.7670 um,0.7680 um,0.7690 um,0.7700 um,0.7710 um,0.7720 um,0.7730 um,0.7740 um,0.7750 um,0.7760 um,0.7770 um,0.7780 um,0.7790 um,0.7800 um,0.7810 um,0.7820 um,0.7830 um,0.7840 um,0.7850 um,0.7860 um,0.7870 um,0.7880 um,0.7890 um,0.7900 um,0.7910 um,0.7920 um,0.7930 um,0.7940 um,0.7950 um,0.7960 um,0.7970 um,0.7980 um,0.7990 um,0.8000 um,0.8010 um,0.8020 um,0.8030 um,0.8040 um,0.8050 um,0.8060 um,0.8070 um,0.8080 um,0.8090 um,0.8100 um,0.8110 um,0.8120 um,0.8130 um,0.8140 um,0.8150 um,0.8160 um,0.8170 um,0.8180 um,0.8190 um,0.8200 um,0.8210 um,0.8220 um,0.8230 um,0.8240 um,0.8250 um,0.8260 um,0.8270 um,0.8280 um,0.8290 um,0.8300 um,0.8310 um,0.8320 um,0.8330 um,0.8340 um,0.8350 um,0.8360 um,0.8370 um,0.8380 um,0.8390 um,0.8400 um,0.8410 um,0.8420 um,0.8430 um,0.8440 um,0.8450 um,0.8460 um,0.8470 um,0.8480 um,0.8490 um,0.8500 um,0.8510 um,0.8520 um,0.8530 um,0.8540 um,0.8550 um,0.8560 um,0.8570 um,0.8580 um,0.8590 um,0.8600 um,0.8610 um,0.8620 um,0.8630 um,0.8640 um,0.8650 um,0.8660 um,0.8670 um,0.8680 um,0.8690 um,0.8700 um,0.8710 um,0.8720 um,0.8730 um,0.8740 um,0.8750 um,0.8760 um,0.8770 um,0.8780 um,0.8790 um,0.8800 um,0.8810 um,0.8820 um,0.8830 um,0.8840 um,0.8850 um,0.8860 um,0.8870 um,0.8880 um,0.8890 um,0.8900 um,0.8910 um,0.8920 um,0.8930 um,0.8940 um,0.8950 um,0.8960 um,0.8970 um,0.8980 um,0.8990 um,0.9000 um,0.9010 um,0.9020 um,0.9030 um,0.9040 um,0.9050 um,0.9060 um,0.9070 um,0.9080 um,0.9090 um,0.9100 um,0.9110 um,0.9120 um,0.9130 um,0.9140 um,0.9150 um,0.9160 um,0.9170 um,0.9180 um,0.9190 um,0.9200 um,0.9210 um,0.9220 um,0.9230 um,0.9240 um,0.9250 um,0.9260 um,0.9270 um,0.9280 um,0.9290 um,0.9300 um,0.9310 um,0.9320 um,0.9330 um,0.9340 um,0.9350 um,0.9360 um,0.9370 um,0.9380 um,0.9390 um,0.9400 um,0.9410 um,0.9420 um,0.9430 um,0.9440 um,0.9450 um,0.9460 um,0.9470 um,0.9480 um,0.9490 um,0.9500 um,0.9510 um,0.9520 um,0.9530 um,0.9540 um,0.9550 um,0.9560 um,0.9570 um,0.9580 um,0.9590 um,0.9600 um,0.9610 um,0.9620 um,0.9630 um,0.9640 um,0.9650 um,0.9660 um,0.9670 um,0.9680 um,0.9690 um,0.9700 um,0.9710 um,0.9720 um,0.9730 um,0.9740 um,0.9750 um,0.9760 um,0.9770 um,0.9780 um,0.9790 um,0.9800 um,0.9810 um,0.9820 um,0.9830 um,0.9840 um,0.9850 um,0.9860 um,0.9870 um,0.9880 um,0.9890 um,0.9900 um,0.9910 um,0.9920 um,0.9930 um,0.9940 um,0.9950 um,0.9960 um,0.9970 um,0.9980 um,0.9990 um,1.0000 um,1.0010 um,1.0020 um,1.0030 um,1.0040 um,1.0050 um,1.0060 um,1.0070 um,1.0080 um,1.0090 um,1.0100 um,1.0110 um,1.0120 um,1.0130 um,1.0140 um,1.0150 um,1.0160 um,1.0170 um,1.0180 um,1.0190 um,1.0200 um,1.0210 um,1.0220 um,1.0230 um,1.0240 um,1.0250 um,1.0260 um,1.0270 um,1.0280 um,1.0290 um,1.0300 um,1.0310 um,1.0320 um,1.0330 um,1.0340 um,1.0350 um,1.0360 um,1.0370 um,1.0380 um,1.0390 um,1.0400 um,1.0410 um,1.0420 um,1.0430 um,1.0440 um,1.0450 um,1.0460 um,1.0470 um,1.0480 um,1.0490 um,1.0500 um,1.0510 um,1.0520 um,1.0530 um,1.0540 um,1.0550 um,1.0560 um,1.0570 um,1.0580 um,1.0590 um,1.0600 um,1.0610 um,1.0620 um,1.0630 um,1.0640 um,1.0650 um,1.0660 um,1.0670 um,1.0680 um,1.0690 um,1.0700 um,1.0710 um,1.0720 um,1.0730 um,1.0740 um,1.0750 um,1.0760 um,1.0770 um,1.0780 um,1.0790 um,1.0800 um,1.0810 um,1.0820 um,1.0830 um,1.0840 um,1.0850 um,1.0860 um,1.0870 um,1.0880 um,1.0890 um,1.0900 um,1.0910 um,1.0920 um,1.0930 um,1.0940 um,1.0950 um,1.0960 um,1.0970 um,1.0980 um,1.0990 um,1.1000 um,1.1010 um,1.1020 um,1.1030 um,1.1040 um,1.1050 um,1.1060 um,1.1070 um,1.1080 um,1.1090 um,1.1100 um,1.1110 um,1.1120 um,1.1130 um,1.1140 um,1.1150 um,1.1160 um,1.1170 um,1.1180 um,1.1190 um,1.1200 um,1.1210 um,1.1220 um,1.1230 um,1.1240 um,1.1250 um,1.1260 um,1.1270 um,1.1280 um,1.1290 um,1.1300 um,1.1310 um,1.1320 um,1.1330 um,1.1340 um,1.1350 um,1.1360 um,1.1370 um,1.1380 um,1.1390 um,1.1400 um,1.1410 um,1.1420 um,1.1430 um,1.1440 um,1.1450 um,1.1460 um,1.1470 um,1.1480 um,1.1490 um,1.1500 um,1.1510 um,1.1520 um,1.1530 um,1.1540 um,1.1550 um,1.1560 um,1.1570 um,1.1580 um,1.1590 um,1.1600 um,1.1610 um,1.1620 um,1.1630 um,1.1640 um,1.1650 um,1.1660 um,1.1670 um,1.1680 um,1.1690 um,1.1700 um,1.1710 um,1.1720 um,1.1730 um,1.1740 um,1.1750 um,1.1760 um,1.1770 um,1.1780 um,1.1790 um,1.1800 um,1.1810 um,1.1820 um,1.1830 um,1.1840 um,1.1850 um,1.1860 um,1.1870 um,1.1880 um,1.1890 um,1.1900 um,1.1910 um,1.1920 um,1.1930 um,1.1940 um,1.1950 um,1.1960 um,1.1970 um,1.1980 um,1.1990 um,1.2000 um,1.2010 um,1.2020 um,1.2030 um,1.2040 um,1.2050 um,1.2060 um,1.2070 um,1.2080 um,1.2090 um,1.2100 um,1.2110 um,1.2120 um,1.2130 um,1.2140 um,1.2150 um,1.2160 um,1.2170 um,1.2180 um,1.2190 um,1.2200 um,1.2210 um,1.2220 um,1.2230 um,1.2240 um,1.2250 um,1.2260 um,1.2270 um,1.2280 um,1.2290 um,1.2300 um,1.2310 um,1.2320 um,1.2330 um,1.2340 um,1.2350 um,1.2360 um,1.2370 um,1.2380 um,1.2390 um,1.2400 um,1.2410 um,1.2420 um,1.2430 um,1.2440 um,1.2450 um,1.2460 um,1.2470 um,1.2480 um,1.2490 um,1.2500 um,1.2510 um,1.2520 um,1.2530 um,1.2540 um,1.2550 um,1.2560 um,1.2570 um,1.2580 um,1.2590 um,1.2600 um,1.2610 um,1.2620 um,1.2630 um,1.2640 um,1.2650 um,1.2660 um,1.2670 um,1.2680 um,1.2690 um,1.2700 um,1.2710 um,1.2720 um,1.2730 um,1.2740 um,1.2750 um,1.2760 um,1.2770 um,1.2780 um,1.2790 um,1.2800 um,1.2810 um,1.2820 um,1.2830 um,1.2840 um,1.2850 um,1.2860 um,1.2870 um,1.2880 um,1.2890 um,1.2900 um,1.2910 um,1.2920 um,1.2930 um,1.2940 um,1.2950 um,1.2960 um,1.2970 um,1.2980 um,1.2990 um,1.3000 um,1.3010 um,1.3020 um,1.3030 um,1.3040 um,1.3050 um,1.3060 um,1.3070 um,1.3080 um,1.3090 um,1.3100 um,1.3110 um,1.3120 um,1.3130 um,1.3140 um,1.3150 um,1.3160 um,1.3170 um,1.3180 um,1.3190 um,1.3200 um,1.3210 um,1.3220 um,1.3230 um,1.3240 um,1.3250 um,1.3260 um,1.3270 um,1.3280 um,1.3290 um,1.3300 um,1.3310 um,1.3320 um,1.3330 um,1.3340 um,1.3350 um,1.3360 um,1.3370 um,1.3380 um,1.3390 um,1.3400 um,1.3410 um,1.3420 um,1.3430 um,1.3440 um,1.3450 um,1.3460 um,1.3470 um,1.3480 um,1.3490 um,1.3500 um,1.3510 um,1.3520 um,1.3530 um,1.3540 um,1.3550 um,1.3560 um,1.3570 um,1.3580 um,1.3590 um,1.3600 um,1.3610 um,1.3620 um,1.3630 um,1.3640 um,1.3650 um,1.3660 um,1.3670 um,1.3680 um,1.3690 um,1.3700 um,1.3710 um,1.3720 um,1.3730 um,1.3740 um,1.3750 um,1.3760 um,1.3770 um,1.3780 um,1.3790 um,1.3800 um,1.3810 um,1.3820 um,1.3830 um,1.3840 um,1.3850 um,1.3860 um,1.3870 um,1.3880 um,1.3890 um,1.3900 um,1.3910 um,1.3920 um,1.3930 um,1.3940 um,1.3950 um,1.3960 um,1.3970 um,1.3980 um,1.3990 um,1.4000 um,1.4010 um,1.4020 um,1.4030 um,1.4040 um,1.4050 um,1.4060 um,1.4070 um,1.4080 um,1.4090 um,1.4100 um,1.4110 um,1.4120 um,1.4130 um,1.4140 um,1.4150 um,1.4160 um,1.4170 um,1.4180 um,1.4190 um,1.4200 um,1.4210 um,1.4220 um,1.4230 um,1.4240 um,1.4250 um,1.4260 um,1.4270 um,1.4280 um,1.4290 um,1.4300 um,1.4310 um,1.4320 um,1.4330 um,1.4340 um,1.4350 um,1.4360 um,1.4370 um,1.4380 um,1.4390 um,1.4400 um,1.4410 um,1.4420 um,1.4430 um,1.4440 um,1.4450 um,1.4460 um,1.4470 um,1.4480 um,1.4490 um,1.4500 um,1.4510 um,1.4520 um,1.4530 um,1.4540 um,1.4550 um,1.4560 um,1.4570 um,1.4580 um,1.4590 um,1.4600 um,1.4610 um,1.4620 um,1.4630 um,1.4640 um,1.4650 um,1.4660 um,1.4670 um,1.4680 um,1.4690 um,1.4700 um,1.4710 um,1.4720 um,1.4730 um,1.4740 um,1.4750 um,1.4760 um,1.4770 um,1.4780 um,1.4790 um,1.4800 um,1.4810 um,1.4820 um,1.4830 um,1.4840 um,1.4850 um,1.4860 um,1.4870 um,1.4880 um,1.4890 um,1.4900 um,1.4910 um,1.4920 um,1.4930 um,1.4940 um,1.4950 um,1.4960 um,1.4970 um,1.4980 um,1.4990 um,1.5000 um,1.5010 um,1.5020 um,1.5030 um,1.5040 um,1.5050 um,1.5060 um,1.5070 um,1.5080 um,1.5090 um,1.5100 um,1.5110 um,1.5120 um,1.5130 um,1.5140 um,1.5150 um,1.5160 um,1.5170 um,1.5180 um,1.5190 um,1.5200 um,1.5210 um,1.5220 um,1.5230 um,1.5240 um,1.5250 um,1.5260 um,1.5270 um,1.5280 um,1.5290 um,1.5300 um,1.5310 um,1.5320 um,1.5330 um,1.5340 um,1.5350 um,1.5360 um,1.5370 um,1.5380 um,1.5390 um,1.5400 um,1.5410 um,1.5420 um,1.5430 um,1.5440 um,1.5450 um,1.5460 um,1.5470 um,1.5480 um,1.5490 um,1.5500 um,1.5510 um,1.5520 um,1.5530 um,1.5540 um,1.5550 um,1.5560 um,1.5570 um,1.5580 um,1.5590 um,1.5600 um,1.5610 um,1.5620 um,1.5630 um,1.5640 um,1.5650 um,1.5660 um,1.5670 um,1.5680 um,1.5690 um,1.5700 um,1.5710 um,1.5720 um,1.5730 um,1.5740 um,1.5750 um,1.5760 um,1.5770 um,1.5780 um,1.5790 um,1.5800 um,1.5810 um,1.5820 um,1.5830 um,1.5840 um,1.5850 um,1.5860 um,1.5870 um,1.5880 um,1.5890 um,1.5900 um,1.5910 um,1.5920 um,1.5930 um,1.5940 um,1.5950 um,1.5960 um,1.5970 um,1.5980 um,1.5990 um,1.6000 um,1.6010 um,1.6020 um,1.6030 um,1.6040 um,1.6050 um,1.6060 um,1.6070 um,1.6080 um,1.6090 um,1.6100 um,1.6110 um,1.6120 um,1.6130 um,1.6140 um,1.6150 um,1.6160 um,1.6170 um,1.6180 um,1.6190 um,1.6200 um,1.6210 um,1.6220 um,1.6230 um,1.6240 um,1.6250 um,1.6260 um,1.6270 um,1.6280 um,1.6290 um,1.6300 um,1.6310 um,1.6320 um,1.6330 um,1.6340 um,1.6350 um,1.6360 um,1.6370 um,1.6380 um,1.6390 um,1.6400 um,1.6410 um,1.6420 um,1.6430 um,1.6440 um,1.6450 um,1.6460 um,1.6470 um,1.6480 um,1.6490 um,1.6500 um,1.6510 um,1.6520 um,1.6530 um,1.6540 um,1.6550 um,1.6560 um,1.6570 um,1.6580 um,1.6590 um,1.6600 um,1.6610 um,1.6620 um,1.6630 um,1.6640 um,1.6650 um,1.6660 um,1.6670 um,1.6680 um,1.6690 um,1.6700 um,1.6710 um,1.6720 um,1.6730 um,1.6740 um,1.6750 um,1.6760 um,1.6770 um,1.6780 um,1.6790 um,1.6800 um,1.6810 um,1.6820 um,1.6830 um,1.6840 um,1.6850 um,1.6860 um,1.6870 um,1.6880 um,1.6890 um,1.6900 um,1.6910 um,1.6920 um,1.6930 um,1.6940 um,1.6950 um,1.6960 um,1.6970 um,1.6980 um,1.6990 um,1.7000 um,1.7020 um,1.7050 um,1.7100 um,1.7150 um,1.7200 um,1.7250 um,1.7300 um,1.7350 um,1.7400 um,1.7450 um,1.7500 um,1.7550 um,1.7600 um,1.7650 um,1.7700 um,1.7750 um,1.7800 um,1.7850 um,1.7900 um,1.7950 um,1.8000 um,1.8050 um,1.8100 um,1.8150 um,1.8200 um,1.8250 um,1.8300 um,1.8350 um,1.8400 um,1.8450 um,1.8500 um,1.8550 um,1.8600 um,1.8650 um,1.8700 um,1.8750 um,1.8800 um,1.8850 um,1.8900 um,1.8950 um,1.9000 um,1.9050 um,1.9100 um,1.9150 um,1.9200 um,1.9250 um,1.9300 um,1.9350 um,1.9400 um,1.9450 um,1.9500 um,1.9550 um,1.9600 um,1.9650 um,1.9700 um,1.9750 um,1.9800 um,1.9850 um,1.9900 um,1.9950 um,2.0000 um,2.0050 um,2.0100 um,2.0150 um,2.0200 um,2.0250 um,2.0300 um,2.0350 um,2.0400 um,2.0450 um,2.0500 um,2.0550 um,2.0600 um,2.0650 um,2.0700 um,2.0750 um,2.0800 um,2.0850 um,2.0900 um,2.0950 um,2.1000 um,2.1050 um,2.1100 um,2.1150 um,2.1200 um,2.1250 um,2.1300 um,2.1350 um,2.1400 um,2.1450 um,2.1500 um,2.1550 um,2.1600 um,2.1650 um,2.1700 um,2.1750 um,2.1800 um,2.1850 um,2.1900 um,2.1950 um,2.2000 um,2.2050 um,2.2100 um,2.2150 um,2.2200 um,2.2250 um,2.2300 um,2.2350 um,2.2400 um,2.2450 um,2.2500 um,2.2550 um,2.2600 um,2.2650 um,2.2700 um,2.2750 um,2.2800 um,2.2850 um,2.2900 um,2.2950 um,2.3000 um,2.3050 um,2.3100 um,2.3150 um,2.3200 um,2.3250 um,2.3300 um,2.3350 um,2.3400 um,2.3450 um,2.3500 um,2.3550 um,2.3600 um,2.3650 um,2.3700 um,2.3750 um,2.3800 um,2.3850 um,2.3900 um,2.3950 um,2.4000 um,2.4050 um,2.4100 um,2.4150 um,2.4200 um,2.4250 um,2.4300 um,2.4350 um,2.4400 um,2.4450 um,2.4500 um,2.4550 um,2.4600 um,2.4650 um,2.4700 um,2.4750 um,2.4800 um,2.4850 um,2.4900 um,2.4950 um,2.5000 um,2.5050 um,2.5100 um,2.5150 um,2.5200 um,2.5250 um,2.5300 um,2.5350 um,2.5400 um,2.5450 um,2.5500 um,2.5550 um,2.5600 um,2.5650 um,2.5700 um,2.5750 um,2.5800 um,2.5850 um,2.5900 um,2.5950 um,2.6000 um,2.6050 um,2.6100 um,2.6150 um,2.6200 um,2.6250 um,2.6300 um,2.6350 um,2.6400 um,2.6450 um,2.6500 um,2.6550 um,2.6600 um,2.6650 um,2.6700 um,2.6750 um,2.6800 um,2.6850 um,2.6900 um,2.6950 um,2.7000 um,2.7050 um,2.7100 um,2.7150 um,2.7200 um,2.7250 um,2.7300 um,2.7350 um,2.7400 um,2.7450 um,2.7500 um,2.7550 um,2.7600 um,2.7650 um,2.7700 um,2.7750 um,2.7800 um,2.7850 um,2.7900 um,2.7950 um,2.8000 um,2.8050 um,2.8100 um,2.8150 um,2.8200 um,2.8250 um,2.8300 um,2.8350 um,2.8400 um,2.8450 um,2.8500 um,2.8550 um,2.8600 um,2.8650 um,2.8700 um,2.8750 um,2.8800 um,2.8850 um,2.8900 um,2.8950 um,2.9000 um,2.9050 um,2.9100 um,2.9150 um,2.9200 um,2.9250 um,2.9300 um,2.9350 um,2.9400 um,2.9450 um,2.9500 um,2.9550 um,2.9600 um,2.9650 um,2.9700 um,2.9750 um,2.9800 um,2.9850 um,2.9900 um,2.9950 um,3.0000 um,3.0050 um,3.0100 um,3.0150 um,3.0200 um,3.0250 um,3.0300 um,3.0350 um,3.0400 um,3.0450 um,3.0500 um,3.0550 um,3.0600 um,3.0650 um,3.0700 um,3.0750 um,3.0800 um,3.0850 um,3.0900 um,3.0950 um,3.1000 um,3.1050 um,3.1100 um,3.1150 um,3.1200 um,3.1250 um,3.1300 um,3.1350 um,3.1400 um,3.1450 um,3.1500 um,3.1550 um,3.1600 um,3.1650 um,3.1700 um,3.1750 um,3.1800 um,3.1850 um,3.1900 um,3.1950 um,3.2000 um,3.2050 um,3.2100 um,3.2150 um,3.2200 um,3.2250 um,3.2300 um,3.2350 um,3.2400 um,3.2450 um,3.2500 um,3.2550 um,3.2600 um,3.2650 um,3.2700 um,3.2750 um,3.2800 um,3.2850 um,3.2900 um,3.2950 um,3.3000 um,3.3050 um,3.3100 um,3.3150 um,3.3200 um,3.3250 um,3.3300 um,3.3350 um,3.3400 um,3.3450 um,3.3500 um,3.3550 um,3.3600 um,3.3650 um,3.3700 um,3.3750 um,3.3800 um,3.3850 um,3.3900 um,3.3950 um,3.4000 um,3.4050 um,3.4100 um,3.4150 um,3.4200 um,3.4250 um,3.4300 um,3.4350 um,3.4400 um,3.4450 um,3.4500 um,3.4550 um,3.4600 um,3.4650 um,3.4700 um,3.4750 um,3.4800 um,3.4850 um,3.4900 um,3.4950 um,3.5000 um,3.5050 um,3.5100 um,3.5150 um,3.5200 um,3.5250 um,3.5300 um,3.5350 um,3.5400 um,3.5450 um,3.5500 um,3.5550 um,3.5600 um,3.5650 um,3.5700 um,3.5750 um,3.5800 um,3.5850 um,3.5900 um,3.5950 um,3.6000 um,3.6050 um,3.6100 um,3.6150 um,3.6200 um,3.6250 um,3.6300 um,3.6350 um,3.6400 um,3.6450 um,3.6500 um,3.6550 um,3.6600 um,3.6650 um,3.6700 um,3.6750 um,3.6800 um,3.6850 um,3.6900 um,3.6950 um,3.7000 um,3.7050 um,3.7100 um,3.7150 um,3.7200 um,3.7250 um,3.7300 um,3.7350 um,3.7400 um,3.7450 um,3.7500 um,3.7550 um,3.7600 um,3.7650 um,3.7700 um,3.7750 um,3.7800 um,3.7850 um,3.7900 um,3.7950 um,3.8000 um,3.8050 um,3.8100 um,3.8150 um,3.8200 um,3.8250 um,3.8300 um,3.8350 um,3.8400 um,3.8450 um,3.8500 um,3.8550 um,3.8600 um,3.8650 um,3.8700 um,3.8750 um,3.8800 um,3.8850 um,3.8900 um,3.8950 um,3.9000 um,3.9050 um,3.9100 um,3.9150 um,3.9200 um,3.9250 um,3.9300 um,3.9350 um,3.9400 um,3.9450 um,3.9500 um,3.9550 um,3.9600 um,3.9650 um,3.9700 um,3.9750 um,3.9800 um,3.9850 um,3.9900 um,3.9950 um,4.0000 um
+2017,1,1,0,0,-2,0,0,0,1,-8,0,0,0,0,62.93,-9999.0,0.86690002679824829,880.0,0.44900000000000001,204.30000000000001,1.5,243.9788470478905,40.0,130.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+2017,1,1,1,0,-2,0,0,0,1,-8,0,0,0,0,63.469999999999999,-9999.0,0.86690002679824829,880.0,0.42399999999999999,201.30000000000001,1.8999999999999999,253.4639904877556,40.0,130.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+2017,1,1,2,0,-2,0,0,0,1,-8,0,0,0,0,63.380000000000003,-9999.0,0.86690002679824829,880.0,0.40699999999999997,204.80000000000001,2.2000000000000002,262.8420513103683,40.0,130.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+```
+
+<h2 id="rate-limits">Rate Limits</h2>
+
+Rate limits for this application are significantly less than the [standard rate limits](/docs/rate-limits){:target="_blank"} for developer.nrel.gov. This decrease in the limit is required because the data provided through this service is very computationally intensive to generate and provide. These rate limits are carefully calculated to allow all users the maximum throughput that our servers can sustain.
+
+There are several levels of rate limiting for this service. The first limit determines how many requests a given user can make per 24 hour period. For all requests this limit is set at 2000 requests per day at a frequency of no more than 1 every 2 seconds.
+
+Secondly each user is limited to 20 in-flight requests at any given time.
+
+In addition to this limit, the service has a secondary fail-safe mechanism designed to prevent significant performance decreases that can be caused by unexpectedly high usage of the service. This limit will cause the service to stop accepting requests when the queue reaches a point where additional requests will significantly lower server performance. When this limit is hit, the service will error with a message describing that the request queue is full.
+
+<h2 id="contacts">Contact</h2>
+
+<p>For questions about the API or the data models please contact <a href="mailto:nsrdb@nrel.gov">nsrdb@nrel.gov</a></p>
+
+<h2 id="errors">Errors</h2>
+
+<p><a href="/docs/errors/">Standard errors</a> may be returned. In addition, the following service-specific errors may be returned:</p>
+
+<table border="0" cellpadding="0" cellspacing="0" class="doc-parameters">
+  <thead>
+    <tr>
+      <th class="doc-parameters-name" scope="col" style="width: 100px;">HTTP Status Code</th>
+      <th class="doc-parameters-required" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="doc-parameter-name" scope="row">400</th>
+      <td class="doc-parameter-description">Bad Request: When required parameters are missing.</td>
+    </tr>
+  </tbody>
+</table>
