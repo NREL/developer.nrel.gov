@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
       <% unless(current_page.url == "/") %>
-        <%= current_page.data.title %> 
+        <%= current_page.data.title %>
         <% if(current_page.url =~ %r{/docs/\w+/?$}) %>
           APIs
         <% elsif(current_page.url =~ %r{/docs/\w+/.+}) %>
@@ -13,7 +13,7 @@
         <% end %>
         |
       <% end %>
-      NREL: Developer Network
+      NLR: Developer Network
     </title>
 
     <link rel="canonical" href="https://developer.nrel.gov<%= current_page.url %>" />
