@@ -10,7 +10,7 @@ The content files to edit are in [`./source`](https://github.com/NREL/developer.
 
 1. Install [Docker](https://www.docker.com/products/docker-desktop/) on your computer.
 2. Checkout the `developer.nrel.gov` repository on your computer (`git clone https://github.com/NREL/developer.nrel.gov.git`).
-3. For NREL employees on the NREL network: Add a `docker-compose.override.yml`, with the following contents, but substituting `REPLACE_ME` with the appropriate URL (reach out to a maintainer for this value):
+3. For NLR employees on the NLR network: Add a `docker-compose.override.yml`, with the following contents, but substituting `REPLACE_ME` with the appropriate URL (reach out to a maintainer for this value):
 
     ```yaml
     services:

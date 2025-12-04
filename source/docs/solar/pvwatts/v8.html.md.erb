@@ -1,6 +1,6 @@
 ---
 title: PVWatts V8
-summary: Version 8 is the current version of the PVWatts API, and is the version used by <a href="https://pvwatts.nrel.gov/">NREL's PVWatts Calculator</a>. Updates from Version 6 include using the latest NREL National Solar Radiation Database (NSRDB). V8 also adds a bifacial module option, a new input for monthly irradiance losses, and updates the photovoltaic module, inverter, and thermal effects models to use more detailed and industry-accepted algorithms.
+summary: Version 8 is the current version of the PVWatts API, and is the version used by <a href="https://pvwatts.nrel.gov/">NLR's PVWatts Calculator</a>. Updates from Version 6 include using the latest NLR National Solar Radiation Database (NSRDB). V8 also adds a bifacial module option, a new input for monthly irradiance losses, and updates the photovoltaic module, inverter, and thermal effects models to use more detailed and industry-accepted algorithms.
 url: GET /api/pvwatts/v8
 sort_value: "0"
 
@@ -8,9 +8,9 @@ sort_value: "0"
 
 # <%= current_page.data.title %> <span class="url">(<%= current_page.data.url %>)</span>
 
-PVWatts<sup>&reg;</sup> Version 8 is is the current version of the PVWatts API. Updates from Version 6 include a bifacial module option, a new input for monthly irradiance losses, new inputs for specifying albedo, and updates to the photovoltaic module, inverter, and thermal effects models to use more detailed and industry-accepted algorithms. PVWatts V8 also updates the weather data to 2020 TMY data from the NREL National Solar Radiation Database (NSRDB) for locations covered by the database. (The NSRDB weather data used in PVWatts V6 is from around 2015.) This update provides production estimates based on the latest, state-of-the art models from NREL that may differ from the V6 estimates, depending on the location and inputs. From a coding perspective, PVWatts V8 replaces the pvwattsv5 compute module with pvwattsv8 so that the PVWatts Calculator, web API, and implementation of PVWatts in the System Advisor Model (SAM) all use the same underlying model. For a complete description of PVWatts V8, see the [description on the PVWatts website](https://pvwatts.nrel.gov/version_8.php).
+PVWatts<sup>&reg;</sup> Version 8 is is the current version of the PVWatts API. Updates from Version 6 include a bifacial module option, a new input for monthly irradiance losses, new inputs for specifying albedo, and updates to the photovoltaic module, inverter, and thermal effects models to use more detailed and industry-accepted algorithms. PVWatts V8 also updates the weather data to 2020 TMY data from the NLR National Solar Radiation Database (NSRDB) for locations covered by the database. (The NSRDB weather data used in PVWatts V6 is from around 2015.) This update provides production estimates based on the latest, state-of-the art models from NLR that may differ from the V6 estimates, depending on the location and inputs. From a coding perspective, PVWatts V8 replaces the pvwattsv5 compute module with pvwattsv8 so that the PVWatts Calculator, web API, and implementation of PVWatts in the System Advisor Model (SAM) all use the same underlying model. For a complete description of PVWatts V8, see the [description on the PVWatts website](https://pvwatts.nrel.gov/version_8.php).
 
-NREL anticipates that the V8 API will run slightly slower than the V6 API due to upgraded models. Please contact [pvwatts@nrel.gov](mailto:pvwatts@nrel.gov) if you find V8 is significantly slower or that the performance is impacting your product.
+NLR anticipates that the V8 API will run slightly slower than the V6 API due to upgraded models. Please contact [pvwatts@nrel.gov](mailto:pvwatts@nrel.gov) if you find V8 is significantly slower or that the performance is impacting your product.
 
 There is a forthcoming report containing a technical description of the model.
 
@@ -300,7 +300,7 @@ There is a forthcoming report containing a technical description of the model.
             <tr>
               <th scope="row">nsrdb</th>
               <td>
-                <p>Gridded TMY data from the NREL National Solar Radiation Database (<a href="https://nsrdb.nrel.gov/about/what-is-the-nsrdb" target="_blank">NSRDB</a>). Datasets include: <em>NSRDB PSM V3 GOES tmy-2020 3.2.0</em>, <em>NSRDB PSM V3 Himawari tmy-2020 3.2.0</em>, and <em>NSRDB PSM V4 Meteosat Prime Meridian tmy-2022 1.0.0</em></p>
+                <p>Gridded TMY data from the NLR National Solar Radiation Database (<a href="https://nsrdb.nrel.gov/about/what-is-the-nsrdb" target="_blank">NSRDB</a>). Datasets include: <em>NSRDB PSM V3 GOES tmy-2020 3.2.0</em>, <em>NSRDB PSM V3 Himawari tmy-2020 3.2.0</em>, and <em>NSRDB PSM V4 Meteosat Prime Meridian tmy-2022 1.0.0</em></p>
               </td>
             </tr>
             <tr>

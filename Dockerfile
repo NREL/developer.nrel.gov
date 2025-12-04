@@ -13,7 +13,7 @@ RUN apt-get update && \
   apt-get -y --no-install-recommends install build-essential curl && \
   rm -rf /var/lib/apt/lists/* /var/lib/dpkg/*-old /var/cache/* /var/log/*
 
-# Install NREL root certs for machines running on NREL's network.
+# Install NLR root certs for machines running on NLR's network.
 ARG NREL_ROOT_CERT_URL_ROOT=""
 RUN set -x && \
   if [ -n "$NREL_ROOT_CERT_URL_ROOT" ]; then \

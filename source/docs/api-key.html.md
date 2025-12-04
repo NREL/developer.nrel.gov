@@ -9,7 +9,7 @@ hidden_child: true
 After [signing up](/signup), you'll be given your own, unique API key. This 40 character string is your API key. The key:
 
 - Uniquely identifies you.
-- Gives you access to NREL's web services.
+- Gives you access to NLR's web services.
 - Should be kept private and should not be shared.
 
 To use your key, simply pass the key as a URL query parameter when making web service requests. For example:
