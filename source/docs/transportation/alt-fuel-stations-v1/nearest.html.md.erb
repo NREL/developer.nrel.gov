@@ -166,12 +166,10 @@ The individual fuel station records are returned in order of ascending distance 
 
 ```json
 {
-  "latitude": 39.743078,
-  "longitude": -105.152278,
   "station_locator_url": "https://afdc.energy.gov/stations/",
-  "total_results": 82,
+  "total_results": 108,
   "station_counts": {
-    "total": 320,
+    "total": 395,
     "fuels": {
       "BD": {
         "total": 0
@@ -180,9 +178,9 @@ The individual fuel station records are returned in order of ascending distance 
         "total": 0
       },
       "ELEC": {
-        "total": 320,
+        "total": 395,
         "stations": {
-          "total": 82
+          "total": 108
         }
       },
       "HY": {
@@ -196,9 +194,16 @@ The individual fuel station records are returned in order of ascending distance 
       },
       "LPG": {
         "total": 0
+      },
+      "RD": {
+        "total": 0
       }
     }
   },
+  "latitude": 39.743078,
+  "longitude": -105.152278,
+  "location_country": null,
+  "precision": null,
   "offset": 0,
   "fuel_stations": [
     {
@@ -206,33 +211,36 @@ The individual fuel station records are returned in order of ascending distance 
       "access_days_time": "24 hours daily",
       "access_detail_code": null,
       "cards_accepted": null,
-      "date_last_confirmed": "2022-06-13",
+      "date_last_confirmed": "2025-10-28",
       "expected_date": null,
       "fuel_type_code": "ELEC",
       "groups_with_access_code": "Public",
       "id": 194116,
+      "maximum_vehicle_class": null,
       "open_date": "2021-08-19",
       "owner_type_code": null,
+      "related_stations": [],
+      "restricted_access": false,
       "status_code": "E",
-      "restricted_access": null,
-      "maximum_vehicle_class": null,
+      "funding_sources": null,
+      "facility_type": null,
       "station_name": "1687 COLE BLVD EAST STATION 1",
       "station_phone": "888-758-4389",
-      "updated_at": "2022-06-13T01:40:48Z",
-      "facility_type": null,
+      "updated_at": "2025-10-28T02:08:15Z",
       "geocode_status": "GPS",
       "latitude": 39.740932,
       "longitude": -105.156235,
       "city": "Lakewood",
+      "country": "US",
       "intersection_directions": null,
       "plus4": null,
       "state": "CO",
       "street_address": "1687 Cole Blvd",
       "zip": "80401",
-      "country": "US",
       "bd_blends": null,
       "cng_dispenser_num": null,
       "cng_fill_type_code": null,
+      "cng_has_rng": null,
       "cng_psi": null,
       "cng_renewable_source": null,
       "cng_total_compression": null,
@@ -247,37 +255,122 @@ The individual fuel station records are returned in order of ascending distance 
       "ev_level1_evse_num": null,
       "ev_level2_evse_num": 2,
       "ev_network": "ChargePoint Network",
-      "ev_network_web": "http://www.chargepoint.com/",
+      "ev_network_web": "https://www.chargepoint.com",
       "ev_other_evse": null,
       "ev_pricing": null,
       "ev_renewable_source": null,
+      "ev_workplace_charging": false,
       "hy_is_retail": null,
       "hy_pressures": null,
       "hy_standards": null,
       "hy_status_link": null,
+      "lng_has_rng": null,
       "lng_renewable_source": null,
       "lng_vehicle_class": null,
-      "lpg_primary": null,
       "lpg_nozzle_types": null,
+      "lpg_primary": null,
       "ng_fill_type_code": null,
       "ng_psi": null,
       "ng_vehicle_class": null,
+      "rd_blended_with_biodiesel": null,
       "rd_blends": null,
       "rd_blends_fr": null,
-      "rd_blended_with_biodiesel": null,
       "rd_max_biodiesel_level": null,
+      "nps_unit_name": null,
       "access_days_time_fr": null,
       "intersection_directions_fr": null,
       "bd_blends_fr": null,
       "groups_with_access_code_fr": "Public",
       "ev_pricing_fr": null,
+      "ev_charging_units": [
+        {
+          "network": "ChargePoint Network",
+          "connectors": {
+            "J1772": {
+              "power_kw": 6.5,
+              "port_count": 1
+            },
+            "J3271": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "TESLA": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "CHADEMO": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "NEMA515": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "NEMA520": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "NEMA1450": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "J1772COMBO": {
+              "power_kw": null,
+              "port_count": 0
+            }
+          },
+          "port_count": 1,
+          "charging_level": "2",
+          "funding_sources": []
+        },
+        {
+          "network": "ChargePoint Network",
+          "connectors": {
+            "J1772": {
+              "power_kw": 6.5,
+              "port_count": 1
+            },
+            "J3271": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "TESLA": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "CHADEMO": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "NEMA515": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "NEMA520": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "NEMA1450": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "J1772COMBO": {
+              "power_kw": null,
+              "port_count": 0
+            }
+          },
+          "port_count": 1,
+          "charging_level": "2",
+          "funding_sources": []
+        }
+      ],
       "ev_network_ids": {
         "station": [
           "USCPIL9075981"
         ],
         "posts": [
-          "16005951",
-          "16005961"
+          "27812261",
+          "27812271"
         ]
       },
       "distance": 0.25756,
@@ -295,12 +388,10 @@ The individual fuel station records are returned in order of ascending distance 
 {
   "type": "FeatureCollection",
   "metadata": {
-    "latitude": 39.743078,
-    "longitude": -105.152278,
     "station_locator_url": "https://afdc.energy.gov/stations/",
-    "total_results": 82,
+    "total_results": 108,
     "station_counts": {
-      "total": 320,
+      "total": 395,
       "fuels": {
         "BD": {
           "total": 0
@@ -309,9 +400,9 @@ The individual fuel station records are returned in order of ascending distance 
           "total": 0
         },
         "ELEC": {
-          "total": 320,
+          "total": 395,
           "stations": {
-            "total": 82
+            "total": 108
           }
         },
         "HY": {
@@ -325,9 +416,16 @@ The individual fuel station records are returned in order of ascending distance 
         },
         "LPG": {
           "total": 0
+        },
+        "RD": {
+          "total": 0
         }
       }
     },
+    "latitude": 39.743078,
+    "longitude": -105.152278,
+    "location_country": null,
+    "precision": null,
     "offset": 0
   },
   "features": [
@@ -345,31 +443,34 @@ The individual fuel station records are returned in order of ascending distance 
         "access_days_time": "24 hours daily",
         "access_detail_code": null,
         "cards_accepted": null,
-        "date_last_confirmed": "2022-06-13",
+        "date_last_confirmed": "2025-10-28",
         "expected_date": null,
         "fuel_type_code": "ELEC",
         "groups_with_access_code": "Public",
         "id": 194116,
+        "maximum_vehicle_class": null,
         "open_date": "2021-08-19",
         "owner_type_code": null,
+        "related_stations": [],
+        "restricted_access": false,
         "status_code": "E",
-        "restricted_access": null,
-        "maximum_vehicle_class": null,
+        "funding_sources": null,
+        "facility_type": null,
         "station_name": "1687 COLE BLVD EAST STATION 1",
         "station_phone": "888-758-4389",
-        "updated_at": "2022-06-13T01:40:48Z",
-        "facility_type": null,
+        "updated_at": "2025-10-28T02:08:15Z",
         "geocode_status": "GPS",
         "city": "Lakewood",
+        "country": "US",
         "intersection_directions": null,
         "plus4": null,
         "state": "CO",
         "street_address": "1687 Cole Blvd",
         "zip": "80401",
-        "country": "US",
         "bd_blends": null,
         "cng_dispenser_num": null,
         "cng_fill_type_code": null,
+        "cng_has_rng": null,
         "cng_psi": null,
         "cng_renewable_source": null,
         "cng_total_compression": null,
@@ -384,37 +485,122 @@ The individual fuel station records are returned in order of ascending distance 
         "ev_level1_evse_num": null,
         "ev_level2_evse_num": 2,
         "ev_network": "ChargePoint Network",
-        "ev_network_web": "http://www.chargepoint.com/",
+        "ev_network_web": "https://www.chargepoint.com",
         "ev_other_evse": null,
         "ev_pricing": null,
         "ev_renewable_source": null,
+        "ev_workplace_charging": false,
         "hy_is_retail": null,
         "hy_pressures": null,
         "hy_standards": null,
         "hy_status_link": null,
+        "lng_has_rng": null,
         "lng_renewable_source": null,
         "lng_vehicle_class": null,
-        "lpg_primary": null,
         "lpg_nozzle_types": null,
+        "lpg_primary": null,
         "ng_fill_type_code": null,
         "ng_psi": null,
         "ng_vehicle_class": null,
+        "rd_blended_with_biodiesel": null,
         "rd_blends": null,
         "rd_blends_fr": null,
-        "rd_blended_with_biodiesel": null,
         "rd_max_biodiesel_level": null,
+        "nps_unit_name": null,
         "access_days_time_fr": null,
         "intersection_directions_fr": null,
         "bd_blends_fr": null,
         "groups_with_access_code_fr": "Public",
         "ev_pricing_fr": null,
+        "ev_charging_units": [
+          {
+            "network": "ChargePoint Network",
+            "connectors": {
+              "J1772": {
+                "power_kw": 6.5,
+                "port_count": 1
+              },
+              "J3271": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "TESLA": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "CHADEMO": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "NEMA515": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "NEMA520": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "NEMA1450": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "J1772COMBO": {
+                "power_kw": null,
+                "port_count": 0
+              }
+            },
+            "port_count": 1,
+            "charging_level": "2",
+            "funding_sources": []
+          },
+          {
+            "network": "ChargePoint Network",
+            "connectors": {
+              "J1772": {
+                "power_kw": 6.5,
+                "port_count": 1
+              },
+              "J3271": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "TESLA": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "CHADEMO": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "NEMA515": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "NEMA520": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "NEMA1450": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "J1772COMBO": {
+                "power_kw": null,
+                "port_count": 0
+              }
+            },
+            "port_count": 1,
+            "charging_level": "2",
+            "funding_sources": []
+          }
+        ],
         "ev_network_ids": {
           "station": [
             "USCPIL9075981"
           ],
           "posts": [
-            "16005951",
-            "16005961"
+            "27812261",
+            "27812271"
           ]
         },
         "distance": 0.25756,
@@ -432,12 +618,10 @@ The individual fuel station records are returned in order of ascending distance 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <response>
-  <latitude>39.743078</latitude>
-  <longitude>-105.152278</longitude>
   <station-locator-url>https://afdc.energy.gov/stations/</station-locator-url>
-  <total-results>82</total-results>
+  <total-results>108</total-results>
   <station-counts>
-    <total>320</total>
+    <total>395</total>
     <fuels>
       <BD>
         <total>0</total>
@@ -446,9 +630,9 @@ The individual fuel station records are returned in order of ascending distance 
         <total>0</total>
       </E85>
       <ELEC>
-        <total>320</total>
+        <total>395</total>
         <stations>
-          <total>82</total>
+          <total>108</total>
         </stations>
       </ELEC>
       <HY>
@@ -463,8 +647,14 @@ The individual fuel station records are returned in order of ascending distance 
       <LPG>
         <total>0</total>
       </LPG>
+      <RD>
+        <total>0</total>
+      </RD>
     </fuels>
   </station-counts>
+  <latitude>39.743078</latitude>
+  <longitude>-105.152278</longitude>
+  <location-country></location-country>
   <offset>0</offset>
   <fuel-stations type="array">
     <fuel-station>
@@ -472,33 +662,36 @@ The individual fuel station records are returned in order of ascending distance 
       <access-days-time>24 hours daily</access-days-time>
       <access-detail-code nil="true"/>
       <cards-accepted nil="true"/>
-      <date-last-confirmed>2022-06-13</date-last-confirmed>
+      <date-last-confirmed>2025-10-28</date-last-confirmed>
       <expected-date nil="true"/>
       <fuel-type-code>ELEC</fuel-type-code>
       <groups-with-access-code>Public</groups-with-access-code>
       <id>194116</id>
+      <maximum-vehicle-class nil="true"/>
       <open-date>2021-08-19</open-date>
       <owner-type-code nil="true"/>
+      <related-stations/>
+      <restricted-access>false</restricted-access>
       <status-code>E</status-code>
-      <restricted-access nil="true"/>
-      <maximum-vehicle-class nil="true"/>
+      <funding-sources nil="true"/>
+      <facility-type nil="true"/>
       <station-name>1687 COLE BLVD EAST STATION 1</station-name>
       <station-phone>888-758-4389</station-phone>
-      <updated-at>2022-06-13 01:40:48 UTC</updated-at>
-      <facility-type nil="true"/>
+      <updated-at>2025-10-28 02:08:15 UTC</updated-at>
       <geocode-status>GPS</geocode-status>
       <latitude>39.740932</latitude>
       <longitude>-105.156235</longitude>
       <city>Lakewood</city>
+      <country>US</country>
       <intersection-directions nil="true"/>
       <plus4 nil="true"/>
       <state>CO</state>
       <street-address>1687 Cole Blvd</street-address>
       <zip>80401</zip>
-      <country>US</country>
       <bd-blends nil="true"/>
       <cng-dispenser-num nil="true"/>
       <cng-fill-type-code nil="true"/>
+      <cng-has-rng nil="true"/>
       <cng-psi nil="true"/>
       <cng-renewable-source nil="true"/>
       <cng-total-compression nil="true"/>
@@ -513,37 +706,122 @@ The individual fuel station records are returned in order of ascending distance 
       <ev-level1-evse-num nil="true"/>
       <ev-level2-evse-num>2</ev-level2-evse-num>
       <ev-network>ChargePoint Network</ev-network>
-      <ev-network-web>http://www.chargepoint.com/</ev-network-web>
+      <ev-network-web>https://www.chargepoint.com</ev-network-web>
       <ev-other-evse nil="true"/>
       <ev-pricing nil="true"/>
       <ev-renewable-source nil="true"/>
+      <ev-workplace-charging>false</ev-workplace-charging>
       <hy-is-retail nil="true"/>
       <hy-pressures nil="true"/>
       <hy-standards nil="true"/>
       <hy-status-link nil="true"/>
+      <lng-has-rng nil="true"/>
       <lng-renewable-source nil="true"/>
       <lng-vehicle-class nil="true"/>
-      <lpg-primary nil="true"/>
       <lpg-nozzle-types nil="true"/>
+      <lpg-primary nil="true"/>
       <ng-fill-type-code nil="true"/>
       <ng-psi nil="true"/>
       <ng-vehicle-class nil="true"/>
-      <rd-blends-en nil="true"/>
-      <rd-blends-fr nil="true"/>
       <rd-blended-with-biodiesel nil="true"/>
+      <rd-blends nil="true"/>
+      <rd-blends-fr nil="true"/>
       <rd-max-biodiesel-level nil="true"/>
+      <nps-unit-name nil="true"/>
       <access-days-time-fr nil="true"/>
       <intersection-directions-fr nil="true"/>
       <bd-blends-fr nil="true"/>
       <groups-with-access-code-fr>Public</groups-with-access-code-fr>
       <ev-pricing-fr nil="true"/>
+      <ev-charging-units>
+        <ev-charging-unit>
+          <network>ChargePoint Network</network>
+          <connectors>
+            <J1772>
+              <power-kw>6.5</power-kw>
+              <port-count>1</port-count>
+            </J1772>
+            <J3271>
+              <power-kw nil="true"/>
+              <port-count>0</port-count>
+            </J3271>
+            <TESLA>
+              <power-kw nil="true"/>
+              <port-count>0</port-count>
+            </TESLA>
+            <CHADEMO>
+              <power-kw nil="true"/>
+              <port-count>0</port-count>
+            </CHADEMO>
+            <NEMA515>
+              <power-kw nil="true"/>
+              <port-count>0</port-count>
+            </NEMA515>
+            <NEMA520>
+              <power-kw nil="true"/>
+              <port-count>0</port-count>
+            </NEMA520>
+            <NEMA1450>
+              <power-kw nil="true"/>
+              <port-count>0</port-count>
+            </NEMA1450>
+            <J1772COMBO>
+              <power-kw nil="true"/>
+              <port-count>0</port-count>
+            </J1772COMBO>
+          </connectors>
+          <port-count>1</port-count>
+          <charging-level>2</charging-level>
+          <funding-sources/>
+        </ev-charging-unit>
+        <ev-charging-unit>
+          <network>ChargePoint Network</network>
+          <connectors>
+            <J1772>
+              <power-kw>6.5</power-kw>
+              <port-count>1</port-count>
+            </J1772>
+            <J3271>
+              <power-kw nil="true"/>
+              <port-count>0</port-count>
+            </J3271>
+            <TESLA>
+              <power-kw nil="true"/>
+              <port-count>0</port-count>
+            </TESLA>
+            <CHADEMO>
+              <power-kw nil="true"/>
+              <port-count>0</port-count>
+            </CHADEMO>
+            <NEMA515>
+              <power-kw nil="true"/>
+              <port-count>0</port-count>
+            </NEMA515>
+            <NEMA520>
+              <power-kw nil="true"/>
+              <port-count>0</port-count>
+            </NEMA520>
+            <NEMA1450>
+              <power-kw nil="true"/>
+              <port-count>0</port-count>
+            </NEMA1450>
+            <J1772COMBO>
+              <power-kw nil="true"/>
+              <port-count>0</port-count>
+            </J1772COMBO>
+          </connectors>
+          <port-count>1</port-count>
+          <charging-level>2</charging-level>
+          <funding-sources/>
+        </ev-charging-unit>
+      </ev-charging-units>
       <ev-network-ids>
         <station>
           <station>USCPIL9075981</station>
         </station>
         <posts>
-          <post>16005951</post>
-          <post>16005961</post>
+          <post>27812261</post>
+          <post>27812271</post>
         </posts>
       </ev-network-ids>
       <distance>0.25756</distance>
@@ -576,7 +854,7 @@ The individual fuel station records are returned in order of ascending distance 
           <Value>24 hours daily</Value>
         </Data>
         <Data name="date_last_confirmed">
-          <Value>2022-06-13</Value>
+          <Value>2025-10-28</Value>
         </Data>
         <Data name="fuel_type_code">
           <Value>ELEC</Value>
@@ -590,11 +868,17 @@ The individual fuel station records are returned in order of ascending distance 
         <Data name="open_date">
           <Value>2021-08-19</Value>
         </Data>
+        <Data name="related_stations">
+          <Value>[]</Value>
+        </Data>
+        <Data name="restricted_access">
+          <Value>false</Value>
+        </Data>
         <Data name="status_code">
           <Value>E</Value>
         </Data>
         <Data name="updated_at">
-          <Value>2022-06-13 01:40:48 UTC</Value>
+          <Value>2025-10-28 02:08:15 UTC</Value>
         </Data>
         <Data name="geocode_status">
           <Value>GPS</Value>
@@ -602,14 +886,14 @@ The individual fuel station records are returned in order of ascending distance 
         <Data name="city">
           <Value>Lakewood</Value>
         </Data>
+        <Data name="country">
+          <Value>US</Value>
+        </Data>
         <Data name="state">
           <Value>CO</Value>
         </Data>
         <Data name="zip">
           <Value>80401</Value>
-        </Data>
-        <Data name="country">
-          <Value>US</Value>
         </Data>
         <Data name="ev_connector_types">
           <Value>["J1772"]</Value>
@@ -621,16 +905,22 @@ The individual fuel station records are returned in order of ascending distance 
           <Value>ChargePoint Network</Value>
         </Data>
         <Data name="ev_network_web">
-          <Value>http://www.chargepoint.com/</Value>
+          <Value>https://www.chargepoint.com</Value>
+        </Data>
+        <Data name="ev_workplace_charging">
+          <Value>false</Value>
         </Data>
         <Data name="groups_with_access_code_fr">
           <Value>Public</Value>
+        </Data>
+        <Data name="ev_charging_units">
+          <Value>[{"network" =&gt; "ChargePoint Network", "connectors" =&gt; {"J1772" =&gt; {"power_kw" =&gt; 6.5, "port_count" =&gt; 1}, "J3271" =&gt; {"power_kw" =&gt; nil, "port_count" =&gt; 0}, "TESLA" =&gt; {"power_kw" =&gt; nil, "port_count" =&gt; 0}, "CHADEMO" =&gt; {"power_kw" =&gt; nil, "port_count" =&gt; 0}, "NEMA515" =&gt; {"power_kw" =&gt; nil, "port_count" =&gt; 0}, "NEMA520" =&gt; {"power_kw" =&gt; nil, "port_count" =&gt; 0}, "NEMA1450" =&gt; {"power_kw" =&gt; nil, "port_count" =&gt; 0}, "J1772COMBO" =&gt; {"power_kw" =&gt; nil, "port_count" =&gt; 0}}, "port_count" =&gt; 1, "charging_level" =&gt; "2", "funding_sources" =&gt; []}, {"network" =&gt; "ChargePoint Network", "connectors" =&gt; {"J1772" =&gt; {"power_kw" =&gt; 6.5, "port_count" =&gt; 1}, "J3271" =&gt; {"power_kw" =&gt; nil, "port_count" =&gt; 0}, "TESLA" =&gt; {"power_kw" =&gt; nil, "port_count" =&gt; 0}, "CHADEMO" =&gt; {"power_kw" =&gt; nil, "port_count" =&gt; 0}, "NEMA515" =&gt; {"power_kw" =&gt; nil, "port_count" =&gt; 0}, "NEMA520" =&gt; {"power_kw" =&gt; nil, "port_count" =&gt; 0}, "NEMA1450" =&gt; {"power_kw" =&gt; nil, "port_count" =&gt; 0}, "J1772COMBO" =&gt; {"power_kw" =&gt; nil, "port_count" =&gt; 0}}, "port_count" =&gt; 1, "charging_level" =&gt; "2", "funding_sources" =&gt; []}]</Value>
         </Data>
         <Data name="ev_network_ids_station">
           <Value>["USCPIL9075981"]</Value>
         </Data>
         <Data name="ev_network_ids_posts">
-          <Value>["16005951", "16005961"]</Value>
+          <Value>["27812261", "27812271"]</Value>
         </Data>
         <Data name="distance">
           <Value>0.25756</Value>
