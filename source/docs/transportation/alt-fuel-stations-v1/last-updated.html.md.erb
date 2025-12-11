@@ -26,7 +26,7 @@ sort_value: "70"
     </tr>
   </thead>
   <tbody>
-    <%= partial "docs/transportation/alt-fuel-stations-v1/request_params/format", locals: {formats: %w[json xml]} %>
+    <%= partial "docs/transportation/alt-fuel-stations-v1/request_params/format", locals: {formats: %w[json]} %>
     <%= partial "docs/transportation/alt-fuel-stations-v1/request_params/api_key" %>
   </tbody>
 </table>
@@ -67,17 +67,6 @@ sort_value: "70"
 {
   "last_updated": "2012-04-06T13:48:16Z"
 }
-```
-
-### XML Output Format
-
-<pre>GET <a href="/api/alt-fuel-stations/v1/last-updated.xml?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/last-updated.xml?api_key=DEMO_KEY</a></pre>
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<alt-fuel-stations>
-  <last-updated type="datetime">2012-04-06T13:48:16Z</last-updated>
-</alt-fuel-stations>
 ```
 
 ## Rate Limits
