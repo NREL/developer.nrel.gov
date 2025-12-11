@@ -56,41 +56,49 @@ The response is composed of the fuel station matching the requested query. The s
 
 ### JSON Output Format
 
-<pre>GET <a href="/api/alt-fuel-stations/v1/1517.json?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/1517.json?api_key=DEMO_KEY</a></pre>
+<pre>GET <a href="/api/alt-fuel-stations/v1/446595.json?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/446595.json?api_key=DEMO_KEY</a></pre>
 
 ```json
 {
   "alt_fuel_station": {
-    "access_code": "private",
-    "access_days_time": "Fleet use only",
+    "access_code": "public",
+    "access_days_time": "24 hours daily",
     "access_detail_code": null,
-    "cards_accepted": null,
-    "date_last_confirmed": "2023-09-14",
+    "cards_accepted": "A D Debit M V",
+    "date_last_confirmed": null,
     "expected_date": null,
     "fuel_type_code": "ELEC",
-    "groups_with_access_code": "Private",
-    "id": 1517,
-    "maximum_vehicle_class": null,
-    "open_date": "1999-10-15",
-    "owner_type_code": "LG",
-    "related_stations": [],
-    "restricted_access": null,
+    "groups_with_access_code": "Public",
+    "id": 446595,
+    "maximum_vehicle_class": "LD",
+    "open_date": "2025-11-27",
+    "owner_type_code": "P",
+    "related_stations": [
+      {
+        "id": 213127,
+        "access_code": "public",
+        "fuel_type_code": "E85"
+      }
+    ],
+    "restricted_access": false,
     "status_code": "E",
-    "funding_sources": null,
-    "facility_type": "UTILITY",
-    "station_name": "LADWP - Truesdale Center",
-    "station_phone": null,
-    "updated_at": "2025-08-18T15:54:31Z",
-    "geocode_status": "GPS",
-    "latitude": 34.2483191527193,
-    "longitude": -118.3879713743439,
-    "city": "Sun Valley",
+    "funding_sources": [
+      "NEVI"
+    ],
+    "facility_type": "GAS_STATION",
+    "station_name": "Kwik Trip #1205",
+    "station_phone": "608-793-6267",
+    "updated_at": "2025-12-01T14:44:01Z",
+    "geocode_status": "200-8",
+    "latitude": 43.57532,
+    "longitude": -89.77759,
+    "city": "Baraboo",
     "country": "US",
     "intersection_directions": null,
     "plus4": null,
-    "state": "CA",
-    "street_address": "11797 Truesdale St",
-    "zip": "91352",
+    "state": "WI",
+    "street_address": "1171 Wisconsin Dells Pkwy S",
+    "zip": "53913",
     "bd_blends": null,
     "cng_dispenser_num": null,
     "cng_fill_type_code": null,
@@ -103,19 +111,18 @@ The response is composed of the fuel station matching the requested query. The s
     "e85_blender_pump": null,
     "e85_other_ethanol_blends": null,
     "ev_connector_types": [
-      "CHADEMO",
-      "J1772",
-      "J1772COMBO"
+      "J1772COMBO",
+      "TESLA"
     ],
-    "ev_dc_fast_num": 2,
+    "ev_dc_fast_num": 4,
     "ev_level1_evse_num": null,
-    "ev_level2_evse_num": 57,
-    "ev_network": "SHELL_RECHARGE",
-    "ev_network_web": "https://www.shell.us/motorist/electric-vehicle-charging.html",
+    "ev_level2_evse_num": null,
+    "ev_network": "KWIK_CHARGE",
+    "ev_network_web": "https://www.kwiktrip.com/kwikcharge",
     "ev_other_evse": null,
-    "ev_pricing": null,
+    "ev_pricing": "$0.52 per kWh",
     "ev_renewable_source": null,
-    "ev_workplace_charging": true,
+    "ev_workplace_charging": false,
     "hy_is_retail": null,
     "hy_pressures": null,
     "hy_standards": null,
@@ -136,11 +143,11 @@ The response is composed of the fuel station matching the requested query. The s
     "access_days_time_fr": null,
     "intersection_directions_fr": null,
     "bd_blends_fr": null,
-    "groups_with_access_code_fr": "Privé",
+    "groups_with_access_code_fr": "Public",
     "ev_pricing_fr": null,
     "ev_charging_units": [
       {
-        "network": "SHELL_RECHARGE",
+        "network": "KWIK_CHARGE",
         "connectors": {
           "J1772": {
             "power_kw": null,
@@ -151,12 +158,12 @@ The response is composed of the fuel station matching the requested query. The s
             "port_count": 0
           },
           "TESLA": {
-            "power_kw": null,
-            "port_count": 0
+            "power_kw": 400,
+            "port_count": 1
           },
           "CHADEMO": {
-            "power_kw": 25,
-            "port_count": 1
+            "power_kw": null,
+            "port_count": 0
           },
           "NEMA515": {
             "power_kw": null,
@@ -171,56 +178,18 @@ The response is composed of the fuel station matching the requested query. The s
             "port_count": 0
           },
           "J1772COMBO": {
-            "power_kw": 25,
+            "power_kw": 400,
             "port_count": 1
           }
         },
         "port_count": 1,
         "charging_level": "dc_fast",
-        "funding_sources": []
+        "funding_sources": [
+          "NEVI"
+        ]
       },
       {
-        "network": "Non-Networked",
-        "connectors": {
-          "J1772": {
-            "power_kw": null,
-            "port_count": 57
-          },
-          "J3271": {
-            "power_kw": null,
-            "port_count": 0
-          },
-          "TESLA": {
-            "power_kw": null,
-            "port_count": 0
-          },
-          "CHADEMO": {
-            "power_kw": null,
-            "port_count": 0
-          },
-          "NEMA515": {
-            "power_kw": null,
-            "port_count": 0
-          },
-          "NEMA520": {
-            "power_kw": null,
-            "port_count": 0
-          },
-          "NEMA1450": {
-            "power_kw": null,
-            "port_count": 0
-          },
-          "J1772COMBO": {
-            "power_kw": null,
-            "port_count": 0
-          }
-        },
-        "port_count": 57,
-        "charging_level": "2",
-        "funding_sources": []
-      },
-      {
-        "network": "SHELL_RECHARGE",
+        "network": "KWIK_CHARGE",
         "connectors": {
           "J1772": {
             "power_kw": null,
@@ -231,13 +200,13 @@ The response is composed of the fuel station matching the requested query. The s
             "port_count": 0
           },
           "TESLA": {
-            "power_kw": null,
-            "port_count": 0
-          },
-          "CHADEMO": {
-            "power_kw": 70,
+            "power_kw": 400,
             "port_count": 1
           },
+          "CHADEMO": {
+            "power_kw": null,
+            "port_count": 0
+          },
           "NEMA515": {
             "power_kw": null,
             "port_count": 0
@@ -251,13 +220,99 @@ The response is composed of the fuel station matching the requested query. The s
             "port_count": 0
           },
           "J1772COMBO": {
-            "power_kw": 70,
+            "power_kw": 400,
             "port_count": 1
           }
         },
         "port_count": 1,
         "charging_level": "dc_fast",
-        "funding_sources": []
+        "funding_sources": [
+          "NEVI"
+        ]
+      },
+      {
+        "network": "KWIK_CHARGE",
+        "connectors": {
+          "J1772": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "J3271": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "TESLA": {
+            "power_kw": 400,
+            "port_count": 1
+          },
+          "CHADEMO": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "NEMA515": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "NEMA520": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "NEMA1450": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "J1772COMBO": {
+            "power_kw": 400,
+            "port_count": 1
+          }
+        },
+        "port_count": 1,
+        "charging_level": "dc_fast",
+        "funding_sources": [
+          "NEVI"
+        ]
+      },
+      {
+        "network": "KWIK_CHARGE",
+        "connectors": {
+          "J1772": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "J3271": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "TESLA": {
+            "power_kw": 400,
+            "port_count": 1
+          },
+          "CHADEMO": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "NEMA515": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "NEMA520": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "NEMA1450": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "J1772COMBO": {
+            "power_kw": 400,
+            "port_count": 1
+          }
+        },
+        "port_count": 1,
+        "charging_level": "dc_fast",
+        "funding_sources": [
+          "NEVI"
+        ]
       }
     ]
   }
@@ -266,7 +321,7 @@ The response is composed of the fuel station matching the requested query. The s
 
 ### GeoJSON Output Format
 
-<pre>GET <a href="/api/alt-fuel-stations/v1/1517.geojson?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/1517.geojson?api_key=DEMO_KEY</a></pre>
+<pre>GET <a href="/api/alt-fuel-stations/v1/446595.geojson?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/446595.geojson?api_key=DEMO_KEY</a></pre>
 
 ```json
 {
@@ -275,39 +330,47 @@ The response is composed of the fuel station matching the requested query. The s
   "geometry": {
     "type": "Point",
     "coordinates": [
-      -118.3879713743439,
-      34.2483191527193
+      -89.77759,
+      43.57532
     ]
   },
   "properties": {
-    "access_code": "private",
-    "access_days_time": "Fleet use only",
+    "access_code": "public",
+    "access_days_time": "24 hours daily",
     "access_detail_code": null,
-    "cards_accepted": null,
-    "date_last_confirmed": "2023-09-14",
+    "cards_accepted": "A D Debit M V",
+    "date_last_confirmed": null,
     "expected_date": null,
     "fuel_type_code": "ELEC",
-    "groups_with_access_code": "Private",
-    "id": 1517,
-    "maximum_vehicle_class": null,
-    "open_date": "1999-10-15",
-    "owner_type_code": "LG",
-    "related_stations": [],
-    "restricted_access": null,
+    "groups_with_access_code": "Public",
+    "id": 446595,
+    "maximum_vehicle_class": "LD",
+    "open_date": "2025-11-27",
+    "owner_type_code": "P",
+    "related_stations": [
+      {
+        "id": 213127,
+        "access_code": "public",
+        "fuel_type_code": "E85"
+      }
+    ],
+    "restricted_access": false,
     "status_code": "E",
-    "funding_sources": null,
-    "facility_type": "UTILITY",
-    "station_name": "LADWP - Truesdale Center",
-    "station_phone": null,
-    "updated_at": "2025-08-18T15:54:31Z",
-    "geocode_status": "GPS",
-    "city": "Sun Valley",
+    "funding_sources": [
+      "NEVI"
+    ],
+    "facility_type": "GAS_STATION",
+    "station_name": "Kwik Trip #1205",
+    "station_phone": "608-793-6267",
+    "updated_at": "2025-12-01T14:44:01Z",
+    "geocode_status": "200-8",
+    "city": "Baraboo",
     "country": "US",
     "intersection_directions": null,
     "plus4": null,
-    "state": "CA",
-    "street_address": "11797 Truesdale St",
-    "zip": "91352",
+    "state": "WI",
+    "street_address": "1171 Wisconsin Dells Pkwy S",
+    "zip": "53913",
     "bd_blends": null,
     "cng_dispenser_num": null,
     "cng_fill_type_code": null,
@@ -320,19 +383,18 @@ The response is composed of the fuel station matching the requested query. The s
     "e85_blender_pump": null,
     "e85_other_ethanol_blends": null,
     "ev_connector_types": [
-      "CHADEMO",
-      "J1772",
-      "J1772COMBO"
+      "J1772COMBO",
+      "TESLA"
     ],
-    "ev_dc_fast_num": 2,
+    "ev_dc_fast_num": 4,
     "ev_level1_evse_num": null,
-    "ev_level2_evse_num": 57,
-    "ev_network": "SHELL_RECHARGE",
-    "ev_network_web": "https://www.shell.us/motorist/electric-vehicle-charging.html",
+    "ev_level2_evse_num": null,
+    "ev_network": "KWIK_CHARGE",
+    "ev_network_web": "https://www.kwiktrip.com/kwikcharge",
     "ev_other_evse": null,
-    "ev_pricing": null,
+    "ev_pricing": "$0.52 per kWh",
     "ev_renewable_source": null,
-    "ev_workplace_charging": true,
+    "ev_workplace_charging": false,
     "hy_is_retail": null,
     "hy_pressures": null,
     "hy_standards": null,
@@ -353,11 +415,11 @@ The response is composed of the fuel station matching the requested query. The s
     "access_days_time_fr": null,
     "intersection_directions_fr": null,
     "bd_blends_fr": null,
-    "groups_with_access_code_fr": "Privé",
+    "groups_with_access_code_fr": "Public",
     "ev_pricing_fr": null,
     "ev_charging_units": [
       {
-        "network": "SHELL_RECHARGE",
+        "network": "KWIK_CHARGE",
         "connectors": {
           "J1772": {
             "power_kw": null,
@@ -368,12 +430,12 @@ The response is composed of the fuel station matching the requested query. The s
             "port_count": 0
           },
           "TESLA": {
-            "power_kw": null,
-            "port_count": 0
+            "power_kw": 400,
+            "port_count": 1
           },
           "CHADEMO": {
-            "power_kw": 25,
-            "port_count": 1
+            "power_kw": null,
+            "port_count": 0
           },
           "NEMA515": {
             "power_kw": null,
@@ -388,56 +450,18 @@ The response is composed of the fuel station matching the requested query. The s
             "port_count": 0
           },
           "J1772COMBO": {
-            "power_kw": 25,
+            "power_kw": 400,
             "port_count": 1
           }
         },
         "port_count": 1,
         "charging_level": "dc_fast",
-        "funding_sources": []
+        "funding_sources": [
+          "NEVI"
+        ]
       },
       {
-        "network": "Non-Networked",
-        "connectors": {
-          "J1772": {
-            "power_kw": null,
-            "port_count": 57
-          },
-          "J3271": {
-            "power_kw": null,
-            "port_count": 0
-          },
-          "TESLA": {
-            "power_kw": null,
-            "port_count": 0
-          },
-          "CHADEMO": {
-            "power_kw": null,
-            "port_count": 0
-          },
-          "NEMA515": {
-            "power_kw": null,
-            "port_count": 0
-          },
-          "NEMA520": {
-            "power_kw": null,
-            "port_count": 0
-          },
-          "NEMA1450": {
-            "power_kw": null,
-            "port_count": 0
-          },
-          "J1772COMBO": {
-            "power_kw": null,
-            "port_count": 0
-          }
-        },
-        "port_count": 57,
-        "charging_level": "2",
-        "funding_sources": []
-      },
-      {
-        "network": "SHELL_RECHARGE",
+        "network": "KWIK_CHARGE",
         "connectors": {
           "J1772": {
             "power_kw": null,
@@ -448,13 +472,13 @@ The response is composed of the fuel station matching the requested query. The s
             "port_count": 0
           },
           "TESLA": {
-            "power_kw": null,
-            "port_count": 0
-          },
-          "CHADEMO": {
-            "power_kw": 70,
+            "power_kw": 400,
             "port_count": 1
           },
+          "CHADEMO": {
+            "power_kw": null,
+            "port_count": 0
+          },
           "NEMA515": {
             "power_kw": null,
             "port_count": 0
@@ -468,13 +492,99 @@ The response is composed of the fuel station matching the requested query. The s
             "port_count": 0
           },
           "J1772COMBO": {
-            "power_kw": 70,
+            "power_kw": 400,
             "port_count": 1
           }
         },
         "port_count": 1,
         "charging_level": "dc_fast",
-        "funding_sources": []
+        "funding_sources": [
+          "NEVI"
+        ]
+      },
+      {
+        "network": "KWIK_CHARGE",
+        "connectors": {
+          "J1772": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "J3271": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "TESLA": {
+            "power_kw": 400,
+            "port_count": 1
+          },
+          "CHADEMO": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "NEMA515": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "NEMA520": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "NEMA1450": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "J1772COMBO": {
+            "power_kw": 400,
+            "port_count": 1
+          }
+        },
+        "port_count": 1,
+        "charging_level": "dc_fast",
+        "funding_sources": [
+          "NEVI"
+        ]
+      },
+      {
+        "network": "KWIK_CHARGE",
+        "connectors": {
+          "J1772": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "J3271": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "TESLA": {
+            "power_kw": 400,
+            "port_count": 1
+          },
+          "CHADEMO": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "NEMA515": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "NEMA520": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "NEMA1450": {
+            "power_kw": null,
+            "port_count": 0
+          },
+          "J1772COMBO": {
+            "power_kw": 400,
+            "port_count": 1
+          }
+        },
+        "port_count": 1,
+        "charging_level": "dc_fast",
+        "funding_sources": [
+          "NEVI"
+        ]
       }
     ]
   }
@@ -483,11 +593,11 @@ The response is composed of the fuel station matching the requested query. The s
 
 ### CSV Output Format
 
-<pre>GET <a href="/api/alt-fuel-stations/v1/1517.csv?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/1517.csv?api_key=DEMO_KEY</a></pre>
+<pre>GET <a href="/api/alt-fuel-stations/v1/446595.csv?api_key=DEMO_KEY">/api/alt-fuel-stations/v1/446595.csv?api_key=DEMO_KEY</a></pre>
 
 ```
-Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump,EV Connector Types,Country,Intersection Directions (French),Access Days Time (French),BD Blends (French),Groups With Access Code (French),Hydrogen Is Retail,Access Code,Access Detail Code,Federal Agency Code,Facility Type,CNG Dispenser Num,CNG On-Site Renewable Source,CNG Total Compression Capacity,CNG Storage Capacity,LNG On-Site Renewable Source,E85 Other Ethanol Blends,EV Pricing,EV Pricing (French),LPG Nozzle Types,Hydrogen Pressures,Hydrogen Standards,CNG Fill Type Code,CNG PSI,CNG Vehicle Class,LNG Vehicle Class,EV On-Site Renewable Source,Restricted Access,RD Blends,RD Blends (French),RD Blended with Biodiesel,RD Maximum Biodiesel Level,Maximum Vehicle Class
-ELEC,LADWP - Truesdale Center,11797 Truesdale St,,Sun Valley,CA,91352,,,E,,Private,Fleet use only,,,,,,39,3,,Non-Networked,,GPS,34.2483191527193,-118.3879713743439,2021-07-14,1517,2022-02-10 19:42:29 UTC,LG,,,1999-10-15,,,,,CHADEMO J1772 J1772COMBO,US,,,,Privé,,private,,,UTILITY,,,,,,,,,,,,,,,,,,,,,,
+Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump,EV Connector Types,Country,Intersection Directions (French),Access Days Time (French),BD Blends (French),Groups With Access Code (French),Hydrogen Is Retail,Access Code,Access Detail Code,Federal Agency Code,Facility Type,CNG Dispenser Num,CNG On-Site Renewable Source,CNG Total Compression Capacity,CNG Storage Capacity,LNG On-Site Renewable Source,E85 Other Ethanol Blends,EV Pricing,EV Pricing (French),LPG Nozzle Types,Hydrogen Pressures,Hydrogen Standards,CNG Fill Type Code,CNG PSI,CNG Vehicle Class,LNG Vehicle Class,EV On-Site Renewable Source,Restricted Access,RD Blends,RD Blends (French),RD Blended with Biodiesel,RD Maximum Biodiesel Level,NPS Unit Name,CNG Station Sells Renewable Natural Gas,LNG Station Sells Renewable Natural Gas,Maximum Vehicle Class,EV Workplace Charging,Funding Sources
+ELEC,Kwik Trip #1205,1171 Wisconsin Dells Pkwy S,,Baraboo,WI,53913,,608-793-6267,E,,Public,24 hours daily,A D Debit M V,,,,,,4,,KWIK_CHARGE,https://www.kwiktrip.com/kwikcharge,200-8,43.57532,-89.77759,,446595,2025-12-01 14:44:01 UTC,P,,,2025-11-27,,,,,J1772COMBO TESLA,US,,,,Public,,public,,,GAS_STATION,,,,,,,$0.52 per kWh,,,,,,,,,,false,,,,,,,,LD,false,NEVI
 ```
 
 ## Rate Limits
