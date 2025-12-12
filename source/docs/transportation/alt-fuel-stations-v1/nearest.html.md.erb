@@ -162,25 +162,25 @@ The individual fuel station records are returned in order of ascending distance 
 
 ### JSON Output Format
 
-<pre>GET <a href="/api/alt-fuel-stations/v1/nearest.json?api_key=DEMO_KEY&amp;latitude=39.743078&amp;longitude=-105.152278&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.json?api_key=DEMO_KEY&amp;latitude=39.743078&amp;longitude=-105.152278&amp;fuel_type=ELEC&amp;limit=1</a></pre>
+<pre>GET <a href="/api/alt-fuel-stations/v1/nearest.json?api_key=DEMO_KEY&amp;latitude=39.743078&amp;longitude=-105.152278&amp;&ampradius=100;fuel_type=ELEC,E85&amp;limit=2">/api/alt-fuel-stations/v1/nearest.json?api_key=DEMO_KEY&amp;latitude=39.743078&amp;longitude=-105.152278&amp;radius=100&amp;fuel_type=ELEC,E85&amp;limit=2</a></pre>
 
 ```json
 {
   "station_locator_url": "https://afdc.energy.gov/stations/",
-  "total_results": 108,
+  "total_results": 2436,
   "station_counts": {
-    "total": 395,
+    "total": 6596,
     "fuels": {
       "BD": {
         "total": 0
       },
       "E85": {
-        "total": 0
+        "total": 101
       },
       "ELEC": {
-        "total": 395,
+        "total": 6495,
         "stations": {
-          "total": 108
+          "total": 2335
         }
       },
       "HY": {
@@ -207,36 +207,127 @@ The individual fuel station records are returned in order of ascending distance 
   "offset": 0,
   "fuel_stations": [
     {
-      "access_code": "public",
-      "access_days_time": "24 hours daily",
-      "access_detail_code": null,
+      "access_code": "private",
+      "access_days_time": null,
+      "access_detail_code": "GOVERNMENT",
       "cards_accepted": null,
-      "date_last_confirmed": "2025-10-28",
+      "date_last_confirmed": "2024-11-06",
       "expected_date": null,
-      "fuel_type_code": "ELEC",
-      "groups_with_access_code": "Public",
-      "id": 194116,
-      "maximum_vehicle_class": null,
-      "open_date": "2021-08-19",
-      "owner_type_code": null,
-      "related_stations": [],
-      "restricted_access": false,
+      "fuel_type_code": "E85",
+      "groups_with_access_code": "Private - Government only",
+      "id": 361635,
+      "maximum_vehicle_class": "LD",
+      "open_date": "2024-09-20",
+      "owner_type_code": "FG",
+      "related_stations": [
+        {
+          "id": 406111,
+          "access_code": "private",
+          "fuel_type_code": "BD"
+        }
+      ],
+      "restricted_access": null,
       "status_code": "E",
       "funding_sources": null,
-      "facility_type": null,
-      "station_name": "1687 COLE BLVD EAST STATION 1",
-      "station_phone": "888-758-4389",
-      "updated_at": "2025-10-28T02:08:15Z",
+      "facility_type": "FED_GOV",
+      "station_name": "BOR MBR- Eastern Colorado Area Office",
+      "station_phone": null,
+      "updated_at": "2025-11-14T14:26:42Z",
       "geocode_status": "GPS",
-      "latitude": 39.740932,
-      "longitude": -105.156235,
-      "city": "Lakewood",
+      "latitude": 40.3706,
+      "longitude": -105.23642,
+      "city": "Loveland",
       "country": "US",
       "intersection_directions": null,
       "plus4": null,
       "state": "CO",
-      "street_address": "1687 Cole Blvd",
-      "zip": "80401",
+      "street_address": "11056 West County Rd 18E",
+      "zip": "80537",
+      "bd_blends": null,
+      "cng_dispenser_num": null,
+      "cng_fill_type_code": null,
+      "cng_has_rng": null,
+      "cng_psi": null,
+      "cng_renewable_source": null,
+      "cng_total_compression": null,
+      "cng_total_storage": null,
+      "cng_vehicle_class": null,
+      "e85_blender_pump": false,
+      "e85_other_ethanol_blends": null,
+      "ev_connector_types": null,
+      "ev_dc_fast_num": null,
+      "ev_level1_evse_num": null,
+      "ev_level2_evse_num": null,
+      "ev_network": null,
+      "ev_network_web": null,
+      "ev_other_evse": null,
+      "ev_pricing": null,
+      "ev_renewable_source": null,
+      "ev_workplace_charging": null,
+      "hy_is_retail": null,
+      "hy_pressures": null,
+      "hy_standards": null,
+      "hy_status_link": null,
+      "lng_has_rng": null,
+      "lng_renewable_source": null,
+      "lng_vehicle_class": null,
+      "lpg_nozzle_types": null,
+      "lpg_primary": null,
+      "ng_fill_type_code": null,
+      "ng_psi": null,
+      "ng_vehicle_class": null,
+      "rd_blended_with_biodiesel": null,
+      "rd_blends": null,
+      "rd_blends_fr": null,
+      "rd_max_biodiesel_level": null,
+      "nps_unit_name": null,
+      "access_days_time_fr": null,
+      "intersection_directions_fr": null,
+      "bd_blends_fr": null,
+      "groups_with_access_code_fr": "Privé - Réservé au gouvernement",
+      "ev_pricing_fr": null,
+      "ev_charging_units": null,
+      "federal_agency": {
+        "id": 16,
+        "code": "DOI",
+        "name": "Department of the Interior"
+      },
+      "distance": 43.52471,
+      "distance_km": 70.04623
+    },
+    {
+      "access_code": "public",
+      "access_days_time": "24 hours daily",
+      "access_detail_code": null,
+      "cards_accepted": null,
+      "date_last_confirmed": "2025-12-11",
+      "expected_date": null,
+      "fuel_type_code": "ELEC",
+      "groups_with_access_code": "Public",
+      "id": 389045,
+      "maximum_vehicle_class": null,
+      "open_date": "2025-04-01",
+      "owner_type_code": null,
+      "related_stations": [],
+      "restricted_access": false,
+      "status_code": "E",
+      "funding_sources": [
+        "NEVI"
+      ],
+      "facility_type": null,
+      "station_name": "Pilot Travel Center 1110",
+      "station_phone": "877-455-3833",
+      "updated_at": "2025-12-11T23:58:07Z",
+      "geocode_status": "GPS",
+      "latitude": 39.05569,
+      "longitude": -104.85352,
+      "city": "Monument",
+      "country": "US",
+      "intersection_directions": null,
+      "plus4": null,
+      "state": "CO",
+      "street_address": "15455 Terrazzo Drive",
+      "zip": "80921",
       "bd_blends": null,
       "cng_dispenser_num": null,
       "cng_fill_type_code": null,
@@ -249,13 +340,13 @@ The individual fuel station records are returned in order of ascending distance 
       "e85_blender_pump": null,
       "e85_other_ethanol_blends": null,
       "ev_connector_types": [
-        "J1772"
+        "J1772COMBO"
       ],
-      "ev_dc_fast_num": null,
+      "ev_dc_fast_num": 4,
       "ev_level1_evse_num": null,
-      "ev_level2_evse_num": 2,
-      "ev_network": "ChargePoint Network",
-      "ev_network_web": "https://www.chargepoint.com",
+      "ev_level2_evse_num": null,
+      "ev_network": "eVgo Network",
+      "ev_network_web": "https://www.evgo.com",
       "ev_other_evse": null,
       "ev_pricing": null,
       "ev_renewable_source": null,
@@ -284,11 +375,11 @@ The individual fuel station records are returned in order of ascending distance 
       "ev_pricing_fr": null,
       "ev_charging_units": [
         {
-          "network": "ChargePoint Network",
+          "network": "eVgo Network",
           "connectors": {
             "J1772": {
-              "power_kw": 6.5,
-              "port_count": 1
+              "power_kw": null,
+              "port_count": 0
             },
             "J3271": {
               "power_kw": null,
@@ -315,20 +406,22 @@ The individual fuel station records are returned in order of ascending distance 
               "port_count": 0
             },
             "J1772COMBO": {
-              "power_kw": null,
-              "port_count": 0
+              "power_kw": 350,
+              "port_count": 1
             }
           },
           "port_count": 1,
-          "charging_level": "2",
-          "funding_sources": []
+          "charging_level": "dc_fast",
+          "funding_sources": [
+            "NEVI"
+          ]
         },
         {
-          "network": "ChargePoint Network",
+          "network": "eVgo Network",
           "connectors": {
             "J1772": {
-              "power_kw": 6.5,
-              "port_count": 1
+              "power_kw": null,
+              "port_count": 0
             },
             "J3271": {
               "power_kw": null,
@@ -355,26 +448,114 @@ The individual fuel station records are returned in order of ascending distance 
               "port_count": 0
             },
             "J1772COMBO": {
-              "power_kw": null,
-              "port_count": 0
+              "power_kw": 350,
+              "port_count": 1
             }
           },
           "port_count": 1,
-          "charging_level": "2",
-          "funding_sources": []
+          "charging_level": "dc_fast",
+          "funding_sources": [
+            "NEVI"
+          ]
+        },
+        {
+          "network": "eVgo Network",
+          "connectors": {
+            "J1772": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "J3271": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "TESLA": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "CHADEMO": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "NEMA515": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "NEMA520": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "NEMA1450": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "J1772COMBO": {
+              "power_kw": 350,
+              "port_count": 1
+            }
+          },
+          "port_count": 1,
+          "charging_level": "dc_fast",
+          "funding_sources": [
+            "NEVI"
+          ]
+        },
+        {
+          "network": "eVgo Network",
+          "connectors": {
+            "J1772": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "J3271": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "TESLA": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "CHADEMO": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "NEMA515": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "NEMA520": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "NEMA1450": {
+              "power_kw": null,
+              "port_count": 0
+            },
+            "J1772COMBO": {
+              "power_kw": 350,
+              "port_count": 1
+            }
+          },
+          "port_count": 1,
+          "charging_level": "dc_fast",
+          "funding_sources": [
+            "NEVI"
+          ]
         }
       ],
       "ev_network_ids": {
         "station": [
-          "USCPIL9075981"
+          "78160"
         ],
         "posts": [
-          "27812261",
-          "27812271"
+          "475246",
+          "475247",
+          "475252",
+          "475253"
         ]
       },
-      "distance": 0.25756,
-      "distance_km": 0.4145
+      "distance": 50.04392,
+      "distance_km": 80.53788
     }
   ]
 }
@@ -389,20 +570,20 @@ The individual fuel station records are returned in order of ascending distance 
   "type": "FeatureCollection",
   "metadata": {
     "station_locator_url": "https://afdc.energy.gov/stations/",
-    "total_results": 108,
+    "total_results": 2436,
     "station_counts": {
-      "total": 395,
+      "total": 6596,
       "fuels": {
         "BD": {
           "total": 0
         },
         "E85": {
-          "total": 0
+          "total": 101
         },
         "ELEC": {
-          "total": 395,
+          "total": 6495,
           "stations": {
-            "total": 108
+            "total": 2335
           }
         },
         "HY": {
@@ -434,8 +615,105 @@ The individual fuel station records are returned in order of ascending distance 
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -105.156235,
-          39.740932
+          -105.23642,
+          40.3706
+        ]
+      },
+      "properties": {
+        "access_code": "private",
+        "access_days_time": null,
+        "access_detail_code": "GOVERNMENT",
+        "cards_accepted": null,
+        "date_last_confirmed": "2024-11-06",
+        "expected_date": null,
+        "fuel_type_code": "E85",
+        "groups_with_access_code": "Private - Government only",
+        "id": 361635,
+        "maximum_vehicle_class": "LD",
+        "open_date": "2024-09-20",
+        "owner_type_code": "FG",
+        "related_stations": [
+          {
+            "id": 406111,
+            "access_code": "private",
+            "fuel_type_code": "BD"
+          }
+        ],
+        "restricted_access": null,
+        "status_code": "E",
+        "funding_sources": null,
+        "facility_type": "FED_GOV",
+        "station_name": "BOR MBR- Eastern Colorado Area Office",
+        "station_phone": null,
+        "updated_at": "2025-11-14T14:26:42Z",
+        "geocode_status": "GPS",
+        "city": "Loveland",
+        "country": "US",
+        "intersection_directions": null,
+        "plus4": null,
+        "state": "CO",
+        "street_address": "11056 West County Rd 18E",
+        "zip": "80537",
+        "bd_blends": null,
+        "cng_dispenser_num": null,
+        "cng_fill_type_code": null,
+        "cng_has_rng": null,
+        "cng_psi": null,
+        "cng_renewable_source": null,
+        "cng_total_compression": null,
+        "cng_total_storage": null,
+        "cng_vehicle_class": null,
+        "e85_blender_pump": false,
+        "e85_other_ethanol_blends": null,
+        "ev_connector_types": null,
+        "ev_dc_fast_num": null,
+        "ev_level1_evse_num": null,
+        "ev_level2_evse_num": null,
+        "ev_network": null,
+        "ev_network_web": null,
+        "ev_other_evse": null,
+        "ev_pricing": null,
+        "ev_renewable_source": null,
+        "ev_workplace_charging": null,
+        "hy_is_retail": null,
+        "hy_pressures": null,
+        "hy_standards": null,
+        "hy_status_link": null,
+        "lng_has_rng": null,
+        "lng_renewable_source": null,
+        "lng_vehicle_class": null,
+        "lpg_nozzle_types": null,
+        "lpg_primary": null,
+        "ng_fill_type_code": null,
+        "ng_psi": null,
+        "ng_vehicle_class": null,
+        "rd_blended_with_biodiesel": null,
+        "rd_blends": null,
+        "rd_blends_fr": null,
+        "rd_max_biodiesel_level": null,
+        "nps_unit_name": null,
+        "access_days_time_fr": null,
+        "intersection_directions_fr": null,
+        "bd_blends_fr": null,
+        "groups_with_access_code_fr": "Privé - Réservé au gouvernement",
+        "ev_pricing_fr": null,
+        "ev_charging_units": null,
+        "federal_agency": {
+          "id": 16,
+          "code": "DOI",
+          "name": "Department of the Interior"
+        },
+        "distance": 43.52471,
+        "distance_km": 70.04623
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.85352,
+          39.05569
         ]
       },
       "properties": {
@@ -443,30 +721,32 @@ The individual fuel station records are returned in order of ascending distance 
         "access_days_time": "24 hours daily",
         "access_detail_code": null,
         "cards_accepted": null,
-        "date_last_confirmed": "2025-10-28",
+        "date_last_confirmed": "2025-12-11",
         "expected_date": null,
         "fuel_type_code": "ELEC",
         "groups_with_access_code": "Public",
-        "id": 194116,
+        "id": 389045,
         "maximum_vehicle_class": null,
-        "open_date": "2021-08-19",
+        "open_date": "2025-04-01",
         "owner_type_code": null,
         "related_stations": [],
         "restricted_access": false,
         "status_code": "E",
-        "funding_sources": null,
+        "funding_sources": [
+          "NEVI"
+        ],
         "facility_type": null,
-        "station_name": "1687 COLE BLVD EAST STATION 1",
-        "station_phone": "888-758-4389",
-        "updated_at": "2025-10-28T02:08:15Z",
+        "station_name": "Pilot Travel Center 1110",
+        "station_phone": "877-455-3833",
+        "updated_at": "2025-12-11T23:58:07Z",
         "geocode_status": "GPS",
-        "city": "Lakewood",
+        "city": "Monument",
         "country": "US",
         "intersection_directions": null,
         "plus4": null,
         "state": "CO",
-        "street_address": "1687 Cole Blvd",
-        "zip": "80401",
+        "street_address": "15455 Terrazzo Drive",
+        "zip": "80921",
         "bd_blends": null,
         "cng_dispenser_num": null,
         "cng_fill_type_code": null,
@@ -479,13 +759,13 @@ The individual fuel station records are returned in order of ascending distance 
         "e85_blender_pump": null,
         "e85_other_ethanol_blends": null,
         "ev_connector_types": [
-          "J1772"
+          "J1772COMBO"
         ],
-        "ev_dc_fast_num": null,
+        "ev_dc_fast_num": 4,
         "ev_level1_evse_num": null,
-        "ev_level2_evse_num": 2,
-        "ev_network": "ChargePoint Network",
-        "ev_network_web": "https://www.chargepoint.com",
+        "ev_level2_evse_num": null,
+        "ev_network": "eVgo Network",
+        "ev_network_web": "https://www.evgo.com",
         "ev_other_evse": null,
         "ev_pricing": null,
         "ev_renewable_source": null,
@@ -514,11 +794,11 @@ The individual fuel station records are returned in order of ascending distance 
         "ev_pricing_fr": null,
         "ev_charging_units": [
           {
-            "network": "ChargePoint Network",
+            "network": "eVgo Network",
             "connectors": {
               "J1772": {
-                "power_kw": 6.5,
-                "port_count": 1
+                "power_kw": null,
+                "port_count": 0
               },
               "J3271": {
                 "power_kw": null,
@@ -545,20 +825,22 @@ The individual fuel station records are returned in order of ascending distance 
                 "port_count": 0
               },
               "J1772COMBO": {
-                "power_kw": null,
-                "port_count": 0
+                "power_kw": 350,
+                "port_count": 1
               }
             },
             "port_count": 1,
-            "charging_level": "2",
-            "funding_sources": []
+            "charging_level": "dc_fast",
+            "funding_sources": [
+              "NEVI"
+            ]
           },
           {
-            "network": "ChargePoint Network",
+            "network": "eVgo Network",
             "connectors": {
               "J1772": {
-                "power_kw": 6.5,
-                "port_count": 1
+                "power_kw": null,
+                "port_count": 0
               },
               "J3271": {
                 "power_kw": null,
@@ -585,26 +867,114 @@ The individual fuel station records are returned in order of ascending distance 
                 "port_count": 0
               },
               "J1772COMBO": {
-                "power_kw": null,
-                "port_count": 0
+                "power_kw": 350,
+                "port_count": 1
               }
             },
             "port_count": 1,
-            "charging_level": "2",
-            "funding_sources": []
+            "charging_level": "dc_fast",
+            "funding_sources": [
+              "NEVI"
+            ]
+          },
+          {
+            "network": "eVgo Network",
+            "connectors": {
+              "J1772": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "J3271": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "TESLA": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "CHADEMO": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "NEMA515": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "NEMA520": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "NEMA1450": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "J1772COMBO": {
+                "power_kw": 350,
+                "port_count": 1
+              }
+            },
+            "port_count": 1,
+            "charging_level": "dc_fast",
+            "funding_sources": [
+              "NEVI"
+            ]
+          },
+          {
+            "network": "eVgo Network",
+            "connectors": {
+              "J1772": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "J3271": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "TESLA": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "CHADEMO": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "NEMA515": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "NEMA520": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "NEMA1450": {
+                "power_kw": null,
+                "port_count": 0
+              },
+              "J1772COMBO": {
+                "power_kw": 350,
+                "port_count": 1
+              }
+            },
+            "port_count": 1,
+            "charging_level": "dc_fast",
+            "funding_sources": [
+              "NEVI"
+            ]
           }
         ],
         "ev_network_ids": {
           "station": [
-            "USCPIL9075981"
+            "78160"
           ],
           "posts": [
-            "27812261",
-            "27812271"
+            "475246",
+            "475247",
+            "475252",
+            "475253"
           ]
         },
-        "distance": 0.25756,
-        "distance_km": 0.4145
+        "distance": 50.04392,
+        "distance_km": 80.53788
       }
     }
   ]
@@ -616,8 +986,9 @@ The individual fuel station records are returned in order of ascending distance 
 <pre>GET <a href="/api/alt-fuel-stations/v1/nearest.csv?api_key=DEMO_KEY&amp;latitude=39.743078&amp;longitude=-105.152278&amp;fuel_type=ELEC&amp;limit=1">/api/alt-fuel-stations/v1/nearest.csv?api_key=DEMO_KEY&amp;latitude=39.743078&amp;longitude=-105.152278&amp;fuel_type=ELEC&amp;limit=1</a></pre>
 
 ```
-Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump,EV Connector Types,Country,Intersection Directions (French),Access Days Time (French),BD Blends (French),Groups With Access Code (French),Hydrogen Is Retail,Access Code,Access Detail Code,Federal Agency Code,Facility Type,CNG Dispenser Num,CNG On-Site Renewable Source,CNG Total Compression Capacity,CNG Storage Capacity,LNG On-Site Renewable Source,E85 Other Ethanol Blends,EV Pricing,EV Pricing (French),LPG Nozzle Types,Hydrogen Pressures,Hydrogen Standards,CNG Fill Type Code,CNG PSI,CNG Vehicle Class,LNG Vehicle Class,EV On-Site Renewable Source,Restricted Access,RD Blends,RD Blends (French),RD Blended with Biodiesel,RD Maximum Biodiesel Level,Maximum Vehicle Class
-ELEC,1687 COLE BLVD EAST STATION 1,1687 Cole Blvd,,Lakewood,CO,80401,,888-758-4389,E,,Public,24 hours daily,,,,,,2,,,ChargePoint Network,http://www.chargepoint.com/,GPS,39.740932,-105.156235,2023-01-02,194116,2023-01-02 23:31:30 UTC,,,,2021-08-19,,,,,J1772,US,,,,Public,,public,,,,,,,,,,,,,,,,,,,,,,,,,
+Fuel Type Code,Station Name,Street Address,Intersection Directions,City,State,ZIP,Plus4,Station Phone,Status Code,Expected Date,Groups With Access Code,Access Days Time,Cards Accepted,BD Blends,NG Fill Type Code,NG PSI,EV Level1 EVSE Num,EV Level2 EVSE Num,EV DC Fast Count,EV Other Info,EV Network,EV Network Web,Geocode Status,Latitude,Longitude,Date Last Confirmed,ID,Distance,Updated At,Owner Type Code,Federal Agency ID,Federal Agency Name,Open Date,Hydrogen Status Link,NG Vehicle Class,LPG Primary,E85 Blender Pump,EV Connector Types,Country,Distance (km),Intersection Directions (French),Access Days Time (French),BD Blends (French),Groups With Access Code (French),Hydrogen Is Retail,Access Code,Access Detail Code,Federal Agency Code,Facility Type,CNG Dispenser Num,CNG On-Site Renewable Source,CNG Total Compression Capacity,CNG Storage Capacity,LNG On-Site Renewable Source,E85 Other Ethanol Blends,EV Pricing,EV Pricing (French),LPG Nozzle Types,Hydrogen Pressures,Hydrogen Standards,CNG Fill Type Code,CNG PSI,CNG Vehicle Class,LNG Vehicle Class,EV On-Site Renewable Source,Restricted Access,RD Blends,RD Blends (French),RD Blended with Biodiesel,RD Maximum Biodiesel Level,NPS Unit Name,CNG Station Sells Renewable Natural Gas,LNG Station Sells Renewable Natural Gas,Maximum Vehicle Class,EV Workplace Charging,Funding Sources
+E85,BOR MBR- Eastern Colorado Area Office,11056 West County Rd 18E,,Loveland,CO,80537,,,E,,Private - Government only,,,,,,,,,,,,GPS,40.3706,-105.23642,2024-11-06,361635,43.52471,2025-11-14 14:26:42 UTC,FG,16,Department of the Interior,2024-09-20,,,,false,,US,70.04623,,,,Privé - Réservé au gouvernement,,private,GOVERNMENT,DOI,FED_GOV,,,,,,,,,,,,,,,,,,,,,,,,,LD,,
+ELEC,Pilot Travel Center 1110,15455 Terrazzo Drive,,Monument,CO,80921,,877-455-3833,E,,Public,24 hours daily,,,,,,,4,,eVgo Network,https://www.evgo.com,GPS,39.05569,-104.85352,2025-12-11,389045,50.04392,2025-12-11 23:58:07 UTC,,,,2025-04-01,,,,,J1772COMBO,US,80.53788,,,,Public,,public,,,,,,,,,,,,,,,,,,,,false,,,,,,,,,false,NEVI
 ```
 
 ## Rate Limits
